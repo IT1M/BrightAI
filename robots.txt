@@ -5,3 +5,4 @@ Disallow: /admin/
 Disallow: /temp/
 
 Sitemap: https://brightaii.com/sitemap.xml
+ 
