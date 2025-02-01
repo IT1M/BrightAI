@@ -1,8 +1,10 @@
+# robots.txt - This file tells search engine crawlers which pages or files the crawler can or can't request from the site.
 User-agent: *
 Allow: /
 Disallow: /private/
 Disallow: /admin/
 Disallow: /temp/
+Disallow: /blogger/
+Disallow: /Docfile/
 
 Sitemap: https://brightaii.com/sitemap.xml
- 
