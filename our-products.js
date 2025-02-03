@@ -7,6 +7,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const cartCount = document.querySelector('.cart-count');
     const cartTotal = document.querySelector('.cart-total');
     const paymentModal = document.getElementById('paymentModal');
+    const closePaymentModal = document.getElementById('closePaymentModal');
+    const copyIbanBtn = document.getElementById('copyIban');
+    const paymentTotal = document.querySelector('.payment-total');
     const products = document.querySelectorAll('.product');
     let cart = [];
 
@@ -101,8 +104,36 @@ document.addEventListener('DOMContentLoaded', function() {
     // معالج زر إتمام الشراء
     document.querySelector('.checkout-button').addEventListener('click', () => {
         if (cart.length > 0) {
-            cartModal.classList.remove('active');
-            paymentModal.classList.add('active');
+            const total = cart.reduce((sum, item) => {
+                const price = parseFloat(item.price.replace(/[^\d.]/g, ''));
+                return sum + price * item.quantity;
+            }, 0);
+            paymentTotal.textContent = total.toFixed(2);
+            cartModal.style.display = 'none';
+            paymentModal.style.display = 'block';
+        }
+    });
+
+    // نسخ رقم الآيبان
+    copyIbanBtn.addEventListener('click', () => {
+        const ibanNumber = document.getElementById('ibanNumber').textContent;
+        navigator.clipboard.writeText(ibanNumber).then(() => {
+            copyIbanBtn.innerHTML = '<i class="fas fa-check"></i>';
+            setTimeout(() => {
+                copyIbanBtn.innerHTML = '<i class="fas fa-copy"></i>';
+            }, 2000);
+        });
+    });
+
+    // إغلاق نافذة الدفع
+    closePaymentModal.addEventListener('click', () => {
+        paymentModal.style.display = 'none';
+    });
+
+    // إغلاق النوافذ عند النقر خارجها
+    window.addEventListener('click', (event) => {
+        if (event.target === paymentModal) {
+            paymentModal.style.display = 'none';
         }
     });
 
@@ -118,5 +149,42 @@ document.addEventListener('DOMContentLoaded', function() {
         if (event.target === cartModal) {
             cartModal.classList.remove('active');
         }
+    });
+
+    // تحديث معالجة أزرار التفاصيل
+    const detailButtons = document.querySelectorAll('.details-button');
+    detailButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            const modalId = this.getAttribute('data-target');
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            }
+        });
+    });
+
+    // تحديث معالجة أزرار الإغلاق
+    const closeButtons = document.querySelectorAll('.close-button');
+    closeButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const modal = this.closest('.product-details-modal');
+            if (modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+    });
+
+    // إغلاق المودال عند النقر خارجه
+    window.addEventListener('click', function(e) {
+        const modals = document.querySelectorAll('.product-details-modal');
+        modals.forEach(modal => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
     });
 });
