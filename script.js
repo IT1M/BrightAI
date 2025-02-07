@@ -132,6 +132,21 @@ document.addEventListener('DOMContentLoaded', function () {
       consultationForm.reset();
     });
 
+    // Handle all "Read More" button clicks
+    const readMoreButtons = document.querySelectorAll('.learn-more-btn');
+    readMoreButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            const modalId = button.getAttribute('data-modal');
+            if (modalId) {
+                const modal = document.getElementById(modalId);
+                if (modal) {
+                    modal.style.display = 'block';
+                }
+            }
+        });
+    });
+
     // Initialize animated background for robots section
     const canvas = document.getElementById('animated-bg-robots');
     const ctx = canvas.getContext('2d');
@@ -280,6 +295,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 console.log(error);
             });
     });
+
 });
 
 // Use requestIdleCallback for non-critical operations
