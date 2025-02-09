@@ -1654,6 +1654,12 @@ h1 {
     margin: 20px;
 }
 
+@media (max-width: 768px) {
+    .banner {
+        background: #fff;
+    }
+}
+
 .banner::before {
     content: '';
     position: absolute;
