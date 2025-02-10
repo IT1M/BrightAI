@@ -1888,4 +1888,36 @@ h1 {
     }
 }
 
+/* استايل الهيدر */
+header {
+    background-color: #ffffff !important; /* تغيير اللون إلى الأبيض */
+    color: #000000; /* جعل النص باللون الأسود ليكون مرئيًا */
+}
+
+/* استايل البانر */
+.banner {
+    background-color: #ffffff !important; /* تغيير اللون إلى الأبيض */
+    color: #000000; /* جعل النص بلون واضح */
+}
+
+/* تعديل لون النص في قائمة الصفحات */
+.navbar {
+    background-color: #ffffff !important; /* تغيير الخلفية إلى الأبيض */
+}
+
+.navbar a {
+    color: #000000 !important; /* جعل الروابط سوداء لتكون مرئية */
+}
+
+/* تحسين الوضوح في الهواتف */
+@media (max-width: 768px) {
+    .navbar {
+        background-color: #ffffff !important; /* تأكيد اللون الأبيض في الجوال */
+    }
+    
+    .navbar a {
+        color: #000000 !important; /* جعل الروابط سوداء */
+    }
+}
+
 /* ...existing code... */
