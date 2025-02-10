@@ -205,317 +205,262 @@ crossorigin="anonymous"></script>
     <!-- Add defer to script.js -->
     <script defer src="script.js"></script>
 
-    <style>
-    .banner {
-        position: relative;
-        width: 100%;
-        height: 300px;
-        background: linear-gradient(135deg, #2c3e50, #3498db);
-        transform: perspective(1000px) rotateX(20deg) rotateZ(5deg);
-        box-shadow: 0 20px 30px rgba(0,0,0,0.3);
-        border-radius: 15px;
-        overflow: hidden;
+</head>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MM4V2TSJ"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
+            <header>
+                <nav>
+                    <button class="navbar-toggle" onclick="toggleNavbar()">☰</button>
+                    <ul class="navbar">
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="consultation.html">استشارات الذكاء الاصطناعي</a></li>
+                    <li><a href="smart-automation.html">أتمتة العمليات بالذكاء الاصطناعي</a></li>
+                    <li><a href="data-analysis.html">تحليل البيانات باستخدام الذكاء الاصطناعي</a></li>
+                    <li><a href="ai-agent.html">وكيل الذكاء الإصطناعي</a></li>
+                    <li><a href="our-products.html">عرض للخدمات</a></li>
+                    <li><a href="blog.html">مكتبة رقمية للذكاء الاصطناعي</a></li>
+                    <li><a href="tools.html">أدوات الذكاء الاصطناعي</a></li>
+                    <li><a href="Docs.html"> Docs</a></li>
+                    </ul>
+                </nav>
+            </header>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>بانر BrightAII 3D - الذكاء الاصطناعي والتعلم الآلي</title>
+<style>
+  /* إعادة تعيين الأنماط الافتراضية */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background: #111;
+    overflow-x: hidden;
+  }
+  
+  .banner {
+    position: relative;
+    perspective: 1000px;
+    background: linear-gradient(135deg, #00c6ff, #0072ff);
+    color: #fff;
+    text-align: center;
+    padding: 60px 20px 160px;
+    overflow: hidden;
+  }
+  
+  .banner h1 {
+    font-size: 2.8rem;
+    margin-bottom: 20px;
+    transform: translateZ(60px);
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+  }
+  
+  .banner p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    transform: translateZ(40px);
+  }
+  
+  .cta-btn {
+    display: inline-block;
+    padding: 12px 30px;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 30px;
+    background-color: #fff;
+    color: #0072ff;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    text-decoration: none;
+    transform: translateZ(20px);
+  }
+  
+  .cta-btn:hover {
+    background-color: #e6e6e6;
+    transform: translateY(-3px) translateZ(20px);
+  }
+  
+  /* حاوية الأيقونات: عرضها في صف واحد */
+  .icons-container {
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    overflow-x: auto;
+    padding: 10px 0;
+    width: 100%;
+  }
+  
+  .icon {
+    flex: 0 0 auto;
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform-style: preserve-3d;
+    /* جعل حركة الأيقونات أبطأ بتعديل مدة التحريك */
+    animation: spin 10s linear infinite, float 5s ease-in-out infinite;
+  }
+  
+  .icon svg {
+    width: 40px;
+    height: 40px;
+    stroke: #fff;
+    fill: none;
+    stroke-width: 4;
+    stroke-linejoin: round;
+  }
+  
+  /* حركة دوران 3D */
+  @keyframes spin {
+    0% {
+      transform: rotateX(0deg) rotateY(0deg) translateZ(0px);
     }
-
-    .banner::before {
-        content: '';
-        position: absolute;
-        top: -50%;
-        left: -50%;
-        width: 200%;
-        height: 200%;
-        background: linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.1) 50%, transparent 60%);
-        transform: rotate(30deg);
+    50% {
+      transform: rotateX(180deg) rotateY(180deg) translateZ(10px);
     }
-
-    .logo {
-        position: absolute;
-        top: 15px;
-        left: 15px;
-        width: 60px;
-        height: auto;
-        filter: drop-shadow(2px 2px 3px rgba(0,0,0,0.3));
+    100% {
+      transform: rotateX(360deg) rotateY(360deg) translateZ(0px);
     }
-
-    .whatsapp-btn {
-        position: absolute;
-        bottom: 20px;
-        right: 20px;
-        background: #25D366;
-        padding: 12px 25px;
-        border-radius: 30px;
-        color: white;
-        text-decoration: none;
-        font-family: Arial, sans-serif;
-        font-weight: bold;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        transition: transform 0.3s;
+  }
+  
+  /* حركة تنويم عمودية */
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0) rotateX(0deg) rotateY(0deg);
     }
-
-    .whatsapp-btn img {
-        width: 30px;
-        height: auto;
+    50% {
+      transform: translateY(-10px) rotateX(5deg) rotateY(5deg);
     }
-
-    .whatsapp-btn:hover {
-        transform: scale(1.05);
-        background: #128C7E;
+  }
+  
+  @media (max-width: 768px) {
+    .banner h1 {
+      font-size: 2rem;
     }
-
-    .banner-content {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        text-align: center;
-        color: white;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    .banner p {
+      font-size: 1rem;
     }
-
-    .banner-content h1 {
-        font-size: 2.5em;
-        margin: 0;
-        font-family: 'Arial Black', sans-serif;
+    .icon {
+      width: 50px;
+      height: 50px;
     }
-
-    .banner-content p {
-        font-size: 1.2em;
-        margin: 10px 0;
+    .icon svg {
+      width: 30px;
+      height: 30px;
     }
+  }
 </style>
 </head>
-
 <body>
-    <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MM4V2TSJ"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-    <header>
-        <nav>
-            <button class="navbar-toggle" onclick="toggleNavbar()">☰</button>
-            <ul class="navbar">
-            <li><a href="index.html">الرئيسية</a></li>
-            <li><a href="consultation.html">استشارات الذكاء الاصطناعي</a></li>
-            <li><a href="smart-automation.html">أتمتة العمليات بالذكاء الاصطناعي</a></li>
-            <li><a href="data-analysis.html">تحليل البيانات باستخدام الذكاء الاصطناعي</a></li>
-            <li><a href="ai-agent.html">وكيل الذكاء الإصطناعي</a></li>
-            <li><a href="our-products.html">عرض للخدمات</a></li>
-            <li><a href="blog.html">مكتبة رقمية للذكاء الاصطناعي</a></li>
-            <li><a href="tools.html">أدوات الذكاء الاصطناعي</a></li>
-            <li><a href="Docs.html"> Docs</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <!-- Breadcrumbs -->
-    <nav aria-label="breadcrumb" class="breadcrumbs">
-        <ol>
-            <li><a href="index.html">الرئيسية</a></li>
-            <li>حلول الذكاء الاصطناعي</li>
-        </ol>
-    </nav>
-
-<style>
-    .banner3d {
-        position: relative;
-        min-height: 100vh;
-        background: linear-gradient(135deg, #000235 0%, #1e0057 100%);
-        overflow: hidden;
-    }
-
-    .tech-particles {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
-    }
-
-    .logo {
-        position: absolute;
-        top: 20px;
-        left: 20px;
-        width: 120px;
-        height: auto;
-        z-index: 10;
-    }
-
-    .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 20px;
-    }
-
-    .banner3d-content {
-        position: relative;
-        z-index: 2;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        min-height: 80vh;
-        padding: 2rem;
-    }
-
-    .banner3d-text {
-        flex: 1;
-        color: #fff;
-        text-align: right;
-        padding: 2rem;
-    }
-
-    .banner3d-text h2 {
-        font-size: 3.5rem;
-        margin-bottom: 1.5rem;
-        background: linear-gradient(45deg, #00f7ff, #7161ef);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        text-shadow: 0 0 20px rgba(0, 247, 255, 0.3);
-    }
-
-    .banner3d-text p {
-        font-size: 1.5rem;
-        margin-bottom: 2rem;
-        line-height: 1.6;
-        color: rgba(255, 255, 255, 0.9);
-    }
-
-    .banner3d-buttons {
-        display: flex;
-        gap: 1rem;
-    }
-
-    .button {
-        background: linear-gradient(45deg, #00f7ff, #7161ef);
-        border: none;
-        padding: 1rem 2rem;
-        color: white;
-        border-radius: 50px;
-        text-decoration: none;
-        font-weight: bold;
-        transition: all 0.3s ease;
-        text-shadow: 0 0 10px rgba(0, 247, 255, 0.5);
-        box-shadow: 0 0 20px rgba(0, 247, 255, 0.3);
-    }
-
-    .button-outline {
-        border: 2px solid #a855f7;
-        color: #fff;
-    }
-
-    .button:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 0 30px rgba(0, 247, 255, 0.5);
-    }
-
-    .banner3d-visual {
-        flex: 1;
-        position: relative;
-        height: 400px;
-    }
-
-    .tech-cube {
-        position: absolute;
-        width: 200px;
-        height: 200px;
-        transform-style: preserve-3d;
-        animation: floatAnimation 6s ease-in-out infinite;
-    }
-
-    .tech-line {
-        position: absolute;
-        background: linear-gradient(90deg, transparent, #00f7ff, transparent);
-        height: 2px;
-        width: 100%;
-        opacity: 0.5;
-        animation: scanLine 3s linear infinite;
-    }
-
-    @keyframes floatAnimation {
-        0%, 100% { transform: translateY(0) rotateY(0); }
-        50% { transform: translateY(-20px) rotateY(180deg); }
-    }
-
-    @keyframes scanLine {
-        0% { transform: translateY(0); opacity: 0; }
-        50% { opacity: 1; }
-        100% { transform: translateY(400px); opacity: 0; }
-    }
-
-    .face {
-        position: absolute;
-        width: 200px;
-        height: 200px;
-        background: rgba(168, 85, 247, 0.2);
-        border: 2px solid #a855f7;
-        backdrop-filter: blur(5px);
-    }
-
-    @keyframes rotate {
-        from { transform: rotateX(0) rotateY(0); }
-        to { transform: rotateX(360deg) rotateY(360deg); }
-    }
-
-    .face.front  { transform: translateZ(100px); }
-    .face.back   { transform: translateZ(-100px) rotateY(180deg); }
-    .face.right  { transform: rotateY(90deg) translateZ(100px); }
-    .face.left   { transform: rotateY(-90deg) translateZ(100px); }
-    .face.top    { transform: rotateX(90deg) translateZ(100px); }
-    .face.bottom { transform: rotateX(-90deg) translateZ(100px); }
-
-    #animated-bg-banner {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 1;
-    }
-
-    @media (max-width: 768px) {
-        .banner3d-content {
-            flex-direction: column;
-            text-align: center;
-        }
-
-        .banner3d-text {
-            text-align: center;
-            padding: 1rem;
-        }
-
-        .banner3d-text h2 {
-            font-size: 2.5rem;
-        }
-
-        .banner3d-buttons {
-            justify-content: center;
-        }
-
-        .banner3d-visual {
-            margin-top: 2rem;
-        }
-
-        .cube {
-            transform: scale(0.8);
-        }
-    }
-</style>
-
 <div class="banner">
-    <img src="https://www2.0zz0.com/2025/01/08/19/506758202.png" alt="Logo" class="logo">
-    
-    <div class="banner-content">
-        <h1>BrightAI</h1>
-        <p>الذكاء الاصطناعي المتقدم للحلول التقنية</p>
-    </div>
+  <h1>تكنولوجيا اليوم تبني نجاح الغد  </h1>
+  <p> حلول مبتكرة تضعك في طليعة العصر الرقمي . </p></p>
+  <!-- زر تواصل معنا يحول المستخدم إلى الواتس آب -->
+  <a href="https://wa.me/966501120781" class="cta-btn">تواصل معنا</a>
 
-    <a href="https://wa.me/966501120781" class="whatsapp-btn" target="_blank">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
-        تواصل معنا
-    </a>
+  <!-- حاوية الأيقونات المتحركة -->
+  <div class="icons-container">
+    <!-- أيقونة 1: أيقونة الدماغ -->
+    <div class="icon">
+      <svg viewBox="0 0 64 64">
+        <path d="M32 4c-8.28 0-15 6.72-15 15v10h-5c-1.1 0-2 .9-2 2v16c0 1.1 .9 2 2 2h5v10c0 8.28 6.72 15 15 15s15-6.72 15-15V43h5c1.1 0 2-.9 2-2V25c0-1.1-.9-2-2-2h-5V19c0-8.28-6.72-15-15-15z"/>
+      </svg>
+    </div>
+    <!-- أيقونة 2: شبكة عصبية بسيطة -->
+    <div class="icon">
+      <svg viewBox="0 0 64 64">
+        <circle cx="16" cy="16" r="4" fill="#fff" />
+        <circle cx="48" cy="16" r="4" fill="#fff" />
+        <circle cx="32" cy="32" r="4" fill="#fff" />
+        <circle cx="16" cy="48" r="4" fill="#fff" />
+        <circle cx="48" cy="48" r="4" fill="#fff" />
+        <line x1="16" y1="16" x2="32" y2="32" stroke="#fff" stroke-width="2"/>
+        <line x1="48" y1="16" x2="32" y2="32" stroke="#fff" stroke-width="2"/>
+        <line x1="16" y1="48" x2="32" y2="32" stroke="#fff" stroke-width="2"/>
+        <line x1="48" y1="48" x2="32" y2="32" stroke="#fff" stroke-width="2"/>
+      </svg>
+    </div>
+    <!-- أيقونة 3: أيقونة التروس (Gear) -->
+    <div class="icon">
+      <svg viewBox="0 0 64 64">
+        <path d="M32 24a8 8 0 1 0 0 16 8 8 0 0 0 0-16zm28 8h-6.03a18.667 18.667 0 0 0-2.38-6.54l4.28-4.28-4.24-4.24-4.28 4.28A18.667 18.667 0 0 0 40 14.03V8h-8v6.03a18.667 18.667 0 0 0-6.54 2.38L21.18 10.13l-4.24 4.24 4.28 4.28A18.667 18.667 0 0 0 14.03 24H8v8h6.03a18.667 18.667 0 0 0 2.38 6.54l-4.28 4.28 4.24 4.24 4.28-4.28A18.667 18.667 0 0 0 24 49.97V56h8v-6.03a18.667 18.667 0 0 0 6.54-2.38l4.28 4.28 4.24-4.24-4.28-4.28A18.667 18.667 0 0 0 49.97 32H56v-8z"/>
+      </svg>
+    </div>
+    <!-- أيقونة 4: أيقونة شريحة إلكترونية (Microchip) -->
+    <div class="icon">
+      <svg viewBox="0 0 64 64">
+        <rect x="18" y="18" width="28" height="28" stroke="#fff" />
+        <!-- خطوط الدبابيس حول الشريحة -->
+        <line x1="14" y1="26" x2="18" y2="26" stroke="#fff" />
+        <line x1="14" y1="38" x2="18" y2="38" stroke="#fff" />
+        <line x1="46" y1="26" x2="50" y2="26" stroke="#fff" />
+        <line x1="46" y1="38" x2="50" y2="38" stroke="#fff" />
+        <line x1="26" y1="14" x2="26" y2="18" stroke="#fff" />
+        <line x1="38" y1="14" x2="38" y2="18" stroke="#fff" />
+        <line x1="26" y1="46" x2="26" y2="50" stroke="#fff" />
+        <line x1="38" y1="46" x2="38" y2="50" stroke="#fff" />
+      </svg>
+    </div>
+    <!-- أيقونة 5: أيقونة روبوت -->
+    <div class="icon">
+      <svg viewBox="0 0 64 64">
+        <!-- رأس الروبوت -->
+        <rect x="16" y="16" width="32" height="24" stroke="#fff" />
+        <!-- عيون الروبوت -->
+        <circle cx="26" cy="26" r="2" fill="#fff"/>
+        <circle cx="38" cy="26" r="2" fill="#fff"/>
+        <!-- فم الروبوت -->
+        <line x1="24" y1="34" x2="40" y2="34" stroke="#fff" stroke-width="2" />
+        <!-- "قرون" بسيطة -->
+        <line x1="20" y1="16" x2="20" y2="10" stroke="#fff" stroke-width="2" />
+        <line x1="44" y1="16" x2="44" y2="10" stroke="#fff" stroke-width="2" />
+      </svg>
+    </div>
+    <!-- أيقونة 6: أيقونة تعلم آلي -->
+    <div class="icon">
+      <svg viewBox="0 0 64 64">
+        <!-- رسم مبسط لشبكة طبقات (رمز لتعلم الآلة) -->
+        <rect x="26" y="8" width="12" height="8" />
+        <rect x="20" y="24" width="24" height="8" />
+        <rect x="14" y="40" width="36" height="8" />
+        <line x1="32" y1="16" x2="32" y2="24" stroke="#fff" />
+        <line x1="32" y1="32" x2="32" y2="40" stroke="#fff" />
+      </svg>
+    </div>
+    <!-- أيقونة 7: أيقونة سحابة (Cloud) -->
+    <div class="icon">
+      <svg viewBox="0 0 64 64">
+        <path d="M20 40 Q15 35 20 30 Q18 28 20 26 Q25 20 35 20 Q45 20 48 28 Q50 30 47 35 Q55 35 55 42 Q55 48 49 52 Q45 56 35 56 Q25 56 20 52 Q14 48 14 42 Q14 38 20 40 Z" 
+          stroke="#fff" fill="none" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <!-- أيقونة 8: أيقونة قاعدة بيانات (Database) -->
+    <div class="icon">
+      <svg viewBox="0 0 64 64">
+        <!-- القطعة العلوية (بيضاوي علوي) -->
+        <ellipse cx="32" cy="16" rx="16" ry="6" stroke="#fff" fill="none" stroke-width="4" />
+        <!-- مستطيل القاعدة -->
+        <rect x="16" y="16" width="32" height="24" stroke="#fff" fill="none" stroke-width="4" />
+        <!-- القطعة السفلية (بيضاوي سفلي) -->
+        <ellipse cx="32" cy="40" rx="16" ry="6" stroke="#fff" fill="none" stroke-width="4" />
+      </svg>
+    </div>
+  </div>
 </div>
+<body> 
 
 <script>
     function createCircles() {
