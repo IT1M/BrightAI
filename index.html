@@ -365,6 +365,214 @@ crossorigin="anonymous"></script>
 </style>
 </head>
 <body>
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MM4V2TSJ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <header>
+        <nav>
+            <button class="navbar-toggle" onclick="toggleNavbar()">☰</button>
+            <ul class="navbar">
+            <li><a href="index.html">الرئيسية</a></li>
+            <li><a href="consultation.html">استشارات الذكاء الاصطناعي</a></li>
+            <li><a href="smart-automation.html">أتمتة العمليات بالذكاء الاصطناعي</a></li>
+            <li><a href="data-analysis.html">تحليل البيانات باستخدام الذكاء الاصطناعي</a></li>
+            <li><a href="ai-agent.html">وكيل الذكاء الإصطناعي</a></li>
+            <li><a href="our-products.html">عرض للخدمات</a></li>
+            <li><a href="blog.html">مكتبة رقمية للذكاء الاصطناعي</a></li>
+            <li><a href="tools.html">أدوات الذكاء الاصطناعي</a></li>
+            <li><a href="Docs.html"> Docs</a></li>
+            </ul>
+        </nav>
+    </header>
+
+<style>
+    .banner3d {
+        position: relative;
+        min-height: 100vh;
+        background: linear-gradient(135deg, #000235 0%, #1e0057 100%);
+        overflow: hidden;
+    }
+
+    .tech-particles {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+    }
+
+    .logo {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        width: 120px;
+        height: auto;
+        z-index: 10;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .banner3d-content {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 80vh;
+        padding: 2rem;
+    }
+
+    .banner3d-text {
+        flex: 1;
+        color: #fff;
+        text-align: right;
+        padding: 2rem;
+    }
+
+    .banner3d-text h2 {
+        font-size: 3.5rem;
+        margin-bottom: 1.5rem;
+        background: linear-gradient(45deg, #00f7ff, #7161ef);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 0 0 20px rgba(0, 247, 255, 0.3);
+    }
+
+    .banner3d-text p {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+        line-height: 1.6;
+        color: rgba(255, 255, 255, 0.9);
+    }
+
+    .banner3d-buttons {
+        display: flex;
+        gap: 1rem;
+    }
+
+    .button {
+        background: linear-gradient(45deg, #00f7ff, #7161ef);
+        border: none;
+        padding: 1rem 2rem;
+        color: white;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        text-shadow: 0 0 10px rgba(0, 247, 255, 0.5);
+        box-shadow: 0 0 20px rgba(0, 247, 255, 0.3);
+    }
+
+    .button-outline {
+        border: 2px solid #a855f7;
+        color: #fff;
+    }
+
+    .button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 0 30px rgba(0, 247, 255, 0.5);
+    }
+
+    .banner3d-visual {
+        flex: 1;
+        position: relative;
+        height: 400px;
+    }
+
+    .tech-cube {
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        transform-style: preserve-3d;
+        animation: floatAnimation 6s ease-in-out infinite;
+    }
+
+    .tech-line {
+        position: absolute;
+        background: linear-gradient(90deg, transparent, #00f7ff, transparent);
+        height: 2px;
+        width: 100%;
+        opacity: 0.5;
+        animation: scanLine 3s linear infinite;
+    }
+
+    @keyframes floatAnimation {
+        0%, 100% { transform: translateY(0) rotateY(0); }
+        50% { transform: translateY(-20px) rotateY(180deg); }
+    }
+
+    @keyframes scanLine {
+        0% { transform: translateY(0); opacity: 0; }
+        50% { opacity: 1; }
+        100% { transform: translateY(400px); opacity: 0; }
+    }
+
+    .face {
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        background: rgba(168, 85, 247, 0.2);
+        border: 2px solid #a855f7;
+        backdrop-filter: blur(5px);
+    }
+
+    @keyframes rotate {
+        from { transform: rotateX(0) rotateY(0); }
+        to { transform: rotateX(360deg) rotateY(360deg); }
+    }
+
+    .face.front  { transform: translateZ(100px); }
+    .face.back   { transform: translateZ(-100px) rotateY(180deg); }
+    .face.right  { transform: rotateY(90deg) translateZ(100px); }
+    .face.left   { transform: rotateY(-90deg) translateZ(100px); }
+    .face.top    { transform: rotateX(90deg) translateZ(100px); }
+    .face.bottom { transform: rotateX(-90deg) translateZ(100px); }
+
+    #animated-bg-banner {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
+
+    @media (max-width: 768px) {
+        .banner3d-content {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .banner3d-text {
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .banner3d-text h2 {
+            font-size: 2.5rem;
+        }
+
+        .banner3d-buttons {
+            justify-content: center;
+        }
+
+        .banner3d-visual {
+            margin-top: 2rem;
+        }
+
+        .cube {
+            transform: scale(0.8);
+        }
+    }
+</style>
+
+>>>>>>> 80f120e761f95c5682af5d0614af198b395005f5
 <div class="banner">
   <h1>تكنولوجيا اليوم تبني نجاح الغد  </h1>
   <p> حلول مبتكرة تضعك في طليعة العصر الرقمي . </p></p>
