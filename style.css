@@ -1981,3 +1981,82 @@ header {
 }
 
 /* ...existing code... */
+
+/* تحسين مؤشرات الصفحات في القائمة */
+.navbar li a {
+    position: relative;
+    text-decoration: none;
+    color: var(--dark-gray);
+    padding: 0.7rem 1.2rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.navbar li a::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 0;
+    background: var(--primary-color);
+    border-radius: 2px;
+    transition: height 0.3s ease;
+}
+
+.navbar li a:hover::before,
+.navbar li a.active::before {
+    height: 80%;
+}
+
+.navbar li a:hover,
+.navbar li a.active {
+    color: var(--primary-color);
+    background-color: rgba(103, 89, 255, 0.1);
+    transform: translateX(-4px);
+}
+
+/* تحسينات لعرض الهاتف المحمول */
+@media (max-width: 768px) {
+    .navbar {
+        /* ...existing code... */
+    }
+
+    .navbar li {
+        width: 100%;
+    }
+
+    .navbar li a {
+        width: 100%;
+        padding: 1rem 1.5rem;
+        border-radius: 0;
+        border-right: 4px solid transparent;
+    }
+
+    .navbar li a::before {
+        right: -4px;
+        width: 4px;
+        height: 100%;
+        transform: scaleY(0);
+        transform-origin: top;
+        transition: transform 0.3s ease;
+    }
+
+    .navbar li a:hover::before,
+    .navbar li a.active::before {
+        transform: scaleY(1);
+        height: 100%;
+    }
+
+    .navbar li a:hover,
+    .navbar li a.active {
+        background-color: rgba(103, 89, 255, 0.1);
+        transform: translateX(-4px);
+    }
+}
+
+/* ...existing code... */

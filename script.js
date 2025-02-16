@@ -296,6 +296,51 @@ document.addEventListener('DOMContentLoaded', function () {
             });
     });
 
+    // تحسين مؤشرات الصفحات
+    document.addEventListener('DOMContentLoaded', function() {
+        // تحديد الصفحة الحالية
+        const currentLocation = window.location.pathname;
+        const navLinks = document.querySelectorAll('.navbar li a');
+        
+        navLinks.forEach(link => {
+            if (link.getAttribute('href') === currentLocation) {
+                link.classList.add('active');
+            }
+            
+            // إضافة مؤشر التحميل عند النقر
+            link.addEventListener('click', function(e) {
+                // إزالة الفئة النشطة من جميع الروابط
+                navLinks.forEach(l => l.classList.remove('active'));
+                // إضافة الفئة النشطة للرابط المنقور
+                this.classList.add('active');
+                
+                // إظهار مؤشر التحميل
+                const loadingIndicator = document.createElement('span');
+                loadingIndicator.className = 'loading-indicator';
+                loadingIndicator.style.cssText = `
+                    display: inline-block;
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 50%;
+                    background: var(--primary-color);
+                    margin-right: 5px;
+                    animation: pulse 1s infinite;
+                `;
+                
+                this.prepend(loadingIndicator);
+                
+                // إزالة مؤشر التحميل بعد انتهاء التحميل
+                setTimeout(() => {
+                    loadingIndicator.remove();
+                }, 500);
+            });
+        });
+        
+        // إضافة تأثير التحميل
+        const style = document.createElement('style');
+        style.text
+    });
+
 });
 
 // Use requestIdleCallback for non-critical operations
