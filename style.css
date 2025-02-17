@@ -2282,3 +2282,47 @@ header {
 }
 
 // ...existing code...
+
+/* تحديث أنماط زر القائمة */
+.navbar-toggle {
+    width: 35px;
+    height: 35px;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1001;
+    background: transparent;
+    border: none;
+    padding: 0;
+    display: none;
+    cursor: pointer;
+}
+
+.navbar-toggle span {
+    display: block;
+    position: absolute;
+    height: 4px;
+    width: 100%;
+    background: #333; /* تغيير لون الخطوط إلى الأسود */
+    border-radius: 4px;
+    opacity: 1;
+    left: 0;
+    transform: rotate(0deg);
+    transition: .3s ease-in-out;
+}
+
+/* عند فتح القائمة، نحافظ على اللون الأسود */
+.navbar-toggle.open span {
+    background: #333;
+}
+
+@media (max-width: 768px) {
+    .navbar-toggle {
+        display: block;
+    }
+    
+    /* تأكيد لون الخطوط في وضع الموبايل */
+    .navbar-toggle span {
+        background: #333 !important;
+    }
+}
