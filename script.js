@@ -554,3 +554,91 @@ window.addEventListener('resize', () => {
 });
 
 // ...existing code...
+// فتح وإغلاق النوافذ المنبثقة
+document.addEventListener('DOMContentLoaded', () => {
+    const learnMoreButtons = document.querySelectorAll('.learn-more-btn');
+    const modals = document.querySelectorAll('.modal');
+    const closeButtons = document.querySelectorAll('.close-modal');
+
+     // دالة لفتح النافذة المنبثقة
+    function openModal(modalId, buttonPosition) {
+        const modal = document.getElementById(modalId);
+        if (modal) {
+            modal.style.display = 'block';
+
+            // تحديد موقع النافذة المنبثقة بناءً على موقع الزر
+            const modalContent = modal.querySelector('.modal-content');
+            modalContent.style.position = 'absolute';
+            modalContent.style.top = `${buttonPosition.top}px`;
+            modalContent.style.left = `${buttonPosition.left}px`;
+
+             // إضافة فئة "active" إلى عنصر القائمة المرتبط
+            const serviceItem = document.querySelector(`[data-modal="${modalId}"]`);
+            if(serviceItem){
+                serviceItem.classList.add('active');
+            }
+        }
+    }
+
+    // دالة لإغلاق النافذة المنبثقة
+    function closeModal(modal) {
+        modal.style.display = 'none';
+          // إزالة الفئة "active"
+          const serviceItemId = modal.id;
+          const serviceItem = document.querySelector(`[data-modal="${serviceItemId}"]`);
+          if(serviceItem){
+            serviceItem.classList.remove('active');
+          }
+    }
+
+    // ربط الأحداث
+    learnMoreButtons.forEach(button => {
+    button.addEventListener('click', (e) => {
+        e.preventDefault();
+        const modalId = button.dataset.modal;
+
+        // حساب موقع الزر
+        const rect = button.getBoundingClientRect();
+        const buttonPosition = {
+            top: rect.top + window.scrollY,  // إضافة window.scrollY لحساب الإزاحة
+            left: rect.left + window.scrollX, // إضافة window.scrollX
+        };
+
+
+        openModal(modalId, buttonPosition);
+
+    });
+});
+
+    closeButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const modal = button.closest('.modal');
+            closeModal(modal);
+        });
+    });
+
+    // إغلاق النافذة عند النقر خارجها
+    window.addEventListener('click', (event) => {
+        modals.forEach(modal => {
+            if (event.target == modal) {
+                closeModal(modal);
+            }
+        });
+    });
+     // إضافة حدث النقر إلى عناصر القائمة لفتح النوافذ المنبثقة
+     const serviceItems = document.querySelectorAll('.service-item');
+     serviceItems.forEach(item =>{
+        item.addEventListener('click', (e) =>{
+            const modalId = item.dataset.service;
+            if(modalId){
+                 // حساب موقع العنصر
+                const rect = item.getBoundingClientRect();
+                const itemPosition = {
+                    top: rect.top + window.scrollY,
+                    left: rect.left + window.scrollX,
+                };
+                openModal(modalId, itemPosition);
+            }
+        })
+     })
+});
