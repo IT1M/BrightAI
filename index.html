@@ -519,92 +519,152 @@ crossorigin="anonymous"></script>
 
     createCircles();
 </script>
-    <section id="services-section" class="services-section">
-        <div class="container">
-            <h1>خدمات الذكاء الاصطناعي المبتكرة: حلول تحليل البيانات وأتمتة الأعمال</h1>
-
-            <div class="services">
-    <div class="service-item" data-service="data-analysis-modal">
-        <div class="icon">📊</div>
-        <h2 class="service-title">تحليل البيانات الذكي باستخدام الذكاء الاصطناعي</h2>
-        <p>نقدم حلول تحليل البيانات المتقدمة باستخدام تقنيات الذكاء الاصطناعي لمساعدتك في اتخاذ القرارات المدروسة بشكل أسرع في مجال تحليل البيانات</p>
-        <button class="learn-more-btn" data-modal="data-analysis-modal">اقرأ المزيد</button>
-    </div>
-
-    <div class="service-item" data-service="automation-modal">
-        <div class="icon">⚙️</div>
-        <h2 class="service-title">الأتمتة الذكية باستخدام الذكاء الاصطناعي</h2>
-        <p>نساعدك في أتمتة المهام المتكررة والعمليات اليومية باستخدام برنامج مساعد ذكاء اصطناعي لتوفير الوقت والجهد في أتمتة الأعمال</p>
-        <button class="learn-more-btn" data-modal="automation-modal">اقرأ المزيد</button>
-    </div>
-
-    <div class="service-item" data-service="consulting-modal">
-        <div class="icon">💡</div>
-        <h2 class="service-title">استشارات الذكاء الاصطناعي</h2>
-        <p>نقدم استشارات متخصصة في مجال الذكاء الاصطناعي وتطبيقاته لمساعدتك في تطوير وتحسين العمليات التجارية وتقديم استشارات هندسية وقانونية</p>
-        <button class="learn-more-btn" data-modal="consulting-modal">اقرأ المزيد</button>
-    </div>
-            </div>
-
-            <p class="cta-text">
-                كل اللي عليك تدخل <a href="https://brightaii.com/tools.html" class="highlight" target="_blank">هنا</a> وتجرب الأدوات المدعومة بالذكاء الاصطناعي اللي مصممينها عشان تاخذ فكرة عن أعمالنا
-            </p>
-        </div>
-    </section>
-    <section id="ai-agents" class="dynamic-background" style="padding: 4rem 0;">
-    <canvas id="agents-particles"></canvas>
+<section id="services-section" class="services-section">
     <div class="container">
-        <div class="section-header">
-            <i class="fas fa-robot"></i>
-            <h2>وكلاء الذكاء الاصطناعي: حلول ذكية لعملك</h2>
+        <h1>خدمات الذكاء الاصطناعي المبتكرة</h1>
+
+        <div class="services">
+            <!-- بطاقة تحليل البيانات -->
+           <div class="service-item" data-service="data-analysis-modal">
+    <div class="icon">📊</div>
+    <h2 class="service-title">تحليل البيانات الذكي باستخدام الذكاء الاصطناعي</h2>
+    <p>نقدم حلول تحليل البيانات المتقدمة باستخدام تقنيات الذكاء الاصطناعي لمساعدتك في اتخاذ القرارات المدروسة بشكل أسرع في مجال تحليل البيانات</p>
+    <button class="learn-more-btn" data-modal="data-analysis-modal">اقرأ المزيد</button>
+</div>
+
+            <!-- بطاقة الأتمتة الذكية -->
+            <div class="service-item" data-service="automation-modal">
+    <div class="icon">⚙️</div>
+    <h2 class="service-title">الأتمتة الذكية باستخدام الذكاء الاصطناعي</h2>
+    <p>نساعدك في أتمتة المهام المتكررة والعمليات اليومية باستخدام برنامج مساعد ذكاء اصطناعي لتوفير الوقت والجهد في أتمتة الأعمال</p>
+    <button class="learn-more-btn" data-modal="automation-modal">اقرأ المزيد</button>
+</div>
+
+            <!-- بطاقة استشارات الذكاء الاصطناعي -->
+             <div class="service-item" data-service="consulting-modal">
+    <div class="icon">💡</div>
+    <h2 class="service-title">استشارات الذكاء الاصطناعي</h2>
+    <p>نقدم استشارات متخصصة في مجال الذكاء الاصطناعي وتطبيقاته لمساعدتك في تطوير وتحسين العمليات التجارية وتقديم استشارات هندسية وقانونية</p>
+    <button class="learn-more-btn" data-modal="consulting-modal">اقرأ المزيد</button>
+</div>
+
+
+            <!-- بطاقة وكلاء الذكاء الاصطناعي (مثال) -->
+            <div class="service-item" data-service="ai-agents-modal">
+                <div class="icon">🤖</div>
+                <h2 class="service-title">وكلاء الذكاء الاصطناعي</h2>
+                <p>يشمل خدمات وكلاء الذكاء الاصطناعي مجموعة واسعة من الحلول التي تساعد في تبسيط العمليات وتحسين الإنتاجية.</p>
+                <button class="learn-more-btn" data-modal="ai-agents-modal">اقرأ المزيد</button>
+            </div>
+
+            <!-- بطاقة أدوات الذكاء الاصطناعي (مثال) -->
+            <div class="service-item" data-service="ai-tools-modal">
+                <div class="icon">🛠️</div>
+                <h2 class="service-title">أدوات الذكاء الاصطناعي</h2>
+                <p>نقدم مجموعة متكاملة من الخدمات المدعومة بالذكاء الاصطناعي لمساعدتك في تحقيق أهدافك التعليمية والتجارية.</p>
+                <button class="learn-more-btn" data-modal="ai-tools-modal">اقرأ المزيد</button>
+            </div>
+
+            <!-- بطاقة مكتبة رقمية للذكاء الاصطناعي (مثال) -->
+      <div class="service-item" data-service="digital-library-modal">
+                <div class="icon">📚</div>
+                <h2 class="service-title">مكتبة رقمية للذكاء الاصطناعي</h2>
+               <p> نقدم مكتبة رقمية شاملة تضم أحدث الأبحاث والمقالات والدورات التدريبية في مجال الذكاء الاصطناعي، لتزويدك بالمعرفة والأدوات اللازمة للنجاح في هذا المجال المتطور.</p>
+               <a href="#" class="learn-more-btn">اقرأ المزيد</a>
+            </div>
         </div>
-        <p class="section-description">
-            تعرف على مجموعتنا المتنوعة من وكلاء الذكاء الاصطناعي، المساعد الذكي المصمم خصيصًا لتلبية احتياجات عملك الفريدة. نقدم وكلاء ذكاء اصطناعي متخصصين في تحليل البيانات، واكتشاف العملاء الجدد، وتحسين استراتيجيات التسويق، وأتمتة الأعمال، والتحول الرقمي، وتقديم حلول تقنية مبتكرة. وكلاؤنا يعملون بكفاءة عالية لتقديم رؤى قيمة في تحليل البيانات، وتحديد فرص النمو من خلال تحليل البيانات الضخمة، واقتراح حلول ذكية لأتمتة الأعمال باستخدام تقنيات الذكاء الاصطناعي المتقدمة لتحسين أداء مؤسستك وتحقيق أهدافك في التحول الرقمي والابتكار التقني.
+           <p class="cta-text">
+            كل اللي عليك تدخل <a href="https://brightaii.com/tools.html" class="highlight" target="_blank">هنا</a> وتجرب الأدوات المدعومة بالذكاء الاصطناعي اللي مصممينها عشان تاخذ فكرة عن أعمالنا
         </p>
-        <div class="agents-grid">
-            <div class="agent-card-3d">
-                <div class="agent-icon"><i class="fas fa-search"></i></div>
-                <h3>وكيل محسن لمحركات البحث</h3>
-                <p>حسّن ترتيب موقعك في محركات البحث باستخدام تقنيات الذكاء الاصطناعي المتقدمة لجذب الزوار المستهدفين وتحقيق نمو مستدام.</p>
-            </div>
-            <div class="agent-card-3d">
-                <div class="agent-icon"><i class="fas fa-bullhorn"></i></div>
-                <h3>وكيل تسويق ذكي</h3>
-                <p>استفد من استراتيجيات التسويق الذكي لزيادة المبيعات وتعزيز تفاعل العملاء عبر القنوات الرقمية.</p>
-            </div>
-            <div class="agent-card-3d">
-                <div class="agent-icon"><i class="fas fa-chart-bar"></i></div>
-                <h3>وكيل تحليل البيانات الذكية</h3>
-                <p>حلول متقدمة لتحليل البيانات الكبيرة، اكتشاف الأنماط، والتوجهات لدعم قراراتك الاستراتيجية.</p>
-            </div>
-            <div class="agent-card-3d">
-                <div class="agent-icon"><i class="fas fa-cogs"></i></div>
-                <h3>وكيل مخصص حسب الطلب</h3>
-                <p>نصمم وكلاء ذكاء اصطناعي مخصصين لاحتياجاتك الفريدة، لتحسين العمليات وزيادة الكفاءة.</p>
-            </div>
-            <div class="agent-card-3d">
-                <div class="agent-icon"><i class="fas fa-project-diagram"></i></div>
-                <h3>وكيل محلل المشروع</h3>
-                <p>احصل على رؤى دقيقة لتحليل المشاريع وتقديم حلول لتحسين الأداء العام لعملك.</p>
-            </div>
-            <div class="agent-card-3d">
-                <div class="agent-icon"><i class="fas fa-binoculars"></i></div>
-                <h3>وكيل تحليل المنافسين</h3>
-                <p>راقب منافسيك، استخرج نقاط القوة والضعف، واجعل استراتيجياتك أكثر تنافسية.</p>
-            </div>
-            <div class="agent-card-3d">
-                <div class="agent-icon"><i class="fas fa-user-plus"></i></div>
-                <h3>وكيل اكتشاف العملاء الجدد</h3>
-                <p>وسّع قاعدة عملائك باستخدام حلول ذكية لتحديد واستهداف العملاء المحتملين.</p>
-            </div>
-            <div class="agent-card-3d">
-                <div class="agent-icon"><i class="fas fa-pen-fancy"></i></div>
-                <h3>وكيل إنشاء المحتوى المحسن</h3>
-                <p>أنشئ مقالات ومحتوى محسّن لمحركات البحث لزيادة التفاعل مع جمهورك.</p>
-            </div>
-        </div>
     </div>
 </section>
+
+<!-- النوافذ المنبثقة (Modals) -->
+
+<!-- نافذة منبثقة لتحليل البيانات -->
+<div class="modal service-modal" id="data-analysis-modal">
+    <div class="modal-content">
+        <span class="close-modal">×</span>
+        <h2>تحليل البيانات بالذكاء الاصطناعي</h2>
+        <p>نقدم خدمات تحليل البيانات المتقدمة التي تستخدم الذكاء الاصطناعي لاستخلاص رؤى قيمة من بياناتك. نقوم بتحليل البيانات المعقدة وتحديد الأنماط والاتجاهات التي تساعدك في اتخاذ قرارات أفضل.</p>
+        <ul>
+            <li>تحليل البيانات الضخمة</li>
+            <li>توقع الاتجاهات المستقبلية</li>
+            <li>تحديد الأنماط والعلاقات</li>
+            <li>توفير تقارير مفصلة</li>
+        </ul>
+    </div>
+</div>
+
+<!-- نافذة منبثقة للأتمتة الذكية -->
+<div class="modal service-modal" id="automation-modal">
+    <div class="modal-content">
+        <span class="close-modal">×</span>
+        <h2>الأتمتة الذكية باستخدام الذكاء الاصطناعي</h2>
+        <p>نساعدك في أتمتة المهام المتكررة والعمليات اليومية باستخدام الذكاء الاصطناعي. من خلال الأتمتة، يمكنك توفير الوقت والجهد وزيادة الكفاءة.</p>
+          <ul>
+            <li>أتمتة المهام الروتينية</li>
+            <li>تحسين سير العمل</li>
+            <li>تقليل الأخطاء</li>
+            <li>زيادة الإنتاجية</li>
+        </ul>
+    </div>
+</div>
+
+<!-- نافذة منبثقة لاستشارات الذكاء الاصطناعي -->
+<div class="modal service-modal" id="consulting-modal">
+    <div class="modal-content">
+        <span class="close-modal">×</span>
+        <h2>استشارات الذكاء الاصطناعي</h2>
+        <p>نقدم استشارات متخصصة لمساعدتك في تطوير وتحسين العمليات التجارية باستخدام الذكاء الاصطناعي. نقدم لك الخبرة والتوجيه اللازمين لتحقيق أهدافك.</p>
+          <ul>
+            <li>تحديد فرص الذكاء الاصطناعي</li>
+            <li>تطوير استراتيجيات الذكاء الاصطناعي</li>
+            <li>تحسين العمليات التجارية</li>
+            <li>تدريب الموظفين</li>
+        </ul>
+    </div>
+</div>
+
+
+<!-- نافذة منبثقة لوكلاء الذكاء الاصطناعي -->
+<div class="modal service-modal" id="ai-agents-modal">
+    <div class="modal-content">
+        <span class="close-modal">×</span>
+        <h2>وكلاء الذكاء الاصطناعي</h2>
+         <p>في Bright AI، نقدم مجموعة شاملة من حلول وكلاء الذكاء الاصطناعي المصممة خصيصًا لتلبية الاحتياجات المتنوعة للمؤسسات في مختلف القطاعات والصناعات. نحن ندرك أن كل مؤسسة فريدة من نوعها، ولديها تحديات وفرص خاصة بها. لذلك، نعتمد على نهج مخصص يرتكز على فهم عميق لاحتياجات عملائنا، وتقديم حلول مبتكرة وفعالة تحقق لهم أقصى قيمة مضافة. حلولنا في مجال وكلاء الذكاء الاصطناعي لا تقتصر فقط على الجانب التقني، بل تشمل أيضًا الاستشارات الاستراتيجية، والتصميم الهندسي، والتكامل السلس مع الأنظمة الحالية، والدعم الفني المستمر. نحن نسعى جاهدين لتقديم تجربة متكاملة لعملائنا، وتمكينهم من تحقيق النجاح في رحلتهم نحو التحول الرقمي.</p>
+
+    </div>
+</div>
+
+<!-- نافذة منبثقة لأدوات الذكاء الاصطناعي -->
+<div class="modal service-modal" id="ai-tools-modal">
+    <div class="modal-content">
+        <span class="close-modal">×</span>
+        <h2>أدوات الذكاء الاصطناعي</h2>
+        <p>
+            اكتشف مجموعتنا الشاملة من أدوات الذكاء الاصطناعي المصممة خصيصًا لتمكينك في رحلتك نحو التميز. سواء كنت تسعى لتحسين عملياتك التجارية، أو تحليل بياناتك بعمق، أو حتى استكشاف آفاق جديدة في مجال التعلم الآلي، فإن أدواتنا المبتكرة ستوفر لك الدعم اللازم لتحقيق أهدافك. نقدم لك أدوات متطورة في مجالات معالجة اللغة الطبيعية، والرؤية الحاسوبية، وتحليل البيانات التنبؤي، وغيرها الكثير. انطلق نحو المستقبل واستفد من قوة الذكاء الاصطناعي.
+        </p>
+
+    </div>
+</div>
+   <div class="modal service-modal" id="digital-library-modal">
+    <div class="modal-content">
+        <span class="close-modal">×</span>
+        <h2>مكتبة رقمية للذكاء الاصطناعي</h2>
+        <p>
+            Bright AI توفر مكتبة رقمية شاملة تضم أدوات الذكاء الاصطناعي وموارد تعليمية في مجال الذكاء الاصطناعي، لتلبية احتياجاتك من المعرفة والتدريب، وتساعدك على البقاء على اطلاع دائم بأحدث التطورات في هذا المجال.
+        </p>
+         <ul>
+            <li>أدوات وموارد الذكاء الاصطناعي</li>
+            <li>دورات تدريبية في مجال الذكاء الاصطناعي</li>
+            <li>مقالات وأبحاث علمية</li>
+            <li>تحديثات مستمرة في المجال</li>
+         </ul>
+    </div>
+</div>
+</section>
+
 
 <!-- Add this new section after the AI agents section -->
 <section id="newsletter-subscription" class="dynamic-background" style="padding: 4rem 0;">
