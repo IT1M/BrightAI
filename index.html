@@ -914,22 +914,35 @@ crossorigin="anonymous"></script>
         </div>
     </section>
 
-    <section class="about dynamic-background" id="about">
-        <canvas id="animated-bg-about"></canvas>
-        <div class="container">
-            <div class="section-header">
-                <i class="fas fa-info-circle"></i>
-                <h2>نبذة عن Bright AI</h2>
-            </div>
-            <div class="about-content">
-                <p>في ظل فجر جديد للتكنولوجيا والابتكار، يبرز الذكاء كقوة دافعة مبهرة تحتضن آفاقا واسعة من الإمكانيات... Bright AI تقدم حلول الذكاء الاصطناعي للشركات في نطاق واسع من الصناعات.</p>
-                <button class="read-more-btn button">
-                    <i class="fas fa-book-open"></i>
-                    اقرأ المزيد
-                </button>
-            </div>
+<section class="about dynamic-background" id="about">
+    <canvas id="animated-bg-about"></canvas>
+    <div class="container">
+        <div class="section-header">
+            <i class="fas fa-info-circle"></i>
+            <h2>نبذة عن Bright AI</h2>
         </div>
-    </section>
+        <div class="about-content">
+            <p>في ظل فجر جديد للتكنولوجيا والابتكار، يبرز الذكاء كقوة دافعة مبهرة تحتضن آفاقا واسعة من الإمكانيات... Bright AI تقدم حلول الذكاء الاصطناعي للشركات في نطاق واسع من الصناعات.</p>
+            <button class="read-more-btn button" data-modal="aboutModal">
+                <i class="fas fa-book-open"></i>
+                اقرأ المزيد
+            </button>
+        </div>
+    </div>
+</section>
+
+<div class="modal" id="aboutModal">
+    <div class="modal-content">
+        <span class="close-modal">×</span>
+        <div class="about-modal-header">
+            <i class="fas fa-info-circle"></i>
+            <h2>من نحن</h2>
+        </div>
+        <div class="about-modal-body">
+            <p>في ظل فجر جديد للتكنولوجيا والابتكار، يبرز الذكاء كقوة دافعة مبهرة تحتضن آفاقا واسعة من الإمكانيات. ليس مجرد مفهوم يقتصر على القدرة على حل المعادلات المعقدة أو الحصول على درجات متقدمة في الاختبارات بل هو فن استشراف الغد وبناء الجسور بين المعلوم والمجهول. تتعدد طبقات الذكاء بدءا من الذكاء الطبيعي الذي يتجلى في التفاعل العميق مع العالم الطبيعي، مرورا بالذكاء الرياضي الذي يفك شفرات الكون وصولا إلى الذكاء الاجتماعي، القادر على فهم عميق لدوافع الآخرين وبناء علاقات قيمة. من الجدير بالذكر أن الذكاء لا يعني بالضرورة السير وفق المسارات المستقيمة فهو يتميز بالمرونة والقدرة على رؤية الجمال في الفوضى وإيجاد النظام في العشوائية. هو بمثابة النور الذي يتخلل ثنايا العقل مانحا إياه القدرة على التَّقلب والتكيف مع المتغيرات اللامتناهية التي تروي قصة الحياة. لذا لنغوص في أعماق هذا العالم الساحر مكتشفين معا أسرار الذكاء التي تمهد الطريق نحو فهم أعمق لذواتنا والعالم الذي يحتضننا. بين السطور القادمة نحن على موعد مع رحلة تكشف لنا كيف يمكن لهذه الشعلة الفكرية أن تضيء درب الإنسانية نحو مستقبل مشرق ملئ بالإمكانيات والابتكارات.</p>
+        </div>
+    </div>
+</div>
 
     <section class="stats dynamic-background">
         <canvas id="animated-bg-stats"></canvas>
