@@ -103,12 +103,14 @@ header {
         position: fixed;
         top: 0;
         right: -100%;
-        width: 80%;
+        width: 85%;
         height: 100vh;
         background: #ffffff; /* Change background to white */
-        transition: 0.3s;
+        transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         z-index: 1000;
         overflow-y: auto;
+        padding: 60px 0;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
     }
 
     .navbar.active {
@@ -116,14 +118,62 @@ header {
     }
 
     .navbar li a {
-        padding: 0.5rem 1rem; /* Reduce padding */
+        padding: 15px 20px; /* Reduce padding */
         text-align: center; /* Center text */
         color: #333333; /* Ensure text color is dark */
+        width: 100%;
+        margin: 5px 0;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.05);
+        font-size: 1.2rem;
+        transition: all 0.3s ease;
     }
 
     .navbar-toggle {
         display: block;
         color: #333333; /* Ensure toggle button color is dark */
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        width: 35px;
+        height: 35px;
+        padding: 0;
+        z-index: 1001;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+    }
+
+    .navbar-toggle span {
+        display: block;
+        position: absolute;
+        height: 4px;
+        width: 100%;
+        background: #333;
+        border-radius: 4px;
+        opacity: 1;
+        left: 0;
+        transform: rotate(0deg);
+        transition: .3s ease-in-out;
+    }
+
+    .navbar-toggle span:nth-child(1) { top: 0; }
+    .navbar-toggle span:nth-child(2) { top: 12px; }
+    .navbar-toggle span:nth-child(3) { top: 24px; }
+
+    .navbar-toggle.open span:nth-child(1) {
+        top: 12px;
+        transform: rotate(135deg);
+    }
+
+    .navbar-toggle.open span:nth-child(2) {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+
+    .navbar-toggle.open span:nth-child(3) {
+        top: 12px;
+        transform: rotate(-135deg);
     }
 
     .service-card,
@@ -234,17 +284,23 @@ body {
 
 .service-card {
      background: white;
-    padding: 1.5rem;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 2rem; /* زيادة التباعد الداخلي */
+    border-radius: 10px; /* زيادة انحناء الحواف */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* زيادة الظل */
     text-align: center;
       transition: transform 0.5s ease, box-shadow 0.5s ease;
     position: relative;
+    display: flex; /* استخدام flexbox */
+    flex-direction: column; /* ترتيب العناصر عمودياً */
+    justify-content: space-between; /* توزيع العناصر عمودياً */
+    overflow: hidden; /* منع أي تجاوز */
+    height: 100%;
+    min-height: 300px;
 }
 
 .service-card:hover {
     transform: translateY(-5px) translateZ(10px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 }
 
 .service-card:hover {
@@ -262,9 +318,8 @@ body {
     display: inline-block;
     transition: all 0.3s ease;
     width: fit-content;
-    margin: 0 auto;
-    position: relative;
-    overflow: hidden;
+    margin: 1rem auto 0;
+    font-weight: bold;
 }
 .learn-more-btn:hover {
     background-color: #0056b3;
@@ -1290,7 +1345,7 @@ h1 {
     cursor: pointer;
     text-decoration: none;
     display: inline-block;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
       width: fit-content;
     margin: 0 auto;
     
@@ -1949,6 +2004,7 @@ h1 {
 .animated-element {
     transform: translateZ(0);
     will-change: transform;
+    backface-visibility: hidden;
 }
 
 /* Optimize animations */
@@ -2073,3 +2129,156 @@ header {
 }
 
 /* ...existing code... */
+
+// ...existing code...
+
+.navbar-toggle {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    transition: .5s ease-in-out;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    padding: 0;
+    display: none;
+}
+
+.navbar-toggle span {
+    display: block;
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    background: white;
+    border-radius: 3px;
+    opacity: 1;
+    left: 0;
+    transform: rotate(0deg);
+    transition: .25s ease-in-out;
+}
+
+.navbar-toggle span:nth-child(1) {
+    top: 0px;
+}
+
+.navbar-toggle span:nth-child(2) {
+    top: 10px;
+}
+
+.navbar-toggle span:nth-child(3) {
+    top: 20px;
+}
+
+.navbar-toggle.open span:nth-child(1) {
+    top: 10px;
+    transform: rotate(135deg);
+}
+
+.navbar-toggle.open span:nth-child(2) {
+    opacity: 0;
+    left: -60px;
+}
+
+.navbar-toggle.open span:nth-child(3) {
+    top: 10px;
+    transform: rotate(-135deg);
+}
+
+@media (max-width: 768px) {
+    .navbar-toggle {
+        display: block;
+        position: fixed;
+        top: 15px;
+        right: 15px;
+        z-index: 1001;
+    }
+}
+
+// ...existing code...
+
+/* Updated navbar-toggle styles */
+.navbar-toggle {
+    width: 35px; /* زيادة العرض */
+    height: 35px; /* زيادة الارتفاع */
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1001;
+    background: transparent;
+    border: none;
+    padding: 0;
+    display: none;
+}
+
+.navbar-toggle span {
+    display: block;
+    position: absolute;
+    height: 4px; /* زيادة سماكة الخطوط */
+    width: 100%;
+    background: white;
+    border-radius: 4px;
+    opacity: 1;
+    left: 0;
+    transform: rotate(0deg);
+    transition: .3s ease-in-out;
+}
+
+.navbar-toggle span:nth-child(1) {
+    top: 0;
+}
+
+.navbar-toggle span:nth-child(2) {
+    top: 12px; /* تعديل المسافة بين الخطوط */
+}
+
+.navbar-toggle span:nth-child(3) {
+    top: 24px; /* تعديل المسافة بين الخطوط */
+}
+
+.navbar-toggle.open span:nth-child(1) {
+    top: 12px;
+    transform: rotate(135deg);
+}
+
+.navbar-toggle.open span:nth-child(2) {
+    opacity: 0;
+    transform: translateX(-20px);
+}
+
+.navbar-toggle.open span:nth-child(3) {
+    top: 12px;
+    transform: rotate(-135deg);
+}
+
+/* تحسينات إضافية للهاتف المحمول */
+@media (max-width: 768px) {
+    .navbar {
+        width: 85%; /* زيادة عرض القائمة */
+        padding: 60px 0; /* إضافة مساحة أعلى القائمة */
+    }
+
+    .navbar li a {
+        font-size: 1.2rem; /* زيادة حجم الخط */
+        padding: 15px 20px; /* زيادة المساحة حول الروابط */
+        margin: 5px 0; /* إضافة مساحة بين العناصر */
+        border-radius: 8px; /* تحسين شكل الحواف */
+        background: rgba(255, 255, 255, 0.05);
+    }
+
+    .navbar li a:active {
+        background: rgba(255, 255, 255, 0.1);
+        transform: scale(0.98);
+    }
+
+    /* تحسين ظهور القائمة */
+    .navbar.active {
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+    }
+
+    /* تحسين حركة القائمة */
+    .navbar {
+        transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+}
+
+// ...existing code...

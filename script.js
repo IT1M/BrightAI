@@ -512,3 +512,45 @@ window.addEventListener('load', function () {
 
     // Add particles animation code here similar to the existing banner animation
 });
+
+// ...existing code...
+
+function toggleNavbar() {
+    const navbarToggle = document.querySelector('.navbar-toggle');
+    const navbar = document.querySelector('.navbar');
+    const body = document.body;
+    
+    navbarToggle.classList.toggle('open');
+    navbar.classList.toggle('active');
+    
+    // منع التمرير عندما تكون القائمة مفتوحة
+    if (navbar.classList.contains('active')) {
+        body.style.overflow = 'hidden';
+    } else {
+        body.style.overflow = '';
+    }
+}
+
+// إغلاق القائمة عند النقر خارجها
+document.addEventListener('click', (e) => {
+    const navbar = document.querySelector('.navbar');
+    const navbarToggle = document.querySelector('.navbar-toggle');
+    
+    if (!navbar.contains(e.target) && !navbarToggle.contains(e.target) && navbar.classList.contains('active')) {
+        toggleNavbar();
+    }
+});
+
+// إغلاق القائمة عند تغيير حجم الشاشة
+window.addEventListener('resize', () => {
+    const navbar = document.querySelector('.navbar');
+    const navbarToggle = document.querySelector('.navbar-toggle');
+    
+    if (window.innerWidth > 768 && navbar.classList.contains('active')) {
+        navbar.classList.remove('active');
+        navbarToggle.classList.remove('open');
+        document.body.style.overflow = '';
+    }
+});
+
+// ...existing code...
