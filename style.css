@@ -130,18 +130,17 @@ header {
     }
 
     .navbar-toggle {
-        display: block;
-        color: #333333; /* Ensure toggle button color is dark */
+        display: block !important;
         position: fixed;
         top: 20px;
         right: 20px;
         width: 35px;
         height: 35px;
-        padding: 0;
-        z-index: 1001;
         background: transparent;
         border: none;
+        padding: 0;
         cursor: pointer;
+        z-index: 1001;
     }
 
     .navbar-toggle span {
@@ -149,28 +148,31 @@ header {
         position: absolute;
         height: 4px;
         width: 100%;
-        background: #333;
+        background: #ff0000; /* Red color */
         border-radius: 4px;
-        opacity: 1;
         left: 0;
         transform: rotate(0deg);
         transition: .3s ease-in-out;
     }
 
-    .navbar-toggle span:nth-child(1) { top: 0; }
-    .navbar-toggle span:nth-child(2) { top: 12px; }
-    .navbar-toggle span:nth-child(3) { top: 24px; }
+    .navbar-toggle span:nth-child(1) {
+        top: 0;
+    }
+    .navbar-toggle span:nth-child(2) {
+        top: 12px;
+    }
+    .navbar-toggle span:nth-child(3) {
+        top: 24px;
+    }
 
     .navbar-toggle.open span:nth-child(1) {
         top: 12px;
         transform: rotate(135deg);
     }
-
     .navbar-toggle.open span:nth-child(2) {
         opacity: 0;
         transform: translateX(-20px);
     }
-
     .navbar-toggle.open span:nth-child(3) {
         top: 12px;
         transform: rotate(-135deg);
