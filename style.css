@@ -1606,9 +1606,22 @@ h1 {
     top: 1rem;
     right: 1rem;
     z-index: 1001;
+    background: transparent;
+    border: none;
+    color: white; /* Change color to white */
+    font-size: 24px;
+    cursor: pointer;
+    padding: 10px;
 }
 
 @media (max-width: 768px) {
+    .navbar-toggle {
+        display: block;
+        position: fixed;
+        top: 15px;
+        right: 15px;
+        z-index: 1000;
+    }
     .navbar {
         flex-direction: column;
         align-items: center;
