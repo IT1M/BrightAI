@@ -629,82 +629,77 @@ footer {
     }
     
 
-      /* تحسينات على النوافذ المنبثقة */
-      .modal {
-          position: fixed; /* تثبيت النافذة في مكانها */
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background-color: rgba(0, 0, 0, 0.4); /* خلفية شبه شفافة */
-          display: none; /* إخفاء افتراضي */
-          z-index: 1000; /* أعلى كل العناصر */
-          overflow: auto; /* إضافة شريط تمرير إذا لزم الأمر */
-      }
+/* Modal styles */
+.modal {
+    display: none; /* إخفاء افتراضي */
+    position: fixed;
+    z-index: 1000; /* أعلى كل العناصر */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* إضافة شريط تمرير إذا لزم الأمر */
+    background-color: rgba(0, 0, 0, 0.4); /* خلفية شبه شفافة */
+}
+.modal-content {
+    background-color: white;
+    /* margin: 10% auto;  <--  إزالة هذا السطر */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 5px;
+    /* position: relative;  <--  إزالة هذا السطر */
+    /* top: 50%;   <--  إزالة هذا السطر */
+    /* left: 50%;  <--  إزالة هذا السطر */
+    /* transform: translate(-50%, -50%);  <--  إزالة هذا السطر */
+      position: absolute; /* ضروري لتحديد الموقع ديناميكيًا */
+        animation: fadeIn 0.3s ease; /* تأثير ظهور بسيط */
 
-    .modal-content {
-        position: absolute;
-   background-color: white;
-          padding: 20px;
-          border-radius: 10px;
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-          max-width: 80%; /* تحديد عرض أقصى */
-          width: auto;   /* السماح بتغيير العرض حسب المحتوى */
-          max-height: 80vh; /* تحديد ارتفاع أقصى */
-          overflow-y: auto; /* إضافة تمرير رأسي إذا لزم */
-          animation: fadeIn 0.3s ease; /* تأثير ظهور بسيط */
-      }
-      @keyframes fadeIn {
-          from {
-              opacity: 0;
-              transform: translateY(-20px); /* تبدأ من أعلى قليلاً */
-          }
-          to {
-              opacity: 1;
-              transform: translateY(0);
-          }
-      }
-
-
-      .close-modal {
-          position: absolute;
-          top: 10px;
-          right: 15px;
-          font-size: 28px;
-          font-weight: bold;
-          cursor: pointer;
-      }
-    
-    .about-modal-header {
-    text-align: center;
-    margin-bottom: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px); /* تبدأ من أعلى قليلاً */
     }
-    
-    .about-modal-header i {
-    font-size: 1.8rem;
-    color: var(--primary-color);
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
-    
-    .close-modal {
+}
+
+.close-modal {
     color: #aaa;
     position: absolute;
     top: 10px;
-    left: 20px;
+    right: 15px;
     font-size: 28px;
     font-weight: bold;
     cursor: pointer;
-    }
-    
-    .close-modal:hover,
-    .close-modal:focus {
+}
+
+.close-modal:hover,
+.close-modal:focus {
     color: black;
-    text-decoration: none;
-    cursor: pointer;
-    }
+}
+.modal-content h2 {
+    margin-top: 0;
+    color: var(--primary-color);
+    text-align: center;
+}
+.modal-content p {
+    color: var(--secondary-color);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+.modal-content ul {
+    list-style: disc;
+    padding-right: 20px;
+    color: var(--secondary-color);
+}
+.modal-content ul li {
+    margin-bottom: 0.5rem;
+}
     
     .modal-content p {
     color: var(--secondary-color);
