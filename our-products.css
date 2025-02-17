@@ -668,3 +668,17 @@ footer {
         display: none;
     }
 }
+.automation-section h2 {
+    /*  You can add section-specific h2 styling here if it differs from main h2 */
+    text-align: center;
+    color: #0056b3;
+    margin: 40px 0;
+    font-size: 2em;
+}
+.ai-agents-section h2 {
+    /* Section-specific h2 styling, if needed */
+    text-align: center;
+    color: #0056b3;
+    margin: 40px 0;
+    font-size: 2em;
+}
