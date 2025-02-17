@@ -2539,3 +2539,111 @@ header {
         background-color: #ff0000;
     }
 }
+.learn-more-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.2rem;
+    border-radius: 7px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+    width: fit-content;
+    margin: 1rem auto 0;
+    font-weight: bold;
+    position: relative; /* إضافة لعمل المؤشر */
+}
+
+.learn-more-btn:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.learn-more-btn:active {
+    transform: translateY(0);
+}
+
+/* إضافة مؤشر "اقرأ المزيد" */
+.learn-more-btn::after {
+    content: '\f105'; /* كود أيقونة السهم الأيمن في Font Awesome */
+    font-family: 'Font Awesome 6 Free'; /* التأكد من استخدام Font Awesome الصحيح */
+    font-weight: 900; /* جعل الأيقونة سميكة */
+    margin-right: 0.5rem; /* إضافة مسافة بين النص والأيقونة */
+    transition: transform 0.3s ease; /* إضافة حركة بسيطة */
+    display: inline-block; /* جعل الأيقونة والنص في نفس السطر */
+}
+.learn-more-btn:hover::after{
+    transform: translateX(5px); /* تحريك السهم قليلاً لليمين */
+}
+
+
+/* أنماط النوافذ المنبثقة (Modal) */
+.modal {
+    display: none; /* إخفاء افتراضي */
+    position: fixed;
+    z-index: 1000; /* أعلى كل العناصر */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* إضافة شريط تمرير إذا لزم الأمر */
+    background-color: rgba(0, 0, 0, 0.4); /* خلفية شبه شفافة */
+}
+
+.modal-content {
+    /* ... (الأنماط السابقة) ... */
+    /* إزالة تحديد الموقع السابق */
+    /* position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); */
+      position: absolute; /* ضروري لتحديد الموقع ديناميكيًا */
+
+    animation: fadeIn 0.3s ease; /* تأثير ظهور بسيط */
+
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px); /* تبدأ من أعلى قليلاً */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.close-modal {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-modal:hover,
+.close-modal:focus {
+    color: black;
+}
+.modal-content h2 {
+    margin-top: 0;
+    color: var(--primary-color);
+    text-align: center;
+}
+.modal-content p {
+    color: var(--secondary-color);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+.modal-content ul {
+    list-style: disc;
+    padding-right: 20px;
+    color: var(--secondary-color);
+}
+.modal-content ul li {
+    margin-bottom: 0.5rem;
+}
