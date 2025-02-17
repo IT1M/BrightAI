@@ -26,81 +26,47 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Modal functionality for "About Us" section
-    const readMoreBtn = document.querySelector('.read-more-btn');
+   // Modal functionality for "About Us" section
+    const readMoreButtons = document.querySelectorAll('.read-more-btn'); // تغيير هنا
     const aboutModal = document.getElementById('aboutModal');
     const closeAboutModalBtn = document.querySelector('#aboutModal .close-modal');
 
-    readMoreBtn.addEventListener('click', function () {
-        aboutModal.style.display = 'block';
+    readMoreButtons.forEach(button => { // تغيير هنا: استخدام حلقة
+        button.addEventListener('click', function (event) {
+            event.preventDefault();
+            const modalId = this.getAttribute('data-modal'); // الحصول على معرف النافذة
+            const modal = document.getElementById(modalId);
+
+            if(modal){
+                modal.style.display = 'block';
+
+                // حساب موقع الزر
+                const rect = this.getBoundingClientRect();
+                const buttonTop = rect.top + window.scrollY;
+                const buttonLeft = rect.left + window.scrollX;
+
+
+                // تحديد موقع محتوى النافذة المنبثقة
+                const modalContent = modal.querySelector('.modal-content');
+
+                modalContent.style.top = `${buttonTop}px`;
+                modalContent.style.left = `${buttonLeft}px`;
+
+            }
+
+        });
     });
 
-    closeAboutModalBtn.addEventListener('click', function () {
-         aboutModal.style.display = 'none';
-    });
+    if(closeAboutModalBtn){ // التأكد من وجود الزر قبل إضافة المستمع
+      closeAboutModalBtn.addEventListener('click', function () {
+          aboutModal.style.display = 'none';
+      });
+    }
+
 
      window.addEventListener('click', function (event) {
         if (event.target ==  aboutModal) {
              aboutModal.style.display = "none";
-        }
-    });
-
-    // Service details modal functionality
-    const serviceCards = document.querySelectorAll('.service-card');
-      serviceCards.forEach(card => {
-        const learnMoreBtn = card.querySelector('.learn-more-btn');
-          if(learnMoreBtn){
-        learnMoreBtn.addEventListener('click', (event) => {
-            event.preventDefault();
-            const serviceId = card.getAttribute('data-service');
-            const serviceModal = document.getElementById(serviceId);
-            if (serviceModal) {
-              serviceModal.style.display = 'block';
-            }
-        });
-          }
-    });
-
-    // Close service modal
-      const closeServiceModalButtons = document.querySelectorAll('.service-modal .close-modal');
-        closeServiceModalButtons.forEach(closeButton => {
-        closeButton.addEventListener('click', (event) => {
-            const serviceModal = closeButton.closest('.service-modal');
-            if (serviceModal) {
-                serviceModal.style.display = 'none';
-            }
-        });
-    });
-     window.addEventListener('click', function (event) {
-        if (event.target.classList.contains('service-modal')) {
-            event.target.style.display = 'none';
-        }
-    });
-      const learnMoreButtons = document.querySelectorAll('.services .learn-more-btn');
-        learnMoreButtons.forEach(button => {
-        button.addEventListener('click', function (event) {
-           event.preventDefault();
-             const modalId = this.getAttribute('data-modal');
-             const modal = document.getElementById(modalId);
-        if (modal) {
-               modal.style.display = 'block';
-            }
-        });
-    });
-
-     const closeButtons = document.querySelectorAll('.modal .close-modal');
-    closeButtons.forEach(button => {
-        button.addEventListener('click', function () {
-             const modal = this.closest('.modal');
-           if(modal) {
-              modal.style.display = 'none';
-            }
-        });
-    });
-    
-     window.addEventListener('click', function (event) {
-        if (event.target.classList.contains('modal')) {
-            event.target.style.display = 'none';
         }
     });
     // consultation form
