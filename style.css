@@ -2454,3 +2454,86 @@ header {
         background: #ff0000;
     }
 }
+
+/* حذف الخلفية الشفافة من الأيقونات */
+.icon {
+    width: 40px;
+    height: 40px;
+    animation: float 3s ease-in-out infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* تحسين الأيقونات للهاتف المحمول */
+@media (max-width: 768px) {
+    .icon {
+        width: 30px;
+        height: 30px;
+        margin: 5px;
+    }
+
+    .icon svg {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+/* تحديث أنماط زر القائمة مع اللون الأحمر */
+.navbar-toggle {
+    width: 35px;
+    height: 35px;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1001;
+    background: transparent;
+    border: none;
+    padding: 0;
+    display: none;
+    cursor: pointer;
+}
+
+.navbar-toggle span {
+    display: block;
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    background-color: #ff0000; /* تغيير لون الخطوط إلى الأحمر */
+    border-radius: 2px;
+    opacity: 1;
+    left: 0;
+    transform: rotate(0deg);
+    transition: .3s ease-in-out;
+}
+
+.navbar-toggle span:nth-child(1) { top: 0; }
+.navbar-toggle span:nth-child(2) { top: 12px; }
+.navbar-toggle span:nth-child(3) { top: 24px; }
+
+/* حالة فتح القائمة */
+.navbar-toggle.open span:nth-child(1) {
+    top: 12px;
+    transform: rotate(135deg);
+}
+
+.navbar-toggle.open span:nth-child(2) {
+    opacity: 0;
+    transform: translateX(-20px);
+}
+
+.navbar-toggle.open span:nth-child(3) {
+    top: 12px;
+    transform: rotate(-135deg);
+}
+
+/* تأكيد اللون الأحمر في وضع الموبايل */
+@media (max-width: 768px) {
+    .navbar-toggle {
+        display: block;
+    }
+    
+    .navbar-toggle span {
+        background-color: #ff0000;
+    }
+}
