@@ -894,7 +894,7 @@ footer {
         padding: 6rem 0;
         position: relative;
         overflow: hidden;
-        background: linear-gradient(135deg, #1a237e, #0d47a1);
+        background: linear-gradient(135deg, #ffffff, #f8f9fa);
         perspective: 1000px;
     }
     
@@ -1715,11 +1715,13 @@ h1 {
     position: relative;
     width: 100%;
     height: 400px;
-    background: linear-gradient(45deg, #1a1a1a, #2d1f4d);
+    background: linear-gradient(135deg, #ffffff, #f0f2f5);
     border-radius: 20px;
     padding: 40px;
     overflow: hidden;
     margin: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 @media (max-width: 768px) {
@@ -1782,14 +1784,7 @@ h1 {
 
 @media (min-width: 769px) {
     .banner::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: radial-gradient(circle, transparent 20%, #000 70%);
-        opacity: 0.7;
+        display: none;
     }
 }
 
@@ -1825,14 +1820,14 @@ h1 {
 .banner h1 {
     font-size: 2.5em;
     margin-bottom: 20px;
-    color: #fff;
-    text-shadow: 0 0 10px rgba(128, 0, 255, 0.5);
+    color: #333;
+    text-shadow: none;
 }
 
 .banner p {
     font-size: 1.2em;
     margin-bottom: 30px;
-    color: #ddd;
+    color: #666;
 }
 
 .banner .buttons {
@@ -2130,7 +2125,7 @@ header {
 
 /* ...existing code... */
 
-// ...existing code...
+/* ...existing code... */
 
 .navbar-toggle {
     width: 30px;
@@ -2193,9 +2188,9 @@ header {
         z-index: 1001;
     }
 }
+/* ...existing code... */
 
-// ...existing code...
-
+/* Updated navbar-toggle styles */
 /* Updated navbar-toggle styles */
 .navbar-toggle {
     width: 35px; /* زيادة العرض */
@@ -2280,9 +2275,9 @@ header {
         transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
 }
+/* ...existing code... */
 
-// ...existing code...
-
+/* تحديث أنماط زر القائمة */
 /* تحديث أنماط زر القائمة */
 .navbar-toggle {
     width: 35px;
@@ -2303,7 +2298,7 @@ header {
     position: absolute;
     height: 4px;
     width: 100%;
-    background: #333; /* تغيير لون الخطوط إلى الأسود */
+    background: #ff0000; /* تغيير لون الخطوط إلى الأحمر */
     border-radius: 4px;
     opacity: 1;
     left: 0;
@@ -2313,7 +2308,7 @@ header {
 
 /* عند فتح القائمة، نحافظ على اللون الأسود */
 .navbar-toggle.open span {
-    background: #333;
+    background: #ff0000;
 }
 
 @media (max-width: 768px) {
@@ -2323,6 +2318,62 @@ header {
     
     /* تأكيد لون الخطوط في وضع الموبايل */
     .navbar-toggle span {
-        background: #333 !important;
+        background: #ff0000;
     }
+}
+
+/* تحديث أنماط البانر */
+.banner {
+    position: relative;
+    perspective: 1000px;
+    background: linear-gradient(135deg, #ffffff, #f8f9fa);  /* تغيير الخلفية إلى تدرج فاتح */
+    color: #333;  /* تغيير لون النص إلى الغامق */
+    text-align: center;
+    padding: 60px 20px 160px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.banner h1 {
+    font-size: 2.8rem;
+    margin-bottom: 20px;
+    transform: translateZ(60px);
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+    color: #333;  /* تغيير لون العنوان إلى الغامق */
+}
+
+.banner p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    transform: translateZ(40px);
+    color: #666;  /* تغيير لون النص إلى رمادي متوسط */
+}
+
+.cta-btn {
+    display: inline-block;
+    padding: 12px 30px;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 30px;
+    background-color: var(--primary-color);  /* استخدام لون الأزرار الرئيسي */
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    transform: translateZ(20px);
+}
+
+.cta-btn:hover {
+    transform: translateY(-3px) translateZ(20px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* تحديث أنماط الأيقونات في البانر */
+.icon svg {
+    stroke: var(--primary-color);  /* تغيير لون خطوط الأيقونات */
+}
+
+.icon {
+    background: rgba(103, 89, 255, 0.1);  /* خلفية شفافة بلون العلامة التجارية */
 }

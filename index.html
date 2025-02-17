@@ -224,454 +224,311 @@ crossorigin="anonymous"></script>
         height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <!-- End Google Tag Manager (noscript) -->
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>بانر BrightAII 3D - الذكاء الاصطناعي والتعلم الآلي</title>
-<style>
-  /* إعادة تعيين الأنماط الافتراضية */
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: Arial, sans-serif;
-    background: #111;
-    overflow-x: hidden;
-  }
-  
-  .banner {
-    position: relative;
-    perspective: 1000px;
-    background: linear-gradient(135deg, #00c6ff, #0072ff);
-    color: #fff;
-    text-align: center;
-    padding: 60px 20px 160px;
-    overflow: hidden;
-  }
-  
-  .banner h1 {
-    font-size: 2.8rem;
-    margin-bottom: 20px;
-    transform: translateZ(60px);
-    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
-  }
-  
-  .banner p {
-    font-size: 1.2rem;
-    margin-bottom: 30px;
-    transform: translateZ(40px);
-  }
-  
-  .cta-btn {
-    display: inline-block;
-    padding: 12px 30px;
-    font-size: 1rem;
-    font-weight: bold;
-    border: none;
-    border-radius: 30px;
-    background-color: #fff;
-    color: #0072ff;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    text-decoration: none;
-    transform: translateZ(20px);
-  }
-  
-  .cta-btn:hover {
-    background-color: #e6e6e6;
-    transform: translateY(-3px) translateZ(20px);
-  }
-  
-  /* حاوية الأيقونات: عرضها في صف واحد */
-  .icons-container {
-    position: absolute;
-    bottom: -20px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 30px;
-    justify-content: center;
-    overflow-x: auto;
-    padding: 10px 0;
-    width: 100%;
-  }
-  
-  .icon {
-    flex: 0 0 auto;
-    width: 60px;
-    height: 60px;
-    background: rgba(255, 255, 255, 0.15);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transform-style: preserve-3d;
-    /* جعل حركة الأيقونات أبطأ بتعديل مدة التحريك */
-    animation: spin 10s linear infinite, float 5s ease-in-out infinite;
-  }
-  
-  .icon svg {
-    width: 40px;
-    height: 40px;
-    stroke: #fff;
-    fill: none;
-    stroke-width: 4;
-    stroke-linejoin: round;
-  }
-  
-  /* حركة دوران 3D */
-  @keyframes spin {
-    0% {
-      transform: rotateX(0deg) rotateY(0deg) translateZ(0px);
-    }
-    50% {
-      transform: rotateX(180deg) rotateY(180deg) translateZ(10px);
-    }
-    100% {
-      transform: rotateX(360deg) rotateY(360deg) translateZ(0px);
-    }
-  }
-  
-  /* حركة تنويم عمودية */
-  @keyframes float {
-    0%, 100% {
-      transform: translateY(0) rotateX(0deg) rotateY(0deg);
-    }
-    50% {
-      transform: translateY(-10px) rotateX(5deg) rotateY(5deg);
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .banner h1 {
-      font-size: 2rem;
-    }
-    .banner p {
-      font-size: 1rem;
-    }
-    .icon {
-      width: 50px;
-      height: 50px;
-    }
-    .icon svg {
-      width: 30px;
-      height: 30px;
-    }
-  }
-</style>
-</head>
-<body>
-    <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MM4V2TSJ"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-    <header>
-        <!-- ...existing code (بدون وسم <img class="site-logo">)... -->
-        <nav>
-            <button class="navbar-toggle" onclick="toggleNavbar()" aria-label="القائمة">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <ul class="navbar">
-            <li><a href="index.html">الرئيسية</a></li>
-            <li><a href="consultation.html">استشارات الذكاء الاصطناعي</a></li>
-            <li><a href="smart-automation.html">أتمتة العمليات بالذكاء الاصطناعي</a></li>
-            <li><a href="data-analysis.html">تحليل البيانات باستخدام الذكاء الاصطناعي</a></li>
-            <li><a href="ai-agent.html">وكيل الذكاء الإصطناعي</a></li>
-            <li><a href="our-products.html">عرض للخدمات</a></li>
-            <li><a href="blog.html">مكتبة رقمية للذكاء الاصطناعي</a></li>
-            <li><a href="tools.html">أدوات الذكاء الاصطناعي</a></li>
-            <li><a href="Docs.html"> Docs</a></li>
-            </ul>
-        </nav>
-    </header>
-
-<style>
-    .banner3d {
-        position: relative;
-        min-height: 100vh;
-        background: linear-gradient(135deg, #000235 0%, #1e0057 100%);
-        overflow: hidden;
-    }
-
-    .tech-particles {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
-    }
-
-    .logo {
-        position: absolute;
-        top: 20px;
-        left: 20px;
-        width: 120px;
-        height: auto;
-        z-index: 10;
-    }
-
-    .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 20px;
-    }
-
-    .banner3d-content {
-        position: relative;
-        z-index: 2;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        min-height: 80vh;
-        padding: 2rem;
-    }
-
-    .banner3d-text {
-        flex: 1;
-        color: #fff;
-        text-align: right;
-        padding: 2rem;
-    }
-
-    .banner3d-text h2 {
-        font-size: 3.5rem;
-        margin-bottom: 1.5rem;
-        background: linear-gradient(45deg, #00f7ff, #7161ef);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        text-shadow: 0 0 20px rgba(0, 247, 255, 0.3);
-    }
-
-    .banner3d-text p {
-        font-size: 1.5rem;
-        margin-bottom: 2rem;
-        line-height: 1.6;
-        color: rgba(255, 255, 255, 0.9);
-    }
-
-    .banner3d-buttons {
-        display: flex;
-        gap: 1rem;
-    }
-
-    .button {
-        background: linear-gradient(45deg, #00f7ff, #7161ef);
-        border: none;
-        padding: 1rem 2rem;
-        color: white;
-        border-radius: 50px;
-        text-decoration: none;
-        font-weight: bold;
-        transition: all 0.3s ease;
-        text-shadow: 0 0 10px rgba(0, 247, 255, 0.5);
-        box-shadow: 0 0 20px rgba(0, 247, 255, 0.3);
-    }
-
-    .button-outline {
-        border: 2px solid #a855f7;
-        color: #fff;
-    }
-
-    .button:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 0 30px rgba(0, 247, 255, 0.5);
-    }
-
-    .banner3d-visual {
-        flex: 1;
-        position: relative;
-        height: 400px;
-    }
-
-    .tech-cube {
-        position: absolute;
-        width: 200px;
-        height: 200px;
-        transform-style: preserve-3d;
-        animation: floatAnimation 6s ease-in-out infinite;
-    }
-
-    .tech-line {
-        position: absolute;
-        background: linear-gradient(90deg, transparent, #00f7ff, transparent);
-        height: 2px;
-        width: 100%;
-        opacity: 0.5;
-        animation: scanLine 3s linear infinite;
-    }
-
-    @keyframes floatAnimation {
-        0%, 100% { transform: translateY(0) rotateY(0); }
-        50% { transform: translateY(-20px) rotateY(180deg); }
-    }
-
-    @keyframes scanLine {
-        0% { transform: translateY(0); opacity: 0; }
-        50% { opacity: 1; }
-        100% { transform: translateY(400px); opacity: 0; }
-    }
-
-    .face {
-        position: absolute;
-        width: 200px;
-        height: 200px;
-        background: rgba(168, 85, 247, 0.2);
-        border: 2px solid #a855f7;
-        backdrop-filter: blur(5px);
-    }
-
-    @keyframes rotate {
-        from { transform: rotateX(0) rotateY(0); }
-        to { transform: rotateX(360deg) rotateY(360deg); }
-    }
-
-    .face.front  { transform: translateZ(100px); }
-    .face.back   { transform: translateZ(-100px) rotateY(180deg); }
-    .face.right  { transform: rotateY(90deg) translateZ(100px); }
-    .face.left   { transform: rotateY(-90deg) translateZ(100px); }
-    .face.top    { transform: rotateX(90deg) translateZ(100px); }
-    .face.bottom { transform: rotateX(-90deg) translateZ(100px); }
-
-    #animated-bg-banner {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 1;
-    }
-
-    @media (max-width: 768px) {
-        .banner3d-content {
-            flex-direction: column;
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>بانر الذكاء الاصطناعي</title>
+        <style>
+          /* إعادة تعيين الأنماط الافتراضية */
+          * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+          }
+          body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+          }
+          .banner {
+            position: relative;
+            background: linear-gradient(45deg, #1c92d2, #f2fcfe);
+            color: #fff;
             text-align: center;
-        }
-
-        .banner3d-text {
-            text-align: center;
-            padding: 1rem;
-        }
-
-        .banner3d-text h2 {
-            font-size: 2.5rem;
-        }
-
-        .banner3d-buttons {
+            padding: 80px 20px 140px 20px;
+            overflow: hidden;
+          }
+          /* شعار الشركة في الزاوية العليا اليسرى */
+          .logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 100px;
+            height: auto;
+          }
+          .banner h1 {
+            font-size: 2.5em;
+            margin-bottom: 0.5em;
+          }
+          .banner p {
+            font-size: 1.2em;
+            margin-bottom: 1em;
+          }
+          .banner a {
+            text-decoration: none;
+          }
+          .banner button {
+            background-color: #ff5722;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            color: #fff;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+          }
+          .banner button:hover {
+            background-color: #e64a19;
+          }
+          /* حاوية الأيقونات المتحركة */
+          .icon-container {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-wrap: wrap;
             justify-content: center;
-        }
-
-        .banner3d-visual {
-            margin-top: 2rem;
-        }
-
-        .cube {
-            transform: scale(0.8);
-        }
-    }
-</style>
-
-<div class="banner">
-  <h1>تكنولوجيا اليوم تبني نجاح الغد  </h1>
-  <p> حلول مبتكرة تضعك في طليعة العصر الرقمي . </p></p>
-  <!-- زر تواصل معنا يحول المستخدم إلى الواتس آب -->
-  <a href="https://wa.me/966501120781" class="cta-btn">تواصل معنا</a>
-
-  <!-- حاوية الأيقونات المتحركة -->
-  <div class="icons-container">
-    <!-- أيقونة 1: أيقونة الدماغ -->
-    <div class="icon">
-      <svg viewBox="0 0 64 64">
-        <path d="M32 4c-8.28 0-15 6.72-15 15v10h-5c-1.1 0-2 .9-2 2v16c0 1.1 .9 2 2 2h5v10c0 8.28 6.72 15 15 15s15-6.72 15-15V43h5c1.1 0 2-.9 2-2V25c0-1.1-.9-2-2-2h-5V19c0-8.28-6.72-15-15-15z"/>
-      </svg>
-    </div>
-    <!-- أيقونة 2: شبكة عصبية بسيطة -->
-    <div class="icon">
-      <svg viewBox="0 0 64 64">
-        <circle cx="16" cy="16" r="4" fill="#fff" />
-        <circle cx="48" cy="16" r="4" fill="#fff" />
-        <circle cx="32" cy="32" r="4" fill="#fff" />
-        <circle cx="16" cy="48" r="4" fill="#fff" />
-        <circle cx="48" cy="48" r="4" fill="#fff" />
-        <line x1="16" y1="16" x2="32" y2="32" stroke="#fff" stroke-width="2"/>
-        <line x1="48" y1="16" x2="32" y2="32" stroke="#fff" stroke-width="2"/>
-        <line x1="16" y1="48" x2="32" y2="32" stroke="#fff" stroke-width="2"/>
-        <line x1="48" y1="48" x2="32" y2="32" stroke="#fff" stroke-width="2"/>
-      </svg>
-    </div>
-    <!-- أيقونة 3: أيقونة التروس (Gear) -->
-    <div class="icon">
-      <svg viewBox="0 0 64 64">
-        <path d="M32 24a8 8 0 1 0 0 16 8 8 0 0 0 0-16zm28 8h-6.03a18.667 18.667 0 0 0-2.38-6.54l4.28-4.28-4.24-4.24-4.28 4.28A18.667 18.667 0 0 0 40 14.03V8h-8v6.03a18.667 18.667 0 0 0-6.54 2.38L21.18 10.13l-4.24 4.24 4.28 4.28A18.667 18.667 0 0 0 14.03 24H8v8h6.03a18.667 18.667 0 0 0 2.38 6.54l-4.28 4.28 4.24 4.24 4.28-4.28A18.667 18.667 0 0 0 24 49.97V56h8v-6.03a18.667 18.667 0 0 0 6.54-2.38l4.28 4.28 4.24-4.24-4.28-4.28A18.667 18.667 0 0 0 49.97 32H56v-8z"/>
-      </svg>
-    </div>
-    <!-- أيقونة 4: أيقونة شريحة إلكترونية (Microchip) -->
-    <div class="icon">
-      <svg viewBox="0 0 64 64">
-        <rect x="18" y="18" width="28" height="28" stroke="#fff" />
-        <!-- خطوط الدبابيس حول الشريحة -->
-        <line x1="14" y1="26" x2="18" y2="26" stroke="#fff" />
-        <line x1="14" y1="38" x2="18" y2="38" stroke="#fff" />
-        <line x1="46" y1="26" x2="50" y2="26" stroke="#fff" />
-        <line x1="46" y1="38" x2="50" y2="38" stroke="#fff" />
-        <line x1="26" y1="14" x2="26" y2="18" stroke="#fff" />
-        <line x1="38" y1="14" x2="38" y2="18" stroke="#fff" />
-        <line x1="26" y1="46" x2="26" y2="50" stroke="#fff" />
-        <line x1="38" y1="46" x2="38" y2="50" stroke="#fff" />
-      </svg>
-    </div>
-    <!-- أيقونة 5: أيقونة روبوت -->
-    <div class="icon">
-      <svg viewBox="0 0 64 64">
-        <!-- رأس الروبوت -->
-        <rect x="16" y="16" width="32" height="24" stroke="#fff" />
-        <!-- عيون الروبوت -->
-        <circle cx="26" cy="26" r="2" fill="#fff"/>
-        <circle cx="38" cy="26" r="2" fill="#fff"/>
-        <!-- فم الروبوت -->
-        <line x1="24" y1="34" x2="40" y2="34" stroke="#fff" stroke-width="2" />
-        <!-- "قرون" بسيطة -->
-        <line x1="20" y1="16" x2="20" y2="10" stroke="#fff" stroke-width="2" />
-        <line x1="44" y1="16" x2="44" y2="10" stroke="#fff" stroke-width="2" />
-      </svg>
-    </div>
-    <!-- أيقونة 6: أيقونة تعلم آلي -->
-    <div class="icon">
-      <svg viewBox="0 0 64 64">
-        <!-- رسم مبسط لشبكة طبقات (رمز لتعلم الآلة) -->
-        <rect x="26" y="8" width="12" height="8" />
-        <rect x="20" y="24" width="24" height="8" />
-        <rect x="14" y="40" width="36" height="8" />
-        <line x1="32" y1="16" x2="32" y2="24" stroke="#fff" />
-        <line x1="32" y1="32" x2="32" y2="40" stroke="#fff" />
-      </svg>
-    </div>
-    <!-- أيقونة 7: أيقونة سحابة (Cloud) -->
-    <div class="icon">
-      <svg viewBox="0 0 64 64">
-        <path d="M20 40 Q15 35 20 30 Q18 28 20 26 Q25 20 35 20 Q45 20 48 28 Q50 30 47 35 Q55 35 55 42 Q55 48 49 52 Q45 56 35 56 Q25 56 20 52 Q14 48 14 42 Q14 38 20 40 Z" 
-          stroke="#fff" fill="none" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </div>
-    <!-- أيقونة 8: أيقونة قاعدة بيانات (Database) -->
-    <div class="icon">
-      <svg viewBox="0 0 64 64">
-        <!-- القطعة العلوية (بيضاوي علوي) -->
-        <ellipse cx="32" cy="16" rx="16" ry="6" stroke="#fff" fill="none" stroke-width="4" />
-        <!-- مستطيل القاعدة -->
-        <rect x="16" y="16" width="32" height="24" stroke="#fff" fill="none" stroke-width="4" />
-        <!-- القطعة السفلية (بيضاوي سفلي) -->
-        <ellipse cx="32" cy="40" rx="16" ry="6" stroke="#fff" fill="none" stroke-width="4" />
-      </svg>
-    </div>
-  </div>
-</div>
-<body> 
-
+            gap: 10px;
+            max-width: 95%;
+          }
+          .icon {
+            width: 40px;
+            height: 40px;
+            animation: float 3s ease-in-out infinite;
+          }
+          /* تأخير مختلف لكل أيقونة */
+          .icon:nth-child(1) { animation-delay: 0s; }
+          .icon:nth-child(2) { animation-delay: 0.3s; }
+          .icon:nth-child(3) { animation-delay: 0.6s; }
+          .icon:nth-child(4) { animation-delay: 0.9s; }
+          .icon:nth-child(5) { animation-delay: 1.2s; }
+          .icon:nth-child(6) { animation-delay: 1.5s; }
+          .icon:nth-child(7) { animation-delay: 1.8s; }
+          .icon:nth-child(8) { animation-delay: 2.1s; }
+          .icon:nth-child(9) { animation-delay: 2.4s; }
+          .icon:nth-child(10) { animation-delay: 2.7s; }
+          .icon:nth-child(11) { animation-delay: 3.0s; }
+          .icon:nth-child(12) { animation-delay: 3.3s; }
+          .icon:nth-child(13) { animation-delay: 3.6s; }
+          .icon:nth-child(14) { animation-delay: 3.9s; }
+          .icon:nth-child(15) { animation-delay: 4.2s; }
+          .icon:nth-child(16) { animation-delay: 4.5s; }
+          .icon:nth-child(17) { animation-delay: 4.8s; }
+          
+          @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+          }
+          
+          /* استجابة الشاشات الصغيرة */
+          @media (max-width: 600px) {
+            .banner h1 { font-size: 1.8em; }
+            .banner p { font-size: 1em; }
+            .icon { width: 30px; height: 30px; }
+            .logo { width: 80px; }
+          }
+        </style>
+      </head>
+      <body>
+        <div class="banner">
+          <!-- شعار الشركة في الزاوية العليا اليسرى -->
+          <img src="https://www2.0zz0.com/2025/02/17/14/557749420.png" alt="شعار الشركة" class="logo">
+          
+          <h1>تكنولوجيا اليوم تبني نجاح الغد</h1>
+          <p>حلول مبتكرة تضعك في طليعة العصر الرقمي</p>
+          <a href="https://wa.me/966501120781" target="_blank">
+            <button>تواصل معنا</button>
+          </a>
+          
+          <div class="icon-container">
+            <!-- أيقونة 1: رقاقة إلكترونية -->
+            <div class="icon">
+              <svg viewBox="0 0 100 100">
+                <rect x="15" y="15" width="70" height="70" rx="10" ry="10" fill="rgba(255,255,255,0.8)" />
+                <circle cx="30" cy="30" r="5" fill="#1c92d2"/>
+                <circle cx="70" cy="30" r="5" fill="#1c92d2"/>
+                <circle cx="30" cy="70" r="5" fill="#1c92d2"/>
+                <circle cx="70" cy="70" r="5" fill="#1c92d2"/>
+              </svg>
+            </div>
+            <!-- أيقونة 2: شبكة عصبية بسيطة -->
+            <div class="icon">
+              <svg viewBox="0 0 100 100">
+                <circle cx="30" cy="30" r="8" fill="rgba(255,255,255,0.8)" />
+                <circle cx="70" cy="30" r="8" fill="rgba(255,255,255,0.8)" />
+                <circle cx="30" cy="70" r="8" fill="rgba(255,255,255,0.8)" />
+                <circle cx="70" cy="70" r="8" fill="rgba(255,255,255,0.8)" />
+                <line x1="30" y1="30" x2="70" y2="70" stroke="#1c92d2" stroke-width="2"/>
+                <line x1="70" y1="30" x2="30" y2="70" stroke="#1c92d2" stroke-width="2"/>
+              </svg>
+            </div>
+            <!-- أيقونة 3: دماغ مبسط -->
+            <div class="icon">
+              <svg viewBox="0 0 100 100">
+                <path d="M50 15 C35 15, 20 30, 20 50 C20 70, 35 85, 50 85 C65 85, 80 70, 80 50 C80 30, 65 15, 50 15 Z" fill="rgba(255,255,255,0.8)"/>
+                <circle cx="40" cy="50" r="3" fill="#1c92d2"/>
+                <circle cx="60" cy="50" r="3" fill="#1c92d2"/>
+              </svg>
+            </div>
+            <!-- أيقونة 4: بيانات وتحليل -->
+            <div class="icon">
+              <svg viewBox="0 0 100 100">
+                <rect x="20" y="20" width="15" height="60" fill="rgba(255,255,255,0.8)"/>
+                <rect x="42.5" y="40" width="15" height="40" fill="rgba(255,255,255,0.8)"/>
+                <rect x="65" y="10" width="15" height="70" fill="rgba(255,255,255,0.8)"/>
+                <line x1="15" y1="85" x2="85" y2="85" stroke="#1c92d2" stroke-width="2"/>
+              </svg>
+            </div>
+            <!-- أيقونة 5: دوائر مترابطة (شبكة) -->
+            <div class="icon">
+              <svg viewBox="0 0 100 100">
+                <circle cx="30" cy="30" r="5" fill="rgba(255,255,255,0.8)"/>
+                <circle cx="70" cy="30" r="5" fill="rgba(255,255,255,0.8)"/>
+                <circle cx="30" cy="70" r="5" fill="rgba(255,255,255,0.8)"/>
+                <circle cx="70" cy="70" r="5" fill="rgba(255,255,255,0.8)"/>
+                <line x1="30" y1="30" x2="70" y2="30" stroke="#1c92d2" stroke-width="2"/>
+                <line x1="30" y1="30" x2="30" y2="70" stroke="#1c92d2" stroke-width="2"/>
+                <line x1="70" y1="70" x2="70" y2="30" stroke="#1c92d2" stroke-width="2"/>
+                <line x1="70" y1="70" x2="30" y2="70" stroke="#1c92d2" stroke-width="2"/>
+              </svg>
+            </div>
+            <!-- أيقونة 6: رمز ذكاء اصطناعي بخطوط متقاطعة -->
+            <div class="icon">
+              <svg viewBox="0 0 100 100">
+                <path d="M50 10 L60 40 L90 40 L65 60 L75 90 L50 70 L25 90 L35 60 L10 40 L40 40 Z" fill="rgba(255,255,255,0.8)"/>
+                <circle cx="50" cy="50" r="4" fill="#1c92d2"/>
+              </svg>
+            </div>
+            <!-- أيقونة 7: تدفق البيانات التجريدي -->
+            <div class="icon">
+              <svg viewBox="0 0 100 100">
+                <path d="M20,30 Q50,10 80,30 T80,70 Q50,90 20,70 T20,30" fill="rgba(255,255,255,0.8)"/>
+                <line x1="20" y1="30" x2="80" y2="70" stroke="#1c92d2" stroke-width="2"/>
+                <line x1="80" y1="30" x2="20" y2="70" stroke="#1c92d2" stroke-width="2"/>
+              </svg>
+            </div>
+            <!-- أيقونة 8: رأس روبوت -->
+            <div class="icon">
+              <svg viewBox="0 0 100 100">
+                <rect x="20" y="30" width="60" height="50" rx="10" fill="rgba(255,255,255,0.8)"/>
+                <circle cx="40" cy="50" r="5" fill="#1c92d2"/>
+                <circle cx="60" cy="50" r="5" fill="#1c92d2"/>
+                <rect x="45" y="65" width="10" height="5" fill="#1c92d2"/>
+                <rect x="30" y="20" width="5" height="10" fill="#1c92d2"/>
+                <rect x="65" y="20" width="5" height="10" fill="#1c92d2"/>
+              </svg>
+            </div>
+            <!-- أيقونة 9: العين الرقمية -->
+            <div class="icon">
+              <svg viewBox="0 0 100 100">
+                <ellipse cx="50" cy="50" rx="30" ry="15" fill="rgba(255,255,255,0.8)"/>
+                <circle cx="50" cy="50" r="5" fill="#1c92d2"/>
+                <line x1="20" y1="50" x2="80" y2="50" stroke="#1c92d2" stroke-width="2"/>
+              </svg>
+            </div>
+            <!-- أيقونة 10: السحابة الذكية -->
+            <div class="icon">
+              <svg viewBox="0 0 100 100">
+                <path d="M30 60 C20 60 20 40 40 40 C42 30 58 30 60 40 C80 40 80 60 70 60 C70 80 30 80 30 60 Z" fill="rgba(255,255,255,0.8)"/>
+                <circle cx="50" cy="55" r="3" fill="#1c92d2"/>
+                <line x1="40" y1="65" x2="60" y2="65" stroke="#1c92d2" stroke-width="2"/>
+              </svg>
+            </div>
+            <!-- أيقونة 11: شبكة سداسية -->
+            <div class="icon">
+              <svg viewBox="0 0 100 100">
+                <polygon points="50,10 80,25 80,55 50,70 20,55 20,25" fill="rgba(255,255,255,0.8)"/>
+                <circle cx="50" cy="10" r="3" fill="#1c92d2"/>
+                <circle cx="80" cy="25" r="3" fill="#1c92d2"/>
+                <circle cx="80" cy="55" r="3" fill="#1c92d2"/>
+                <circle cx="50" cy="70" r="3" fill="#1c92d2"/>
+                <circle cx="20" cy="55" r="3" fill="#1c92d2"/>
+                <circle cx="20" cy="25" r="3" fill="#1c92d2"/>
+                <line x1="50" y1="10" x2="80" y2="25" stroke="#1c92d2" stroke-width="2" />
+                <line x1="80" y1="25" x2="80" y2="55" stroke="#1c92d2" stroke-width="2" />
+                <line x1="80" y1="55" x2="50" y2="70" stroke="#1c92d2" stroke-width="2" />
+                <line x1="50" y1="70" x2="20" y2="55" stroke="#1c92d2" stroke-width="2" />
+                <line x1="20" y1="55" x2="20" y2="25" stroke="#1c92d2" stroke-width="2" />
+                <line x1="20" y1="25" x2="50" y2="10" stroke="#1c92d2" stroke-width="2" />
+              </svg>
+            </div>
+            <!-- أيقونة 12: شبكة نجمية (عقد مركزية وخمسة أطراف) -->
+            <div class="icon">
+              <svg viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="4" fill="#1c92d2" />
+                <circle cx="50" cy="15" r="3" fill="rgba(255,255,255,0.8)" />
+                <circle cx="80" cy="35" r="3" fill="rgba(255,255,255,0.8)" />
+                <circle cx="65" cy="75" r="3" fill="rgba(255,255,255,0.8)" />
+                <circle cx="35" cy="75" r="3" fill="rgba(255,255,255,0.8)" />
+                <circle cx="20" cy="35" r="3" fill="rgba(255,255,255,0.8)" />
+                <line x1="50" y1="50" x2="50" y2="15" stroke="#1c92d2" stroke-width="2" />
+                <line x1="50" y1="50" x2="80" y2="35" stroke="#1c92d2" stroke-width="2" />
+                <line x1="50" y1="50" x2="65" y2="75" stroke="#1c92d2" stroke-width="2" />
+                <line x1="50" y1="50" x2="35" y2="75" stroke="#1c92d2" stroke-width="2" />
+                <line x1="50" y1="50" x2="20" y2="35" stroke="#1c92d2" stroke-width="2" />
+              </svg>
+            </div>
+            <!-- أيقونة 13: معالج رقمي (مستطيل مع "رقائق") -->
+            <div class="icon">
+              <svg viewBox="0 0 100 100">
+                <rect x="25" y="25" width="50" height="50" fill="rgba(255,255,255,0.8)" />
+                <rect x="45" y="45" width="10" height="10" fill="#1c92d2"/>
+                <rect x="20" y="40" width="5" height="10" fill="#1c92d2"/>
+                <rect x="75" y="40" width="5" height="10" fill="#1c92d2"/>
+                <rect x="40" y="20" width="10" height="5" fill="#1c92d2"/>
+                <rect x="40" y="75" width="10" height="5" fill="#1c92d2"/>
+              </svg>
+            </div>
+            <!-- أيقونة 14: دائرة ذكية بخطوط متقاطعة -->
+            <div class="icon">
+              <svg viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="30" fill="rgba(255,255,255,0.8)"/>
+                <line x1="50" y1="20" x2="50" y2="80" stroke="#1c92d2" stroke-width="2"/>
+                <line x1="20" y1="50" x2="80" y2="50" stroke="#1c92d2" stroke-width="2"/>
+                <line x1="30" y1="30" x2="70" y2="70" stroke="#1c92d2" stroke-width="2"/>
+                <line x1="70" y1="30" x2="30" y2="70" stroke="#1c92d2" stroke-width="2"/>
+              </svg>
+            </div>
+            <!-- أيقونة 15: رمز التعلم الآلي (شبكة طبقية من الدوائر) -->
+            <div class="icon">
+              <svg viewBox="0 0 100 100">
+                <!-- العمود الأيسر -->
+                <circle cx="25" cy="30" r="4" fill="rgba(255,255,255,0.8)" />
+                <circle cx="25" cy="50" r="4" fill="rgba(255,255,255,0.8)" />
+                <circle cx="25" cy="70" r="4" fill="rgba(255,255,255,0.8)" />
+                <!-- العمود الأوسط -->
+                <circle cx="50" cy="30" r="4" fill="rgba(255,255,255,0.8)" />
+                <circle cx="50" cy="50" r="4" fill="rgba(255,255,255,0.8)" />
+                <circle cx="50" cy="70" r="4" fill="rgba(255,255,255,0.8)" />
+                <!-- العمود الأيمن -->
+                <circle cx="75" cy="30" r="4" fill="rgba(255,255,255,0.8)" />
+                <circle cx="75" cy="50" r="4" fill="rgba(255,255,255,0.8)" />
+                <circle cx="75" cy="70" r="4" fill="rgba(255,255,255,0.8)" />
+                <!-- وصل الأعمدة -->
+                <line x1="25" y1="30" x2="50" y2="30" stroke="#1c92d2" stroke-width="2" />
+                <line x1="25" y1="50" x2="50" y2="50" stroke="#1c92d2" stroke-width="2" />
+                <line x1="25" y1="70" x2="50" y2="70" stroke="#1c92d2" stroke-width="2" />
+                <line x1="50" y1="30" x2="75" y2="30" stroke="#1c92d2" stroke-width="2" />
+                <line x1="50" y1="50" x2="75" y2="50" stroke="#1c92d2" stroke-width="2" />
+                <line x1="50" y1="70" x2="75" y2="70" stroke="#1c92d2" stroke-width="2" />
+              </svg>
+            </div>
+            <!-- أيقونة 16: سماعة واقع افتراضي -->
+            <div class="icon">
+              <svg viewBox="0 0 100 100">
+                <path d="M20,40 Q50,10 80,40 L80,60 Q50,80 20,60 Z" fill="rgba(255,255,255,0.8)"/>
+                <circle cx="40" cy="50" r="5" fill="#1c92d2"/>
+                <circle cx="60" cy="50" r="5" fill="#1c92d2"/>
+              </svg>
+            </div>
+            <!-- أيقونة 17: رمز اللانهاية التكنولوجي -->
+            <div class="icon">
+              <svg viewBox="0 0 100 100">
+                <path d="M35,50 C35,35 50,35 50,50 C50,65 35,65 35,50 Z M50,50 C50,35 65,35 65,50 C65,65 50,65 50,50 Z" fill="rgba(255,255,255,0.8)" stroke="#1c92d2" stroke-width="2"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </body>
 <script>
     function createCircles() {
         const bg = document.getElementById('animatedBg');
