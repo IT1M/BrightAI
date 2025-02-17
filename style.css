@@ -2326,3 +2326,17 @@ header {
         background: #333 !important;
     }
 }
+urger Menu Styles for Mobile */
+@media (max-width: 768px) {
+    .hamburger-menu {
+        display: block;
+        cursor: pointer;
+    }
+    .hamburger-menu span {
+        display: block;
+        width: 30px;
+        height: 3px;
+        margin: 5px auto;
+        background-color: red; /* تم تغيير اللون من الرصاصي إلى الأحمر */
+        transition: all 0.3s ease-in-out;
+    }
