@@ -2397,7 +2397,7 @@ header {
     position: absolute;
     height: 4px;
     width: 100%;
-    background: var(--primary-color);
+    background: #ffffff; /* تغيير من var(--primary-color) إلى #ffffff */
     border-radius: 4px;
     opacity: 1;
     left: 0;
@@ -2439,7 +2439,7 @@ header {
 
     /* تأكيد لون الخطوط في وضع الموبايل */
     .navbar-toggle span {
-        background: var(--primary-color);
+        background: #ffffff; /* تغيير من var(--primary-color) إلى #ffffff */
     }
 }
 
