@@ -3167,77 +3167,45 @@ header {
             }
         }
 
-/* تنسيق مشترك للأقسام الثلاثة */
-.ai-agent-section,
-.automation-section,
-.ai-analysis-section {
-    background: linear-gradient(45deg, #1a1a2e, #0f3460);
-    color: #ffffff;
-    padding: 4rem 2rem;
-    font-family: 'Tajawal', sans-serif;
-    direction: rtl;
+/* ...existing code... */
+
+@media (max-width: 768px) {
+    /* نصوص قسم خدمات الذكاء الاصطناعي المبتكرة باللون الأسود */
+    .services-section h2,
+    .services-section .service-title,
+    .services-section p,
+    .services-section .cta-text,
+    .service-item h2,
+    .service-item p {
+        color: #000000 !important;
+    }
+    
+    /* نصوص وكيل الذكاء الاصطناعي، أتمتة العمليات، و"في عصر الثورة الرقمية" بلون بنفسجي غامق */
+    .ai-agent-section,
+    .automation-section,
+    .ai-analysis-section {
+        color: #1a1a2e !important;
+    }
+
+    .ai-agent-section h1,
+    .ai-agent-section h2,
+    .ai-agent-section h3,
+    .ai-agent-section p,
+    .automation-section h2,
+    .automation-section h3,
+    .automation-section p,
+    .ai-analysis-section h2,
+    .ai-analysis-section .hero h2,
+    .ai-analysis-section p {
+        color: #1a1a2e !important;
+    }
+
+    /* تأكيد لون النصوص في البطاقات */
+    .ai-agent-section .ai-feature-card p,
+    .automation-section .info-box p,
+    .automation-section .benefit-item p {
+        color: #1a1a2e !important;
+    }
 }
 
-/* تحديث ألوان العناوين والنصوص */
-.ai-agent-section h1,
-.ai-agent-section h2,
-.ai-agent-section h3,
-.automation-section h2,
-.automation-section h3,
-.ai-analysis-section h2,
-.ai-analysis-section h3 {
-    color: #ffffff;
-}
-
-.ai-agent-section p,
-.automation-section p,
-.ai-analysis-section p {
-    color: rgba(255, 255, 255, 0.9);
-}
-
-/* تحديث ألوان البطاقات */
-.ai-feature-card,
-.info-box,
-.feature-card {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-}
-
-.ai-feature-card:hover,
-.info-box:hover,
-.feature-card:hover {
-    background: rgba(255, 255, 255, 0.1);
-}
-
-/* تحديث لون الأيقونات */
-.feature-icon,
-.icon {
-    color: #00ffff;
-}
-
-/* تحديث ألوان العناوين الفرعية */
-.ai-subtitle,
-.benefits h2,
-.feature-title {
-    color: #00ffff;
-}
-
-/* تحديث خلفية صناديق المزايا */
-.benefits-grid .benefit-item {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.benefits-grid .benefit-item:hover {
-    background: rgba(255, 255, 255, 0.1);
-}
-
-/* تحديث ألوان النصوص في صناديق المزايا */
-.benefit-item h4 {
-    color: #00ffff;
-}
-
-.benefit-item p {
-    color: rgba(255, 255, 255, 0.9);
-}
+/* ...existing code... */
