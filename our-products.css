@@ -552,7 +552,8 @@ main h2 {
     text-align: right;
 }
 
-.checkout-button {
+.checkout-button,
+.paypal-checkout-button {
     background: linear-gradient(135deg, #00a6e6, #0056b3);
     color: white;
     border: none;
@@ -563,9 +564,11 @@ main h2 {
     cursor: pointer;
     transition: all 0.3s ease;
     margin-top: 15px;
+    width: 100%;
 }
 
-.checkout-button:hover {
+.checkout-button:hover,
+.paypal-checkout-button:hover {
     background: linear-gradient(135deg, #0056b3, #003d80);
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
