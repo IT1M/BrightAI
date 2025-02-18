@@ -3180,11 +3180,11 @@ header {
         color: #000000 !important;
     }
     
-    /* نصوص وكيل الذكاء الاصطناعي، أتمتة العمليات، و"في عصر الثورة الرقمية" بلون بنفسجي غامق */
+    /* تعديل نصوص وكيل الذكاء الاصطناعي، أتمتة العمليات، و"في عصر الثورة الرقمية" بلون بنفسجي فاتح */
     .ai-agent-section,
     .automation-section,
     .ai-analysis-section {
-        color: #1a1a2e !important;
+        color: #E6E6FA !important;
     }
 
     .ai-agent-section h1,
@@ -3197,14 +3197,14 @@ header {
     .ai-analysis-section h2,
     .ai-analysis-section .hero h2,
     .ai-analysis-section p {
-        color: #1a1a2e !important;
+        color: #E6E6FA !important;
     }
 
     /* تأكيد لون النصوص في البطاقات */
     .ai-agent-section .ai-feature-card p,
     .automation-section .info-box p,
     .automation-section .benefit-item p {
-        color: #1a1a2e !important;
+        color: #E6E6FA !important;
     }
 }
 
