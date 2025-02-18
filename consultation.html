@@ -18,6 +18,28 @@ crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="استشارات الذكاء الاصطناعي للأعمال - حلول رقمية لتحسين الإنتاجية.">
     <title>استشارات الذكاء الاصطناعي - Bright AI</title>
+
+    <!-- Add favicon -->
+    <link rel="icon" href="https://d.top4top.io/p_33354e90u1.png" type="image/png">
+
+    <!-- Add Open Graph meta tags -->
+    <meta property="og:title" content="استشارات الذكاء الاصطناعي - Bright AI">
+    <meta property="og:description" content="استشارات الذكاء الاصطناعي للأعمال - حلول رقمية لتحسين الإنتاجية.">
+    <meta property="og:image" content="https://d.top4top.io/p_33354e90u1.png">
+    <meta property="og:url" content="https://brightaii.com/consultation.html">
+    <meta property="og:type" content="website">
+
+    <!-- Add JSON-LD schema markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Bright AI",
+      "description": "استشارات الذكاء الاصطناعي للأعمال - حلول رقمية لتحسين الإنتاجية.",
+      "logo": "https://d.top4top.io/p_33354e90u1.png",
+      "url": "https://brightaii.com"
+    }
+    </script>
     
     <!-- استيراد الخطوط والأيقونات -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -42,13 +64,49 @@ crossorigin="anonymous"></script>
         </ul>
     </nav>
 
-    <!-- ===================== القسم الرئيسي ===================== -->
-    <section class="hero" id="home">
-        <h1><i class="fas fa-lightbulb"></i> استشارات الذكاء الاصطناعي للأعمال</h1>
-        <p>نساعد شركتك على التحول الرقمي وتحسين الإنتاجية من خلال حلول الذكاء الاصطناعي المخصصة.</p>
-        <a href="#consultations" class="cta-button"><i class="fas fa-calendar-alt"></i> احجز استشارة مجانية</a>
-    </section>
-
+<!-- ===================== القسم الرئيسي ===================== -->
+<section class="hero" id="home">
+    <h1><i class="fas fa-lightbulb"></i> استشارات الذكاء الاصطناعي للأعمال</h1>
+    <p>نساعد شركتك على التحول الرقمي وتحسين الإنتاجية من خلال حلول الذكاء الاصطناعي المخصصة.</p>
+    <button class="cta-button" id="openConsultationForm">
+      <i class="fas fa-calendar-alt"></i> احجز استشارة مجانية
+    </button>
+  </section>
+  
+  <!-- نموذج حجز الاستشارة (نافذة منبثقة) -->
+  <div id="consultationModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>احجز استشارة مجانية</h2>
+      <form id="consultationForm" method="post" action="mailto:info@brightaii.com" enctype="text/plain">
+        <div class="form-group">
+          <label for="consultDate">التاريخ:</label>
+          <input type="date" id="consultDate" name="consultDate" required>
+        </div>
+        <div class="form-group">
+          <label for="consultTime">الوقت:</label>
+          <input type="time" id="consultTime" name="consultTime" required>
+        </div>
+        <div class="form-group">
+          <label for="personalName">الاسم الشخصي:</label>
+          <input type="text" id="personalName" name="personalName" placeholder="أدخل اسمك" required>
+        </div>
+        <div class="form-group">
+          <label for="companyName">اسم الشركة:</label>
+          <input type="text" id="companyName" name="companyName" placeholder="أدخل اسم الشركة" required>
+        </div>
+        <div class="form-group">
+          <label for="businessActivity">طبيعة عمل الشركة:</label>
+          <input type="text" id="businessActivity" name="businessActivity" placeholder="أدخل مجال عمل الشركة" required>
+        </div>
+        <div class="form-group">
+          <label for="email">البريد الإلكتروني:</label>
+          <input type="email" id="email" name="email" placeholder="example@domain.com" required>
+        </div>
+        <button type="submit" class="cta-button">إرسال</button>
+      </form>
+    </div>
+  </div>
     <!-- ===================== خدماتنا ===================== -->
     <section class="services-section" id="consultations">
         <h2><i class="fas fa-tools"></i> خدماتنا الاستشارية في مجال الذكاء الاصطناعي</h2>
@@ -220,7 +278,7 @@ crossorigin="anonymous"></script>
         </div>
         <div class="contact-info">
             <h3>تواصل معنا</h3>
-            <p><i class="fas fa-envelope"></i> yazeedaiai0@gmail.com</p>
+            <p><i class="fas fa-envelope"></i> info@brightaii.com</p>
         </div>
     </footer>
 </body>

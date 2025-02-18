@@ -35,3 +35,29 @@ document.addEventListener('DOMContentLoaded', function () {
         renderer.setSize(chartContainer.offsetWidth, chartContainer.offsetHeight);
     });
 });
+document.addEventListener("DOMContentLoaded", function () {
+  // استهداف العناصر
+  var openModalBtn = document.getElementById("openConsultationForm");
+  var modal = document.getElementById("consultationModal");
+  var closeModal = document.querySelector(".close");
+
+  // التأكد من أن النافذة غير ظاهرة عند بدء التشغيل
+  modal.style.display = "none";
+
+  // فتح النافذة عند الضغط على زر الحجز
+  openModalBtn.addEventListener("click", function () {
+    modal.style.display = "flex";
+  });
+
+  // إغلاق النافذة عند الضغط على زر الإغلاق
+  closeModal.addEventListener("click", function () {
+    modal.style.display = "none";
+  });
+
+  // إغلاق النافذة عند النقر خارج المحتوى
+  window.addEventListener("click", function (event) {
+    if (event.target === modal) {
+      modal.style.display = "none";
+    }
+  });
+});
