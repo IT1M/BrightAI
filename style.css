@@ -2964,7 +2964,7 @@ header {
 }
 
 .ai-analysis-section {
-    background-color: #f8f9fa;
+    background: linear-gradient(45deg, #1a1a2e, #0f3460);
     padding: 20px;
 }
 
@@ -2986,6 +2986,7 @@ header {
     font-size: 2em;
     margin-bottom: 20px;
     line-height: 1.4;
+    color: #00ffff; /* لون ازرق فاتح للعناوين */
 }
 
 .ai-analysis-section .features {
@@ -2996,11 +2997,12 @@ header {
 }
 
 .ai-analysis-section .feature-card {
-    background: white;
+    background: rgba(255, 255, 255, 0.05);
     padding: 25px;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .ai-analysis-section .feature-card:hover {
@@ -3009,22 +3011,23 @@ header {
 
 .ai-analysis-section .feature-icon {
     font-size: 2.5em;
-    color: #007bff;
+    color: #00ffff; /* لون ازرق فاتح للأيقونات */
     margin-bottom: 15px;
 }
 
 .ai-analysis-section .feature-title {
-    color: #0056b3;
+    color: #00ffff; /* لون ازرق فاتح للعناوين */
     font-size: 1.2em;
     margin-bottom: 10px;
     font-weight: bold;
 }
 
 .ai-analysis-section .help-section {
-    background: white;
+    background: rgba(255, 255, 255, 0.05);
     padding: 30px;
     border-radius: 15px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .ai-analysis-section .benefits {
@@ -3036,13 +3039,14 @@ header {
     margin: 15px 0;
     padding-right: 30px;
     position: relative;
+    color: #90caf9; /* لون ازرق فاتح للنصوص */
 }
 
 .ai-analysis-section .benefits li:before {
     content: "\f00c";
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
-    color: #007bff;
+    color: #00ffff; /* لون ازرق فاتح لعلامات القائمة */
     position: absolute;
     right: 0;
 }
@@ -3059,8 +3063,15 @@ header {
 }
 
 .ai-analysis-section h2 {
-    color: #0056b3;
+    color: #00ffff; /* لون ازرق فاتح للعناوين */
     margin: 30px 0;
+}
+.ai-analysis-section .hero h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    line-height: 1.4;
+    color: #90caf9; /* لون ازرق فاتح للنص الرئيسي */
+    text-align: center;
 }
  * {
             margin: 0;
@@ -3155,3 +3166,78 @@ header {
                 grid-template-columns: 1fr;
             }
         }
+
+/* تنسيق مشترك للأقسام الثلاثة */
+.ai-agent-section,
+.automation-section,
+.ai-analysis-section {
+    background: linear-gradient(45deg, #1a1a2e, #0f3460);
+    color: #ffffff;
+    padding: 4rem 2rem;
+    font-family: 'Tajawal', sans-serif;
+    direction: rtl;
+}
+
+/* تحديث ألوان العناوين والنصوص */
+.ai-agent-section h1,
+.ai-agent-section h2,
+.ai-agent-section h3,
+.automation-section h2,
+.automation-section h3,
+.ai-analysis-section h2,
+.ai-analysis-section h3 {
+    color: #ffffff;
+}
+
+.ai-agent-section p,
+.automation-section p,
+.ai-analysis-section p {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* تحديث ألوان البطاقات */
+.ai-feature-card,
+.info-box,
+.feature-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.ai-feature-card:hover,
+.info-box:hover,
+.feature-card:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* تحديث لون الأيقونات */
+.feature-icon,
+.icon {
+    color: #00ffff;
+}
+
+/* تحديث ألوان العناوين الفرعية */
+.ai-subtitle,
+.benefits h2,
+.feature-title {
+    color: #00ffff;
+}
+
+/* تحديث خلفية صناديق المزايا */
+.benefits-grid .benefit-item {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.benefits-grid .benefit-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* تحديث ألوان النصوص في صناديق المزايا */
+.benefit-item h4 {
+    color: #00ffff;
+}
+
+.benefit-item p {
+    color: rgba(255, 255, 255, 0.9);
+}
