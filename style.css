@@ -2,8 +2,17 @@
 
 /* المتغيرات */
 :root {
-    --primary-color: #6759ff;
-    --secondary-color: #777;
+    --primary-color: #4A90E2;
+    --secondary-color: #5C6AC4;
+    --accent-color: #00BFA5;
+    --text-primary: #2C3E50;
+    --text-secondary: #526173;
+    --background-light: #F5F7FA;
+    --background-dark: #1A237E;
+    --white: #FFFFFF;
+    --error: #FF5252;
+    --success: #4CAF50;
+    --warning: #FFC107;
     --light-gray: #f8f9fa;
     --dark-gray: #333;
     --modal-overlay-color: rgba(0, 0, 0, 0.5);
@@ -25,8 +34,8 @@ body {
     padding: 0;
     direction: rtl;
     text-align: right;
-    color: var(--dark-gray);
-    background-color: var(--background-color);
+    color: var(--text-primary);
+    background-color: var(--background-light);
     overflow-x: hidden;
     font-size: var(--text-scale-ratio);
     line-height: 1.6;
@@ -40,9 +49,9 @@ body {
 
 /* الهيدر */
 header {
-    background-color: #f0f0f0; /* Subtle background color */
+    background-color: var(--white);
     padding: 1rem 0;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Added box-shadow */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     position: relative;
     z-index: 2;
 }
@@ -57,7 +66,7 @@ header {
 
 .navbar li a {
     text-decoration: none;
-    color: var(--dark-gray);
+    color: var(--text-primary);
     padding: 0.7rem 1.2rem; /* Increased padding */
     border-radius: 5px;
     transition: color 0.3s ease, background-color 0.3s ease, transform 0.2s ease; /* Added transform transition */
@@ -69,7 +78,7 @@ header {
 
 .navbar li a:hover {
     color: var(--primary-color);
-    background-color: rgba(0, 123, 255, 0.1);
+    background-color: rgba(74, 144, 226, 0.1);
     transform: translateY(-2px); /* Added slight lift on hover */
 }
 .navbar li a::before {
@@ -105,7 +114,7 @@ header {
         right: -100%;
         width: 85%;
         height: 100vh;
-        background: #ffffff; /* Change background to white */
+        background: var(--white); /* Change background to white */
         transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         z-index: 1000;
         overflow-y: auto;
@@ -120,7 +129,7 @@ header {
     .navbar li a {
         padding: 15px 20px; /* Reduce padding */
         text-align: center; /* Center text */
-        color: #333333; /* Ensure text color is dark */
+        color: var(--text-primary); /* Ensure text color is dark */
         width: 100%;
         margin: 5px 0;
         border-radius: 8px;
@@ -148,7 +157,7 @@ header {
         position: absolute;
         height: 4px;
         width: 100%;
-        background: #ff0000; /* Red color */
+        background: var(--primary-color); /* Red color */
         border-radius: 4px;
         left: 0;
         transform: rotate(0deg);
@@ -228,8 +237,9 @@ body {
     text-align: center;
     position: relative;
     overflow: hidden;
-    background: linear-gradient(135deg, var(--light-gray), white);
-        perspective: 1000px; /* Add perspective for 3D effect */
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--white);
+    perspective: 1000px; /* Add perspective for 3D effect */
 }
 
 .hero h1 {
@@ -251,7 +261,7 @@ body {
 
 .button {
     padding: 0.8rem 1.5rem;
-    color: white;
+    color: var(--white);
     background-color: var(--primary-color);
     border: none;
     border-radius: 5px;
@@ -263,7 +273,7 @@ body {
 }
 
 .button:hover {
-    background-color: #0056b3;
+    background-color: var(--secondary-color);
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
@@ -285,10 +295,10 @@ body {
 }
 
 .service-card {
-     background: white;
+     background: var(--white);
     padding: 2rem; /* زيادة التباعد الداخلي */
     border-radius: 10px; /* زيادة انحناء الحواف */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* زيادة الظل */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* زيادة الظل */
     text-align: center;
       transition: transform 0.5s ease, box-shadow 0.5s ease;
     position: relative;
@@ -540,8 +550,8 @@ body {
 
 /* Footer Styles */
 footer {
-    background-color: var(--dark-gray);
-    color: white;
+    background-color: var(--background-dark);
+    color: var(--white);
     padding: 2rem 0;
     position: relative;
        perspective: 800px;
@@ -580,7 +590,7 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: white;
+    background: rgba(255, 255, 255, 0.1);
     border-radius: 50%;
     transition: transform 0.3s ease;
     text-decoration: none;
@@ -642,7 +652,7 @@ footer {
     background-color: rgba(0, 0, 0, 0.4); /* خلفية شبه شفافة */
 }
 .modal-content {
-    background-color: white;
+    background-color: var(--white);
     /* margin: 10% auto;  <--  إزالة هذا السطر */
     padding: 20px;
     border: 1px solid #888;
@@ -1017,7 +1027,7 @@ footer {
         right: -100%;
         width: 80%;
         height: 100vh;
-        background: #ffffff; /* Change background to white */
+        background: var(--white); /* Change background to white */
         transition: right 0.3s ease;
         z-index: 1000;
         overflow-y: auto;
@@ -1030,7 +1040,7 @@ footer {
     .navbar li a {
         padding: 0.5rem 1rem;
         text-align: center;
-        color: #333333; /* Ensure text color is dark */
+        color: var(--text-primary); /* Ensure text color is dark */
     }
 
     .navbar-toggle {
@@ -2325,7 +2335,7 @@ header {
     position: absolute;
     height: 4px;
     width: 100%;
-    background: #ff0000; /* تغيير لون الخطوط إلى الأحمر */
+    background: var(--primary-color); /* Red color */
     border-radius: 4px;
     opacity: 1;
     left: 0;
@@ -2333,96 +2343,64 @@ header {
     transition: .3s ease-in-out;
 }
 
-/* عند فتح القائمة، نحافظ على اللون الأسود */
-.navbar-toggle.open span {
-    background: #ff0000;
+.navbar-toggle span:nth-child(1) {
+    top: 0;
 }
 
+.navbar-toggle span:nth-child(2) {
+    top: 12px; /* تعديل المسافة بين الخطوط */
+}
+
+.navbar-toggle span:nth-child(3) {
+    top: 24px; /* تعديل المسافة بين الخطوط */
+}
+
+.navbar-toggle.open span:nth-child(1) {
+    top: 12px;
+    transform: rotate(135deg);
+}
+
+.navbar-toggle.open span:nth-child(2) {
+    opacity: 0;
+    transform: translateX(-20px);
+}
+
+.navbar-toggle.open span:nth-child(3) {
+    top: 12px;
+    transform: rotate(-135deg);
+}
+
+/* تحسينات إضافية للهاتف المحمول */
 @media (max-width: 768px) {
-    .navbar-toggle {
-        display: block;
+    .navbar {
+        width: 85%; /* زيادة عرض القائمة */
+        padding: 60px 0; /* إضافة مساحة أعلى القائمة */
     }
-    
-    /* تأكيد لون الخطوط في وضع الموبايل */
-    .navbar-toggle span {
-        background: #ff0000;
+
+    .navbar li a {
+        font-size: 1.2rem; /* زيادة حجم الخط */
+        padding: 15px 20px; /* زيادة المساحة حول الروابط */
+        margin: 5px 0; /* إضافة مساحة بين العناصر */
+        border-radius: 8px; /* تحسين شكل الحواف */
+        background: rgba(255, 255, 255, 0.05);
     }
-}
 
-/* تحديث أنماط البانر */
-.banner {
-    position: relative;
-    perspective: 1000px;
-    background: linear-gradient(135deg, #ffffff, #f8f9fa);  /* تغيير الخلفية إلى تدرج فاتح */
-    color: #333;  /* تغيير لون النص إلى الغامق */
-    text-align: center;
-    padding: 60px 20px 160px;
-    overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.banner h1 {
-    font-size: 2.8rem;
-    margin-bottom: 20px;
-    transform: translateZ(60px);
-    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
-    color: #333;  /* تغيير لون العنوان إلى الغامق */
-}
-
-.banner p {
-    font-size: 1.2rem;
-    margin-bottom: 30px;
-    transform: translateZ(40px);
-    color: #666;  /* تغيير لون النص إلى رمادي متوسط */
-}
-
-.cta-btn {
-    display: inline-block;
-    padding: 12px 30px;
-    font-size: 1rem;
-    font-weight: bold;
-    border: none;
-    border-radius: 30px;
-    background-color: var(--primary-color);  /* استخدام لون الأزرار الرئيسي */
-    color: white;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    transform: translateZ(20px);
-}
-
-.cta-btn:hover {
-    transform: translateY(-3px) translateZ(20px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
-
-/* تحديث أنماط الأيقونات في البانر */
-.icon svg {
-    stroke: var(--primary-color);  /* تغيير لون خطوط الأيقونات */
-}
-
-.icon {
-    background: rgba(103, 89, 255, 0.1);  /* خلفية شفافة بلون العلامة التجارية */
-}
-
-/* تحسين حجم وظهور الأيقونات على الموبايل */
-@media (max-width: 768px) {
-    .icon {
-        width: 35px;
-        height: 35px;
-        margin: 8px;
-        padding: 8px;
-        border-radius: 8px;
+    .navbar li a:active {
         background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(5px);
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        transform: scale(0.98);
     }
 
-    .icon svg {
-        width: 100%;
-        height: 100%;
+    /* تحسين ظهور القائمة */
+    .navbar.active {
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+    }
+
+    /* تحسين حركة القائمة */
+    .navbar {
+        transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
 }
+/* ...existing code... */
 
 /* تحديث أنماط زر القائمة */
 .navbar-toggle {
@@ -2444,7 +2422,7 @@ header {
     position: absolute;
     height: 4px;
     width: 100%;
-    background: #ff0000; /* تغيير لون الخطوط إلى الأحمر */
+    background: var(--primary-color); /* تغيير لون الخطوط إلى الأحمر */
     border-radius: 4px;
     opacity: 1;
     left: 0;
@@ -2478,7 +2456,7 @@ header {
     
     /* تأكيد لون الخطوط في وضع الموبايل */
     .navbar-toggle span {
-        background: #ff0000;
+        background: var(--primary-color);
     }
 }
 
@@ -2526,7 +2504,7 @@ header {
     position: absolute;
     height: 3px;
     width: 100%;
-    background-color: #ff0000; /* تغيير لون الخطوط إلى الأحمر */
+    background-color: var(--primary-color); /* تغيير لون الخطوط إلى الأحمر */
     border-radius: 2px;
     opacity: 1;
     left: 0;
@@ -2561,7 +2539,7 @@ header {
     }
     
     .navbar-toggle span {
-        background-color: #ff0000;
+        background-color: var(--primary-color);
     }
 }
 .learn-more-btn {
@@ -2964,7 +2942,7 @@ header {
 }
 
 .ai-analysis-section {
-    background: linear-gradient(45deg, #1a1a2e, #0f3460);
+    background: linear-gradient(45deg, var(--background-dark), var(--secondary-color));
     padding: 20px;
 }
 
@@ -2997,12 +2975,13 @@ header {
 }
 
 .ai-analysis-section .feature-card {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.1);
     padding: 25px;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
     border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
 }
 
 .ai-analysis-section .feature-card:hover {
@@ -3016,7 +2995,7 @@ header {
 }
 
 .ai-analysis-section .feature-title {
-    color: #00ffff; /* لون ازرق فاتح للعناوين */
+    color: var(--accent-color);
     font-size: 1.2em;
     margin-bottom: 10px;
     font-weight: bold;
@@ -3081,7 +3060,7 @@ header {
         }
 
         .footer {
-            background-color: #111827;
+            background-color: var(--background-dark);
             color: white;
             padding: 3rem 0;
             width: 100%; /* إضافة هذه السطر */
@@ -3177,14 +3156,14 @@ header {
     .services-section .cta-text,
     .service-item h2,
     .service-item p {
-        color: #000000 !important;
+        color: var(--text-primary) !important;
     }
     
     /* تعديل نصوص وكيل الذكاء الاصطناعي، أتمتة العمليات، و"في عصر الثورة الرقمية" بلون بنفسجي فاتح */
     .ai-agent-section,
     .automation-section,
     .ai-analysis-section {
-        color: #e438dc !important;
+        color: var(--text-primary) !important;
     }
 
     .ai-agent-section h1,
@@ -3197,14 +3176,14 @@ header {
     .ai-analysis-section h2,
     .ai-analysis-section .hero h2,
     .ai-analysis-section p {
-        color: #e438dc  !important;
+        color: var(--text-primary) !important;
     }
 
     /* تأكيد لون النصوص في البطاقات */
     .ai-agent-section .ai-feature-card p,
     .automation-section .info-box p,
     .automation-section .benefit-item p {
-        color: #e438dc !important;
+        color: var(--text-primary) !important;
     }
 }
 
