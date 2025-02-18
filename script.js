@@ -27,14 +27,14 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
    // Modal functionality for "About Us" section
-    const readMoreButtons = document.querySelectorAll('.read-more-btn'); // تغيير هنا
+    const readMoreButtonsAbout = document.querySelectorAll('.read-more-btn');
     const aboutModal = document.getElementById('aboutModal');
     const closeAboutModalBtn = document.querySelector('#aboutModal .close-modal');
 
-    readMoreButtons.forEach(button => { // تغيير هنا: استخدام حلقة
+    readMoreButtonsAbout.forEach(button => {
         button.addEventListener('click', function (event) {
             event.preventDefault();
-            const modalId = this.getAttribute('data-modal'); // الحصول على معرف النافذة
+            const modalId = this.getAttribute('data-modal');
             const modal = document.getElementById(modalId);
 
             if(modal){
@@ -51,9 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 modalContent.style.top = `${buttonTop}px`;
                 modalContent.style.left = `${buttonLeft}px`;
-
             }
-
         });
     });
 
@@ -98,9 +96,9 @@ document.addEventListener('DOMContentLoaded', function () {
       consultationForm.reset();
     });
 
-    // Handle all "Read More" button clicks
-    const readMoreButtons = document.querySelectorAll('.learn-more-btn');
-    readMoreButtons.forEach(button => {
+    // Handle all "Read More" button clicks for services section
+    const readMoreButtonsServices = document.querySelectorAll('.learn-more-btn');
+    readMoreButtonsServices.forEach(button => {
         button.addEventListener('click', (e) => {
             e.preventDefault();
             const modalId = button.getAttribute('data-modal');

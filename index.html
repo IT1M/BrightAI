@@ -570,7 +570,7 @@ crossorigin="anonymous"></script>
                 <div class="icon">📚</div>
                 <h2 class="service-title">مكتبة رقمية للذكاء الاصطناعي</h2>
                <p> نقدم مكتبة رقمية شاملة تضم أحدث الأبحاث والمقالات والدورات التدريبية في مجال الذكاء الاصطناعي، لتزويدك بالمعرفة والأدوات اللازمة للنجاح في هذا المجال المتطور.</p>
-               <a href="#" class="learn-more-btn">اقرأ المزيد</a>
+               <button class="learn-more-btn" data-modal="digital-library-modal">اقرأ المزيد</button>
             </div>
         </div>
            <p class="cta-text">
@@ -726,62 +726,70 @@ crossorigin="anonymous"></script>
         <div class="container">
             <div class="section-header">
                 <i class="fas fa-star"></i>
-                <h2>خدماتنا في مجال الذكاء الاصطناعي</h2>
+                <h2>ماذا نقدم  في مجال الذكاء الاصطناعي</h2>
             </div>
             <div class="services-grid">
                 <div class="service-card">
                     <i class="fas fa-brain icon"></i>
                     <h3>تطوير أنظمة الذكاء الاصطناعي</h3>
                     <p>نصمم ونطور حلول ذكاء اصطناعي مخصصة لتحسين كفاءة أعمالك.</p>
-                    <button class="learn-more-btn" data-modal-target="ai-development-modal">اقرأ المزيد</button>
+                    <button class="learn-more-btn" data-modal="ai-development-modal">اقرأ المزيد</button>
                 </div>
                 <div class="service-card">
                     <i class="fas fa-language icon"></i>
                     <h3>معالجة اللغات الطبيعية</h3>
                     <p>نقدم حلولاً متقدمة لتحليل النصوص العربية وفهم معانيها.</p>
-                    <button class="learn-more-btn" data-modal-target="nlp-modal">اقرأ المزيد</button>
+                    <button class="learn-more-btn" data-modal="nlp-modal">اقرأ المزيد</button>
                 </div>
                 <div class="service-card" data-service="machine-learning-modal">
-                    <i class="fas fa-cog icon"></i>
-                    <h3>التعلم الآلي والذكاء الاصطناعي</h3>
-                   <p>نساعدك في بناء نماذج ذكية لتحليل بياناتك واتخاذ قرارات أفضل.</p>
-                   <a href="#" class="learn-more-btn" data-modal="machine-learning-modal">اقرأ المزيد</a>
+                    <div class="service-icon-container">
+                        <i class="fas fa-brain icon"></i>
+                        <div class="icon-overlay"></div>
+                    </div>
+                    <h3 class="service-title">التعلم الآلي المتقدم</h3>
+                    <div class="service-content">
+                        <p>نطور نماذج تعلم آلي متخصصة باستخدام أحدث الخوارزميات لتحليل البيانات الضخمة وتقديم تنبؤات دقيقة تعزز قراراتك الاستراتيجية</p>
+                        <button class="learn-more-btn" data-modal="machine-learning-modal">
+                            <span>اقرأ المزيد</span>
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                    </div>
                 </div>
                 <div class="service-card" data-service="computer-vision-modal">
                     <i class="fas fa-camera icon"></i>
                     <h3>الرؤية الحاسوبية</h3>
                      <p>نطور أنظمة ذكية لتحليل الصور والفيديو لتلبية احتياجاتك.</p>
-                   <a href="#" class="learn-more-btn" data-modal="computer-vision-modal">اقرأ المزيد</a>
+                   <button class="learn-more-btn" data-modal="computer-vision-modal">اقرأ المزيد</button>
                 </div>
                 <div class="service-card" data-service="process-automation-modal">
                     <i class="fas fa-cogs icon"></i>
                     <h3>أتمتة العمليات بالذكاء الاصطناعي</h3>
                      <p>نؤتمت المهام المتكررة لزيادة الكفاءة وتقليل التكاليف.</p>
-                       <a href="#" class="learn-more-btn" data-modal="process-automation-modal">اقرأ المزيد</a>
+                       <button class="learn-more-btn" data-modal="process-automation-modal">اقرأ المزيد</button>
                 </div>
                 <div class="service-card" data-service="data-analysis-modal">
                     <i class="fas fa-chart-bar icon"></i>
                     <h3>تحليل البيانات بالذكاء الاصطناعي</h3>
                      <p>نستخرج رؤى قيمة من بياناتك لتحسين أداء أعمالك.</p>
-                     <a href="#" class="learn-more-btn" data-modal="data-analysis-modal">اقرأ المزيد</a>
+                     <button class="learn-more-btn" data-modal="data-analysis-modal">اقرأ المزيد</button>
                 </div>
                  <div class="service-card" data-service="consulting-modal">
                     <i class="fas fa-headset icon"></i>
                     <h3>استشارات الذكاء الاصطناعي</h3>
                    <p>نقدم استشارات متخصصة لمساعدتك في تطوير أعمالك بالذكاء الاصطناعي.</p>
-                   <a href="#" class="learn-more-btn" data-modal="consulting-modal">اقرأ المزيد</a>
+                   <button class="learn-more-btn" data-modal="consulting-modal">اقرأ المزيد</button>
                 </div>
-                  <div class="service-card" data-service="augmented-reality-modal"></div>
+                  <div class="service-card" data-service="augmented-reality-modal">
                     <i class="fas fa-vr-cardboard icon"></i>
                     <h3>الواقع المعزز والافتراضي</h3>
                    <p>نصمم تجارب تفاعلية باستخدام تقنيات الواقع المعزز والافتراضي.</p>
-                      <a href="#" class="learn-more-btn" data-modal="augmented-reality-modal">اقرأ المزيد</a>
+                      <button class="learn-more-btn" data-modal="augmented-reality-modal">اقرأ المزيد</button>
                  </div>
                 <div class="service-card" data-service="digital-library-modal">
                     <i class="fas fa-book icon"></i>
                     <h3>مكتبة رقمية للذكاء الاصطناعي</h3>
                    <p>نقدم أدوات وموارد تعليمية شاملة في مجال الذكاء الاصطناعي.</p>
-                     <a href="#" class="learn-more-btn">اقرأ المزيد</a>
+                     <button class="learn-more-btn" data-modal="digital-library-modal">اقرأ المزيد</button>
                 </div>
             </div>
         </div>
@@ -940,265 +948,6 @@ crossorigin="anonymous"></script>
         </div>
         <div class="about-modal-body">
             <p>في ظل فجر جديد للتكنولوجيا والابتكار، يبرز الذكاء كقوة دافعة مبهرة تحتضن آفاقا واسعة من الإمكانيات. ليس مجرد مفهوم يقتصر على القدرة على حل المعادلات المعقدة أو الحصول على درجات متقدمة في الاختبارات بل هو فن استشراف الغد وبناء الجسور بين المعلوم والمجهول. تتعدد طبقات الذكاء بدءا من الذكاء الطبيعي الذي يتجلى في التفاعل العميق مع العالم الطبيعي، مرورا بالذكاء الرياضي الذي يفك شفرات الكون وصولا إلى الذكاء الاجتماعي، القادر على فهم عميق لدوافع الآخرين وبناء علاقات قيمة. من الجدير بالذكر أن الذكاء لا يعني بالضرورة السير وفق المسارات المستقيمة فهو يتميز بالمرونة والقدرة على رؤية الجمال في الفوضى وإيجاد النظام في العشوائية. هو بمثابة النور الذي يتخلل ثنايا العقل مانحا إياه القدرة على التَّقلب والتكيف مع المتغيرات اللامتناهية التي تروي قصة الحياة. لذا لنغوص في أعماق هذا العالم الساحر مكتشفين معا أسرار الذكاء التي تمهد الطريق نحو فهم أعمق لذواتنا والعالم الذي يحتضننا. بين السطور القادمة نحن على موعد مع رحلة تكشف لنا كيف يمكن لهذه الشعلة الفكرية أن تضيء درب الإنسانية نحو مستقبل مشرق ملئ بالإمكانيات والابتكارات.</p>
-        </div>
-    </div>
-</div>
-
-    <section class="stats dynamic-background">
-        <canvas id="animated-bg-stats"></canvas>
-        <div class="container">
-            <div class="stat-item">
-                <i class="fas fa-users icon"></i>
-                <h3>+1000</h3>
-                <p>عميل راضٍ</p>
-            </div>
-            <div class="stat-item"></div>
-                <i class="fas fa-project-diagram icon"></i>
-                <h3>+500</h3>
-                <p>مشروع مكتمل</p>
-            </div>
-            <div class="stat-item">
-                <i class="fas fa-clock icon"></i>
-                <h3>+10000</h3>
-                <p>ساعة عمل</p>
-            </div>
-            <div class="stat-item"></div>
-                <i class="fas fa-trophy icon"></i>
-                <h3>+20</h3>
-                <p>جائزة تميز</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="testimonials dynamic-background" id="testimonials">
-        <canvas id="animated-bg-testimonials"></canvas>
-        <div class="container">
-            <div class="section-header">
-                <i class="fas fa-comment-dots"></i>
-                <h2>آراء عملائنا الكرام</h2>
-            </div>
-            <div class="testimonials-grid">
-                <div class="testimonial">
-                    <div class="testimonial-content">
-                        <p>"لقد ساعدتنا Bright AI في تبسيط العمليات التجارية بشكل كبير. الأتمتة الذكية كانت فعالة جدًا، و فريق الدعم كان متعاونًا للغاية."</p>
-                    </div>
-                    <div class="testimonial-author">
-                        <i class="fas fa-user-circle"></i>
-                        <span>أحمد علي - شركة التقنية</span>
-                    </div>
-                </div>
-                <div class="testimonial">
-                    <div class="testimonial-content">
-                        <p>"المكتبة الرقمية كانت مصدرًا قيمًا لتعلم أحدث التقنيات. الدورات التدريبية كانت مفيدة للغاية وسهلة الفهم."</p>
-                    </div>
-                    <div class="testimonial-author">
-                        <i class="fas fa-user-circle"></i>
-                        <span>سارة محمد - مهندسة بيانات</span>
-                    </div>
-                </div>
-                <div class="testimonial">
-                    <div class="testimonial-content">
-                        <p>"الاستشارات التي قدمتها Bright AI ساعدتني في فهم كيف يمكن تطبيق الذكاء الاصطناعي في أعمالي. لقد كانوا محترفين ومهتمين بالنتائج."</p>
-                    </div>
-                    <div class="testimonial-author">
-                        <i class="fas fa-user-circle"></i>
-                        <span>خالد ابراهيم - رائد أعمال</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="faq dynamic-background">
-        <canvas id="animated-bg-faq"></canvas>
-        <div class="container">
-            <div class="section-header">
-                <i class="fas fa-question-circle"></i>
-                <h2>أسئلة شائعة حول خدماتنا</h2>
-            </div>
-             <div class="faq-item">
-                <div class="faq-question">
-                    <i class="fas fa-question"></i>
-                    ما هي Bright AI؟
-                </div>
-                <div class="faq-answer">Bright AI هي مؤسسة سعودية مبتكرة ورائدة في مجال الذكاء الاصطناعي داخل المملكة. نُقدّم حلولاً تقنية متقدمة تساعد المؤسسات والأفراد على تحسين الكفاءة التشغيلية واتخاذ قرارات مبنية على بيانات دقيقة. من خلال فريق متخصص من الخبراء واعتماد أحدث التقنيات، نسعى لتحويل الأفكار إلى حلول عملية تساهم في تعزيز التحول الرقمي وخلق قيمة مضافة في السوق السعودي.</div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">
-                    كيف يمكنني الاستفادة من المكتبة الرقمية للذكاء الاصطناعي؟
-                </div>
-                <div class="faq-answer">المكتبة الرقمية تقدم أبحاثًا علمية، مقالات، ودورات تدريبية قصيرة تُساعدك على تطوير مهاراتك وفهم أحدث التقنيات في مجال الذكاء الاصطناعي.</div>
-            </div>
-             <div class="faq-item">
-                <div class="faq-question">
-                    <i class="fas fa-question"></i>
-                    ما هي أمثلة على أتمتة العمليات بالذكاء الاصطناعي التي تقدمونها؟
-                </div>
-                 <div class="faq-answer">نقدم حلولاً متطورة لأتمتة العمليات تشمل:
-
-                    أتمتة معالجة الفواتير: تحسين الدقة وتقليل الأخطاء في العمليات المالية.
-                    تحليل البيانات الضخمة: استخدام خوارزميات متقدمة لتحليل كميات كبيرة من المعلومات بكفاءة عالية.
-                    تحسين العمليات التشغيلية: تصميم أنظمة ذكية تساهم في تسريع الإجراءات وتبسيط سير العمل.
-                    أتمتة تقارير الأداء: إعداد تقارير دورية وتحليلات تنبؤية تساعد في دعم اتخاذ القرارات الاستراتيجية. هذه الحلول تُسهم في رفع مستوى الإنتاجية وتقليل التكاليف التشغيلية.
-                    </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">
-                    <i class="fas fa-question"></i>
-                    كيف يمكنني البدء في استشارة الذكاء الاصطناعي؟
-                 </div>
-                <div class="faq-answer">يمكنك حجز استشارة تقنية من خلال قسم “استشاراتنا” في الموقع، أو عبر التواصل معنا مباشرة.</div>
-            </div>
-             <div class="faq-item">
-                <div class="faq-question">
-                    <i class="fas fa-question"></i>
-                    هل يمكنني الاطلاع على مشاريع ناجحة من Bright AI؟
-                </div>
-                <div class="faq-answer">نعم، يمكنك زيارة صفحة “أمثلة من أعمالنا” للاطلاع على إنجازاتنا السابقة في تطبيقات الذكاء الاصطناعي.</div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">
-                     <i class="fas fa-question"></i>
-                    ما هي مجالات عمل Bright AI؟
-                </div>
-                 <div class="faq-answer">نعمل في مجموعة واسعة من مجالات الذكاء الاصطناعي، منها:
-
-                    معالجة اللغات الطبيعية (NLP): لتحليل وفهم النصوص بعمق.
-                    الرؤية الحاسوبية: لتحليل الصور والفيديوهات وتطبيقها في حلول مبتكرة.
-                    التعلم الآلي والتعلم العميق: لتقديم نماذج تنبؤية وداعمة لاتخاذ القرارات.
-                    تطوير وكلاء الذكاء الاصطناعي: لتعزيز تجربة المستخدم من خلال الدردشات التفاعلية. بهذا التنوع نضمن توفير حلول شاملة تلبي احتياجات مختلف القطاعات.
-                    </div>
-             </div>
-             <div class="faq-item">
-                 <div class="faq-question">
-                    <i class="fas fa-question"></i>
-                    كيف يمكنني البدء في مشروع معكم؟
-                </div>
-                 <div class="faq-answer">يمكنك التواصل معنا عبر البريد الإلكتروني أو الواتس اب لمناقشة مشروعك وتحديد احتياجاتك.</div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">
-                    <i class="fas fa-question"></i>
-                    ما هي مدة تنفيذ المشاريع؟
-                </div>
-                 <div class="faq-answer">تختلف مدة التنفيذ حسب حجم وتعقيد المشروع، ونحدد ذلك بدقة بعد دراسة متطلبات المشروع. نلتزم بالوقت الفعلي قدر الإمكان.</div>
-            </div>
-        </div>
-    </section>
-
-    <section class="faq dynamic-background">
-        <canvas id="animated-bg-faq"></canvas>
-        <div class="container">
-            <div class="section-header">
-                <i class="fas fa-question-circle"></i>
-                <h2>أسئلة شائعة حول خدمات الذكاء الاصطناعي</h2>
-            </div>
-             <div class="faq-item">
-                <div class="faq-question">
-                    <i class="fas fa-question"></i>
-                    ما هي Bright AI؟ وهل هي أفضل موقع للذكاء الاصطناعي؟
-                </div>
-                <div class="faq-answer">Bright AI هي مؤسسة سعودية رائدة في مجال الذكاء الاصطناعي في السعودية، تقدم حلول الذكاء الاصطناعي التقنية المتقدمة لتحسين الكفاءة التشغيلية ودعم اتخاذ القرار المبني على البيانات. نعم، نسعى لنكون أفضل موقع ذكاء اصطناعي في السعودية بتقديم حلول مبتكرة.</div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">
-                    كيف يمكن لـ Bright AI مساعدتي في التحول الرقمي وأتمتة الأعمال؟
-                </div>
-                <div class="faq-answer">نحن نقدم حلولاً متكاملة للتحول الرقمي وأتمتة الأعمال باستخدام تقنية الذكاء الاصطناعي في السعودية، مما يساعد الشركات السعودية على تحسين الأداء الإداري وزيادة الكفاءة.</div>
-            </div>
-             <div class="faq-item">
-                <div class="faq-question"></div>
-                    <i class="fas fa-question"></i>
-                    ما هي حلول الذكاء الاصطناعي التي تقدمونها للشركات السعودية؟
-                </div>
-                 <div class="faq-answer">نقدم مجموعة واسعة من حلول الذكاء الاصطناعي للشركات السعودية، بما في ذلك تحليل البيانات، أتمتة العمليات، تطوير وكلاء الذكاء الاصطناعي، واستشارات تقنية المعلومات. نحن نهدف إلى توفير أفضل حلول الذكاء الاصطناعي للشركات السعودية.</div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">
-                    <i class="fas fa-question"></i>
-                    هل تقدمون حلول تحليل البيانات باستخدام الذكاء الاصطناعي قوقل؟
-                 </div>
-                <div class="faq-answer">نعم، نقدم حلول تحليل البيانات المتقدمة التي تتكامل مع تقنيات الذكاء الاصطناعي قوقل وغيرها من التقنيات الرائدة في مجال تحليل البيانات والابتكار التقني.</div>
-            </div>
-        </div>
-    </section>
-
-    <section class="partners dynamic-background">
-     <canvas id="animated-bg-partners"></canvas>
-        <div class="container">
-            <div class="section-header">
-                <i class="fas fa-handshake"></i>
-                <h2>شركاؤنا</h2>
-            </div>
-            <div class="partners-grid">
-                <div class="partner"><i class="fas fa-building"></i> شركة 1</div>
-                <div class="partner"><i class="fas fa-building"></i> شركة 2</div>
-                <div class="partner"><i class="fas fa-building"></i> شركة 3</div>
-                <div class="partner"><i class="fas fa-building"></i> شركة 4</div>
-            </div>
-        </div>
-    </section>
-    <p style="text-align: center; margin-top: 20px;">
-    <section class="newsletter dynamic-background">
-        <canvas id="animated-bg-newsletter"></canvas>
-        <div class="container">
-            <div class="section-header">
-                <i class="fas fa-envelope-open-text"></i>
-                <h2>انضم إلى قائمتنا البريدية</h2>
-            </div>
-            <form>
-                <input type="email" placeholder="البريد الإلكتروني">
-                <button type="submit" class="button">
-                    <i class="fas fa-paper-plane"></i>
-                    اشتراك
-                </button>
-            </form>
-        </div>
-    </section>
-    <p style="text-align: center; margin-top: 20px;">
-    <footer class="dynamic-background">
-    <canvas id="animated-bg-footer"></canvas>
-        <div class="container">
-            <div class="footer-content">
-                 <div class="contact-info">
-                    <h3><i class="fas fa-phone"></i> تواصل معنا</h3>
-                    <p><i class="fas fa-envelope"></i> <a href="mailto:yazeedaiai0@gmail.com" style="color: white;">البريد الإلكتروني: yazeedaiai0@gmail.com</a></p>
-                     <p><i class="fas fa-phone-alt"></i> <a href="tel:+966591120781" style="color: white;">الهاتف: +966 591 120 781</a></p>
-
-                </div>
-                <div class="social-links">
-                    <a href="https://www.instagram.com/iililil44/profilecard/?igsh=bm5pOXhycjZucTRh" class="social-icon" title="انستغرام" target="_blank">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="https://youtube.com/@teechlab?si=m5ZEa2eLfekwa2cK" class="social-icon" title="يوتيوب" target="_blank">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                     <a href="#" class="social-icon" title="X (تويتر)" target="_blank">
-                        <i class="fab fa-x-twitter"></i>
-                    </a>
-                    <a href="#" class="social-icon" title="فيسبوك" target="_blank">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="#" class="social-icon" title="لينكد إن" target="_blank">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="copyright">
-                <i class="far fa-copyright"></i>
-                جميع الحقوق محفوظة © 2024 Bright AI. الذكاء الاصطناعي والتأكد من مستقبل أفضل.
-            </div>
-        </div>
-    </footer>
-    <div class="modal" id="aboutModal">
-        <div class="modal-content"></div>
-            <span class="close-modal">×</span>
-            <div class="about-modal-header">
-                <i class="fas fa-info-circle"></i>
-                <h2>من نحن</h2>
-            </div>
-            <div class="about-modal-body">
-                <p>في ظل فجر جديد للتكنولوجيا والابتكار، يبرز الذكاء كقوة دافعة مبهرة تحتضن آفاقا واسعة من الإمكانيات. ليس مجرد مفهوم يقتصر على القدرة على حل المعادلات المعقدة أو الحصول على درجات متقدمة في الاختبارات بل هو فن استشراف الغد وبناء الجسور بين المعلوم والمجهول. تتعدد طبقات الذكاء بدءا من الذكاء الطبيعي الذي يتجلى في التفاعل العميق مع العالم الطبيعي، مرورا بالذكاء الرياضي الذي يفك شفرات الكون وصولا إلى الذكاء الاجتماعي، القادر على فهم عميق لدوافع الآخرين وبناء علاقات قيمة. من الجدير بالذكر أن الذكاء لا يعني بالضرورة السير وفق المسارات المستقيمة فهو يتميز بالمرونة والقدرة على رؤية الجمال في الفوضى وإيجاد النظام في العشوائية. هو بمثابة النور الذي يتخلل ثنايا العقل مانحا إياه القدرة على التَّقلب والتكيف مع المتغيرات اللامتناهية التي تروي قصة الحياة. لذا لنغوص في أعماق هذا العالم الساحر مكتشفين معا أسرار الذكاء التي تمهد الطريق نحو فهم أعمق لذواتنا والعالم الذي يحتضننا. بين السطور القادمة نحن على موعد مع رحلة تكشف لنا كيف يمكن لهذه الشعلة الفكرية أن تضيء درب الإنسانية نحو مستقبل مشرق ملئ بالإمكانيات والابتكارات.</p>
             </div>
         </div>
     </div>
