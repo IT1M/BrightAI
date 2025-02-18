@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // معالج زر إتمام الشراء
+    // معالج زر إتمام الشراء تحويل بنكي (البنك)
     document.querySelector('.checkout-button').addEventListener('click', () => {
         if (cart.length > 0) {
             const total = cart.reduce((sum, item) => {
@@ -112,6 +112,11 @@ document.addEventListener('DOMContentLoaded', function() {
             cartModal.style.display = 'none';
             paymentModal.style.display = 'block';
         }
+    });
+
+    // مستمع زر الدفع عن طريق paypal
+    document.querySelector('.paypal-checkout-button').addEventListener('click', () => {
+        window.location.href = 'checkout.html';
     });
 
     // نسخ رقم الآيبان
