@@ -2672,3 +2672,393 @@ header {
 .modal-content ul li {
     margin-bottom: 0.5rem;
 }
+/* إعادة تعيين تنسيقات بسيطة */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+  }
+  
+  /* تصميم القسم الخارجي */
+  .innovative-section {
+    max-width: 1200px;
+    margin: 20px auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* رأس المحتوى */
+  .header-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #e4e4e4;
+  }
+  
+  .text-wrapper {
+    flex: 1 1 600px;
+    padding: 20px;
+  }
+  
+  .text-wrapper h1 {
+    font-size: 2em;
+    margin-bottom: 10px;
+    color: #222;
+  }
+  
+  .text-wrapper p {
+    font-size: 1.1em;
+    color: #666;
+  }
+  
+  .image-wrapper {
+    flex: 1 1 300px;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .image-wrapper img {
+    width: 400px; /* صورة أصغر */
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  /* شبكة الكروت الخاصة بالمميزات */
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin: 30px 0;
+  }
+  
+  .feature-card {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  .feature-card i {
+    font-size: 2em;
+    color: #007BFF;
+    margin-bottom: 10px;
+  }
+  
+  .feature-card h3 {
+    margin: 10px 0;
+    font-size: 1.3em;
+    color: #007BFF;
+  }
+  
+  .feature-card p {
+    font-size: 0.95em;
+    color: #555;
+    padding: 0 10px;
+  }
+  
+  /* قسم توضيح كيفية المساعدة */
+  .assistance {
+    text-align: center;
+    background: #eef5ff;
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  .assistance h2 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .assistance p {
+    font-size: 1em;
+    margin-bottom: 20px;
+    color: #555;
+  }
+  
+  .assistance-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+  
+  .assistance-list li {
+    font-size: 1em;
+    color: #555;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  
+  .assistance-list li i {
+    color: #007BFF;
+    font-size: 1.2em;
+  }
+  
+  /* استجابة التصميم */
+  @media (max-width: 768px) {
+    .header-content {
+      flex-direction: column;
+      text-align: center;
+    }
+    .text-wrapper,
+    .image-wrapper {
+      flex: 1 1 100%;
+    }
+    .image-wrapper {
+      margin-bottom: 20px;
+    }
+  }
+  .automation-section {
+    font-family: 'Tajawal', sans-serif;
+    background: linear-gradient(120deg, #0a2463, #247ba0);
+    padding: 3rem 1rem;
+    color: #ffffff;
+    position: relative;
+}
+
+.automation-section .container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.automation-section .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.automation-section .section-header h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #e6f3ff;
+}
+
+.automation-section .section-header img {
+    max-width: 300px;
+    border-radius: 15px;
+    margin: 2rem auto;
+    display: block;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.automation-section .content-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.automation-section .info-box {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    height: 100%;
+}
+
+.automation-section .info-box:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.automation-section .info-box h3 {
+    color: #90caf9;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+    border-bottom: 2px solid rgba(144, 202, 249, 0.3);
+    padding-bottom: 0.5rem;
+}
+
+.automation-section .info-box p {
+    line-height: 1.6;
+    color: #e3f2fd;
+    margin-bottom: 1rem;
+}
+
+.automation-section .benefits {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 2rem;
+    margin-top: 3rem;
+}
+
+.automation-section .benefits h2 {
+    color: #90caf9;
+    margin-bottom: 2rem;
+    text-align: center;
+    font-size: 1.8rem;
+}
+
+.automation-section .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.automation-section .benefit-item {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1.5rem;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.automation-section .benefit-item:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-3px);
+}
+
+.automation-section .benefit-item h4 {
+    color: #bbdefb;
+    margin-bottom: 0.8rem;
+    font-size: 1.1rem;
+}
+
+.automation-section .benefit-item p {
+    color: #e3f2fd;
+    line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+    .automation-section .section-header h2 {
+        font-size: 2rem;
+    }
+    
+    .automation-section .content-grid, 
+    .automation-section .benefits-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .automation-section .section-header img {
+        max-width: 100%;
+    }
+}
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+        
+.ai-analysis-section * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Cairo', sans-serif;
+}
+
+.ai-analysis-section {
+    background-color: #f8f9fa;
+    padding: 20px;
+}
+
+.ai-analysis-section .container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.ai-analysis-section .hero {
+    background: linear-gradient(135deg, #0056b3);
+    color: white;
+    padding: 40px 20px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.ai-analysis-section .hero h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
+
+.ai-analysis-section .features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.ai-analysis-section .feature-card {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.ai-analysis-section .feature-card:hover {
+    transform: translateY(-5px);
+}
+
+.ai-analysis-section .feature-icon {
+    font-size: 2.5em;
+    color: #007bff;
+    margin-bottom: 15px;
+}
+
+.ai-analysis-section .feature-title {
+    color: #0056b3;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.ai-analysis-section .help-section {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.ai-analysis-section .benefits {
+    list-style: none;
+    padding: 0;
+}
+
+.ai-analysis-section .benefits li {
+    margin: 15px 0;
+    padding-right: 30px;
+    position: relative;
+}
+
+.ai-analysis-section .benefits li:before {
+    content: "\f00c";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    color: #007bff;
+    position: absolute;
+    right: 0;
+}
+
+.ai-analysis-section .img-container {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.ai-analysis-section .img-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.ai-analysis-section h2 {
+    color: #0056b3;
+    margin: 30px 0;
+}
