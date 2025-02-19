@@ -2,8 +2,8 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    color: #fff;
-    background-color: #121212;
+    color: #ffffff;
+    background-color: #3e0763;
     overflow-x: hidden;
     text-align: right;
 }
@@ -79,7 +79,7 @@ body {
     width: 300px;
     height: 400px;
     margin: 20px;
-    background-color: #212121;
+    background-color: #2d0549;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     transition: transform 0.3s, box-shadow 0.3s;
@@ -89,7 +89,7 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
-    color: #fff;
+    color: #ffffff;
     transform-style: preserve-3d;
     padding: 20px;
     text-align: right;
@@ -113,7 +113,7 @@ body {
 
 .agent-icon {
     font-size: 2.5em;
-    color: #6200ea;
+    color: #005BB5;
     margin-bottom: 15px;
 }
 
@@ -151,8 +151,8 @@ body {
 .more-details {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #6200ea;
-    color: #fff;
+    background-color: #005BB5;
+    color: #ffffff;
     text-decoration: none;
     border-radius: 5px;
     transition: background-color 0.3s, transform 0.3s;
@@ -179,7 +179,7 @@ body {
     width: 300px;
     height: 200px;
     margin: 20px;
-    background-color: #212121;
+    background-color: #2d0549;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     transition: transform 0.3s, box-shadow 0.3s;
@@ -189,7 +189,7 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
-    color: #fff;
+    color: #ffffff;
     transform-style: preserve-3d;
     text-align: right;
 }
@@ -225,7 +225,7 @@ body {
     width: 300px;
     height: 200px;
     margin: 20px;
-    background-color: #212121;
+    background-color: #2d0549;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     transition: transform 0.3s, box-shadow 0.3s;
@@ -235,7 +235,7 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
-    color: #fff;
+    color: #ffffff;
     transform-style: preserve-3d;
     text-align: right;
 }
@@ -259,7 +259,7 @@ body {
 #final-cta {
     position: relative;
     height: 100vh;
-    background: linear-gradient(135deg, #6200ea, #3700b3);
+    background: linear-gradient(135deg, #005BB5, #2d0549);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -313,7 +313,7 @@ body {
     width: 300px;
     height: 200px;
     margin: 20px;
-    background-color: #212121;
+    background-color: #2d0549;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     transition: transform 0.3s, box-shadow 0.3s;
@@ -323,7 +323,7 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
-    color: #fff;
+    color: #ffffff;
     transform-style: preserve-3d;
     text-align: right;
 }
@@ -357,8 +357,8 @@ section.visible {
 
 /* الألوان والإضاءة */
 body {
-    background-color: #121212;
-    color: #fff;
+    background-color: #3e0763;
+    color: #ffffff;
 }
 
 .hero-content {
@@ -376,8 +376,8 @@ body {
 }
 
 .agent-card, .feature, .testimonial, .faq-item {
-    background-color: #212121;
-    color: #fff;
+    background-color: #2d0549;
+    color: #ffffff;
     text-align: right;
 }
 
@@ -477,7 +477,7 @@ body {
 .navbar {
     display: flex;
     justify-content: center;
-    background-color: #1e1e1e;
+    background-color: #2d0549;
     padding: 10px 0;
     list-style: none;
     margin: 0;
@@ -495,7 +495,7 @@ body {
 }
 
 .navbar a:hover {
-    color: #6200ea;
+    color: #005BB5;
 }
 
 /* قسم وكلاء الأعمال (Business Agents Section) */
@@ -520,7 +520,7 @@ body {
 }
 
 .business-agent {
-    background-color: #212121;
+    background-color: #2d0549;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     padding: 20px;
@@ -573,7 +573,7 @@ body {
 }
 
 .technology {
-    background-color: #212121;
+    background-color: #2d0549;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     padding: 20px;
