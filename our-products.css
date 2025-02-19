@@ -778,3 +778,121 @@ footer {
                 grid-template-columns: 1fr;
             }
         }
+
+/* تحسين أقسام المنتجات */
+.section-header {
+    text-align: center;
+    background: linear-gradient(135deg, #00a6e6, #0056b3);
+    color: white;
+    padding: 20px;
+    margin: 40px -20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.section-header h2 {
+    margin: 0;
+    font-size: 2em;
+    color: white !important;
+}
+
+/* تحسين أزرار التحويل */
+.checkout-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.checkout-button {
+    background: linear-gradient(135deg, #28a745, #1e7e34);
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+}
+
+.checkout-button i {
+    font-size: 1.2em;
+}
+
+.checkout-button:hover {
+    background: linear-gradient(135deg, #218838, #1a6d2d);
+    transform: translateY(-2px);
+}
+
+.paypal-checkout-button {
+    background: linear-gradient(135deg, #003087, #002171);
+}
+
+.paypal-checkout-button:hover {
+    background: linear-gradient(135deg, #002171, #001947);
+}
+
+/* تحسين عرض الأقسام */
+.section-container {
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    margin: 40px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* تنسيقات قسم تحليل البيانات */
+.section-intro {
+    text-align: center;
+    padding: 20px;
+    margin-bottom: 30px;
+    color: #666;
+    font-size: 1.1em;
+    line-height: 1.6;
+}
+
+.product-description {
+    margin: 15px 0;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+}
+
+.feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0;
+}
+
+.feature-list li {
+    padding: 8px 25px 8px 0;
+    position: relative;
+    color: #555;
+}
+
+.feature-list li:before {
+    content: "✓";
+    color: #28a745;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* تحسين تنسيق العناصر الموجودة */
+.section-container .product {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.section-container .product:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
