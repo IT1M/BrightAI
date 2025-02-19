@@ -3,8 +3,8 @@ body {
     font-family: 'Cairo', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
-    color: #333;
+    background-color: #3e0763;
+    color: #ffffff;
     line-height: 1.6;
     direction: rtl; /* النص من اليمين لليسار */
 }
@@ -19,7 +19,7 @@ body {
 .hero {
     text-align: center;
     padding: 80px 20px;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(62,7,99,0.8);
     border-radius: 10px;
     margin: 30px auto;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -27,13 +27,13 @@ body {
 
 .hero h1 {
     font-size: 2.5em;
-    color: #2c3e50;
+    color: #ffffff;
     margin-bottom: 20px;
 }
 
 .hero p {
     font-size: 1.2em;
-    color: #555;
+    color: #ffffff; /* changed from "#555" */
     margin-bottom: 30px;
 }
 
@@ -43,7 +43,7 @@ body {
 
 /* ================= Navigation Bar ================= */
 nav {
-    background: #2c3e50;
+    background: #3e0763;
     padding: 15px 0;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     position: sticky;
@@ -66,7 +66,7 @@ nav {
 
 .navbar a {
     text-decoration: none;
-    color: white;
+    color: #ffffff;
     font-weight: bold;
     transition: color 0.3s ease;
     padding: 10px 15px;
@@ -99,7 +99,7 @@ nav {
 
 .services-section h2 {
     font-size: 2em;
-    color: #2c3e50;
+    color: #ffffff;
     margin-bottom: 20px;
 }
 
@@ -112,7 +112,7 @@ nav {
 }
 
 .service-card {
-    background: white;
+    background: #4e4848;
     border-radius: 8px;
     padding: 20px;
     width: calc(33% - 20px);
@@ -122,18 +122,18 @@ nav {
 
 .service-icon {
     font-size: 2.5em;
-    color: #3498db;
+    color: #ffffff;
     margin-bottom: 15px;
 }
 
 .service-card h3 {
     font-size: 1.3em;
     margin-bottom: 10px;
-    color: #333;
+    color: #ffffff;
 }
 
 .service-card p {
-    color: #666;
+    color: #ffffff;
     line-height: 1.6;
 }
 
@@ -157,7 +157,7 @@ nav {
 
 /* ================= Contact Form ================= */
 .contact-form {
-    background: white;
+    background: #4e4848;
     border-radius: 8px;
     padding: 20px;
     margin: 30px auto;
@@ -174,7 +174,7 @@ nav {
     text-align: center;
     font-size: 1.8em;
     margin-bottom: 20px;
-    color: #333;
+    color: #ffffff;
 }
 
 .form-group {
@@ -185,7 +185,7 @@ nav {
     display: block;
     font-size: 1em;
     margin-bottom: 5px;
-    color: #333;
+    color: #ffffff;
 }
 
 .form-group input,
@@ -201,7 +201,7 @@ nav {
     display: block;
     margin: 15px auto;
     padding: 10px 20px;
-    background-color: #3498db;
+    background-color: #3e0763;
     color: white;
     border: none;
     border-radius: 5px;
@@ -211,12 +211,12 @@ nav {
 }
 
 .submit-btn:hover {
-    background-color: #2980b9;
+    background-color: #3e0763;
 }
 
 /* ================= Footer ================= */
 footer {
-    background-color: #2c3e50;
+    background-color: #3e0763;
     color: white;
     padding: 30px 20px;
     display: flex;
@@ -279,8 +279,8 @@ body {
     font-family: 'Cairo', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
-    color: #333;
+    background-color: #3e0763;
+    color: #ffffff;
     line-height: 1.6;
     direction: rtl; /* النص من اليمين لليسار */
 }
@@ -295,7 +295,7 @@ body {
 .hero {
     text-align: center;
     padding: 80px 20px;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: #3e0763(255, 255, 255, 0.8);
     border-radius: 10px;
     margin: 30px auto;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -303,13 +303,13 @@ body {
 
 .hero h1 {
     font-size: 2.5em;
-    color: #2c3e50;
+    color: #ffffff;
     margin-bottom: 20px;
 }
 
 .hero p {
     font-size: 1.2em;
-    color: #555;
+    color: #ffffff; /* changed from "#555" */
     margin-bottom: 30px;
 }
 
@@ -319,7 +319,7 @@ body {
 
 /* ================= Navigation Bar ================= */
 nav {
-    background: #2c3e50;
+    background: #3e0763;
     padding: 15px 0;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     position: sticky;
@@ -375,7 +375,7 @@ nav {
 
 .services-section h2 {
     font-size: 2em;
-    color: #2c3e50;
+    color: #ffffff;
     margin-bottom: 20px;
 }
 
@@ -388,7 +388,7 @@ nav {
 }
 
 .service-card {
-    background: white;
+    background: #4e4848;
     border-radius: 8px;
     padding: 20px;
     width: calc(33% - 20px);
@@ -398,18 +398,18 @@ nav {
 
 .service-icon {
     font-size: 2.5em;
-    color: #3498db;
+    color: #ffffff;
     margin-bottom: 15px;
 }
 
 .service-card h3 {
     font-size: 1.3em;
     margin-bottom: 10px;
-    color: #333;
+    color: #ffffff;
 }
 
 .service-card p {
-    color: #666;
+    color: #ffffff;
     line-height: 1.6;
 }
 
@@ -425,7 +425,7 @@ nav {
 
 .case-studies-section h2 {
     font-size: 2em;
-    color: #2c3e50;
+    color: #ffffff;
     margin-bottom: 30px;
 }
 
@@ -438,7 +438,7 @@ nav {
 }
 
 .case-study-card {
-    background: #f9f9f9;
+    background: #4e4848;
     border-radius: 8px;
     padding: 20px;
     width: calc(50% - 30px);
@@ -448,12 +448,12 @@ nav {
 
 .case-study-card h3 {
     font-size: 1.5em;
-    color: #333;
+    color: #ffffff;
     margin-bottom: 15px;
 }
 
 .case-study-card p {
-    color: #666;
+    color: #ffffff;
     line-height: 1.6;
     margin-bottom: 20px;
 }
@@ -461,7 +461,7 @@ nav {
 .case-study-card a {
     display: inline-block;
     padding: 10px 15px;
-    background-color: #3498db;
+    background-color: #3e0763;
     color: white;
     text-decoration: none;
     border-radius: 5px;
@@ -469,25 +469,25 @@ nav {
 }
 
 .case-study-card a:hover {
-    background-color: #2980b9;
+    background-color: #3e0763;
 }
 
 /* ================= Target Audience Section ================= */
 .target-audience-section {
     margin-top: 40px;
     text-align: center;
-    background-color: #f0f0f0;
+    background-color: #3e0763;
     padding: 40px 20px;
 }
 
 .target-audience-section h2 {
     font-size: 2em;
-    color: #2c3e50;
+    color: #ffffff;
     margin-bottom: 30px;
 }
 
 .target-audience-section p {
-    color: #555;
+    color: #ffffff; /* changed from "#555" */
     font-size: 1.1em;
     margin-bottom: 20px;
 }
@@ -500,7 +500,7 @@ nav {
 .target-audience-section li {
     margin-bottom: 10px;
     font-size: 1.1em;
-    color: #333;
+    color: #ffffff; /* changed from "#333" */
     position: relative;
     padding-right: 25px;
 }
@@ -518,7 +518,7 @@ nav {
 .consultation-process-section {
     margin-top: 40px;
     text-align: center;
-    background-color: #fff;
+    background-color: #3e0763;
     padding: 40px 20px;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -526,7 +526,7 @@ nav {
 
 .consultation-process-section h2 {
     font-size: 2em;
-    color: #2c3e50;
+    color: #ffffff;
     margin-bottom: 30px;
 }
 
@@ -539,7 +539,7 @@ nav {
 }
 
 .process-step {
-    background: #f9f9f9;
+    background: #4e4848;
     border-radius: 8px;
     padding: 20px;
     width: calc(25% - 20px);
@@ -548,18 +548,18 @@ nav {
 
 .step-icon {
     font-size: 2.5em;
-    color: #3498db;
+    color: #ffffff;
     margin-bottom: 15px;
 }
 
 .process-step h3 {
     font-size: 1.3em;
     margin-bottom: 10px;
-    color: #333;
+    color: #ffffff;
 }
 
 .process-step p {
-    color: #666;
+    color: #ffffff;
     line-height: 1.6;
 }
 
@@ -568,7 +568,7 @@ nav {
     display: block;
     margin: 30px auto;
     padding: 15px 30px;
-    background-color: #2ecc71;
+    background-color: #3e0763;
     color: white;
     border: none;
     border-radius: 5px;
@@ -578,20 +578,20 @@ nav {
 }
 
 .cta-button:hover {
-    background-color: #27ae60;
+    background-color: #3e0763;
 }
 
 /* ================= Benefits Section ================= */
 .benefits-section {
     margin-top: 30px;
     text-align: center;
-    background-color: #f9f9f9;
+    background-color: #3e0763;
     padding: 40px 20px;
 }
 
 .benefits-section h2 {
     font-size: 2em;
-    color: #2c3e50;
+    color: #ffffff;
     margin-bottom: 20px;
 }
 
@@ -604,7 +604,7 @@ nav {
 }
 
 .benefit-card {
-    background: white;
+    background: #4e4848;
     border-radius: 8px;
     padding: 20px;
     width: calc(33% - 20px);
@@ -614,18 +614,18 @@ nav {
 
 .benefit-icon {
     font-size: 2.5em;
-    color: #3498db;
+    color: #ffffff;
     margin-bottom: 15px;
 }
 
 .benefit-card h3 {
     font-size: 1.3em;
     margin-bottom: 10px;
-    color: #333;
+    color: #ffffff;
 }
 
 .benefit-card p {
-    color: #666;
+    color: #ffffff;
     line-height: 1.6;
 }
 
@@ -633,7 +633,7 @@ nav {
 .faq-section {
     margin-top: 40px;
     text-align: center;
-    background-color: #fff;
+    background-color: #3e0763;
     padding: 40px 20px;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -641,7 +641,7 @@ nav {
 
 .faq-section h2 {
     font-size: 2em;
-    color: #2c3e50;
+    color: #ffffff;
     margin-bottom: 30px;
 }
 
@@ -655,18 +655,18 @@ nav {
 .faq-item {
     text-align: right;
     padding: 20px;
-    background-color: #f9f9f9;
+    background-color: #4e4848;
     border-radius: 8px;
 }
 
 .faq-item h3 {
     font-size: 1.2em;
-    color: #333;
+    color: #ffffff;
     margin-bottom: 10px;
 }
 
 .faq-item p {
-    color: #666;
+    color: #ffffff;
     line-height: 1.6;
 }
 
@@ -674,13 +674,13 @@ nav {
 .testimonials {
     margin-top: 40px;
     text-align: center;
-    background-color: #f0f0f0;
+    background-color: #3e0763;
     padding: 50px 20px;
 }
 
 .testimonials h2 {
     font-size: 2em;
-    color: #2c3e50;
+    color: #ffffff;
     margin-bottom: 40px;
 }
 
@@ -693,7 +693,7 @@ nav {
 }
 
 .testimonial-card {
-    background: white;
+    background: #4e4848;
     border-radius: 8px;
     padding: 30px;
     width: calc(50% - 30px);
@@ -703,12 +703,12 @@ nav {
 
 .quote-icon {
     font-size: 1.5em;
-    color: #3498db;
+    color: #ffffff;
     margin-bottom: 10px;
 }
 
 .testimonial-card p {
-    color: #555;
+    color: #ffffff;
     line-height: 1.7;
     margin-bottom: 15px;
     font-style: italic;
@@ -716,7 +716,7 @@ nav {
 
 /* ================= Contact Form ================= */
 .contact-form {
-    background: white;
+    background: #4e4848;
     border-radius: 8px;
     padding: 20px;
     margin: 30px auto;
@@ -728,7 +728,7 @@ nav {
     text-align: center;
     font-size: 1.8em;
     margin-bottom: 20px;
-    color: #333;
+    color: #ffffff;
 }
 
 .form-group {
@@ -739,7 +739,7 @@ nav {
     display: block;
     font-size: 1em;
     margin-bottom: 5px;
-    color: #333;
+    color: #ffffff;
 }
 
 .form-group input,
@@ -757,7 +757,7 @@ nav {
     display: block;
     margin: 15px auto;
     padding: 10px 20px;
-    background-color: #3498db;
+    background-color: #3e0763;
     color: white;
     border: none;
     border-radius: 5px;
@@ -767,12 +767,12 @@ nav {
 }
 
 .submit-btn:hover {
-    background-color: #2980b9;
+    background-color: #3e0763;
 }
 
 /* ================= Footer ================= */
 footer {
-    background-color: #2c3e50;
+    background-color: #3e0763;
     color: white;
     padding: 30px 20px;
     display: flex;
@@ -854,7 +854,7 @@ footer .contact-info a {
   
   /* تنسيق محتوى النافذة */
   .modal-content {
-    background-color: white;
+    background-color: #3e0763;
     padding: 20px;
     border-radius: 8px;
     width: 90%;
@@ -900,7 +900,7 @@ footer .contact-info a {
   
   /* تنسيق زر الإرسال */
   .cta-button {
-    background-color: #3498db;
+    background-color: #3e0763;
     color: white;
     padding: 10px 15px;
     border: none;
@@ -910,7 +910,7 @@ footer .contact-info a {
   }
   
   .cta-button:hover {
-    background-color: #2980b9;
+    background-color: #3e0763;
   }
  * {
             margin: 0;
@@ -920,7 +920,7 @@ footer .contact-info a {
         }
 
         .footer {
-            background-color: #111827;
+            background-color: #3e0763;
             color: white;
             padding: 3rem 0;
             width: 100%; /* إضافة هذه السطر */
@@ -944,7 +944,7 @@ footer .contact-info a {
         }
 
         .footer-section p {
-            color: #9ca3af;
+            color: #ffffff; /* changed from "#9ca3af" */
             line-height: 1.6;
         }
 
@@ -957,7 +957,7 @@ footer .contact-info a {
         }
 
         .quick-links ul li a {
-            color: #9ca3af;
+            color: #ffffff; /* changed from "#9ca3af" */
             text-decoration: none;
             transition: color 0.3s ease;
         }
@@ -975,7 +975,7 @@ footer .contact-info a {
             width: 40px;
             height: 40px;
             background-color: #374151;
-            border-radius: 50%;
+           border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
