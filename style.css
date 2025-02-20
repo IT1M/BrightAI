@@ -743,7 +743,7 @@ footer {
 }
 
 .modal-content {
-    background-color: var(--white);
+    background-color: #3e0763;
     /* margin: 10% auto; <-- إزالة هذا السطر */
     padding: 20px;
     border: 1px solid #888;
