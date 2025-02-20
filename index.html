@@ -46,7 +46,22 @@ crossorigin="anonymous"></script>
     <meta name="revisit-after" content="7 days">
     <meta name="theme-color" content="#6759ff">
     
-
+    <!-- Font preload -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Amiri&subset=arabic,latin" rel="stylesheet">
+    
+    <!-- تحسين تحميل الصور -->
+    <style>
+        .service-image {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .service-image.loaded {
+            opacity: 1;
+        }
+    </style>
     
     <!-- ...existing stylesheets and scripts... -->
     
@@ -228,7 +243,7 @@ crossorigin="anonymous"></script>
           }
           .banner {
             position: relative;
-            background: linear-gradient(45deg, #0A192F, #0A192F);
+            background: linear-gradient(45deg, #0e203a, #354e68);
             color: #ffff; /* تغيير لون النص */
             text-align: center;
             padding: 80px 20px 140px 20px;
@@ -264,7 +279,7 @@ crossorigin="anonymous"></script>
             transition: background-color 0.3s ease;
           }
           .banner button:hover {
-            background-color: #1D2B3A;
+            background-color: #354e68;
           }
           /* حاوية الأيقونات المتحركة */
           .icon-container {
@@ -327,12 +342,16 @@ crossorigin="anonymous"></script>
           <!-- شعار الشركة في الزاوية العليا اليسرى -->
           <img src="https://www2.0zz0.com/2025/02/17/14/557749420.png" alt="شعار الشركة" class="logo">
           
-          <h1>Bright AI حلول ذكاء اصطناعي مبتكرة لتطوير الأعمال</h1>
-          <p>استكشف قوة التعلم الآلي، الشبكات العصبية، وتحليل البيانات في رحلتك نحو الابتكار الرقمي وتكنولوجيا المستقبل
-              Bright AI إضاءة المستقبل بذكاء لا محدود.</p>
-          <a href="https://wa.me/966501120781" target="_blank">
-            <button>تواصل معنا</button>
-          </a>
+          <div class="banner-content" style="text-align: right;">
+            <h1>حلول مُشرقة لتطوير الأعمال</h1>
+            <p>مع تزايد قدرة الإعتماد على الذكاء الإصطناعي في العالم في الوقت الراهن، بزّغ في الأفق إشراقة ذكية كان مصدرها Bright AI.
+            تم العمل على بناء هذة المؤسسة إبريل 2023، وانتهى في نفس يوم ذكرى تأسيس المملكة 22فبراير 2025، نقدم لكم تجربة مؤسسية تطبق لأول مره في المنطقة وهي مؤسسة يوجد فيها انسان واحد فقط. وتقدم خدمات وإستشارات للفرد والمؤسسة، يتضمن ذلك "اتمتة العمليات، تحليل البيانات، وإستشارات مخصصة."
+            <div class="button-container">
+              <a href="https://wa.me/966501120781" target="_blank">
+                <button>تواصل معنا</button>
+              </a>
+            </div>
+          </div>
           
           <div class="icon-container">
     <!-- 1. رقاقة إلكترونية - تمثل معالجة البيانات -->

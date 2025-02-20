@@ -305,6 +305,27 @@ document.addEventListener('DOMContentLoaded', function () {
         style.text
     });
 
+    // تحسين تحميل الصور
+    const serviceImages = document.querySelectorAll('.service-image');
+    
+    serviceImages.forEach(img => {
+        // التأكد من تحميل الصورة
+        if (img.complete) {
+            img.classList.add('loaded');
+        } else {
+            img.addEventListener('load', function() {
+                img.classList.add('loaded');
+            });
+        }
+        
+        // معالجة حالة فشل تحميل الصورة
+        img.addEventListener('error', function() {
+            img.src = 'fallback-image.jpg'; // صورة احتياطية
+            img.classList.add('loaded');
+        });
+    });
+    
+    // ...existing code...
 });
 
 // Use requestIdleCallback for non-critical operations
