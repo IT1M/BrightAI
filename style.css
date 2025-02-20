@@ -26,6 +26,12 @@
     --text-scale-ratio: clamp(1rem, 2vw, 1.2rem);
     --heading-scale: clamp(1.5rem, 4vw, 2.5rem);
     content-visibility: auto;
+    --content-width: min(90%, 1200px);
+    --mobile-padding: 1rem;
+    --tablet-padding: 2rem;
+    --desktop-padding: 3rem;
+    --heading-scale: clamp(1.5rem, 5vw, 2.5rem);
+    --text-scale: clamp(0.875rem, 2vw, 1rem);
 }
 
 html {
@@ -47,9 +53,9 @@ body {
 }
 
 .container {
-    width: min(90%, 1200px);
+    width: var(--content-width);
     margin-inline: auto;
-    padding: var(--container-padding);
+    padding: clamp(var(--mobile-padding), 5vw, var(--desktop-padding));
 }
 
 /* الهيدر */
@@ -256,6 +262,67 @@ header {
         margin-inline: auto;
         padding: 0.8em 1.5em;
     }
+
+    .banner-content {
+        padding: var(--mobile-padding);
+    }
+
+    .service-card {
+        margin-inline: auto;
+        max-width: 450px;
+    }
+
+    .navbar {
+        padding: 0.5rem;
+    }
+
+    .button {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* تحسينات للأجهزة اللوحية */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .banner-content {
+        padding: var(--tablet-padding);
+    }
+}
+
+/* تحسينات للشاشات الكبيرة */
+@media (min-width: 1025px) {
+    .banner-content {
+        padding: var(--desktop-padding);
+    }
+}
+
+/* دعم الشاشات العالية الدقة */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .service-image {
+        image-rendering: -webkit-optimize-contrast;
+    }
+}
+
+/* تحسينات أداء للأجهزة المحمولة */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* تحسين تجربة اللمس */
+@media (hover: none) and (pointer: coarse) {
+    .button, .service-card {
+        min-height: 44px;
+        min-width: 44px;
+    }
+
+    .navbar li a {
+        padding: 1rem;
+    }
 }
 
 /* القسم البطل */
@@ -320,8 +387,8 @@ header {
 
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+    gap: clamp(1rem, 3vw, 2rem);
 }
 
 .service-card {
@@ -698,7 +765,7 @@ footer {
     color: var(--white);
 }
 
-.social-icon:hover i {
+social-icon:hover i {
     color: white;
 }
 
@@ -2901,7 +2968,7 @@ body {
     margin: 15px 0;
     padding-right: 30px;
     position: relative;
-    color: var(--text-primary);
+    color: var (--text-primary);
 }
 
 .ai-analysis-section .benefits li:before {
@@ -2933,7 +3000,7 @@ body {
     font-size: 2em;
     margin-bottom: 20px;
     line-height: 1.4;
-    color: var(--text-primary);
+    color: var (--text-primary);
     text-align: center;
 }
 
@@ -3104,6 +3171,82 @@ body {
     display: flex;
     justify-content: flex-start; /* Align button to the right */
     margin-top: 2rem;
+}
+
+/* ...existing code... */
+
+/* ...existing code... */
+
+.tech-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0.2;
+    pointer-events: none;
+}
+
+.banner {
+    position: relative;
+    /* ...existing banner styles... */
+}
+
+.banner-content {
+    position: relative;
+    z-index: 2;
+    /* ...existing banner-content styles... */
+}
+
+/* ...existing code... */
+
+/* تحسينات للنافبار */
+.navbar li a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+}
+
+.navbar li a i {
+    font-size: 1.2rem;
+    min-width: 20px;
+    text-align: center;
+}
+
+/* تحسينات للهاتف المحمول */
+@media (max-width: 768px) {
+    .navbar {
+        padding-top: 60px; /* مساحة للزر */
+    }
+
+    .navbar li {
+        width: 100%;
+    }
+
+    .navbar li a {
+        padding: 15px 20px;
+        justify-content: flex-end; /* محاذاة للجهة اليمنى */
+        font-size: 1.1rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .navbar li a i {
+        order: 1; /* تغيير ترتيب الأيقونة لتظهر بعد النص */
+        margin-right: 10px;
+    }
+
+    .navbar-toggle {
+        top: 15px;
+        right: 15px;
+    }
+
+    /* تحسين مظهر القائمة المفتوحة */
+    .navbar.active {
+        padding-top: 70px;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+    }
 }
 
 /* ...existing code... */
