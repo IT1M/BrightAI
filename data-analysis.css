@@ -1,20 +1,29 @@
+:root {
+    --primary-color: #0A192F;
+    --secondary-color: #64FFDA;
+    --text-color: #FFFFFF;
+    --subtext-color: #8892B0;
+    --background-color: #1D2B3A;
+    --card-background: #1D2B3A;
+}
+
 /* إعدادات عامة */
 body {
     font-family: 'Cairo', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #3e0763;
-    color: #ffffff;
+    background-color: var(--background-color);
+    color: var(--text-color);
     line-height: 1.8;
 }
 
 h1, h2, h3 {
-    color: #2c3e50;
+    color: var(--text-color);
 }
 
 a {
     text-decoration: none;
-    color: #3498db;
+    color: var(--secondary-color);
 }
 
 a:hover {
@@ -23,8 +32,8 @@ a:hover {
 
 /* الهيدر */
 header {
-    background: linear-gradient(to right, #005BB5, #2d0549);
-    color: #ffffff;
+    background: linear-gradient(to right, var(--secondary-color), var(--primary-color));
+    color: var(--text-color);
     text-align: center;
     padding: 50px 20px;
 }
@@ -43,7 +52,7 @@ section {
     max-width: 1200px;
     margin: 30px auto;
     padding: 20px;
-    background: white;
+    background: #1D2B3A;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
@@ -69,14 +78,14 @@ section p {
 }
 
 .service {
-    background: #2d0549;
+    background: var(--card-background);
     border-radius: 8px;
     padding: 20px;
     width: calc(45% - 20px);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    color: #ffffff;
+    color: var(--text-color);
 }
 
 .service:hover {
@@ -86,7 +95,7 @@ section p {
 
 .service i {
     font-size: 2.5em;
-    color: #005BB5;
+    color: var(--secondary-color);
     margin-bottom: 10px;
 }
 
@@ -107,7 +116,7 @@ section p {
 }
 
 .why-us li i {
-    color: #3498db;
+    color: var(--secondary-color);
     margin-left: 10px;
 }
 
@@ -120,13 +129,13 @@ section p {
 }
 
 .example {
-    background: #2d0549;
+    background: var(--card-background);
     border-radius: 8px;
     padding: 20px;
     width: calc(30% - 20px);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     text-align: center;
-    color: #ffffff;
+    color: var(--text-color);
 }
 
 .example h3 {
@@ -136,15 +145,15 @@ section p {
 
 .example p {
     font-size: 1em;
-    color: #555;
+    color: var(--subtext-color);
 }
 
 /* القسم الختامي */
 footer {
+    background: var(--card-background);
+    color: var(--text-color);
     text-align: center;
     padding: 20px;
-    background: #2d0549;
-    color: #ffffff;
 }
 
 footer a {
@@ -160,8 +169,8 @@ body {
     font-family: 'Cairo', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #3e0763;
-    color: #ffffff;
+    background-color: var(--background-color);
+    color: var(--text-color);
     line-height: 1.6;
     direction: rtl;
 }
@@ -172,7 +181,7 @@ body {
 }
 /* Navigation Bar */
 nav {
-    background: #2d0549;
+    background: var(--primary-color);
     padding: 15px 0;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     position: sticky;
@@ -203,8 +212,8 @@ nav {
     display: inline-block;
 }
 .navbar a.active{
-      background-color: #005BB5;
-
+      background-color: var(--secondary-color);
+      color: var(--primary-color);
 }
 .navbar a:hover {
     background-color: #34495e;
@@ -214,7 +223,7 @@ nav {
 .header {
     text-align: center;
     padding: 50px 20px;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: #1D2B3A(255, 255, 255, 0.8);
     border-radius: 10px;
     margin: 30px auto;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -240,7 +249,7 @@ nav {
     margin: 30px auto;
 }
 .service-card {
-    background: white;
+    background: #1D2B3A;
     border-radius: 8px;
     padding: 20px;
     width: calc(30% - 20px);
@@ -274,7 +283,7 @@ nav {
 }
 .stat-item {
     text-align: center;
-    background: white;
+    background: #1D2B3A;
     border-radius: 8px;
     padding: 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -299,7 +308,7 @@ nav {
 }
 /* Importance Section */
 #ai-automation-importance {
-    background-color: #f9f9f9;
+    background-color: #1D2B3A;
     padding: 50px 20px;
     text-align: center;
 }
@@ -356,7 +365,7 @@ nav {
     border-radius: 8px;
     padding: 15px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-     background-color: white;
+     background-color: #1D2B3A;
 }
 #ai-automation-importance .stat-number {
     font-size: 2em;
@@ -370,7 +379,7 @@ nav {
 /* Workflow Chart */
 #data-analysis {
     padding: 50px 20px;
-  background-color: #f9f9f9;
+  background-color: #1D2B3A;
 }
 #data-analysis .container{
   max-width: 1200px;
@@ -414,7 +423,7 @@ nav {
   justify-content: center;
 }
 .section-3d .card {
-    background: white;
+    background: #1D2B3A;
     border-radius: 8px;
     padding: 20px;
     width: calc(30% - 20px);
@@ -432,7 +441,7 @@ nav {
 }
 .section-3d .chart-container {
   width: calc(50% - 20px);
-   background: white;
+   background: #1D2B3A;
     border-radius: 8px;
      padding: 20px;
      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -445,8 +454,8 @@ nav {
 }
 /* Footer */
 footer {
-    background-color: #2d0549;
-    color: white;
+    background: var(--card-background);
+    color: var(--text-color);
     padding: 30px 20px;
     display: flex;
     justify-content: space-between;

@@ -1,8 +1,10 @@
 :root {
-    --primary-color: #005BB5;
-    --text-color: #ffffff;
-    --background-color: #3e0763;
-    --hover-color: #004a92;
+    --primary-color: #0A192F;
+    --secondary-color: #64FFDA;
+    --text-color: #FFFFFF;
+    --subtext-color: #8892B0;
+    --background-color: #1D2B3A;
+    --card-background: #1D2B3A;
 }
 
 * {
@@ -18,7 +20,7 @@ body {
 }
 
 .main-header {
-    background: #2d0549;
+    background: var(--card-background);
     padding: 1rem 5%;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     display: flex;
@@ -37,7 +39,7 @@ body {
 
 .search-section {
     padding: 2rem 5%;
-    background: linear-gradient(to right, #005BB5, #004a92);
+    background: linear-gradient(to right, var(--primary-color), var(--card-background));
 }
 
 .search-container {
@@ -77,8 +79,8 @@ body {
 
 .sidebar {
     width: 250px;
-    background: #2d0549;
-    color: #ffffff;
+    background: var(--card-background);
+    color: var(--text-color);
     padding: 1.5rem;
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
@@ -103,8 +105,8 @@ body {
 }
 
 .document-card {
-    background: #2d0549;
-    color: #ffffff;
+    background: var(--card-background);
+    color: var(--text-color);
     padding: 1.5rem;
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
@@ -118,8 +120,8 @@ body {
 
 .document-preview {
     margin: 2rem 5%;
-    background: #2d0549;
-    color: #ffffff;
+    background: var(--card-background);
+    color: var(--text-color);
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
@@ -137,8 +139,8 @@ body {
     margin-left: 1rem;
     border: none;
     border-radius: 20px;
-    background: #005BB5;
-    color: #ffffff;
+    background: var(--secondary-color);
+    color: var(--primary-color);
     cursor: pointer;
 }
 
@@ -160,8 +162,8 @@ body {
 }
 
 .main-footer {
-    background: #2d0549;
-    color: #ffffff;
+    background: var(--card-background);
+    color: var(--text-color);
     padding: 2rem 5%;
     margin-top: 3rem;
     display: flex;
@@ -194,7 +196,7 @@ body {
         }
 
         .footer {
-            background-color: #111827;
+            background-color: var(--card-background);
             color: white;
             padding: 3rem 0;
             width: 100%; /* إضافة هذه السطر */
@@ -248,7 +250,7 @@ body {
         .social-icon {
             width: 40px;
             height: 40px;
-            background-color: #374151;
+            background-color: #1D2B3A;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -257,7 +259,7 @@ body {
         }
 
         .social-icon:hover {
-            background-color: #4b5563;
+            background-color: #1D2B3A;
         }
 
         .social-icon img {

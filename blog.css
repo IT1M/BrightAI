@@ -1,11 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
 
+:root {
+    --primary-color: #0A192F;
+    --secondary-color: #64FFDA;
+    --text-color: #FFFFFF;
+    --subtext-color: #8892B0;
+    --background-color: #1D2B3A;
+    --card-background: #1D2B3A;
+}
+
 /* General Styles */
 body {
     font-family: 'Cairo', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #3e0763;
+    background-color: var(--background-color);
     color: #ffffff;
     line-height: 1.6;
     direction: rtl;
@@ -47,7 +56,7 @@ body {
 
 /* Header */
 .header {
-    background: #2d0549;
+    background: var(--card-background);
     color: #ffffff;
     text-align: center;
     padding: 20px 0;
@@ -65,7 +74,7 @@ body {
 
 /* Navigation Bar */
 nav {
-    background: #2d0549;
+    background: var(--card-background);
     padding: 15px 0;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
@@ -136,7 +145,7 @@ nav {
 }
 
 .article {
-    background: #2d0549;
+    background: var(--card-background);
     border: 1px solid #005BB5;
     border-radius: 12px;
     padding: 30px;
@@ -228,7 +237,7 @@ nav {
 
 /* Footer Enhancements */
 footer {
-    background-color: #2d0549;
+    background: var(--card-background);
     color: #ffffff;
     padding: 40px 20px;
     display: flex;

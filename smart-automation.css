@@ -1,30 +1,39 @@
+:root {
+    --primary-color: #0A192F;
+    --secondary-color: #64FFDA;
+    --text-color: #FFFFFF;
+    --subtext-color: #8892B0;
+    --background-color: #1D2B3A;
+    --card-background: #1D2B3A;
+}
+
 /* إعدادات أساسية */
 body {
     margin: 0;
     font-family: 'Cairo', sans-serif;
     direction: rtl;
-    background-color: #3e0763;
-    color: #ffffff;
+    background-color: var(--primary-color);
+    color: var(--text-color);
     line-height: 1.6;
 }
 
 h2, h3 {
-    color: #ffffff;
+    color: var(--text-color);
 }
 
 a {
     text-decoration: none;
-    color: #ffffff;
+    color: var(--text-color);
     transition: color 0.3s ease;
 }
 
 a:hover {
-    color: #d4d4d4;
+    color: var(--secondary-color);
 }
 
 /* ترويسة الصفحة */
 .header {
-    background-color: #3e0763;
+    background-color: var(--primary-color);
     color: white;
     text-align: center;
     padding: 30px 20px;
@@ -48,7 +57,7 @@ a:hover {
     margin: 0;
     display: flex;
     justify-content: center;
-    background-color: #2d0549;
+    background-color: var(--background-color);
 }
 
 .navbar li {
@@ -64,12 +73,12 @@ a:hover {
 }
 
 .navbar a.active {
-    border-bottom: 3px solid #FFD700;
+    border-bottom: 3px solid var(--secondary-color);
 }
 
 /* قسم الهيرو */
 .hero {
-    background-color: #3e0763;
+    background-color: var(--primary-color);
     padding: 60px 20px;
     text-align: center;
 }
@@ -87,8 +96,8 @@ a:hover {
 
 .hero .button {
     display: inline-block;
-    background-color: #005BB5;
-    color: #ffffff;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
     padding: 15px 30px;
     border-radius: 5px;
     font-weight: bold;
@@ -119,8 +128,8 @@ section > h2 {
 }
 
 .card {
-    background: #3e0763;
-    border: 1px solid #005BB5;
+    background: var(--card-background);
+    border: 1px solid var(--secondary-color);
     border-radius: 10px;
     padding: 30px;
     width: 320px;
@@ -140,13 +149,13 @@ section > h2 {
 
 .card i {
     font-size: 2.5em;
-    color: #005BB5;
+    color: var(--secondary-color);
     margin-bottom: 20px;
 }
 
 /* قسم الفوائد */
 .benefits {
-    background-color: #3e0763;
+    background-color: var(--primary-color);
 }
 
 .benefit-items {
@@ -158,14 +167,14 @@ section > h2 {
 
 .item {
     padding: 25px;
-    background-color: #3e0763;
+    background-color: var(--card-background);
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
 .item i {
     font-size: 2em;
-    color: #005BB5;
+    color: var(--secondary-color);
     margin-bottom: 15px;
 }
 
@@ -183,7 +192,7 @@ section > h2 {
 }
 
 .application-examples .example {
-    background-color: #3e0763;
+    background-color: var(--card-background);
     padding: 20px;
     border-radius: 8px;
     border: 1px solid #eee;
@@ -197,7 +206,7 @@ section > h2 {
 
 /* قسم التقنيات */
 .technologies {
-    background-color: #3e0763;
+    background-color: var(--primary-color);
 }
 
 .tech-logos {
@@ -222,7 +231,7 @@ section > h2 {
 
 /* قسم دراسات الحالة */
 .case-studies {
-    background-color: #3e0763;
+    background-color: var(--primary-color);
 }
 
 .case-study-cards {
@@ -234,7 +243,7 @@ section > h2 {
 
 /* قسم ابدأ */
 .getting-started {
-    background-color: #3e0763;
+    background-color: var(--primary-color);
 }
 
 .getting-started p {
@@ -245,8 +254,8 @@ section > h2 {
 
 .getting-started .button {
     display: inline-block;
-    background-color: #005BB5;
-    color: white;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
     padding: 15px 30px;
     border-radius: 5px;
     font-weight: bold;
@@ -259,7 +268,7 @@ section > h2 {
 
 /* قسم الأهمية */
 .importance {
-    background-color: #3e0763;
+    background-color: var(--primary-color);
 }
 
 .importance-cards {
@@ -268,7 +277,7 @@ section > h2 {
 
 /* قسم التواصل */
 .contact {
-    background: #2d0549;
+    background: var(--background-color);
     color: white;
     padding: 40px 20px;
     border-radius: 10px;
@@ -286,7 +295,7 @@ section > h2 {
 }
 
 .contact a {
-    color: #005BB5;
+    color: var(--secondary-color);
     text-decoration: none;
     font-weight: bold;
 }
@@ -297,7 +306,7 @@ section > h2 {
 
 /* تذييل */
 footer {
-    background: #2d0549;
+    background: var(--background-color);
     color: white;
     text-align: center;
     padding: 20px 0;
@@ -317,7 +326,7 @@ footer .social a {
 }
 
 footer .social a:hover {
-    color: #FFD700;
+    color: var(--secondary-color);
 }
 
 /* استجابة الشاشات */
@@ -366,7 +375,7 @@ footer .social a:hover {
         }
 
         .footer {
-            background-color: #2d0549;
+            background-color: var(--background-color);
             color: white;
             padding: 3rem 0;
             width: 100%; /* إضافة هذه السطر */

@@ -2,21 +2,24 @@
 
 /* المتغيرات */
 :root {
-    --primary-color: #4e4848; /* Updated to match button/card color */
-    --secondary-color: #4e4848; /*  fallback to primary */
-    --accent-color: #4e4848;  /* fallback to primary */
+    --primary-color: #1D2B3A; /* Updated to match button/card color */
+    --secondary-color: #1D2B3A; /*  fallback to primary */
+    --accent-color: #8892B0;  /* fallback to primary */
     --text-primary: #ffffff;
     --text-secondary: #ffffff; /* fallback to text-primary */
-    --background-light: #3e0763;
-    --background-dark: #3e0763;
+  /* ألوان النصوص */
+  --text-color: #FFFFFF;      /* أبيض للنصوص الرئيسية */
+  --subtext-color: #8892B0;   /* رمادي فاتح للنصوص الثانوية */
+    --background-light: #0A192F;
+    --background-dark: #0A192F;
     --white: #ffffff;
     --error: #ffffff; /* fallback to white */
     --success: #ffffff; /* fallback to white */
     --warning: #ffffff; /* fallback to white */
-    --light-gray: #3e0763;
-    --dark-gray: #4e4848; /*  fallback to primary*/
-    --modal-overlay-color: rgba(0, 0, 0, 0.5);
-    --background-color: #3e0763;
+    --light-gray: #0A192F;
+    --dark-gray: #1D2B3A; /*  fallback to primary*/
+    --modal-overlay-color: #00000080;
+    --background-color: #1D2B3A;
     --font-family: 'Tajawal', sans-serif;
     --container-padding: clamp(1rem, 5vw, 2rem);
     --text-scale-ratio: clamp(1rem, 2vw, 1.2rem);
@@ -50,7 +53,7 @@ body {
 
 /* الهيدر */
 header {
-    background-color: #3e0763 !important;
+    background-color: #0A192F !important;
     padding: 1rem 0;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     position: relative;
@@ -79,7 +82,7 @@ header {
 
 .navbar li a:hover {
     color: var(--primary-color);
-    background-color: rgba(78, 72, 72, 0.1); /* Adjusted to use --primary-color */
+    background-color: #112240(78, 72, 72, 0.1); /* Adjusted to use --primary-color */
     transform: translateY(-2px);
 }
 
@@ -117,7 +120,7 @@ header {
         right: -100%;
         width: 85%;
         height: 100vh;
-        background: #3e0763;
+        background: #0A192F;
         transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         z-index: 1000;
         overflow-y: auto;
@@ -221,7 +224,7 @@ header {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-        background: linear-gradient(135deg, #3e0763 0%, #3e0763 100%); /* Updated background */
+        background: linear-gradient(135deg, #0A192F 0%, #0A192F 100%); /* Updated background */
         color: #ffffff;
         line-height: 1.6;
         background-size: 400% 400%;
@@ -311,7 +314,7 @@ header {
     padding: 4rem 0;
     position: relative;
     perspective: 800px;
-    background-color: #3e0763;
+    background-color: #0A192F;
 }
 
 .services-grid {
@@ -321,7 +324,7 @@ header {
 }
 
 .service-card {
-    background: #928b8b;
+    background: #1D2B3A;
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -367,7 +370,7 @@ header {
 }
 
 .learn-more-btn:hover {
-    background-color: #353131; /* Darkened primary color */
+    background-color: #0A192F; /* Darkened primary color */
     transform: translateY(-2px) translateX(5px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
@@ -392,7 +395,7 @@ header {
 .dynamic-background {
     position: relative;
     overflow: hidden;
-    background-color: #3e0763;
+    background-color: #0A192F;
     /* transform-style: preserve-3d; */
 }
 
@@ -411,7 +414,7 @@ header {
     text-align: center;
     position: relative;
     perspective: 800px;
-    background-color: #3e0763;
+    background-color: #0A192F;
 }
 
 .about-content p {
@@ -431,7 +434,7 @@ header {
 
 /* Stats section styles */
 .stats {
-    background-color: #3e0763;
+    background-color: #0A192F;
     padding: 4rem 0;
     position: relative;
     perspective: 800px;
@@ -456,7 +459,7 @@ header {
 /* Testimonials section styles */
 .testimonials {
     padding: 4rem 0;
-    background-color: #3e0763;
+    background-color: #0A192F;
     position: relative;
     perspective: 800px;
 }
@@ -502,7 +505,7 @@ header {
     padding: 4rem 0;
     position: relative;
     perspective: 800px;
-    background-color: #3e0763;
+    background-color: #0A192F;
 }
 
 .faq-item {
@@ -539,7 +542,7 @@ header {
 /* Partners section styles */
 .partners {
     padding: 4rem 0;
-    background-color: #3e0763;
+    background-color: #1D2B3A;
     position: relative;
     perspective: 800px;
 }
@@ -572,7 +575,7 @@ header {
     text-align: center;
     position: relative;
     perspective: 800px;
-    background-color: #3e0763;
+    background-color: #1D2B3A;
 }
 .newsletter h2{
     color: var(--text-primary);
@@ -606,7 +609,7 @@ header {
 }
 
 .newsletter button:hover {
-    background-color: #353131; /* Darkened primary color */
+    background-color: #1D2B3A; /* Darkened primary color */
 }
 
 /* Footer Styles */
@@ -743,7 +746,7 @@ footer {
 }
 
 .modal-content {
-    background-color: #3e0763;
+    background-color: #0A192F;
     /* margin: 10% auto; <-- إزالة هذا السطر */
     padding: 20px;
     border: 1px solid #888;
@@ -841,7 +844,7 @@ footer {
 
 /* Header styles */
 header {
-    background-color: #3e0763;
+    background-color: #0A192F;
     padding: 1rem 0;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     position: relative;
@@ -909,7 +912,7 @@ nav {
     position: relative;
     z-index: 1;
     perspective: 800px;
-    background-color: #3e0763;
+    background-color: #0A192F;
 }
 
 .data-analysis:before {
@@ -1031,7 +1034,7 @@ nav {
     /* Add relative position /
     z-index: 1; / ensure services are in front of parallax */
     perspective: 800px;
-    background-color: #3e0763;
+    background-color: #0A192F;
 }
 
 .gemini-area:before {
@@ -1066,7 +1069,7 @@ nav {
     padding: 6rem 0;
     position: relative;
     overflow: hidden;
-    background: linear-gradient(135deg, #3e0763, #3e0763);
+    background: linear-gradient(135deg, #0A192F, #0A192F);
     perspective: 1000px;
 }
 
@@ -1187,7 +1190,7 @@ nav {
         right: -100%;
         width: 80%;
         height: 100vh;
-        background: #3e0763;
+        background: #0A192F;
         transition: right 0.3s ease;
         z-index: 1000;
         overflow-y: auto;
@@ -1275,7 +1278,7 @@ nav {
 
 .services-section {
     padding: 60px 0;
-    background-color: #3e0763;
+    background-color: #0A192F;
 }
 
 .container {
@@ -1359,7 +1362,7 @@ h1 {
 /* الأنماط السابقة تبقى كما هي */
 
 .system-section {
-    background-color: #3e0763;
+    background-color: #0A192F;
     padding: 80px 0;
 }
 .system-section h2{
@@ -1441,7 +1444,7 @@ h1 {
     padding: 4rem 0;
     position: relative;
     perspective: 800px;
-    background: #3e0763;
+    background: #0A192F;
 }
 
 .consultation-form .container {
@@ -1494,7 +1497,7 @@ h1 {
 }
 
 .consultation-form button:hover {
-    background-color: #353131; /* Darkened primary */
+    background-color: #1D2B3A; /* Darkened primary */
 }
 
 .consultation-form button i {
@@ -1515,7 +1518,7 @@ h1 {
 }
 
 .service-card {
-    background: #928b8b;
+    background: #1D2B3A;
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -1558,7 +1561,7 @@ h1 {
 .banner3d {
     position: relative;
     min-height: 100vh;
-    background: linear-gradient(135deg, #3e0763 0%, #3e0763 100%);
+    background: linear-gradient(135deg, #0A192F 0%, #0A192F 100%);
     overflow: hidden;
 }
 
@@ -1625,7 +1628,7 @@ h1 {
 }
 
 .button {
-    background: linear-gradient(45deg, #4e4848, #4e4848);  /*  primary color */
+    background: linear-gradient(45deg, #1D2B3A, #1D2B3A);  /*  primary color */
     border: none;
     padding: 1rem 2rem;
     color: white;
@@ -1638,7 +1641,7 @@ h1 {
 }
 
 .button-outline {
-    border: 2px solid #4e4848;  /* primary */
+    border: 2px solid #1D2B3A;  /* primary */
     color: #fff;
 }
 
@@ -1702,7 +1705,7 @@ h1 {
     width: 200px;
     height: 200px;
     background: rgba(78, 72, 72, 0.2);  /*  primary color */
-    border: 2px solid #4e4848;  /*  primary */
+    border: 2px solid #1D2B3A;  /*  primary */
     backdrop-filter: blur(5px);
 }
 
@@ -1780,7 +1783,7 @@ h1 {
 /* Robots Section */
 .robots-section {
     padding: 4rem 0;
-    background-color: #3e0763;
+    background-color: #0A192F;
     position: relative;
     perspective: 800px;
 }
@@ -1933,7 +1936,7 @@ h1 {
         right: -100%;
         width: 80%;
         height: 100vh;
-        background: #3e0763;
+        background: #0A192F;
         transition: right 0.3s ease;
         z-index: 1000;
         overflow-y: auto;
@@ -1959,7 +1962,7 @@ h1 {
     position: relative;
     width: 100%;
     height: 400px;
-    background: #3e0763;
+    background: #0A192F;
     border-radius: 20px;
     padding: 40px;
     overflow: hidden;
@@ -1970,7 +1973,7 @@ h1 {
 
 @media (max-width: 768px) {
     .banner {
-        background: #3e0763;
+        background: #0A192F;
         color: #333;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         margin: 15px;
@@ -2100,11 +2103,11 @@ h1 {
 }
 
 .banner .btn-email {
-    background: linear-gradient(45deg, #4e4848, #4e4848); /*  primary */
+    background: linear-gradient(45deg, #1D2B3A, #1D2B3A); /*  primary */
 }
 
 .banner .btn-whatsapp {
-    background: linear-gradient(45deg, #4e4848, #4e4848); /*  primary */
+    background: linear-gradient(45deg, #1D2B3A, #1D2B3A); /*  primary */
 }
 
 .banner .btn:hover {
@@ -2226,7 +2229,7 @@ h1 {
 }
 
 #newsletter-subscription {
-    background: linear-gradient(135deg, #3e0763, #3e0763);
+    background: linear-gradient(135deg, #0A192F, #0A192F);
     position: relative;
     overflow: hidden;
 }
@@ -2265,19 +2268,19 @@ h1 {
 
 /* استايل الهيدر */
 header {
-    background-color: #3e0763 !important;
+    background-color: #0A192F !important;
     color: #ffffff; /*  text color */
 }
 
 /* استايل البانر */
 .banner {
-    background-color: #3e0763 !important;
+    background-color: #0A192F !important;
     color: #ffffff; /*  text color */
 }
 
 /* تعديل لون النص في قائمة الصفحات */
 .navbar {
-    background-color: #3e0763 !important;
+    background-color: #0A192F !important;
 }
 
 .navbar a {
@@ -2287,7 +2290,7 @@ header {
 /* تحسين الوضوح في الهواتف */
 @media (max-width: 768px) {
     .navbar {
-        background-color: #3e0763 !important;
+        background-color: #0A192F !important;
     }
 
     .navbar a {
@@ -2454,7 +2457,7 @@ header {
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #3e0763;
+    background: #0A192F;
     color: #ffffff;
     line-height: 1.6;
 }
@@ -2608,7 +2611,7 @@ body {
 
 .automation-section {
     font-family: 'Tajawal', sans-serif;
-    background: #3e0763;
+    background: #0A192F;
     padding: 3rem 1rem;
     color: #ffffff;
     position: relative;
@@ -2745,7 +2748,7 @@ body {
 }
 
 .ai-analysis-section {
-    background: #3e0763;
+    background: #0A192F;
     padding: 20px;
 }
 
@@ -2755,7 +2758,7 @@ body {
 }
 
 .ai-analysis-section .hero {
-    background: linear-gradient(135deg, #3e0763);  /*  background */
+    background: linear-gradient(135deg, #0A192F);  /*  background */
     color: white;
     padding: 40px 20px;
     border-radius: 15px;
@@ -2925,7 +2928,7 @@ body {
 .social-icon {
     width: 40px;
     height: 40px;
-    background-color: #4e4848;  /*  social icon background */
+    background-color: #1D2B3A;  /*  social icon background */
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -2934,7 +2937,7 @@ body {
 }
 
 .social-icon:hover {
-    background-color: #353131;  /* Darkened primary for hover */
+    background-color: #1D2B3A;  /* Darkened primary for hover */
 }
 
 .social-icon img {
@@ -2947,7 +2950,7 @@ body {
     text-align: center;
     margin-top: 2rem;
     padding-top: 2rem;
-    border-top: 1px solid #4e4848;   /*  copyright border */
+    border-top: 1px solid #1D2B3A;   /*  copyright border */
     color: var(--text-primary);
 }
 
