@@ -1635,6 +1635,23 @@ body {
     transform: translateY(0);
 }
 
+.action-button.green {
+    background: linear-gradient(135deg, #64FFDA, #48BB78);
+    color: #1D2B3A;
+    font-weight: bold;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    margin-right: 1rem;
+}
+
+.action-button.green:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(100, 255, 218, 0.2);
+    background: linear-gradient(135deg, #48BB78, #64FFDA);
+}
+
 @media (prefers-reduced-motion: reduce) {
     .action-button {
         transition: none;
@@ -2910,7 +2927,7 @@ body {
     font-size: 2em;
     margin-bottom: 20px;
     line-height: 1.4;
-    color: var(--text-primary);
+    color: var (--text-primary);
 }
 
 .ai-analysis-section .features {
@@ -3191,6 +3208,11 @@ body {
 .banner {
     position: relative;
     /* ...existing banner styles... */
+    background: #0A192F;
+    color: #ffff;
+    text-align: center;
+    padding: 80px 20px 140px 20px;
+    overflow: hidden;
 }
 
 .banner-content {
@@ -3412,3 +3434,127 @@ body {
 }
 
 /* ... existing code ... */
+
+/* تحسين النافبار */
+.navbar-toggle {
+    display: none; /* Hidden by default on desktop */
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background: rgba(29, 43, 58, 0.9); /* Semi-transparent background */
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    z-index: 1002;
+    cursor: pointer;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+    .navbar-toggle {
+        display: block;
+    }
+
+    .navbar {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        max-width: 300px;
+        height: 100vh;
+        background: rgba(29, 43, 58, 0.95);
+        flex-direction: column;
+        padding: 80px 20px 20px;
+        transition: right 0.3s ease;
+        z-index: 1001;
+        backdrop-filter: blur(10px);
+    }
+
+    .navbar.active {
+        right: 0;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .navbar li {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .navbar li a {
+        width: 100%;
+        padding: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        border-radius: 8px;
+        font-size: 1.1rem;
+    }
+
+    .navbar li a i {
+        margin-left: 10px;
+        width: 24px;
+        text-align: center;
+    }
+}
+
+/* ...existing code... */
+
+/* Modern Service Cards */
+.service-card.modern {
+    background: linear-gradient(145deg, #1D2B3A, #0A192F);
+    border: 1px solid rgba(100, 255, 218, 0.1);
+    border-radius: 16px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.service-card.modern::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #64FFDA, #48BB78);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+    transform-origin: left;
+}
+
+.service-card.modern:hover::before {
+    transform: scaleX(1);
+}
+
+.service-card.modern .service-content {
+    position: relative;
+    z-index: 2;
+}
+
+.service-card.modern .service-title {
+    color: #64FFDA;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.modern-button {
+    display: inline-block;
+    background: transparent;
+    color: #64FFDA;
+    border: 1px solid #64FFDA;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    margin-top: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.modern-button:hover {
+    background: rgba(100, 255, 218, 0.1);
+    transform: translateY(-2px);
+}
+
+/* ...existing code... */

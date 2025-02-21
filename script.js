@@ -457,7 +457,7 @@ window.addEventListener('load', function () {
                  let y = Math.random() * (canvas.height - size * 2) + size;
                 let directionX = Math.random() * 2 - 1;
                 let directionY = Math.random() * 2 - 1;
-                let color = '#ffffff';
+                let color = '#0A192F'; // Changed color here
 
                 particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
             }
