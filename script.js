@@ -744,3 +744,77 @@ function initTechCanvas() {
 document.addEventListener('DOMContentLoaded', () => {
     initTechCanvas();
 });
+
+// تحسين تفاعلات شريط التنقل
+function initializeNavigation() {
+    const navbar = document.querySelector('.navbar');
+    const navbarToggle = document.querySelector('.navbar-toggle');
+    const navLinks = document.querySelectorAll('.navbar li a');
+    let lastScrollTop = 0;
+
+    // التعامل مع زر القائمة
+    navbarToggle?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        navbarToggle.classList.toggle('open');
+        navbar.classList.toggle('active');
+        
+        // منع التمرير عندما تكون القائمة مفتوحة
+        document.body.style.overflow = navbar.classList.contains('active') ? 'hidden' : '';
+    });
+
+    // إغلاق القائمة عند النقر خارجها
+    document.addEventListener('click', (e) => {
+        if (navbar.classList.contains('active') && 
+            !navbar.contains(e.target) && 
+            !navbarToggle.contains(e.target)) {
+            navbar.classList.remove('active');
+            navbarToggle.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+    });
+
+    // إغلاق القائمة عند النقر على الروابط
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            navbar.classList.remove('active');
+            navbarToggle.classList.remove('open');
+            document.body.style.overflow = '';
+        });
+    });
+
+    // إخفاء/إظهار شريط التنقل عند التمرير
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+        const nav = document.querySelector('nav');
+        
+        if (currentScroll > lastScrollTop && currentScroll > 100) {
+            // التمرير للأسفل
+            nav.style.transform = 'translateY(-100%)';
+        } else {
+            // التمرير للأعلى
+            nav.style.transform = 'translateY(0)';
+        }
+        
+        lastScrollTop = currentScroll;
+    });
+}
+
+// إضافة الفئة النشطة للرابط الحالي
+function setActiveNavLink() {
+    const currentPath = window.location.pathname;
+    const navLinks = document.querySelectorAll('.navbar li a');
+    
+    navLinks.forEach(link => {
+        if (link.getAttribute('href') === currentPath) {
+            link.classList.add('active');
+        } else {
+            link.classList.remove('active');
+        }
+    });
+}
+
+// تهيئة التنقل عند تحميل الصفحة
+document.addEventListener('DOMContentLoaded', () => {
+    initializeNavigation();
+    setActiveNavLink();
+});
