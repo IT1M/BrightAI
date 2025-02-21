@@ -864,4 +864,54 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+// تحسين أداء Navbar
+document.addEventListener('DOMContentLoaded', () => {
+    const navbar = document.querySelector('.main-navbar');
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    const searchInput = document.querySelector('.nav-search input');
+
+    // تفعيل/تعطيل القائمة في الشاشات الصغيرة
+    menuToggle?.addEventListener('click', () => {
+        menuToggle.classList.toggle('active');
+        navLinks.classList.toggle('active');
+    });
+
+    // إضافة تأثير الشفافية عند التمرير
+    let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+        
+        if (currentScroll > lastScroll && currentScroll > 100) {
+            navbar.style.transform = 'translateY(-100%)';
+        } else {
+            navbar.style.transform = 'translateY(0)';
+        }
+        
+        if (currentScroll > 100) {
+            navbar.style.background = 'rgba(10, 25, 47, 0.95)';
+        } else {
+            navbar.style.background = '#0A192F';
+        }
+        
+        lastScroll = currentScroll;
+    });
+
+    // تفعيل البحث
+    searchInput?.addEventListener('keyup', (e) => {
+        if (e.key === 'Enter') {
+            // يمكن إضافة وظيفة البحث هنا
+            console.log('Searching for:', searchInput.value);
+        }
+    });
+
+    // إغلاق القائمة عند النقر خارجها
+    document.addEventListener('click', (e) => {
+        if (!navbar.contains(e.target)) {
+            navLinks.classList.remove('active');
+            menuToggle.classList.remove('active');
+        }
+    });
+});
+
 // ...existing code...
