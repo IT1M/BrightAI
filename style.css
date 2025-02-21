@@ -67,61 +67,7 @@ header {
     z-index: 2;
 }
 
-.navbar-toggle {
-    display: none;
-    cursor: pointer;
-    font-size: 1.5rem;
-    color: var(--text-primary);
-    padding: 0.5rem;
-    border: none;
-    background: none;
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    z-index: 1001;
-    background: transparent;
-    border: none;
-    color: white;
-    /* Change color to white */
-    font-size: 24px;
-    cursor: pointer;
-    padding: 10px;
-}
-
 @media (max-width: 768px) {
-    .navbar-toggle {
-        display: block;
-        position: fixed;
-        top: 15px;
-        right: 15px;
-        z-index: 1000;
-    }
-
-    .navbar {
-        flex-direction: column;
-        align-items: center;
-        gap: 0;
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 80%;
-        height: 100vh;
-        background: #0A192F;
-        transition: right 0.3s ease;
-        z-index: 1000;
-        overflow-y: auto;
-    }
-
-    .navbar.active {
-        right: 0;
-    }
-
-    .navbar li a {
-        padding: 0.5rem 1rem;
-        text-align: center;
-        color: var(--text-primary);
-    }
-
     .hero h1 {
         font-size: 2rem;
     }
@@ -1048,19 +994,6 @@ body {
 
 /* ...existing code... */
 
-@media (max-width: 768px) {
-    .navbar-toggle {
-        display: block;
-    }
-
-    /* تأكيد لون الخطوط في وضع الموبايل */
-    .navbar-toggle span {
-        background: #ffffff; /* تغيير من var(--primary-color) إلى #ffffff */
-    }
-}
-
-/* ...existing code... */
-
 /* إعادة تعيين تنسيقات بسيطة */
 * {
     margin: 0;
@@ -1679,42 +1612,8 @@ body {
 
 /* ...existing code... */
 
-/* تحسينات للنافبار */
-.navbar li a {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    white-space: nowrap;
-}
-
-.navbar li a i {
-    font-size: 1.2rem;
-    min-width: 20px;
-    text-align: center;
-}
-
 /* تحسينات للهاتف المحمول */
 @media (max-width: 768px) {
-    .navbar {
-        padding-top: 60px; /* مساحة للزر */
-    }
-
-    .navbar li {
-        width: 100%;
-    }
-
-    .navbar li a {
-        padding: 15px 20px;
-        justify-content: flex-end; /* محاذاة للجهة اليمنى */
-        font-size: 1.1rem;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .navbar li a i {
-        order: 1; /* تغيير ترتيب الأيقونة لتظهر بعد النص */
-        margin-right: 10px;
-    }
-
     .navbar-toggle {
         top: 15px;
         right: 15px;
@@ -1891,72 +1790,6 @@ body {
 
 /* ... existing code ... */
 
-/* تحسين النافبار */
-.navbar-toggle {
-    display: none; /* Hidden by default on desktop */
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    width: 40px;
-    height: 40px;
-    background: rgba(29, 43, 58, 0.9); /* Semi-transparent background */
-    border: none;
-    border-radius: 5px;
-    padding: 5px;
-    z-index: 1002;
-    cursor: pointer;
-}
-
-/* Mobile styles */
-@media (max-width: 768px) {
-    .navbar-toggle {
-        display: block;
-    }
-
-    .navbar {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 80%;
-        max-width: 300px;
-        height: 100vh;
-        background: rgba(29, 43, 58, 0.95);
-        flex-direction: column;
-        padding: 80px 20px 20px;
-        transition: right 0.3s ease;
-        z-index: 1001;
-        backdrop-filter: blur(10px);
-    }
-
-    .navbar.active {
-        right: 0;
-        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
-    }
-
-    .navbar li {
-        width: 100%;
-        margin: 10px 0;
-    }
-
-    .navbar li a {
-        width: 100%;
-        padding: 15px;
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        border-radius: 8px;
-        font-size: 1.1rem;
-    }
-
-    .navbar li a i {
-        margin-left: 10px;
-        width: 24px;
-        text-align: center;
-    }
-}
-
-/* ...existing code... */
-
 /* Modern Service Cards */
 .service-card.modern {
     background: linear-gradient(145deg, #1D2B3A, #0A192F);
@@ -2014,141 +1847,6 @@ body {
 }
 
 
-/* ...existing code... */
-
-/* تحسينات Navbar */
-.navbar {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-    padding: 1rem var(--container-padding);
-    background-color: #fff;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    right: 0;
-    z-index: 1000;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-.navbar li {
-    list-style: none;
-}
-
-.navbar li a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 1rem;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    position: relative;
-}
-
-.navbar li a:hover {
-    color: #64FFDA;
-}
-
-.navbar li a::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background-color: #64FFDA;
-    transition: width 0.3s ease;
-}
-
-.navbar li a:hover::after {
-    width: 100%;
-}
-
-/* تحسين أيقونات Navbar */
-.navbar li a i {
-    font-size: 1.2rem;
-    transition: transform 0.3s ease;
-}
-
-.navbar li a:hover i {
-    transform: translateY(-2px);
-}
-
-/* تأثير النشاط */
-.navbar li a.active {
-    color: #64FFDA;
-    background-color: rgba(100, 255, 218, 0.1);
-}
-
-/* تحسين زر التنقل للموبايل */
-.navbar-toggle {
-    width: 40px;
-    height: 40px;
-    background: transparent;
-    border: none;
-    display: none;
-    flex-direction: column;
-    justify-content: space-around;
-    padding: 8px;
-    cursor: pointer;
-    z-index: 1001;
-}
-
-.navbar-toggle span {
-    width: 100%;
-    height: 2px;
-    background-color: #e3f2fd;
-    transition: all 0.3s ease;
-}
-
-/* تأثيرات زر التنقل عند التفعيل */
-.navbar-toggle.active span:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
-}
-
-.navbar-toggle.active span:nth-child(2) {
-    opacity: 0;
-}
-
-.navbar-toggle.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(7px, -6px);
-}
-
-/* تحسينات التجاوب */
-@media (max-width: 768px) {
-    .navbar {
-        flex-direction: column;
-        align-items: flex-start;
-        position: fixed;
-        top: 0;
-        right: -100%;
-        height: 100vh;
-        width: 80%;
-        max-width: 300px;
-        padding-top: 60px;
-        background-color: #0A192F;
-        transition: right 0.3s ease;
-    }
-
-    .navbar.active {
-        right: 0;
-    }
-
-    .navbar-toggle {
-        display: flex;
-        position: fixed;
-        top: 1rem;
-        right: 1rem;
-    }
-
-    .navbar li {
-        width: 100%;
-    }
-
     .navbar li a {
         padding: 1rem 2rem;
         width: 100%;
@@ -2162,7 +1860,6 @@ body {
     .navbar li a:hover {
         background-color: rgba(100, 255, 218, 0.1);
     }
-}
 
 /* تحسين تأثير التمرير */
 .navbar.scrolled {
@@ -2170,3 +1867,125 @@ body {
     backdrop-filter: blur(10px);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
+
+/* ...existing code... */
+
+.main-navbar {
+    background-color: #0A192F;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.main-navbar .container {
+    display: flex;
+    justify-content: flex-start; /* تغيير من space-between إلى flex-start */
+    align-items: center;
+    max-width: var(--content-width);
+    margin: 0 auto;
+}
+
+.main-navbar .logo {
+    display: flex;
+    align-items: center;
+    margin-left: 2rem; /* إزالة وإضافة margin-left */
+    order: 2; /* جعل اللوجو في النهاية */
+}
+
+.main-navbar .logo img {
+    height: 40px;
+    width: auto;
+}
+
+.main-navbar .nav-links {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    flex: 1; /* يأخذ المساحة المتبقية */
+    justify-content: flex-end; /* محاذاة العناصر إلى اليمين */
+}
+
+.main-navbar .nav-links a {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+    padding: 0 1rem; /* إضافة padding بدلاً من gap */
+}
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0.5rem;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 25px;
+    height: 2px;
+    background-color: var(--text-primary);
+    transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: flex;
+    }
+
+    .main-navbar .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: #0A192F;
+        flex-direction: column;
+        padding: 1rem;
+        gap: 1rem;
+    }
+
+    .main-navbar .nav-links.active {
+        display: flex;
+    }
+
+    .main-navbar .nav-links a {
+        padding: 0.5rem 1rem;
+    }
+
+    .menu-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(8px, 6px);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -5px);
+    }
+
+    .main-navbar .container {
+        justify-content: space-between; /* تغيير في حالة الشاشات الصغيرة */
+    }
+    
+    .main-navbar .logo {
+        margin-left: 0;
+        order: 0; /* إعادة ترتيب اللوجو في الشاشات الصغيرة */
+    }
+
+    /* ...remaining mobile styles... */
+}
+
+/* ...existing code... */

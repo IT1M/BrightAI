@@ -500,45 +500,8 @@ window.addEventListener('load', function () {
 
 // ...existing code...
 
-function toggleNavbar() {
-    const navbarToggle = document.querySelector('.navbar-toggle');
-    const navbar = document.querySelector('.navbar');
-    const body = document.body;
-    
-    navbarToggle.classList.toggle('open');
-    navbar.classList.toggle('active');
-    
-    // منع التمرير عندما تكون القائمة مفتوحة
-    if (navbar.classList.contains('active')) {
-        body.style.overflow = 'hidden';
-    } else {
-        body.style.overflow = '';
-    }
-}
-
-// إغلاق القائمة عند النقر خارجها
-document.addEventListener('click', (e) => {
-    const navbar = document.querySelector('.navbar');
-    const navbarToggle = document.querySelector('.navbar-toggle');
-    
-    if (!navbar.contains(e.target) && !navbarToggle.contains(e.target) && navbar.classList.contains('active')) {
-        toggleNavbar();
-    }
-});
-
-// إغلاق القائمة عند تغيير حجم الشاشة
-window.addEventListener('resize', () => {
-    const navbar = document.querySelector('.navbar');
-    const navbarToggle = document.querySelector('.navbar-toggle');
-    
-    if (window.innerWidth > 768 && navbar.classList.contains('active')) {
-        navbar.classList.remove('active');
-        navbarToggle.classList.remove('open');
-        document.body.style.overflow = '';
-    }
-});
-
 // ...existing code...
+
 // فتح وإغلاق النوافذ المنبثقة
 document.addEventListener('DOMContentLoaded', () => {
     const learnMoreButtons = document.querySelectorAll('.learn-more-btn');
@@ -818,3 +781,87 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeNavigation();
     setActiveNavLink();
 });
+
+// Enhanced Navbar Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+    const navbarContainer = document.querySelector('.navbar-container');
+    const navItems = document.querySelectorAll('.nav-item');
+
+    // Toggle mobile menu
+    mobileMenuBtn?.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!navLinks.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+            navLinks.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+
+    // Add scroll effect
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            navbarContainer.classList.add('scrolled');
+        } else {
+            navbarContainer.classList.remove('scrolled');
+        }
+    });
+
+    // Add active state to current page link
+    const currentPath = window.location.pathname;
+    navItems.forEach(item => {
+        const link = item.querySelector('a');
+        if (link.getAttribute('href') === currentPath) {
+            item.classList.add('active');
+        }
+    });
+});
+
+// Navbar functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    
+    menuToggle?.addEventListener('click', function() {
+        this.classList.toggle('active');
+        navLinks.classList.toggle('active');
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!menuToggle.contains(e.target) && !navLinks.contains(e.target)) {
+            menuToggle.classList.remove('active');
+            navLinks.classList.remove('active');
+        }
+    });
+
+    // Handle navbar scroll behavior
+    let lastScroll = 0;
+    window.addEventListener('scroll', function() {
+        const navbar = document.querySelector('.main-navbar');
+        const currentScroll = window.pageYOffset;
+
+        if (currentScroll > lastScroll && currentScroll > 100) {
+            navbar.style.transform = 'translateY(-100%)';
+        } else {
+            navbar.style.transform = 'translateY(0)';
+        }
+
+        if (currentScroll > 100) {
+            navbar.style.background = 'rgba(10, 25, 47, 0.95)';
+            navbar.style.backdropFilter = 'blur(10px)';
+        } else {
+            navbar.style.background = '#0A192F';
+            navbar.style.backdropFilter = 'none';
+        }
+
+        lastScroll = currentScroll;
+    });
+});
+
+// ...existing code...
