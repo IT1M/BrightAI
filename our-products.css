@@ -7,7 +7,7 @@
 }
 
 body {
-    background-color: #f8f9fa;
+    background-color: #1e3932; /* خلفية خضراء داكنة */
     color: #333;
     line-height: 1.6;
 }
@@ -81,50 +81,19 @@ nav {
     color: #0056b3;
 }
 
-/* Subscription Section */
-.subscriptions {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    padding: 40px 20px;
+/* Banner Styles */
+.banner {
+    width: 100%;
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 20px auto;
+    padding: 0 20px;
 }
 
-.subscription {
-    background-color: white;
+.banner img {
+    width: 100%;
+    height: auto;
     border-radius: 12px;
-    padding: 30px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-}
-
-.subscription:hover {
-    transform: translateY(-5px);
-}
-
-.subscription h2 {
-    color: #0056b3;
-    margin-bottom: 15px;
-    font-size: 24px;
-}
-
-.subscription ul {
-    list-style: none;
-    margin: 20px 0;
-}
-
-.subscription li {
-    margin-bottom: 12px;
-    padding-right: 25px;
-    position: relative;
-}
-
-.subscription li:before {
-    content: "✓";
-    color: #28a745;
-    position: absolute;
-    right: 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Main Content */
@@ -136,7 +105,7 @@ main {
 
 main h2 {
     text-align: center;
-    color: #0056b3;
+    color: #69c8ec; /* عناوين زرقاء فاتحة */
     margin: 40px 0;
     font-size: 2em;
 }
@@ -150,10 +119,10 @@ main h2 {
 }
 
 .product {
-    background-color: white;
+    background-color: #1e3932; /* تغيير لون خلفية البطاقات إلى الأخضر الغامق */
     border-radius: 12px;
     padding: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease;
 }
 
@@ -162,7 +131,7 @@ main h2 {
 }
 
 .product h3 {
-    color: #0056b3;
+    color: #69c8ec; /* عناوين زرقاء فاتحة */
     margin-bottom: 15px;
     font-size: 1.3em;
     min-height: 50px;
@@ -170,7 +139,7 @@ main h2 {
 
 .product p {
     margin-bottom: 15px;
-    color: #666;
+    color: #4a90a7; /* نص أزرق أغمق */
 }
 
 /* Product Actions */
@@ -328,13 +297,13 @@ main h2 {
 .price {
     font-size: 20px;
     font-weight: bold;
-    color: #0056b3;
+    color: #69c8ec; /* سعر بلون أزرق فاتح */
     margin: 15px 0;
     text-align: center;
 }
 
 .delivery-time {
-    color: #666;
+    color: #4a90a7; /* نص أزرق أغمق */
     font-size: 14px;
     margin-bottom: 15px;
     text-align: center;
@@ -782,7 +751,7 @@ footer {
 /* تحسين أقسام المنتجات */
 .section-header {
     text-align: center;
-    background: linear-gradient(135deg, #00a6e6, #0056b3);
+    background: linear-gradient(135deg, #2d5a4c, #1e3932);
     color: white;
     padding: 20px;
     margin: 40px -20px;
@@ -838,7 +807,7 @@ footer {
 
 /* تحسين عرض الأقسام */
 .section-container {
-    background: white;
+    background: #1e3932; /* تغيير لون خلفية القسم إلى الأخضر الغامق */
     border-radius: 12px;
     padding: 30px;
     margin: 40px 0;
@@ -858,8 +827,9 @@ footer {
 .product-description {
     margin: 15px 0;
     padding: 15px;
-    background-color: #f8f9fa;
+    background-color: #1e3932; /* خلفية خضراء داكنة */
     border-radius: 8px;
+    color: #4a90a7; /* نص أزرق أغمق */
 }
 
 .feature-list {
@@ -871,7 +841,7 @@ footer {
 .feature-list li {
     padding: 8px 25px 8px 0;
     position: relative;
-    color: #555;
+    color: #69c8ec; /* نص أزرق فاتح */
 }
 
 .feature-list li:before {
