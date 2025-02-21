@@ -2022,7 +2022,7 @@ body {
     align-items: center;
     gap: 1.5rem;
     padding: 1rem var(--container-padding);
-    background-color: #0A192F;
+    background-color: #fff;
     position: fixed;
     width: 100%;
     top: 0;
@@ -2101,7 +2101,7 @@ body {
 .navbar-toggle span {
     width: 100%;
     height: 2px;
-    background-color: #fff;
+    background-color: #e3f2fd;
     transition: all 0.3s ease;
 }
 
