@@ -67,55 +67,6 @@ header {
     z-index: 2;
 }
 
-.navbar {
-    display: flex;
-    gap: 1.5rem;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.navbar li a {
-    text-decoration: none;
-    color: var(--text-primary);
-    padding: 0.7rem 1.2rem;
-    border-radius: 5px;
-    transition: color 0.3s ease, background-color 0.3s ease, transform 0.2s ease;
-    position: relative;
-    overflow: hidden;
-    display: inline-block;
-    font-size: 1.1rem;
-}
-
-.navbar li a:hover {
-    color: var(--primary-color);
-    background-color: #112240(78, 72, 72, 0.1); /* Adjusted to use --primary-color */
-    transform: translateY(-2px);
-}
-
-.navbar li a::before {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background-color: var(--primary-color);
-    transform: scaleX(0);
-    transform-origin: bottom right;
-    transition: transform 0.3s ease;
-}
-
-.navbar li a:hover::before {
-    transform: scaleX(1);
-    transform-origin: bottom left;
-}
-
-.navbar li a:active {
-    background-color: rgba(78, 72, 72, 0.2); /* Adjusted to use --primary-color */
-    transform: translateY(0px);
-}
-
 /* Media query for smaller screens */
 @media (max-width: 768px) {
     .navbar {
@@ -135,85 +86,6 @@ header {
         box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
     }
 
-    .navbar.active {
-        right: 0;
-        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
-    }
-
-    .navbar li a {
-        padding: 15px 20px;
-        text-align: center;
-        color: var(--text-primary);
-        width: 100%;
-        margin: 5px 0;
-        border-radius: 8px;
-        background: rgba(255, 255, 255, 0.05);
-        font-size: 1.2rem;
-        transition: all 0.3s ease;
-    }
-
-    .navbar li a:active {
-        background: rgba(255, 255, 255, 0.1);
-        transform: scale(0.98);
-    }
-
-    .navbar-toggle {
-        display: block !important;
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        width: 35px;
-        height: 35px;
-        background: transparent;
-        border: none;
-        padding: 0;
-        cursor: pointer;
-        z-index: 1001;
-    }
-
-    .navbar-toggle span {
-        display: block;
-        position: absolute;
-        height: 4px;
-        width: 100%;
-        background: var(--primary-color);
-        border-radius: 4px;
-        left: 0;
-        transform: rotate(0deg);
-        transition: .3s ease-in-out;
-    }
-
-    .navbar-toggle span {
-        background: var(--primary-color);
-    }
-
-    .navbar-toggle span:nth-child(1) {
-        top: 0;
-    }
-
-    .navbar-toggle span:nth-child(2) {
-        top: 12px;
-    }
-
-    .navbar-toggle span:nth-child(3) {
-        top: 24px;
-    }
-
-    .navbar-toggle.open span:nth-child(1) {
-        top: 12px;
-        transform: rotate(135deg);
-    }
-
-    .navbar-toggle.open span:nth-child(2) {
-        opacity: 0;
-        transform: translateX(-20px);
-    }
-
-    .navbar-toggle.open span:nth-child(3) {
-        top: 12px;
-        transform: rotate(-135deg);
-    }
-
     .service-card,
     .agent-card-3d {
         width: 100%;
@@ -222,9 +94,6 @@ header {
         aspect-ratio: 3/4;
     }
 
-    .navbar {
-        transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    }
 
     body {
         font-family: 'Tajawal', sans-serif;
@@ -732,14 +601,6 @@ footer {
 }
 
 /* حذف الخلفية الشفافة من الأيقونات */
-.icon {
-    width: 40px;
-    height: 40px;
-    animation: float 3s ease-in-out infinite;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
 /* تحسين الأيقونات للهاتف المحمول */
 @media (max-width: 768px) {
@@ -919,55 +780,7 @@ header {
     z-index: 2;
 }
 
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.navbar {
-    display: flex;
-    gap: 1.5rem;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.navbar li a {
-    text-decoration: none;
-    color: var(--text-primary);
-    transition: color 0.3s ease, background-color 0.3s ease, transform 0.2s ease;
-    /* Add transition properties /
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    position: relative; / Required for the underline effect */
-    overflow: hidden;
-    display: inline-block;
-}
-
-.navbar li a:hover {
-    color: var(--primary-color);
-    background-color: rgba(78, 72, 72, 0.1); /* Slight background on hover /
-    transform: translateY(-2px); / Slight lift on hover /
-}
-
-.navbar li a::before {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background-color: var(--primary-color);
-    transform: scaleX(0);
-    transform-origin: bottom right;
-    transition: transform 0.3s ease;
-}
-
-.navbar li a:hover::before {
-    transform: scaleX(1);
-    transform-origin: bottom left;
-}
+nav
 
 .navbar li a:active {
     background-color: rgba(78, 72, 72, 0.2); /* Slightly darker background on click /
