@@ -2164,7 +2164,7 @@ body {
         position: fixed;
         top: 70px;
         right: 0;
-        width: 100%;
+        width: 80%;
         height: calc(100vh - 70px);
         background-color: var(--background-dark);
         flex-direction: column;
@@ -2403,6 +2403,162 @@ li {
     .container {
         padding: 0 1rem;
     }
+}
+
+/* ...existing code... */
+
+/* ...existing code... */
+
+/* تحسينات قائمة الموبايل */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 30px;
+    height: 3px;
+    margin: 6px 0;
+    background-color: var(--text-primary);
+    transition: all 0.3s ease;
+    border-radius: 3px;
+}
+
+.menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px);
+}
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* تحسين تصميم القائمة على الموبايل */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 70px;
+        right: -100%;
+        width: 80%;
+        height: calc(100vh - 70px);
+        background: var(--primary-color);
+        flex-direction: column;
+        padding: 2rem;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        overflow-y: auto;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(10px);
+        z-index: 999;
+    }
+
+    .nav-links.active {
+        right: 0;
+    }
+
+    .nav-links li {
+        margin: 1.5rem 0;
+        opacity: 0;
+        transform: translateX(100px);
+        transition: all 0.4s ease;
+    }
+
+    .nav-links.active li {
+        opacity: 1;
+        transform: translateX(0);
+        transition-delay: calc(0.1s * var(--item-index));
+    }
+
+    .nav-links a {
+        font-size: 1.2rem;
+        padding: 0.8rem 1.5rem;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .nav-links a::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 3px;
+        height: 100%;
+        background: var(--accent-color);
+        transform: scaleY(0);
+        transition: transform 0.3s ease;
+    }
+
+    .nav-links a:hover::before {
+        transform: scaleY(1);
+    }
+
+    .nav-links a:hover {
+        background: rgba(255, 255, 255, 0.05);
+        padding-right: 2rem;
+    }
+
+    /* تحسين مظهر القائمة المنسدلة على الموبايل */
+    .dropdown-content {
+        position: static;
+        background: transparent;
+        padding: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+    }
+
+    .dropdown.active .dropdown-content {
+        max-height: 300px;
+    }
+
+    .dropdown-content a {
+        padding-right: 2rem;
+        font-size: 1.1rem;
+    }
+}
+
+/* تأثيرات إضافية للتفاعلية */
+@keyframes menuFade {
+    from {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* تحسين التباين والألوان */
+.nav-links a {
+    color: var(--text-primary);
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.nav-links a i {
+    font-size: 1.2em;
+    transition: transform 0.3s ease;
+}
+
+.nav-links a:hover i {
+    transform: translateX(-5px);
 }
 
 /* ...existing code... */
