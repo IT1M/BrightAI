@@ -605,3 +605,138 @@ footer .contact-info a i{
                 grid-template-columns: 1fr;
             }
         }
+
+.analysis-steps, .analysis-types, .visualization-tools {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.step, .type, .tool {
+    background: var(--card-background);
+    padding: 20px;
+    border-radius: 8px;
+    text-align: right;
+}
+
+.step h3, .type h3, .tool h3 {
+    color: var(--secondary-color);
+    margin-bottom: 10px;
+}
+
+.step p, .type p, .tool p {
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* ...existing styles... */
+
+.data-lifecycle {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    margin: 30px 0;
+}
+
+.lifecycle-step {
+    background: var(--card-background);
+    padding: 25px;
+    border-radius: 10px;
+    text-align: right;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.lifecycle-step h3 {
+    color: var(--secondary-color);
+    font-size: 1.4em;
+    margin-bottom: 15px;
+}
+
+.analysis-types-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin: 30px 0;
+}
+
+.analysis-type {
+    background: var(--card-background);
+    padding: 25px;
+    border-radius: 10px;
+    text-align: right;
+}
+
+.analysis-type h3 {
+    color: var(--secondary-color);
+    font-size: 1.4em;
+    margin-bottom: 15px;
+}
+
+.analysis-type ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 15px;
+}
+
+.analysis-type ul li {
+    margin: 10px 0;
+    padding-right: 20px;
+    position: relative;
+}
+
+.analysis-type ul li:before {
+    content: "•";
+    color: var(--secondary-color);
+    position: absolute;
+    right: 0;
+}
+
+.visualization-bi {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin: 30px 0;
+}
+
+.vis-section, .bi-section {
+    background: var(--card-background);
+    padding: 25px;
+    border-radius: 10px;
+    text-align: right;
+}
+
+.vis-section h3, .bi-section h3 {
+    color: var(--secondary-color);
+    font-size: 1.4em;
+    margin-bottom: 15px;
+}
+
+.vis-section ul, .bi-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.vis-section ul li, .bi-section ul li {
+    margin: 10px 0;
+    padding-right: 20px;
+    position: relative;
+}
+
+.vis-section ul li:before, .bi-section ul li:before {
+    content: "•";
+    color: var(--secondary-color);
+    position: absolute;
+    right: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .data-lifecycle,
+    .analysis-types-grid,
+    .visualization-bi {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ...existing styles... */

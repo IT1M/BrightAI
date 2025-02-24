@@ -622,6 +622,131 @@ body {
     transform: translateY(-10px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
 }
+
+/* أنماط قسم أنواع وكلاء الذكاء الاصطناعي */
+.ai-agents-types {
+    padding: 80px 20px;
+    background: linear-gradient(135deg, #0A192F 0%, #112240 100%);
+    text-align: right;
+}
+
+.ai-agents-types h2 {
+    text-align: center;
+    font-size: 2.5em;
+    color: var(--secondary-color);
+    margin-bottom: 50px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.types-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.type-card {
+    background: rgba(29, 43, 58, 0.9);
+    border-radius: 15px;
+    padding: 30px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(100, 255, 218, 0.1);
+}
+
+.type-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    border-color: var(--secondary-color);
+}
+
+.type-card i {
+    font-size: 2.5em;
+    color: var(--secondary-color);
+    margin-bottom: 20px;
+    display: block;
+}
+
+.type-card h3 {
+    color: #fff;
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.type-card p {
+    color: var(--subtext-color);
+    line-height: 1.6;
+    font-size: 1em;
+}
+
+@media (max-width: 768px) {
+    .types-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .type-card {
+        margin: 10px;
+    }
+}
+
+/* أنماط قسم المميزات */
+.ai-features {
+    padding: 80px 20px;
+    background: linear-gradient(135deg, #112240 0%, #0A192F 100%);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.feature-card {
+    background: rgba(29, 43, 58, 0.9);
+    border-radius: 15px;
+    padding: 30px;
+    text-align: right;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(100, 255, 218, 0.1);
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    border-color: var(--secondary-color);
+}
+
+/* أنماط قسم وكلاء الدعم */
+.support-agents {
+    padding: 80px 20px;
+    background: var(--background-color);
+    text-align: right;
+}
+
+.support-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 40px auto 0;
+}
+
+.support-feature {
+    background: var(--card-background);
+    border-radius: 15px;
+    padding: 25px;
+    transition: transform 0.3s ease;
+}
+
+.support-feature:hover {
+    transform: translateY(-10px);
+}
+
  * {
             margin: 0;
             padding: 0;
