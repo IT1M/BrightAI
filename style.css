@@ -3279,6 +3279,57 @@ section {
     }
 }
 
+/* تحسينات الصور في قسم تأثير الذكاء الاصطناعي للموبايل */
+@media (max-width: 768px) {
+    .infographic-grid {
+        gap: 1rem;
+        padding: 0 1rem;
+    }
+
+    .image-wrapper {
+        height: 200px; /* تقليل ارتفاع الصور على الموبايل */
+    }
+
+    .infographic-item {
+        margin-bottom: 1.5rem;
+    }
+
+    .infographic-item .image-wrapper img {
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+        border-radius: 10px;
+    }
+
+    .stats-overlay {
+        padding: 1rem;
+        font-size: 0.9rem;
+    }
+
+    .content h3 {
+        font-size: 1.2rem;
+        margin: 0.5rem 0;
+    }
+
+    .content p {
+        font-size: 0.9rem;
+        line-height: 1.4;
+    }
+
+    /* تحسين أداء العرض على الأجهزة الضعيفة */
+    .infographic-item {
+        transform: none !important;
+        transition: none !important;
+    }
+
+    /* تحسين حجم الصور قبل التحميل */
+    .image-wrapper img {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16/9;
+    }
+}
+
 /* ...existing code... */
 
 /* ...existing styles... */

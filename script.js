@@ -1025,3 +1025,68 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ...existing code...
+
+// تحسين تحميل الصور في قسم تأثير الذكاء الاصطناعي
+document.addEventListener('DOMContentLoaded', function() {
+    const impactImages = document.querySelectorAll('.infographic-item img');
+    
+    if ('loading' in HTMLImageElement.prototype) {
+        impactImages.forEach(img => {
+            img.loading = 'lazy';
+            // إضافة صورة مصغرة كبديل مؤقت
+            img.setAttribute('data-src', img.src);
+            img.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1 1"%3E%3C/svg%3E';
+        });
+    }
+
+    // مراقبة ظهور الصور في الشاشة
+    const imageObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.getAttribute('data-src');
+                imageObserver.unobserve(img);
+            }
+        });
+    }, {
+        rootMargin: '50px'
+    });
+
+    impactImages.forEach(img => imageObserver.observe(img));
+
+    // تحسين الأداء على الأجهزة المحمولة
+    if (window.matchMedia('(max-width: 768px)').matches) {
+        document.querySelectorAll('.stats-overlay').forEach(overlay => {
+            overlay.style.position = 'static';
+            overlay.style.opacity = '1';
+        });
+    }
+});
+
+// تحسين تحميل الصور في قسم تأثير الذكاء الاصطناعي
+document.addEventListener('DOMContentLoaded', function() {
+    const images = document.querySelectorAll('.image-wrapper img');
+    
+    const imageOptions = {
+        threshold: 0.1,
+        rootMargin: '50px'
+    };
+
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.dataset.src;
+                img.classList.add('loaded');
+                observer.unobserve(img);
+            }
+        });
+    }, imageOptions);
+
+    images.forEach(img => {
+        img.classList.add('lazy');
+        imageObserver.observe(img);
+    });
+});
+
+// ...existing code...
