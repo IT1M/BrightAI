@@ -3280,3 +3280,30 @@ section {
 }
 
 /* ...existing code... */
+
+/* ...existing styles... */
+
+.ai-showcase {
+    background: var(--background-dark);
+    padding: 4rem 0;
+}
+
+.tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.tech-card {
+    background: var(--primary-color);
+    padding: 2rem;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+}
+
+.tech-card:hover {
+    transform: translateY(-5px);
+}
+
+/* ...existing styles... */
