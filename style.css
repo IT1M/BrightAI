@@ -2190,3 +2190,105 @@ body {
 }
 
 /* ...existing code... */
+
+/* ...existing code... */
+
+/* تحسين قائمة الموبايل */
+@media (max-width: 768px) {
+    .main-navbar .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        height: 100vh;
+        background: #1D2B3A;
+        flex-direction: column;
+        padding: 80px 20px;
+        transition: 0.3s ease-in-out;
+        z-index: 1000;
+    }
+
+    .main-navbar .nav-links.active {
+        right: 0;
+    }
+
+    .main-navbar .nav-links li {
+        margin: 15px 0;
+        width: 100%;
+    }
+
+    .main-navbar .nav-links a {
+        font-size: 1.2rem;
+        width: 100%;
+        display: block;
+        padding: 10px;
+    }
+
+    .dropdown-content {
+        position: static;
+        background: transparent;
+        width: 100%;
+        padding: 0;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        display: none;
+    }
+
+    .dropdown.active .dropdown-content {
+        display: block;
+    }
+
+    /* تحسين المسافات بين الأقسام */
+    .system-section,
+    .services-section,
+    .hero,
+    .services {
+        padding: 40px 0;
+        margin: 0;
+    }
+
+    /* إزالة المسافات الزائدة */
+    .section-header {
+        margin-bottom: 30px;
+    }
+
+    .services-grid {
+        gap: 20px;
+    }
+
+    /* تحسين حجم العناوين */
+    .section-title,
+    .ai-title,
+    .service-title {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+    }
+}
+
+/* ...existing code... */
+
+/* تحسين المسافات بين الأقسام */
+.services-section,
+.hero,
+.ai-contact-section,
+.services {
+    padding: 2rem 0;
+    margin: 0;
+}
+
+/* إزالة المسافات الزائدة */
+.section + .section {
+    margin-top: 0;
+}
+
+/* ضبط المسافات بين الأقسام المحددة */
+section[style*="background: linear-gradient(to right, #0A192F, #0A192F)"],
+#ai-contact-section,
+#services {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+/* ...existing code... */

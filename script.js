@@ -955,4 +955,47 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+// تحسين التفاعل مع قائمة الموبايل
+document.addEventListener('DOMContentLoaded', function() {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    const dropdowns = document.querySelectorAll('.dropdown');
+
+    // فتح/إغلاق القائمة الرئيسية
+    menuToggle?.addEventListener('click', function() {
+        this.classList.toggle('active');
+        navLinks.classList.toggle('active');
+        document.body.classList.toggle('no-scroll');
+    });
+
+    // التعامل مع القوائم المنسدلة
+    dropdowns.forEach(dropdown => {
+        const link = dropdown.querySelector('a');
+        link.addEventListener('click', function(e) {
+            if (window.innerWidth <= 768) {
+                e.preventDefault();
+                dropdown.classList.toggle('active');
+            }
+        });
+    });
+
+    // إغلاق القائمة عند النقر خارجها
+    document.addEventListener('click', function(e) {
+        if (!navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
+            navLinks.classList.remove('active');
+            menuToggle.classList.remove('active');
+            document.body.classList.remove('no-scroll');
+        }
+    });
+
+    // إغلاق القائمة عند التنقل
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', function() {
+            navLinks.classList.remove('active');
+            menuToggle.classList.remove('active');
+            document.body.classList.remove('no-scroll');
+        });
+    });
+});
+
 // ...existing code...
