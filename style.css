@@ -2292,3 +2292,117 @@ section[style*="background: linear-gradient(to right, #0A192F, #0A192F)"],
 }
 
 /* ...existing code... */
+
+/* ...existing code... */
+
+/* Reset CSS - يجب وضعه مرة واحدة في بداية الملف */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-family);
+}
+
+/* تحسين المسافات بين الأقسام */
+section {
+    padding: 4rem 0;
+    margin: 0;
+    background-color: var(--background-light);
+}
+
+/* إزالة المسافات الزائدة بين القطاعات */
+section + section {
+    margin-top: 0;
+}
+
+/* تحسين المسافات في القطاعات المحددة */
+.services-section,
+.ai-contact-section,
+.automation-section,
+.ai-analysis-section,
+.consultation-form {
+    padding: 2rem 0;
+}
+
+/* تحسين الهوامش في العناصر */
+.section-header {
+    margin-bottom: 2rem;
+}
+
+.service-card,
+.info-box,
+.feature-card {
+    margin-bottom: 1.5rem;
+}
+
+/* توحيد التباعد في الشبكات */
+.services-grid,
+.features-grid,
+.benefits-grid {
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+/* تحسين المسافات في النصوص */
+h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 1rem;
+    line-height: 1.3;
+}
+
+p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+/* تحسين المسافات في القوائم */
+ul, ol {
+    margin: 1rem 0;
+    padding-right: 1.5rem;
+}
+
+li {
+    margin-bottom: 0.5rem;
+}
+
+/* تحسين المسافات في النماذج */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+/* تحسين المسافات في الأزرار */
+.button,
+.action-button {
+    margin: 1rem 0;
+}
+
+/* تحسين التباعد في التذييل */
+.footer {
+    padding: 3rem 0 1rem;
+}
+
+.footer-section {
+    margin-bottom: 2rem;
+}
+
+/* تحسين الاستجابة للموبايل */
+@media (max-width: 768px) {
+    section {
+        padding: 2rem 0;
+    }
+
+    .section-header {
+        margin-bottom: 1.5rem;
+    }
+
+    .services-grid,
+    .features-grid,
+    .benefits-grid {
+        gap: 1rem;
+    }
+
+    .container {
+        padding: 0 1rem;
+    }
+}
+
+/* ...existing code... */
