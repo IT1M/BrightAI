@@ -32,6 +32,17 @@
     --desktop-padding: 3rem;
     --heading-scale: clamp(1.5rem, 5vw, 2.5rem);
     --text-scale: clamp(0.875rem, 2vw, 1rem);
+    --accent-color: #64FFDA;
+}
+
+/* تحسينات التصميم المتجاوب */
+:root {
+    /* توحيد الألوان */
+    --primary-color: #1D2B3A;
+    --background-dark: #0A192F;
+    --text-primary: #FFFFFF;
+    --text-secondary: #8892B0;
+    --accent-color: #64FFDA;
 }
 
 html {
@@ -50,12 +61,20 @@ body {
     overflow-x: hidden;
     font-size: var(--text-scale-ratio);
     line-height: 1.6;
+    font-family: 'Amiri', system-ui, -apple-system, sans-serif;
+    line-height: 1.6;
 }
 
 .container {
     width: var(--content-width);
     margin-inline: auto;
     padding: clamp(var(--mobile-padding), 5vw, var(--desktop-padding));
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: var(--mobile-padding);
+    }
 }
 
 /* الهيدر */
@@ -187,6 +206,12 @@ body {
     padding-bottom: 20px;
 }
 
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 1.8rem;
+    }
+}
+
 .section-title::after {
     content: '';
     position: absolute;
@@ -205,6 +230,13 @@ body {
     perspective: 1000px;
 }
 
+@media (max-width: 768px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}
+
 .service-card {
     background: var(--card-bg);
     border-radius: 15px;
@@ -216,6 +248,12 @@ body {
     transform-style: preserve-3d;
     opacity: 0;
     transform: translateY(30px);
+}
+
+@media (max-width: 768px) {
+    .service-card {
+        margin: 1rem 0;
+    }
 }
 
 .service-card.visible {
@@ -401,6 +439,10 @@ body {
     position: relative;
     overflow: hidden;
     z-index: 1;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+    font-weight: bold;
 }
 
 .action-button::before {
@@ -523,6 +565,7 @@ body {
     gap: 10px;
     margin-bottom: 15px;
     color: var(--text-primary);
+    padding: 1.2rem;
 }
 
 .check-icon {
@@ -666,7 +709,7 @@ body {
 .banner3d {
     position: relative;
     min-height: 100vh;
-    background: linear-gradient(135deg, #0A192F 0%, #0A192F 100%);
+    background: linear-gradient(135deg, #0A192F);  /*  background */
     overflow: hidden;
 }
 
@@ -1250,6 +1293,7 @@ body {
     border-radius: 10px;
     transition: all 0.3s ease;
     background-color: var(--primary-color);
+    padding: 1.2rem;
 }
 
 .automation-section .benefit-item:hover {
@@ -2354,6 +2398,16 @@ p {
     line-height: 1.6;
 }
 
+@media (max-width: 768px) {
+    h1 {
+        font-size: var(--heading-scale-mobile, 2rem);
+    }
+
+    p {
+        font-size: var(--text-scale-mobile, 1rem);
+    }
+}
+
 /* تحسين المسافات في القوائم */
 ul, ol {
     margin: 1rem 0;
@@ -2648,3 +2702,384 @@ li {
         font-size: 0.9rem;
     }
 }
+
+/* تحسين أداء التحميل للصور */
+.lazy-image {
+    transition: opacity 0.3s ease;
+    opacity: 0;
+}
+
+.lazy-image.loaded {
+    opacity: 1;
+}
+
+/* تحسين تناسق الخطوط */
+body {
+    font-family: 'Amiri', system-ui, -apple-system, sans-serif;
+    line-height: 1.6;
+}
+
+/* تحسين أزرار التفاعل */
+.button, 
+.action-button {
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+    font-weight: bold;
+}
+
+/* تحسين التباعد والهوامش */
+section {
+    padding: clamp(2rem, 5vw, 4rem) 0;
+}
+
+.section-content {
+    margin-top: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+/* ...existing code... */
+
+/* تحسينات القائمة المنسدلة */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    min-width: 220px;
+    background: rgba(29, 43, 58, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(100, 255, 218, 0.1);
+    border-radius: 12px;
+    padding: 0.5rem 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px) scale(0.95);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.dropdown:hover .dropdown-content {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+
+.dropdown-content::before {
+    content: '';
+    position: absolute;
+    top: -6px;
+    right: 20px;
+    width: 12px;
+    height: 12px;
+    background: rgba(29, 43, 58, 0.95);
+    transform: rotate(45deg);
+    border-top: 1px solid rgba(100, 255, 218, 0.1);
+    border-right: 1px solid rgba(100, 255, 218, 0.1);
+}
+
+.dropdown-content a {
+    display: flex;
+    align-items: center;
+    padding: 0.8rem 1.5rem;
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.dropdown-content a:hover {
+    background: rgba(100, 255, 218, 0.1);
+    padding-right: 2rem;
+    color: #64FFDA;
+}
+
+.dropdown-content a::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 3px;
+    background: #64FFDA;
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
+}
+
+.dropdown-content a:hover::before {
+    transform: scaleY(1);
+}
+
+/* تحسين مؤشر القائمة المنسدلة */
+.dropdown > a::after {
+    content: '\f107';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    margin-right: 5px;
+    transition: transform 0.3s ease;
+}
+
+.dropdown:hover > a::after {
+    transform: rotate(180deg);
+}
+
+/* تأثيرات إضافية للموبايل */
+@media (max-width: 768px) {
+    .dropdown-content {
+        position: static;
+        background: rgba(29, 43, 58, 0.5);
+        border: none;
+        padding-right: 1rem;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+    }
+
+    .dropdown.active .dropdown-content {
+        max-height: 500px;
+        padding: 0.5rem 0;
+    }
+
+    .dropdown-content::before {
+        display: none;
+    }
+
+    .dropdown-content a {
+        padding: 0.8rem 2rem;
+        border-right: 3px solid transparent;
+    }
+
+    .dropdown-content a:hover {
+        border-right-color: #64FFDA;
+        background: rgba(100, 255, 218, 0.05);
+    }
+}
+
+/* ...existing code... */
+
+/* ...existing code... */
+
+/* تحسينات التجاوب للأجهزة المحمولة */
+@media screen and (max-width: 768px) {
+    /* تحسينات عامة للتخطيط */
+    .container {
+        width: 100%;
+        padding: 0 1rem;
+    }
+
+    /* تحسين الرؤية والقراءة على الشاشات الصغيرة */
+    body {
+        font-size: 16px;
+        line-height: 1.5;
+    }
+
+    /* تعديل حجم العناوين للشاشات الصغيرة */
+    h1 { font-size: 1.8rem; }
+    h2 { font-size: 1.5rem; }
+    h3 { font-size: 1.2rem; }
+
+    /* تحسين المسافات والهوامش */
+    section {
+        padding: 2rem 0;
+    }
+
+    /* تحسين عرض البطاقات */
+    .service-card,
+    .feature-card,
+    .info-box {
+        width: 100%;
+        margin: 0.5rem 0;
+    }
+
+    /* تحسين القوائم المنسدلة للموبايل */
+    .dropdown-content {
+        width: 100%;
+        position: static;
+        box-shadow: none;
+        margin-top: 0.5rem;
+    }
+
+    /* تحسين النماذج للأجهزة المحمولة */
+    input,
+    textarea,
+    select {
+        font-size: 16px; /* منع التكبير التلقائي في iOS */
+        width: 100%;
+        padding: 0.8rem;
+    }
+
+    /* تحسين الأزرار للمس */
+    button,
+    .action-button,
+    .button {
+        min-height: 44px; /* الحد الأدنى الموصى به لعناصر اللمس */
+        padding: 0.8rem 1.2rem;
+        width: 100%;
+        margin: 0.5rem 0;
+    }
+
+    /* تحسين الشبكات */
+    .services-grid,
+    .features-grid,
+    .content-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    /* تحسين التنقل */
+    .main-navbar {
+        padding: 0.5rem;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
+    .nav-links {
+        background: var(--background-dark);
+        padding: 1rem;
+    }
+
+    /* تحسين العناصر المرنة */
+    .banner-content,
+    .section-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    /* تحسين الصور */
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* تحسين الأيقونات والرموز */
+    .icon {
+        font-size: 1.5rem;
+    }
+
+    /* تحسين التذييل */
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .footer-section {
+        margin-bottom: 1.5rem;
+    }
+
+    /* تحسين الفراغات في النصوص */
+    p {
+        margin-bottom: 1rem;
+    }
+
+    /* تحسين حجم النص في البطاقات */
+    .service-card h3 {
+        font-size: 1.2rem;
+    }
+
+    .service-card p {
+        font-size: 0.9rem;
+    }
+
+    /* تحسين التباعد في القوائم */
+    ul, ol {
+        padding-right: 1rem;
+    }
+
+    /* إخفاء العناصر غير الضرورية في الموبايل */
+    .desktop-only {
+        display: none;
+    }
+
+    /* تحسين القابلية للنقر */
+    .nav-links a,
+    .dropdown-content a {
+        padding: 0.8rem;
+        display: block;
+    }
+
+    /* تحسين الأداء للموبايل */
+    .animation {
+        animation: none !important;
+        transform: none !important;
+        opacity: 1 !important;
+    }
+}
+
+/* تحسينات خاصة للأجهزة الصغيرة جداً */
+@media screen and (max-width: 480px) {
+    /* تصغير حجم الخط أكثر */
+    body {
+        font-size: 14px;
+    }
+
+    /* تقليل المسافات */
+    .container {
+        padding: 0 0.8rem;
+    }
+
+    section {
+        padding: 1.5rem 0;
+    }
+
+    /* تبسيط التصميم */
+    .card,
+    .info-box {
+        padding: 1rem;
+        margin: 0.5rem 0;
+    }
+
+    /* تحسين عرض الأزرار */
+    .button-container {
+        flex-direction: column;
+    }
+
+    .button {
+        width: 100%;
+        margin: 0.3rem 0;
+    }
+}
+
+/* تحسين التجربة على الأجهزة اللوحية */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .container {
+        width: 90%;
+    }
+
+    .services-grid,
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* دعم الشاشات عالية الدقة */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    body {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+}
+
+/* تحسينات لوضع الظلام */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background-light: #0A192F;
+        --text-primary: #ffffff;
+    }
+}
+
+/* تحسينات لتفضيلات الحركة المخفضة */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.001s !important;
+        transition-duration: 0.001s !important;
+    }
+}
+
+/* ...existing code... */

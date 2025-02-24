@@ -959,125 +959,46 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('DOMContentLoaded', function() {
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
-    const dropdowns = document.querySelectorAll('.dropdown');
+    
+    if (menuToggle && navLinks) {
+        menuToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            menuToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            
+            // منع التمرير عند فتح القائمة
+            document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+        });
 
-    // فتح/إغلاق القائمة الرئيسية
-    menuToggle?.addEventListener('click', function() {
-        this.classList.toggle('active');
-        navLinks.classList.toggle('active');
-        document.body.classList.toggle('no-scroll');
-    });
-
-    // التعامل مع القوائم المنسدلة
-    dropdowns.forEach(dropdown => {
-        const link = dropdown.querySelector('a');
-        link.addEventListener('click', function(e) {
-            if (window.innerWidth <= 768) {
-                e.preventDefault();
-                dropdown.classList.toggle('active');
+        // إغلاق القائمة عند النقر خارجها
+        document.addEventListener('click', function(e) {
+            if (!navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
+                menuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+                document.body.style.overflow = '';
             }
         });
-    });
-
-    // إغلاق القائمة عند النقر خارجها
-    document.addEventListener('click', function(e) {
-        if (!navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
-            navLinks.classList.remove('active');
-            menuToggle.classList.remove('active');
-            document.body.classList.remove('no-scroll');
-        }
-    });
-
-    // إغلاق القائمة عند التنقل
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', function() {
-            navLinks.classList.remove('active');
-            menuToggle.classList.remove('active');
-            document.body.classList.remove('no-scroll');
-        });
-    });
-});
-
-// تحسين وظائف قائمة الموبايل
-document.addEventListener('DOMContentLoaded', function() {
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
-    const navItems = document.querySelectorAll('.nav-links li');
-    const dropdowns = document.querySelectorAll('.dropdown');
-
-    // إضافة متغير لتتبع حالة القائمة
-    let isMenuOpen = false;
-
-    // تفعيل زر القائمة
-    menuToggle?.addEventListener('click', (e) => {
-        e.stopPropagation();
-        toggleMenu();
-    });
-
-    // وظيفة تبديل القائمة
-    function toggleMenu() {
-        isMenuOpen = !isMenuOpen;
-        menuToggle.classList.toggle('active');
-        navLinks.classList.toggle('active');
-        
-        // تحريك عناصر القائمة
-        navItems.forEach((item, index) => {
-            item.style.setProperty('--item-index', index);
-            if (isMenuOpen) {
-                item.style.animation = `menuFade 0.3s ease forwards ${index * 0.1}s`;
-            } else {
-                item.style.animation = 'none';
-            }
-        });
-
-        // منع التمرير عندما تكون القائمة مفتوحة
-        document.body.style.overflow = isMenuOpen ? 'hidden' : '';
     }
 
-    // إضافة تفاعلية للقوائم المنسدلة
-    dropdowns.forEach(dropdown => {
-        const link = dropdown.querySelector('a');
-        const content = dropdown.querySelector('.dropdown-content');
-
-        link.addEventListener('click', (e) => {
-            if (window.innerWidth <= 768) {
-                e.preventDefault();
-                dropdown.classList.toggle('active');
-                
-                // تحريك محتوى القائمة المنسدلة
-                const isActive = dropdown.classList.contains('active');
-                content.style.maxHeight = isActive ? `${content.scrollHeight}px` : '0';
-            }
+    // تحسين تحميل الصور
+    const lazyImages = document.querySelectorAll('.lazy-image');
+    
+    if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.dataset.src;
+                    img.classList.add('loaded');
+                    observer.unobserve(img);
+                }
+            });
         });
-    });
 
-    // إغلاق القائمة عند النقر خارجها
-    document.addEventListener('click', (e) => {
-        if (isMenuOpen && !navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
-            toggleMenu();
-        }
-    });
-
-    // إغلاق القائمة عند تغيير حجم النافذة
-    window.addEventListener('resize', () => {
-        if (window.innerWidth > 768 && isMenuOpen) {
-            toggleMenu();
-        }
-    });
-
-    // إغلاق القائمة عند التمرير
-    let lastScroll = 0;
-    window.addEventListener('scroll', () => {
-        const currentScroll = window.pageYOffset;
-        
-        if (currentScroll > lastScroll && currentScroll > 100) {
-            navLinks.classList.remove('active');
-            menuToggle.classList.remove('active');
-            isMenuOpen = false;
-        }
-        
-        lastScroll = currentScroll;
-    });
+        lazyImages.forEach(img => imageObserver.observe(img));
+    }
 });
 
 // FAQ Functionality
