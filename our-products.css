@@ -596,6 +596,13 @@ footer {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    nav {
+        position: static; /* إزالة التثبيت */
+    }
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+    }
     header h1 {
         font-size: 2em;
     }

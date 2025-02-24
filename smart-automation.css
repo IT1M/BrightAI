@@ -335,6 +335,7 @@ footer .social a:hover {
         font-size: 2em;
     }
     .navbar {
+        position: static; /* إزالة التثبيت */
         flex-direction: column;
         align-items: center;
     }

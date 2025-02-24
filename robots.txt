@@ -1,9 +1,27 @@
 User-agent: *
 Allow: /
+Allow: /sitemap.xml
+Allow: /images/
+Allow: /css/
+Allow: /js/
+
+# Protected directories
 Disallow: /private/
 Disallow: /admin/
 Disallow: /temp/
 Disallow: /blogger/
 Disallow: /Docfile/
+Disallow: /cgi-bin/
+Disallow: /wp-admin/
+Disallow: /includes/
+Disallow: /cache/
+Disallow: /uploads/admin/
+Disallow: /api/internal/
 
+# Crawl-delay directive
+Crawl-delay: 10
+
+# Sitemaps
 Sitemap: https://brightaii.com/sitemap.xml
+Sitemap: https://brightaii.com/posts-sitemap.xml
+Sitemap: https://brightaii.com/products-sitemap.xml

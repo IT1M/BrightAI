@@ -839,4 +839,10 @@ body {
             .footer-content {
                 grid-template-columns: 1fr;
             }
+            .navbar {
+                position: relative; /* تغيير من fixed إلى relative */
+                width: 100%;
+                padding: 10px 0;
+                flex-direction: column;
+            }
         }

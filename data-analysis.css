@@ -511,6 +511,9 @@ footer .contact-info a i{
     footer .contact-info {
         width: 100%;
     }
+    nav {
+        position: static; /* إزالة التثبيت */
+    }
 }
  * {
             margin: 0;

@@ -269,6 +269,11 @@ footer .contact-info a {
 
 /* ================= Responsive Design ================= */
 @media (max-width: 768px) {
+    nav {
+        position: relative; /* تغيير من sticky إلى relative */
+        padding: 10px 0;
+    }
+    
     .navbar li {
         display: block;
         margin: 10px 0;
@@ -837,6 +842,11 @@ footer .contact-info a {
 
 /* ================= Responsive Design ================= */
 @media (max-width: 768px) {
+    nav {
+        position: relative; /* تغيير من sticky إلى relative */
+        padding: 10px 0;
+    }
+
     .navbar li {
         display: block;
         margin: 10px 0;
