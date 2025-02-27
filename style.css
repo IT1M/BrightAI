@@ -70,6 +70,12 @@ body {
     align-items: center;
 }
 
+.logo img {
+    max-height: 40px;
+    width: auto;
+    vertical-align: middle;
+}
+
 .logo span {
     color: var(--text-primary);
     margin-right: 0.3rem;
@@ -644,6 +650,12 @@ textarea.form-control {
     text-decoration: none;
     margin-bottom: 1rem;
     display: inline-block;
+}
+
+.footer-logo img {
+    max-height: 50px;
+    width: auto;
+    margin-bottom: 1rem;
 }
 
 .footer-logo span {
