@@ -1,3 +1,4 @@
+# Global rules
 User-agent: *
 Allow: /
 Allow: /sitemap.xml
@@ -5,23 +6,75 @@ Allow: /images/
 Allow: /css/
 Allow: /js/
 
-# Protected directories
+# Block access to sensitive areas
 Disallow: /private/
 Disallow: /admin/
 Disallow: /temp/
-Disallow: /blogger/
-Disallow: /Docfile/
 Disallow: /cgi-bin/
-Disallow: /wp-admin/
 Disallow: /includes/
 Disallow: /cache/
-Disallow: /uploads/admin/
-Disallow: /api/internal/
+Disallow: /wp-admin/
+Disallow: /wp-includes/
+Disallow: /wp-content/plugins/
+Disallow: /wp-content/themes/
+Disallow: /*.php$
+Disallow: /*.sql
+Disallow: /*.log
+Disallow: /error_log
+Disallow: /cgi-bin/
+Disallow: /backup/
+Disallow: /*.gz
+Disallow: /*.tar
+Disallow: /*.zip
 
-# Crawl-delay directive
-Crawl-delay: 10
+# Allow specific bots with custom rules
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Googlebot-Image
+Allow: /images/
+Allow: /assets/images/
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.gif$
+Allow: /*.png$
+Allow: /*.webp$
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 2
+
+User-agent: Yandex
+Allow: /
+Crawl-delay: 2
+
+# Block bad bots
+User-agent: Baiduspider
+Disallow: /
+
+User-agent: PetalBot
+Disallow: /
 
 # Sitemaps
 Sitemap: https://brightaii.com/sitemap.xml
+Sitemap: https://brightaii.com/ar/sitemap.xml
 Sitemap: https://brightaii.com/posts-sitemap.xml
+Sitemap: https://brightaii.com/services-sitemap.xml
 Sitemap: https://brightaii.com/products-sitemap.xml
+
+# Clean Parameters
+Allow: /*?page=
+Allow: /*?lang=
+Allow: /*?id=
+Disallow: /*?*utm_
+Disallow: /*?*fbclid
+Disallow: /*?*gclid
+Disallow: /*?*download=
+Disallow: /*?*preview=
+
+# Rate limiting
+Crawl-delay: 10
+
+# Host preference
+Host: brightaii.com
