@@ -129,10 +129,19 @@ body {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    background: linear-gradient(to bottom, var(--background-dark), rgba(10, 25, 47, 0.7)),
-                url('https://source.unsplash.com/random/1920x1080/?technology,ai') no-repeat center center/cover;
     position: relative;
     padding: 6rem var(--container-padding) 4rem;
+    overflow: hidden;
+}
+
+.hero-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    background: var(--background-dark);
 }
 
 .hero-container {
@@ -145,6 +154,8 @@ body {
 
 .hero-content {
     max-width: 800px;
+    position: relative;
+    z-index: 1;
 }
 
 .hero-mini-title {
@@ -1022,6 +1033,32 @@ textarea.form-control {
 }
 
 @media (max-width: 768px) {
+    .hero {
+        padding: 5rem var(--mobile-padding) 3rem;
+    }
+    
+    .hero-content {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .hero h1 {
+        font-size: clamp(2rem, 8vw, 3rem);
+    }
+    
+    .hero-description {
+        font-size: 1rem;
+    }
+    
+    .cta-button {
+        padding: 0.7rem 1.5rem;
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+    
     .nav-links {
         position: fixed;
         top: 0;
