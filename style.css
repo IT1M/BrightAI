@@ -1683,4 +1683,215 @@ textarea.form-control {
     color: var(--text-secondary);
 }
 
-/* ...rest of existing code... */
+
+/* قسم من نحن */
+.about-section {
+    padding: 6rem var(--container-padding);
+    background-color: var(--background-dark);
+    color: var(--text-primary);
+}
+
+.section-divider {
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
+    margin: 0 auto 3rem;
+}
+
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 4rem;
+}
+
+.about-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.main-description {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+}
+
+.vision-mission {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+.vision, .mission {
+    background: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid rgba(56, 189, 248, 0.1);
+    transition: all 0.3s ease;
+}
+
+.vision:hover, .mission:hover {
+    border-color: var(--accent-color);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(56, 189, 248, 0.1);
+}
+
+.vision h3, .mission h3 {
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.about-features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.feature-item {
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+    border: 1px solid rgba(56, 189, 248, 0.1);
+    transition: all 0.3s ease;
+}
+
+.feature-item:hover {
+    border-color: var(--accent-color);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(56, 189, 248, 0.1);
+}
+
+.feature-image {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.expertise-image {
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+}
+
+.innovation-image {
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-secondary));
+}
+
+.partnership-image {
+    background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+}
+
+.growth-image {
+    background: linear-gradient(135deg, var(--accent-secondary), var(--accent-color));
+}
+
+.feature-item h3 {
+    color: var(--text-primary);
+    margin-bottom: 0.8rem;
+    font-size: 1.2rem;
+}
+
+.feature-item p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+.team-preview {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.team-preview h3 {
+    color: var(--text-primary);
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+}
+
+.team-images {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+}
+
+.team-member {
+    text-align: center;
+}
+
+.member-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin: 0 auto 1rem;
+    background-color: var(--primary-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.team-image-1 {
+    background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+}
+
+.team-image-2 {
+    background: linear-gradient(45deg, var(--primary-light), var(--accent-color));
+}
+
+.team-image-3 {
+    background: linear-gradient(45deg, var(--accent-color), var(--primary-light));
+}
+
+.team-member p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+.cta-container {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.cta-contact {
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+}
+
+.cta-docs {
+    background-color: transparent;
+    border: 2px solid var(--accent-secondary);
+    color: var(--accent-secondary);
+}
+
+.cta-docs:hover {
+    background-color: rgba(239, 68, 68, 0.1);
+}
+
+@media (max-width: 992px) {
+    .about-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .vision-mission {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-features {
+        grid-template-columns: 1fr;
+    }
+    
+    .team-images {
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+    }
+}
