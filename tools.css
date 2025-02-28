@@ -1,985 +1,410 @@
-/* =================================
-   Theme: Tools Website Styles
-   Author: Your Name/Organization
-   Date: October 26, 2023
-   Description:  Styles for the tools website, focusing on clarity,
-                 maintainability, and a modern aesthetic.
-   Theme: BrightAI Tools Website Styles
-   Author: BrightAI
-   Date: February 28, 2025
-   Description: Redesigned styles for the AI tools website with a modern dark theme
-   ================================= */
-
-   :root {
-    --primary-color: #1E3A8A; /* أزرق داكن أكثر عمقاً */
-    --background-dark: #0B172A; /* خلفية أغمق قليلاً */
-    --accent-color: #38BDF8; /* أزرق فاتح أكثر حيوية */
-    --text-primary: #F3F4F6; /* أبيض أكثر نقاءً */
-    --text-secondary: #9CA3AF; /* رمادي فاتح أكثر تميزاً */
-    --accent-secondary: #EF4444; /* أحمر أكثر جاذبية */
-    --light-bg: #FAFAFA; /* خلفية فاتحة أكثر نقاءً */
-    --card-bg: rgba(17, 24, 39, 0.8); /* كروت أغمق قليلاً */
+:root {
+  /* نظام الألوان الرئيسي */
+  --primary-color: #1a365d;
+  --primary-light: #2d4a7e;
+  --secondary-color: #38bdf8;
+  --accent-color: #0ea5e9;
+  --accent-secondary: #ef4444;
+  
+  /* ألوان النصوص */
+  --text-primary: #f8fafc;
+  --text-secondary: #e2e8f0;
+  --text-dark: #334155;
+  
+  /* ألوان الخلفية */
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --bg-light: #f1f5f9;
+  
+  /* المساحات والهوامش */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2.5rem;
+  
+  /* حجم الخطوط */
+  --font-xs: 0.75rem;
+  --font-sm: 0.875rem;
+  --font-md: 1rem;
+  --font-lg: 1.25rem;
+  --font-xl: 1.5rem;
+  --font-2xl: 2rem;
 }
 
-/* -------- Global Styles -------- */
+/* إعادة ضبط عامة */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-    font-family: 'Amiri', 'Noto Naskh Arabic', 'Cairo', sans-serif;
-    margin: 0;
-    padding: 0;
-    line-height: 1.6;
-    background-color: #f0f8ff; /* Light blue background */
-    color: #333;
-    background-color: var(--background-dark);
-    color: var(--text-primary);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    transform-style: preserve-3d;
-    overflow-x: hidden;
-    direction: rtl;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cg fill='%23e0e8f0' fill-opacity='0.4'%3E%3Cpath d='M0 0h20v20H0V0zM20 20h20v20H20V20z'/%3E%3C/g%3E%3C/svg%3E"); /* Subtle background pattern */
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cg fill='%23132240' fill-opacity='0.4'%3E%3Cpath d='M0 0h20v20H0V0zM20 20h20v20H20V20z'/%3E%3C/g%3E%3C/svg%3E");
+  font-family: 'Cairo', 'Tajawal', sans-serif;
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+  line-height: 1.6;
+  direction: rtl;
 }
 
+/* الهيدر وعناصر التنقل */
+header {
+  background-color: var(--primary-color);
+  padding: var(--spacing-md) var(--spacing-xl);
+  color: var(--text-primary);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.logo {
+  font-size: var(--font-xl);
+  font-weight: bold;
+  color: var(--secondary-color);
+  text-decoration: none;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: var(--spacing-md);
+}
+
+nav a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  padding: var(--spacing-sm);
+  border-radius: 4px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+nav a:hover, nav a.active {
+  background-color: var(--primary-light);
+  color: var(--text-primary);
+}
+
+/* تصميم الأقسام الرئيسية */
 .container {
-    width: 95%;
-    margin: 0 auto;
-    padding: 25px;
-    background-color: #fff;
-    border-radius: 12px; /* Rounded corners for the container */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Increased shadow */
-    background-color: rgba(13, 25, 45, 0.8);
-    border-radius: 12px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-    transform-style: preserve-3d;
-    transition: box-shadow 0.3s ease-in-out;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(56, 189, 248, 0.1);
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--spacing-lg);
 }
 
-.container:hover {
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25); /* Increased shadow on hover */
-    box-shadow: 0 12px 48px rgba(56, 189, 248, 0.15);
+.section {
+  margin-bottom: var(--spacing-xl);
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  padding: var(--spacing-lg);
 }
 
-/* -------- Typography -------- */
-h1 {
-    color: #2c3e50;
-    color: var(--accent-color);
-    text-align: center;
-    margin-bottom: 20px; /* further reduced heading bottom margin */
-    margin-bottom: 20px;
-    font-size: 2.5em;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-    text-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
-    position: relative;
-    padding-bottom: 15px;
+.section-title {
+  color: var(--primary-color);
+  margin-bottom: var(--spacing-md);
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 2px solid var(--secondary-color);
 }
 
-h1::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100px;
-    height: 3px;
-    background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
-}
-
-h2 {
-    color: #2c3e50;
-    border-bottom: 2px solid #ddd;
-    padding-bottom: 8px; /* Reduced bottom padding */
-    margin-bottom: 15px; /* further reduced section heading bottom margin */
-    color: var(--accent-color);
-    border-bottom: 2px solid rgba(56, 189, 248, 0.3);
-    padding-bottom: 8px;
-    margin-bottom: 15px;
-    font-size: 2em;
-    text-align: center;
-    position: relative;
-}
-
-h2::before {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 50px;
-    height: 2px;
-    background-color: var(--accent-color);
-}
-
-p {
-    color: #555;
-    line-height: 1.6; /* Reduced line-height for tighter spacing */
-    margin-bottom: 8px; /* reduced paragraph bottom margin */
-    color: var(--text-secondary);
-    line-height: 1.6;
-    margin-bottom: 8px;
-}
-
-/* -------- Navigation Bar -------- */
-nav {
-    background: var(--primary-color);
-    padding: 10px 0;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    margin-bottom: 15px;
-    width: 100%;
-}
-
-.navbar {
-    width: 95%;
-    margin: 0 auto;
-    text-align: center;
-    max-width: 1400px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.navbar li {
-    display: inline;
-    margin: 0 10px; /* Reduced nav item margin */
-    margin: 0 10px;
-}
-
-.navbar a {
-    display: inline-block;
-    padding: 8px 12px; /* Reduced nav link padding */
-    padding: 8px 16px;
-    text-decoration: none;
-    color: white;
-    color: var(--text-primary);
-    font-weight: bold;
-    border-radius: 5px;
-    position: relative;
-    overflow: hidden;
-    transition: color 0.3s ease, background-color 0.3s ease, transform 0.2s ease;
-    transition: all 0.3s ease;
-}
-
-.navbar a.active {
-    background-color: #2c3e50;
-    background-color: rgba(56, 189, 248, 0.2);
-    color: var(--accent-color);
-}
-
-.navbar a:hover {
-    background-color: #2c3e50;
-    color: #eee;
-    background-color: rgba(56, 189, 248, 0.1);
-    color: var(--accent-color);
-    transform: translateY(-2px);
-}
-
-.navbar a::after {
-    content: '';
-    display: block;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background-color: var(--accent-color);
-    transform: scaleX(0);
-    transform-origin: bottom left;
-    transition: transform 0.3s ease-in-out;
-}
-
-.navbar a:hover::after {
-    transform: scaleX(1);
-}
-
-.navbar a:active {
-    background-color: rgba(44, 62, 80, 0.3);
-    background-color: rgba(56, 189, 248, 0.3);
-    transform: translateY(0);
-}
-
-/* -------- Sections -------- */
-section {
-    padding: 20px;
-    margin-bottom: 20px;
-    background-color: #fff;
-    background-color: rgba(13, 25, 45, 0.5);
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-    border: 1px solid rgba(56, 189, 248, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-section:hover {
-    box-shadow: 0 8px 30px rgba(56, 189, 248, 0.1);
-    transform: translateY(-5px);
-}
-
-section:last-of-type {
-    margin-bottom: 0;
-}
-
-
-/* -------- Tools Grid -------- */
+/* بطاقات الأدوات */
 .tools-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    justify-content: center; /* Center tools horizontally */
-    gap: 20px;
-    justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-lg);
 }
 
-/* -------- Tool Card -------- */
 .tool-card {
-    background: #fff;
-    background: var(--card-bg);
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    padding: 15px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-    padding: 20px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    transition: box-shadow 0.3s ease-in-out;
-    flex: 1; /* Make tools take equal space */
-    min-width: 280px; /* Minimum width for each tool */
-    margin: 0 5px; /* Add some horizontal margin */
-    transition: all 0.3s ease-in-out;
-    flex: 1;
-    min-width: 280px;
-    margin: 0 5px;
-    border: 1px solid rgba(56, 189, 248, 0.1);
-    position: relative;
-    overflow: hidden;
-}
-
-.tool-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 4px;
-    background: linear-gradient(90deg, var(--accent-color), var(--primary-color));
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.3s ease;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .tool-card:hover {
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-    transform: translateY(-5px);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
 }
 
-.tool-card:hover::before {
-    transform: scaleX(1);
+.tool-card-header {
+  background-color: var(--primary-color);
+  color: var(--text-primary);
+  padding: var(--spacing-md);
 }
 
-.card-header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 8px; /* Reduced margin below the header */
-    margin-bottom: 15px;
+.tool-card-body {
+  padding: var(--spacing-md);
 }
 
-.card-header h3 {
-    color: #2c3e50;
-    font-size: 1.2em;
-    margin-left: 8px;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-    margin-bottom: 5px; /* تقليل الهامش السفلي */
-    color: var(--accent-color);
-    font-size: 1.3em;
-    margin-right: 10px;
-    text-shadow: 0 0 5px rgba(56, 189, 248, 0.2);
+.tool-card-footer {
+  padding: var(--spacing-md);
+  background-color: var(--bg-light);
+  text-align: center;
 }
 
-.tool-card .icon {
-    font-size: 2em; /* Slightly reduced icon size */
-    color: #3498db;
-    margin-bottom: 8px;  /* Reduced margin below the icon */
-    font-size: 2em;
-    color: var(--accent-color);
-    margin-left: 10px;
-    transition: transform 0.3s ease;
+/* النماذج وعناصر الإدخال */
+.form-group {
+  margin-bottom: var(--spacing-md);
 }
 
-.tool-card:hover .icon {
-    transform: scale(1.1);
+label {
+  display: block;
+  margin-bottom: var(--spacing-xs);
+  font-weight: 600;
 }
 
-.tool-card p {
-    margin-bottom: 8px;   /* تقليل الهامش السفلي */
-    margin-bottom: 15px;
-    flex-grow: 1;
-    color: #555;
-    color: var(--text-secondary);
-    line-height: 1.6;
+input, select, textarea {
+  width: 100%;
+  padding: var(--spacing-sm);
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: var(--font-md);
 }
 
-.tool-card .tool-content {
-    padding: 8px 0;  /* تقليل الحشوة العلوية والسفلية */
-    padding: 10px 0;
-    display: flex;
-    flex-direction: column;
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.2);
 }
 
-/* -------- Form Elements within Tool Card -------- */
-.tool-card label {
-    display: block;
-    margin-bottom: 2px; /* Reduced bottom margin */
-    margin-bottom: 5px;
-    text-align: right;
-    color: #333;
-    color: var(--text-primary);
-    font-weight: bold;
+/* الأزرار */
+.btn {
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s, transform 0.2s;
 }
 
-.tool-card input[type="text"],
-.tool-card input[type="email"],
-.tool-card input[type="tel"],
-.tool-card input[type="color"],
-.tool-card input[type="file"] {
-    width: calc(100% - 24px);
-    margin: 0 auto;
-    padding: 8px; /* reduced padding */
-    border: 1px solid #ddd;
-    border-radius: 5px; /* Reduced radius */
-    padding: 10px;
-    border: 1px solid rgba(56, 189, 248, 0.3);
-    border-radius: 5px;
-    font-size: 1em;
-    margin-bottom: 8px;  /* Reduced bottom margin */
-    margin-bottom: 12px;
-    resize: vertical;
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
-    transition: border-color 0.3s ease-in-out;
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease-in-out;
-    text-align: right;
-    direction: rtl;
-    font-family: 'Cairo', sans-serif;
-    outline: none;
-    background-color: rgba(11, 23, 42, 0.7);
-    color: var(--text-primary);
+.btn:active {
+  transform: scale(0.98);
 }
 
-.tool-card textarea:focus,
-.tool-card select:focus,
-.tool-card input[type="text"]:focus,
-.tool-card input[type="email"]:focus,
-.tool-card input[type="tel"]:focus,
-.tool-card input[type="color"]:focus,
-.tool-card input[type="file"]:focus {
-    border-color: var(--accent-color);
-    box-shadow: 0 0 8px rgba(56, 189, 248, 0.5);
-    background-color: rgba(13, 25, 45, 0.9);
+.btn-primary {
+  background-color: var(--accent-color);
+  color: white;
 }
 
-.tool-card input[type="checkbox"],
-.tool-card input[type="radio"] {
-    margin-left: 5px;
-    accent-color: var(--accent-color);
+.btn-primary:hover {
+  background-color: #0284c7;
 }
 
-/* Ensure input and select elements are properly aligned */
-.tool-content input[type="text"],
-.tool-content input[type="email"],
-.tool-content input[type="tel"],
-.tool-content select,
-.tool-content textarea {
-    text-align: right;
-    direction: rtl;
-    font-family: 'Cairo', sans-serif;
-    border: 1px solid rgba(56, 189, 248, 0.3);
+.btn-secondary {
+  background-color: var(--bg-secondary);
+  color: white;
 }
 
-/* -------- Enhanced Resume Tool Specific Styles -------- */
-#enhanced-resume-tool .tool-content label {
-    text-align: right;
-    margin-bottom: 5px;
-    display: block;
-    font-weight: bold;
-    color: var(--text-primary);
+.btn-secondary:hover {
+  background-color: #334155;
 }
 
-#enhanced-resume-tool .tool-content input[type="text"],
-#enhanced-resume-tool .tool-content textarea,
-#enhanced-resume-tool .tool-content select {
-    width: calc(100% - 24px);
-    margin-bottom: 12px;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid rgba(56, 189, 248, 0.3);
-    box-sizing: border-box;
-    font-family: 'Cairo', sans-serif;
-    outline: none;
-    background-color: rgba(11, 23, 42, 0.7);
-    color: var(--text-primary);
+.btn-danger {
+  background-color: var(--accent-secondary);
+  color: white;
 }
 
-#enhanced-resume-tool .tool-content select {
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    background-image: url('data:image/svg+xml;utf8,<svg fill="%2338BDF8" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
-    background-repeat: no-repeat;
-    background-position-x: 95%;
-    background-position-y: 50%;
+.btn-danger:hover {
+  background-color: #dc2626;
 }
 
-#enhanced-resume-tool .tool-content button {
-    padding: 10px 15px;
-    background-color: var(--accent-color);
-    color: var(--background-dark);
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1em;
-    transition: all 0.3s ease-in-out;
-    margin-top: 8px;
-    font-weight: bold;
+/* قسم السيرة الذاتية */
+.resume-builder {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-lg);
 }
 
-#enhanced-resume-tool .tool-content button:hover {
-    background-color: #2aa3dd;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(56, 189, 248, 0.3);
+@media (max-width: 768px) {
+  .resume-builder {
+    grid-template-columns: 1fr;
+  }
 }
 
-#enhanced-resume-tool .tool-content .output-text {
-    margin-top: 15px;
-    padding: 15px;
-    border: 1px solid rgba(56, 189, 248, 0.3);
-    border-radius: 5px;
-    background-color: rgba(13, 25, 45, 0.7);
-    text-align: right;
-    direction: rtl;
-    white-space: pre-line;
-    line-height: 1.5;
-    color: var(--text-primary);
+.resume-preview {
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: var(--spacing-md);
+  min-height: 300px;
+  background-color: white;
 }
 
-/* -------- Interactive Chart Tool Styles -------- */
-#interactive-chart-tool label {
-    display: block;
-    margin-bottom: 5px;
-    text-align: right;
-    font-weight: bold;
-    color: var(--text-primary);
+.experience-entry, .education-entry, .project-entry {
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+  position: relative;
 }
 
-#interactive-chart-tool select,
-#interactive-chart-tool input[type="text"] {
-    width: calc(100% - 24px);
-    margin: 0 auto;
-    padding: 10px;
-    border: 1px solid rgba(56, 189, 248, 0.3);
-    border-radius: 5px;
-    font-size: 1em;
-    margin-bottom: 12px;
-    direction: rtl;
-    font-family: 'Cairo', sans-serif;
-    outline: none;
-    background-color: rgba(11, 23, 42, 0.7);
-    color: var(--text-primary);
+.remove-btn {
+  position: absolute;
+  top: var(--spacing-sm);
+  left: var(--spacing-sm);
+  background-color: var(--accent-secondary);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  text-align: center;
+  cursor: pointer;
 }
 
-#interactive-chart-tool button {
-    padding: 10px 20px;
-    background-color: var(--accent-color);
-    color: var(--background-dark);
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1em;
-    transition: all 0.3s ease-in-out;
-    margin-top: 8px;
-    font-weight: bold;
+/* الإشعارات */
+.notification {
+  position: fixed;
+  top: var(--spacing-lg);
+  right: var(--spacing-lg);
+  padding: var(--spacing-md);
+  border-radius: 4px;
+  color: white;
+  z-index: 1000;
+  animation: slideIn 0.3s, fadeOut 0.5s 3.5s forwards;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-#interactive-chart-tool button:hover {
-    background-color: #2aa3dd;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(56, 189, 248, 0.3);
+@keyframes slideIn {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
 }
 
-#interactive-chart-tool .chart-container {
-    margin-top: 15px;
-    text-align: center;
-    background-color: rgba(255, 255, 255, 0.05);
-    padding: 15px;
-    border-radius: 8px;
-    border: 1px solid rgba(56, 189, 248, 0.1);
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; visibility: hidden; }
 }
 
-/* -------- HTML Generator Tool Specific Styles -------- */
-#html-generator-tool .tool-content label {
-    text-align: right;
-    margin-bottom: 5px;
-    display: block;
-    color: var(--text-primary);
-    font-weight: bold;
+/* الخرائط البيانية */
+.chart-container {
+  background-color: white;
+  border-radius: 8px;
+  padding: var(--spacing-md);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
-#html-generator-tool .tool-content input[type="text"],
-#html-generator-tool .tool-content textarea,
-#html-generator-tool .tool-content select {
-    width: calc(100% - 24px);
-    margin-bottom: 12px;
-    padding: 10px;
-    border: 1px solid rgba(56, 189, 248, 0.3);
-    border-radius: 5px;
-    font-family: 'Cairo', sans-serif;
-    outline: none;
-    box-sizing: border-box;
-    background-color: rgba(11, 23, 42, 0.7);
-    color: var(--text-primary);
+canvas {
+  max-width: 100%;
 }
 
-#html-generator-tool .tool-content input[type="radio"] + label {
-    margin-left: 5px;
+/* تنسيق المخرجات */
+.output-container {
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: var(--spacing-md);
+  min-height: 200px;
+  background-color: white;
+  margin-top: var(--spacing-md);
+  white-space: pre-wrap;
 }
 
-#html-generator-tool .tool-content #inline-css-code,
-#html-generator-tool .tool-content #external-css-file {
-    margin-top: 8px;
-}
-
-/* -------- Buttons -------- */
-.try-button {
-    display: inline-block;
-    padding: 12px 24px;
-    background-color: var(--accent-color);
-    color: var(--background-dark);
-    text-decoration: none;
-    border-radius: 8px;
-    border: none;
-    transition: all 0.3s ease-in-out;
-    margin-bottom: 15px;
-    cursor: pointer;
-    font-size: 1em;
-    font-weight: bold;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-}
-
-.try-button::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: left 0.7s ease;
-}
-
-.try-button:hover {
-    background-color: #2aa3dd;
-    transform: translateY(-3px);
-    box-shadow: 0 6px 15px rgba(56, 189, 248, 0.3);
-}
-
-.try-button:hover::before {
-    left: 100%;
-}
-
-.try-button:active {
-    transform: translateY(-1px);
-}
-
-/* -------- Output Text Areas -------- */
-.output-text {
-    margin-top: 15px;
-    padding: 15px;
-    border: 1px solid rgba(56, 189, 248, 0.3);
-    border-radius: 8px;
-    background-color: rgba(13, 25, 45, 0.7);
-    text-align: right;
-    line-height: 1.5;
-    white-space: pre-wrap;
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
-    overflow-x: auto;
-    direction: rtl;
-    font-family: 'Courier New', monospace;
-    font-size: 0.9em;
-    color: var(--text-primary);
-}
-
-/* -------- Saudi Jobs Tool Specific Styles -------- */
-#saudi-jobs-tool .try-button {
-    background-color: var(--accent-color);
-    color: var(--background-dark);
-    padding: 12px 25px;
-    border-radius: 8px;
-    font-size: 1.1em;
-    transition: all 0.3s ease-in-out;
-    font-weight: bold;
-    border: none;
-    cursor: pointer;
-    margin-top: 10px;
-}
-
-#saudi-jobs-tool .try-button:hover {
-    background-color: #2aa3dd;
-    transform: translateY(-3px);
-    box-shadow: 0 6px 15px rgba(56, 189, 248, 0.3);
-}
-
-/* -------- Download Buttons -------- */
-#download-resume,
-#download-cover-letter,
-#download-search-results,
-#download-html,
-#exportPDF {
-    margin-top: 10px;
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: var(--primary-color);
-    color: var(--text-primary);
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-weight: bold;
-}
-
-#download-resume:hover,
-#download-cover-letter:hover,
-#download-search-results:hover,
-#download-html:hover,
-#exportPDF:hover {
-    background-color: #152c69;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-/* -------- Footer Styles -------- */
-.footer {
-    background-color: var(--primary-color);
-    color: var(--text-primary);
-    padding: 3rem 0;
-    width: 100%;
-    margin-top: 30px;
-    border-top: 1px solid rgba(56, 189, 248, 0.2);
+/* التذييل */
+footer {
+  background-color: var(--primary-color);
+  color: var(--text-secondary);
+  padding: var(--spacing-xl) 0;
+  margin-top: var(--spacing-xl);
 }
 
 .footer-content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--spacing-xl);
+  padding: 0 var(--spacing-lg);
 }
 
-.footer-section h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    color: var(--accent-color);
-    position: relative;
-    padding-bottom: 10px;
+.footer-column h3 {
+  color: var(--secondary-color);
+  margin-bottom: var(--spacing-md);
 }
 
-.footer-section h3::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 50px;
-    height: 2px;
-    background-color: var(--accent-color);
+.footer-column ul {
+  list-style: none;
 }
 
-.footer-section p {
-    color: var(--text-secondary);
-    line-height: 1.6;
+.footer-column ul li {
+  margin-bottom: var(--spacing-sm);
 }
 
-.quick-links ul {
-    list-style: none;
-    padding: 0;
+.footer-column a {
+  color: var(--text-secondary);
+  text-decoration: none;
 }
 
-.quick-links ul li {
-    margin-bottom: 0.8rem;
-}
-
-.quick-links ul li a {
-    color: var(--text-secondary);
-    text-decoration: none;
-    transition: all 0.3s ease;
-    position: relative;
-    padding-right: 15px;
-}
-
-.quick-links ul li a::before {
-    content: '→';
-    position: absolute;
-    right: 0;
-    opacity: 0;
-    transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-.quick-links ul li a:hover {
-    color: var(--accent-color);
-    padding-right: 20px;
-}
-
-.quick-links ul li a:hover::before {
-    opacity: 1;
-    transform: translateX(-5px);
-}
-
-.social-links {
-    display: flex;
-    gap: 1rem;
-}
-
-.social-icon {
-    width: 40px;
-    height: 40px;
-    background-color: rgba(56, 189, 248, 0.1);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-    border: 1px solid rgba(56, 189, 248, 0.3);
-}
-
-.social-icon:hover {
-    background-color: var(--accent-color);
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(56, 189, 248, 0.3);
-}
-
-.social-icon img, .social-icon svg {
-    width: 20px;
-    height: 20px;
-    filter: brightness(0) invert(1);
-    transition: transform 0.3s ease;
-}
-
-.social-icon:hover img, .social-icon:hover svg {
-    transform: scale(1.2);
+.footer-column a:hover {
+  color: var(--text-primary);
+  text-decoration: underline;
 }
 
 .copyright {
-    text-align: center;
-    margin-top: 2rem;
-    padding-top: 2rem;
-    border-top: 1px solid rgba(56, 189, 248, 0.2);
-    color: var(--text-secondary);
+  text-align: center;
+  padding-top: var(--spacing-lg);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: var(--spacing-lg);
+  font-size: var(--font-sm);
 }
 
-/* -------- Responsive Design -------- */
+/* تصميم مستجيب */
+@media (max-width: 992px) {
+  .tools-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+}
+
 @media (max-width: 768px) {
-    .navbar {
-        padding: 8px 0;
-        flex-direction: column;
-    }
-
-    .navbar li {
-        margin: 5px 0;
-    }
-
-    .tool-card {
-        width: 100%;
-        min-width: auto;
-    }
-
-    .tools-grid {
-        grid-template-columns: 1fr;
-        gap: 15px;
-    }
-
-    footer {
-        padding: 2rem 0;
-    }
-
-    footer .social-media,
-    footer .contact-info {
-        margin-bottom: 15px;
-    }
-
-    .social-media {
-        margin-top: 10px;
-    }
-    
-    h1 {
-        font-size: 2em;
-    }
-    
-    h2 {
-        font-size: 1.7em;
-    }
-    
-    .container {
-        width: 90%;
-        padding: 15px;
-    }
+  .tools-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .nav-container {
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+  
+  nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }
 
-/* -------- Animation Effects -------- */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+/* دعم RTL */
+[dir="rtl"] .remove-btn {
+  right: var(--spacing-sm);
+  left: auto;
 }
 
-section {
-    animation: fadeIn 0.5s ease-out forwards;
+[dir="rtl"] .notification {
+  right: auto;
+  left: var(--spacing-lg);
 }
 
-.tool-card {
-    animation: fadeIn 0.5s ease-out forwards;
-    animation-delay: calc(var(--animation-order) * 0.1s);
-    opacity: 0;
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-light: #1e293b;
+    --text-dark: #f1f5f9;
+  }
+  
+  body {
+    background-color: var(--bg-primary);
+  }
+  
+  .section, .tool-card, .resume-preview, .output-container, .chart-container {
+    background-color: var(--bg-secondary);
+    color: var(--text-secondary);
+  }
+  
+  input, select, textarea {
+    background-color: var(--bg-secondary);
+    color: var(--text-secondary);
+    border-color: #475569;
+  }
 }
-
-/* -------- Custom Scrollbar -------- */
-::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
-}
-
-::-webkit-scrollbar-track {
-    background: rgba(13, 25, 45, 0.5);
-}
-
-::-webkit-scrollbar-thumb {
-    background: var(--accent-color);
-    border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: #2aa3dd;
-}
-
-/* -------- Fieldset Styling -------- */
-fieldset {
-    border: 1px solid rgba(56, 189, 248, 0.3);
-    border-radius: 5px;
-    padding: 10px 15px;
-    margin-bottom: 15px;
-    background-color: rgba(13, 25, 45, 0.3);
-}
-
-legend {
-    color: var(--accent-color);
-    font-weight: bold;
-    padding: 0 10px;
-}
-
-/* -------- Code Highlighting -------- */
-pre code {
-    background-color: rgba(13, 25, 45, 0.9) !important;
-    border-radius: 5px;
-    padding: 15px !important;
-    border: 1px solid rgba(56, 189, 248, 0.3) !important;
-    color: var(--text-primary) !important;
-}
-
-/* -------- Canvas for Charts -------- */
-canvas {
-    background-color: rgba(255, 255, 255, 0.05);
-    border-radius: 5px;
-    border: 1px solid rgba(56, 189, 248, 0.1);
-}
- * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
-
-        .footer {
-            background-color: #111827;
-            color: white;
-            padding: 3rem 0;
-            width: 100%; /* إضافة هذه السطر */
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1rem;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .footer-section h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .footer-section p {
-            color: #9ca3af;
-            line-height: 1.6;
-        }
-
-        .quick-links ul {
-            list-style: none;
-        }
-
-        .quick-links ul li {
-            margin-bottom: 0.5rem;
-        }
-
-        .quick-links ul li a {
-            color: #9ca3af;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .quick-links ul li a:hover {
-            color: white;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .social-icon {
-            width: 40px;
-            height: 40px;
-            background-color: #374151;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background-color 0.3s ease;
-        }
-
-        .social-icon:hover {
-            background-color: #4b5563;
-        }
-
-        .social-icon img {
-            width: 20px;
-            height: 20px;
-            filter: invert(1);
-        }
-
-        .copyright {
-            text-align: center;
-            margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 1px solid #374151;
-            color: #9ca3af;
-        }
-
-        @media (max-width: 768px) {
-            .footer-content {
-                grid-template-columns: 1fr;
-            }
-        }
