@@ -1,13 +1,24 @@
 :root {
-    /* الألوان الأساسية */
-    --primary-color: #1D2B3A;
-    --background-dark: #0A192F;
-    --accent-color: #64FFDA;
-    --text-primary: #ffffff;
-    --text-secondary: #8892B0;
-    --accent-secondary: #F97316;
-    --light-bg: #f8f9fa;
-    --card-bg: rgba(13, 30, 58, 0.8);
+    /* تحسينات الصور */
+img[lazy] {
+    opacity: 0;
+    transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+img.loaded {
+    opacity: 1;
+    transition: none;
+}
+
+/* الألوان الأساسية */
+    --primary-color: #1E3A8A; /* أزرق داكن أكثر عمقاً */
+    --background-dark: #0B172A; /* خلفية أغمق قليلاً */
+    --accent-color: #38BDF8; /* أزرق فاتح أكثر حيوية */
+    --text-primary: #F3F4F6; /* أبيض أكثر نقاءً */
+    --text-secondary: #9CA3AF; /* رمادي فاتح أكثر تميزاً */
+    --accent-secondary: #EF4444; /* أحمر أكثر جاذبية */
+    --light-bg: #FAFAFA; /* خلفية فاتحة أكثر نقاءً */
+    --card-bg: rgba(17, 24, 39, 0.8); /* كروت أغمق قليلاً */
     
     /* التخطيط */
     --content-width: min(90%, 1200px);
@@ -15,6 +26,188 @@
     --mobile-padding: 1rem;
     --tablet-padding: 2rem;
     --desktop-padding: 3rem;
+}
+
+/* إضافة أنماط جديدة */
+/* تحسينات الوصول */
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+    line-height: 1.5;
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+body {
+    margin: 0;
+    font-family: 'Tajawal', sans-serif;
+    background-color: var(--background-dark);
+    color: var(--text-primary);
+    overflow-x: hidden;
+}
+
+/* تحسينات الاستجابة */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+@media (max-width: 768px) {
+    html {
+        font-size: 90%;
+    }
+    
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}
+
+body {
+    font-family: 'Tajawal', sans-serif;
+    line-height: 1.6;
+    color: var(--text-primary);
+    background: var(--background-dark);
+    overflow-x: hidden;
+    position: relative;
+}
+
+.container {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+}
+
+.grid {
+    display: grid;
+    gap: 2rem;
+}
+
+@media (min-width: 768px) {
+    .grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+    .grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.font-bold {
+    font-weight: 700;
+}
+
+.font-medium {
+    font-weight: 500;
+}
+
+.font-light {
+    font-weight: 300;
+}
+
+.text-lg {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+}
+
+.text-xl {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+}
+
+.text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
+}
+
+.text-3xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+}
+
+.text-4xl {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+}
+
+.text-5xl {
+    font-size: 3rem;
+    line-height: 1;
+}
+
+.shadow-sm {
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.shadow {
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+.shadow-md {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.transition {
+    transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
+    transition-duration: 200ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.duration-300 {
+    transition-duration: 300ms;
+}
+
+.ease-in-out {
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.rounded {
+    border-radius: 0.25rem;
+}
+
+.rounded-lg {
+    border-radius: 0.5rem;
+}
+
+.rounded-full {
+    border-radius: 9999px;
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+.truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.divide-y > * + * {
+    border-top: 1px solid rgba(100, 255, 218, 0.1);
+}
+
+.space-y-4 > * + * {
+    margin-top: 1rem;
+}
+
+*:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
 }
 
 * {
@@ -28,6 +221,13 @@
 
 html {
     scroll-behavior: smooth;
+    
+    /* تحسينات الوصول */
+    line-height: 1.5;
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
 }
 
 body {
