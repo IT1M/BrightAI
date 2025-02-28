@@ -1,8 +1,21 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Set RTL direction
     document.body.style.direction = 'rtl';
 
+    // Load Font Awesome
+    const fontAwesome = document.createElement('link');
+    fontAwesome.rel = 'stylesheet';
+    fontAwesome.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css';
+    document.head.appendChild(fontAwesome);
+
+    // Load Tajawal font
+    const tajawalFont = document.createElement('link');
+    tajawalFont.rel = 'stylesheet';
+    tajawalFont.href = 'https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap';
+    document.head.appendChild(tajawalFont);
+
     // Lazy loading images
-    const lazyImages = document.querySelectorAll('img');
+    const lazyImages = document.querySelectorAll('img[data-src]');
     const imageObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -12,83 +25,142 @@ document.addEventListener('DOMContentLoaded', () => {
                 observer.unobserve(img);
             }
         });
+    }, {
+        rootMargin: '50px',
+        threshold: 0.1
     });
 
     lazyImages.forEach(img => {
         imageObserver.observe(img);
     });
 
-    // تأثيرات التمرير (Scroll Animations)
+    // Scroll animations for sections
     const sections = document.querySelectorAll('section');
-    const observer = new IntersectionObserver(entries => {
+    const sectionObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
             }
         });
     }, {
-        threshold: 0.1
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px'
     });
 
     sections.forEach(section => {
-        observer.observe(section);
+        sectionObserver.observe(section);
     });
 
-    // تأثيرات البطاقات عند التمرير عليها
+    // Add icons to agent cards that don't have them
     const agentCards = document.querySelectorAll('.agent-card');
-    agentCards.forEach(card => {
+    const iconClasses = [
+        'fa-search', 'fa-file-alt', 'fa-users', 'fa-chart-line', 
+        'fa-lightbulb', 'fa-project-diagram', 'fa-tasks', 'fa-brain'
+    ];
+    
+    agentCards.forEach((card, index) => {
+        const iconElement = card.querySelector('.agent-icon');
+        if (iconElement && !iconElement.classList.contains('fas')) {
+            // If icon element exists but doesn't have an icon class
+            const iconClass = iconClasses[index % iconClasses.length];
+            iconElement.classList.add('fas', iconClass);
+        }
+    });
+
+    // Enhanced hover effects for cards
+    const allCards = document.querySelectorAll('.agent-card, .feature, .testimonial, .faq-item, .type-card, .business-agent, .technology');
+    
+    allCards.forEach(card => {
         card.addEventListener('mouseenter', () => {
-            card.style.transform = 'translateY(-10px) rotateY(10deg)';
-            card.style.boxShadow = '0 8px 16px rgba(0, 0, 0, 0.7)';
+            card.style.transform = 'translateY(-10px)';
+            card.style.boxShadow = '0 12px 24px rgba(56, 189, 248, 0.2)';
+            card.style.borderColor = 'var(--accent-color)';
         });
 
         card.addEventListener('mouseleave', () => {
-            card.style.transform = 'translateY(0)';
-            card.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.5)';
+            card.style.transform = '';
+            card.style.boxShadow = '';
+            card.style.borderColor = '';
         });
     });
 
-    const features = document.querySelectorAll('.feature');
-    features.forEach(feature => {
-        feature.addEventListener('mouseenter', () => {
-            feature.style.transform = 'translateY(-10px) rotateY(10deg)';
-            feature.style.boxShadow = '0 8px 16px rgba(0, 0, 0, 0.7)';
+    // Hero section parallax effect
+    const heroSection = document.getElementById('hero');
+    const heroContent = document.querySelector('.hero-content');
+
+    if (heroSection && heroContent) {
+        heroSection.addEventListener('mousemove', (e) => {
+            const rect = heroSection.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+
+            const offsetX = (x - centerX) / 50;
+            const offsetY = (y - centerY) / 50;
+
+            heroContent.style.transform = `translateZ(50px) rotateX(${-offsetY * 0.5}deg) rotateY(${offsetX * 0.5}deg)`;
         });
 
-        feature.addEventListener('mouseleave', () => {
-            feature.style.transform = 'translateY(0)';
-            feature.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.5)';
+        heroSection.addEventListener('mouseleave', () => {
+            heroContent.style.transform = 'translateZ(50px) rotateX(0deg) rotateY(0deg)';
+        });
+    }
+
+    // Modal functionality
+    const modalTriggers = document.querySelectorAll('.more-details');
+    const closeButtons = document.querySelectorAll('.close-modal');
+    const modals = document.querySelectorAll('.modal');
+
+    // Open modal
+    modalTriggers.forEach(trigger => {
+        trigger.addEventListener('click', (e) => {
+            e.preventDefault();
+            const modalId = trigger.getAttribute('data-modal');
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.add('show');
+                document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+            }
         });
     });
 
-    const testimonials = document.querySelectorAll('.testimonial');
-    testimonials.forEach(testimonial => {
-        testimonial.addEventListener('mouseenter', () => {
-            testimonial.style.transform = 'translateY(-10px) rotateY(10deg)';
-            testimonial.style.boxShadow = '0 8px 16px rgba(0, 0, 0, 0.7)';
-        });
-
-        testimonial.addEventListener('mouseleave', () => {
-            testimonial.style.transform = 'translateY(0)';
-            testimonial.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.5)';
+    // Close modal with close button
+    closeButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const modal = button.closest('.modal');
+            if (modal) {
+                modal.classList.remove('show');
+                document.body.style.overflow = ''; // Restore scrolling
+            }
         });
     });
 
-    const faqItems = document.querySelectorAll('.faq-item');
-    faqItems.forEach(item => {
-        item.addEventListener('mouseenter', () => {
-            item.style.transform = 'translateY(-10px) rotateY(10deg)';
-            item.style.boxShadow = '0 8px 16px rgba(0, 0, 0, 0.7)';
-        });
-
-        item.addEventListener('mouseleave', () => {
-            item.style.transform = 'translateY(0)';
-            item.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.5)';
+    // Close modal when clicking outside
+    window.addEventListener('click', (e) => {
+        modals.forEach(modal => {
+            if (e.target === modal) {
+                modal.classList.remove('show');
+                document.body.style.overflow = ''; // Restore scrolling
+            }
         });
     });
 
-    // Adding event listener for "cta-button" elements
-    const ctaButtons = document.querySelectorAll('.cta-button');
+    // Close modal with Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            modals.forEach(modal => {
+                if (modal.classList.contains('show')) {
+                    modal.classList.remove('show');
+                    document.body.style.overflow = ''; // Restore scrolling
+                }
+            });
+        }
+    });
+
+    // CTA buttons WhatsApp link
+    const ctaButtons = document.querySelectorAll('.cta-button, .final-cta-button');
     ctaButtons.forEach(button => {
         button.addEventListener('click', (e) => {
             e.preventDefault();
@@ -96,54 +168,110 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // تفاعلات البانر الرئيسي (Hero Section)
-    const heroSection = document.getElementById('hero');
-    const heroContent = document.querySelector('.hero-content');
-    const hero3dElements = document.querySelector('.hero-3d-elements');
-
-    heroSection.addEventListener('mousemove', (e) => {
-        const rect = heroSection.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-
-        const offsetX = (x - centerX) / 100;
-        const offsetY = (y - centerY) / 100;
-
-        heroContent.style.transform = `translateZ(50px) rotateX(${offsetY * 0.5}deg) rotateY(${offsetX * 0.5}deg)`;
-        hero3dElements.style.transform = `translateX(${offsetX * 2}px) translateY(${offsetY * 2}px)`;
-    });
-
-    heroSection.addEventListener('mouseleave', () => {
-        heroContent.style.transform = 'translateZ(50px) rotateX(0deg) rotateY(0deg)';
-        hero3dElements.style.transform = 'translateX(0px) translateY(0px)';
-    });
-
-    // إضافة وظائف المودال
-    const modalTriggers = document.querySelectorAll('.more-details');
-    modalTriggers.forEach(trigger => {
-        trigger.addEventListener('click', (e) => {
-            e.preventDefault();
-            const modalId = trigger.getAttribute('data-modal');
-            const modal = document.getElementById(modalId);
-            modal.classList.add('show');
+    // Add smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            if (this.getAttribute('href') !== '#') {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80, // Offset for fixed header
+                        behavior: 'smooth'
+                    });
+                }
+            }
         });
     });
 
-    const closeButtons = document.querySelectorAll('.close-modal');
-    closeButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const modal = button.closest('.modal');
-            modal.classList.remove('show');
-        });
+    // Add animation to technology icons
+    const techIcons = document.querySelectorAll('.technology img');
+    techIcons.forEach(icon => {
+        icon.style.animation = 'float 6s ease-in-out infinite';
     });
 
-    // إغلاق المودال عند النقر خارجه
-    window.addEventListener('click', (e) => {
-        if (e.target.classList.contains('modal')) {
-            e.target.classList.remove('show');
+    // Add pulse animation to CTA buttons
+    const finalCtaButton = document.querySelector('.final-cta-button');
+    if (finalCtaButton) {
+        finalCtaButton.style.animation = 'pulse 2s infinite';
+    }
+
+    // Add active class to current page in navbar
+    const currentPage = window.location.pathname.split('/').pop();
+    const navLinks = document.querySelectorAll('.navbar a');
+    
+    navLinks.forEach(link => {
+        const linkPage = link.getAttribute('href');
+        if (linkPage === currentPage) {
+            link.style.color = 'var(--accent-color)';
+            link.style.fontWeight = 'bold';
+        }
+    });
+
+    // Add features to agent cards
+    const agentFeaturesList = {
+        'custom-agent': [
+            'تصميم مخصص حسب احتياجاتك',
+            'تكامل مع الأنظمة الحالية',
+            'دعم فني على مدار الساعة'
+        ],
+        'data-analyst-agent': [
+            'تحليل البيانات بدقة عالية',
+            'استخراج الأنماط والاتجاهات',
+            'تقارير تحليلية متكاملة'
+        ],
+        'marketing-agent': [
+            'استراتيجيات تسويقية فعالة',
+            'تحليل سلوك المستخدم',
+            'زيادة معدلات التحويل'
+        ],
+        'seo-agent': [
+            'تحسين ترتيب موقعك',
+            'تحليل الكلمات المفتاحية',
+            'تقارير أداء شهرية'
+        ],
+        'content-agent': [
+            'محتوى عالي الجودة',
+            'تحسين لمحركات البحث',
+            'زيادة التفاعل مع المحتوى'
+        ],
+        'customer-discovery-agent': [
+            'اكتشاف عملاء محتملين',
+            'تحليل احتياجات السوق',
+            'استراتيجيات تواصل فعالة'
+        ],
+        'competitor-analysis-agent': [
+            'تحليل شامل للمنافسين',
+            'تحديد نقاط القوة والضعف',
+            'استراتيجيات تنافسية'
+        ],
+        'project-analysis-agent': [
+            'تحليل شامل للمشروع',
+            'تحديد فرص التحسين',
+            'خطط تنفيذية واضحة'
+        ]
+    };
+
+    // Add features to agent cards
+    document.querySelectorAll('.agent-card').forEach(card => {
+        const detailsLink = card.querySelector('.more-details');
+        if (detailsLink) {
+            const modalId = detailsLink.getAttribute('data-modal');
+            const featuresList = card.querySelector('.agent-features');
+            
+            if (featuresList && agentFeaturesList[modalId]) {
+                // Clear existing features
+                featuresList.innerHTML = '';
+                
+                // Add new features
+                agentFeaturesList[modalId].forEach(feature => {
+                    const li = document.createElement('li');
+                    li.textContent = feature;
+                    featuresList.appendChild(li);
+                });
+            }
         }
     });
 });
