@@ -1,28 +1,29 @@
+# BrightAI - Robots.txt
+# Last updated: 2025-02-28
+
 # Global rules
 User-agent: *
 Allow: /
+Crawl-delay: 1
+
+# Allow access to important resources
 Allow: /sitemap.xml
 Allow: /images/
 Allow: /css/
 Allow: /js/
+Allow: /assets/
+Allow: /fonts/
 
 # Block access to sensitive areas
 Disallow: /private/
 Disallow: /admin/
 Disallow: /temp/
-Disallow: /cgi-bin/
 Disallow: /includes/
 Disallow: /cache/
-Disallow: /wp-admin/
-Disallow: /wp-includes/
-Disallow: /wp-content/plugins/
-Disallow: /wp-content/themes/
-Disallow: /*.php$
+Disallow: /backup/
 Disallow: /*.sql
 Disallow: /*.log
 Disallow: /error_log
-Disallow: /cgi-bin/
-Disallow: /backup/
 Disallow: /*.gz
 Disallow: /*.tar
 Disallow: /*.zip
@@ -40,6 +41,7 @@ Allow: /*.jpeg$
 Allow: /*.gif$
 Allow: /*.png$
 Allow: /*.webp$
+Allow: /*.svg$
 
 User-agent: Bingbot
 Allow: /
@@ -49,21 +51,20 @@ User-agent: Yandex
 Allow: /
 Crawl-delay: 2
 
-# Block bad bots
+# Block specific bots
 User-agent: Baiduspider
 Disallow: /
 
 User-agent: PetalBot
 Disallow: /
 
-# Sitemaps
-Sitemap: https://brightaii.com/sitemap.xml
-Sitemap: https://brightaii.com/ar/sitemap.xml
-Sitemap: https://brightaii.com/posts-sitemap.xml
-Sitemap: https://brightaii.com/services-sitemap.xml
-Sitemap: https://brightaii.com/products-sitemap.xml
+User-agent: SemrushBot
+Crawl-delay: 5
 
-# Clean Parameters
+User-agent: AhrefsBot
+Crawl-delay: 5
+
+# URL Parameters
 Allow: /*?page=
 Allow: /*?lang=
 Allow: /*?id=
@@ -73,8 +74,8 @@ Disallow: /*?*gclid
 Disallow: /*?*download=
 Disallow: /*?*preview=
 
-# Rate limiting
-Crawl-delay: 10
-
 # Host preference
 Host: brightaii.com
+
+# Sitemaps
+Sitemap: https://brightaii.com/sitemap-index.xml
