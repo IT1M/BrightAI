@@ -1,4 +1,4 @@
-        // إعداد الكانفاس المتحرك
+// إعداد الكانفاس المتحرك
         const canvas = document.getElementById('heroCanvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
@@ -361,5 +361,37 @@
                         particle.y -= Math.sin(angle) * 1;
                     }
                 });
+            });
+        });
+
+        // تتبع النقرات على روابط الخدمات
+        function trackServiceClick(serviceName) {
+            // التحقق من وجود الرابط
+            const serviceLinks = document.querySelectorAll('.service-link');
+            serviceLinks.forEach(link => {
+                if (link.getAttribute('href') === '#') {
+                    // إذا كان الرابط غير متوفر بعد
+                    event.preventDefault();
+                    alert('هذه الخدمة ستكون متاحة قريباً');
+                }
+            });
+
+            // تسجيل النقرة للتحليلات
+            if (typeof gtag === 'function') {
+                gtag('event', 'service_click', {
+                    'service_name': serviceName,
+                    'timestamp': new Date().toISOString()
+                });
+            }
+        }
+
+        // إضافة تأثيرات حركية لروابط الخدمات
+        document.querySelectorAll('.service-link').forEach(link => {
+            link.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateX(-5px)';
+            });
+
+            link.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateX(0)';
             });
         });

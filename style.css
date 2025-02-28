@@ -558,16 +558,43 @@ body {
 }
 
 .service-link {
-    display: inline-block;
-    margin-top: 1.5rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
     color: var(--accent-color);
     text-decoration: none;
     font-weight: 500;
+    margin-top: 1.5rem;
     transition: all 0.3s ease;
+    position: relative;
+    padding: 0.5rem 0;
 }
 
 .service-link:hover {
     color: var(--text-primary);
+}
+
+.service-link i {
+    transition: transform 0.3s ease;
+}
+
+.service-link:hover i {
+    transform: translateX(-5px);
+}
+
+.service-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--accent-color);
+    transition: width 0.3s ease;
+}
+
+.service-link:hover::after {
+    width: 100%;
 }
 
 /* دراسات الحالة */

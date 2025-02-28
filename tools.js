@@ -869,4 +869,28 @@ document.getElementById('add-experience').addEventListener('click', function() {
             newEntry.remove();
       });
     });
+
+    function showNotification(message, type = 'info') {
+        const colors = {
+            success: 'var(--accent-color)',
+            error: 'var(--accent-secondary)',
+            info: 'var(--primary-color)'
+        };
+        
+        const notification = document.createElement('div');
+        notification.style.backgroundColor = colors[type];
+        notification.style.color = 'var(--text-primary)';
+        notification.innerText = message;
+        // ...existing code...
+    }
+
+    // Update chart colors
+    const chartConfig = {
+        backgroundColor: [
+            'rgba(56, 189, 248, 0.6)',
+            'rgba(30, 58, 138, 0.6)',
+            'rgba(239, 68, 68, 0.6)'
+        ],
+        borderColor: 'var(--accent-color)'
+    };
 });
