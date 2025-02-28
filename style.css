@@ -1452,3 +1452,108 @@ textarea.form-control {
     background: var(--accent-color);
     color: var(--primary-color);
 }
+
+/* ...existing code... */
+
+.tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.tech-card {
+    background: var(--card-bg);
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.tech-card h3 {
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+}
+
+.tech-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.tech-card ul li {
+    margin-bottom: 0.5rem;
+    padding-right: 1.5rem;
+    position: relative;
+}
+
+.tech-card ul li:before {
+    content: '•';
+    color: var(--accent-color);
+    position: absolute;
+    right: 0;
+}
+
+.case-study-card {
+    background: var(--card-bg);
+    border-radius: 10px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.metrics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.metric {
+    text-align: center;
+}
+
+.metric .value {
+    font-size: 2rem;
+    color: var(--accent-color);
+    font-weight: bold;
+    display: block;
+}
+
+.metric .label {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.implementation-details {
+    margin-top: 2rem;
+}
+
+.implementation-details h4 {
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+.implementation-details ul {
+    list-style: none;
+    padding: 0;
+}
+
+.implementation-details ul li {
+    margin-bottom: 0.5rem;
+    padding-right: 1.5rem;
+    position: relative;
+}
+
+.tech-details-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.tech-detail-card {
+    background: var(--card-bg);
+    border-radius: 10px;
+    padding: 2rem;
+    border: 1px solid rgba(100, 255, 218, 0.1);
+}
+
+/* ...rest of existing code... */
