@@ -508,6 +508,76 @@
                     </div>
                 </div>
             </div>
+        
+            <div class="tool-card" id="invoice-tool">
+                <div class="tool-card-header">
+                    <i class="fas fa-file-invoice"></i>
+                    <h3>إنشاء الفواتير</h3>
+                </div>
+                <div class="tool-card-body">
+                    <div class="tool-content">
+                        <textarea id="invoice-input" placeholder="أدخل بيانات الفاتورة"></textarea>
+                        <button class="btn btn-primary" onclick="generateInvoice()">إنشاء فاتورة</button>
+                        <div id="invoice-output" class="output-text"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-card" id="financial-tool">
+                <div class="tool-card-header">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <h3>توقع النجاح المالي</h3>
+                </div>
+                <div class="tool-card-body">
+                    <div class="tool-content">
+                        <textarea id="financial-input" placeholder="أدخل البيانات المالية"></textarea>
+                        <button class="btn btn-primary" onclick="predictSuccess()">تحليل وتوقع</button>
+                        <div id="financial-output" class="output-text"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-card" id="roi-tool">
+                <div class="tool-card-header">
+                    <i class="fas fa-chart-pie"></i>
+                    <h3>حساب عائد الاستثمار</h3>
+                </div>
+                <div class="tool-card-body">
+                    <div class="tool-content">
+                        <textarea id="roi-input" placeholder="أدخل بيانات الاستثمار"></textarea>
+                        <button class="btn btn-primary" onclick="calculateROI()">حساب العائد</button>
+                        <div id="roi-output" class="output-text"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-card" id="employee-tool">
+                <div class="tool-card-header">
+                    <i class="fas fa-users"></i>
+                    <h3>تحليل بيانات الموظفين</h3>
+                </div>
+                <div class="tool-card-body">
+                    <div class="tool-content">
+                        <textarea id="employee-input" placeholder="أدخل بيانات الموظفين"></textarea>
+                        <button class="btn btn-primary" onclick="analyzeEmployeeData()">تحليل البيانات</button>
+                        <div id="employee-output" class="output-text"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-card" id="marketing-tool">
+                <div class="tool-card-header">
+                    <i class="fas fa-bullhorn"></i>
+                    <h3>خطة تسويقية</h3>
+                </div>
+                <div class="tool-card-body">
+                    <div class="tool-content">
+                        <textarea id="marketing-input" placeholder="أدخل بيانات المنتج والسوق المستهدف"></textarea>
+                        <button class="btn btn-primary" onclick="generateMarketingPlan()">إنشاء خطة</button>
+                        <div id="marketing-output" class="output-text"></div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 

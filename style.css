@@ -380,7 +380,7 @@ body {
     font-size: clamp(2.5rem, 5vw, 4rem);
     line-height: 1.2;
     margin-bottom: 1.5rem;
-    color: var(--text-primary);
+    color: var (--text-primary);
 }
 
 .hero-description {
@@ -1478,6 +1478,79 @@ textarea.form-control {
 ::selection {
     background: var(--accent-color);
     color: var(--primary-color);
+}
+
+/* قسم الخدمات السياحية والتراثية */
+.tourism-heritage {
+    padding: 6rem var(--container-padding);
+    background: linear-gradient(rgba(10, 25, 47, 0.95), rgba(10, 25, 47, 0.95)),
+                url('https://source.unsplash.com/random/1920x1080/?saudi,heritage') no-repeat center center/cover;
+    position: relative;
+}
+
+.tourism-features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.tourism-feature-card {
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(100, 255, 218, 0.1);
+}
+
+.tourism-feature-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--accent-color);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.tourism-feature-card .feature-icon {
+    font-size: 2.5rem;
+    color: var(--accent-color);
+    margin-bottom: 1.5rem;
+}
+
+.tourism-feature-card h3 {
+    color: var(--text-primary);
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+
+.tourism-feature-card p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.tourism-cta {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.tourism-cta .cta-button {
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+}
+
+.tourism-cta .cta-button i {
+    margin-left: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .tourism-features-grid {
+        grid-template-columns: 1fr;
+        padding: 0 1rem;
+    }
+    
+    .tourism-feature-card {
+        padding: 1.5rem;
+    }
 }
 
 /* ...existing code... */
