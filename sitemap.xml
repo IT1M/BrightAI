@@ -122,36 +122,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
-  <url>
-    <loc>https://brightaii.com/posts-sitemap</loc>
-    <lastmod>2025-02-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-    <url>
-    <loc>https://brightaii.com/sitemapindex</loc>
-    <lastmod>2025-02-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-      <url>
-    <loc>https://brightaii.com/ar-sitemap</loc>
-    <lastmod>2025-02-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-      <url>
-    <loc>https://brightaii.com/services-sitemap</loc>
-    <lastmod>2025-02-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-      <url>
-    <loc>https://brightaii.com/products-sitemap</loc>
-    <lastmod>2025-02-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
+
   <!-- Educational Content -->
   <url>
     <loc>https://brightaii.com/what-is-ai</loc>
