@@ -3,7 +3,7 @@
 <head>
     <!-- Meta Tags -->
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <meta name="description" content="  نقدم حلول التعلم العميق السعودية، أتمتة العمليات،  روبوتات ، تحليل البيانات وايضا الاتمتة .  باستخدام التعلم الآلي ، التعلم العميق نصنع التحول الرقمي لشركتك.">
     <meta name="keywords" content="الذكاء الاصطناعي في السعودية, شركة ذكاء اصطناعي سعودية, خدمات الذكاء الاصطناعي في المملكة, حلول التعلم العميق السعودية, وكيل الذكاء الاصطناعي العربي, أتمتة العمليات بالذكاء الاصطناعي, تحليل البيانات الضخمة في السعودية, معالجة اللغة العربية الطبيعية, استشارات الذكاء الاصطناعي للشركات, تطوير روبوتات المحادثة العربية">
     <meta name="author" content="مُشرقة AI">
@@ -16,10 +16,15 @@
     
     <title>أول مؤسسة سعودية متخصصة في الذكاء الاصطناعي و الروبوتات</title>
 
+    <!-- تحسينات الأداء -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    
     <!-- Preload Critical Resources -->
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap" as="style">
     <link rel="preload" href="style.css" as="style">
     <link rel="preload" href="script.js" as="script">
+    <link rel="preload" href="https://d.top4top.io/p_33458j6zm1.png" as="image">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
     <!-- Favicon -->
@@ -30,6 +35,18 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" defer>
     <link rel="stylesheet" href="style.css">
+
+    <!-- Critical CSS -->
+    <style>
+        body { 
+            margin: 0; 
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        body.loaded { 
+            opacity: 1; 
+        }
+    </style>
 
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -1567,6 +1584,11 @@
     </a>
 
     <!-- سكريبت الجافاسكريبت -->
+    <script>
+        // تحميل الأنماط بشكل غير متزامن
+        document.querySelector('body').classList.add('loaded');
+    </script>
     <script src="script.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" defer></script>
 </body>
 </html>

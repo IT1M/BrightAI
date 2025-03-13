@@ -15,15 +15,15 @@
         }
         
         // إنشاء الجزيئات
-        function initParticles() {
+        function initParticles(config) {
             particles = [];
-            const particleCount = window.innerWidth < 768 ? 50 : 100; // عدد أقل للأجهزة المحمولة
+            const particleCount = config ? config.particleCount : (window.innerWidth < 768 ? 50 : 100); // عدد أقل للأجهزة المحمولة
             
             for (let i = 0; i < particleCount; i++) {
                 particles.push({
                     x: Math.random() * canvas.width,
                     y: Math.random() * canvas.height,
-                    radius: Math.random() * 2 + 1,
+                    radius: Math.random() * (config ? config.particleSize : 2) + 1,
                     color: `rgba(100, 255, 218, ${Math.random() * 0.5 + 0.1})`,
                     speedX: Math.random() * 1 - 0.5,
                     speedY: Math.random() * 1 - 0.5,
@@ -224,7 +224,7 @@
         
         // تحسين أداء الكانفاس على الأجهزة المحمولة
         function isMobileDevice() {
-            return (window.innerWidth <= 768);
+            return (window.innerWidth <= 768) || ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
         }
         
         // تعديل كثافة الجزيئات وسرعة الحركة بناءً على نوع الجهاز
@@ -395,3 +395,117 @@
                 this.style.transform = 'translateX(0)';
             });
         });
+
+// تحسين أداء الكانفاس على الأجهزة المحمولة
+function isMobileDevice() {
+    return (window.innerWidth <= 768) || ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+}
+
+// تحسين أداء الرسم على الكانفاس
+function optimizeCanvasRendering(canvas) {
+    const ctx = canvas.getContext('2d');
+    ctx.imageSmoothingEnabled = false;
+    
+    if (isMobileDevice()) {
+        // تقليل جودة الرسم على الأجهزة المحمولة
+        canvas.style.willChange = 'transform';
+        return {
+            particleCount: 30,
+            connectionDistance: 80,
+            particleSize: 1.5,
+            frameSkip: 2
+        };
+    }
+    
+    return {
+        particleCount: 100,
+        connectionDistance: 150,
+        particleSize: 2,
+        frameSkip: 1
+    };
+}
+
+// تحسين تحميل الصور
+function lazyLoadImages() {
+    const images = document.querySelectorAll('img[loading="lazy"]');
+    
+    if ('loading' in HTMLImageElement.prototype) {
+        images.forEach(img => {
+            if (img.dataset.src) {
+                img.src = img.dataset.src;
+            }
+        });
+    } else {
+        // Fallback for browsers that don't support native lazy loading
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    if (img.dataset.src) {
+                        img.src = img.dataset.src;
+                    }
+                    img.classList.add('loaded');
+                    observer.unobserve(img);
+                }
+            });
+        });
+
+        images.forEach(img => imageObserver.observe(img));
+    }
+}
+
+// تحسين التمرير
+let isScrolling;
+function optimizeScroll(callback) {
+    window.addEventListener('scroll', () => {
+        window.clearTimeout(isScrolling);
+        isScrolling = setTimeout(() => {
+            callback();
+        }, 66);
+    }, { passive: true });
+}
+
+// تحسين أداء القائمة المتنقلة
+function optimizeMobileMenu() {
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    const overlay = document.querySelector('.overlay');
+    
+    if (!hamburger || !navLinks || !overlay) return;
+    
+    let isMenuAnimating = false;
+    
+    hamburger.addEventListener('click', () => {
+        if (isMenuAnimating) return;
+        isMenuAnimating = true;
+        
+        requestAnimationFrame(() => {
+            navLinks.classList.toggle('active');
+            overlay.classList.toggle('active');
+            hamburger.innerHTML = navLinks.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+            
+            setTimeout(() => {
+                isMenuAnimating = false;
+            }, 300);
+        });
+    });
+}
+
+// تهيئة التحسينات عند تحميل الصفحة
+document.addEventListener('DOMContentLoaded', () => {
+    lazyLoadImages();
+    optimizeMobileMenu();
+    
+    // تحسين أداء الكانفاس
+    const canvas = document.getElementById('heroCanvas');
+    if (canvas) {
+        const config = optimizeCanvasRendering(canvas);
+        initParticles(config);
+    }
+    
+    // تحسين الأداء عند التمرير
+    optimizeScroll(() => {
+        animateOnScroll();
+    });
+});
