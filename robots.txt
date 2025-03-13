@@ -76,8 +76,6 @@ Disallow: /*?*preview=
 # Host Configuration
 Host: brightaii.com
 
-# Sitemaps
-Sitemap: https://brightaii.com/sitemap-index.xml
-Sitemap: https://brightaii.com/sitemap-products.xml
-Sitemap: https://brightaii.com/sitemap-blog.xml
-Sitemap: https://brightaii.com/sitemap-images.xml
+
+Sitemap: https://brightaii.com/sitemap
+
