@@ -1,0 +1,817 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Tajawal', sans-serif;
+    color: var(--text-color);
+    line-height: 1.6;
+    background-color: var(--background-light);
+    direction: rtl;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--primary-dark);
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+:root {
+    /* الألوان الأساسية */
+    --primary-color: #3b82f6;          /* أزرق فاتح وحيوي */
+    --primary-dark: #1d4ed8;           /* أزرق داكن */
+    --secondary-color: #10b981;        /* أخضر زمردي */
+    --secondary-dark: #059669;         /* أخضر داكن */
+    
+    /* ألوان التصميم */
+    --text-color: #4f5f7a;             /* رمادي داكن للنصوص */
+    --text-light: #9fa9b7;             /* رمادي فاتح للنصوص الثانوية */
+    --background-light: #f8fafc;       /* خلفية فاتحة */
+    --background-dark: #0f172a;        /* خلفية داكنة */
+    --card-bg: #cbc4df;                /* خلفية البطاقات */
+    --border-color: #e2e8f0;           /* لون الحدود */
+    
+    /* ألوان الحالة */
+    --success-color: #22c55e;          /* أخضر للنجاح */
+    --warning-color: #eab308;          /* أصفر للتحذير */
+    --error-color: #ef4444;            /* أحمر للخطأ */
+    
+    /* ألوان البوتات المتخصصة */
+    --math-color: #8b5cf6;             /* بنفسجي لبوت الرياضيات */
+    --tourism-color: #f59e0b;          /* برتقالي ذهبي للسياحة */
+    
+    /* الظلال */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.1);
+    
+    /* الزوايا */
+    --border-radius: 12px;             /* زوايا أكثر نعومة */
+    --border-radius-lg: 16px;
+    --border-radius-full: 9999px;
+}
+
+/* Header Styles */
+.hero {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    color: white;
+    padding: 100px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('data:image/svg+xml;charset=utf8,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"%3E%3Cpath fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,213.3C1248,235,1344,213,1392,202.7L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"%3E%3C/path%3E%3C/svg%3E');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.15;
+}
+
+.main-title {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    font-weight: 300;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+/* Intro Section */
+.intro {
+    padding: 80px 0;
+    text-align: center;
+}
+
+.intro h2 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+.intro p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    color: var(--text-light);
+}
+
+/* Bots List Section */
+.bots-list {
+    padding: 80px 0;
+    background-color: var(--background-light);
+}
+
+.bots-list h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 3rem;
+}
+
+.bots-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+/* تحديث ألوان البطاقات */
+.bot-card {
+    background: linear-gradient(135deg, #ffffff, #f0f7ff);
+    border: 1px solid rgba(59, 130, 246, 0.1);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-sm);
+    padding: 30px;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.bot-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(59, 130, 246, 0.1);
+    border-color: var(--primary-color);
+    background: linear-gradient(135deg, #f8faff, #e6f0ff);
+}
+
+.bot-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(to right, var(--primary-color), var(--primary-dark));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.bot-card:hover::before {
+    opacity: 1;
+}
+
+.bot-card h3 {
+    color: var(--primary-dark);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.bot-description {
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.features-list li {
+    color: var(--text-color);
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+}
+
+.features-list i {
+    color: var(--primary-color);
+    margin-left: 10px;
+}
+
+/* تخصيص ألوان البوتات المختلفة */
+.bot-card:nth-child(5) .bot-card::before {
+    background: linear-gradient(to right, var(--math-color), #7c3aed);
+}
+
+.bot-card:nth-child(6) .bot-card::before {
+    background: linear-gradient(to right, var(--tourism-color), #d97706);
+}
+
+.bot-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+}
+
+.bot-card:nth-child(5) .bot-icon {
+    background: linear-gradient(135deg, var(--math-color), #7c3aed);
+}
+
+.bot-card:nth-child(6) .bot-icon {
+    background: linear-gradient(135deg, var(--tourism-color), #d97706);
+}
+
+.bot-icon i {
+    font-size: 2.5rem;
+}
+
+.bot-card h3 {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 15px;
+    color: var(--primary-color);
+}
+
+.bot-description {
+    color: var(--text-light);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.features-list {
+    margin-bottom: 25px;
+    flex-grow: 1;
+}
+
+.features-list li {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.features-list i {
+    color: var(--success-color);
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-weight: 600;
+    text-align: center;
+    transition: background-color 0.3s ease;
+    align-self: center;
+    width: 100%;
+}
+
+.cta-button:hover {
+    background-color: var(--primary-dark);
+    color: white;
+}
+
+/* Advantages Section */
+.advantages {
+    padding: 80px 0;
+    background-color: white;
+}
+
+.advantages h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 3rem;
+}
+
+.advantages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.advantage-card {
+    padding: 30px;
+    border-radius: var(--border-radius);
+    background-color: var(--background-light);
+    transition: transform 0.3s ease;
+    text-align: center;
+}
+
+.advantage-card:hover {
+    transform: translateY(-5px);
+}
+
+.advantage-icon {
+    width: 70px;
+    height: 70px;
+    background-color: var(--secondary-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+}
+
+.advantage-icon i {
+    font-size: 2rem;
+}
+
+.advantage-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    color: var(--text-color);
+}
+
+.advantage-card p {
+    color: var(--text-light);
+}
+
+/* Testimonials Section */
+.testimonials {
+    padding: 80px 0;
+    background-color: var(--background-light);
+}
+
+.testimonials h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 3rem;
+}
+
+.testimonials-slider {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
+
+.testimonial {
+    background-color: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-md);
+    padding: 30px;
+    max-width: 350px;
+    transition: transform 0.3s ease;
+}
+
+.testimonial:hover {
+    transform: translateY(-5px);
+}
+
+.testimonial-content {
+    margin-bottom: 20px;
+}
+
+.testimonial-content p {
+    font-style: italic;
+    color: var(--text-light);
+    position: relative;
+    padding: 0 15px;
+}
+
+.testimonial-content p::before,
+.testimonial-content p::after {
+    content: '"';
+    font-size: 2rem;
+    color: var(--primary-color);
+    opacity: 0.3;
+    position: absolute;
+}
+
+.testimonial-content p::before {
+    top: -10px;
+    right: 0;
+}
+
+.testimonial-content p::after {
+    bottom: -20px;
+    left: 0;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+}
+
+.testimonial-author img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-left: 15px;
+    object-fit: cover;
+}
+
+.author-info h4 {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+
+.author-info p {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin-bottom: 0;
+}
+
+/* CTA Section */
+.cta-section {
+    padding: 100px 0;
+    text-align: center;
+    background: linear-gradient(135deg, var(--secondary-color), var(--secondary-dark));
+    color: white;
+}
+
+.cta-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.cta-section p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto 2rem;
+    opacity: 0.9;
+}
+
+.main-cta-button {
+    display: inline-block;
+    background-color: white;
+    color: var(--secondary-dark);
+    padding: 15px 40px;
+    border-radius: 30px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: var(--shadow-md);
+}
+
+.main-cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+    color: var(--secondary-dark);
+}
+
+/* Footer */
+footer {
+    background-color: var(--background-dark);
+    color: white;
+    padding: 70px 0 20px;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 50px;
+}
+
+.footer-logo h3 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.footer-logo p {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.footer-links h4,
+.footer-contact h4 {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.footer-links h4::after,
+.footer-contact h4::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 50px;
+    height: 2px;
+    background-color: var(--primary-color);
+}
+
+.footer-links ul li {
+    margin-bottom: 10px;
+}
+
+.footer-links ul li a {
+    color: rgba(255, 255, 255, 0.7);
+    transition: color 0.3s ease;
+}
+
+.footer-links ul li a:hover {
+    color: white;
+}
+
+.footer-contact p {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.footer-contact p i {
+    margin-left: 10px;
+    color: var(--primary-color);
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+.social-icons a:hover {
+    background-color: var(--primary-color);
+}
+
+.social-icons i {
+    color: white;
+    font-size: 1.2rem;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-bottom p {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.9rem;
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+    .main-title {
+        font-size: 2.5rem;
+    }
+    
+    .subtitle {
+        font-size: 1.3rem;
+    }
+    
+    .footer-content > div {
+        flex-basis: 48%;
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding: 80px 0;
+    }
+    
+    .main-title {
+        font-size: 2rem;
+    }
+    
+    .subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .intro h2,
+    .bots-list h2,
+    .advantages h2,
+    .testimonials h2,
+    .cta-section h2 {
+        font-size: 2rem;
+    }
+    
+    .testimonials-slider {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .testimonial {
+        max-width: 100%;
+    }
+    
+    .footer-content > div {
+        flex-basis: 100%;
+    }
+
+    .bots-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 0 15px;
+    }
+
+    .bot-card {
+        padding: 20px;
+        margin-bottom: 15px;
+        min-height: auto;
+    }
+
+    .bot-icon {
+        width: 60px;
+        height: 60px;
+    }
+
+    .bot-icon i {
+        font-size: 1.8rem;
+    }
+
+    .bot-card h3 {
+        font-size: 1.3rem;
+        margin-bottom: 12px;
+    }
+
+    .bot-description {
+        font-size: 0.95rem;
+        margin-bottom: 15px;
+    }
+
+    .features-list li {
+        font-size: 0.9rem;
+        margin-bottom: 8px;
+    }
+
+    .cta-button {
+        padding: 10px 20px;
+        font-size: 0.95rem;
+    }
+
+    .bot-card:hover {
+        transform: translateY(-3px);
+    }
+
+    .advantage-card:hover {
+        transform: translateY(-3px);
+    }
+
+    .testimonial:hover {
+        transform: translateY(-3px);
+    }
+
+    .cta-button,
+    .main-cta-button {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .bot-icon,
+    .advantage-icon {
+        margin-bottom: 15px;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero {
+        padding: 60px 0;
+    }
+    
+    .main-title {
+        font-size: 1.8rem;
+    }
+    
+    .intro h2,
+    .bots-list h2,
+    .advantages h2,
+    .testimonials h2,
+    .cta-section h2 {
+        font-size: 1.8rem;
+    }
+    
+    .intro,
+    .bots-list,
+    .advantages,
+    .testimonials {
+        padding: 60px 0;
+    }
+    
+    .bot-card,
+    .advantage-card {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        padding: 50px 0;
+    }
+
+    .main-title {
+        font-size: 1.5rem;
+        padding: 0 10px;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+        padding: 0 15px;
+    }
+
+    .intro {
+        padding: 40px 0;
+    }
+
+    .intro h2 {
+        font-size: 1.4rem;
+    }
+
+    .intro p {
+        font-size: 0.95rem;
+        padding: 0 15px;
+    }
+
+    .bots-list {
+        padding: 40px 0;
+    }
+
+    .bots-list h2 {
+        font-size: 1.4rem;
+        margin-bottom: 2rem;
+    }
+
+    .bot-card {
+        border-radius: 10px;
+        padding: 15px;
+    }
+
+    .features-list {
+        margin-bottom: 15px;
+    }
+
+    .advantages-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .advantage-card {
+        padding: 15px;
+    }
+
+    .testimonials-slider {
+        padding: 0 15px;
+    }
+
+    .testimonial {
+        padding: 15px;
+    }
+
+    .cta-section {
+        padding: 50px 15px;
+    }
+
+    .cta-section h2 {
+        font-size: 1.4rem;
+    }
+
+    .cta-section p {
+        font-size: 0.95rem;
+    }
+
+    .main-cta-button {
+        padding: 12px 25px;
+        font-size: 1rem;
+    }
+}
