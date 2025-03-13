@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
   <!-- Main Pages -->
   <url>
     <loc>https://brightaii.com/</loc>
     <lastmod>2025-02-28</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>daily</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://brightaii.com/assets/images/hero-banner.jpg</image:loc>
+      <image:title>BrightAI - AI Solutions</image:title>
+    </image:image>
   </url>
   
   <!-- Core Service Pages -->
   <url>
     <loc>https://brightaii.com/ai-agent</loc>
     <lastmod>2025-02-28</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
@@ -48,8 +54,8 @@
   <url>
     <loc>https://brightaii.com/blog</loc>
     <lastmod>2025-02-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
   </url>
   <!-- Product Pages -->
   <url>
@@ -61,8 +67,12 @@
   <url>
     <loc>https://brightaii.com/brightrecruiter</loc>
     <lastmod>2025-02-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://brightaii.com/assets/images/products/brightrecruiter.jpg</image:loc>
+      <image:title>BrightRecruiter AI Solution</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://brightaii.com/brightsales-pro</loc>
@@ -94,7 +104,7 @@
     <loc>https://brightaii.com/privacy-policy</loc>
     <lastmod>2025-02-28</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.4</priority>
   </url>
   <url>
     <loc>https://brightaii.com/terms-and-conditions</loc>

@@ -1,38 +1,23 @@
-# BrightAI - Robots.txt
+# BrightAI - Enhanced Robots.txt
 # Last updated: 2025-02-28
 
-# Global rules
+# Global rules with improved crawl efficiency
 User-agent: *
 Allow: /
-Crawl-delay: 1
+Crawl-delay: 2
 
-# Allow access to important resources
-Allow: /sitemap.xml
-Allow: /images/
-Allow: /css/
-Allow: /js/
-Allow: /assets/
-Allow: /fonts/
-
-# Block access to sensitive areas
-Disallow: /private/
-Disallow: /admin/
-Disallow: /temp/
-Disallow: /includes/
-Disallow: /cache/
-Disallow: /backup/
-Disallow: /*.sql
-Disallow: /*.log
-Disallow: /error_log
-Disallow: /*.gz
-Disallow: /*.tar
-Disallow: /*.zip
-
-# Allow specific bots with custom rules
+# Primary Search Engines
 User-agent: Googlebot
 Allow: /
 Crawl-delay: 1
+Allow: /*.html$
+Allow: /*.php$
 
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 2
+
+# Media Crawlers
 User-agent: Googlebot-Image
 Allow: /images/
 Allow: /assets/images/
@@ -42,40 +27,57 @@ Allow: /*.gif$
 Allow: /*.png$
 Allow: /*.webp$
 Allow: /*.svg$
+Crawl-delay: 1
 
-User-agent: Bingbot
-Allow: /
-Crawl-delay: 2
+# Enhanced Security - Block Sensitive Areas
+Disallow: /private/
+Disallow: /admin/
+Disallow: /includes/
+Disallow: /temp/
+Disallow: /cache/
+Disallow: /backup/
+Disallow: /wp-admin/
+Disallow: /wp-includes/
+Disallow: /*.sql$
+Disallow: /*.log$
+Disallow: /*.conf$
+Disallow: /*.config$
+Disallow: /*.env$
+Disallow: /*.gz$
+Disallow: /*.tar$
+Disallow: /*.zip$
 
-User-agent: Yandex
-Allow: /
-Crawl-delay: 2
+# Rate Limit Aggressive Crawlers
+User-agent: SemrushBot
+Crawl-delay: 10
 
-# Block specific bots
-User-agent: Baiduspider
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+User-agent: MJ12bot
 Disallow: /
 
 User-agent: PetalBot
 Disallow: /
 
-User-agent: SemrushBot
-Crawl-delay: 5
-
-User-agent: AhrefsBot
-Crawl-delay: 5
-
-# URL Parameters
+# Clean URLs - Parameter Handling
 Allow: /*?page=
 Allow: /*?lang=
 Allow: /*?id=
+Allow: /*?category=
+Allow: /*?tag=
+Disallow: /*?*session=
 Disallow: /*?*utm_
 Disallow: /*?*fbclid
 Disallow: /*?*gclid
 Disallow: /*?*download=
 Disallow: /*?*preview=
 
-# Host preference
+# Host Configuration
 Host: brightaii.com
 
 # Sitemaps
 Sitemap: https://brightaii.com/sitemap-index.xml
+Sitemap: https://brightaii.com/sitemap-products.xml
+Sitemap: https://brightaii.com/sitemap-blog.xml
+Sitemap: https://brightaii.com/sitemap-images.xml
