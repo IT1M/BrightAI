@@ -792,3 +792,47 @@ document.addEventListener('DOMContentLoaded', () => {
         animateOnScroll();
     });
 });
+
+function initMobileNav() {
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    const overlay = document.querySelector('.overlay');
+    const navItems = document.querySelectorAll('.nav-links a');
+
+    function toggleNav() {
+        navLinks.classList.toggle('active');
+        overlay.classList.toggle('active');
+        document.body.classList.toggle('no-scroll');
+        
+        // Change hamburger icon
+        const isOpen = navLinks.classList.contains('active');
+        hamburger.innerHTML = isOpen ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+    }
+
+    // Toggle nav when clicking hamburger
+    hamburger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleNav();
+    });
+
+    // Close nav when clicking overlay
+    overlay.addEventListener('click', toggleNav);
+
+    // Close nav when clicking nav items
+    navItems.forEach(item => {
+        item.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.classList.remove('no-scroll');
+            hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+        });
+    });
+
+    // Prevent clicks inside nav from closing
+    navLinks.addEventListener('click', (e) => {
+        e.stopPropagation();
+    });
+}
+
+// Initialize mobile nav when DOM is loaded
+document.addEventListener('DOMContentLoaded', initMobileNav);
