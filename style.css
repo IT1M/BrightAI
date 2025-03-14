@@ -1,13 +1,11 @@
 :root {
-    /* الألوان الأساسية */
-    --primary-color: #1E3A8A; /* أزرق داكن أكثر عمقاً */
-    --background-dark: #0B172A; /* خلفية أغمق قليلاً */
-    --accent-color: #38BDF8; /* أزرق فاتح أكثر حيوية */
-    --text-primary: #F3F4F6; /* أبيض أكثر نقاءً */
-    --text-secondary: #9CA3AF; /* رمادي فاتح أكثر تميزاً */
-    --accent-secondary: #EF4444; /* أحمر أكثر جاذبية */
-    --light-bg: #FAFAFA; /* خلفية فاتحة أكثر نقاءً */
-    --card-bg: rgba(17, 24, 39, 0.8); /* كروت أغمق قليلاً */
+    /* النظام اللوني المعدل */
+    --primary-color: #0A192F;
+    --accent-color: #64FFDA;
+    --background-dark: #020c1b;
+    --text-primary: #ccd6f6;
+    --text-secondary: #8892b0;
+    --card-bg: rgba(10, 25, 47, 0.9);
     
     /* التخطيط */
     --content-width: min(90%, 1200px);
@@ -292,20 +290,40 @@ img, canvas {
 }
 
 /* القائمة العلوية - تحسين الأداء */
+/* تصميم متجدد للقائمة */
 .navbar {
     position: fixed;
     top: 0;
     width: 100%;
-    background-color: rgba(10, 25, 47, 0.95);
-    padding: 1rem var(--container-padding);
+    padding: 1rem;
     z-index: 1000;
-    backdrop-filter: blur(12px);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-    transition: padding 0.3s ease-in-out, background-color 0.3s ease-in-out;
-    border-bottom: 1px solid rgba(100, 255, 218, 0.1);
-    will-change: padding, background-color, transform;
-    transform: translateZ(0);
-    backface-visibility: hidden;
+    background: rgba(10, 25, 47, 0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--accent-color);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navbar.hidden {
+    transform: translateY(-100%);
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 0.5rem 1rem;
+    }
+    
+    .nav-links {
+        width: 100%;
+        right: -100%;
+        max-width: none;
+        height: 100vh;
+        padding-top: 4rem;
+    }
+    
+    .nav-links a {
+        font-size: 1.2rem;
+        padding: 1rem 0;
+    }
 }
 
 .navbar.scrolled {
