@@ -418,15 +418,6 @@ document.querySelector('.back-to-top').addEventListener('click', function(e) {
     });
 });
 
-// فتح/إغلاق الأسئلة الشائعة
-const faqItems = document.querySelectorAll('.faq-item');
-faqItems.forEach(item => {
-    const question = item.querySelector('.faq-question');
-    question.addEventListener('click', () => {
-        item.classList.toggle('active');
-    });
-});
-
 // منع إعادة تحميل الصفحة عند إرسال النموذج
 document.getElementById('consultationForm').addEventListener('submit', function(e) {
     e.preventDefault();
