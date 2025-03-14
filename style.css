@@ -2146,3 +2146,46 @@ img {
         gap: 1rem;
     }
 }
+
+/* الأنماط الجديدة للقائمة والروابط في البطاقة */
+.feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0;
+}
+
+.feature-list li {
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    color: var(--text-secondary);
+}
+
+.feature-list li i {
+    color: var(--accent-color);
+    margin-left: 0.8rem;
+    font-size: 0.9rem;
+}
+
+.feature-link {
+    display: inline-flex;
+    align-items: center;
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 500;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.feature-link:hover {
+    transform: translateX(-5px);
+}
+
+.feature-link i {
+    font-size: 0.9rem;
+    transition: transform 0.3s ease;
+}
+
+.feature-link:hover i {
+    transform: translateX(-3px);
+}

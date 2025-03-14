@@ -14,7 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property="og:image" content="https://d.top4top.io/p_33458j6zm1.png">
     <link rel="icon" href="https://d.top4top.io/p_33354e90u1.png" type="image/png">
-    <title>BrightRecruiter - روبوت التوظيف الذكي</title>
+    <title>BrightProject - روبوت إدارة المشاريع الذكي</title>
     <style>
         * {
             margin: 0;
@@ -31,11 +31,12 @@
         }
 
         .header {
-            background-color: #2196F3; /* Blue color scheme for professional feel */
+            background-color: #2979FF;
+            /* Blue project management color */
             color: white;
             padding: 20px;
             text-align: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
         .header h1 {
@@ -57,7 +58,7 @@
             width: 100%;
             padding: 20px;
             background-color: white;
-            box-shadow: 0 0 10px rgba(0,0,0,0.05);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
         }
 
         #chatMessages {
@@ -79,7 +80,8 @@
         }
 
         .user-message {
-            background-color: #BBDEFB; /* Light blue for user messages */
+            background-color: #E3F2FD;
+            /* Light blue for user */
             align-self: flex-end;
             border-bottom-right-radius: 0;
         }
@@ -92,9 +94,9 @@
 
         .input-area {
             display: flex;
-            padding: 15px 0;
-            border-top: 1px solid #eee;
-            margin-top: 10px;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 15px;
         }
 
         #userInput {
@@ -117,7 +119,8 @@
         }
 
         #sendButton {
-            background-color: #2196F3; /* Blue color scheme */
+            background-color: #2979FF;
+            /* Blue project management color */
             color: white;
             border: none;
             border-radius: 50%;
@@ -131,14 +134,19 @@
         }
 
         #sendButton:hover {
-            background-color: #1976D2;
+            background-color: #1A52CB;
         }
 
         #sendButton i {
             font-size: 20px;
         }
-                #fileButton {
-            background-color: #2196F3;
+
+        #fileInput {
+            display: none;
+        }
+
+        #attachButton {
+            background-color: #2979FF;
             color: white;
             border: none;
             border-radius: 50%;
@@ -148,18 +156,17 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: background-color 0.3s;
         }
-        
-        #fileButton:hover {
-            background-color: #1976D2;
-        }
-        
-        #sendButton i, #fileButton i {
-            font-size: 20px;
-        }
-                #fileInput {
-            display: none;
+
+        .file-preview {
+            width: 100%;
+            padding: 8px;
+            background: #E3F2FD;
+            border-radius: 8px;
+            margin-top: 5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         @media (max-width: 600px) {
@@ -174,46 +181,59 @@
             .message {
                 max-width: 90%;
             }
+
+            .input-area {
+                padding: 10px;
+            }
+
+            #userInput {
+                width: calc(100% - 100px);
+            }
+
+            .chat-container {
+                padding: 10px;
+            }
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
+
 <body>
     <div class="header">
-        <h1>BrightRecruiter - روبوت التوظيف الذكي</h1>
-        <p>تبسيط عملية التوظيف الخاصة بك</p>
+        <h1>BrightProject - روبوت إدارة المشاريع الذكي</h1>
+        <p>تنظيم المهام، متابعة التقدم، وتحسين التواصل بين أعضاء الفريق</p>
     </div>
 
     <div class="chat-container">
         <div id="chatMessages"></div>
 
         <div class="input-area">
-            <textarea id="userInput" placeholder="اكتب سؤالك هنا أو أرسل السيرة الذاتية..."></textarea>
+            <textarea id="userInput" placeholder="أدخل استفسارك أو طلبك هنا..."></textarea>
             <div class="input-actions">
-                                <button id="fileButton">
+                <button id="attachButton">
                     <i class="material-icons">attach_file</i>
                 </button>
-                 <input type="file" id="fileInput" accept=".pdf,.doc,.docx,.txt">
-
+                <input type="file" id="fileInput" accept=".pdf,.doc,.docx,.txt,image/*">
                 <button id="sendButton">
                     <i class="material-icons">send</i>
                 </button>
             </div>
+            <div id="filePreview"></div>
         </div>
     </div>
 
     <script>
-        const API_KEY = 'AIzaSyCGoxCDd3wnFtE-LzvM_Gqee4sDnMdi_cQ'; // Replace with your Gemini API key
+        const API_KEY = 'AIzaSyCGoxCDd3wnFtE-LzvM_Gqee4sDnMdi_cQ'; // قم بتغيير هذا بمفتاح API الخاص بك
 
-        class RecruiterBot {
+        class ProjectBot {
             constructor() {
                 this.chatMessages = document.getElementById('chatMessages');
                 this.userInput = document.getElementById('userInput');
                 this.sendButton = document.getElementById('sendButton');
-                this.fileButton = document.getElementById('fileButton');
                 this.fileInput = document.getElementById('fileInput');
-                 this.uploadedFile = null;
+                this.attachButton = document.getElementById('attachButton');
+                this.filePreview = document.getElementById('filePreview');
 
                 this.sendButton.addEventListener('click', () => this.sendMessage());
                 this.userInput.addEventListener('keypress', (e) => {
@@ -226,15 +246,9 @@
                 this.userInput.addEventListener('input', () => {
                     this.adjustTextareaHeight();
                 });
-                                this.fileButton.addEventListener('click', () => {
-                    this.fileInput.click();
-                });
-                
-                this.fileInput.addEventListener('change', (e) => {
-                    if (e.target.files.length > 0) {
-                        this.handleFileUpload(e.target.files[0]);
-                    }
-                });
+
+                this.attachButton.addEventListener('click', () => this.fileInput.click());
+                this.fileInput.addEventListener('change', () => this.handleFileSelect());
 
                 this.initialize();
             }
@@ -244,47 +258,19 @@
                 textarea.style.height = 'auto';
                 textarea.style.height = Math.min(textarea.scrollHeight, 150) + 'px';
             }
-            handleFileUpload(file) {
-                this.uploadedFile = file;
-                
-                // إظهار معاينة الملف في المحادثة
-                const filePreviewHTML = `
-                    <div class="file-preview" id="filePreview">
-                        <i class="material-icons">description</i>
-                        <span class="file-name">${file.name}</span>
-                        <span class="remove-file" id="removeFile">
-                            <i class="material-icons">close</i>
-                        </span>
-                    </div>
-                `;
-                
-                this.addHTMLMessage(filePreviewHTML, 'user');
-                
-                // إضافة المستمع لإزالة الملف
-                document.getElementById('removeFile').addEventListener('click', () => {
-                    document.getElementById('filePreview').remove();
-                    this.uploadedFile = null;
-                    this.fileInput.value = '';
-                });
-            }
-
 
             initialize() {
-                const welcomeMessage = `مرحباً بك في BrightRecruiter! 👋 كيف يمكنني مساعدتك في عملية التوظيف اليوم؟
-                يمكنني مساعدتك في:
-                * فرز السير الذاتية
-                * إجراء مقابلات أولية
-                * تقييم مهارات المرشحين
-                `;
+                const welcomeMessage = `مرحباً بك في BrightProject! 👋 أنا هنا لمساعدتك في إدارة مشاريعك بكفاءة. كيف يمكنني مساعدتك اليوم؟`;
 
                 this.addMessage(welcomeMessage, 'bot');
 
                 setTimeout(() => {
                     const optionsHTML = `
                     <div style="display: flex; flex-direction: column; gap: 8px;">
-                        <button class="option-button" data-option="analyze_resume">تحليل سيرة ذاتية</button>
-                        <button class="option-button" data-option="initial_interview">طلب مقابلة أولية</button>
-                        <button class="option-button" data-option="skill_assessment">تقييم المهارات</button>
+                        <button class="option-button" data-option="create_task">إنشاء مهمة جديدة</button>
+                        <button class="option-button" data-option="list_tasks">عرض قائمة المهام</button>
+                        <button class="option-button" data-option="project_status">التحقق من حالة المشروع</button>
+                        <button class="option-button" data-option="risks">تحديد المخاطر المحتملة</button>
                         <button class="option-button" data-option="other">استفسار آخر</button>
                     </div>
                     `;
@@ -300,7 +286,6 @@
                 }, 500);
             }
 
-
             async processOptionSelection(option, buttonText) {
                 this.addMessage(buttonText, 'user'); // Show user selection
 
@@ -309,14 +294,21 @@
 
                 try {
                     switch (option) {
-                        case 'analyze_resume':
-                            response = "يرجى تحميل السيرة الذاتية لتحليلها.  وصف الوظيفة المطلوبة";
+                        case 'create_task':
+                            response = "ممتاز! ما هو اسم المهمة التي ترغب في إنشائها؟ وما هو تاريخ التسليم النهائي؟ ومن هو المسؤول عنها؟";
                             break;
-                        case 'initial_interview':
-                            response = "أدخل اسم المرشح والوظيفة لترتيب مقابلة أولية.";
+                        case 'list_tasks':
+                            response = "جاري استعراض قائمة المهام الحالية...";
+                            // In a real implementation, you would fetch task data here and format it.
+                            response += "\n(قائمة المهام سيتم عرضها هنا)"; // Placeholder
                             break;
-                        case 'skill_assessment':
-                            response = "ما هي المهارات التي تريد تقييمها؟  اسم المرشح";
+                        case 'project_status':
+                            response = "جاري التحقق من حالة المشروع...";
+                            // In a real implementation, you would fetch project status data.
+                            response += "\n(حالة المشروع سيتم عرضها هنا)"; // Placeholder
+                            break;
+                        case 'risks':
+                            response = "ما هي جوانب المشروع التي تعتقد أنها قد تواجه مخاطر؟";
                             break;
                         case 'other':
                             response = "من فضلك، وضح استفسارك وسأبذل قصارى جهدي لمساعدتك.";
@@ -335,33 +327,28 @@
 
             async sendMessage() {
                 const message = this.userInput.value.trim();
-                if (!message && !this.uploadedFile) return;
+                const file = this.fileInput.files[0];
 
+                if (!message && !file) return;
 
-                this.addMessage(message, 'user');
-                this.userInput.value = '';
-                this.userInput.style.height = '45px';
-
-                 // عرض رسالة المستخدم
                 if (message) {
                     this.addMessage(message, 'user');
                 }
+
+                if (file) {
+                    const fileMessage = `مرفق: ${file.name}`;
+                    this.addMessage(fileMessage, 'user');
+                    this.fileInput.value = '';
+                    this.filePreview.innerHTML = '';
+                }
+
                 this.userInput.value = '';
                 this.userInput.style.height = '45px';
-                
-                // إظهار مؤشر الكتابة
+
                 const typingIndicator = this.addTypingIndicator();
 
                 try {
-                    // إضافة معلومات عن الملف إذا تم رفع ملف
-                    let fileInfo = '';
-                    if (this.uploadedFile) {
-                        fileInfo = `\n\nملف مرفق: ${this.uploadedFile.name} (${this.uploadedFile.type})`;
-                        // بعد إرسال الرسالة، نقوم بإعادة تعيين الملف المرفق
-                        this.uploadedFile = null;
-                    }
-                                        const response = await this.getGeminiResponse(message + fileInfo);
-
+                    const response = await this.getGeminiResponse(message);
                     this.chatMessages.removeChild(typingIndicator);
                     this.addMessage(response, 'bot');
                 } catch (error) {
@@ -371,6 +358,24 @@
                 }
             }
 
+            handleFileSelect() {
+                const file = this.fileInput.files[0];
+                if (!file) return;
+
+                if (file.size > 5 * 1024 * 1024) {
+                    alert('حجم الملف كبير جداً. الحد الأقصى هو 5 ميجابايت');
+                    this.fileInput.value = '';
+                    return;
+                }
+
+                this.filePreview.innerHTML = `
+                    <div class="file-preview">
+                        <i class="material-icons">description</i>
+                        <span>${file.name}</span>
+                        <i class="material-icons" style="cursor:pointer" onclick="this.parentElement.remove();document.getElementById('fileInput').value='';">close</i>
+                    </div>
+                `;
+            }
 
             addTypingIndicator() {
                 const typingDiv = document.createElement('div');
@@ -394,14 +399,11 @@
                 return typingDiv;
             }
 
-
             async getGeminiResponse(message) {
-                const context = `أنت BrightRecruiter، روبوت توظيف ذكي متخصص في مساعدة مسؤولي التوظيف.
-                تساعد في فرز السير الذاتية، وإجراء مقابلات أولية، وتقييم مهارات المرشحين.
-                تحافظ على لهجة مهنية وودية.
-                تقوم بتحليل السير الذاتية بناءً على متطلبات الوظيفة.
-                إذا كان المستخدم يطلب إجراء مقابلة أولية، اطرح أسئلة ذات صلة بالوظيفة.
-                إذا كان المستخدم يطلب تقييم المهارات، قم بتقييم المهارات المطلوبة للوظيفة.`;
+                const context = `أنت BrightProject، روبوت ذكي لإدارة المشاريع.
+                تساعد مديري المشاريع وأعضاء الفريق في تنظيم المهام، ومتابعة التقدم، والتواصل بفعالية.
+                تستطيع إنشاء المهام، وعرض قوائم المهام، وتحديث حالة المشاريع، وتحديد المخاطر المحتملة، وتقديم تقارير آلية.
+                تحافظ على لهجة احترافية ومفيدة. عند طلب إنشاء مهمة، اسأل عن الاسم، المسؤول وتاريخ التسليم.`;
 
                 const url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent"; // Replace with your Gemini model
 
@@ -426,7 +428,6 @@
                 return data.candidates[0].content.parts[0].text;
             }
 
-
             addMessage(text, sender) {
                 const messageDiv = document.createElement('div');
                 messageDiv.classList.add('message', `${sender}-message`);
@@ -435,7 +436,7 @@
                 this.chatMessages.scrollTop = this.chatMessages.scrollHeight;
             }
 
-             addHTMLMessage(html, sender) {
+            addHTMLMessage(html, sender) {
                 const messageDiv = document.createElement('div');
                 messageDiv.classList.add('message', `${sender}-message`);
                 messageDiv.innerHTML = html;
@@ -443,15 +444,12 @@
                 this.chatMessages.scrollTop = this.chatMessages.scrollHeight;
             }
 
-
             formatText(text) {
-                // Basic formatting (make bold and keep newlines)
                 text = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>'); // Bold
                 text = text.replace(/\*(.*?)\*/g, '<em>$1</em>'); // Italics
                 text = text.replace(/\n/g, '<br>'); // Newlines
                 return text;
             }
-
         }
 
         document.addEventListener('DOMContentLoaded', () => {
@@ -459,7 +457,8 @@
             const style = document.createElement('style');
             style.innerHTML = `
                 .option-button {
-                    background-color: #e2e2e2;
+                    background-color: #BBDEFB;
+                    /* Light blue for buttons */
                     border: none;
                     color: black;
                     padding: 10px 20px;
@@ -473,7 +472,7 @@
                     transition: background-color 0.3s ease;
                 }
                 .option-button:hover {
-                    background-color: #d0d0d0;
+                    background-color: #90CAF9;
                 }
 
                 .typing-dot {
@@ -499,8 +498,9 @@
             `;
             document.head.appendChild(style);
 
-            new RecruiterBot();
+            new ProjectBot();
         });
     </script>
 </body>
+
 </html>

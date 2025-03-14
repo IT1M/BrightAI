@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SZKTP4496K"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+            <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SZKTP4496K"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-      gtag('config', 'G-SZKTP4496K');
-    </script>
+  gtag('config', 'G-SZKTP4496K');
+</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="og:image" content="https://example.com/brightsales_og_image.png">  <!-- Replace with your image URL -->
-    <link rel="icon" href="https://example.com/brightsales_icon.png" type="image/png"> <!-- Replace with your icon URL -->
+    <meta property="og:image" content="https://d.top4top.io/p_33458j6zm1.png">
+    <link rel="icon" href="https://d.top4top.io/p_33354e90u1.png" type="image/png">
     <title>BrightSales - روبوت المبيعات الذكي</title>
     <style>
         * {
@@ -116,7 +116,7 @@
             margin-right: 10px;
         }
 
-        #sendButton {
+        #sendButton, #fileButton {
             background-color: #FF9800; /* Orange color scheme */
             color: white;
             border: none;
@@ -130,12 +130,49 @@
             transition: background-color 0.3s;
         }
 
-        #sendButton:hover {
+        #sendButton:hover, #fileButton:hover {
             background-color: #F57C00;
         }
 
-        #sendButton i {
+        #sendButton i, #fileButton i {
             font-size: 20px;
+        }
+
+        #fileInput {
+            display: none;
+        }
+
+        .file-preview {
+            background-color: #FFFDE7; /* Lighter orange for file preview */
+            border-radius: 8px;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .file-preview i {
+            color: #EF6C00; /* Darker orange for file icon */
+        }
+
+        .file-name {
+            flex: 1;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .remove-file {
+            color: #e53935;
+            cursor: pointer;
+            padding: 4px;
+            border-radius: 50%;
+        }
+
+        .remove-file:hover {
+            background-color: rgba(229, 57, 53, 0.1);
         }
 
         @media (max-width: 600px) {
@@ -150,7 +187,6 @@
             .message {
                 max-width: 90%;
             }
-
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
@@ -159,15 +195,19 @@
 <body>
     <div class="header">
         <h1>BrightSales - روبوت المبيعات الذكي</h1>
-        <p>زيادة مبيعاتك من خلال التفاعل الشخصي والإجابة على استفسارات المنتجات</p>
+        <p>تأهيل العملاء المحتملين وزيادة المبيعات بفعالية</p>
     </div>
 
     <div class="chat-container">
         <div id="chatMessages"></div>
 
         <div class="input-area">
-            <textarea id="userInput" placeholder="ما الذي تبحث عنه اليوم؟"></textarea>
+            <textarea id="userInput" placeholder="اكتب سؤالك هنا..."></textarea>
             <div class="input-actions">
+                <button id="fileButton">
+                    <i class="material-icons">attach_file</i>
+                </button>
+                <input type="file" id="fileInput" accept=".pdf,.jpg,.jpeg,.png,.txt,.doc,.docx,.xls,.xlsx">
                 <button id="sendButton">
                     <i class="material-icons">send</i>
                 </button>
@@ -183,6 +223,10 @@
                 this.chatMessages = document.getElementById('chatMessages');
                 this.userInput = document.getElementById('userInput');
                 this.sendButton = document.getElementById('sendButton');
+                this.fileButton = document.getElementById('fileButton');
+                this.fileInput = document.getElementById('fileInput');
+
+                this.uploadedFile = null;
 
                 this.sendButton.addEventListener('click', () => this.sendMessage());
                 this.userInput.addEventListener('keypress', (e) => {
@@ -196,6 +240,16 @@
                     this.adjustTextareaHeight();
                 });
 
+                this.fileButton.addEventListener('click', () => {
+                    this.fileInput.click();
+                });
+
+                this.fileInput.addEventListener('change', (e) => {
+                    if (e.target.files.length > 0) {
+                        this.handleFileUpload(e.target.files[0]);
+                    }
+                });
+
                 this.initialize();
             }
 
@@ -205,18 +259,41 @@
                 textarea.style.height = Math.min(textarea.scrollHeight, 150) + 'px';
             }
 
+            handleFileUpload(file) {
+                this.uploadedFile = file;
+
+                const filePreviewHTML = `
+                    <div class="file-preview" id="filePreview">
+                        <i class="material-icons">description</i>
+                        <span class="file-name">${file.name}</span>
+                        <span class="remove-file" id="removeFile">
+                            <i class="material-icons">close</i>
+                        </span>
+                    </div>
+                `;
+
+                this.addHTMLMessage(filePreviewHTML, 'user');
+
+                document.getElementById('removeFile').addEventListener('click', () => {
+                    document.getElementById('filePreview').remove();
+                    this.uploadedFile = null;
+                    this.fileInput.value = '';
+                });
+            }
+
             initialize() {
-                const welcomeMessage = `مرحباً بك في BrightSales! 👋 كيف يمكنني مساعدتك في العثور على المنتج المثالي؟`;
+                const welcomeMessage = `مرحباً بك في BrightSales! 👋 كيف يمكنني مساعدتك في زيادة مبيعاتك اليوم؟
+                أنا هنا للإجابة على أسئلتك وتقديم توصيات مخصصة لمنتجاتك.`;
 
                 this.addMessage(welcomeMessage, 'bot');
 
                 setTimeout(() => {
                     const optionsHTML = `
                         <div style="display: flex; flex-direction: column; gap: 8px;">
-                            <button class="option-button" data-option="recommendations">اقتراحات المنتجات</button>
-                            <button class="option-button" data-option="product_info">معلومات عن منتج معين</button>
-                            <button class="option-button" data-option="deals">العروض الحالية</button>
-                            <button class="option-button" data-option="help">أحتاج إلى مساعدة في الاختيار</button>
+                            <button class="option-button" data-option="product_recommendations">توصيات للمنتجات</button>
+                            <button class="option-button" data-option="pricing_information">معلومات حول الأسعار</button>
+                            <button class="option-button" data-option="demo_request">طلب عرض توضيحي</button>
+                            <button class="option-button" data-option="other">استفسار آخر</button>
                         </div>
                     `;
 
@@ -232,24 +309,24 @@
             }
 
             async processOptionSelection(option, buttonText) {
-                this.addMessage(buttonText, 'user'); // Show user selection
+                this.addMessage(buttonText, 'user');
 
                 let response = '';
                 const typingIndicator = this.addTypingIndicator();
 
                 try {
                     switch (option) {
-                        case 'recommendations':
-                            response = "رائع! أخبرني ببعض التفاصيل حول ما تبحث عنه وسأقدم لك أفضل الاقتراحات.";
+                        case 'product_recommendations':
+                            response = "من فضلك، أخبرني عن اهتماماتك أو عن نوع المنتج الذي تبحث عنه وسأقدم لك توصيات مخصصة.";
                             break;
-                        case 'product_info':
-                            response = "ما هو اسم المنتج الذي تود معرفة المزيد عنه؟";
+                        case 'pricing_information':
+                            response = "من فضلك، حدد المنتج الذي تود معرفة سعره بالتحديد.";
                             break;
-                        case 'deals':
-                            response = "تفضل بزيارة صفحة العروض للاطلاع على أحدث الخصومات: [رابط صفحة العروض]"; // Replace with your link
+                        case 'demo_request':
+                            response = "يمكنك طلب عرض توضيحي عن طريق ملء النموذج التالي: [رابط لنموذج طلب عرض توضيحي]"; // Replace with your link
                             break;
-                        case 'help':
-                            response = "سأساعدك بكل سرور! ما هي احتياجاتك وميزانيتك التقريبية؟";
+                        case 'other':
+                            response = "من فضلك، وضح استفسارك وسأبذل قصارى جهدي لمساعدتك.";
                             break;
                     }
 
@@ -265,16 +342,27 @@
 
             async sendMessage() {
                 const message = this.userInput.value.trim();
-                if (!message) return;
+                if (!message && !this.uploadedFile) return;
 
-                this.addMessage(message, 'user');
+                if (message) {
+                    this.addMessage(message, 'user');
+                }
                 this.userInput.value = '';
                 this.userInput.style.height = '45px';
+
+                 // Add file information if a file was uploaded
+                 let fileInfo = '';
+                 if (this.uploadedFile) {
+                     fileInfo = `\n\nملف مرفق: ${this.uploadedFile.name} (${this.uploadedFile.type})`;
+                     // Reset uploaded file after sending
+                     this.uploadedFile = null;
+                 }
+
 
                 const typingIndicator = this.addTypingIndicator();
 
                 try {
-                    const response = await this.getGeminiResponse(message);
+                    const response = await this.getGeminiResponse(message + fileInfo);
                     this.chatMessages.removeChild(typingIndicator);
                     this.addMessage(response, 'bot');
                 } catch (error) {
@@ -307,12 +395,11 @@
             }
 
             async getGeminiResponse(message) {
-                const context = `أنت BrightSales، روبوت مبيعات ذكي ومسؤول عن مساعدة العملاء في العثور على المنتجات التي يحتاجونها.
-                هدف هو زيادة المبيعات من خلال التفاعل الشخصي وتقديم توصيات مخصصة.
-                لديك معرفة واسعة بجميع المنتجات المتاحة وتقدم معلومات دقيقة ومقنعة.
-                تسعى دائمًا إلى فهم احتياجات العميل وتقديم أفضل الحلول.
-                تحافظ على لهجة ودية وحماسية في جميع الأوقات.
-                إذا لم تتمكن من العثور على منتج مناسب، يمكنك توجيه العميل إلى فريق المبيعات البشري.`;
+                const context = `أنت BrightSales، روبوت مبيعات ذكي وودود.
+                تهدف إلى تأهيل العملاء المحتملين وزيادة المبيعات من خلال التفاعل الشخصي وتقديم توصيات مخصصة.
+                يمكنك الإجابة على استفسارات المنتجات وتقديم معلومات حول الأسعار.
+                إذا قام المستخدم بتحميل ملف، فقم بتحليله لتقديم أفضل مساعدة ممكنة بناءً على محتواه.
+                حافظ على لهجة إيجابية ومقنعة لتشجيع العملاء على الشراء.`;
 
                 const url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent"; // Replace with your Gemini model
 
@@ -354,20 +441,18 @@
             }
 
             formatText(text) {
-                // Basic formatting (make bold and keep newlines)
-                text = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>'); // Bold
-                text = text.replace(/\*(.*?)\*/g, '<em>$1</em>'); // Italics
-                text = text.replace(/\n/g, '<br>'); // Newlines
+                text = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+                text = text.replace(/\*(.*?)\*/g, '<em>$1</em>');
+                text = text.replace(/\n/g, '<br>');
                 return text;
             }
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            // Add some CSS for option buttons (better styling)
             const style = document.createElement('style');
             style.innerHTML = `
                 .option-button {
-                    background-color: #e2e2e2;
+                    background-color: #FFE0B2; /* Light orange for buttons */
                     border: none;
                     color: black;
                     padding: 10px 20px;
@@ -381,8 +466,9 @@
                     transition: background-color 0.3s ease;
                 }
                 .option-button:hover {
-                    background-color: #d0d0d0;
+                    background-color: #FFCC80;
                 }
+
                 .typing-dot {
                     width: 6px;
                     height: 6px;
@@ -391,6 +477,7 @@
                     display: inline-block;
                     animation: typing 1s infinite;
                 }
+
                 @keyframes typing {
                     0% {
                         opacity: 0.5;
@@ -404,6 +491,7 @@
                 }
             `;
             document.head.appendChild(style);
+
             new SalesBot();
         });
     </script>
