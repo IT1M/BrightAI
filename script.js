@@ -810,6 +810,3 @@ function initMobileNav() {
         });
     });
 }
-
-// Initialize mobile nav when DOM is loaded
-document.addEventListener('DOMContentLoaded', initMobileNav);
