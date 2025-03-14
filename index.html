@@ -1,9 +1,16 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <!-- Meta Tags -->
+    <!-- تحسين Meta Tags -->
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#0A192F">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+
     <meta name="description" content="  نقدم حلول التعلم العميق السعودية، أتمتة العمليات،  روبوتات ، تحليل البيانات وايضا الاتمتة .  باستخدام التعلم الآلي ، التعلم العميق نصنع التحول الرقمي لشركتك.">
     <meta name="keywords" content="الذكاء الاصطناعي في السعودية, شركة ذكاء اصطناعي سعودية, خدمات الذكاء الاصطناعي في المملكة, حلول التعلم العميق السعودية, وكيل الذكاء الاصطناعي العربي, أتمتة العمليات بالذكاء الاصطناعي, تحليل البيانات الضخمة في السعودية, معالجة اللغة العربية الطبيعية, استشارات الذكاء الاصطناعي للشركات, تطوير روبوتات المحادثة العربية">
     <meta name="author" content="مُشرقة AI">
@@ -31,13 +38,20 @@
     <link rel="icon" href="https://d.top4top.io/p_33354e90u1.png" type="image/png">
     <link rel="apple-touch-icon" href="https://d.top4top.io/p_33354e90u1.png">
     
-    <!-- Styles -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" defer>
-    <link rel="stylesheet" href="style.css">
+    <!-- تحسين تحميل الخطوط -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" 
+          as="style" 
+          onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap">
+    </noscript>
 
-    <!-- Critical CSS -->
+    <!-- تحسين تحميل CSS -->
+    <link rel="stylesheet" href="style.css" media="print" onload="this.media='all'">
+
+    <!-- تحسين Critical CSS -->
     <style>
+        /* Critical CSS هنا */
         body { 
             margin: 0; 
             opacity: 0;
@@ -45,6 +59,11 @@
         }
         body.loaded { 
             opacity: 1; 
+        }
+        .navbar {
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
         }
     </style>
 
@@ -97,7 +116,7 @@
                 <li><a href="ai-bots">الروبوتات</a></li>
                 <li><a href="Docfile/About.Bright.AI.html">من نحن؟</a></li>
             </ul>
-            <button class="hamburger" aria-label="القائمة">
+            <button class="hamburger" aria-label="القائمة" aria-expanded="false" aria-controls="nav-links">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
@@ -106,7 +125,7 @@
 
     <!-- القسم الرئيسي -->
     <section id="home" class="hero">
-        <canvas id="heroCanvas" class="hero-canvas"></canvas>
+        <canvas id="heroCanvas" class="hero-canvas" aria-hidden="true"></canvas>
         <div class="hero-container">
             <div class="hero-content">
                 <span class="hero-mini-title">أول شركة ذكاء اصطناعي سعودية متخصصة في التعلم العميق</span>
@@ -1064,7 +1083,7 @@
                     </p>
                 </div>
 
-                <div class="service-card">
+                <div class="service-card"></div>
                     <div class="service-icon">
                         <i class="fas fa-chart-line"></i>
                     </div>
@@ -1145,7 +1164,10 @@
                 </div>
 
                 <div class="consultation-form">
-                    <form id="consultationForm">
+                    <form id="consultationForm" 
+                          class="consultation-form" 
+                          novalidate
+                          autocomplete="off">
                         <div class="form-group">
                             <label for="name" class="form-label">الاسم</label>
                             <input type="text" id="name" class="form-control" placeholder="أدخل اسمك الكامل" required>
@@ -1187,11 +1209,11 @@
             </div>
 
             <div class="faq-container">
-                <div class="faq-item active">
-                    <div class="faq-question">
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
                         ما هي خدمات الذكاء الاصطناعي التي تقدمها برايت AI؟
                         <i class="fas fa-chevron-down"></i>
-                    </div>
+                    </button>
                     <div class="faq-answer">
                         <div class="faq-answer-content">
                             نقدم مجموعة شاملة من حلول الذكاء الاصطناعي المتقدمة تشمل: تحليل البيانات الضخمة باستخدام التعلم الآلي، أتمتة العمليات التجارية والإدارية، تطوير روبوتات المحادثة الذكية، وخدمات استشارات التحول الرقمي المتكاملة للشركات في المملكة العربية السعودية.
@@ -1200,10 +1222,10 @@
                 </div>
 
                 <div class="faq-item">
-                    <div class="faq-question">
+                    <button class="faq-question" aria-expanded="false">
                         كيف يمكنني البدء باستخدام خدمات الذكاء الاصطناعي من برايت AI؟
                         <i class="fas fa-chevron-down"></i>
-                    </div>
+                    </button>
                     <div class="faq-answer">
                         <div class="faq-answer-content">
                             يمكنك التواصل معنا عبر عدة قنوات: الواتساب المباشر، نموذج الاستشارة على موقعنا، أو البريد الإلكتروني. سيقوم فريقنا المتخصص في الذكاء الاصطناعي بتحليل احتياجات عملك وتقديم حلول مخصصة تناسب متطلباتك وميزانيتك.
@@ -1212,10 +1234,10 @@
                 </div>
 
                 <div class="faq-item">
-                    <div class="faq-question">
+                    <button class="faq-question" aria-expanded="false">
                         ما هو مستوى الدعم الفني المقدم لحلول الذكاء الاصطناعي؟
                         <i class="fas fa-chevron-down"></i>
-                    </div>
+                    </button>
                     <div class="faq-answer">
                         <div class="faq-answer-content">
                             نقدم دعماً فنياً شاملاً على مدار الساعة يشمل: الصيانة الدورية لأنظمة الذكاء الاصطناعي، تحديثات مستمرة للخوارزميات، تدريب الموظفين على الأنظمة الجديدة، وفريق دعم فني متخصص جاهز للمساعدة في أي وقت.
@@ -1224,10 +1246,10 @@
                 </div>
 
                 <div class="faq-item">
-                    <div class="faq-question">
+                    <button class="faq-question" aria-expanded="false">
                         كم تستغرق عملية تنفيذ مشاريع الذكاء الاصطناعي؟
                         <i class="fas fa-chevron-down"></i>
-                    </div>
+                    </button>
                     <div class="faq-answer">
                         <div class="faq-answer-content">
                             تختلف مدة التنفيذ حسب نوع وحجم المشروع: المشاريع الصغيرة (2-3 أسابيع)، المشاريع المتوسطة (4-8 أسابيع)، المشاريع الكبيرة (3-6 أشهر). نقدم جدولاً زمنياً تفصيلياً لكل مرحلة من مراحل المشروع مع تحديثات مستمرة عن سير العمل.
@@ -1236,10 +1258,10 @@
                 </div>
 
                 <div class="faq-item">
-                    <div class="faq-question">
+                    <button class="faq-question" aria-expanded="false">
                         ما هي متطلبات البدء في مشروع ذكاء اصطناعي؟
                         <i class="fas fa-chevron-down"></i>
-                    </div>
+                    </button>
                     <div class="faq-answer">
                         <div class="faq-answer-content">
                             تشمل المتطلبات الأساسية: تحديد أهداف المشروع بوضوح، توفير البيانات اللازمة للتدريب، تحديد الميزانية والجدول الزمني، وتعيين فريق عمل للتواصل معنا. نساعدك في تقييم جاهزية مؤسستك وتحديد الخطوات اللازمة للبدء.
@@ -1248,10 +1270,10 @@
                 </div>
 
                 <div class="faq-item">
-                    <div class="faq-question">
+                    <button class="faq-question" aria-expanded="false">
                         هل الحلول قابلة للتطوير في المستقبل؟
                         <i class="fas fa-chevron-down"></i>
-                    </div>
+                    </button>
                     <div class="faq-answer">
                         <div class="faq-answer-content">
                             جميع حلولنا مصممة لتكون قابلة للتطوير والتحديث وفقًا لتطور احتياجات عملك.
@@ -1260,10 +1282,10 @@
                 </div>
 
                 <div class="faq-item">
-                    <div class="faq-question">
+                    <button class="faq-question" aria-expanded="false">
                         كيف يتم تحديد تكلفة مشاريع الذكاء الاصطناعي؟
                         <i class="fas fa-chevron-down"></i>
-                    </div>
+                    </button>
                     <div class="faq-answer">
                         <div class="faq-answer-content">
                             نعتمد على عدة عوامل لتحديد التكلفة: حجم المشروع وتعقيده، نوع التقنيات المستخدمة، حجم البيانات المطلوب معالجتها، مدة التنفيذ المطلوبة، وعدد المستخدمين. نقدم خطة تسعير شفافة تشمل جميع التكاليف مع خيارات دفع مرنة تناسب مختلف الميزانيات.
@@ -1272,10 +1294,10 @@
                 </div>
 
                 <div class="faq-item">
-                    <div class="faq-question">
+                    <button class="faq-question" aria-expanded="false">
                         هل تقدمون حلول ذكاء اصطناعي متوافقة مع اللغة العربية؟
                         <i class="fas fa-chevron-down"></i>
-                    </div>
+                    </button>
                     <div class="faq-answer">
                         <div class="faq-answer-content">
                             نعم، نتخصص في تطوير حلول ذكاء اصطناعي مُعربة بالكامل تدعم اللغة العربية بكفاءة عالية. تشمل خدماتنا: معالجة النصوص العربية، التعرف على الكلام باللغة العربية، وتطوير روبوتات محادثة ذكية تتحدث العربية بطلاقة.
@@ -1284,10 +1306,10 @@
                 </div>
 
                 <div class="faq-item">
-                    <div class="faq-question">
+                    <button class="faq-question" aria-expanded="false">
                         كيف يتم التكامل مع الأنظمة والبرامج الموجودة؟
                         <i class="fas fa-chevron-down"></i>
-                    </div>
+                    </button>
                     <div class="faq-answer">
                         <div class="faq-answer-content">
                             نستخدم واجهات برمجة التطبيقات (APIs) متقدمة وتقنيات التكامل المفتوحة لضمان عمل حلول الذكاء الاصطناعي بسلاسة مع أنظمتك الحالية. نقدم حلولاً متوافقة مع معظم أنظمة ERP وCRM والمحاسبة وإدارة المخزون الشائعة في السوق السعودي.
@@ -1296,10 +1318,10 @@
                 </div>
 
                 <div class="faq-item">
-                    <div class="faq-question">
+                    <button class="faq-question" aria-expanded="false">
                         كيف تضمنون أمن وخصوصية البيانات في حلول الذكاء الاصطناعي؟
                         <i class="fas fa-chevron-down"></i>
-                    </div>
+                    </button>
                     <div class="faq-answer">
                         <div class="faq-answer-content">
                             نطبق أعلى معايير الأمان العالمية لحماية بياناتك، بما في ذلك: التشفير المتقدم للبيانات، أنظمة المصادقة متعددة العوامل، مراقبة مستمرة للتهديدات، وحفظ البيانات في مراكز بيانات معتمدة داخل المملكة. نلتزم بجميع متطلبات هيئة الاتصالات وتقنية المعلومات السعودية وقوانين حماية البيانات المحلية.
@@ -1308,10 +1330,10 @@
                 </div>
 
                 <div class="faq-item">
-                    <div class="faq-question">
+                    <button class="faq-question" aria-expanded="false">
                         ما هي ضمانات الجودة التي تقدمونها؟
                         <i class="fas fa-chevron-down"></i>
-                    </div>
+                    </button>
                     <div class="faq-answer">
                         <div class="faq-answer-content">
                             نقدم ضمان لمدة عام على جميع الحلول تشمل الصيانة والدعم الفني.
@@ -1320,10 +1342,10 @@
                 </div>
 
                 <div class="faq-item">
-                    <div class="faq-question">
+                    <button class="faq-question" aria-expanded="false">
                         هل تقدمون تجربة مجانية؟
                         <i class="fas fa-chevron-down"></i>
-                    </div>
+                    </button>
                     <div class="faq-answer">
                         <div class="faq-answer-content">
                             نعم، نوفر نسخة تجريبية مجانية لبعض الخدمات لمدة محدودة.
@@ -1332,10 +1354,10 @@
                 </div>
 
                 <div class="faq-item">
-                    <div class="faq-question">
+                    <button class="faq-question" aria-expanded="false">
                         كيف أبدأ التعاون معكم؟
                         <i class="fas fa-chevron-down"></i>
-                    </div>
+                    </button>
                     <div class="faq-answer">
                         <div class="faq-answer-content">
                             يمكنك البدء بملء نموذج الاستشارة المجانية أو الاتصال بنا مباشرة على الأرقام المذكورة. سيقوم فريقنا بالتواصل معك خلال 24 ساعة لتحديد موعد مناسب لمناقشة احتياجاتك بالتفصيل.
@@ -1344,10 +1366,10 @@
                 </div>
 
                 <div class="faq-item">
-                    <div class="faq-question">
+                    <button class="faq-question" aria-expanded="false">
                         كيف تضمنون نجاح تدريب الموظفين على استخدام حلول الذكاء الاصطناعي؟
                         <i class="fas fa-chevron-down"></i>
-                    </div>
+                    </button>
                     <div class="faq-answer">
                         <div class="faq-answer-content">
                             نقدم برنامج تدريبي متكامل يشمل: دورات تدريبية مباشرة وعبر الإنترنت، أدلة استخدام مفصلة باللغة العربية، تدريب عملي على النظام في بيئة تجريبية، دعم مباشر من فريق متخصص خلال فترة التنفيذ، وتقييم مستمر لمستوى استيعاب الموظفين. نضمن تأهيل فريق العمل بالكامل لاستخدام الأنظمة الجديدة بكفاءة.
@@ -1588,7 +1610,7 @@
         // تحميل الأنماط بشكل غير متزامن
         document.querySelector('body').classList.add('loaded');
     </script>
-    <script src="script.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" defer></script>
+    <script defer src="script.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
 </body>
 </html>

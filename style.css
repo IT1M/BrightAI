@@ -17,6 +17,13 @@
     --desktop-padding: 3rem;
 }
 
+/* تحسين تحميل الخطوط */
+@font-face {
+    font-family: 'Tajawal';
+    font-display: swap;
+    src: local('Tajawal'), url('path-to-tajawal.woff2') format('woff2');
+}
+
 /* تحسينات الصور */
 img[lazy] {
     opacity: 0;
@@ -79,6 +86,8 @@ body {
     box-sizing: border-box;
     -webkit-tap-highlight-color: transparent;
     text-rendering: optimizeLegibility;
+    content-visibility: auto;
+    contain: layout style paint;
 }
 
 img, canvas {
@@ -270,6 +279,12 @@ img, canvas {
     background: var(--background-dark);
     transform: translateZ(0);
     backface-visibility: hidden;
+    will-change: transform;
+    
+    @media (max-width: 768px) {
+        opacity: 0.7;
+        filter: blur(1px);
+    }
 }
 
 .hero-container {
@@ -328,6 +343,12 @@ img, canvas {
     position: relative;
     overflow: hidden;
     will-change: transform;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    
+    @media (max-width: 768px) {
+        min-height: 44px; /* تحسين إمكانية النقر */
+    }
 }
 
 .cta-button:hover {
@@ -418,6 +439,16 @@ img, canvas {
     z-index: 1;
     backdrop-filter: blur(10px);
     will-change: transform, opacity;
+    contain: content;
+    
+    @media (max-width: 768px) {
+        transform: none !important;
+        transition: opacity 0.3s ease;
+        
+        &:hover {
+            transform: none !important;
+        }
+    }
 }
 
 .service-card:hover {
@@ -528,6 +559,16 @@ img, canvas {
     flex-direction: column;
     border: 1px solid rgba(100, 255, 218, 0.1);
     will-change: transform, opacity;
+    contain: content;
+    
+    @media (max-width: 768px) {
+        transform: none !important;
+        transition: opacity 0.3s ease;
+        
+        &:hover {
+            transform: none !important;
+        }
+    }
 }
 
 .case-card:hover {
@@ -627,6 +668,16 @@ img, canvas {
     transition: all 0.3s ease;
     border: 1px solid rgba(100, 255, 218, 0.1);
     will-change: transform, opacity;
+    contain: content;
+    
+    @media (max-width: 768px) {
+        transform: none !important;
+        transition: opacity 0.3s ease;
+        
+        &:hover {
+            transform: none !important;
+        }
+    }
 }
 
 .feature-card:hover {
@@ -727,6 +778,11 @@ img, canvas {
     border-radius: 4px;
     font-family: 'Tajawal', sans-serif;
     transition: all 0.3s ease;
+    
+    @media (max-width: 768px) {
+        -webkit-appearance: none;
+        font-size: 16px; /* منع التكبير التلقائي على iOS */
+    }
 }
 
 .form-control:focus {
@@ -758,6 +814,12 @@ textarea.form-control {
     cursor: pointer;
     transition: all 0.3s ease;
     font-family: 'Tajawal', sans-serif;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    
+    @media (max-width: 768px) {
+        min-height: 44px; /* تحسين إمكانية النقر */
+    }
 }
 
 .submit-button:hover {
@@ -790,15 +852,20 @@ textarea.form-control {
 }
 
 .faq-question {
+    width: 100%;
+    text-align: right;
     padding: 1.2rem;
     background-color: var(--card-bg);
     color: var(--text-primary);
     font-weight: 600;
+    border: none;
     cursor: pointer;
     display: flex;
     justify-content: space-between;
     align-items: center;
     transition: all 0.3s ease;
+    font-family: inherit;
+    font-size: inherit;
 }
 
 .faq-question:hover {
@@ -808,34 +875,45 @@ textarea.form-control {
 }
 
 .faq-question i {
-    color: var(--accent-color);
-    transition: all 0.3s ease;
-}
-
-.faq-answer {
-    padding: 0;
-    max-height: 0;
-    overflow: hidden;
-    transition: all 0.3s ease;
-    background-color: rgba(13, 30, 58, 0.6);
-}
-
-.faq-answer-content {
-    padding: 0 1.2rem;
-    color: var(--text-secondary);
-}
-
-.faq-item.active .faq-question {
-    background-color: rgba(13, 30, 58, 0.9);
+    transition: transform 0.3s ease;
 }
 
 .faq-item.active .faq-question i {
     transform: rotate(180deg);
 }
 
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    background-color: rgba(13, 30, 58, 0.6);
+}
+
 .faq-item.active .faq-answer {
+    max-height: 500px; /* أو قيمة أكبر حسب المحتوى */
+}
+
+.faq-answer-content {
     padding: 1.2rem;
-    max-height: 1000px;
+    color: var(--text-secondary);
+}
+
+/* تحسين التفاعل مع لوحة المفاتيح */
+.faq-question:focus {
+    outline: 2px solid var(--accent-color);
+    outline-offset: -2px;
+}
+
+/* تحسين المظهر على الأجهزة المحمولة */
+@media (max-width: 768px) {
+    .faq-question {
+        padding: 1rem;
+        font-size: 0.95rem;
+    }
+    
+    .faq-answer-content {
+        padding: 1rem;
+    }
 }
 
 /* التذييل */
@@ -1284,6 +1362,7 @@ textarea.form-control {
         backdrop-filter: blur(10px);
         transform: translateX(100%);
         transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+        will-change: transform;
     }
 
     .nav-links.active {
@@ -1351,6 +1430,18 @@ textarea.form-control {
     .newsletter-button-large {
         width: 100%;
         border-radius: 4px;
+    }
+    
+    .smooth-scroll {
+        scroll-behavior: auto;
+    }
+    
+    body {
+        overscroll-behavior-y: contain;
+    }
+    
+    .service-card, .case-card, .feature-card {
+        box-shadow: none;
     }
 }
 
@@ -1463,6 +1554,42 @@ textarea.form-control {
     
     .tourism-feature-card {
         padding: 1.5rem;
+    }
+}
+
+/* تحسين أداء الصور */
+img {
+    content-visibility: auto;
+    
+    @media (max-width: 768px) {
+        &[loading="lazy"] {
+            blur-up: always;
+        }
+    }
+}
+
+/* تحسين أداء النماذج */
+.form-control {
+    @media (max-width: 768px) {
+        -webkit-appearance: none;
+        font-size: 16px; /* منع التكبير التلقائي على iOS */
+    }
+}
+
+/* تحسين أداء الانيميشن */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* تحسين الأداء في الوضع المظلم */
+@media (prefers-color-scheme: dark) {
+    :root {
+        color-scheme: dark;
     }
 }
 
