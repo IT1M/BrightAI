@@ -1881,3 +1881,56 @@ textarea.form-control {
         gap: 2rem;
     }
 }
+
+/* Mobile Performance Optimizations */
+@media (max-width: 768px) {
+    /* Reduce animations on mobile */
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    /* Optimize layout for mobile */
+    .hero {
+        min-height: 100vh;
+        padding: 4rem var(--mobile-padding) 2rem;
+        contain: content;
+        content-visibility: auto;
+    }
+
+    .service-card {
+        contain: content;
+        content-visibility: auto;
+    }
+
+    /* Reduce paint operations */
+    .navbar {
+        transform: translateZ(0);
+        will-change: transform;
+    }
+
+    /* Optimize images for mobile */
+    img {
+        content-visibility: auto;
+        contain: content;
+    }
+}
+
+/* Performance optimizations for all devices */
+.lazy-image {
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.lazy-image.loaded {
+    opacity: 1;
+}
+
+/* Reduce repaints */
+.service-card, .case-card {
+    transform: translateZ(0);
+    will-change: transform;
+    contain: layout style paint;
+}

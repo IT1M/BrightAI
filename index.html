@@ -20,12 +20,11 @@
     <link rel="dns-prefetch" href="https://fonts.googleapis.com">
     <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
     
-    <!-- Preload Critical Resources -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap" as="style">
-    <link rel="preload" href="style.css" as="style">
-    <link rel="preload" href="script.js" as="script">
-    <link rel="preload" href="https://d.top4top.io/p_33458j6zm1.png" as="image">
+    <!-- Critical Resources -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" as="style">
+    <link rel="preload" href="critical.css" as="style">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     
     <!-- Favicon -->
     <link rel="icon" href="https://d.top4top.io/p_33354e90u1.png" type="image/png">
@@ -38,45 +37,60 @@
 
     <!-- Critical CSS -->
     <style>
+        /* Inline critical CSS */
+        :root {
+            --primary-color: #1E3A8A;
+            --background-dark: #0B172A;
+        }
         body { 
             margin: 0; 
             opacity: 0;
             transition: opacity 0.3s;
+            background: var(--background-dark);
+            font-family: 'Tajawal', sans-serif;
         }
-        body.loaded { 
-            opacity: 1; 
+        body.loaded { opacity: 1; }
+        .navbar {
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
         }
     </style>
+    
+    <!-- Async CSS Loading -->
+    <link rel="stylesheet" href="style.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" 
+          media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap">
+    </noscript>
 
-    <!-- Structured Data -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "مُشرقة AI",
-      "url": "https://brightaii.com",
-      "logo": "https://d.top4top.io/p_33458j6zm1.png",
-      "description": "شركة سعودية متخصصة في حلول الذكاء الاصطناعي والتعلم العميق",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "الرياض",
-        "addressCountry": "SA"
-      },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "+966538229013",
-        "contactType": "customer service"
-      }
-    }
-    </script>
-
-    <!-- Analytics -->
+    <!-- CDN Configuration Hints -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+    
+    <!-- Resource Hints -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    
+    <!-- Third-party Script Optimization -->
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" 
+            integrity="sha512-..." 
+            crossorigin="anonymous"></script>
+    
+    <!-- Analytics with minimal impact -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-SZKTP4496K"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        gtag('config', 'G-SZKTP4496K');
+        gtag('config', 'G-SZKTP4496K', {
+            'send_page_view': false,
+            'transport_type': 'beacon'
+        });
     </script>
 </head>
 <body>
