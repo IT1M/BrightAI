@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BrightSupport - روبوت خدمة العملاء الذكي</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background-color: #0078d7;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+        
+        .chat-container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .chat-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+        }
+        
+        .chat-title {
+            font-size: 1.5rem;
+            color: #0078d7;
+        }
+        
+        .chat-messages {
+            height: 400px;
+            overflow-y: auto;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+        }
+        
+        .message {
+            padding: 10px 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            max-width: 80%;
+        }
+        
+        .user-message {
+            background-color: #e6f7ff;
+            margin-left: auto;
+        }
+        
+        .bot-message {
+            background-color: #f0f0f0;
+            margin-right: auto;
+        }
+        
+        .chat-input {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .chat-input input {
+            flex-grow: 1;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 25px;
+            font-size: 1rem;
+        }
+        
+        .chat-input button {
+            background-color: #0078d7;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .chat-input button:hover {
+            background-color: #005fa3;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-card h3 {
+            color: #0078d7;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .cta {
+            background-color: #0078d7;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        
+        .cta h2 {
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+        
+        .cta button {
+            background-color: white;
+            color: #0078d7;
+            border: none;
+            border-radius: 25px;
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        
+        .cta button:hover {
+            background-color: #f0f0f0;
+            transform: scale(1.05);
+        }
+        
+        .material-icons {
+            vertical-align: middle;
+            margin-right: 5px;
+        }
+        
+        .typing-indicator {
+            display: none;
+            background-color: #f0f0f0;
+            border-radius: 8px;
+            padding: 10px 15px;
+            margin-bottom: 10px;
+            max-width: 80px;
+            margin-right: auto;
+        }
+        
+        .typing-indicator span {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background-color: #555;
+            border-radius: 50%;
+            margin-right: 5px;
+            animation: typing 1s infinite;
+        }
+        
+        .typing-indicator span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        
+        .typing-indicator span:nth-child(3) {
+            animation-delay: 0.4s;
+            margin-right: 0;
+        }
+        
+        @keyframes typing {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-5px);
+            }
+        }
+        
+        .file-input {
+            display: none;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .chat-messages {
+                height: 300px;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>BrightSupport - روبوت خدمة العملاء الذكي</h1>
+            <p class="subtitle">مساعدك الشخصي لتقديم دعم فوري وحل مشكلات العملاء على مدار الساعة</p>
+        </header>
+        
+        <div class="chat-container">
+            <div class="chat-header">
+                <h2 class="chat-title">جرب BrightSupport</h2>
+                <span>تجربة مباشرة</span>
+            </div>
+            
+            <div class="chat-messages">
+                <div class="message bot-message">
+                    مرحباً بك! أنا BrightSupport، مساعدك الآلي لخدمة العملاء. كيف يمكنني مساعدتك اليوم؟
+                </div>
+                <div class="typing-indicator">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            
+            <div class="chat-input">
+                <input type="text" placeholder="اكتب سؤالك هنا...">
+                <input type="file" class="file-input" id="fileInput">
+                <button id="attachButton"><span class="material-icons">attach_file</span></button>
+                <button id="sendButton"><span class="material-icons">send</span></button>
+            </div>
+        </div>
+        
+        <div class="features">
+            <div class="feature-card">
+                <h3>دعم فوري على مدار الساعة</h3>
+                <p>يعمل BrightSupport 24/7 دون توقف، موفراً الدعم الفوري لعملائك في أي وقت من اليوم أو الليل، حتى خلال العطلات والإجازات.</p>
+            </div>
+            
+            <div class="feature-card">
+                <h3>حلول سريعة للمشكلات الشائعة</h3>
+                <p>يتعرف روبوت المحادثة على الاستفسارات والمشكلات الشائعة ويقدم حلولاً فورية وخطوات واضحة لحلها، مما يوفر وقت عملائك ويحسن تجربتهم.</p>
+            </div>
+            
+            <div class="feature-card">
+                <h3>تحويل ذكي للموظفين البشريين</h3>
+                <p>عند مواجهة حالات معقدة، يقوم BrightSupport بتحويل المحادثة بسلاسة إلى موظف خدمة عملاء بشري مع نقل كامل سجل المحادثة لتجنب تكرار المعلومات.</p>
+            </div>
+            
+            <div class="feature-card">
+                <h3>تخصيص كامل لعملك</h3>
+                <p>يمكن تخصيص الروبوت ليتناسب مع هوية علامتك التجارية ومنتجاتك وخدماتك، وتدريبه على الإجابة عن الأسئلة المتعلقة بمجال عملك بدقة عالية.</p>
+            </div>
+            
+            <div class="feature-card">
+                <h3>دعم متعدد اللغات</h3>
+                <p>يدعم BrightSupport التواصل بالعديد من اللغات، مما يتيح لك خدمة قاعدة عملاء أوسع من مختلف الجنسيات والثقافات.</p>
+            </div>
+            
+            <div class="feature-card">
+                <h3>تحليلات وتقارير مفصلة</h3>
+                <p>احصل على تقارير تفصيلية حول استفسارات العملاء الأكثر شيوعاً ومستوى رضاهم، مما يساعدك على تحسين منتجاتك وخدماتك وفقاً لاحتياجاتهم.</p>
+            </div>
+        </div>
+        
+        <div class="cta">
+            <h2>احصل على BrightSupport لموقعك الآن</h2>
+            <p>وفر الوقت والجهد وحسّن تجربة عملائك مع دعم فوري على مدار الساعة</p>
+            <button>اشترك الآن</button>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const input = document.querySelector('.chat-input input');
+            const sendButton = document.getElementById('sendButton');
+            const attachButton = document.getElementById('attachButton');
+            const fileInput = document.getElementById('fileInput');
+            const chatMessages = document.querySelector('.chat-messages');
+            const typingIndicator = document.querySelector('.typing-indicator');
+            
+            // الاتصال مع Gemini API
+            const API_KEY = "AIzaSyCGoxCDd3wnFtE-LzvM_Gqee4sDnMdi_cQ"; // استبدل بمفتاح API الخاص بك
+            const API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent";
+            
+            // سياق المحادثة
+            let conversationContext = [
+                {
+                    role: "system",
+                    parts: [{ text: "أنت BrightSupport، روبوت محادثة متخصص في خدمة العملاء. تقدم دعماً فورياً على مدار الساعة وتحل مشكلات العملاء بكفاءة وأسلوب مهني ولكن ودي. تستخدم أسلوباً بسيطاً وواضحاً، وتقدم إجابات مختصرة ومفيدة، وتحافظ على نبرة إيجابية. أجب عن الأسئلة المتعلقة بالمنتجات، سياسات الإرجاع، ساعات العمل، الشحن، وأي استفسارات أخرى متعلقة بخدمة العملاء. إذا لم تكن متأكداً من إجابة، فاذكر ذلك بصراحة واقترح التواصل مع ممثل خدمة عملاء بشري." }]
+                },
+                {
+                    role: "assistant",
+                    parts: [{ text: "مرحباً بك! أنا BrightSupport، مساعدك الآلي لخدمة العملاء. كيف يمكنني مساعدتك اليوم؟" }]
+                }
+            ];
+            
+            // إضافة رسالة إلى واجهة المحادثة
+            function addMessage(text, isUser = false) {
+                const messageDiv = document.createElement('div');
+                messageDiv.classList.add('message');
+                messageDiv.classList.add(isUser ? 'user-message' : 'bot-message');
+                messageDiv.textContent = text;
+                chatMessages.appendChild(messageDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+                
+                // تحديث سياق المحادثة
+                conversationContext.push({
+                    role: isUser ? "user" : "assistant",
+                    parts: [{ text: text }]
+                });
+            }
+            
+            // إظهار مؤشر الكتابة
+            function showTypingIndicator() {
+                typingIndicator.style.display = 'block';
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+            
+            // إخفاء مؤشر الكتابة
+            function hideTypingIndicator() {
+                typingIndicator.style.display = 'none';
+            }
+            
+            // إرسال رسالة إلى Gemini API
+            async function sendToGeminiAPI(message) {
+                try {
+                    // تحديث سياق المحادثة بالرسالة الجديدة
+                    conversationContext.push({
+                        role: "user",
+                        parts: [{ text: message }]
+                    });
+                    
+                    // إعداد طلب API
+                    const response = await fetch(`${API_URL}?key=${API_KEY}`, {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            contents: conversationContext,
+                            generationConfig: {
+                                temperature: 0.7,
+                                topK: 40,
+                                topP: 0.95,
+                                maxOutputTokens: 1000
+                            }
+                        })
+                    });
+                    
+                    const data = await response.json();
+                    
+                    // التحقق من وجود رد
+                    if (data.candidates && data.candidates.length > 0 && 
+                        data.candidates[0].content && 
+                        data.candidates[0].content.parts && 
+                        data.candidates[0].content.parts.length > 0) {
+                        
+                        const botResponse = data.candidates[0].content.parts[0].text;
+                        return botResponse;
+                    } else {
+                        throw new Error("لم يتم استلام رد من الـ API");
+                    }
+                } catch (error) {
+                    console.error("خطأ في الاتصال بـ Gemini API:", error);
+                    return "عذراً، حدث خطأ أثناء معالجة طلبك. يرجى المحاولة مرة أخرى لاحقاً أو التواصل مع ممثل خدمة العملاء.";
+                }
+            }
+            
+            // معالجة إرسال الرسالة
+            async function handleSendMessage() {
+                const messageText = input.value.trim();
+                
+                if (messageText) {
+                    // إضافة رسالة المستخدم إلى المحادثة
+                    addMessage(messageText, true);
+                    
+                    // مسح حقل الإدخال
+                    input.value = '';
+                    
+                    // إظهار مؤشر الكتابة
+                    showTypingIndicator();
+                    
+                    try {
+                        // الحصول على الرد من Gemini API
+                        const botResponse = await sendToGeminiAPI(messageText);
+                        
+                        // إخفاء مؤشر الكتابة
+                        hideTypingIndicator();
+                        
+                        // إضافة رد الروبوت إلى المحادثة
+                        addMessage(botResponse);
+                    } catch (error) {
+                        // إخفاء مؤشر الكتابة
+                        hideTypingIndicator();
+                        
+                        // إضافة رسالة خطأ
+                        addMessage("عذراً، حدث خطأ أثناء معالجة طلبك. يرجى المحاولة مرة أخرى لاحقاً.");
+                    }
+                }
+            }
+            
+            // إضافة مستمعي الأحداث
+            sendButton.addEventListener('click', handleSendMessage);
+            
+            input.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    handleSendMessage();
+                }
+            });
+            
+            // التعامل مع المرفقات
+            attachButton.addEventListener('click', () => {
+                fileInput.click();
+            });
+            
+            fileInput.addEventListener('change', (e) => {
+                if (e.target.files.length > 0) {
+                    const file = e.target.files[0];
+                    const fileName = file.name;
+                    
+                    // إضافة رسالة تشير إلى الملف المرفق
+                    addMessage(`تم إرفاق ملف: ${fileName}`, true);
+                    
+                    // محاكاة استجابة الروبوت للملف المرفق
+                    showTypingIndicator();
+                    
+                    setTimeout(() => {
+                        hideTypingIndicator();
+                        addMessage(`لقد استلمت ملفك "${fileName}". سأقوم بمراجعته والرد عليك في أقرب وقت ممكن. هل هناك أي تفاصيل إضافية تود إضافتها؟`);
+                    }, 1500);
+                }
+            });
+            
+            // محاكاة بعض الأسئلة الشائعة للروبوت
+            const commonQuestions = [
+                "كيف أتتبع طلبي؟",
+                "ما هي سياسة الإرجاع؟",
+                "متى تفتح المتاجر؟",
+                "هل يمكنني تغيير عنوان الشحن؟"
+            ];
+            
+            // إضافة الأسئلة الشائعة أسفل محادثة المثال
+            const questionsContainer = document.createElement('div');
+            questionsContainer.style.marginTop = '10px';
+            questionsContainer.style.display = 'flex';
+            questionsContainer.style.flexWrap = 'wrap';
+            questionsContainer.style.gap = '10px';
+            
+            commonQuestions.forEach(question => {
+                const questionButton = document.createElement('button');
+                questionButton.textContent = question;
+                questionButton.style.backgroundColor = '#f0f0f0';
+                questionButton.style.border = 'none';
+                questionButton.style.borderRadius = '20px';
+                questionButton.style.padding = '8px 15px';
+                questionButton.style.cursor = 'pointer';
+                questionButton.style.fontSize = '0.9rem';
+                
+                questionButton.addEventListener('click', () => {
+                    input.value = question;
+                    handleSendMessage();
+                });
+                
+                questionsContainer.appendChild(questionButton);
+            });
+            
+            document.querySelector('.chat-input').after(questionsContainer);
+        });
+    </script>
+</body>
+</html>
