@@ -800,17 +800,7 @@ function initMobileNav() {
     const navItems = document.querySelectorAll('.nav-links li');
     const body = document.body;
 
-    // إضافة index للعناصر لتأخير الانيميشن
-    navItems.forEach((item, index) => {
-        item.style.setProperty('--item-index', index);
-    });
-
-    let isAnimating = false;
-
     function toggleMenu() {
-        if (isAnimating) return;
-        isAnimating = true;
-
         navLinks.classList.toggle('active');
         overlay.classList.toggle('active');
         body.classList.toggle('menu-open');
@@ -818,45 +808,25 @@ function initMobileNav() {
         hamburger.innerHTML = navLinks.classList.contains('active') ? 
             '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
 
-        setTimeout(() => {
-            isAnimating = false;
-        }, 300);
+        // تأخير ظهور عناصر القائمة
+        if (navLinks.classList.contains('active')) {
+            navItems.forEach((item, index) => {
+                setTimeout(() => {
+                    item.style.opacity = '1';
+                    item.style.transform = 'translateX(0)';
+                }, 100 * index);
+            });
+        }
     }
 
     hamburger.addEventListener('click', toggleMenu);
     overlay.addEventListener('click', toggleMenu);
 
-    // إغلاق القائمة عند النقر على الروابط
+    // إغلاق القائمة عند النقر على أي رابط
     navItems.forEach(item => {
-        item.addEventListener('click', (e) => {
-            const link = e.currentTarget.querySelector('a');
-            const href = link.getAttribute('href');
-
-            if (href.startsWith('#')) {
-                e.preventDefault();
-                toggleMenu();
-                
-                setTimeout(() => {
-                    const target = document.querySelector(href);
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start',
-                            inline: 'nearest'
-                        });
-                    }
-                }, 300);
-            }
-        });
-    });
-
-    // إغلاق القائمة عند تغيير حجم النافذة
-    window.addEventListener('resize', () => {
-        if (window.innerWidth > 768 && navLinks.classList.contains('active')) {
-            toggleMenu();
-        }
+        item.addEventListener('click', toggleMenu);
     });
 }
 
-// تهيئة القائمة المتنقلة عند تحميل الصفحة
+// تأكد من تنفيذ الكود عند تحميل الصفحة
 document.addEventListener('DOMContentLoaded', initMobileNav);
