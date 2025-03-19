@@ -1,5 +1,4 @@
-
-/* Reset وإعدادات عامة */
+/* Reset & General Styles */
 * {
     margin: 0;
     padding: 0;
@@ -15,6 +14,11 @@
     --accent-color: #1D2B3A;
     --white: #FFFFFF;
     --transition: all 0.3s ease;
+    --heading-color: #FFFFFF;
+    --card-bg: #1D2B3A;
+    --shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    --container-width: 1200px;
+    --border-radius: 8px;
 }
 
 body {
@@ -25,42 +29,68 @@ body {
     overflow-x: hidden;
 }
 
-/* القائمة العلوية */
+.container {
+    width: 90%;
+    max-width: var(--container-width);
+    margin: auto;
+    overflow: hidden;
+    padding: 0 1rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--heading-color);
+    margin-bottom: 1rem;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+a:hover {
+    color: #42f5c8;
+}
+
+/* Navbar Styles */
 .navbar {
     position: fixed;
     top: 0;
     left: 0;
-    right: 0;
-    z-index: 1000;
+    width: 100%;
     background-color: rgba(10, 25, 47, 0.95);
-    padding: 1rem 0;
-    transition: var(--transition);
+    padding: 0.5rem 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
 }
 
 .navbar-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0 1rem;
 }
 
 .logo img {
-    height: 40px;
+    height: 35px;
     width: auto;
 }
 
 .nav-links {
     display: flex;
-    gap: 2rem;
     list-style: none;
+    align-items: center;
+}
+
+.nav-links li {
+    margin-right: 1.5rem;
 }
 
 .nav-links a {
     color: var(--text-color);
-    text-decoration: none;
     font-size: 0.9rem;
+    display: block;
+    padding: 0.5rem 0;
     transition: var(--transition);
 }
 
@@ -68,7 +98,6 @@ body {
     color: var(--primary-color);
 }
 
-/* القائمة المتنقلة */
 .hamburger {
     display: none;
     background: none;
@@ -89,13 +118,14 @@ body {
     z-index: 999;
 }
 
-/* القسم الرئيسي */
+/* Hero Section Styles */
 .hero {
     min-height: 100vh;
     display: flex;
     align-items: center;
     position: relative;
-    padding-top: 80px;
+    padding-top: 60px;
+    overflow: hidden;
 }
 
 .hero-canvas {
@@ -108,15 +138,14 @@ body {
 }
 
 .hero-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
     position: relative;
     z-index: 2;
+    text-align: center;
 }
 
 .hero-content {
     max-width: 800px;
+    margin: 0 auto;
 }
 
 .hero-mini-title {
@@ -128,7 +157,7 @@ body {
 
 .hero h1 {
     color: var(--white);
-    font-size: 3rem;
+    font-size: 2.5rem;
     margin-bottom: 1.5rem;
     line-height: 1.2;
 }
@@ -138,7 +167,6 @@ body {
     font-size: 1.1rem;
 }
 
-/* الأزرار */
 .cta-button {
     display: inline-block;
     padding: 0.8rem 1.5rem;
@@ -147,7 +175,7 @@ body {
     text-decoration: none;
     border-radius: 4px;
     transition: var(--transition);
-    margin-right: 1rem;
+    margin: 0.5rem;
     font-weight: 500;
 }
 
@@ -165,16 +193,14 @@ body {
     color: var(--primary-color);
 }
 
-/* الأقسام */
+/* Section Styles */
 .section-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 6rem 2rem;
+    padding: 4rem 1rem;
 }
 
 .section-header {
     text-align: center;
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
 }
 
 .section-mini-title {
@@ -185,8 +211,8 @@ body {
 }
 
 .section-title {
-    color: var(--white);
-    font-size: 2.5rem;
+    color: var (--white);
+    font-size: 2rem;
     margin-bottom: 1.5rem;
 }
 
@@ -194,66 +220,73 @@ body {
     max-width: 800px;
     margin: 0 auto;
     font-size: 1.1rem;
+    color: var(--text-color);
 }
 
-/* البطاقات */
+/* Services Section */
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
-    margin-top: 3rem;
+    margin-top: 2rem;
 }
 
 .service-card {
     background-color: var(--accent-color);
-    padding: 2rem;
-    border-radius: 8px;
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
     transition: var(--transition);
+    text-align: center;
 }
 
 .service-card:hover {
     transform: translateY(-5px);
+    box-shadow: var(--shadow);
 }
 
 .service-icon {
     color: var(--primary-color);
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
 }
 
 .service-title {
     color: var(--white);
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
 }
 
 .service-description {
-    margin-bottom: 1.5rem;
+    color: var(--text-color);
+    margin-bottom: 1rem;
 }
 
-/* التذييل */
+/* Footer Styles */
 .footer {
     background-color: var(--accent-color);
-    padding: 4rem 0 2rem;
+    padding: 3rem 0;
+    color: var(--text-color);
 }
 
 .footer-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 3rem;
+    gap: 2rem;
 }
 
 .footer-logo-container img {
+    height: 40px;
+    width: auto;
+    margin-bottom: 1rem;
+}
+
+.footer-description {
     margin-bottom: 1.5rem;
 }
 
 .social-links {
     display: flex;
     gap: 1rem;
-    margin-top: 1.5rem;
 }
 
 .social-link {
@@ -266,16 +299,118 @@ body {
     color: var(--primary-color);
 }
 
-/* التصميم المتجاوب */
+.footer-links-title {
+    color: var(--white);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.footer-links {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 0.7rem;
+}
+
+.footer-links a {
+    color: var(--text-color);
+    transition: var(--transition);
+}
+
+.footer-links a:hover {
+    color: var(--primary-color);
+}
+
+.contact-info {
+    list-style: none;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.7rem;
+}
+
+.contact-icon {
+    margin-left: 0.7rem;
+    color: var(--primary-color);
+}
+
+.newsletter-form {
+    display: flex;
+}
+
+.newsletter-input {
+    padding: 0.5rem;
+    border: none;
+    border-radius: var(--border-radius);
+    margin-left: 0.5rem;
+    width: 70%;
+}
+
+.newsletter-button {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.newsletter-button:hover {
+    background-color: #42f5c8;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid var(--accent-color);
+    margin-top: 2rem;
+}
+
+.copyright {
+    font-size: 0.8rem;
+}
+
+.footer-bottom-links {
+    margin-top: 0.5rem;
+}
+
+.footer-bottom-link {
+    color: var(--text-color);
+    margin: 0 0.5rem;
+    font-size: 0.8rem;
+}
+
+/* Back to Top Button */
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    padding: 0.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    z-index: 999;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Mobile Menu Styles */
 @media (max-width: 768px) {
-    .navbar {
-        padding: 0.5rem 0;
-    }
-
-    .hamburger {
-        display: block;
-    }
-
     .nav-links {
         position: fixed;
         top: 0;
@@ -288,13 +423,24 @@ body {
         padding: 5rem 2rem;
         transition: var(--transition);
         z-index: 1000;
+        align-items: flex-start;
     }
 
     .nav-links.active {
         right: 0;
     }
 
-    .overlay.active {
+    .nav-links li {
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
+
+    .nav-links a {
+        font-size: 1rem;
+        padding: 0.7rem 0;
+    }
+
+    .hamburger {
         display: block;
     }
 
@@ -306,14 +452,8 @@ body {
         font-size: 1rem;
     }
 
-    .cta-button {
-        display: block;
-        margin: 1rem 0;
-        text-align: center;
-    }
-
     .section-title {
-        font-size: 2rem;
+        font-size: 1.7rem;
     }
 
     .services-grid {
@@ -323,24 +463,29 @@ body {
     .footer-container {
         grid-template-columns: 1fr;
     }
+
+    .newsletter-input {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
 }
 
-/* المزيد من التحسينات للهواتف الصغيرة */
+/* Small screens adjustments */
 @media (max-width: 480px) {
     .hero h1 {
         font-size: 1.75rem;
     }
 
     .section-container {
-        padding: 4rem 1rem;
+        padding: 3rem 1rem;
     }
 
     .service-card {
-        padding: 1.5rem;
+        padding: 1rem;
     }
 }
 
-/* تحسينات الأداء */
+/* Performance improvements */
 @media (prefers-reduced-motion: reduce) {
     * {
         animation-duration: 0.01ms !important;
