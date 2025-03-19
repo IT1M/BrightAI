@@ -35,8 +35,10 @@ function optimizeCanvasForMobile() {
     domCache.canvas.style.height = `${domCache.heroSection.offsetHeight}px`;
     
     // تحسين السياق
-    domCache.ctx.scale(dpr, dpr);
-    domCache.ctx.imageSmoothingEnabled = false;
+    if (domCache.ctx) { // إضافة تحقق إضافي
+        domCache.ctx.scale(dpr, dpr);
+        domCache.ctx.imageSmoothingEnabled = false;
+    }
     
     return {
         particleCount: isMobile ? 30 : 100,
@@ -86,20 +88,41 @@ function setupMobileMenu() {
     let isAnimating = false;
     
     domCache.hamburger.addEventListener('click', (e) => {
+        e.preventDefault(); // منع أي سلوك افتراضي غير مرغوب فيه
         if (isAnimating) return;
         isAnimating = true;
         
         requestAnimationFrame(() => {
             domCache.navLinks.classList.toggle('active');
             domCache.overlay.classList.toggle('active');
-            domCache.hamburger.innerHTML = domCache.navLinks.classList.contains('active') ? 
+            const isActive = domCache.navLinks.classList.contains('active'); // تخزين حالة القائمة
+            domCache.hamburger.innerHTML = isActive ? 
                 '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+            document.body.classList.toggle('menu-open', isActive); // إضافة/إزالة كلاس لـ body
             
             setTimeout(() => {
                 isAnimating = false;
             }, 300);
         });
     }, { passive: true });
+
+    // إغلاق القائمة عند النقر على أي رابط داخل القائمة
+    domCache.navLinks.addEventListener('click', (e) => {
+        if (e.target.tagName === 'A' && domCache.navLinks.classList.contains('active')) {
+            closeMobileMenu(); // استدعاء دالة مخصصة للإغلاق
+        }
+    });
+    
+    // دالة مخصصة لإغلاق القائمة
+    function closeMobileMenu() {
+        domCache.navLinks.classList.remove('active');
+        domCache.overlay.classList.remove('active');
+        domCache.hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+        document.body.classList.remove('menu-open');
+    }
+    
+    // إغلاق القائمة عند النقر على الـ overlay
+    domCache.overlay.addEventListener('click', closeMobileMenu);
 }
 
 // تحسين أداء الجزيئات
@@ -223,6 +246,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: true });
 
     initFAQ();
+    lazyLoadImages();
+    optimizeFontLoading();
 }, { passive: true });
 
 // تحسين lazy loading للصور
@@ -267,23 +292,51 @@ function optimizeFontLoading() {
     }
 }
 
+// تحسين وظيفة الأسئلة الشائعة
+function initFAQ() {
+    const faqButtons = document.querySelectorAll('.faq-question');
+    
+    faqButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const faqItem = button.parentElement;
+            const isExpanded = button.getAttribute('aria-expanded') === 'true';
+            
+            // إغلاق جميع الأسئلة المفتوحة الأخرى
+            faqButtons.forEach(otherButton => {
+                if (otherButton !== button) {
+                    otherButton.setAttribute('aria-expanded', 'false');
+                    otherButton.parentElement.classList.remove('active');
+                }
+            });
+            
+            // تبديل حالة السؤال الحالي
+            button.setAttribute('aria-expanded', !isExpanded);
+            faqItem.classList.toggle('active');
+        });
+    });
+}
+
 const canvas = document.getElementById('heroCanvas');
-const ctx = canvas.getContext('2d');
+const ctx = canvas?.getContext('2d'); // تم إضافة علامة "?"
 let particles = [];
 let animationFrameId;
 
 // تعيين حجم الكانفاس ليناسب الشاشة
 function resizeCanvas() {
     const heroSection = document.getElementById('home');
-    canvas.width = heroSection.offsetWidth;
-    canvas.height = heroSection.offsetHeight;
-    
-    // إعادة إنشاء الجزيئات عند تغيير حجم الشاشة
-    initParticles();
+    if (heroSection && canvas) { // إضافة تحقق إضافي
+        canvas.width = heroSection.offsetWidth;
+        canvas.height = heroSection.offsetHeight;
+        
+        // إعادة إنشاء الجزيئات عند تغيير حجم الشاشة
+        initParticles();
+    }
 }
 
 // إنشاء الجزيئات
 function initParticles(config) {
+    if (!canvas) return; // إضافة تحقق إضافي
+    
     particles = [];
     const particleCount = config ? config.particleCount : (window.innerWidth < 768 ? 50 : 100); // عدد أقل للأجهزة المحمولة
     
@@ -302,6 +355,8 @@ function initParticles(config) {
 
 // رسم الجزيئات والخطوط
 function drawParticles() {
+    if (!canvas || !ctx) return; // إضافة تحقق إضافي
+    
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     
     // رسم الخلفية
@@ -355,62 +410,40 @@ function drawParticles() {
 // تهيئة الكانفاس عند تحميل الصفحة
 window.addEventListener('load', () => {
     resizeCanvas();
-    drawParticles();
+    if (canvas) { // إضافة تحقق إضافي
+        drawParticles();
+    }
 });
 
 // إعادة تعيين حجم الكانفاس عند تغيير حجم النافذة
 window.addEventListener('resize', () => {
     cancelAnimationFrame(animationFrameId);
     resizeCanvas();
-    drawParticles();
-});
-
-// فتح/إغلاق القائمة في الأجهزة المحمولة
-const hamburger = document.querySelector('.hamburger');
-const navLinks = document.querySelector('.nav-links');
-const overlay = document.querySelector('.overlay');
-
-hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-    overlay.classList.toggle('active');
-    hamburger.innerHTML = navLinks.classList.contains('active') ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
-});
-
-overlay.addEventListener('click', () => {
-    navLinks.classList.remove('active');
-    overlay.classList.remove('active');
-    hamburger.innerHTML = '<i class="fas fa-bars"></i>';
-});
-
-// إغلاق القائمة عند النقر على أي رابط
-document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
-        overlay.classList.remove('active');
-        hamburger.innerHTML = '<i class="fas fa-bars"></i>';
-    });
+    if (canvas) { // إضافة تحقق إضافي
+        drawParticles();
+    }
 });
 
 // تصغير القائمة عند التمرير
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
     if (window.scrollY > 100) {
-        navbar.classList.add('scrolled');
+        navbar?.classList.add('scrolled'); // استخدام optional chaining
     } else {
-        navbar.classList.remove('scrolled');
+        navbar?.classList.remove('scrolled'); // استخدام optional chaining
     }
 
     // ظهور زر العودة لأعلى الصفحة
     const backToTop = document.querySelector('.back-to-top');
     if (window.scrollY > 500) {
-        backToTop.classList.add('visible');
+        backToTop?.classList.add('visible'); // استخدام optional chaining
     } else {
-        backToTop.classList.remove('visible');
+        backToTop?.classList.remove('visible'); // استخدام optional chaining
     }
 });
 
 // التعامل مع النقر على زر العودة لأعلى الصفحة
-document.querySelector('.back-to-top').addEventListener('click', function(e) {
+document.querySelector('.back-to-top')?.addEventListener('click', function(e) {
     e.preventDefault();
     window.scrollTo({
         top: 0,
@@ -419,20 +452,20 @@ document.querySelector('.back-to-top').addEventListener('click', function(e) {
 });
 
 // منع إعادة تحميل الصفحة عند إرسال النموذج
-document.getElementById('consultationForm').addEventListener('submit', function(e) {
+document.getElementById('consultationForm')?.addEventListener('submit', function(e) {
     e.preventDefault();
     alert('تم إرسال طلب الاستشارة بنجاح! سنتواصل معك قريباً.');
     this.reset();
 });
 
 // منع إعادة تحميل الصفحة عند إرسال نموذج النشرة البريدية
-document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
+document.querySelector('.newsletter-form')?.addEventListener('submit', function(e) {
     e.preventDefault();
     alert('تم الاشتراك في النشرة البريدية بنجاح!');
     this.reset();
 });
 
-document.querySelector('.newsletter-form-large').addEventListener('submit', function(e) {
+document.querySelector('.newsletter-form-large')?.addEventListener('submit', function(e) {
     e.preventDefault();
     alert('تم الاشتراك في النشرة البريدية بنجاح!');
     this.reset();
@@ -652,144 +685,6 @@ document.querySelectorAll('.service-link').forEach(link => {
 
     link.addEventListener('mouseleave', function() {
         this.style.transform = 'translateX(0)';
-    });
-});
-
-// تحسين أداء الكانفاس على الأجهزة المحمولة
-function isMobileDevice() {
-    return (window.innerWidth <= 768) || ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
-}
-
-// تحسين أداء الرسم على الكانفاس
-function optimizeCanvasRendering(canvas) {
-    const ctx = canvas.getContext('2d');
-    ctx.imageSmoothingEnabled = false;
-    
-    if (isMobileDevice()) {
-        // تقليل جودة الرسم على الأجهزة المحمولة
-        canvas.style.willChange = 'transform';
-        return {
-            particleCount: 30,
-            connectionDistance: 80,
-            particleSize: 1.5,
-            frameSkip: 2
-        };
-    }
-    
-    return {
-        particleCount: 100,
-        connectionDistance: 150,
-        particleSize: 2,
-        frameSkip: 1
-    };
-}
-
-// تحسين تحميل الصور
-function lazyLoadImages() {
-    const images = document.querySelectorAll('img[loading="lazy"]');
-    
-    if ('loading' in HTMLImageElement.prototype) {
-        images.forEach(img => {
-            if (img.dataset.src) {
-                img.src = img.dataset.src;
-            }
-        });
-    } else {
-        // Fallback for browsers that don't support native lazy loading
-        const imageObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    if (img.dataset.src) {
-                        img.src = img.dataset.src;
-                    }
-                    img.classList.add('loaded');
-                    observer.unobserve(img);
-                }
-            });
-        });
-
-        images.forEach(img => imageObserver.observe(img));
-    }
-}
-
-// تحسين التمرير
-let isScrolling;
-function optimizeScroll(callback) {
-    window.addEventListener('scroll', () => {
-        window.clearTimeout(isScrolling);
-        isScrolling = setTimeout(() => {
-            callback();
-        }, 66);
-    }, { passive: true });
-}
-
-// تحسين أداء القائمة المتنقلة
-function optimizeMobileMenu() {
-    const hamburger = document.querySelector('.hamburger');
-    const navLinks = document.querySelector('.nav-links');
-    const overlay = document.querySelector('.overlay');
-    
-    if (!hamburger || !navLinks || !overlay) return;
-    
-    let isMenuAnimating = false;
-    
-    hamburger.addEventListener('click', () => {
-        if (isMenuAnimating) return;
-        isMenuAnimating = true;
-        
-        requestAnimationFrame(() => {
-            navLinks.classList.toggle('active');
-            overlay.classList.toggle('active');
-            hamburger.innerHTML = navLinks.classList.contains('active') ? 
-                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
-            
-            setTimeout(() => {
-                isMenuAnimating = false;
-            }, 300);
-        });
-    });
-}
-
-// تحسين وظيفة الأسئلة الشائعة
-function initFAQ() {
-    const faqButtons = document.querySelectorAll('.faq-question');
-    
-    faqButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const faqItem = button.parentElement;
-            const isExpanded = button.getAttribute('aria-expanded') === 'true';
-            
-            // إغلاق جميع الأسئلة المفتوحة الأخرى
-            faqButtons.forEach(otherButton => {
-                if (otherButton !== button) {
-                    otherButton.setAttribute('aria-expanded', 'false');
-                    otherButton.parentElement.classList.remove('active');
-                }
-            });
-            
-            // تبديل حالة السؤال الحالي
-            button.setAttribute('aria-expanded', !isExpanded);
-            faqItem.classList.toggle('active');
-        });
-    });
-}
-
-// تهيئة التحسينات عند تحميل الصفحة
-document.addEventListener('DOMContentLoaded', () => {
-    lazyLoadImages();
-    optimizeMobileMenu();
-    
-    // تحسين أداء الكانفاس
-    const canvas = document.getElementById('heroCanvas');
-    if (canvas) {
-        const config = optimizeCanvasRendering(canvas);
-        initParticles(config);
-    }
-    
-    // تحسين الأداء عند التمرير
-    optimizeScroll(() => {
-        animateOnScroll();
     });
 });
 
