@@ -231,15 +231,29 @@ ul, ol {
     color: var(--primary-color);
     font-size: 1.5rem;
     cursor: pointer;
-    transition: var(--transition);
+    transition: color 0.2s ease;
+    padding: 0.5rem;
+    z-index: 1001;
+    will-change: transform, color;
+    transform: translateZ(0); /* Hardware acceleration */
+    -webkit-tap-highlight-color: transparent; /* Remove tap highlight on mobile */
 }
 
 .hamburger:hover {
     color: #42f5c8;
+    transform: scale(1.1);
+}
+
+.hamburger i {
+    display: block;
+    transition: transform 0.2s ease;
+}
+
+.hamburger.active i {
+    transform: rotate(90deg);
 }
 
 .overlay {
-    display: none;
     position: fixed;
     top: 0;
     left: 0;
@@ -248,12 +262,15 @@ ul, ol {
     background-color: rgba(0, 0, 0, 0.7);
     z-index: 999;
     opacity: 0;
-    transition: opacity 0.3s ease;
+    visibility: hidden;
+    transition: opacity 0.25s ease, visibility 0s linear 0.25s;
+    will-change: opacity;
 }
 
 .overlay.active {
     opacity: 1;
-    display: block;
+    visibility: visible;
+    transition: opacity 0.25s ease, visibility 0s linear;
 }
 
 /* Hero Section Styles */
@@ -1376,7 +1393,7 @@ textarea.form-control {
     .nav-links {
         position: fixed;
         top: 0;
-        right: -100%;
+        right: 0;
         width: 80%;
         max-width: 300px;
         height: 100vh;
@@ -1385,23 +1402,37 @@ textarea.form-control {
         align-items: flex-start;
         padding: 5rem 2rem;
         z-index: 1000;
-        transition: var(--transition);
+        transform: translateX(100%);
+        transition: transform 0.25s cubic-bezier(0.17, 0.67, 0.24, 0.99);
         box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+        will-change: transform;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
     }
     
     .nav-links.active {
-        right: 0;
+        transform: translateX(0);
     }
     
     .nav-links li {
         margin: 0 0 1.5rem 0;
         width: 100%;
+        opacity: 0;
+        transform: translateX(20px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        transition-delay: calc(0.05s * var(--item-index, 0));
+    }
+    
+    .nav-links.active li {
+        opacity: 1;
+        transform: translateX(0);
     }
     
     .nav-links a {
         font-size: 1.1rem;
         width: 100%;
         padding: 0.5rem 0;
+        display: block;
     }
     
     .hero h1 {
