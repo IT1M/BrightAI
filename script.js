@@ -226,29 +226,50 @@ function drawParticles() {
 }
 
 // تهيئة التطبيق
+// Defer non-critical operations
 document.addEventListener('DOMContentLoaded', () => {
+    // Critical operations first
     initDOMCache();
     setupMobileMenu();
     
+    // Defer canvas initialization
     if (domCache.canvas) {
-        const config = optimizeCanvasForMobile();
-        initParticles(config);
-        drawParticles();
+        requestIdleCallback(() => {
+            const config = optimizeCanvasForMobile();
+            initParticles(config);
+            drawParticles();
+        });
     }
     
-    // إضافة معالجات الأحداث مع passive flag
+    // Add event handlers with passive flag and debouncing
     window.addEventListener('scroll', handleScroll, { passive: true });
-    window.addEventListener('resize', () => {
+    window.addEventListener('resize', debounce(() => {
         cancelAnimationFrame(animationFrameId);
         optimizeCanvasForMobile();
         initParticles();
         drawParticles();
-    }, { passive: true });
+    }, 150), { passive: true });
 
-    initFAQ();
-    lazyLoadImages();
-    optimizeFontLoading();
+    // Defer non-critical initializations
+    requestIdleCallback(() => {
+        initFAQ();
+        lazyLoadImages();
+        optimizeFontLoading();
+    });
 }, { passive: true });
+
+// Add debounce utility
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
 
 // تحسين lazy loading للصور
 function lazyLoadImages() {

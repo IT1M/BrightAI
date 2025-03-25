@@ -21,13 +21,18 @@
     --border-radius: 8px;
 }
 
+/* Optimize critical CSS */
 body {
-    font-family: 'Tajawal', sans-serif;
+    font-family: 'Tajawal', system-ui, -apple-system, sans-serif;
     background-color: var(--background-color);
     color: var(--text-color);
     line-height: 1.6;
     overflow-x: hidden;
     font-size: 16px;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    will-change: scroll-position;
 }
 
 /* Typography */

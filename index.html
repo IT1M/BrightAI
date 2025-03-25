@@ -1,15 +1,21 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <!-- تحسين Meta Tags -->
+    <!-- Performance Optimizations -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, viewport-fit=cover">
     <meta name="theme-color" content="#0A192F">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
+    
+    <!-- Resource Hints -->
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+    <link rel="preload" href="style.css" as="style">
+    <link rel="preload" href="script.js" as="script">
+    <link rel="preload" href="https://d.top4top.io/p_33458j6zm1.png" as="image">
 
     <meta name="description" content="  نقدم حلول التعلم العميق السعودية، أتمتة العمليات،  روبوتات ، تحليل البيانات وايضا الاتمتة .  باستخدام التعلم الآلي ، التعلم العميق نصنع التحول الرقمي لشركتك.">
     <meta name="keywords" content="الذكاء الاصطناعي في السعودية, شركة ذكاء اصطناعي سعودية, خدمات الذكاء الاصطناعي في المملكة, حلول التعلم العميق السعودية, وكيل الذكاء الاصطناعي العربي, أتمتة العمليات بالذكاء الاصطناعي, تحليل البيانات الضخمة في السعودية, معالجة اللغة العربية الطبيعية, استشارات الذكاء الاصطناعي للشركات, تطوير روبوتات المحادثة العربية">
@@ -38,15 +44,39 @@
     <link rel="icon" href="https://d.top4top.io/p_33354e90u1.png" type="image/png">
     <link rel="apple-touch-icon" href="https://d.top4top.io/p_33354e90u1.png">
     
-    <!-- تحسين تحميل الخطوط -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" 
-          as="style" 
-          onload="this.onload=null;this.rel='stylesheet'">
+    <!-- Font Loading Optimization -->
+    <link rel="preload" as="font" href="https://fonts.gstatic.com/s/tajawal/v9/Iurf6YBj_oCad4k1l4qkLrY.woff2" type="font/woff2" crossorigin>
+    <link rel="preload" as="font" href="https://fonts.gstatic.com/s/tajawal/v9/Iurf6YBj_oCad4k1l5qjLrY.woff2" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" media="print" onload="this.media='all'">
     <noscript>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap">
     </noscript>
 
-    <!-- تحسين تحميل CSS -->
+    <!-- Critical CSS -->
+    <style>
+        /* Critical path CSS here */
+        :root {
+            --primary-color: #64FFDA;
+            --secondary-color: #0A192F;
+            --text-color: #8892B0;
+            --white: #FFFFFF;
+        }
+        body {
+            margin: 0;
+            font-family: 'Tajawal', system-ui, -apple-system, sans-serif;
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            direction: rtl;
+        }
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(10, 25, 47, 0.95);
+            z-index: 1000;
+        }
+    </style>
     <link rel="stylesheet" href="style.css" media="print" onload="this.media='all'">
 
     <!-- Structured Data -->
@@ -71,13 +101,17 @@
     }
     </script>
 
-    <!-- Analytics -->
+    <!-- Deferred Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-SZKTP4496K"></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-SZKTP4496K');
+        window.addEventListener('load', function() {
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-SZKTP4496K', {
+                'page_load_time': performance.now()
+            });
+        });
     </script>
 </head>
 <body>
@@ -1603,12 +1637,8 @@
         <i class="fas fa-arrow-up"></i>
     </a>
 
-    <!-- سكريبت الجافاسكريبت -->
-    <script>
-        // تحميل الأنماط بشكل غير متزامن
-        document.querySelector('body').classList.add('loaded');
-    </script>
-    <script defer src="script.js"></script>
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <!-- Optimized Scripts Loading -->
+    <script type="module" src="script.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" defer integrity="sha512-..." crossorigin="anonymous"></script>
 </body>
 </html>
