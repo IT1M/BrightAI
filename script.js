@@ -303,27 +303,75 @@ function optimizeFontLoading() {
 
 // تحسين وظيفة الأسئلة الشائعة
 function initFAQ() {
-    const faqButtons = document.querySelectorAll('.faq-question');
+    console.log('Initializing FAQ...');
+    const faqItems = document.querySelectorAll('.faq-item');
+    console.log('Found FAQ items:', faqItems.length);
     
-    faqButtons.forEach(button => {
+    faqItems.forEach((item, index) => {
+        const button = item.querySelector('.faq-question');
+        const answer = item.querySelector('.faq-answer');
+        const content = item.querySelector('.faq-answer-content');
+        
+        if (!button || !answer || !content) {
+            console.error(`FAQ item ${index} missing required elements:`, item);
+            return;
+        }
+
+        // Force a reflow to ensure content height is calculated correctly
+        content.style.display = 'block';
+        const contentHeight = content.offsetHeight;
+        
+        // Set initial states
+        button.setAttribute('aria-expanded', 'false');
+        answer.style.maxHeight = '0px';
+        
         button.addEventListener('click', () => {
-            const faqItem = button.parentElement;
             const isExpanded = button.getAttribute('aria-expanded') === 'true';
             
-            // إغلاق جميع الأسئلة المفتوحة الأخرى
-            faqButtons.forEach(otherButton => {
-                if (otherButton !== button) {
-                    otherButton.setAttribute('aria-expanded', 'false');
-                    otherButton.parentElement.classList.remove('active');
+            // Close other items
+            faqItems.forEach(otherItem => {
+                if (otherItem !== item) {
+                    const otherButton = otherItem.querySelector('.faq-question');
+                    const otherAnswer = otherItem.querySelector('.faq-answer');
+                    if (otherButton && otherAnswer) {
+                        otherButton.setAttribute('aria-expanded', 'false');
+                        otherItem.classList.remove('active');
+                        otherAnswer.style.maxHeight = '0px';
+                    }
                 }
             });
             
-            // تبديل حالة السؤال الحالي
+            // Toggle current item
             button.setAttribute('aria-expanded', !isExpanded);
-            faqItem.classList.toggle('active');
+            item.classList.toggle('active');
+            
+            // Update height with padding included
+            if (!isExpanded) {
+                console.log(`Expanding answer ${index}, content height:`, contentHeight);
+                answer.style.maxHeight = `${contentHeight + 40}px`; // Add padding
+            } else {
+                answer.style.maxHeight = '0px';
+            }
         });
     });
 }
+
+// Single initialization of FAQ when DOM is ready with proper timing
+document.addEventListener('DOMContentLoaded', () => {
+    // Wait for fonts and other resources to load
+    window.addEventListener('load', () => {
+        console.log('Window loaded, initializing FAQ...');
+        // Short delay to ensure all content is properly rendered
+        setTimeout(() => {
+            initFAQ();
+            // Add resize handler after initial setup
+            window.addEventListener('resize', debounce(() => {
+                console.log('Window resized, reinitializing FAQ...');
+                initFAQ();
+            }, 250));
+        }, 100);
+    });
+});
 
 const canvas = document.getElementById('heroCanvas');
 const ctx = canvas?.getContext('2d'); // تم إضافة علامة "?"

@@ -998,17 +998,58 @@ textarea.form-control {
     background-color: rgba(29, 43, 58, 0.5);
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.3s ease;
-    will-change: max-height; /* Added for performance */
+    transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
+    will-change: max-height;
 }
 
 .faq-item.active .faq-answer {
-    max-height: 500px;
+    max-height: 2000px; /* Large enough for any answer */
+    transition: max-height 1s ease-in-out;
 }
 
 .faq-answer-content {
-    padding: 1.2rem;
+    padding: 1.5rem;
     color: var(--text-color);
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s ease-out;
+    line-height: 1.6;
+}
+
+.faq-item.active .faq-answer-content {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Added animation for question icon */
+.faq-question i {
+    transition: transform 0.3s ease;
+}
+
+.faq-item.active .faq-question i {
+    transform: rotate(180deg);
+}
+
+/* Better focus and hover states */
+.faq-question:hover {
+    background-color: var(--card-bg);
+}
+
+.faq-question:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--primary-color);
+}
+
+.faq-question {
+    position: relative;
+}
+
+.faq-question i {
+    transition: transform 0.3s ease-in-out;
+}
+
+.faq-question[aria-expanded="true"] i {
+    transform: rotate(180deg);
 }
 
 /* Technical Details Section */
