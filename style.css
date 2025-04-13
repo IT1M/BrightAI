@@ -16,6 +16,9 @@
     --transition: all 0.3s ease;
     --heading-color: #FFFFFF;
     --card-bg: #1D2B3A;
+    --will-change-transform: transform; /* Added for performance */
+    --will-change-opacity: opacity; /* Added for performance */
+    --will-change-transform-opacity: transform, opacity; /* Added for performance */
     --shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
     --container-width: 1200px;
     --border-radius: 8px;
@@ -161,7 +164,8 @@ ul, ol {
     z-index: 1000;
     backdrop-filter: blur(10px);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    transition: var(--transition);
+    transition: padding 0.3s ease, background-color 0.3s ease; /* Optimized transition */
+    will-change: padding, background-color; /* Added for performance */
 }
 
 .navbar.scrolled {
@@ -350,12 +354,14 @@ ul, ol {
     background-color: var(--card-bg);
     padding: 2rem;
     border-radius: var(--border-radius);
-    transition: var(--transition);
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Optimized transition */
     box-shadow: var(--shadow);
+    will-change: var(--will-change-transform); /* Added for performance */
 }
 
 .tourism-feature-card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); /* Enhanced hover shadow */
 }
 
 .feature-icon {
@@ -444,15 +450,17 @@ ul, ol {
     background-color: var(--card-bg);
     padding: 2rem;
     border-radius: var(--border-radius);
-    transition: var(--transition);
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Optimized transition */
     box-shadow: var(--shadow);
     height: 100%;
     display: flex;
     flex-direction: column;
+    will-change: var(--will-change-transform); /* Added for performance */
 }
 
 .service-card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); /* Enhanced hover shadow */
 }
 
 .service-icon {
@@ -574,7 +582,8 @@ ul, ol {
     padding: 1.5rem;
     border-radius: var(--border-radius);
     text-align: center;
-    transition: var(--transition);
+    transition: transform 0.3s ease; /* Optimized transition */
+    will-change: var(--will-change-transform); /* Added for performance */
 }
 
 .feature-item:hover {
@@ -652,12 +661,14 @@ ul, ol {
     background-color: var(--card-bg);
     border-radius: var(--border-radius);
     overflow: hidden;
-    transition: var(--transition);
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Optimized transition */
     box-shadow: var(--shadow);
+    will-change: var(--will-change-transform); /* Added for performance */
 }
 
 .case-card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); /* Enhanced hover shadow */
 }
 
 .case-image {
@@ -669,7 +680,8 @@ ul, ol {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: var(--transition);
+    transition: transform 0.3s ease; /* Optimized transition */
+    will-change: var(--will-change-transform); /* Added for performance */
 }
 
 .case-card:hover .case-image img {
@@ -974,7 +986,8 @@ textarea.form-control {
 }
 
 .faq-question i {
-    transition: var(--transition);
+    transition: transform 0.3s ease; /* Optimized transition */
+    will-change: var(--will-change-transform); /* Added for performance */
 }
 
 .faq-question[aria-expanded="true"] i {
@@ -986,6 +999,7 @@ textarea.form-control {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease;
+    will-change: max-height; /* Added for performance */
 }
 
 .faq-item.active .faq-answer {
@@ -1135,7 +1149,7 @@ textarea.form-control {
     margin-bottom: 0.8rem;
     position: relative;
     padding-right: 1.5rem;
-    color: var(--text-color);
+    color: var (--text-color);
 }
 
 .tech-detail-card ul li::before {
@@ -1332,8 +1346,9 @@ textarea.form-control {
     z-index: 99;
     opacity: 0;
     visibility: hidden;
-    transition: var(--transition);
+    transition: opacity 0.3s ease, visibility 0.3s ease, background-color 0.3s ease; /* Optimized transition */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    will-change: var(--will-change-opacity); /* Added for performance */
 }
 
 .back-to-top.visible {
@@ -1408,11 +1423,9 @@ textarea.form-control {
         padding: 5rem 2rem;
         z-index: 1000;
         transform: translateX(100%);
-        transition: transform 0.25s cubic-bezier(0.17, 0.67, 0.24, 0.99);
+        transition: transform 0.3s ease-in-out; /* Adjusted for smoother animation */
         box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
-        will-change: transform;
         overflow-y: auto;
-        -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
     }
     
     .nav-links.active {
@@ -1425,12 +1438,15 @@ textarea.form-control {
         opacity: 0;
         transform: translateX(20px);
         transition: opacity 0.3s ease, transform 0.3s ease;
-        transition-delay: calc(0.05s * var(--item-index, 0));
     }
     
     .nav-links.active li {
         opacity: 1;
         transform: translateX(0);
+    }
+    
+    .nav-links li[data-index] {
+        transition-delay: calc(0.05s * var(--item-index, 0));
     }
     
     .nav-links a {

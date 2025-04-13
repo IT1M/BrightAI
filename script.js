@@ -84,45 +84,33 @@ function handleScroll() {
 // تحسين معالجة القائمة المتنقلة
 function setupMobileMenu() {
     if (!domCache.hamburger || !domCache.navLinks || !domCache.overlay) return;
-    
-    let isAnimating = false;
-    
-    domCache.hamburger.addEventListener('click', (e) => {
-        e.preventDefault(); // منع أي سلوك افتراضي غير مرغوب فيه
-        if (isAnimating) return;
-        isAnimating = true;
-        
-        requestAnimationFrame(() => {
-            domCache.navLinks.classList.toggle('active');
-            domCache.overlay.classList.toggle('active');
-            const isActive = domCache.navLinks.classList.contains('active'); // تخزين حالة القائمة
-            domCache.hamburger.innerHTML = isActive ? 
-                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
-            document.body.classList.toggle('menu-open', isActive); // إضافة/إزالة كلاس لـ body
-            
-            setTimeout(() => {
-                isAnimating = false;
-            }, 300);
-        });
-    }, { passive: true });
 
-    // إغلاق القائمة عند النقر على أي رابط داخل القائمة
+    const toggleMenu = () => {
+        const isActive = domCache.navLinks.classList.toggle('active');
+        domCache.overlay.classList.toggle('active');
+        document.body.classList.toggle('menu-open', isActive);
+        domCache.hamburger.innerHTML = isActive
+            ? '<i class="fas fa-times"></i>'
+            : '<i class="fas fa-bars"></i>';
+
+        // Animate nav-links items
+        document.querySelectorAll('.nav-links li').forEach((item, index) => {
+            item.style.setProperty('--item-index', index);
+        });
+    };
+
+    domCache.hamburger.addEventListener('click', toggleMenu);
+    domCache.overlay.addEventListener('click', toggleMenu);
+
+    // Close menu on link click
     domCache.navLinks.addEventListener('click', (e) => {
-        if (e.target.tagName === 'A' && domCache.navLinks.classList.contains('active')) {
-            closeMobileMenu(); // استدعاء دالة مخصصة للإغلاق
+        if (e.target.tagName === 'A') {
+            domCache.navLinks.classList.remove('active');
+            domCache.overlay.classList.remove('active');
+            document.body.classList.remove('menu-open');
+            domCache.hamburger.innerHTML = '<i class="fas fa-bars"></i>';
         }
     });
-    
-    // دالة مخصصة لإغلاق القائمة
-    function closeMobileMenu() {
-        domCache.navLinks.classList.remove('active');
-        domCache.overlay.classList.remove('active');
-        domCache.hamburger.innerHTML = '<i class="fas fa-bars"></i>';
-        document.body.classList.remove('menu-open');
-    }
-    
-    // إغلاق القائمة عند النقر على الـ overlay
-    domCache.overlay.addEventListener('click', closeMobileMenu);
 }
 
 // تحسين أداء الجزيئات
