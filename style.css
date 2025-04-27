@@ -1464,7 +1464,7 @@ textarea.form-control {
         padding: 5rem 2rem;
         z-index: 1000;
         transform: translateX(100%);
-        transition: transform 0.3s ease-in-out; /* Adjusted for smoother animation */
+        transition: transform 0.3s ease-in-out;
         box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
         overflow-y: auto;
     }

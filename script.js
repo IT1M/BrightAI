@@ -95,7 +95,9 @@ function setupMobileMenu() {
 
         // Animate nav-links items
         document.querySelectorAll('.nav-links li').forEach((item, index) => {
-            item.style.setProperty('--item-index', index);
+            item.style.opacity = isActive ? '1' : '0';
+            item.style.transform = isActive ? 'translateX(0)' : 'translateX(20px)';
+            item.style.transitionDelay = isActive ? `${index * 0.1}s` : '0s';
         });
     };
 
