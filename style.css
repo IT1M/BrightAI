@@ -26,12 +26,12 @@
 
 /* Optimize critical CSS */
 body {
-    font-family: 'Tajawal', system-ui, -apple-system, sans-serif;
+    font-family: 'Tajawal', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     background-color: var(--background-color);
     color: var(--text-color);
     line-height: 1.6;
     overflow-x: hidden;
-    font-size: 16px;
+    font-size: 16px; /* Base font size */
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -47,15 +47,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-    font-size: 2.5rem;
+    font-size: 2.5rem; /* 40px */
 }
 
 h2 {
-    font-size: 2rem;
+    font-size: 2rem; /* 32px */
 }
 
 h3 {
-    font-size: 1.5rem;
+    font-size: 1.5rem; /* 24px */
 }
 
 p {
@@ -69,12 +69,12 @@ a {
 }
 
 a:hover {
-    color: #42f5c8;
+    color: #42f5c8; /* Slightly lighter primary for hover */
 }
 
 ul, ol {
     margin-bottom: 1rem;
-    padding-right: 1.5rem;
+    padding-right: 1.5rem; /* RTL padding */
 }
 
 /* Container & Layout */
@@ -103,6 +103,7 @@ ul, ol {
     font-weight: 500;
     cursor: pointer;
     text-align: center;
+    background-color: transparent; /* Explicitly set */
 }
 
 .cta-button-accent {
@@ -110,13 +111,19 @@ ul, ol {
     color: var(--secondary-color);
 }
 
-.cta-button:hover {
+.cta-button:hover,
+.cta-button:focus { /* Added focus state */
     background-color: rgba(100, 255, 218, 0.1);
+    outline: 2px solid var(--primary-color); /* Focus outline */
+    outline-offset: 2px;
 }
 
-.cta-button-accent:hover {
+.cta-button-accent:hover,
+.cta-button-accent:focus { /* Added focus state */
     background-color: transparent;
     color: var(--primary-color);
+    outline: 2px solid var(--primary-color); /* Focus outline */
+    outline-offset: 2px;
 }
 
 /* Section Headers */
@@ -127,7 +134,7 @@ ul, ol {
 
 .section-mini-title {
     color: var(--primary-color);
-    font-size: 1rem;
+    font-size: 1rem; /* 16px */
     margin-bottom: 0.5rem;
     display: block;
     font-weight: 500;
@@ -135,14 +142,14 @@ ul, ol {
 
 .section-title {
     color: var(--white);
-    font-size: 2rem;
+    font-size: 2rem; /* 32px */
     margin-bottom: 1.5rem;
 }
 
 .section-description {
     max-width: 800px;
     margin: 0 auto;
-    font-size: 1.1rem;
+    font-size: 1.1rem; /* 17.6px */
     color: var(--text-color);
 }
 
@@ -159,10 +166,11 @@ ul, ol {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: rgba(10, 25, 47, 0.95);
+    background-color: rgba(10, 25, 47, 0.95); /* Dark blue with opacity */
     padding: 0.8rem 0;
     z-index: 1000;
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); /* Safari support */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     transition: padding 0.3s ease, background-color 0.3s ease; /* Optimized transition */
     will-change: padding, background-color; /* Added for performance */
@@ -170,7 +178,7 @@ ul, ol {
 
 .navbar.scrolled {
     padding: 0.5rem 0;
-    background-color: rgba(10, 25, 47, 0.98);
+    background-color: rgba(10, 25, 47, 0.98); /* Slightly more opaque on scroll */
 }
 
 .navbar-container {
@@ -192,6 +200,11 @@ ul, ol {
     width: auto;
     transition: var(--transition);
 }
+.logo:focus-visible img { /* Enhanced focus for logo */
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
 
 .nav-links {
     display: flex;
@@ -202,34 +215,40 @@ ul, ol {
 }
 
 .nav-links li {
-    margin-right: 1.5rem;
+    margin-right: 1.5rem; /* RTL margin */
+}
+.nav-links li:last-child {
+    margin-right: 0;
 }
 
 .nav-links a {
     color: var(--text-color);
-    font-size: 0.95rem;
+    font-size: 0.95rem; /* 15.2px */
     display: block;
     padding: 0.5rem 0;
     transition: var(--transition);
     position: relative;
 }
 
-.nav-links a:hover {
+.nav-links a:hover,
+.nav-links a:focus { /* Added focus state */
     color: var(--primary-color);
+    outline: none; /* Handled by ::after */
 }
 
 .nav-links a::after {
     content: '';
     position: absolute;
     bottom: 0;
-    right: 0;
+    right: 0; /* RTL */
     width: 0;
     height: 2px;
     background-color: var(--primary-color);
     transition: var(--transition);
 }
 
-.nav-links a:hover::after {
+.nav-links a:hover::after,
+.nav-links a:focus::after { /* Added focus state */
     width: 100%;
 }
 
@@ -238,9 +257,9 @@ ul, ol {
     background: none;
     border: none;
     color: var(--primary-color);
-    font-size: 1.5rem;
+    font-size: 1.5rem; /* 24px */
     cursor: pointer;
-    transition: color 0.2s ease;
+    transition: color 0.2s ease, transform 0.2s ease;
     padding: 0.5rem;
     z-index: 1001;
     will-change: transform, color;
@@ -248,9 +267,13 @@ ul, ol {
     -webkit-tap-highlight-color: transparent; /* Remove tap highlight on mobile */
 }
 
-.hamburger:hover {
+.hamburger:hover,
+.hamburger:focus { /* Added focus state */
     color: #42f5c8;
     transform: scale(1.1);
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+    border-radius: 4px;
 }
 
 .hamburger i {
@@ -259,13 +282,13 @@ ul, ol {
 }
 
 .hamburger.active i {
-    transform: rotate(90deg);
+    transform: rotate(90deg); /* Example for X icon state if using font icon classes */
 }
 
 .overlay {
     position: fixed;
     top: 0;
-    left: 0;
+    left: 0; /* Correct for LTR/RTL based on body direction */
     right: 0;
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.7);
@@ -288,7 +311,7 @@ ul, ol {
     display: flex;
     align-items: center;
     position: relative;
-    padding-top: 80px;
+    padding-top: 80px; /* Space for fixed navbar */
     overflow: hidden;
 }
 
@@ -318,7 +341,7 @@ ul, ol {
 
 .hero-mini-title {
     color: var(--primary-color);
-    font-size: 1.1rem;
+    font-size: 1.1rem; /* 17.6px */
     margin-bottom: 1rem;
     display: block;
     font-weight: 500;
@@ -326,14 +349,14 @@ ul, ol {
 
 .hero h1 {
     color: var(--white);
-    font-size: 2.8rem;
+    font-size: 2.8rem; /* 44.8px */
     margin-bottom: 1.5rem;
     line-height: 1.2;
 }
 
 .hero-description {
     margin-bottom: 2rem;
-    font-size: 1.1rem;
+    font-size: 1.1rem; /* 17.6px */
     line-height: 1.8;
 }
 
@@ -366,14 +389,14 @@ ul, ol {
 
 .feature-icon {
     color: var(--primary-color);
-    font-size: 2.5rem;
+    font-size: 2.5rem; /* 40px */
     margin-bottom: 1.5rem;
     text-align: center;
 }
 
 .tourism-feature-card h3 {
     color: var(--white);
-    font-size: 1.3rem;
+    font-size: 1.3rem; /* 20.8px */
     margin-bottom: 1rem;
     text-align: center;
 }
@@ -393,13 +416,15 @@ ul, ol {
 .feature-list li {
     margin-bottom: 0.8rem;
     display: flex;
-    align-items: flex-start;
+    align-items: flex-start; /* Align icon and text properly */
 }
 
 .feature-list li i {
     color: var(--primary-color);
-    margin-left: 0.8rem;
-    font-size: 1rem;
+    margin-left: 0.8rem; /* RTL margin */
+    font-size: 1rem; /* 16px */
+    flex-shrink: 0; /* Prevent icon from shrinking */
+    padding-top: 0.2em; /* Align with text better */
 }
 
 .feature-link {
@@ -410,16 +435,24 @@ ul, ol {
 }
 
 .feature-link i {
-    margin-right: 0.5rem;
+    margin-right: 0.5rem; /* RTL margin */
     transition: var(--transition);
 }
 
-.feature-link:hover {
+.feature-link:hover,
+.feature-link:focus { /* Added focus */
     color: #42f5c8;
+    outline: none;
+}
+.feature-link:focus-visible { /* Visible focus for keyboard */
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+    border-radius: 4px;
 }
 
+
 .feature-link:hover i {
-    transform: translateX(-5px);
+    transform: translateX(-5px); /* RTL movement */
 }
 
 .tourism-cta {
@@ -452,7 +485,7 @@ ul, ol {
     border-radius: var(--border-radius);
     transition: transform 0.3s ease, box-shadow 0.3s ease; /* Optimized transition */
     box-shadow: var(--shadow);
-    height: 100%;
+    height: 100%; /* For equal height cards in a row */
     display: flex;
     flex-direction: column;
     will-change: var(--will-change-transform); /* Added for performance */
@@ -465,14 +498,14 @@ ul, ol {
 
 .service-icon {
     color: var(--primary-color);
-    font-size: 2.5rem;
+    font-size: 2.5rem; /* 40px */
     margin-bottom: 1.5rem;
     text-align: center;
 }
 
 .service-title {
     color: var(--white);
-    font-size: 1.3rem;
+    font-size: 1.3rem; /* 20.8px */
     margin-bottom: 1rem;
     text-align: center;
 }
@@ -480,12 +513,12 @@ ul, ol {
 .service-description {
     color: var(--text-color);
     margin-bottom: 1.5rem;
-    flex-grow: 1;
+    flex-grow: 1; /* Makes description take available space */
 }
 
 .service-card h4 {
     color: var(--primary-color);
-    font-size: 1.1rem;
+    font-size: 1.1rem; /* 17.6px */
     margin: 1.5rem 0 0.8rem;
 }
 
@@ -498,14 +531,14 @@ ul, ol {
 .service-card ul li {
     margin-bottom: 0.8rem;
     position: relative;
-    padding-right: 1.5rem;
+    padding-right: 1.5rem; /* RTL padding for pseudo-element */
 }
 
 .service-card ul li::before {
-    content: '✓';
+    content: '✓'; /* Checkmark */
     color: var(--primary-color);
     position: absolute;
-    right: 0;
+    right: 0; /* RTL position */
 }
 
 .service-link {
@@ -513,20 +546,28 @@ ul, ol {
     color: var(--primary-color);
     font-weight: 500;
     transition: var(--transition);
-    margin-top: auto;
+    margin-top: auto; /* Pushes link to the bottom if card is flex column */
 }
 
 .service-link i {
-    margin-right: 0.5rem;
+    margin-right: 0.5rem; /* RTL margin */
     transition: var(--transition);
 }
 
-.service-link:hover {
+.service-link:hover,
+.service-link:focus { /* Added focus */
     color: #42f5c8;
+    outline: none;
+}
+
+.service-link:focus-visible { /* Visible focus for keyboard */
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+    border-radius: 4px;
 }
 
 .service-link:hover i {
-    transform: translateX(-5px);
+    transform: translateX(-5px); /* RTL movement */
 }
 
 /* About Section */
@@ -540,6 +581,7 @@ ul, ol {
     grid-template-columns: 1fr 1fr;
     gap: 3rem;
     margin-top: 2rem;
+    align-items: start; /* Align items to the start of grid cells */
 }
 
 .about-text {
@@ -547,7 +589,7 @@ ul, ol {
 }
 
 .main-description {
-    font-size: 1.1rem;
+    font-size: 1.1rem; /* 17.6px */
     line-height: 1.8;
     margin-bottom: 2rem;
 }
@@ -568,7 +610,7 @@ ul, ol {
 .vision h3, .mission h3 {
     color: var(--primary-color);
     margin-bottom: 1rem;
-    font-size: 1.2rem;
+    font-size: 1.2rem; /* 19.2px */
 }
 
 .about-features {
@@ -600,12 +642,12 @@ ul, ol {
     align-items: center;
     justify-content: center;
     color: var(--secondary-color);
-    font-size: 2rem;
+    font-size: 2rem; /* 32px */
 }
 
 .feature-item h3 {
     color: var(--white);
-    font-size: 1.2rem;
+    font-size: 1.2rem; /* 19.2px */
     margin-bottom: 0.8rem;
 }
 
@@ -622,6 +664,7 @@ ul, ol {
     display: flex;
     justify-content: center;
     gap: 2rem;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
 }
 
 .team-member {
@@ -633,7 +676,10 @@ ul, ol {
     height: 120px;
     border-radius: 50%;
     margin: 0 auto 1rem;
-    background-color: var(--accent-color);
+    background-color: var(--accent-color); /* Placeholder background */
+    /* background-image: url('path/to/image.jpg'); Example for actual image */
+    background-size: cover;
+    background-position: center;
 }
 
 .cta-container {
@@ -660,10 +706,12 @@ ul, ol {
 .case-card {
     background-color: var(--card-bg);
     border-radius: var(--border-radius);
-    overflow: hidden;
+    overflow: hidden; /* To contain image zoom */
     transition: transform 0.3s ease, box-shadow 0.3s ease; /* Optimized transition */
     box-shadow: var(--shadow);
     will-change: var(--will-change-transform); /* Added for performance */
+    display: flex;
+    flex-direction: column;
 }
 
 .case-card:hover {
@@ -673,7 +721,7 @@ ul, ol {
 
 .case-image {
     height: 200px;
-    overflow: hidden;
+    overflow: hidden; /* Crucial for image zoom effect */
 }
 
 .case-image img {
@@ -690,6 +738,9 @@ ul, ol {
 
 .case-content {
     padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Allow content to fill card height */
 }
 
 .case-tag {
@@ -697,43 +748,48 @@ ul, ol {
     background-color: rgba(100, 255, 218, 0.1);
     color: var(--primary-color);
     padding: 0.3rem 0.8rem;
-    border-radius: 20px;
-    font-size: 0.8rem;
+    border-radius: 20px; /* Pill shape */
+    font-size: 0.8rem; /* 12.8px */
     margin-bottom: 1rem;
+    align-self: flex-start; /* Align to start for RTL */
 }
 
 .case-title {
     color: var(--white);
-    font-size: 1.3rem;
+    font-size: 1.3rem; /* 20.8px */
     margin-bottom: 1rem;
 }
 
 .case-description {
     color: var(--text-color);
     margin-bottom: 1.5rem;
+    flex-grow: 1;
 }
 
 .case-stats {
     display: flex;
     justify-content: space-between;
     margin-bottom: 1.5rem;
+    flex-wrap: wrap; /* Allow stats to wrap if needed */
 }
 
 .case-stat {
     text-align: center;
+    flex-basis: 45%; /* Adjust for spacing, allows two per row */
+    margin-bottom: 1rem;
 }
 
 .stat-value {
     display: block;
     color: var(--primary-color);
-    font-size: 1.5rem;
+    font-size: 1.5rem; /* 24px */
     font-weight: 700;
     margin-bottom: 0.3rem;
 }
 
 .stat-label {
     color: var(--text-color);
-    font-size: 0.9rem;
+    font-size: 0.9rem; /* 14.4px */
 }
 
 /* AI Agent Section */
@@ -793,14 +849,14 @@ ul, ol {
 
 .newsletter-title {
     color: var(--secondary-color);
-    font-size: 2rem;
+    font-size: 2rem; /* 32px */
     margin-bottom: 1rem;
 }
 
 .newsletter-description {
     color: var(--secondary-color);
     margin-bottom: 2rem;
-    font-size: 1.1rem;
+    font-size: 1.1rem; /* 17.6px */
 }
 
 .newsletter-form-large {
@@ -813,9 +869,15 @@ ul, ol {
 
 .newsletter-input-large {
     padding: 1rem;
-    border: none;
+    border: 1px solid transparent; /* Border for focus state */
     border-radius: var(--border-radius);
-    font-size: 1rem;
+    font-size: 1rem; /* 16px */
+    direction: rtl; /* Ensure placeholder and text are RTL */
+}
+.newsletter-input-large:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 2px var(--secondary-color);
 }
 
 .newsletter-button-large {
@@ -824,13 +886,17 @@ ul, ol {
     border: none;
     padding: 1rem;
     border-radius: var(--border-radius);
-    font-size: 1rem;
+    font-size: 1rem; /* 16px */
     cursor: pointer;
     transition: var(--transition);
+    font-weight: 500;
 }
 
-.newsletter-button-large:hover {
-    background-color: #0d2240;
+.newsletter-button-large:hover,
+.newsletter-button-large:focus { /* Added focus */
+    background-color: #0D2240; /* Darker shade of secondary */
+    outline: 2px solid var(--secondary-color);
+    outline-offset: 2px;
 }
 
 /* Transformation Section */
@@ -857,6 +923,7 @@ ul, ol {
     grid-template-columns: 1fr 1fr;
     gap: 3rem;
     margin-top: 3rem;
+    align-items: start;
 }
 
 .consultation-content {
@@ -865,13 +932,13 @@ ul, ol {
 
 .consultation-title {
     color: var(--white);
-    font-size: 1.8rem;
+    font-size: 1.8rem; /* 28.8px */
     margin-bottom: 1.5rem;
 }
 
 .consultation-description {
     margin-bottom: 2rem;
-    font-size: 1.1rem;
+    font-size: 1.1rem; /* 17.6px */
     line-height: 1.8;
 }
 
@@ -887,8 +954,10 @@ ul, ol {
 
 .feature-check {
     color: var(--primary-color);
-    margin-left: 1rem;
-    font-size: 1.2rem;
+    margin-left: 1rem; /* RTL margin */
+    font-size: 1.2rem; /* 19.2px */
+    flex-shrink: 0;
+    padding-top: 0.1em; /* Alignment */
 }
 
 .consultation-form {
@@ -916,14 +985,16 @@ ul, ol {
     border-radius: var(--border-radius);
     background-color: rgba(255, 255, 255, 0.05);
     color: var(--white);
-    font-size: 1rem;
+    font-size: 1rem; /* 16px */
     transition: var(--transition);
+    direction: rtl; /* Ensure placeholder and text are RTL */
 }
 
 .form-control:focus {
     outline: none;
     border-color: var(--primary-color);
     background-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 0 2px var(--primary-color);
 }
 
 textarea.form-control {
@@ -937,15 +1008,18 @@ textarea.form-control {
     border: none;
     padding: 1rem;
     border-radius: var(--border-radius);
-    font-size: 1rem;
+    font-size: 1rem; /* 16px */
     cursor: pointer;
     transition: var(--transition);
     width: 100%;
     font-weight: 500;
 }
 
-.submit-button:hover {
+.submit-button:hover,
+.submit-button:focus { /* Added focus */
     background-color: #42f5c8;
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
 }
 
 /* FAQ Section */
@@ -962,49 +1036,63 @@ textarea.form-control {
 .faq-item {
     margin-bottom: 1rem;
     border-radius: var(--border-radius);
-    overflow: hidden;
+    overflow: hidden; /* For smooth border appearance */
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
 }
+.faq-item.active { /* Style when active */
+    border-color: var(--primary-color);
+}
+
 
 .faq-question {
     width: 100%;
-    text-align: right;
+    text-align: right; /* RTL */
     padding: 1.2rem;
     background-color: var(--card-bg);
     color: var(--white);
-    border: none;
+    border: none; /* Border is on faq-item now */
     cursor: pointer;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 1.1rem;
+    font-size: 1.1rem; /* 17.6px */
     font-weight: 500;
-    transition: var(--transition);
+    transition: background-color 0.3s ease;
 }
 
 .faq-question:hover {
-    background-color: #253b52;
+    background-color: #253b52; /* Slightly lighter card-bg */
+}
+.faq-question:focus {
+    outline: none; /* Handled by focus-visible */
+}
+.faq-question:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: -2px; /* Inside button */
+    z-index: 1; /* Ensure outline is visible */
 }
 
 .faq-question i {
-    transition: transform 0.3s ease; /* Optimized transition */
-    will-change: var(--will-change-transform); /* Added for performance */
+    transition: transform 0.3s ease-in-out; /* Smoother transition */
+    will-change: var(--will-change-transform);
 }
 
 .faq-question[aria-expanded="true"] i {
     transform: rotate(180deg);
 }
+/* Redundant .faq-item.active .faq-question i was removed as it's covered by [aria-expanded="true"] */
 
 .faq-answer {
-    background-color: rgba(29, 43, 58, 0.5);
+    background-color: rgba(29, 43, 58, 0.7); /* Slightly more opaque */
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
+    transition: max-height 0.5s cubic-bezier(0, 1, 0, 1); /* Smooth accordion */
     will-change: max-height;
 }
 
-.faq-item.active .faq-answer {
+.faq-item.active .faq-answer { /* JS adds .active to .faq-item */
     max-height: 2000px; /* Large enough for any answer */
-    transition: max-height 1s ease-in-out;
+    transition: max-height 0.7s ease-in-out; /* Slightly slower open */
 }
 
 .faq-answer-content {
@@ -1012,7 +1100,7 @@ textarea.form-control {
     color: var(--text-color);
     opacity: 0;
     transform: translateY(-10px);
-    transition: all 0.3s ease-out;
+    transition: opacity 0.4s ease-out 0.2s, transform 0.4s ease-out 0.2s; /* Delayed transition for content */
     line-height: 1.6;
 }
 
@@ -1021,36 +1109,6 @@ textarea.form-control {
     transform: translateY(0);
 }
 
-/* Added animation for question icon */
-.faq-question i {
-    transition: transform 0.3s ease;
-}
-
-.faq-item.active .faq-question i {
-    transform: rotate(180deg);
-}
-
-/* Better focus and hover states */
-.faq-question:hover {
-    background-color: var(--card-bg);
-}
-
-.faq-question:focus {
-    outline: none;
-    box-shadow: 0 0 0 2px var(--primary-color);
-}
-
-.faq-question {
-    position: relative;
-}
-
-.faq-question i {
-    transition: transform 0.3s ease-in-out;
-}
-
-.faq-question[aria-expanded="true"] i {
-    transform: rotate(180deg);
-}
 
 /* Technical Details Section */
 .technical-details {
@@ -1075,7 +1133,7 @@ textarea.form-control {
 .tech-card h3 {
     color: var(--primary-color);
     margin-bottom: 1.5rem;
-    font-size: 1.3rem;
+    font-size: 1.3rem; /* 20.8px */
 }
 
 .tech-card ul {
@@ -1086,20 +1144,20 @@ textarea.form-control {
 .tech-card ul li {
     margin-bottom: 0.8rem;
     position: relative;
-    padding-right: 1.5rem;
+    padding-right: 1.5rem; /* RTL padding for pseudo-element */
     color: var(--text-color);
 }
 
 .tech-card ul li::before {
-    content: '•';
+    content: '•'; /* Bullet point */
     color: var(--primary-color);
     position: absolute;
-    right: 0;
-    font-size: 1.2rem;
+    right: 0; /* RTL position */
+    font-size: 1.2rem; /* 19.2px */
 }
 
 /* Case Studies Section (Detailed) */
-.case-study-card {
+.case-study-card { /* This class seems to be for a different style of case study card than .case-card */
     background-color: var(--card-bg);
     padding: 2rem;
     border-radius: var(--border-radius);
@@ -1109,35 +1167,36 @@ textarea.form-control {
 
 .case-study-card h3 {
     color: var(--white);
-    font-size: 1.5rem;
+    font-size: 1.5rem; /* 24px */
     margin-bottom: 1.5rem;
 }
 
 .metrics {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around; /* Better distribution */
     margin-bottom: 2rem;
     flex-wrap: wrap;
+    gap: 1rem; /* Gap between metrics */
 }
 
 .metric {
     text-align: center;
     flex: 1;
     min-width: 120px;
-    margin-bottom: 1rem;
+    margin-bottom: 1rem; /* For wrapping */
 }
 
-.value {
+.value { /* This class is for detailed case study metrics */
     display: block;
     color: var(--primary-color);
-    font-size: 1.8rem;
+    font-size: 1.8rem; /* 28.8px */
     font-weight: 700;
     margin-bottom: 0.5rem;
 }
 
-.label {
+.label { /* This class is for detailed case study metrics */
     color: var(--text-color);
-    font-size: 0.9rem;
+    font-size: 0.9rem; /* 14.4px */
 }
 
 .implementation-details {
@@ -1147,8 +1206,17 @@ textarea.form-control {
 .implementation-details h4 {
     color: var(--primary-color);
     margin-bottom: 1rem;
-    font-size: 1.1rem;
+    font-size: 1.1rem; /* 17.6px */
 }
+.implementation-details ul {
+    list-style: disc;
+    padding-right: 1.5rem; /* RTL padding */
+    color: var(--text-color);
+}
+.implementation-details ul li {
+    margin-bottom: 0.5rem;
+}
+
 
 /* Technologies Section */
 .technologies {
@@ -1173,7 +1241,7 @@ textarea.form-control {
 .tech-detail-card h3 {
     color: var(--primary-color);
     margin-bottom: 1rem;
-    font-size: 1.3rem;
+    font-size: 1.3rem; /* 20.8px */
 }
 
 .tech-detail-card p {
@@ -1189,16 +1257,16 @@ textarea.form-control {
 .tech-detail-card ul li {
     margin-bottom: 0.8rem;
     position: relative;
-    padding-right: 1.5rem;
-    color: var (--text-color);
+    padding-right: 1.5rem; /* RTL padding for pseudo-element */
+    color: var(--text-color); /* Corrected: var(--text-color) instead of var (--text-color) */
 }
 
 .tech-detail-card ul li::before {
-    content: '•';
+    content: '•'; /* Bullet point */
     color: var(--primary-color);
     position: absolute;
-    right: 0;
-    font-size: 1.2rem;
+    right: 0; /* RTL position */
+    font-size: 1.2rem; /* 19.2px */
 }
 
 /* Footer Styles */
@@ -1218,12 +1286,17 @@ textarea.form-control {
 }
 
 .footer-logo-container {
-    margin-bottom: 2rem;
+    margin-bottom: 2rem; /* Or remove if gap handles it */
 }
 
 .footer-logo {
     display: inline-block;
     margin-bottom: 1.5rem;
+}
+.footer-logo:focus-visible img { /* Enhanced focus for logo */
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+    border-radius: 4px;
 }
 
 .footer-logo img {
@@ -1239,11 +1312,12 @@ textarea.form-control {
 .social-links {
     display: flex;
     gap: 1rem;
+    flex-wrap: wrap; /* Allow wrapping */
 }
 
 .social-link {
     color: var(--text-color);
-    font-size: 1.2rem;
+    font-size: 1.2rem; /* 19.2px */
     transition: var(--transition);
     width: 40px;
     height: 40px;
@@ -1252,17 +1326,25 @@ textarea.form-control {
     justify-content: center;
     background-color: rgba(255, 255, 255, 0.05);
     border-radius: 50%;
+    border: 1px solid transparent; /* For focus state consistency */
 }
 
-.social-link:hover {
+.social-link:hover,
+.social-link:focus { /* Added focus state */
     color: var(--primary-color);
     background-color: rgba(100, 255, 218, 0.1);
+    outline: none;
 }
+.social-link:focus-visible {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px var(--primary-color);
+}
+
 
 .footer-links-title {
     color: var(--white);
     margin-bottom: 1.5rem;
-    font-size: 1.2rem;
+    font-size: 1.2rem; /* 19.2px */
 }
 
 .footer-links {
@@ -1281,13 +1363,19 @@ textarea.form-control {
     align-items: center;
 }
 
-.footer-link a:hover {
+.footer-link a:hover,
+.footer-link a:focus { /* Added focus state */
     color: var(--primary-color);
+    outline: none;
+}
+.footer-link a:focus-visible {
+    outline: 1px dashed var(--primary-color); /* Subtle focus for links */
+    outline-offset: 2px;
 }
 
 .footer-link a i {
-    margin-left: 0.5rem;
-    font-size: 0.8rem;
+    margin-left: 0.5rem; /* RTL margin */
+    font-size: 0.8rem; /* 12.8px */
 }
 
 .contact-info {
@@ -1303,37 +1391,56 @@ textarea.form-control {
 
 .contact-icon {
     color: var(--primary-color);
-    margin-left: 1rem;
-    font-size: 1.2rem;
-    min-width: 20px;
+    margin-left: 1rem; /* RTL margin */
+    font-size: 1.2rem; /* 19.2px */
+    min-width: 20px; /* Ensure consistent spacing */
+    padding-top: 0.1em; /* Alignment */
+}
+.contact-link-footer { /* Class for tel: and mailto: links in footer */
+    color: var(--text-color);
+}
+.contact-link-footer:hover,
+.contact-link-footer:focus {
+    color: var(--primary-color);
+    text-decoration: underline;
 }
 
-.newsletter-form {
+
+.newsletter-form { /* Footer newsletter form */
     display: flex;
     margin-top: 1rem;
 }
 
-.newsletter-input {
+.newsletter-input { /* Footer newsletter input */
     flex-grow: 1;
     padding: 0.8rem;
-    border: none;
-    border-radius: var(--border-radius) 0 0 var(--border-radius);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--border-radius) 0 0 var(--border-radius); /* RTL: right side rounded */
     background-color: rgba(255, 255, 255, 0.05);
     color: var(--white);
+    direction: rtl;
+}
+.newsletter-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px var(--primary-color) inset;
 }
 
-.newsletter-button {
+.newsletter-button { /* Footer newsletter button */
     background-color: var(--primary-color);
     color: var(--secondary-color);
     border: none;
     padding: 0.8rem 1rem;
-    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+    border-radius: 0 var(--border-radius) var(--border-radius) 0; /* RTL: left side rounded */
     cursor: pointer;
     transition: var(--transition);
 }
 
-.newsletter-button:hover {
+.newsletter-button:hover,
+.newsletter-button:focus { /* Added focus */
     background-color: #42f5c8;
+    outline: 2px solid var(--primary-color);
+    outline-offset: -2px; /* Inside */
 }
 
 .footer-bottom {
@@ -1348,7 +1455,7 @@ textarea.form-control {
 
 .copyright {
     color: var(--text-color);
-    font-size: 0.9rem;
+    font-size: 0.9rem; /* 14.4px */
     margin-bottom: 1rem;
 }
 
@@ -1361,19 +1468,22 @@ textarea.form-control {
 
 .footer-bottom-link {
     color: var(--text-color);
-    font-size: 0.9rem;
+    font-size: 0.9rem; /* 14.4px */
     transition: var(--transition);
 }
 
-.footer-bottom-link:hover {
+.footer-bottom-link:hover,
+.footer-bottom-link:focus { /* Added focus */
     color: var(--primary-color);
+    text-decoration: underline;
+    outline: none;
 }
 
 /* Back to Top Button */
 .back-to-top {
     position: fixed;
     bottom: 20px;
-    left: 20px;
+    left: 20px; /* For RTL, this should be right if adhering strictly, but left is common for BTT */
     width: 40px;
     height: 40px;
     background-color: var(--primary-color);
@@ -1382,14 +1492,15 @@ textarea.form-control {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.2rem;
+    font-size: 1.2rem; /* 19.2px */
     cursor: pointer;
     z-index: 99;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease, background-color 0.3s ease; /* Optimized transition */
+    transition: opacity 0.3s ease, visibility 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    will-change: var(--will-change-opacity); /* Added for performance */
+    will-change: var(--will-change-opacity), transform;
+    border: 2px solid transparent; /* For focus state */
 }
 
 .back-to-top.visible {
@@ -1397,8 +1508,29 @@ textarea.form-control {
     visibility: visible;
 }
 
-.back-to-top:hover {
+.back-to-top:hover,
+.back-to-top:focus { /* Added focus */
     background-color: #42f5c8;
+    transform: scale(1.1);
+    outline: none;
+}
+.back-to-top:focus-visible {
+    border-color: var(--secondary-color);
+}
+
+
+/* Animation Classes for Intersection Observer */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px); /* Start slightly lower */
+    transition: opacity 0.6s cubic-bezier(0.645, 0.045, 0.355, 1), 
+                transform 0.6s cubic-bezier(0.645, 0.045, 0.355, 1);
+    will-change: opacity, transform;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* Responsive Styles */
@@ -1411,12 +1543,12 @@ textarea.form-control {
     }
     
     .hero h1 {
-        font-size: 2.5rem;
+        font-size: 2.5rem; /* 40px */
     }
 }
 
 @media (max-width: 992px) {
-    html {
+    body { /* Adjust base font size for rem calculations */
         font-size: 15px;
     }
     
@@ -1426,7 +1558,7 @@ textarea.form-control {
     }
     
     .vision-mission {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /* Stack on smaller screens */
     }
     
     .about-features {
@@ -1434,50 +1566,52 @@ textarea.form-control {
     }
     
     .team-images {
-        flex-wrap: wrap;
+        flex-wrap: wrap; /* Ensure wrapping if space is tight */
+    }
+    .case-stats {
+        justify-content: space-around;
     }
 }
 
 @media (max-width: 768px) {
-    html {
+    body {
         font-size: 14px;
     }
     
     .navbar-container {
-        padding: 0 1rem;
+        padding: 0 1rem; /* Reduce padding */
     }
     
     .hamburger {
-        display: block;
+        display: block; /* Show hamburger */
     }
     
     .nav-links {
         position: fixed;
         top: 0;
-        right: 0;
-        width: 80%;
-        max-width: 300px;
+        right: -100%; /* Start off-screen for RTL, use left for LTR */
+        width: min(80%, 300px); /* Max width for menu */
         height: 100vh;
         background-color: var(--accent-color);
         flex-direction: column;
-        align-items: flex-start;
-        padding: 5rem 2rem;
+        align-items: flex-start; /* Align links to start for RTL */
+        padding: 5rem 2rem 2rem; /* More top padding, less bottom */
         z-index: 1000;
-        transform: translateX(100%);
-        transition: transform 0.3s ease-in-out;
-        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
-        overflow-y: auto;
+        transform: translateX(0); /* Reset transform, control with right/left */
+        transition: right 0.3s ease-in-out; /* Transition right property for RTL */
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1); /* Shadow on the left for RTL */
+        overflow-y: auto; /* Allow scrolling if menu is long */
     }
     
     .nav-links.active {
-        transform: translateX(0);
+        right: 0; /* Slide in from right for RTL */
     }
     
     .nav-links li {
-        margin: 0 0 1.5rem 0;
+        margin: 0 0 1.5rem 0; /* Reset RTL margin, use bottom margin */
         width: 100%;
         opacity: 0;
-        transform: translateX(20px);
+        transform: translateX(20px); /* Start slightly to the left for RTL entrance */
         transition: opacity 0.3s ease, transform 0.3s ease;
     }
     
@@ -1486,64 +1620,87 @@ textarea.form-control {
         transform: translateX(0);
     }
     
-    .nav-links li[data-index] {
-        transition-delay: calc(0.05s * var(--item-index, 0));
-    }
+    .nav-links li:nth-child(1) { transition-delay: 0.10s; }
+    .nav-links li:nth-child(2) { transition-delay: 0.15s; }
+    .nav-links li:nth-child(3) { transition-delay: 0.20s; }
+    .nav-links li:nth-child(4) { transition-delay: 0.25s; }
+    .nav-links li:nth-child(5) { transition-delay: 0.30s; }
+    .nav-links li:nth-child(6) { transition-delay: 0.35s; }
+    .nav-links li:nth-child(7) { transition-delay: 0.40s; }
+    .nav-links li:nth-child(8) { transition-delay: 0.45s; }
+    /* Removed data-index based delay as it's JS dependent and direct CSS is simpler if item count is fixed */
     
     .nav-links a {
-        font-size: 1.1rem;
+        font-size: 1.1rem; /* 15.4px based on 14px body */
         width: 100%;
         padding: 0.5rem 0;
         display: block;
     }
     
     .hero h1 {
-        font-size: 2.2rem;
+        font-size: 2.2rem; /* 30.8px */
     }
     
     .section-title {
-        font-size: 1.8rem;
+        font-size: 1.8rem; /* 25.2px */
     }
     
     .services-grid,
     .tourism-features-grid,
-    .case-studies-grid {
-        grid-template-columns: 1fr;
+    .case-studies-grid,
+    .tech-grid,
+    .tech-details-grid {
+        grid-template-columns: 1fr; /* Single column for cards */
     }
     
     .case-stats {
-        flex-wrap: wrap;
+        flex-direction: column; /* Stack stats vertically */
+        align-items: center;
     }
     
     .case-stat {
-        width: 50%;
+        width: auto; /* Allow full width */
+        min-width: 150px; /* Ensure readability */
         margin-bottom: 1rem;
     }
     
-    .metrics {
+    .metrics { /* For detailed case studies */
         flex-direction: column;
+        align-items: center;
     }
     
     .metric {
         margin-bottom: 1.5rem;
     }
+    .consultation-form {
+        padding: 1.5rem; /* Reduce padding on mobile */
+    }
 }
 
 @media (max-width: 576px) {
-    html {
+    body {
         font-size: 13px;
     }
     
     .hero h1 {
-        font-size: 1.8rem;
+        font-size: 1.8rem; /* 23.4px */
+    }
+    .hero-description {
+        font-size: 1rem; /* 13px */
     }
     
     .section-title {
-        font-size: 1.6rem;
+        font-size: 1.6rem; /* 20.8px */
+    }
+    .section-description {
+        font-size: 1rem; /* 13px */
+    }
+    .section-container {
+        padding: 3rem 1rem; /* Reduce section padding */
     }
     
     .about-features {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /* Single column */
     }
     
     .team-member {
@@ -1552,24 +1709,42 @@ textarea.form-control {
     }
     
     .footer-container {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /* Single column footer */
+        text-align: center; /* Center footer content */
     }
-    
+    .footer-logo-container,
     .footer-links-container {
-        margin-top: 2rem;
+        align-items: center; /* Center content within these containers */
     }
-    
-    .newsletter-form {
+    .social-links {
+        justify-content: center;
+    }
+    .footer-links, .contact-info {
+        padding-right: 0; /* Remove padding for centered text */
+    }
+    .contact-item {
+        justify-content: center;
+    }
+    .contact-icon {
+        margin-right: 0;
+        margin-left: 0.5rem; /* Adjust for centered text */
+    }
+
+    .newsletter-form-large, /* For main newsletter */
+    .newsletter-form { /* For footer newsletter */
         flex-direction: column;
     }
     
+    .newsletter-input-large,
     .newsletter-input {
-        border-radius: var(--border-radius);
+        border-radius: var(--border-radius); /* Full radius */
         margin-bottom: 0.5rem;
+        text-align: right; /* Ensure placeholder is RTL */
     }
     
+    .newsletter-button-large,
     .newsletter-button {
-        border-radius: var(--border-radius);
+        border-radius: var(--border-radius); /* Full radius */
         width: 100%;
     }
     
@@ -1577,38 +1752,91 @@ textarea.form-control {
         flex-direction: column;
         gap: 0.8rem;
     }
+    .back-to-top {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+        bottom: 15px;
+        left: 15px;
+    }
 }
 
 /* Print Styles */
 @media print {
     .navbar,
     .footer,
-    .back-to-top {
-        display: none;
+    .back-to-top,
+    .hero-canvas,
+    .hamburger,
+    .overlay,
+    .newsletter,
+    .cta-button { /* Hide interactive elements */
+        display: none !important;
     }
     
     body {
-        background-color: white;
-        color: black;
+        background-color: var(--white) !important;
+        color: #000000 !important;
+        font-size: 12pt; /* Standard print size */
+        line-height: 1.4;
+    }
+    :root { /* Override colors for print */
+        --primary-color: #000000;
+        --secondary-color: #FFFFFF;
+        --text-color: #000000;
+        --background-color: #FFFFFF;
+        --accent-color: #F0F0F0;
+        --heading-color: #000000;
+        --card-bg: #FFFFFF;
     }
     
+    .container,
     .section-container {
         padding: 1rem 0;
+        width: 100%;
+        max-width: none;
     }
     
-    .section-title,
     h1, h2, h3, h4, h5, h6 {
-        color: black;
+        color: #000000 !important;
+    }
+    a {
+        color: #000000 !important;
+        text-decoration: underline !important;
+    }
+    a[href^="http"]::after {
+        content: " (" attr(href) ")"; /* Show full URLs for external links */
+        font-size: 0.8em;
+        color: #333333;
+    }
+    a[href^="#"] { /* Hide internal links unless they are significant */
+        text-decoration: none !important;
     }
     
     .service-card,
     .tourism-feature-card,
     .case-card,
-    .tech-card {
+    .tech-card,
+    .feature-item,
+    .consultation-form,
+    .faq-item {
         break-inside: avoid;
         page-break-inside: avoid;
-        background-color: white;
-        box-shadow: none;
-        border: 1px solid #eee;
+        background-color: var(--white) !important;
+        box-shadow: none !important;
+        border: 1px solid #dddddd !important;
+        margin-bottom: 1rem;
+    }
+    .case-image, .feature-image, .member-image {
+        display: none; /* Hide decorative images unless critical */
+    }
+    .services-grid,
+    .tourism-features-grid,
+    .case-studies-grid,
+    .about-content,
+    .consultation-container,
+    .tech-grid,
+    .tech-details-grid {
+        grid-template-columns: 1fr !important; /* Force single column for print */
     }
 }
