@@ -57,7 +57,7 @@ img {
     /* الألوان الأساسية */
     --primary-color: #3b82f6;          /* أزرق فاتح وحيوي */
     --primary-dark: #1d4ed8;           /* أزرق داكن */
-    --secondary-color: #10b981;        /* أخضر زمردي */
+    --secondary-color: #0c5a40;        /* أخضر زمردي */
     --secondary-dark: #059669;         /* أخضر داكن */
     
     /* ألوان التصميم */
@@ -69,7 +69,7 @@ img {
     --border-color: #e2e8f0;           /* لون الحدود */
     
     /* ألوان الحالة */
-    --success-color: #22c55e;          /* أخضر للنجاح */
+    --success-color: #0d5b2a;          /* أخضر للنجاح */
     --warning-color: #eab308;          /* أصفر للتحذير */
     --error-color: #ef4444;            /* أحمر للخطأ */
     
@@ -276,23 +276,39 @@ img {
 
 .cta-button {
     display: inline-block;
-    background-color: var(--primary-color);
-    color: white;
+    background-color: var(--primary-dark);
+    color: #fff;
     padding: 12px 25px;
-    border-radius: var(--border-radius-full); /* Full roundness */
+    border-radius: var(--border-radius-full);
     font-weight: 600;
     text-align: center;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
     align-self: center;
-    width: 100%; /* Make button full width of its container (card padding) */
-    max-width: 200px; /* Optional: constrain max width */
-    margin-top: auto; /* Pushes button to bottom if card content is short */
+    width: 100%;
+    max-width: 200px;
+    margin-top: auto;
+    box-shadow: 0 2px 8px rgba(29, 78, 216, 0.10); /* darker shadow */
+    border: none;
+    letter-spacing: 0.5px;
+    font-size: 1.05rem;
 }
 
-.cta-button:hover {
+/* إزالة تخصيص الألوان للبوتات المتخصصة */
+.bot-card:nth-child(5) .cta-button,
+.bot-card:nth-child(6) .cta-button {
     background-color: var(--primary-dark);
-    color: white;
-    transform: translateY(-2px);
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(29, 78, 216, 0.10);
+}
+
+/* تأثير التحويم موحد */
+.cta-button:hover,
+.cta-button:focus {
+    background-color: var(--primary-color);
+    color: #fff;
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 6px 18px rgba(29, 78, 216, 0.18);
+    filter: none;
 }
 
 /* Advantages Section */

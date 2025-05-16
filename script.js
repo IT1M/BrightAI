@@ -23,19 +23,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
         overlay.addEventListener('click', closeMenu);
         navLinkItems.forEach(link => {
-            // If links are for sections on the same page, this would be useful.
-            // For now, it just closes if it's a different page navigation.
             link.addEventListener('click', () => {
                 if (navLinks.classList.contains('active')) {
                     // Check if it's an internal link (starts with #)
                     if (link.getAttribute('href').startsWith('#') || link.getAttribute('href').startsWith(window.location.pathname + '#')) {
-                         // It's an internal link, smooth scroll will handle, then close.
-                         // For now, just close immediately for simplicity as most are page links
+                        // It's an internal link, smooth scroll will handle, then close.
                         closeMenu();
                     } else {
-                        // It's a link to another page, allow default behavior, menu will close on page load.
-                        // To be safe, ensure menu closes if user navigates away
-                        // No need to explicitly close here as page will reload.
+                        // It's a link to another page, allow default behavior.
+                        // Menu will close on page load of the new page if it's part of the same site structure,
+                        // or if the user navigates away and back, the menu state won't persist.
                     }
                 }
             });
@@ -54,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 navbar.style.top = '0'; // Show navbar
             }
             lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
-        });
+        }, { passive: true }); // Added passive listener for better scroll performance
     }
 
     // Hero Canvas Animation (Simple Particles)
@@ -62,14 +59,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (heroCanvas) {
         const ctx = heroCanvas.getContext('2d');
         let particlesArray;
+        let animationFrameId;
 
         const setCanvasSize = () => {
             heroCanvas.width = heroCanvas.offsetWidth;
             heroCanvas.height = heroCanvas.offsetHeight;
         };
-        setCanvasSize(); // Initial size
-        window.addEventListener('resize', setCanvasSize); // Adjust on resize
-
+        
         // Particle class
         class Particle {
             constructor(x, y, directionX, directionY, size, color) {
@@ -104,31 +100,40 @@ document.addEventListener('DOMContentLoaded', () => {
             particlesArray = [];
             let numberOfParticles = (heroCanvas.height * heroCanvas.width) / 9000;
             if (numberOfParticles > 150) numberOfParticles = 150; // Max particles
+            if (numberOfParticles < 30) numberOfParticles = 30; // Min particles
             for (let i = 0; i < numberOfParticles; i++) {
                 let size = (Math.random() * 2) + 0.5;
                 let x = (Math.random() * ((heroCanvas.width - size * 2) - (size * 2)) + size * 2);
                 let y = (Math.random() * ((heroCanvas.height - size * 2) - (size * 2)) + size * 2);
-                let directionX = (Math.random() * .4) - .2;
-                let directionY = (Math.random() * .4) - .2;
-                let color = 'rgba(100, 255, 218, 0.3)'; // --primary-color with alpha
+                let directionX = (Math.random() * .3) - .15; // Reduced speed slightly
+                let directionY = (Math.random() * .3) - .15; // Reduced speed slightly
+                let color = 'rgba(100, 255, 218, 0.25)'; // Slightly adjusted alpha
                 particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
             }
         }
 
         // Animation loop
         function animateParticles() {
-            requestAnimationFrame(animateParticles);
+            animationFrameId = requestAnimationFrame(animateParticles);
             ctx.clearRect(0, 0, heroCanvas.width, heroCanvas.height);
             for (let i = 0; i < particlesArray.length; i++) {
                 particlesArray[i].update();
             }
         }
         
-        initParticles();
-        animateParticles();
-        window.addEventListener('resize', () => {
+        const setupCanvas = () => {
             setCanvasSize();
-            initParticles(); // Re-initialize particles for new canvas size
+            initParticles();
+            if (animationFrameId) {
+                cancelAnimationFrame(animationFrameId);
+            }
+            animateParticles();
+        };
+
+        setupCanvas(); // Initial setup
+        window.addEventListener('resize', () => { // Debounce resize for performance
+            clearTimeout(window.resizeTimeout);
+            window.resizeTimeout = setTimeout(setupCanvas, 250);
         });
     }
 
@@ -138,25 +143,29 @@ document.addEventListener('DOMContentLoaded', () => {
         question.addEventListener('click', () => {
             const answer = question.nextElementSibling;
             const isActive = question.classList.contains('active');
+            const currentlyOpen = document.querySelector('.faq-item.active .faq-question');
 
-            // Optional: Close other open FAQs
-            // faqQuestions.forEach(q => {
-            //     q.classList.remove('active');
-            //     q.setAttribute('aria-expanded', 'false');
-            //     q.nextElementSibling.style.maxHeight = null;
-            //     q.nextElementSibling.classList.remove('active');
-            // });
+            // Close other open FAQs (Optional, but good UX for long lists)
+            if (currentlyOpen && currentlyOpen !== question) {
+                currentlyOpen.classList.remove('active');
+                currentlyOpen.setAttribute('aria-expanded', 'false');
+                currentlyOpen.nextElementSibling.style.maxHeight = null;
+                currentlyOpen.nextElementSibling.classList.remove('active');
+                currentlyOpen.closest('.faq-item').classList.remove('active');
+            }
 
             if (isActive) {
                 question.classList.remove('active');
                 question.setAttribute('aria-expanded', 'false');
                 answer.style.maxHeight = null;
                 answer.classList.remove('active');
+                question.closest('.faq-item').classList.remove('active');
             } else {
                 question.classList.add('active');
                 question.setAttribute('aria-expanded', 'true');
                 answer.style.maxHeight = answer.scrollHeight + "px";
                 answer.classList.add('active');
+                question.closest('.faq-item').classList.add('active');
             }
         });
     });
@@ -170,7 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 backToTopButton.classList.remove('visible');
             }
-        });
+        }, { passive: true });
         backToTopButton.addEventListener('click', (e) => {
             e.preventDefault();
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -178,26 +187,38 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     // Smooth scroll for all anchor links starting with #
-    // Note: Native smooth scroll is good, but this ensures broader compatibility or finer control if needed.
-    // However, current nav links are full page loads, so this is mainly for the back-to-top.
-    // If you add internal page links (e.g. <a href="#services">), this will handle them:
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             const href = this.getAttribute('href');
-            // Make sure it's not just a hash for JS functionality or an empty hash
-            if (href.length > 1 && document.querySelector(href)) { 
-                e.preventDefault();
-                document.querySelector(href).scrollIntoView({
-                    behavior: 'smooth'
-                });
+            if (href.length > 1 && href !== "#") { // Ensure it's not just "#"
+                try {
+                    const targetElement = document.querySelector(href);
+                    if (targetElement) {
+                        e.preventDefault();
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                } catch (error) {
+                    // If querySelector fails (e.g. invalid selector), do nothing or log error
+                    console.warn('Smooth scroll target not found or invalid selector:', href);
+                }
             }
         });
     });
 
-
     // Consultation Form Validation
     const consultationForm = document.getElementById('consultationForm');
     if (consultationForm) {
+        const isValidEmail = (email) => {
+            // Basic email validation regex
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        };
+        const isValidPhone = (phone) => {
+            // Basic phone validation (e.g., Saudi numbers, allows +, spaces, dashes)
+            return /^(05\d{8}|5\d{8}|\+9665\d{8}|009665\d{8})$/.test(phone.replace(/[\s-]/g, ''));
+        };
+
         consultationForm.addEventListener('submit', function(event) {
             event.preventDefault();
             let isValid = true;
@@ -214,7 +235,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (name.value.trim() === '') {
                 isValid = false;
-                showError(name, 'الاسم مطلوب.');
+                showError(name, 'الاسم الكامل مطلوب.');
             }
             if (email.value.trim() === '') {
                 isValid = false;
@@ -225,24 +246,38 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             if (phone.value.trim() === '') {
                 isValid = false;
-                showError(phone, 'رقم الهاتف مطلوب.');
+                showError(phone, 'رقم الهاتف السعودي مطلوب.');
             } else if (!isValidPhone(phone.value.trim())) {
                 isValid = false;
-                showError(phone, 'الرجاء إدخال رقم هاتف صحيح.');
+                showError(phone, 'الرجاء إدخال رقم هاتف سعودي صحيح (مثال: 05xxxxxxx أو +9665xxxxxxx).');
             }
             if (consultationTime.value === '') {
                 isValid = false;
-                showError(consultationTime, 'الرجاء اختيار وقت مفضل.');
+                showError(consultationTime, 'الرجاء اختيار وقت مفضل للاستشارة.');
             }
-            if (message.value.trim() === '') {
+            if (message.value.trim().length < 10) { // Min message length
                 isValid = false;
-                showError(message, 'الرسالة مطلوبة.');
+                showError(message, 'الرسالة مطلوبة ويجب أن لا تقل عن 10 أحرف.');
             }
 
             if (isValid) {
                 // Form is valid, you can submit it via AJAX or other method
-                alert('شكراً لك! تم إرسال طلب الاستشارة بنجاح.');
-                this.reset(); // Clear the form
+                // Example: Show a success message (replace with actual submission logic)
+                const successMessageDiv = document.createElement('div');
+                successMessageDiv.className = 'success-message'; // Add a class for styling
+                successMessageDiv.textContent = 'شكراً لك! تم إرسال طلب الاستشارة بنجاح. سنتواصل معك قريباً.';
+                this.parentNode.insertBefore(successMessageDiv, this.nextSibling); // Insert after form
+                
+                // Disable button to prevent multiple submissions
+                const submitButton = this.querySelector('button[type="submit"]');
+                if(submitButton) submitButton.disabled = true;
+
+                // Simulate form submission then reset
+                setTimeout(() => {
+                    this.reset();
+                    if(submitButton) submitButton.disabled = false;
+                    if(successMessageDiv) successMessageDiv.remove();
+                }, 5000); // Reset after 5 seconds
             }
         });
 
@@ -251,16 +286,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const errorDiv = document.createElement('div');
             errorDiv.className = 'error-message';
             errorDiv.textContent = message;
-            inputElement.parentNode.appendChild(errorDiv);
-        }
-
-        function isValidEmail(email) {
-            // Basic email validation regex
-            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-        }
-        function isValidPhone(phone) {
-            // Basic phone validation (e.g., at least 7 digits, allows +, spaces, dashes)
-            return /^[+]?[\d\s-]{7,}$/.test(phone);
+            // Insert error message after the input or its direct parent if it's a select/textarea
+            if (inputElement.nextSibling) {
+                inputElement.parentNode.insertBefore(errorDiv, inputElement.nextSibling);
+            } else {
+                inputElement.parentNode.appendChild(errorDiv);
+            }
         }
     }
 
@@ -270,43 +301,46 @@ document.addEventListener('DOMContentLoaded', () => {
         form.addEventListener('submit', function(event) {
             event.preventDefault();
             const emailInput = this.querySelector('input[type="email"]');
-            if (emailInput && emailInput.value.trim() !== '' && isValidEmail(emailInput.value.trim())) {
-                alert('شكراً لاشتراكك في النشرة البريدية!');
+            
+            // Use the same email validation as the consultation form
+            const isEmailValidFunc = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+            if (emailInput && emailInput.value.trim() !== '' && isEmailValidFunc(emailInput.value.trim())) {
+                alert('شكراً لاشتراكك في النشرة البريدية لشركة مُشرقة AI!');
                 this.reset();
             } else if (emailInput) {
-                alert('الرجاء إدخال بريد إلكتروني صحيح.');
+                alert('الرجاء إدخال بريد إلكتروني صحيح للاشتراك في نشرتنا البريدية.');
                 emailInput.focus();
             }
         });
     });
     
-    function isValidEmail(email) { // Re-declare or scope if needed
-        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    }
-
     // Intersection Observer for animations (simple fade-in)
     const animatedElements = document.querySelectorAll('.service-card, .tourism-feature-card, .case-card, .ai-reshape .service-card, .about-features .feature-item, .team-member, .metrics, .tech-card, .faq-item, .consultation-content, .consultation-form');
 
     const observerCallback = (entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('visible', 'fade-in'); // Add fade-in class for CSS animation
-                observer.unobserve(entry.target); // Optional: stop observing once animated
+                entry.target.classList.add('visible', 'fade-in');
+                observer.unobserve(entry.target);
             }
         });
     };
 
     const observerOptions = {
-        root: null, // viewport
+        root: null,
         rootMargin: '0px',
-        threshold: 0.1 // 10% of item visible
+        threshold: 0.1 // 10% of item visible, adjust as needed
     };
 
-    if (animatedElements.length > 0) {
+    if (animatedElements.length > 0 && 'IntersectionObserver' in window) {
         const animationObserver = new IntersectionObserver(observerCallback, observerOptions);
         animatedElements.forEach(el => {
             animationObserver.observe(el);
         });
+    } else { // Fallback for browsers without IntersectionObserver
+        animatedElements.forEach(el => {
+            el.classList.add('visible', 'fade-in');
+        });
     }
-
 });
