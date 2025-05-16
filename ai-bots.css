@@ -484,8 +484,8 @@ img {
 
 .main-cta-button {
     display: inline-block;
-    background-color: white;
-    color: var(--secondary-dark);
+    background-color: #111;
+    color: #fff;
     padding: 15px 40px;
     border-radius: var(--border-radius-full);
     font-size: 1.2rem;
@@ -655,7 +655,7 @@ footer .container { /* Target specific container in footer */
     color: rgba(255,255,255,0.5);
 }
 .newsletter-button {
-    background-color: var(--primary-color);
+    background-color: #111;
     color: white;
     border: none;
     padding: 10px 15px;
@@ -663,7 +663,7 @@ footer .container { /* Target specific container in footer */
     transition: background-color 0.3s ease;
 }
 .newsletter-button:hover {
-    background-color: var(--primary-dark);
+    background-color: #222;
 }
 
 
