@@ -1,94 +1,94 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Set RTL direction
-    document.body.style.direction = 'rtl';
+    // Set RTL direction (already set on HTML tag, this is redundant but harmless)
+    // document.body.style.direction = 'rtl'; 
 
-    // Load Font Awesome
-    const fontAwesome = document.createElement('link');
-    fontAwesome.rel = 'stylesheet';
-    fontAwesome.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css';
-    document.head.appendChild(fontAwesome);
-
-    // Load Tajawal font
-    const tajawalFont = document.createElement('link');
-    tajawalFont.rel = 'stylesheet';
-    tajawalFont.href = 'https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap';
-    document.head.appendChild(tajawalFont);
+    // Font Awesome is linked in HTML, Tajawal font is linked in HTML
 
     // Lazy loading images
     const lazyImages = document.querySelectorAll('img[data-src]');
-    const imageObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                img.src = img.dataset.src;
-                img.classList.remove('lazy');
-                observer.unobserve(img);
-            }
+    if ("IntersectionObserver" in window) {
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.dataset.src;
+                    img.removeAttribute('data-src'); // Remove data-src after loading
+                    img.classList.remove('lazy');
+                    observer.unobserve(img);
+                }
+            });
+        }, {
+            rootMargin: '0px 0px 50px 0px', // Load images a bit before they enter viewport
+            threshold: 0.01
         });
-    }, {
-        rootMargin: '50px',
-        threshold: 0.1
-    });
 
-    lazyImages.forEach(img => {
-        imageObserver.observe(img);
-    });
+        lazyImages.forEach(img => {
+            imageObserver.observe(img);
+        });
+    } else {
+        // Fallback for browsers that don't support IntersectionObserver
+        lazyImages.forEach(img => {
+            img.src = img.dataset.src;
+            img.removeAttribute('data-src');
+            img.classList.remove('lazy');
+        });
+    }
+
 
     // Scroll animations for sections
     const sections = document.querySelectorAll('section');
-    const sectionObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
+    if ("IntersectionObserver" in window) {
+        const sectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    // Optional: unobserve after first animation
+                    // sectionObserver.unobserve(entry.target); 
+                }
+            });
+        }, {
+            threshold: 0.1, // Triggers when 10% of the element is visible
+            rootMargin: '0px 0px -50px 0px' // Start animation a bit later
         });
-    }, {
-        threshold: 0.1,
-        rootMargin: '0px 0px -100px 0px'
-    });
 
-    sections.forEach(section => {
-        sectionObserver.observe(section);
-    });
+        sections.forEach(section => {
+            sectionObserver.observe(section);
+        });
+    } else {
+        // Fallback: make all sections visible if IntersectionObserver is not supported
+        sections.forEach(section => {
+            section.classList.add('visible');
+        });
+    }
 
-    // Add icons to agent cards that don't have them
+
+    // Agent cards icon assignment (ensure icons are consistent if not explicitly set)
+    // This part might be redundant if all icons are manually set in HTML, but kept for robustness.
     const agentCards = document.querySelectorAll('.agent-card');
-    const iconClasses = [
-        'fa-search', 'fa-file-alt', 'fa-users', 'fa-chart-line', 
-        'fa-lightbulb', 'fa-project-diagram', 'fa-tasks', 'fa-brain'
+    const defaultIconClasses = [ // More diverse icons
+        'fa-cogs', 'fa-chart-line', 'fa-bullhorn', 'fa-search', 
+        'fa-file-alt', 'fa-users', 'fa-project-diagram', 'fa-tasks',
+        'fa-brain', 'fa-robot', 'fa-drafting-compass', 'fa-comments' 
     ];
     
     agentCards.forEach((card, index) => {
         const iconElement = card.querySelector('.agent-icon');
-        if (iconElement && !iconElement.classList.contains('fas')) {
-            // If icon element exists but doesn't have an icon class
-            const iconClass = iconClasses[index % iconClasses.length];
-            iconElement.classList.add('fas', iconClass);
+        // If an icon element exists but has no specific FontAwesome class (fas, fab, etc.)
+        if (iconElement && !Array.from(iconElement.classList).some(cls => cls.startsWith('fa-'))) {
+            const iconClass = defaultIconClasses[index % defaultIconClasses.length];
+            iconElement.classList.add('fas', iconClass); // Assuming 'fas' for solid icons
         }
     });
 
-    // Enhanced hover effects for cards
-    const allCards = document.querySelectorAll('.agent-card, .feature, .testimonial, .faq-item, .type-card, .business-agent, .technology');
-    
-    allCards.forEach(card => {
-        card.addEventListener('mouseenter', () => {
-            card.style.transform = 'translateY(-10px)';
-            card.style.boxShadow = '0 12px 24px rgba(56, 189, 248, 0.2)';
-            card.style.borderColor = 'var(--accent-color)';
-        });
+    // Enhanced hover effects for cards (CSS handles this primarily, JS can add classes if needed)
+    // The CSS :hover pseudo-class is generally preferred for this.
+    // If more complex animations are needed on hover, JS can toggle classes.
 
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = '';
-            card.style.boxShadow = '';
-            card.style.borderColor = '';
-        });
-    });
-
-    // Hero section parallax effect
+    // Hero section parallax effect (Subtle for performance)
     const heroSection = document.getElementById('hero');
-    const heroContent = document.querySelector('.hero-content');
+    const heroContent = document.querySelector('#hero .hero-content');
 
-    if (heroSection && heroContent) {
+    if (heroSection && heroContent && window.matchMedia("(min-width: 769px)").matches) { // Only on larger screens
         heroSection.addEventListener('mousemove', (e) => {
             const rect = heroSection.getBoundingClientRect();
             const x = e.clientX - rect.left;
@@ -97,14 +97,20 @@ document.addEventListener('DOMContentLoaded', () => {
             const centerX = rect.width / 2;
             const centerY = rect.height / 2;
 
-            const offsetX = (x - centerX) / 50;
-            const offsetY = (y - centerY) / 50;
+            // Reduced intensity for subtlety
+            const offsetX = (x - centerX) / 100; 
+            const offsetY = (y - centerY) / 100;
 
-            heroContent.style.transform = `translateZ(50px) rotateX(${-offsetY * 0.5}deg) rotateY(${offsetX * 0.5}deg)`;
+            // Request animation frame for smoother animations
+            window.requestAnimationFrame(() => {
+                 heroContent.style.transform = `translateZ(50px) rotateX(${-offsetY * 0.2}deg) rotateY(${offsetX * 0.2}deg)`;
+            });
         });
 
         heroSection.addEventListener('mouseleave', () => {
-            heroContent.style.transform = 'translateZ(50px) rotateX(0deg) rotateY(0deg)';
+             window.requestAnimationFrame(() => {
+                heroContent.style.transform = 'translateZ(50px) rotateX(0deg) rotateY(0deg)';
+            });
         });
     }
 
@@ -112,73 +118,113 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalTriggers = document.querySelectorAll('.more-details');
     const closeButtons = document.querySelectorAll('.close-modal');
     const modals = document.querySelectorAll('.modal');
+    let previouslyFocusedElement = null;
 
-    // Open modal
+    function openModal(modal) {
+        if (modal) {
+            previouslyFocusedElement = document.activeElement;
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+            modal.setAttribute('aria-hidden', 'false');
+            // Focus on the modal itself or the first focusable element
+            const focusableElements = modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+            if (focusableElements.length > 0) {
+                focusableElements[0].focus();
+            } else {
+                modal.focus(); // Fallback
+            }
+        }
+    }
+
+    function closeModal(modal) {
+         if (modal) {
+            modal.classList.remove('show');
+            document.body.style.overflow = '';
+            modal.setAttribute('aria-hidden', 'true');
+            if (previouslyFocusedElement) {
+                previouslyFocusedElement.focus();
+            }
+        }
+    }
+
     modalTriggers.forEach(trigger => {
         trigger.addEventListener('click', (e) => {
             e.preventDefault();
             const modalId = trigger.getAttribute('data-modal');
             const modal = document.getElementById(modalId);
-            if (modal) {
-                modal.classList.add('show');
-                document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
-            }
+            openModal(modal);
         });
     });
 
-    // Close modal with close button
     closeButtons.forEach(button => {
         button.addEventListener('click', () => {
             const modal = button.closest('.modal');
-            if (modal) {
-                modal.classList.remove('show');
-                document.body.style.overflow = ''; // Restore scrolling
-            }
+            closeModal(modal);
         });
     });
 
-    // Close modal when clicking outside
     window.addEventListener('click', (e) => {
         modals.forEach(modal => {
-            if (e.target === modal) {
-                modal.classList.remove('show');
-                document.body.style.overflow = ''; // Restore scrolling
+            if (e.target === modal) { // Clicked on modal backdrop
+                closeModal(modal);
             }
         });
     });
 
-    // Close modal with Escape key
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
             modals.forEach(modal => {
                 if (modal.classList.contains('show')) {
-                    modal.classList.remove('show');
-                    document.body.style.overflow = ''; // Restore scrolling
+                    closeModal(modal);
                 }
             });
         }
     });
 
     // CTA buttons WhatsApp link
-    const ctaButtons = document.querySelectorAll('.cta-button, .final-cta-button');
-    ctaButtons.forEach(button => {
-        button.addEventListener('click', (e) => {
-            e.preventDefault();
-            window.open('https://wa.me/966501120781?text=اكتب%20لنا%20بيانات%20الوكيل%20اللذي%20تريده', '_blank');
-        });
+    // Make this more specific if different CTAs have different targets
+    const allCtaButtons = document.querySelectorAll('.cta-button, .final-cta-button, .modal-body a.cta-button');
+    allCtaButtons.forEach(button => {
+        // Check if it's not a "more-details" button (which opens a modal)
+        // And check if it's not an internal page link (e.g. in navbar)
+        if (!button.classList.contains('more-details') && !button.getAttribute('href')?.startsWith('#') && !button.closest('.navbar')) {
+            button.addEventListener('click', (e) => {
+                // Only prevent default if it's a '#' link or needs custom handling
+                if (button.getAttribute('href') === '#' || !button.getAttribute('href')) {
+                     e.preventDefault();
+                }
+                // Check if the button is for "احصل على عرض سعر" or similar text
+                const buttonText = button.textContent || button.innerText;
+                let whatsappMessage = "مرحبًا، أرغب في الاستفسار عن تصميم وكيل ذكاء اصطناعي مخصص.";
+                if (buttonText.includes("عرض سعر") || buttonText.includes("صمم وكيلك")) {
+                    whatsappMessage = "مرحبًا، أود الحصول على عرض سعر لتصميم وكيل ذكاء اصطناعي.";
+                } else if (buttonText.includes("استشارة")) {
+                     whatsappMessage = "مرحبًا، أرغب في الحصول على استشارة بخصوص خدمات الذكاء الاصطناعي.";
+                }
+                // Customize message based on button's context if needed further
+                
+                window.open(`https://wa.me/966501120781?text=${encodeURIComponent(whatsappMessage)}`, '_blank');
+            });
+        }
     });
 
-    // Add smooth scrolling for anchor links
+
+    // Add smooth scrolling for anchor links within the page
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
-            if (this.getAttribute('href') !== '#') {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
+            const href = this.getAttribute('href');
+            if (href && href !== '#' && href !== '#!') { // Ensure it's a valid internal anchor
+                const targetId = href.substring(1); // Remove #
+                const targetElement = document.getElementById(targetId);
                 
                 if (targetElement) {
+                    e.preventDefault();
+                    const navbarHeight = document.querySelector('nav')?.offsetHeight || 0;
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - navbarHeight - 10; // Extra 10px offset
+
                     window.scrollTo({
-                        top: targetElement.offsetTop - 80, // Offset for fixed header
+                        top: offsetPosition,
                         behavior: 'smooth'
                     });
                 }
@@ -186,90 +232,82 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Add animation to technology icons
-    const techIcons = document.querySelectorAll('.technology img');
-    techIcons.forEach(icon => {
-        icon.style.animation = 'float 6s ease-in-out infinite';
-    });
+    // Add animation to technology icons on hover (CSS handles this, JS can add if more complex)
+    // Example: techIcons.forEach(icon => { icon.style.animation = 'float 6s ease-in-out infinite'; });
+    // This is better done in CSS for performance unless dynamic properties are needed.
 
-    // Add pulse animation to CTA buttons
-    const finalCtaButton = document.querySelector('.final-cta-button');
-    if (finalCtaButton) {
-        finalCtaButton.style.animation = 'pulse 2s infinite';
-    }
+    // Add pulse animation to CTA buttons (CSS handles this with 'pulse' animation)
 
     // Add active class to current page in navbar
-    const currentPage = window.location.pathname.split('/').pop();
+    const currentPageUrl = window.location.href.split('/').pop().split('?')[0].split('#')[0]; // More robust current page detection
     const navLinks = document.querySelectorAll('.navbar a');
     
     navLinks.forEach(link => {
-        const linkPage = link.getAttribute('href');
-        if (linkPage === currentPage) {
-            link.style.color = 'var(--accent-color)';
-            link.style.fontWeight = 'bold';
+        const linkHref = link.getAttribute('href').split('/').pop();
+        if (linkHref === currentPageUrl || (currentPageUrl === '' && linkHref === 'index.html')) { // Handle root path for index.html
+            link.classList.add('active'); // Use class for styling, CSS already has .active selector
+            link.setAttribute('aria-current', 'page'); // For accessibility
         }
     });
 
-    // Add features to agent cards
+    // Agent features list - Enhanced for SEO and clarity
     const agentFeaturesList = {
         'custom-agent': [
-            'تصميم مخصص حسب احتياجاتك',
-            'تكامل مع الأنظمة الحالية',
-            'دعم فني على مدار الساعة'
+            'تصميم وكيل ذكاء اصطناعي مخصص بالكامل لأهداف شركتك في السعودية.',
+            'تكامل سلس وفعال مع أنظمتك وبرامجك التشغيلية الحالية.',
+            'دعم فني متخصص ومتوفر على مدار الساعة لضمان استمرارية العمل.'
         ],
         'data-analyst-agent': [
-            'تحليل البيانات بدقة عالية',
-            'استخراج الأنماط والاتجاهات',
-            'تقارير تحليلية متكاملة'
+            'تحليل بيانات دقيق وعميق لاستخلاص رؤى استراتيجية قيمة لعملك.',
+            'اكتشاف الأنماط والاتجاهات الخفية في بيانات أعمالك السعودية.',
+            'تقارير تحليلية شاملة ومخصصة تدعم اتخاذ قرارات مستنيرة وفعالة.'
         ],
         'marketing-agent': [
-            'استراتيجيات تسويقية فعالة',
-            'تحليل سلوك المستخدم',
-            'زيادة معدلات التحويل'
+            'تطوير وتنفيذ استراتيجيات تسويق رقمي مبتكرة باستخدام الذكاء الاصطناعي.',
+            'تحليل دقيق لسلوك المستخدم وتفضيلاته لزيادة فعالية الحملات في السعودية.',
+            'تحسين معدلات التحويل وزيادة العائد على الاستثمار التسويقي (ROI) بشكل ملحوظ.'
         ],
         'seo-agent': [
-            'تحسين ترتيب موقعك',
-            'تحليل الكلمات المفتاحية',
-            'تقارير أداء شهرية'
+            'تحسين ترتيب موقعك بشكل استراتيجي في نتائج محركات البحث مثل جوجل.',
+            'تحليل معمق للكلمات المفتاحية المستهدفة للسوق السعودي والمنافسين.',
+            'تقارير أداء شهرية مفصلة لتتبع التقدم والنتائج في استراتيجيات SEO.'
         ],
         'content-agent': [
-            'محتوى عالي الجودة',
-            'تحسين لمحركات البحث',
-            'زيادة التفاعل مع المحتوى'
+            'إنشاء محتوى عربي جذاب وعالي الجودة محسن لمحركات البحث (SEO).',
+            'تطوير مقالات متوافقة مع معايير SEO لزيادة الظهور العضوي في السعودية.',
+            'زيادة تفاعل الجمهور المستهدف مع المحتوى القيم والمفيد الذي نقدمه.'
         ],
         'customer-discovery-agent': [
-            'اكتشاف عملاء محتملين',
-            'تحليل احتياجات السوق',
-            'استراتيجيات تواصل فعالة'
+            'اكتشاف شرائح عملاء جدد ومحتملين لمنتجاتك وخدماتك في السوق السعودي.',
+            'تحليل دقيق لاحتياجات السوق السعودي وتوجهات المستهلكين المتغيرة.',
+            'تطوير استراتيجيات تواصل فعالة لبناء علاقات قوية ومستدامة مع العملاء.'
         ],
         'competitor-analysis-agent': [
-            'تحليل شامل للمنافسين',
-            'تحديد نقاط القوة والضعف',
-            'استراتيجيات تنافسية'
+            'تحليل شامل ومفصل للمنافسين الرئيسيين في السوق السعودي عبر مختلف القنوات.',
+            'تحديد دقيق لنقاط القوة والضعف لدى المنافسين وفرص التميز لشركتك.',
+            'بناء استراتيجيات تنافسية ذكية ومبنية على بيانات دقيقة لتحقيق التفوق.'
         ],
         'project-analysis-agent': [
-            'تحليل شامل للمشروع',
-            'تحديد فرص التحسين',
-            'خطط تنفيذية واضحة'
+            'تحليل شامل لمشاريعك الحالية لتحديد معوقات الأداء ومجالات التحسين.',
+            'تقديم توصيات عملية ومبتكرة لتحسين كفاءة تنفيذ المشاريع وتقليل المخاطر.',
+            'وضع خطط تنفيذية واضحة وقابلة للقياس لتحقيق أهداف المشروع بكفاءة وفعالية.'
         ]
     };
 
-    // Add features to agent cards
+
+    // Add features to agent cards dynamically
     document.querySelectorAll('.agent-card').forEach(card => {
         const detailsLink = card.querySelector('.more-details');
         if (detailsLink) {
             const modalId = detailsLink.getAttribute('data-modal');
-            const featuresList = card.querySelector('.agent-features');
+            const featuresUl = card.querySelector('.agent-features');
             
-            if (featuresList && agentFeaturesList[modalId]) {
-                // Clear existing features
-                featuresList.innerHTML = '';
-                
-                // Add new features
-                agentFeaturesList[modalId].forEach(feature => {
+            if (featuresUl && agentFeaturesList[modalId]) {
+                featuresUl.innerHTML = ''; // Clear existing features if any
+                agentFeaturesList[modalId].forEach(featureText => {
                     const li = document.createElement('li');
-                    li.textContent = feature;
-                    featuresList.appendChild(li);
+                    li.textContent = featureText;
+                    featuresUl.appendChild(li);
                 });
             }
         }

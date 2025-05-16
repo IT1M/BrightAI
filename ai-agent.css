@@ -51,7 +51,7 @@ nav {
     padding: 5px 0;
 }
 
-.navbar a:hover {
+.navbar a:hover, .navbar a.active {
     color: var(--accent-color);
 }
 
@@ -66,9 +66,10 @@ nav {
     transition: width 0.3s ease;
 }
 
-.navbar a:hover::after {
+.navbar a:hover::after, .navbar a.active::after {
     width: 100%;
 }
+
 
 /* البانر الرئيسي (Hero Section) */
 #hero {
@@ -126,19 +127,21 @@ nav {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* قسم أنواع وكلاء الذكاء الاصطناعي */
-.ai-agents-types {
-    padding: 80px 20px;
-    background: linear-gradient(135deg, var(--background-dark) 0%, var(--primary-color) 100%);
-    text-align: right;
-}
-
-.ai-agents-types h2 {
+/* عناوين الأقسام الرئيسية */
+.section-title {
     text-align: center;
     font-size: 2.5em;
     color: var(--accent-color);
     margin-bottom: 50px;
     text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+
+/* قسم أنواع وكلاء الذكاء الاصطناعي */
+.ai-agents-types {
+    padding: 80px 20px;
+    background: linear-gradient(135deg, var(--background-dark) 0%, var(--primary-color) 100%);
+    text-align: right;
 }
 
 .types-grid {
@@ -173,6 +176,7 @@ nav {
     color: var(--accent-color);
     margin-bottom: 20px;
     display: block;
+    text-align: center; /* Center icon */
 }
 
 .type-card h3 {
@@ -180,6 +184,7 @@ nav {
     font-size: 1.5em;
     margin-bottom: 15px;
     position: relative;
+    text-align: center; /* Center heading */
 }
 
 .type-card p {
@@ -187,22 +192,27 @@ nav {
     line-height: 1.6;
     font-size: 1em;
     flex-grow: 1;
+    text-align: right; /* Ensure text aligns right */
 }
 
 /* قسم عرض وكلاء الذكاء الاصطناعي (AI Agents Showcase) */
-#ai-agents {
+#ai-agents-showcase-section { /* Wrapper section */
+    padding: 80px 20px;
+    background-color: var(--background-dark);
+}
+
+#ai-agents { /* The grid itself */
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 30px;
-    padding: 80px 20px;
-    background-color: var(--background-dark);
+    /* padding: 80px 20px; Removed padding from grid, applied to wrapper */
     max-width: 1200px;
     margin: 0 auto;
 }
 
 .agent-card {
     position: relative;
-    height: 400px;
+    height: 400px; /* Fixed height, consider min-height for varying content */
     background-color: var(--card-bg);
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
@@ -223,7 +233,7 @@ nav {
     border-color: var(--accent-color);
 }
 
-.agent-card h2 {
+.agent-card h2 { /* This should be h3 semantically if section has H2 */
     font-size: 1.5em;
     margin: 15px 0;
     color: var(--text-primary);
@@ -264,14 +274,17 @@ nav {
     font-size: 0.9em;
     display: flex;
     align-items: center;
+    text-align: right;
 }
 
 .agent-features li:before {
     content: "•";
     color: var(--accent-color);
-    margin-left: 8px;
+    margin-left: 8px; /* For RTL, this should be margin-right if bullet is on right */
     font-size: 1.2em;
+    padding-right: 5px; /* Space after bullet */
 }
+
 
 .more-details {
     display: inline-block;
@@ -282,7 +295,7 @@ nav {
     border-radius: 5px;
     font-weight: bold;
     transition: all 0.3s ease;
-    margin-top: auto;
+    margin-top: auto; /* Pushes button to bottom */
 }
 
 .more-details:hover {
@@ -298,13 +311,9 @@ nav {
     text-align: center;
 }
 
-#business-agents h2 {
-    font-size: 2.5em;
-    margin-bottom: 20px;
-    color: var(--accent-color);
-}
+/* #business-agents h2 already styled by .section-title */
 
-#business-agents p {
+#business-agents > p { /* Direct child p for the intro paragraph */
     color: var(--text-secondary);
     max-width: 800px;
     margin: 0 auto 40px;
@@ -334,6 +343,8 @@ nav {
 
 .business-agent img {
     width: 100%;
+    height: 200px; /* Added fixed height for consistency */
+    object-fit: cover; /* Ensures image covers the area nicely */
     border-radius: 10px;
     margin-bottom: 20px;
     transition: all 0.3s ease;
@@ -349,6 +360,7 @@ nav {
     font-size: 1em;
     color: var(--text-secondary);
     margin: 0;
+    flex-grow: 1;
 }
 
 .business-agent:hover {
@@ -368,11 +380,7 @@ nav {
     text-align: center;
 }
 
-#technologies h2 {
-    font-size: 2.5em;
-    margin-bottom: 50px;
-    color: var(--accent-color);
-}
+/* #technologies h2 already styled by .section-title */
 
 .technologies-grid {
     display: grid;
@@ -399,6 +407,7 @@ nav {
 .technology img {
     width: 100px;
     height: 100px;
+    object-fit: contain; /* Ensure logo is not distorted */
     margin-bottom: 20px;
     transition: all 0.5s ease;
 }
@@ -416,6 +425,7 @@ nav {
 .technology p {
     font-size: 1em;
     color: var(--text-secondary);
+    flex-grow: 1;
 }
 
 .technology:hover {
@@ -425,12 +435,15 @@ nav {
 }
 
 /* قسم المزايا (Features Section) */
-#features {
+#main-features { /* Wrapper section for title + grid */
+    padding: 80px 20px;
+    background: linear-gradient(135deg, var(--background-dark) 0%, var(--primary-color) 100%);
+}
+
+#features { /* The grid itself */
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
-    padding: 80px 20px;
-    background: linear-gradient(135deg, var(--background-dark) 0%, var(--primary-color) 100%);
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -444,6 +457,9 @@ nav {
     transition: all 0.3s ease;
     border: 1px solid rgba(56, 189, 248, 0.1);
     height: 100%;
+    display: flex; /* For icon and text alignment */
+    flex-direction: column; /* Stack icon above text */
+    align-items: center; /* Center items horizontally */
 }
 
 .feature:hover {
@@ -452,24 +468,35 @@ nav {
     border-color: var(--accent-color);
 }
 
-.feature h2 {
+.feature i { /* Styling for icons in feature cards */
+    font-size: 2.5em;
+    color: var(--accent-color);
+    margin-bottom: 20px;
+}
+
+.feature h3 { /* Changed from h2 for semantic correctness */
     font-size: 1.5em;
     margin-bottom: 15px;
-    color: var(--accent-color);
+    color: var(--accent-color); /* Or --text-primary for consistency */
+    text-align: center;
 }
 
 .feature p {
     font-size: 1em;
     color: var(--text-secondary);
+    text-align: center; /* Center paragraph text */
+    flex-grow: 1;
 }
 
 /* قسم الآراء (Testimonials Section) */
-#testimonials {
+#testimonials-section { /* Wrapper section */
+    padding: 80px 20px;
+    background-color: var(--background-dark);
+}
+#testimonials { /* The grid */
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
-    padding: 80px 20px;
-    background-color: var(--background-dark);
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -484,6 +511,8 @@ nav {
     transition: all 0.3s ease;
     border: 1px solid rgba(56, 189, 248, 0.1);
     height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .testimonial:hover {
@@ -497,6 +526,7 @@ nav {
     margin-bottom: 20px;
     color: var(--text-primary);
     position: relative;
+    flex-grow: 1;
 }
 
 .testimonial p::before {
@@ -506,7 +536,7 @@ nav {
     opacity: 0.3;
     position: absolute;
     top: -20px;
-    right: -10px;
+    right: -10px; /* Adjust if quote mark looks off with RTL */
 }
 
 .testimonial cite {
@@ -514,7 +544,8 @@ nav {
     font-style: italic;
     color: var(--text-secondary);
     display: block;
-    text-align: left;
+    text-align: left; /* Cite usually LTR even in RTL context for names */
+    margin-top: auto;
 }
 
 /* قسم CTA النهائي (Final CTA Section) */
@@ -526,6 +557,7 @@ nav {
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    text-align: center; /* Center content */
 }
 
 .final-cta-content {
@@ -534,7 +566,7 @@ nav {
     z-index: 1;
 }
 
-.final-cta-content h2 {
+.final-cta-content h2 { /* Already styled by .section-title if applied */
     font-size: 2.5em;
     margin-bottom: 30px;
     color: var(--text-primary);
@@ -560,12 +592,15 @@ nav {
 }
 
 /* قسم الأسئلة المتكررة (FAQ) */
-#faq {
+#faq-section { /* Wrapper section */
+    padding: 80px 20px;
+    background-color: var(--background-dark);
+}
+
+#faq { /* The grid */
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
-    padding: 80px 20px;
-    background-color: var(--background-dark);
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -579,6 +614,9 @@ nav {
     transition: all 0.3s ease;
     border: 1px solid rgba(56, 189, 248, 0.1);
     height: 100%;
+    display: flex; /* For icon and text alignment */
+    flex-direction: column;
+    align-items: flex-start; /* Align icon and title to start (right in RTL) */
 }
 
 .faq-item:hover {
@@ -587,15 +625,24 @@ nav {
     border-color: var(--accent-color);
 }
 
+.faq-item i { /* Icon for FAQ item */
+    font-size: 2em;
+    color: var(--accent-color);
+    margin-bottom: 15px;
+    align-self: center; /* Center icon */
+}
+
 .faq-item h3 {
     font-size: 1.3em;
     margin-bottom: 15px;
     color: var(--accent-color);
+    width: 100%; /* Ensure h3 takes full width for text-align */
 }
 
 .faq-item p {
     font-size: 1em;
     color: var(--text-secondary);
+    flex-grow: 1;
 }
 
 /* إضافة أنماط المودال */
@@ -609,12 +656,15 @@ nav {
     background-color: rgba(0, 0, 0, 0.8);
     z-index: 1000;
     overflow-y: auto;
+    /* Added for flex centering */
+    align-items: center;
+    justify-content: center;
 }
 
 .modal-content {
     position: relative;
     background-color: var(--card-bg);
-    margin: 50px auto;
+    margin: 50px auto; /* Will be overridden by flex centering if modal.show has display:flex */
     padding: 30px;
     width: 80%;
     max-width: 800px;
@@ -637,7 +687,7 @@ nav {
 
 .close-modal {
     position: absolute;
-    right: 20px;
+    right: 20px; /* Stays on right for RTL */
     top: 15px;
     font-size: 30px;
     cursor: pointer;
@@ -662,14 +712,19 @@ nav {
     text-align: right;
 }
 
-.modal-body h3 {
+.modal-body h2 { /* Title inside modal */
+    color: var(--accent-color);
+    margin-bottom: 20px;
+    font-size: 1.8em;
+}
+.modal-body h3 { /* Sub-titles like "كيف نعمل معك" */
     color: var(--accent-color);
     margin: 25px 0 15px 0;
     font-size: 1.3em;
 }
 
 .modal-body ul, .modal-body ol {
-    padding-right: 20px;
+    padding-right: 20px; /* Indentation for RTL lists */
     margin: 15px 0;
 }
 
@@ -679,7 +734,7 @@ nav {
     color: var(--text-secondary);
 }
 
-.modal-body a.cta-button {
+.modal-body a.cta-button { /* Button inside modal */
     display: inline-block;
     padding: 12px 25px;
     background-color: var(--accent-color);
@@ -698,9 +753,7 @@ nav {
 }
 
 .modal.show {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: flex; /* Enables centering of modal-content */
 }
 
 /* تأثيرات التمرير (Scroll Animations) */
@@ -747,7 +800,7 @@ section.visible {
     content: '';
     position: absolute;
     bottom: -10px;
-    right: 0;
+    right: 0; /* For RTL */
     width: 50px;
     height: 2px;
     background-color: var(--accent-color);
@@ -776,13 +829,15 @@ section.visible {
 
 .quick-links ul li a:hover {
     color: var(--accent-color);
-    transform: translateX(-5px);
+    transform: translateX(-5px); /* For RTL, this moves it left. Consider translateX(5px) if you want it to move right */
 }
+
 
 .social-links {
     display: flex;
     gap: 15px;
     margin-top: 20px;
+    justify-content: flex-start; /* For RTL */
 }
 
 .social-icon {
@@ -802,12 +857,14 @@ section.visible {
     transform: translateY(-5px);
 }
 
-.social-icon svg {
+.social-icon svg, .social-icon i { /* Added i for FontAwesome */
     transition: all 0.3s ease;
+    color: var(--text-primary); /* Default icon color */
 }
 
-.social-icon:hover svg {
-    fill: var(--background-dark);
+.social-icon:hover svg, .social-icon:hover i {
+    fill: var(--background-dark); /* For SVG */
+    color: var(--background-dark); /* For FontAwesome */
 }
 
 .copyright {
@@ -821,8 +878,7 @@ section.visible {
 /* Responsive Design */
 @media (max-width: 1200px) {
     .container, #ai-agents, #features, #testimonials, #faq, .technologies-grid, .business-agents-grid, .types-grid {
-        padding-left: 20px;
-        padding-right: 20px;
+        /* Padding is on wrapper sections now, so this might not be needed as much */
     }
 }
 
@@ -830,7 +886,9 @@ section.visible {
     .hero-content h1 {
         font-size: 2.5em;
     }
-    
+    .section-title {
+        font-size: 2.2em;
+    }
     .navbar {
         padding: 10px 0;
     }
@@ -841,12 +899,19 @@ section.visible {
 }
 
 @media (max-width: 768px) {
+    body {
+        text-align: right; /* Ensure body text alignment for smaller screens */
+    }
     .hero-content h1 {
         font-size: 2em;
     }
     
     .hero-content p {
         font-size: 1em;
+    }
+    .section-title {
+        font-size: 2em;
+        margin-bottom: 30px;
     }
     
     .navbar {
@@ -860,7 +925,7 @@ section.visible {
     
     .footer-content {
         grid-template-columns: 1fr;
-        text-align: center;
+        text-align: center; /* Center footer content */
     }
     
     .footer-section h3::after {
@@ -873,7 +938,12 @@ section.visible {
     }
     
     .quick-links ul li a:hover {
-        transform: translateX(0);
+        transform: translateX(0); /* Adjust hover effect for centered links */
+    }
+
+    .agent-card {
+        height: auto; /* Allow height to adjust based on content */
+        min-height: 400px; /* Maintain a minimum height */
     }
 }
 
@@ -888,15 +958,22 @@ section.visible {
         font-size: 0.9em;
     }
     
-    section {
-        padding: 50px 15px;
+    section, #ai-agents-showcase-section, #main-features, #testimonials-section, #faq-section, #business-agents, #technologies, .ai-agents-types, #final-cta {
+        padding: 60px 15px; /* Adjusted padding for sections */
+    }
+    .hero-content h1 {
+        font-size: 1.8em;
+    }
+    .section-title {
+        font-size: 1.8em;
     }
 }
 
 /* Font Loading */
 @font-face {
     font-family: 'Tajawal';
-    src: url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap');
+    /* src: url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap'); This is a CSS import, not a src for @font-face */
+    /* Correct way is usually to link in HTML or use @import in CSS */
     font-display: swap;
 }
 
@@ -906,7 +983,7 @@ section.visible {
         transform: translateY(0px);
     }
     50% {
-        transform: translateY(-20px);
+        transform: translateY(-10px); /* Reduced float intensity */
     }
     100% {
         transform: translateY(0px);
@@ -928,8 +1005,5 @@ section.visible {
     }
 }
 
-/* Add Font Awesome */
-.fas {
-    font-family: 'Font Awesome 5 Free';
-    font-weight: 900;
-}
+/* Ensure Font Awesome is loaded if not using SVG icons consistently */
+/* .fas, .fab, .far are Font Awesome classes */

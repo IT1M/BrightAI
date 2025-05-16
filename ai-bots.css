@@ -276,7 +276,7 @@ img {
 
 .cta-button {
     display: inline-block;
-    background-color: var(--primary-dark);
+    background-color: #111; /* أسود */
     color: #fff;
     padding: 12px 25px;
     border-radius: var(--border-radius-full);
@@ -287,7 +287,7 @@ img {
     width: 100%;
     max-width: 200px;
     margin-top: auto;
-    box-shadow: 0 2px 8px rgba(29, 78, 216, 0.10); /* darker shadow */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.13);
     border: none;
     letter-spacing: 0.5px;
     font-size: 1.05rem;
@@ -296,18 +296,18 @@ img {
 /* إزالة تخصيص الألوان للبوتات المتخصصة */
 .bot-card:nth-child(5) .cta-button,
 .bot-card:nth-child(6) .cta-button {
-    background-color: var(--primary-dark);
+    background-color: #111;
     color: #fff;
-    box-shadow: 0 2px 8px rgba(29, 78, 216, 0.10);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.13);
 }
 
 /* تأثير التحويم موحد */
 .cta-button:hover,
 .cta-button:focus {
-    background-color: var(--primary-color);
+    background-color: #222;
     color: #fff;
     transform: translateY(-2px) scale(1.03);
-    box-shadow: 0 6px 18px rgba(29, 78, 216, 0.18);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.18);
     filter: none;
 }
 
