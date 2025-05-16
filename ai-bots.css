@@ -50,6 +50,7 @@ ul {
 img {
     max-width: 100%;
     height: auto;
+    display: block; /* Prevents bottom space under images */
 }
 
 :root {
@@ -64,7 +65,7 @@ img {
     --text-light: #9fa9b7;             /* رمادي فاتح للنصوص الثانوية */
     --background-light: #f8fafc;       /* خلفية فاتحة */
     --background-dark: #0f172a;        /* خلفية داكنة */
-    --card-bg: #cbc4df;                /* خلفية البطاقات */
+    --card-bg: #ffffff;                /* خلفية البطاقات (updated from #cbc4df for consistency) */
     --border-color: #e2e8f0;           /* لون الحدود */
     
     /* ألوان الحالة */
@@ -108,6 +109,12 @@ img {
     background-size: cover;
     background-position: center;
     opacity: 0.15;
+    z-index: 1;
+}
+
+.hero .container {
+    position: relative;
+    z-index: 2;
 }
 
 .main-title {
@@ -131,15 +138,15 @@ img {
 
 .intro h2 {
     font-size: 2.5rem;
-    color: var(--primary-color);
+    color: var(--primary-dark); /* Changed to primary-dark for better contrast */
     margin-bottom: 1.5rem;
 }
 
 .intro p {
     font-size: 1.2rem;
     max-width: 800px;
-    margin: 0 auto;
-    color: var(--text-light);
+    margin: 0 auto 1rem; /* Added bottom margin */
+    color: var(--text-color); /* Darker text for better readability */
 }
 
 /* Bots List Section */
@@ -151,7 +158,7 @@ img {
 .bots-list h2 {
     text-align: center;
     font-size: 2.5rem;
-    color: var(--primary-color);
+    color: var(--primary-dark); /* Changed to primary-dark */
     margin-bottom: 3rem;
 }
 
@@ -161,7 +168,6 @@ img {
     gap: 30px;
 }
 
-/* تحديث ألوان البطاقات */
 .bot-card {
     background: linear-gradient(135deg, #ffffff, #f0f7ff);
     border: 1px solid rgba(59, 130, 246, 0.1);
@@ -203,32 +209,44 @@ img {
     color: var(--primary-dark);
     font-size: 1.5rem;
     margin-bottom: 1rem;
+    text-align: center; /* Ensuring h3 is centered */
 }
 
 .bot-description {
-    color: var(--text-color);
+    color: var(--text-color); /* Darker text for readability */
     margin-bottom: 1.5rem;
     line-height: 1.6;
+    text-align: center; /* Ensuring description is centered */
+}
+
+.features-list {
+    margin-bottom: 25px;
+    flex-grow: 1; /* Ensures button stays at bottom */
 }
 
 .features-list li {
     color: var(--text-color);
     margin-bottom: 0.8rem;
     display: flex;
-    align-items: center;
+    align-items: flex-start; /* Align items to top for multi-line text */
 }
 
 .features-list i {
-    color: var(--primary-color);
-    margin-left: 10px;
+    color: var(--success-color); /* Changed from primary-color to success for checkmarks */
+    margin-left: 10px; /* For RTL, this should be margin-right if icon is before text */
+                        /* Or keep as margin-left if icon is physically to the left */
+    margin-right: 0;    /* Ensure no conflicting margin */
+    font-size: 1em;     /* Ensure icon size is relative to text */
+    margin-top: 3px;    /* Align icon with text */
 }
 
+
 /* تخصيص ألوان البوتات المختلفة */
-.bot-card:nth-child(5) .bot-card::before {
+.bot-card:nth-child(5)::before { /* Corrected selector */
     background: linear-gradient(to right, var(--math-color), #7c3aed);
 }
 
-.bot-card:nth-child(6) .bot-card::before {
+.bot-card:nth-child(6)::before { /* Corrected selector */
     background: linear-gradient(to right, var(--tourism-color), #d97706);
 }
 
@@ -256,52 +274,25 @@ img {
     font-size: 2.5rem;
 }
 
-.bot-card h3 {
-    font-size: 1.5rem;
-    text-align: center;
-    margin-bottom: 15px;
-    color: var(--primary-color);
-}
-
-.bot-description {
-    color: var(--text-light);
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.features-list {
-    margin-bottom: 25px;
-    flex-grow: 1;
-}
-
-.features-list li {
-    margin-bottom: 10px;
-    display: flex;
-    align-items: flex-start;
-}
-
-.features-list i {
-    color: var(--success-color);
-    margin-left: 10px;
-    margin-top: 5px;
-}
-
 .cta-button {
     display: inline-block;
     background-color: var(--primary-color);
     color: white;
     padding: 12px 25px;
-    border-radius: 30px;
+    border-radius: var(--border-radius-full); /* Full roundness */
     font-weight: 600;
     text-align: center;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease;
     align-self: center;
-    width: 100%;
+    width: 100%; /* Make button full width of its container (card padding) */
+    max-width: 200px; /* Optional: constrain max width */
+    margin-top: auto; /* Pushes button to bottom if card content is short */
 }
 
 .cta-button:hover {
     background-color: var(--primary-dark);
     color: white;
+    transform: translateY(-2px);
 }
 
 /* Advantages Section */
@@ -313,7 +304,7 @@ img {
 .advantages h2 {
     text-align: center;
     font-size: 2.5rem;
-    color: var(--primary-color);
+    color: var(--primary-dark); /* Changed to primary-dark */
     margin-bottom: 3rem;
 }
 
@@ -327,12 +318,14 @@ img {
     padding: 30px;
     border-radius: var(--border-radius);
     background-color: var(--background-light);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     text-align: center;
+    box-shadow: var(--shadow-sm);
 }
 
 .advantage-card:hover {
     transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
 }
 
 .advantage-icon {
@@ -370,13 +363,13 @@ img {
 .testimonials h2 {
     text-align: center;
     font-size: 2.5rem;
-    color: var(--primary-color);
+    color: var(--primary-dark); /* Changed to primary-dark */
     margin-bottom: 3rem;
 }
 
 .testimonials-slider {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: wrap; /* Allows wrapping on larger screens if initSlider logic changes */
     gap: 30px;
     justify-content: center;
 }
@@ -387,11 +380,13 @@ img {
     box-shadow: var(--shadow-md);
     padding: 30px;
     max-width: 350px;
-    transition: transform 0.3s ease;
+    width: 100%; /* Ensure it takes full width on mobile when stacked */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .testimonial:hover {
     transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
 }
 
 .testimonial-content {
@@ -400,28 +395,29 @@ img {
 
 .testimonial-content p {
     font-style: italic;
-    color: var(--text-light);
+    color: var(--text-color); /* Darker for readability */
     position: relative;
-    padding: 0 15px;
+    padding: 0 15px; /* Space for quotes */
 }
 
 .testimonial-content p::before,
 .testimonial-content p::after {
     content: '"';
-    font-size: 2rem;
+    font-size: 2.5rem; /* Slightly larger quotes */
     color: var(--primary-color);
     opacity: 0.3;
     position: absolute;
+    line-height: 1;
 }
 
 .testimonial-content p::before {
     top: -10px;
-    right: 0;
+    right: -5px; /* Adjusted for RTL */
 }
 
 .testimonial-content p::after {
-    bottom: -20px;
-    left: 0;
+    bottom: -25px; /* Adjusted */
+    left: -5px;   /* Adjusted for RTL */
 }
 
 .testimonial-author {
@@ -433,13 +429,15 @@ img {
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    margin-left: 15px;
+    margin-left: 15px; /* This is correct for RTL: image on right, text on left */
     object-fit: cover;
+    border: 2px solid var(--border-color);
 }
 
 .author-info h4 {
     font-size: 1.1rem;
     margin-bottom: 5px;
+    color: var(--text-color);
 }
 
 .author-info p {
@@ -473,7 +471,7 @@ img {
     background-color: white;
     color: var(--secondary-dark);
     padding: 15px 40px;
-    border-radius: 30px;
+    border-radius: var(--border-radius-full);
     font-size: 1.2rem;
     font-weight: 700;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -493,71 +491,114 @@ footer {
     padding: 70px 0 20px;
 }
 
-.footer-content {
+/* Apply flex properties to the container holding footer columns */
+footer .container { /* Target specific container in footer */
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     margin-bottom: 50px;
 }
 
-.footer-logo h3 {
-    font-size: 1.8rem;
-    margin-bottom: 10px;
+/* Styles for individual footer sections */
+.footer-logo-container, .footer-links-container {
+    flex-basis: 100%; /* Default for mobile */
+    margin-bottom: 30px;
 }
 
-.footer-logo p {
+@media (min-width: 768px) {
+    .footer-logo-container {
+        flex-basis: 40%; /* Adjust as needed */
+    }
+    .footer-links-container {
+        flex-basis: 25%; /* Adjust for 3 columns of links */
+    }
+    .footer-links-container:nth-child(2) { /* Quick Links */
+        flex-basis: 18%;
+    }
+    .footer-links-container:nth-child(3) { /* Our Services */
+        flex-basis: 18%;
+    }
+     .footer-links-container:nth-child(4) { /* Contact Us */
+        flex-basis: 24%;
+    }
+}
+
+
+.footer-logo-container .footer-logo img { /* Specific targeting for logo image */
+    height: 50px;
+    width: auto;
+    margin-bottom: 15px;
+}
+
+.footer-logo-container .footer-description { /* Style for p tag in logo container */
     color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+    margin-bottom: 20px;
 }
 
-.footer-links h4,
-.footer-contact h4 {
-    font-size: 1.2rem;
-    margin-bottom: 20px;
+.footer-links-container .footer-links-title, /* Shared title style */
+.footer-links-container h3 { /* For contact us title */
+    font-size: 1.3rem; /* Larger title */
+    margin-bottom: 25px;
     position: relative;
     padding-bottom: 10px;
+    color: white;
 }
 
-.footer-links h4::after,
-.footer-contact h4::after {
+.footer-links-container .footer-links-title::after,
+.footer-links-container h3::after {
     content: '';
     position: absolute;
     bottom: 0;
-    right: 0;
+    right: 0; /* For RTL */
     width: 50px;
     height: 2px;
     background-color: var(--primary-color);
 }
 
-.footer-links ul li {
-    margin-bottom: 10px;
+.footer-links-container .footer-links li, /* Shared list item style */
+.footer-links-container .contact-info li {
+    margin-bottom: 12px;
 }
 
-.footer-links ul li a {
+.footer-links-container .footer-links li a,
+.footer-links-container .contact-info li { /* Text color for contact info */
     color: rgba(255, 255, 255, 0.7);
-    transition: color 0.3s ease;
-}
-
-.footer-links ul li a:hover {
-    color: white;
-}
-
-.footer-contact p {
-    margin-bottom: 15px;
-    display: flex;
+    transition: color 0.3s ease, padding-right 0.3s ease; /* Added padding transition */
+    display: flex; /* For icon alignment */
     align-items: center;
 }
 
-.footer-contact p i {
-    margin-left: 10px;
+.footer-links-container .footer-links li a:hover {
+    color: white;
+    padding-right: 5px; /* Indent on hover for RTL */
+}
+.footer-links-container .footer-links li a i,
+.footer-links-container .contact-info .contact-icon i {
+    margin-left: 10px; /* For RTL, icon is on the right of text, so margin-left is space AFTER icon */
     color: var(--primary-color);
+    width: 20px; /* Ensure consistent icon spacing */
 }
 
-.social-icons {
+.footer-links-container .contact-info .contact-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 12px;
+}
+.footer-links-container .contact-info .contact-icon {
+    margin-left: 10px; /* Space after icon in RTL */
+    color: var(--primary-color);
+    padding-top: 3px; /* Align icon with first line of text */
+}
+
+
+.social-links { /* Renamed from social-icons for clarity */
     display: flex;
     gap: 15px;
+    margin-top: 20px;
 }
 
-.social-icons a {
+.social-links .social-link {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -565,28 +606,112 @@ footer {
     height: 40px;
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 50%;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.social-icons a:hover {
+.social-links .social-link:hover {
     background-color: var(--primary-color);
+    transform: translateY(-2px);
 }
 
-.social-icons i {
+.social-links .social-link i {
     color: white;
     font-size: 1.2rem;
 }
 
+.newsletter-form {
+    display: flex;
+    margin-top: 10px;
+    border-radius: var(--border-radius-full);
+    overflow: hidden;
+    background-color: rgba(255,255,255,0.1);
+    max-width: 300px; /* Limit width */
+}
+.newsletter-input {
+    flex-grow: 1;
+    padding: 10px 15px;
+    border: none;
+    background-color: transparent;
+    color: white;
+    font-family: 'Tajawal', sans-serif;
+}
+.newsletter-input::placeholder {
+    color: rgba(255,255,255,0.5);
+}
+.newsletter-button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.newsletter-button:hover {
+    background-color: var(--primary-dark);
+}
+
+
 .footer-bottom {
     text-align: center;
-    padding-top: 20px;
+    padding-top: 30px; /* Increased padding */
+    margin-top: 30px;  /* Increased margin */
     border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.footer-bottom p {
-    color: rgba(255, 255, 255, 0.5);
+.footer-bottom p.copyright {
+    color: rgba(255, 255, 255, 0.6); /* Slightly lighter */
     font-size: 0.9rem;
+    margin-bottom: 10px; /* Space before links */
 }
+
+.footer-bottom-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.footer-bottom-links .footer-bottom-link {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.85rem;
+    transition: color 0.3s ease;
+}
+
+.footer-bottom-links .footer-bottom-link:hover {
+    color: white;
+}
+
+
+/* Back to top button */
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    left: 20px; /* Adjusted for RTL, could be right: 20px */
+    background-color: var(--primary-color);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-md);
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1000;
+}
+
+.back-to-top.visible { /* JS should add this class when scrolling down */
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background-color: var(--primary-dark);
+    transform: scale(1.1);
+}
+
 
 /* Responsive Styles */
 @media (max-width: 992px) {
@@ -598,9 +723,13 @@ footer {
         font-size: 1.3rem;
     }
     
-    .footer-content > div {
-        flex-basis: 48%;
+    /* Footer columns stack earlier if needed, or adjust basis */
+    footer .container > div { /* Target direct children of footer's container */
+        flex-basis: 48% !important; /* Override more specific basis for stacking */
         margin-bottom: 30px;
+    }
+    .footer-logo-container {
+        flex-basis: 100% !important; /* Logo full width */
     }
 }
 
@@ -631,11 +760,11 @@ footer {
     }
     
     .testimonial {
-        max-width: 100%;
+        max-width: 90%; /* Use percentage for better fit */
     }
     
-    .footer-content > div {
-        flex-basis: 100%;
+    footer .container > div {
+        flex-basis: 100% !important; /* All footer columns stack */
     }
 
     .bots-grid {
@@ -645,55 +774,48 @@ footer {
     }
 
     .bot-card {
-        padding: 20px;
-        margin-bottom: 15px;
-        min-height: auto;
+        padding: 25px; /* Slightly more padding */
+        margin-bottom: 20px;
     }
 
     .bot-icon {
-        width: 60px;
-        height: 60px;
+        width: 70px; /* Slightly larger */
+        height: 70px;
     }
 
     .bot-icon i {
-        font-size: 1.8rem;
+        font-size: 2rem; /* Adjusted */
     }
 
     .bot-card h3 {
-        font-size: 1.3rem;
+        font-size: 1.4rem; /* Slightly larger */
         margin-bottom: 12px;
     }
 
     .bot-description {
-        font-size: 0.95rem;
-        margin-bottom: 15px;
+        font-size: 1rem; /* Slightly larger */
+        margin-bottom: 18px;
     }
 
     .features-list li {
-        font-size: 0.9rem;
-        margin-bottom: 8px;
+        font-size: 0.95rem; /* Slightly larger */
+        margin-bottom: 10px;
     }
 
     .cta-button {
-        padding: 10px 20px;
-        font-size: 0.95rem;
+        padding: 12px 22px; /* Adjusted padding */
+        font-size: 1rem;
     }
 
-    .bot-card:hover {
-        transform: translateY(-3px);
-    }
-
-    .advantage-card:hover {
-        transform: translateY(-3px);
-    }
-
-    .testimonial:hover {
+    .advantage-card:hover,
+    .testimonial:hover,
+    .bot-card:hover { /* Consistent hover for mobile */
         transform: translateY(-3px);
     }
 
     .cta-button,
     .main-cta-button {
-        min-height: 44px;
+        min-height: 48px; /* Slightly taller */
         display: flex;
         align-items: center;
         justify-content: center;
@@ -701,11 +823,14 @@ footer {
 
     .bot-icon,
     .advantage-icon {
-        margin-bottom: 15px;
+        margin-bottom: 18px; /* Increased margin */
     }
 }
 
 @media (max-width: 576px) {
+    body {
+        font-size: 15px; /* Adjust base font size slightly */
+    }
     .hero {
         padding: 60px 0;
     }
@@ -726,22 +851,25 @@ footer {
     .bots-list,
     .advantages,
     .testimonials {
-        padding: 60px 0;
+        padding: 60px 15px; /* Add side padding to sections */
     }
     
     .bot-card,
     .advantage-card {
         padding: 20px;
     }
+    .container {
+        padding: 0 15px; /* Consistent padding for container */
+    }
 }
 
 @media (max-width: 480px) {
     .hero {
-        padding: 50px 0;
+        padding: 50px 10px; /* Add side padding */
     }
 
     .main-title {
-        font-size: 1.5rem;
+        font-size: 1.6rem; /* Adjusted */
         padding: 0 10px;
     }
 
@@ -751,51 +879,52 @@ footer {
     }
 
     .intro {
-        padding: 40px 0;
+        padding: 40px 10px; /* Add side padding */
     }
 
     .intro h2 {
-        font-size: 1.4rem;
+        font-size: 1.5rem; /* Adjusted */
     }
 
     .intro p {
         font-size: 0.95rem;
-        padding: 0 15px;
+        padding: 0 10px;
     }
 
     .bots-list {
-        padding: 40px 0;
+        padding: 40px 10px; /* Add side padding */
     }
 
     .bots-list h2 {
-        font-size: 1.4rem;
+        font-size: 1.5rem; /* Adjusted */
         margin-bottom: 2rem;
     }
 
     .bot-card {
-        border-radius: 10px;
-        padding: 15px;
+        border-radius: var(--border-radius); /* Consistent rounding */
+        padding: 20px; /* Adjusted */
     }
 
     .features-list {
-        margin-bottom: 15px;
+        margin-bottom: 20px; /* Adjusted */
     }
 
     .advantages-grid {
         grid-template-columns: 1fr;
-        gap: 15px;
+        gap: 20px; /* Adjusted */
     }
 
     .advantage-card {
-        padding: 15px;
+        padding: 20px; /* Adjusted */
     }
 
     .testimonials-slider {
-        padding: 0 15px;
+        padding: 0 10px; /* Add side padding */
     }
 
     .testimonial {
-        padding: 15px;
+        padding: 20px; /* Adjusted */
+        max-width: 100%;
     }
 
     .cta-section {
@@ -803,7 +932,7 @@ footer {
     }
 
     .cta-section h2 {
-        font-size: 1.4rem;
+        font-size: 1.5rem; /* Adjusted */
     }
 
     .cta-section p {
@@ -811,7 +940,16 @@ footer {
     }
 
     .main-cta-button {
-        padding: 12px 25px;
+        padding: 14px 28px; /* Adjusted */
         font-size: 1rem;
+    }
+    .back-to-top {
+        width: 35px;
+        height: 35px;
+        bottom: 15px;
+        left: 15px; /* Or right for LTR */
+    }
+    .back-to-top i {
+        font-size: 0.9em;
     }
 }

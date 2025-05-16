@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
                 window.scrollTo({
-                    top: targetElement.offsetTop - 100,
+                    top: targetElement.offsetTop - 100, // Adjusted for potential fixed header
                     behavior: 'smooth'
                 });
             }
@@ -20,31 +20,44 @@ document.addEventListener('DOMContentLoaded', function() {
     // Simple testimonial slider functionality
     const testimonials = document.querySelectorAll('.testimonial');
     let currentTestimonial = 0;
+    let testimonialInterval;
     
-    // Only initialize slider if we're on mobile view
+    function showTestimonial(index) {
+        testimonials.forEach((testimonial, i) => {
+            testimonial.style.display = (i === index) ? 'block' : 'none';
+        });
+    }
+
+    function nextTestimonial() {
+        currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+        showTestimonial(currentTestimonial);
+    }
+
     function initSlider() {
         if (window.innerWidth <= 768 && testimonials.length > 1) {
-            // Hide all testimonials except the first one
-            testimonials.forEach((testimonial, index) => {
-                if (index !== 0) {
-                    testimonial.style.display = 'none';
-                }
+            showTestimonial(currentTestimonial); // Show the first one initially
+            if (testimonialInterval) clearInterval(testimonialInterval); // Clear existing interval
+            testimonialInterval = setInterval(nextTestimonial, 5000);
+        } else {
+            // If not mobile or not enough testimonials, show all and clear interval
+            testimonials.forEach(testimonial => {
+                testimonial.style.display = 'block';
             });
-            
-            // Start auto-sliding
-            setInterval(() => {
-                testimonials[currentTestimonial].style.display = 'none';
-                currentTestimonial = (currentTestimonial + 1) % testimonials.length;
-                testimonials[currentTestimonial].style.display = 'block';
-            }, 5000);
+            if (testimonialInterval) clearInterval(testimonialInterval);
         }
     }
     
     // Initialize slider on load if needed
-    initSlider();
-    
+    if (testimonials.length > 0) { // Only run if testimonials exist
+      initSlider();
+    }
+        
     // Reinitialize on window resize
-    window.addEventListener('resize', initSlider);
+    window.addEventListener('resize', () => {
+      if (testimonials.length > 0) {
+        initSlider();
+      }
+    });
     
     // Add animation to bot cards when they come into view
     const botCards = document.querySelectorAll('.bot-card');
@@ -55,7 +68,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const rect = element.getBoundingClientRect();
         return (
             rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
-            rect.bottom >= 0
+            rect.bottom >= 0 &&
+            rect.left <= (window.innerWidth || document.documentElement.clientWidth) &&
+            rect.right >= 0
         );
     }
     
@@ -79,21 +94,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Set initial styles for animation
-    botCards.forEach(card => {
+    [...botCards, ...advantageCards].forEach(card => {
         card.style.opacity = '0';
         card.style.transform = 'translateY(20px)';
         card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
     });
-    
-    advantageCards.forEach(card => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(20px)';
-        card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-    });
-    
-    // Run animation check on load and scroll
-    window.addEventListener('load', animateOnScroll);
-    window.addEventListener('scroll', animateOnScroll);
     
     // Add staggered delay to cards for better visual effect
     botCards.forEach((card, index) => {
@@ -103,4 +108,10 @@ document.addEventListener('DOMContentLoaded', function() {
     advantageCards.forEach((card, index) => {
         card.style.transitionDelay = `${index * 0.1}s`;
     });
+    
+    // Run animation check on load and scroll
+    window.addEventListener('load', animateOnScroll);
+    window.addEventListener('scroll', animateOnScroll);
+    // Initial check in case elements are already in view
+    animateOnScroll(); 
 });
