@@ -343,4 +343,12 @@ document.addEventListener('DOMContentLoaded', () => {
             el.classList.add('visible', 'fade-in');
         });
     }
+
+    // LinkedIn Badge Script
+    const linkedInScript = document.createElement('script');
+    linkedInScript.src = "https://platform.linkedin.com/badges/js/profile.js";
+    linkedInScript.async = true;
+    linkedInScript.defer = true;
+    linkedInScript.type = "text/javascript";
+    document.head.appendChild(linkedInScript);
 });

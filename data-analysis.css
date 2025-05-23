@@ -5,11 +5,13 @@
     --subtext-color: #8892B0;
     --background-color: #1D2B3A;
     --card-background: #1D2B3A;
+    --saudi-green: #006C35;
+    --saudi-accent: #149B0F;
 }
 
 /* إعدادات عامة */
 body {
-    font-family: 'Cairo', sans-serif;
+    font-family: 'Cairo', 'Tajawal', sans-serif;
     margin: 0;
     padding: 0;
     background-color: var(--background-color);
@@ -32,7 +34,7 @@ a:hover {
 
 /* الهيدر */
 header {
-    background: linear-gradient(to right, var(--secondary-color), var(--primary-color));
+    background: linear-gradient(to right, var(--saudi-green), var(--primary-color));
     color: var(--text-color);
     text-align: center;
     padding: 50px 20px;
@@ -40,6 +42,7 @@ header {
 
 header h1 {
     font-size: 2.8em;
+    font-weight: 700;
 }
 
 header p {
@@ -61,12 +64,24 @@ section h2 {
     text-align: center;
     margin-bottom: 20px;
     font-size: 2em;
+    color: var(--secondary-color);
+    position: relative;
+}
+
+section h2::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: var(--saudi-green);
+    margin: 10px auto;
+    border-radius: 2px;
 }
 
 section p {
     margin-bottom: 20px;
     font-size: 1.1em;
-    color: #555;
+    color: var(--text-color);
 }
 
 /* قائمة الخدمات */
@@ -86,11 +101,13 @@ section p {
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     color: var(--text-color);
+    border-bottom: 3px solid transparent;
 }
 
 .service:hover {
     transform: translateY(-5px);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border-bottom: 3px solid var(--saudi-green);
 }
 
 .service i {
@@ -113,10 +130,13 @@ section p {
 .why-us li {
     margin-bottom: 15px;
     font-size: 1.1em;
+    padding: 10px;
+    background-color: rgba(100, 255, 218, 0.05);
+    border-radius: 5px;
 }
 
 .why-us li i {
-    color: var(--secondary-color);
+    color: var(--saudi-green);
     margin-left: 10px;
 }
 
@@ -136,11 +156,13 @@ section p {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     text-align: center;
     color: var(--text-color);
+    border-right: 4px solid var(--saudi-green);
 }
 
 .example h3 {
     font-size: 1.3em;
     margin-bottom: 10px;
+    color: var(--secondary-color);
 }
 
 .example p {
@@ -163,10 +185,14 @@ footer a {
 footer a:hover {
     text-decoration: underline;
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css');
-/* General Styles */
+
+/* General Styles with Saudi market focus */
 body {
-    font-family: 'Cairo', sans-serif;
+    font-family: 'Cairo', 'Tajawal', sans-serif;
     margin: 0;
     padding: 0;
     background-color: var(--background-color);
@@ -211,9 +237,10 @@ nav {
     border-radius: 5px;
     display: inline-block;
 }
-.navbar a.active{
-      background-color: var(--secondary-color);
-      color: var(--primary-color);
+.navbar a.active,
+.navbar a[aria-current="page"] {
+    background-color: var(--saudi-green);
+    color: white;
 }
 .navbar a:hover {
     background-color: #34495e;
@@ -227,20 +254,35 @@ nav {
     border-radius: 10px;
     margin: 30px auto;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://d.top4top.io/p_33354e90u1.png') no-repeat center/contain;
+    opacity: 0.05;
+    z-index: -1;
 }
 
 .header h1 {
     font-size: 2.5em;
-    color: #2c3e50;
+    color: var(--text-color);
     margin-bottom: 20px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
 }
 
 .header p {
     font-size: 1.2em;
-    color: #555;
+    color: var(--subtext-color);
 }
 
-/* Services Grid */
+/* Services Grid with Saudi market focus */
 .services-grid {
     display: flex;
     flex-wrap: wrap;
@@ -255,14 +297,15 @@ nav {
     width: calc(30% - 20px);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     text-align: center;
+    border-bottom: 3px solid var(--saudi-green);
 }
 .service-card h3 {
     font-size: 1.3em;
     margin-bottom: 10px;
-    color: #333;
+    color: var(--secondary-color);
 }
 .service-card p {
-    color: #666;
+    color: var(--text-color);
     line-height: 1.6;
 }
 
@@ -271,7 +314,7 @@ nav {
     height: 200px;
     margin: 20px auto;
     border-radius: 8px;
-  }
+}
 
 /* Stats */
 .stats {
@@ -287,16 +330,17 @@ nav {
     border-radius: 8px;
     padding: 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-top: 3px solid var(--saudi-green);
 }
 .stat-item h4 {
     font-size: 1.2em;
     margin-bottom: 10px;
-    color: #333;
+    color: var(--text-color);
 }
 .stat-item p {
     font-size: 1.5em;
     font-weight: bold;
-    color: #3498db;
+    color: var(--secondary-color);
 }
 
 /* 3D Canvas */
@@ -305,6 +349,7 @@ nav {
     height: 300px;
     margin: 30px auto;
     border-radius: 8px;
+    border: 1px solid rgba(100, 255, 218, 0.2);
 }
 /* Importance Section */
 #ai-automation-importance {
@@ -313,13 +358,13 @@ nav {
     text-align: center;
 }
 #ai-automation-importance .importance-container{
-  max-width: 1200px;
-  margin: 0 auto;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 #ai-automation-importance h2 {
     font-size: 2em;
-    color: #2c3e50;
+    color: var(--secondary-color);
     margin-bottom: 30px;
 }
 #ai-automation-importance .importance-cards {
@@ -330,7 +375,7 @@ nav {
     margin-bottom: 20px;
 }
 #ai-automation-importance .importance-card {
-    background: white;
+    background: #243447;
     border-radius: 8px;
     padding: 20px;
     width: calc(25% - 20px);
@@ -340,24 +385,24 @@ nav {
 #ai-automation-importance .card-icon {
     font-size: 2em;
     margin-bottom: 10px;
-    color: #3498db;
+    color: var(--saudi-green);
 }
 
 #ai-automation-importance .importance-card h3 {
     font-size: 1.3em;
-    color: #333;
+    color: var(--text-color);
     margin-bottom: 10px;
 }
 
 #ai-automation-importance .importance-card p {
-  color: #555;
+    color: var(--subtext-color);
 }
 #ai-automation-importance .importance-stats {
-  display: flex;
+    display: flex;
     justify-content: center;
     gap: 30px;
     margin: 20px auto;
-     flex-wrap: wrap;
+    flex-wrap: wrap;
 }
 
 #ai-automation-importance .stat-item {
@@ -365,38 +410,38 @@ nav {
     border-radius: 8px;
     padding: 15px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-     background-color: #1D2B3A;
+    background-color: #1D2B3A;
 }
 #ai-automation-importance .stat-number {
     font-size: 2em;
     font-weight: bold;
-    color: #3498db;
+    color: var(--saudi-green);
     display: block;
 }
 #ai-automation-importance .stat-text {
-    color: #555;
+    color: var(--subtext-color);
 }
 /* Workflow Chart */
 #data-analysis {
     padding: 50px 20px;
-  background-color: #1D2B3A;
+    background-color: #1D2B3A;
 }
 #data-analysis .container{
-  max-width: 1200px;
-  margin: 0 auto;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 #data-analysis .section-title{
-  font-size: 2em;
-    color: #2c3e50;
+    font-size: 2em;
+    color: var(--secondary-color);
     margin-bottom: 20px;
     text-align: center;
 }
 .workflow-chart {
-  width: 100%;
+    width: 100%;
     overflow-x: auto;
 }
 #workflow-svg {
-    background-color: #fff;
+    background-color: #243447;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     padding: 20px;
@@ -410,17 +455,17 @@ nav {
 
 .section-3d h2 {
     font-size: 2em;
-    color: #2c3e50;
+    color: var(--secondary-color);
     text-align: center;
     margin-bottom: 30px;
 }
 .section-3d .content{
-  display: flex;
+    display: flex;
     flex-wrap: wrap;
-  max-width: 1200px;
+    max-width: 1200px;
     margin: 0 auto;
-  gap: 20px;
-  justify-content: center;
+    gap: 20px;
+    justify-content: center;
 }
 .section-3d .card {
     background: #1D2B3A;
@@ -428,28 +473,28 @@ nav {
     padding: 20px;
     width: calc(30% - 20px);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  text-align: center;
+    text-align: center;
 }
 .section-3d .card h3 {
-  font-size: 1.3em;
-    color: #333;
+    font-size: 1.3em;
+    color: var(--text-color);
     margin-bottom: 10px;
 }
 .section-3d .card p {
-    color: #555;
+    color: var(--subtext-color);
     line-height: 1.6;
 }
 .section-3d .chart-container {
-  width: calc(50% - 20px);
-   background: #1D2B3A;
+    width: calc(50% - 20px);
+    background: #1D2B3A;
     border-radius: 8px;
-     padding: 20px;
-     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-     text-align: center;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 .section-3d .chart-container h3 {
-  font-size: 1.3em;
-  color: #333;
+    font-size: 1.3em;
+    color: var(--text-color);
     margin-bottom: 10px;
 }
 /* Footer */
@@ -469,18 +514,19 @@ footer .contact-info {
     width: calc(50% - 20px);
 }
 footer .social-media img {
-  width: 30px;
+    width: 30px;
     margin: 0 10px;
     border-radius: 5px;
 }
 footer .social-media a {
- display: inline-block;
-  margin: 5px;
+    display: inline-block;
+    margin: 5px;
 }
 
 footer h3 {
     font-size: 1.4em;
     margin-bottom: 15px;
+    color: var(--secondary-color);
 }
 
 footer p {
@@ -488,23 +534,23 @@ footer p {
     margin-bottom: 10px;
 }
 footer .contact-info a {
-color: white;
-  margin: 5px;
+    color: white;
+    margin: 5px;
 }
 footer .contact-info a i{
     margin-left: 5px;
 }
 /* Responsive Design */
 @media (max-width: 768px) {
-  .navbar li {
+    .navbar li {
         display: block;
         margin: 10px 0;
     }
     .service-card,
-     #ai-automation-importance .importance-card,
-        .section-3d .card,
-       .section-3d .chart-container
-     {
+    #ai-automation-importance .importance-card,
+    .section-3d .card,
+    .section-3d .chart-container
+    {
         width: 100%;
     }
     footer .social-media,
@@ -514,100 +560,105 @@ footer .contact-info a i{
     nav {
         position: static; /* إزالة التثبيت */
     }
+    .service, .example {
+        width: 100%;
+    }
 }
- * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
 
-        .footer {
-            background-color: #111827;
-            color: white;
-            padding: 3rem 0;
-            width: 100%; /* إضافة هذه السطر */
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Cairo', 'Tajawal', Arial, sans-serif;
+}
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1rem;
-        }
+.footer {
+    background-color: #111827;
+    color: white;
+    padding: 3rem 0;
+    width: 100%;
+}
 
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
 
-        .footer-section h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
 
-        .footer-section p {
-            color: #9ca3af;
-            line-height: 1.6;
-        }
+.footer-section h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--secondary-color);
+}
 
-        .quick-links ul {
-            list-style: none;
-        }
+.footer-section p {
+    color: #9ca3af;
+    line-height: 1.6;
+}
 
-        .quick-links ul li {
-            margin-bottom: 0.5rem;
-        }
+.quick-links ul {
+    list-style: none;
+}
 
-        .quick-links ul li a {
-            color: #9ca3af;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
+.quick-links ul li {
+    margin-bottom: 0.5rem;
+}
 
-        .quick-links ul li a:hover {
-            color: white;
-        }
+.quick-links ul li a {
+    color: #9ca3af;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
 
-        .social-links {
-            display: flex;
-            gap: 1rem;
-        }
+.quick-links ul li a:hover {
+    color: white;
+}
 
-        .social-icon {
-            width: 40px;
-            height: 40px;
-            background-color: #374151;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background-color 0.3s ease;
-        }
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
 
-        .social-icon:hover {
-            background-color: #4b5563;
-        }
+.social-icon {
+    width: 40px;
+    height: 40px;
+    background-color: #374151;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
 
-        .social-icon img {
-            width: 20px;
-            height: 20px;
-            filter: invert(1);
-        }
+.social-icon:hover {
+    background-color: var(--saudi-green);
+}
 
-        .copyright {
-            text-align: center;
-            margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 1px solid #374151;
-            color: #9ca3af;
-        }
+.social-icon img {
+    width: 20px;
+    height: 20px;
+    filter: invert(1);
+}
 
-        @media (max-width: 768px) {
-            .footer-content {
-                grid-template-columns: 1fr;
-            }
-        }
+.copyright {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid #374151;
+    color: #9ca3af;
+}
+
+@media (max-width: 768px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+}
 
 .analysis-steps, .analysis-types, .visualization-tools {
     display: grid;
@@ -621,6 +672,7 @@ footer .contact-info a i{
     padding: 20px;
     border-radius: 8px;
     text-align: right;
+    border-right: 3px solid var(--saudi-green);
 }
 
 .step h3, .type h3, .tool h3 {
@@ -632,8 +684,6 @@ footer .contact-info a i{
     color: var(--text-color);
     line-height: 1.6;
 }
-
-/* ...existing styles... */
 
 .data-lifecycle {
     display: grid;
@@ -648,6 +698,7 @@ footer .contact-info a i{
     border-radius: 10px;
     text-align: right;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    border-top: 3px solid var(--saudi-green);
 }
 
 .lifecycle-step h3 {
@@ -668,6 +719,7 @@ footer .contact-info a i{
     padding: 25px;
     border-radius: 10px;
     text-align: right;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
 }
 
 .analysis-type h3 {
@@ -690,7 +742,7 @@ footer .contact-info a i{
 
 .analysis-type ul li:before {
     content: "•";
-    color: var(--secondary-color);
+    color: var(--saudi-green);
     position: absolute;
     right: 0;
 }
@@ -707,6 +759,7 @@ footer .contact-info a i{
     padding: 25px;
     border-radius: 10px;
     text-align: right;
+    border-bottom: 3px solid var(--saudi-green);
 }
 
 .vis-section h3, .bi-section h3 {
@@ -728,9 +781,24 @@ footer .contact-info a i{
 
 .vis-section ul li:before, .bi-section ul li:before {
     content: "•";
-    color: var(--secondary-color);
+    color: var(--saudi-green);
     position: absolute;
     right: 0;
+}
+
+/* SEO Improvements */
+.seo-highlight {
+    color: var(--saudi-green);
+    font-weight: bold;
+}
+
+.saudi-specific-content {
+    border-right: 3px solid var(--saudi-green);
+    padding-right: 15px;
+    margin: 20px 0;
+    background-color: rgba(0, 108, 53, 0.05);
+    padding: 15px;
+    border-radius: 5px;
 }
 
 /* Responsive adjustments */
@@ -740,6 +808,63 @@ footer .contact-info a i{
     .visualization-bi {
         grid-template-columns: 1fr;
     }
+    
+    /* Improve mobile readability */
+    body {
+        font-size: 16px;
+    }
+    
+    .service, .example, .step, .type, .lifecycle-step {
+        padding: 15px;
+    }
+    
+    h1 {
+        font-size: 2em;
+    }
+    
+    h2 {
+        font-size: 1.8em;
+    }
+    
+    h3 {
+        font-size: 1.3em;
+    }
 }
 
-/* ...existing styles... */
+/* Additional accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+    .service:hover,
+    .social-icon:hover {
+        transform: none;
+        transition: none;
+    }
+}
+
+/* Print-friendly styles */
+@media print {
+    body {
+        background: white;
+        color: black;
+        font-size: 12pt;
+    }
+    
+    nav, footer, #canvas3d {
+        display: none;
+    }
+    
+    .service, .example, .step, .type, .lifecycle-step {
+        border: 1px solid #ddd;
+        box-shadow: none;
+        page-break-inside: avoid;
+    }
+    
+    a {
+        text-decoration: none;
+        color: black;
+    }
+    
+    a::after {
+        content: " (" attr(href) ")";
+        font-size: 90%;
+    }
+}
