@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>خدمة العملاء الذكية</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+</head>
+<body>
+    <!-- أيقونة الدردشة -->
+    <div class="chat-widget" id="chatWidget">
+        <i class="fas fa-comments"></i>
+    </div>
+
+    <!-- النافذة المنبثقة -->
+    <div class="chat-popup" id="chatPopup">
+        <!-- رأس النافذة -->
+        <div class="chat-header">
+            <h3><i class="fas fa-robot"></i> مساعد ذكي</h3>
+            <button class="close-btn" id="closeChat">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <!-- أزرار التبديل -->
+        <div class="mode-toggle">
+            <button class="mode-btn active" id="textMode">
+                <i class="fas fa-keyboard"></i> نصي
+            </button>
+            <button class="mode-btn" id="voiceMode">
+                <i class="fas fa-microphone"></i> صوتي
+            </button>
+        </div>
+
+        <!-- منطقة الرسائل -->
+        <div class="chat-messages" id="chatMessages">
+            <div class="message bot">
+                <div class="message-content">
+                    مرحباً! أنا المساعد الذكي، كيف يمكنني مساعدتك اليوم؟
+                    <div class="message-time" id="welcomeTime"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- مؤشر الكتابة -->
+        <div class="typing-indicator" id="typingIndicator">
+            <div class="typing-dots">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            جاري الكتابة...
+        </div>
+
+        <!-- منطقة الإدخال النصي -->
+        <div class="chat-input" id="textInput">
+            <div class="input-container">
+                <input type="text" id="messageInput" placeholder="اكتب رسالتك هنا..." maxlength="500">
+                <button class="send-btn" id="sendBtn">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- منطقة التحكم الصوتي -->
+        <div class="voice-controls" id="voiceControls">
+            <div class="voice-status" id="voiceStatus">اضغط للتحدث</div>
+            <button class="voice-btn-large" id="recordBtn">
+                <i class="fas fa-microphone"></i>
+            </button>
+        </div>
+    </div>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
