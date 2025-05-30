@@ -4,6 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>نظام خدمة العملاء الذكي</title>
+    <!-- شعار الموقع كـ favicon -->
+    <link rel="icon" type="image/png" href="assets/logo.png">
+    <!-- Open Graph preview image -->
+    <meta property="og:image" content="assets/logo.png">
+    <meta property="og:title" content="نظام خدمة العملاء الذكي - Bright AI">
+    <meta property="og:description" content="نظام خدمة عملاء ذكي مدعوم بالذكاء الاصطناعي - Bright AI">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="">
+    <!-- Twitter Card preview image -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="assets/logo.png">
     <style>
         :root {
             --primary-color: #4299e1;
@@ -55,9 +66,29 @@
         }
 
         .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        /* إضافة تنسيق لصورة الشعار */
+        .logo-img {
+            height: 96px;
+            width: 96px;
+            vertical-align: middle;
+            margin-left: 0.75rem;
+        }
+        html[dir="rtl"] .logo-img { margin-left: 0; margin-right: 0.75rem; }
+        .logo-title {
             font-size: 1.6rem;
             font-weight: bold;
             color: var(--dark-gray-color);
+            display: inline-block;
+            vertical-align: middle;
+        }
+        @media (max-width: 480px) {
+            .logo-img { height: 72px; width: 72px; }
+            .logo-title { font-size: 1.1rem; }
         }
 
         .nav-tabs {
@@ -203,9 +234,7 @@
         }
         
         /* Chat Interface */
-        .chat-interface {
-            /* Styles specific to chat if any, mostly inherited or general */
-        }
+        /* .chat-interface { } */ /* Removed empty rule */
 
         .chat-container {
             height: 450px;
@@ -307,9 +336,7 @@
         }
         
         /* Voice Interface */
-        .voice-interface {
-            /* Styles specific to voice if any */
-        }
+        /* .voice-interface { } */ /* Removed empty rule */
 
         .voice-chat-container {
             text-align: center;
@@ -490,7 +517,6 @@
         }
 
         .tool-btn.primary { background: var(--primary-color); color: var(--white-color); }
-        .tool-btn.secondary { background: var(--dark-gray-color); color: var(--white-color); }
         .tool-btn.success { background: var(--success-color); color: var(--white-color); }
         .tool-btn.warning { background: var(--warning-color); color: var(--white-color); }
 
@@ -733,9 +759,7 @@
             font-weight: 500;
         }
         .action-btn.resolve { background: var(--success-color); color: var(--white-color); }
-        .action-btn.important { background: var(--warning-color); color: var(--white-color); }
-        .action-btn.follow { background: var(--primary-color); color: var(--white-color); }
-        .action-btn.note { background: var(--dark-gray-color); color: var(--white-color); }
+        .action-btn.important { background: var(--warning-color); color: var(--white-color); } /* Fixed syntax */
         .action-btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-sm); }
 
         .conversation-metrics {
@@ -754,7 +778,11 @@
 <body>
     <!-- Header -->
     <header class="header">
-        <div class="logo">🤖 نظام خدمة العملاء الذكي</div>
+        <!-- شعار الموقع الجديد -->
+        <div class="logo">
+            <img src="assets/logo.png" alt="Bright AI Logo" class="logo-img">
+            <span class="logo-title"></span>
+        </div>
         <nav class="nav-tabs">
             <button class="tab-btn active" onclick="showTab('customer')">واجهة العميل</button>
             <button class="tab-btn" onclick="showTab('dashboard')">لوحة التحكم</button>
@@ -1659,9 +1687,7 @@
                 1.  أكثر 3 مواضيع تم الاستفسار عنها.
                 2.  تقييم عام لمستوى رضا العملاء (مثال: جيد، متوسط، يحتاج لتحسين).
                 3.  اقتراحات لتحسين الخدمة أو الردود.
-                4.  أمثلة على استفسارات معقدة أو متكررة.
-
-                المحادثات (مختصرة):
+                4.  أمثلة على استجابات العملاء المحتملين (مختصرة):
                 ${conversations.slice(-10).map((conv, idx) => `محادثة ${idx+1} (ID: ${conv.id}):\nالعميل: ${conv.user.substring(0,100)}...\nالمساعد: ${conv.bot.substring(0,100)}...`).join('\n---\n')}
             `;
             try {
