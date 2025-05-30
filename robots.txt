@@ -152,9 +152,7 @@ Host: brightaii.com
 
 # مواقع ملفات الخريطة
 Sitemap: https://brightaii.com/sitemap.xml
-Sitemap: https://brightaii.com/sitemap-images.xml
-Sitemap: https://brightaii.com/sitemap-blog.xml
-Sitemap: https://brightaii.com/sitemap-ar.xml
+
 
 # ملاحظات إضافية للمطورين
 # تأكد من تحديث التواريخ في sitemap.xml بانتظام
