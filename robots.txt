@@ -1,5 +1,6 @@
 # BrightAI - Enhanced Robots.txt
 # Last updated: 2025-02-28
+# TODO: Update the "Last updated" date when changes are made.
 
 # Global rules with improved crawl efficiency
 User-agent: *
@@ -9,6 +10,7 @@ Crawl-delay: 2
 # Primary Search Engines
 User-agent: Googlebot
 Allow: /
+# Crawl-delay is deprecated for Googlebot. Manage crawl rate in Google Search Console.
 Crawl-delay: 1
 Allow: /*.html$
 Allow: /*.php$
@@ -76,6 +78,6 @@ Disallow: /*?*preview=
 # Host Configuration
 Host: brightaii.com
 
-
-Sitemap: https://brightaii.com/sitemap
+# Specify the location of your sitemap file(s)
+Sitemap: https://brightaii.com/sitemap.xml
 
