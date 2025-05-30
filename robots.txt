@@ -1,83 +1,162 @@
-# BrightAI - Enhanced Robots.txt
-# Last updated: 2025-02-28
-# TODO: Update the "Last updated" date when changes are made.
+# BrightAI - ملف Robots.txt المحسّن لمحركات البحث
+# آخر تحديث: 2025-05-30
+# الموقع: brightaii.com
 
-# Global rules with improved crawl efficiency
+# القواعد العامة للزواحف
 User-agent: *
 Allow: /
-Crawl-delay: 2
+Crawl-delay: 1
 
-# Primary Search Engines
+# محركات البحث الرئيسية - أولوية عالية
 User-agent: Googlebot
 Allow: /
-# Crawl-delay is deprecated for Googlebot. Manage crawl rate in Google Search Console.
-Crawl-delay: 1
+Allow: /ar/
+Allow: /en/
+Allow: /blog/
+Allow: /blogger/
 Allow: /*.html$
 Allow: /*.php$
+Allow: /sitemap.xml
+Crawl-delay: 1
 
 User-agent: Bingbot
 Allow: /
+Allow: /ar/
+Allow: /en/
+Allow: /blog/
+Allow: /blogger/
+Crawl-delay: 1
+
+User-agent: Slurp
+Allow: /
 Crawl-delay: 2
 
-# Media Crawlers
+User-agent: DuckDuckBot
+Allow: /
+Crawl-delay: 1
+
+# زواحف الصور والوسائط
 User-agent: Googlebot-Image
 Allow: /images/
 Allow: /assets/images/
+Allow: /uploads/
 Allow: /*.jpg$
 Allow: /*.jpeg$
-Allow: /*.gif$
 Allow: /*.png$
 Allow: /*.webp$
 Allow: /*.svg$
+Allow: /*.gif$
 Crawl-delay: 1
 
-# Enhanced Security - Block Sensitive Areas
-Disallow: /private/
+User-agent: Googlebot-Video
+Allow: /videos/
+Allow: /assets/videos/
+Allow: /*.mp4$
+Allow: /*.webm$
+Crawl-delay: 2
+
+# حماية الملفات والمجلدات الحساسة
 Disallow: /admin/
-Disallow: /includes/
-Disallow: /temp/
-Disallow: /cache/
-Disallow: /backup/
 Disallow: /wp-admin/
 Disallow: /wp-includes/
+Disallow: /wp-content/plugins/
+Disallow: /wp-content/themes/
+Disallow: /private/
+Disallow: /config/
+Disallow: /includes/
+Disallow: /temp/
+Disallow: /tmp/
+Disallow: /cache/
+Disallow: /backup/
+Disallow: /logs/
+Disallow: /cgi-bin/
 Disallow: /*.sql$
 Disallow: /*.log$
 Disallow: /*.conf$
 Disallow: /*.config$
 Disallow: /*.env$
+Disallow: /*.bak$
 Disallow: /*.gz$
 Disallow: /*.tar$
 Disallow: /*.zip$
+Disallow: /*.rar$
 
-# Rate Limit Aggressive Crawlers
+# منع الوصول للملفات التقنية
+Disallow: /404.html
+Disallow: /500.html
+Disallow: /error/
+Disallow: /?s=
+Disallow: /search?
+Disallow: /*?print=
+Disallow: /*?download=
+Disallow: /*?preview=
+
+# السماح بالمعاملات المهمة لمحركات البحث
+Allow: /*?page=
+Allow: /*?lang=
+Allow: /*?category=
+Allow: /*?tag=
+Allow: /*?id=
+
+# منع المعاملات غير المرغوب فيها
+Disallow: /*?*session=
+Disallow: /*?*utm_
+Disallow: /*?*fbclid
+Disallow: /*?*gclid
+Disallow: /*?*ref=
+Disallow: /*?*campaign=
+Disallow: /*?*source=
+Disallow: /*?*medium=
+
+# التحكم في الزواحف التجارية
 User-agent: SemrushBot
 Crawl-delay: 10
+Allow: /
 
 User-agent: AhrefsBot
 Crawl-delay: 10
+Allow: /
 
 User-agent: MJ12bot
+Crawl-delay: 15
+Allow: /
+
+User-agent: DotBot
+Crawl-delay: 10
+Allow: /
+
+# منع الزواحف الضارة أو غير المرغوب فيها
+User-agent: SiteBot
+Disallow: /
+
+User-agent: spbot
 Disallow: /
 
 User-agent: PetalBot
 Disallow: /
 
-# Clean URLs - Parameter Handling
-Allow: /*?page=
-Allow: /*?lang=
-Allow: /*?id=
-Allow: /*?category=
-Allow: /*?tag=
-Disallow: /*?*session=
-Disallow: /*?*utm_
-Disallow: /*?*fbclid
-Disallow: /*?*gclid
-Disallow: /*?*download=
-Disallow: /*?*preview=
+User-agent: CCBot
+Disallow: /
 
-# Host Configuration
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /
+
+# تحديد النطاق المفضل
 Host: brightaii.com
 
-# Specify the location of your sitemap file(s)
+# مواقع ملفات الخريطة
 Sitemap: https://brightaii.com/sitemap.xml
+Sitemap: https://brightaii.com/sitemap-images.xml
+Sitemap: https://brightaii.com/sitemap-blog.xml
+Sitemap: https://brightaii.com/sitemap-ar.xml
 
+# ملاحظات إضافية للمطورين
+# تأكد من تحديث التواريخ في sitemap.xml بانتظام
+# راقب أداء الزحف في Google Search Console
+# استخدم structured data للصفحات المهمة
