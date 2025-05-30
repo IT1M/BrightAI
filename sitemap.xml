@@ -5,60 +5,60 @@
     <lastmod>2025-03-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
-    <html:link rel="alternate" hreflang="ar" href="https://brightaii.com/ar/"/>
-    <html:link rel="alternate" hreflang="en" href="https://brightaii.com/"/>
+    <html:link rel="alternate" hreflang="ar" href="https://brightaii.com/"/>
     <ns1:image>
       <ns1:loc>https://brightaii.com/assets/images/hero-banner.jpg</ns1:loc>
       <ns1:title>BrightAI - AI Solutions</ns1:title>
     </ns1:image>
+  </url>
+    <url>
+    <loc>https://brightaii.com/h/index</loc>
+    <lastmod>2025-05-28</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+    <html:link rel="alternate" hreflang="ar" href="https://brightaii.com/h/index"/>
   </url>
   <url>
     <loc>https://brightaii.com/ai-agent</loc>
     <lastmod>2025-03-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
-    <html:link rel="alternate" hreflang="ar" href="https://brightaii.com/ar/ai-agent"/>
-    <html:link rel="alternate" hreflang="en" href="https://brightaii.com/ai-agent"/>
+    <html:link rel="alternate" hreflang="ar" href="https://brightaii.com/ai-agent"/>
   </url>
   <url>
     <loc>https://brightaii.com/tools</loc>
     <lastmod>2025-03-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
-    <html:link rel="alternate" hreflang="ar" href="https://brightaii.com/ar/tools"/>
-    <html:link rel="alternate" hreflang="en" href="https://brightaii.com/tools"/>
+    <html:link rel="alternate" hreflang="ar" href="https://brightaii.com/tools"/>
   </url>
   <url>
     <loc>https://brightaii.com/data-analysis</loc>
     <lastmod>2025-03-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
-    <html:link rel="alternate" hreflang="ar" href="https://brightaii.com/ar/data-analysis"/>
-    <html:link rel="alternate" hreflang="en" href="https://brightaii.com/data-analysis"/>
+    <html:link rel="alternate" hreflang="ar" href="https://brightaii.com/data-analysis"/>
   </url>
   <url>
     <loc>https://brightaii.com/smart-automation</loc>
     <lastmod>2025-03-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
-    <html:link rel="alternate" hreflang="ar" href="https://brightaii.com/ar/smart-automation"/>
-    <html:link rel="alternate" hreflang="en" href="https://brightaii.com/smart-automation"/>
+    <html:link rel="alternate" hreflang="ar" href="https://brightaii.com/smart-automation"/>
   </url>
   <url>
     <loc>https://brightaii.com/consultation</loc>
     <lastmod>2025-03-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
-    <html:link rel="alternate" hreflang="ar" href="https://brightaii.com/ar/consultation"/>
-    <html:link rel="alternate" hreflang="en" href="https://brightaii.com/consultation"/>
+    <html:link rel="alternate" hreflang="ar" href="https://brightaii.com/consultation"/>
   </url>
   <url>
     <loc>https://brightaii.com/blog</loc>
     <lastmod>2025-03-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
-    <html:link rel="alternate" hreflang="ar" href="https://brightaii.com/ar/blog"/>
-    <html:link rel="alternate" hreflang="en" href="https://brightaii.com/blog"/>
+    <html:link rel="alternate" hreflang="ar" href="https://brightaii.com/blog"/>
   </url>
 
   <!-- Documents -->
@@ -67,24 +67,21 @@
     <lastmod>2025-03-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
-    <html:link rel="alternate" hreflang="ar" href="https://brightaii.com/ar/Docfile/projects.doc"/>
-    <html:link rel="alternate" hreflang="en" href="https://brightaii.com/Docfile/projects.doc"/>
+    <html:link rel="alternate" hreflang="ar" href="https://brightaii.com/Docfile/projects.doc"/>
   </url>
   <url>
     <loc>https://brightaii.com/Docfile/developers.webhooks.doc</loc>
     <lastmod>2025-03-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
-    <html:link rel="alternate" hreflang="ar" href="https://brightaii.com/ar/Docfile/developers.webhooks.doc"/>
-    <html:link rel="alternate" hreflang="en" href="https://brightaii.com/Docfile/developers.webhooks.doc"/>
+    <html:link rel="alternate" hreflang="ar" href="https://brightaii.com/Docfile/developers.webhooks.doc"/>
   </url>
   <url>
     <loc>https://brightaii.com/Docfile/anlisis.doc</loc>
     <lastmod>2025-03-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
-    <html:link rel="alternate" hreflang="ar" href="https://brightaii.com/ar/Docfile/anlisis.doc"/>
-    <html:link rel="alternate" hreflang="en" href="https://brightaii.com/Docfile/anlisis.doc"/>
+    <html:link rel="alternate" hreflang="ar" href="https://brightaii.com/Docfile/anlisis.doc"/>
   </url>
 
   <!-- Blog Articles -->
@@ -93,127 +90,111 @@
     <lastmod>2025-03-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
-    <html:link rel="alternate" hreflang="ar" href="https://brightaii.com/ar/blogger/xsxd"/>
-    <html:link rel="alternate" hreflang="en" href="https://brightaii.com/blogger/xsxd"/>
+    <html:link rel="alternate" hreflang="ar" href="https://brightaii.com/blogger/xsxd"/>
   </url>
   <url>
     <loc>https://brightaii.com/blogger/vvhh</loc>
     <lastmod>2025-03-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
-    <html:link rel="alternate" hreflang="ar" href="https://brightaii.com/ar/blogger/vvhh"/>
-    <html:link rel="alternate" hreflang="en" href="https://brightaii.com/blogger/vvhh"/>
+    <html:link rel="alternate" hreflang="ar" href="https://brightaii.com/blogger/vvhh"/>
   </url>
   <url>
     <loc>https://brightaii.com/blogger/smart-automation-benefits</loc>
     <lastmod>2025-03-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
-    <html:link rel="alternate" hreflang="ar" href="https://brightaii.com/ar/blogger/smart-automation-benefits"/>
-    <html:link rel="alternate" hreflang="en" href="https://brightaii.com/blogger/smart-automation-benefits"/>
+    <html:link rel="alternate" hreflang="ar" href="https://brightaii.com/blogger/smart-automation-benefits"/>
   </url>
   <url>
     <loc>https://brightaii.com/blogger/rcc</loc>
     <lastmod>2025-03-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
-    <html:link rel="alternate" hreflang="ar" href="https://brightaii.com/ar/blogger/rcc"/>
-    <html:link rel="alternate" hreflang="en" href="https://brightaii.com/blogger/rcc"/>
+    <html:link rel="alternate" hreflang="ar" href="https://brightaii.com/blogger/rcc"/>
   </url>
   <url>
     <loc>https://brightaii.com/blogger/rc542</loc>
     <lastmod>2025-03-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
-    <html:link rel="alternate" hreflang="ar" href="https://brightaii.com/ar/blogger/rc542"/>
-    <html:link rel="alternate" hreflang="en" href="https://brightaii.com/blogger/rc542"/>
+    <html:link rel="alternate" hreflang="ar" href="https://brightaii.com/blogger/rc542"/>
   </url>
   <url>
     <loc>https://brightaii.com/blogger/future-of-intelligent-data-analysis-finance-sector</loc>
     <lastmod>2025-03-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
-    <html:link rel="alternate" hreflang="ar" href="https://brightaii.com/ar/blogger/future-of-intelligent-data-analysis-finance-sector"/>
-    <html:link rel="alternate" hreflang="en" href="https://brightaii.com/blogger/future-of-intelligent-data-analysis-finance-sector"/>
+    <html:link rel="alternate" hreflang="ar" href="https://brightaii.com/blogger/future-of-intelligent-data-analysis-finance-sector"/>
   </url>
   <url>
     <loc>https://brightaii.com/blogger/buz.doc</loc>
     <lastmod>2025-03-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
-    <html:link rel="alternate" hreflang="ar" href="https://brightaii.com/ar/blogger/buz.doc"/>
-    <html:link rel="alternate" hreflang="en" href="https://brightaii.com/blogger/buz.doc"/>
+    <html:link rel="alternate" hreflang="ar" href="https://brightaii.com/blogger/buz.doc"/>
   </url>
   <url>
     <loc>https://brightaii.com/blogger/auto</loc>
     <lastmod>2025-03-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
-    <html:link rel="alternate" hreflang="ar" href="https://brightaii.com/ar/blogger/auto"/>
-    <html:link rel="alternate" hreflang="en" href="https://brightaii.com/blogger/auto"/>
+    <html:link rel="alternate" hreflang="ar" href="https://brightaii.com/blogger/auto"/>
   </url>
   <url>
     <loc>https://brightaii.com/blogger/anal</loc>
     <lastmod>2025-03-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
-    <html:link rel="alternate" hreflang="ar" href="https://brightaii.com/ar/blogger/anal"/>
-    <html:link rel="alternate" hreflang="en" href="https://brightaii.com/blogger/anal"/>
+    <html:link rel="alternate" hreflang="ar" href="https://brightaii.com/blogger/anal"/>
   </url>
   <url>
     <loc>https://brightaii.com/blogger/agint-bblog</loc>
     <lastmod>2025-03-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
-    <html:link rel="alternate" hreflang="ar" href="https://brightaii.com/ar/blogger/agint-bblog"/>
-    <html:link rel="alternate" hreflang="en" href="https://brightaii.com/blogger/agint-bblog"/>
+    <html:link rel="alternate" hreflang="ar" href="https://brightaii.com/blogger/agint-bblog"/>
   </url>
   <url>
     <loc>https://brightaii.com/blogger/6v5m</loc>
     <lastmod>2025-03-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
-    <html:link rel="alternate" hreflang="ar" href="https://brightaii.com/ar/blogger/6v5m"/>
-    <html:link rel="alternate" hreflang="en" href="https://brightaii.com/blogger/6v5m"/>
+    <html:link rel="alternate" hreflang="ar" href="https://brightaii.com/blogger/6v5m"/>
   </url>
   <url>
     <loc>https://brightaii.com/blogger/3</loc>
     <lastmod>2025-03-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
-    <html:link rel="alternate" hreflang="ar" href="https://brightaii.com/ar/blogger/3"/>
-    <html:link rel="alternate" hreflang="en" href="https://brightaii.com/blogger/3"/>
+    <html:link rel="alternate" hreflang="ar" href="https://brightaii.com/blogger/3"/>
   </url>
   <url>
     <loc>https://brightaii.com/blogger/مقال-تحليل</loc>
     <lastmod>2025-03-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
-    <html:link rel="alternate" hreflang="ar" href="https://brightaii.com/ar/blogger/مقال-تحليل"/>
-    <html:link rel="alternate" hreflang="en" href="https://brightaii.com/blogger/مقال-تحليل"/>
+    <html:link rel="alternate" hreflang="ar" href="https://brightaii.com/blogger/مقال-تحليل"/>
   </url>
   <url>
     <loc>https://brightaii.com/blogger/الأتمتة-المالية-وأتمتة-الموارد-البشرية</loc>
     <lastmod>2025-03-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
-    <html:link rel="alternate" hreflang="ar" href="https://brightaii.com/ar/blogger/الأتمتة-المالية-وأتمتة-الموارد-البشرية"/>
-    <html:link rel="alternate" hreflang="en" href="https://brightaii.com/blogger/الأتمتة-المالية-وأتمتة-الموارد-البشرية"/>
+    <html:link rel="alternate" hreflang="ar" href="https://brightaii.com/blogger/الأتمتة-المالية-وأتمتة-الموارد-البشرية"/>
   </url>
   <url>
     <loc>https://brightaii.com/blogger/استشارات-الذكاء-الاصطناعي</loc>
     <lastmod>2025-03-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
-    <html:link rel="alternate" hreflang="ar" href="https://brightaii.com/ar/blogger/استشارات-الذكاء-الاصطناعي"/>
-    <html:link rel="alternate" hreflang="en" href="https://brightaii.com/blogger/استشارات-الذكاء-الاصطناعي"/>
+    <html:link rel="alternate" hreflang="ar" href="https://brightaii.com/blogger/استشارات-الذكاء-الاصطناعي"/>
   </url>
   <url>
     <loc>https://brightaii.com/blogger/أتمتة-الذكاء-الاصطناعي</loc>
     <lastmod>2025-03-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
-    <html:link rel="alternate" hreflang="ar" href="https://brightaii.com/ar/blogger/أتمتة-الذكاء-الاصطناعي"/>
-    <html:link rel="alternate" hreflang="en" href="https://brightaii.com/blogger/أتمتة-الذكاء-الاصطناعي"/>
+    <html:link rel="alternate" hreflang="ar" href="https://brightaii.com/blogger/أتمتة-الذكاء-الاصطناعي"/>
   </url>
 </urlset>
