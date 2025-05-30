@@ -12,6 +12,7 @@
     --text-color: #8892B0;
     --background-color: #0A192F;
     --accent-color: #1D2B3A;
+    --accent-color-lighter: #24364A; /* For new demo section */
     --white: #FFFFFF;
     --transition: all 0.3s ease;
     --heading-color: #FFFFFF;
@@ -78,7 +79,7 @@ ul, ol {
 }
 
 /* Container & Layout */
-.container, 
+.container,
 .section-container {
     width: 90%;
     max-width: var(--container-width);
@@ -360,8 +361,86 @@ ul, ol {
     line-height: 1.8;
 }
 
-/* Tourism & Heritage Section */
-.tourism-heritage {
+/* AI Demos Section (New Section) */
+.ai-demos-section {
+    background-color: var(--accent-color-lighter); /* Distinct background */
+    padding: 5rem 0;
+}
+
+.demo-intro-card {
+    background-color: var(--card-bg);
+    padding: 2.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.demo-intro-card .section-mini-title {
+    font-size: 1.1rem;
+}
+
+.demo-intro-card .section-title {
+    font-size: 2.2rem; /* Slightly larger for emphasis */
+    margin-bottom: 1.5rem;
+}
+
+.demo-intro-card .section-description {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+}
+
+.demo-features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.demo-feature {
+    background-color: var(--secondary-color); /* Slightly darker than card-bg for contrast */
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.demo-icon {
+    font-size: 2.8rem; /* Larger icons */
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.demo-feature h3 {
+    color: var(--white);
+    font-size: 1.25rem;
+    margin-bottom: 0.8rem;
+}
+
+.demo-feature p {
+    font-size: 0.95rem;
+    color: var(--text-color);
+    flex-grow: 1;
+}
+
+.demo-cta-container {
+    margin-top: 2rem;
+}
+
+.cta-button.demo-cta {
+    padding: 1rem 2rem; /* Larger CTA button */
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+
+/* Tourism & Heritage Section (Actually AI Robots Section) */
+.tourism-heritage { /* This class name is misleading, it's for AI Robots */
     background-color: var(--secondary-color);
     padding: 5rem 0;
 }
@@ -540,6 +619,14 @@ ul, ol {
     position: absolute;
     right: 0; /* RTL position */
 }
+.service-card ul li i.fas.fa-check { /* For consistent check icon styling with feature-list */
+    color: var(--primary-color);
+    margin-left: 0.8rem;
+    font-size: 1rem;
+    flex-shrink: 0;
+    padding-top: 0.2em;
+}
+
 
 .service-link {
     display: inline-block;
@@ -643,7 +730,15 @@ ul, ol {
     justify-content: center;
     color: var(--secondary-color);
     font-size: 2rem; /* 32px */
+    background-size: cover;
+    background-position: center;
 }
+/* Specific background images for about features for better semantics */
+.expertise-image { background-image: url('https://via.placeholder.com/80/64FFDA/0A192F?text=خبرة'); /* Placeholder */ }
+.innovation-image { background-image: url('https://via.placeholder.com/80/64FFDA/0A192F?text=ابتكار'); /* Placeholder */ }
+.partnership-image { background-image: url('https://via.placeholder.com/80/64FFDA/0A192F?text=شراكة'); /* Placeholder */ }
+.growth-image { background-image: url('https://via.placeholder.com/80/64FFDA/0A192F?text=نمو'); /* Placeholder */ }
+
 
 .feature-item h3 {
     color: var(--white);
@@ -681,6 +776,10 @@ ul, ol {
     background-size: cover;
     background-position: center;
 }
+.team-image-1 { background-image: url('https://via.placeholder.com/120/1D2B3A/FFFFFF?text=قيادة'); /* Placeholder */ }
+.team-image-2 { background-image: url('https://via.placeholder.com/120/1D2B3A/FFFFFF?text=خبراء'); /* Placeholder */ }
+.team-image-3 { background-image: url('https://via.placeholder.com/120/1D2B3A/FFFFFF?text=محللون'); /* Placeholder */ }
+
 
 .cta-container {
     display: flex;
@@ -866,6 +965,17 @@ ul, ol {
     max-width: 500px;
     margin: 0 auto;
 }
+.newsletter-form-large .sr-only { /* Visually hide labels but keep for screen readers */
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
 
 .newsletter-input-large {
     padding: 1rem;
@@ -966,6 +1076,22 @@ ul, ol {
     border-radius: var(--border-radius);
     box-shadow: var(--shadow);
 }
+.consultation-form .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+.required-asterisk {
+    color: var(--primary-color);
+    margin-right: 0.25rem;
+}
+
 
 .form-group {
     margin-bottom: 1.5rem;
@@ -1258,7 +1384,7 @@ textarea.form-control {
     margin-bottom: 0.8rem;
     position: relative;
     padding-right: 1.5rem; /* RTL padding for pseudo-element */
-    color: var(--text-color); /* Corrected: var(--text-color) instead of var (--text-color) */
+    color: var(--text-color);
 }
 
 .tech-detail-card ul li::before {
@@ -1275,6 +1401,18 @@ textarea.form-control {
     padding: 5rem 0 2rem;
     color: var(--text-color);
 }
+.footer .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
 
 .footer-container {
     display: grid;
@@ -1523,7 +1661,7 @@ textarea.form-control {
 .fade-in {
     opacity: 0;
     transform: translateY(30px); /* Start slightly lower */
-    transition: opacity 0.6s cubic-bezier(0.645, 0.045, 0.355, 1), 
+    transition: opacity 0.6s cubic-bezier(0.645, 0.045, 0.355, 1),
                 transform 0.6s cubic-bezier(0.645, 0.045, 0.355, 1);
     will-change: opacity, transform;
 }
@@ -1533,15 +1671,29 @@ textarea.form-control {
     transform: translateY(0);
 }
 
+/* Visually hidden class for accessibility */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+
 /* Responsive Styles */
 @media (max-width: 1200px) {
-    .container, 
+    .container,
     .section-container,
     .navbar-container,
     .footer-container {
         width: 95%;
     }
-    
+
     .hero h1 {
         font-size: 2.5rem; /* 40px */
     }
@@ -1551,25 +1703,28 @@ textarea.form-control {
     body { /* Adjust base font size for rem calculations */
         font-size: 15px;
     }
-    
+
     .about-content,
     .consultation-container {
         grid-template-columns: 1fr;
     }
-    
+
     .vision-mission {
         grid-template-columns: 1fr; /* Stack on smaller screens */
     }
-    
+
     .about-features {
         margin-top: 2rem;
     }
-    
+
     .team-images {
         flex-wrap: wrap; /* Ensure wrapping if space is tight */
     }
     .case-stats {
         justify-content: space-around;
+    }
+    .demo-intro-card .section-title {
+        font-size: 2rem;
     }
 }
 
@@ -1577,15 +1732,15 @@ textarea.form-control {
     body {
         font-size: 14px;
     }
-    
+
     .navbar-container {
         padding: 0 1rem; /* Reduce padding */
     }
-    
+
     .hamburger {
         display: block; /* Show hamburger */
     }
-    
+
     .nav-links {
         position: fixed;
         top: 0;
@@ -1602,11 +1757,11 @@ textarea.form-control {
         box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1); /* Shadow on the left for RTL */
         overflow-y: auto; /* Allow scrolling if menu is long */
     }
-    
+
     .nav-links.active {
         right: 0; /* Slide in from right for RTL */
     }
-    
+
     .nav-links li {
         margin: 0 0 1.5rem 0; /* Reset RTL margin, use bottom margin */
         width: 100%;
@@ -1614,12 +1769,12 @@ textarea.form-control {
         transform: translateX(20px); /* Start slightly to the left for RTL entrance */
         transition: opacity 0.3s ease, transform 0.3s ease;
     }
-    
+
     .nav-links.active li {
         opacity: 1;
         transform: translateX(0);
     }
-    
+
     .nav-links li:nth-child(1) { transition-delay: 0.10s; }
     .nav-links li:nth-child(2) { transition-delay: 0.15s; }
     .nav-links li:nth-child(3) { transition-delay: 0.20s; }
@@ -1629,51 +1784,58 @@ textarea.form-control {
     .nav-links li:nth-child(7) { transition-delay: 0.40s; }
     .nav-links li:nth-child(8) { transition-delay: 0.45s; }
     /* Removed data-index based delay as it's JS dependent and direct CSS is simpler if item count is fixed */
-    
+
     .nav-links a {
         font-size: 1.1rem; /* 15.4px based on 14px body */
         width: 100%;
         padding: 0.5rem 0;
         display: block;
     }
-    
+
     .hero h1 {
         font-size: 2.2rem; /* 30.8px */
     }
-    
+
     .section-title {
         font-size: 1.8rem; /* 25.2px */
     }
-    
+
     .services-grid,
     .tourism-features-grid,
     .case-studies-grid,
     .tech-grid,
-    .tech-details-grid {
+    .tech-details-grid,
+    .demo-features-grid {
         grid-template-columns: 1fr; /* Single column for cards */
     }
-    
+
     .case-stats {
         flex-direction: column; /* Stack stats vertically */
         align-items: center;
     }
-    
+
     .case-stat {
         width: auto; /* Allow full width */
         min-width: 150px; /* Ensure readability */
         margin-bottom: 1rem;
     }
-    
+
     .metrics { /* For detailed case studies */
         flex-direction: column;
         align-items: center;
     }
-    
+
     .metric {
         margin-bottom: 1.5rem;
     }
     .consultation-form {
         padding: 1.5rem; /* Reduce padding on mobile */
+    }
+    .demo-intro-card {
+        padding: 1.5rem;
+    }
+    .demo-intro-card .section-title {
+        font-size: 1.8rem;
     }
 }
 
@@ -1681,14 +1843,14 @@ textarea.form-control {
     body {
         font-size: 13px;
     }
-    
+
     .hero h1 {
         font-size: 1.8rem; /* 23.4px */
     }
     .hero-description {
         font-size: 1rem; /* 13px */
     }
-    
+
     .section-title {
         font-size: 1.6rem; /* 20.8px */
     }
@@ -1698,16 +1860,16 @@ textarea.form-control {
     .section-container {
         padding: 3rem 1rem; /* Reduce section padding */
     }
-    
+
     .about-features {
         grid-template-columns: 1fr; /* Single column */
     }
-    
+
     .team-member {
         width: 100%;
         margin-bottom: 2rem;
     }
-    
+
     .footer-container {
         grid-template-columns: 1fr; /* Single column footer */
         text-align: center; /* Center footer content */
@@ -1734,20 +1896,20 @@ textarea.form-control {
     .newsletter-form { /* For footer newsletter */
         flex-direction: column;
     }
-    
+
     .newsletter-input-large,
     .newsletter-input {
         border-radius: var(--border-radius); /* Full radius */
         margin-bottom: 0.5rem;
         text-align: right; /* Ensure placeholder is RTL */
     }
-    
+
     .newsletter-button-large,
     .newsletter-button {
         border-radius: var(--border-radius); /* Full radius */
         width: 100%;
     }
-    
+
     .footer-bottom-links {
         flex-direction: column;
         gap: 0.8rem;
@@ -1758,6 +1920,13 @@ textarea.form-control {
         font-size: 1rem;
         bottom: 15px;
         left: 15px;
+    }
+    .demo-intro-card .section-title {
+        font-size: 1.6rem;
+    }
+    .cta-button.demo-cta {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
     }
 }
 
@@ -1770,10 +1939,11 @@ textarea.form-control {
     .hamburger,
     .overlay,
     .newsletter,
-    .cta-button { /* Hide interactive elements */
+    .cta-button,
+    .ai-demos-section .cta-button { /* Hide interactive elements */
         display: none !important;
     }
-    
+
     body {
         background-color: var(--white) !important;
         color: #000000 !important;
@@ -1786,17 +1956,18 @@ textarea.form-control {
         --text-color: #000000;
         --background-color: #FFFFFF;
         --accent-color: #F0F0F0;
+        --accent-color-lighter: #F5F5F5;
         --heading-color: #000000;
         --card-bg: #FFFFFF;
     }
-    
+
     .container,
     .section-container {
         padding: 1rem 0;
         width: 100%;
         max-width: none;
     }
-    
+
     h1, h2, h3, h4, h5, h6 {
         color: #000000 !important;
     }
@@ -1812,14 +1983,16 @@ textarea.form-control {
     a[href^="#"] { /* Hide internal links unless they are significant */
         text-decoration: none !important;
     }
-    
+
     .service-card,
     .tourism-feature-card,
     .case-card,
     .tech-card,
     .feature-item,
     .consultation-form,
-    .faq-item {
+    .faq-item,
+    .demo-intro-card,
+    .demo-feature {
         break-inside: avoid;
         page-break-inside: avoid;
         background-color: var(--white) !important;
@@ -1827,8 +2000,8 @@ textarea.form-control {
         border: 1px solid #dddddd !important;
         margin-bottom: 1rem;
     }
-    .case-image, .feature-image, .member-image {
-        display: none; /* Hide decorative images unless critical */
+    .case-image, .feature-image, .member-image, .demo-icon {
+        display: none; /* Hide decorative images/icons unless critical */
     }
     .services-grid,
     .tourism-features-grid,
@@ -1836,7 +2009,8 @@ textarea.form-control {
     .about-content,
     .consultation-container,
     .tech-grid,
-    .tech-details-grid {
+    .tech-details-grid,
+    .demo-features-grid {
         grid-template-columns: 1fr !important; /* Force single column for print */
     }
 }
