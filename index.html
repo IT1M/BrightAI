@@ -1713,5 +1713,108 @@
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
 
     <script src="script.js" defer></script>
+
+    <!-- دعم فني عائم -->
+    <style>
+      .support-fab {
+        position: fixed;
+        bottom: 32px;
+        left: 32px;
+        z-index: 2000;
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, #4a90e2, #357abd);
+        color: #fff;
+        border-radius: 50%;
+        box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        cursor: pointer;
+        transition: background 0.2s, box-shadow 0.2s;
+      }
+      .support-fab:hover {
+        background: linear-gradient(135deg, #357abd, #4a90e2);
+        box-shadow: 0 8px 32px rgba(0,0,0,0.22);
+      }
+      @media (max-width: 600px) {
+        .support-fab { left: 16px; bottom: 16px; width: 50px; height: 50px; font-size: 1.5rem; }
+      }
+      .support-popup-overlay {
+        display: none;
+        position: fixed;
+        z-index: 3000;
+        top: 0; left: 0; width: 100vw; height: 100vh;
+        background: rgba(10,25,47,0.45);
+        align-items: center;
+        justify-content: center;
+      }
+      .support-popup-overlay.active { display: flex; }
+      .support-popup-modal {
+        background: #fff;
+        border-radius: 18px;
+        box-shadow: 0 8px 40px rgba(0,0,0,0.18);
+        overflow: hidden;
+        width: 95vw;
+        max-width: 900px;
+        height: 90vh;
+        max-height: 700px;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        animation: popupIn 0.25s;
+      }
+      @keyframes popupIn { from { transform: scale(0.92); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+      .support-popup-close {
+        position: absolute;
+        top: 10px; left: 10px;
+        background: #f0f2f5;
+        border: none;
+        border-radius: 50%;
+        width: 36px; height: 36px;
+        font-size: 1.2rem;
+        color: #357abd;
+        cursor: pointer;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+        transition: background 0.2s;
+        z-index: 2;
+      }
+      .support-popup-close:hover { background: #e3e9f7; }
+      .support-popup-iframe {
+        border: none;
+        width: 100%;
+        height: 100%;
+        flex: 1;
+      }
+    </style>
+    <div class="support-fab" title="الدعم الفني" aria-label="الدعم الفني" onclick="openSupportPopup()">
+      <i class="fas fa-headset" aria-hidden="true"></i>
+    </div>
+    <div class="support-popup-overlay" id="supportPopupOverlay" tabindex="-1" aria-modal="true" role="dialog">
+      <div class="support-popup-modal">
+        <button class="support-popup-close" onclick="closeSupportPopup()" aria-label="إغلاق الدعم الفني">
+          <i class="fas fa-times"></i>
+        </button>
+        <iframe class="support-popup-iframe" src="Customer/index.html" title="الدعم الفني"></iframe>
+      </div>
+    </div>
+    <script>
+      function openSupportPopup() {
+        document.getElementById('supportPopupOverlay').classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeSupportPopup() {
+        document.getElementById('supportPopupOverlay').classList.remove('active');
+        document.body.style.overflow = '';
+      }
+      // Close on overlay click or ESC
+      document.getElementById('supportPopupOverlay').addEventListener('click', function(e) {
+        if (e.target === this) closeSupportPopup();
+      });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeSupportPopup();
+      });
+    </script>
 </body>
 </html>
