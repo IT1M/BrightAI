@@ -1,14 +1,16 @@
 // BrightAI - Enhanced JavaScript for Performance & User Experience
-// Version: 2.0.1
-// Last updated: 2024-12-16 (Current Date for example)
+// Version: 2.0.2
+// Last updated: (Current Date - e.g., 2024-07-27)
+'use strict';
 
 // Performance optimization: Use passive listeners and debouncing
 const debounce = (func, wait) => {
     let timeout;
     return function executedFunction(...args) {
+        const context = this; // Capture context
         const later = () => {
             clearTimeout(timeout);
-            func(...args);
+            func.apply(context, args); // Apply with correct context
         };
         clearTimeout(timeout);
         timeout = setTimeout(later, wait);
@@ -39,33 +41,48 @@ if ('serviceWorker' in navigator) {
                 // Check for updates
                 registration.addEventListener('updatefound', () => {
                     const newWorker = registration.installing;
-                    newWorker.addEventListener('statechange', () => {
-                        if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-                            // Show update notification
-                            showUpdateNotification();
-                        }
-                    });
+                    if (newWorker) {
+                        newWorker.addEventListener('statechange', () => {
+                            if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                                // Show update notification
+                                showUpdateNotification();
+                            }
+                        });
+                    }
                 });
             })
             .catch(error => {
-                console.log('[SW] Service Worker registration failed:', error);
+                console.error('[SW] Service Worker registration failed:', error);
             });
     });
 }
 
 // Show update notification
 function showUpdateNotification() {
+    const existingNotification = document.querySelector('.update-notification');
+    if (existingNotification) return; // Prevent multiple notifications
+
     const notification = document.createElement('div');
     notification.className = 'update-notification';
     notification.setAttribute('role', 'alert');
     notification.innerHTML = `
         <div class="update-content">
             <span>تحديث جديد متاح للموقع</span>
-            <button onclick="window.location.reload()" class="update-btn">تحديث الآن</button>
-            <button onclick="this.parentElement.parentElement.remove()" class="dismiss-btn" aria-label="إغلاق الإشعار">×</button>
+            <button id="update-now-btn" class="update-btn">تحديث الآن</button>
+            <button id="dismiss-update-btn" class="dismiss-btn" aria-label="إغلاق الإشعار">×</button>
         </div>
     `;
     document.body.appendChild(notification);
+
+    const updateBtn = document.getElementById('update-now-btn');
+    const dismissBtn = document.getElementById('dismiss-update-btn');
+
+    if (updateBtn) {
+        updateBtn.addEventListener('click', () => window.location.reload());
+    }
+    if (dismissBtn) {
+        dismissBtn.addEventListener('click', () => notification.remove());
+    }
 
     // Auto-hide after 10 seconds
     setTimeout(() => {
@@ -77,12 +94,12 @@ function showUpdateNotification() {
 
 document.addEventListener('DOMContentLoaded', () => {
     // Performance monitoring
-    if (performance && performance.timing) {
-        const loadTime = performance.timing.loadEventEnd - performance.timing.navigationStart;
+    if (window.performance && typeof window.performance.timing !== 'undefined') {
+        const loadTime = window.performance.timing.loadEventEnd - window.performance.timing.navigationStart;
         console.log(`[Performance] Page load time: ${loadTime}ms`);
 
         // Send to analytics if available
-        if (typeof gtag !== 'undefined') {
+        if (typeof gtag === 'function') {
             gtag('event', 'timing_complete', {
                 'name': 'load',
                 'value': loadTime,
@@ -94,67 +111,54 @@ document.addEventListener('DOMContentLoaded', () => {
     // Enhanced Navbar functionality
     const initNavbar = () => {
         const hamburger = document.querySelector('.hamburger');
-        const navLinks = document.querySelector('.nav-links');
+        const navLinks = document.querySelector('.nav-links'); // Should be ul#nav-links-list
         const overlay = document.querySelector('.overlay');
-        const navLinkItems = document.querySelectorAll('.nav-links li a');
+        const navLinkItems = document.querySelectorAll('.nav-links li a'); // Correct selector based on HTML
         const navbar = document.querySelector('.navbar');
 
         if (!hamburger || !navLinks || !overlay || !navbar) {
-            console.warn('[Navbar] One or more navbar elements not found.');
+            console.warn('[Navbar] Crucial navbar elements not found. Navbar functionality may be impaired.');
             return;
         }
         
-        navbar.style.transform = 'translateY(0)'; // Ensure navbar is visible on load
+        navbar.style.transform = 'translateY(0)';
 
-        // Mobile menu toggle
-        hamburger.addEventListener('click', () => {
-            const isActive = navLinks.classList.contains('active');
-
-            navLinks.classList.toggle('active');
-            hamburger.classList.toggle('active');
-            overlay.classList.toggle('active');
-
-            // Prevent body scroll when menu is open
-            document.body.style.overflow = isActive ? '' : 'hidden';
-
-            // Update ARIA attributes
-            hamburger.setAttribute('aria-expanded', String(!isActive));
-            navLinks.setAttribute('aria-hidden', String(isActive));
-        });
-
-        const closeMenu = () => {
-            navLinks.classList.remove('active');
-            hamburger.classList.remove('active');
-            overlay.classList.remove('active');
-            document.body.style.overflow = '';
-            hamburger.setAttribute('aria-expanded', 'false');
-            navLinks.setAttribute('aria-hidden', 'true');
+        const toggleMenu = (open) => {
+            navLinks.classList.toggle('active', open);
+            hamburger.classList.toggle('active', open);
+            overlay.classList.toggle('active', open);
+            document.body.style.overflow = open ? 'hidden' : '';
+            hamburger.setAttribute('aria-expanded', String(open));
+            navLinks.setAttribute('aria-hidden', String(!open));
         };
 
-        // Close menu on overlay click
+        hamburger.addEventListener('click', () => {
+            const isActive = navLinks.classList.contains('active');
+            toggleMenu(!isActive);
+        });
+
+        const closeMenu = () => toggleMenu(false);
+
         overlay.addEventListener('click', closeMenu);
 
-        // Close menu on escape key
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && navLinks.classList.contains('active')) {
                 closeMenu();
             }
         });
 
-        // Handle navigation link clicks
         navLinkItems.forEach(link => {
             link.addEventListener('click', (e) => {
                 const href = link.getAttribute('href');
+                if (!href) return;
 
                 if (navLinks.classList.contains('active')) {
-                     // Close menu if it's an internal link or same page link
-                    if (href.startsWith('#') || (href.startsWith(window.location.pathname + '#') && href.length > window.location.pathname.length + 1) || href === window.location.pathname) {
+                    if (href.startsWith('#') || href.startsWith(window.location.pathname + '#') || href === window.location.pathname || href === 'index.html' + window.location.hash) {
                        closeMenu();
                     }
                 }
 
-                // Track navigation clicks
-                if (typeof gtag !== 'undefined') {
+                if (typeof gtag === 'function') {
                     gtag('event', 'navigation_click', {
                         'event_category': 'Navigation',
                         'event_label': href
@@ -163,30 +167,27 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        // Enhanced navbar scroll behavior
         let lastScrollTop = 0;
         let ticking = false;
 
-        const updateNavbar = () => {
+        const updateNavbarOnScroll = () => {
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
             const scrollDelta = scrollTop - lastScrollTop;
 
-            if (navbar) {
-                if (scrollTop > 100) {
-                    navbar.classList.add('scrolled');
-                } else {
-                    navbar.classList.remove('scrolled');
+            if (scrollTop > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+            
+            if (!navLinks.classList.contains('active')) {
+                if (scrollDelta > 10 && scrollTop > navbar.offsetHeight * 2) { // Increased threshold
+                    navbar.style.transform = 'translateY(-100%)';
+                } else if (scrollDelta < -5 || scrollTop < navbar.offsetHeight) {
+                    navbar.style.transform = 'translateY(0)';
                 }
-                // Hide navbar on scroll down, show on scroll up - but only if menu is not active
-                if (!navLinks.classList.contains('active')) {
-                    if (scrollDelta > 5 && scrollTop > navbar.offsetHeight * 2) {
-                        navbar.style.transform = 'translateY(-100%)';
-                    } else if (scrollDelta < -5 || scrollTop < navbar.offsetHeight) { // Show if scrolling up or near top
-                        navbar.style.transform = 'translateY(0)';
-                    }
-                } else {
-                     navbar.style.transform = 'translateY(0)'; // Keep navbar visible if menu is open
-                }
+            } else {
+                 navbar.style.transform = 'translateY(0)';
             }
 
             lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
@@ -195,26 +196,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const onScroll = () => {
             if (!ticking) {
-                requestAnimationFrame(updateNavbar);
+                window.requestAnimationFrame(updateNavbarOnScroll);
                 ticking = true;
             }
         };
 
         window.addEventListener('scroll', onScroll, { passive: true });
-        updateNavbar(); // Initial call
+        updateNavbarOnScroll(); // Initial call
     };
 
     // Enhanced Hero Canvas Animation
     const initHeroCanvas = () => {
         const heroCanvas = document.getElementById('heroCanvas');
-        if (!heroCanvas) return;
+        if (!heroCanvas) {
+            console.warn('[HeroCanvas] Canvas element not found.');
+            return;
+        }
 
         const ctx = heroCanvas.getContext('2d');
-        let particlesArray = [];
-        let animationFrameId;
-        let isVisible = true; // Assume visible initially
+        if (!ctx) {
+            console.error('[HeroCanvas] Failed to get 2D context.');
+            return;
+        }
 
-        // Optimize canvas for high DPI displays
+        let particlesArray = [];
+        let animationFrameId = null; // Initialize to null
+        let isVisible = true; 
+
         const setCanvasSize = () => {
             const heroSection = heroCanvas.closest('.hero');
             if (!heroSection) return;
@@ -223,13 +231,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
             heroCanvas.width = rect.width * dpr;
             heroCanvas.height = rect.height * dpr;
-
-            ctx.scale(dpr, dpr);
+            ctx.scale(dpr, dpr); // Scale context once after setting size
             heroCanvas.style.width = rect.width + 'px';
             heroCanvas.style.height = rect.height + 'px';
         };
 
-        // Enhanced Particle class with better performance
         class Particle {
             constructor(x, y, directionX, directionY, size, color) {
                 this.x = x;
@@ -238,21 +244,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 this.directionY = directionY;
                 this.size = size;
                 this.color = color;
-                this.opacity = Math.random() * 0.5 + 0.1;
-                this.opacityDirection = Math.random() > 0.5 ? 1 : -1;
+                this.opacity = Math.random() * 0.4 + 0.1; // Adjusted opacity range
+                this.opacityDirection = (Math.random() > 0.5 ? 1 : -1) * 0.005; // Slower opacity change
             }
 
             draw() {
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
-                ctx.fillStyle = this.color.replace('0.25', this.opacity.toFixed(2)); // Ensure opacity is a string
+                // Ensure opacity is correctly applied to rgba string
+                const baseColor = this.color.substring(0, this.color.lastIndexOf(','));
+                ctx.fillStyle = `${baseColor}, ${this.opacity.toFixed(3)})`;
                 ctx.fill();
             }
 
             update() {
                 const canvasWidth = heroCanvas.width / (window.devicePixelRatio || 1);
                 const canvasHeight = heroCanvas.height / (window.devicePixelRatio || 1);
-                // Bounce off walls
+
                 if (this.x + this.size > canvasWidth || this.x - this.size < 0) {
                     this.directionX = -this.directionX;
                 }
@@ -260,54 +268,47 @@ document.addEventListener('DOMContentLoaded', () => {
                     this.directionY = -this.directionY;
                 }
 
-                // Update position
                 this.x += this.directionX;
                 this.y += this.directionY;
 
-                // Update opacity for twinkling effect
-                this.opacity += this.opacityDirection * 0.005;
-                if (this.opacity <= 0.1 || this.opacity >= 0.6) {
-                    this.opacityDirection = -this.opacityDirection;
-                    // Clamp opacity to prevent issues
-                    this.opacity = Math.max(0.1, Math.min(0.6, this.opacity));
+                this.opacity += this.opacityDirection;
+                if (this.opacity <= 0.1 || this.opacity >= 0.5) {
+                    this.opacityDirection *= -1;
+                    this.opacity = Math.max(0.1, Math.min(0.5, this.opacity));
                 }
-
                 this.draw();
             }
         }
 
-        // Create optimized particle array
         const initParticles = () => {
             particlesArray = [];
             const dpr = window.devicePixelRatio || 1;
-            const area = (heroCanvas.width / dpr) * (heroCanvas.height / dpr);
-            let numberOfParticles = Math.floor(area / 12000);
+            const canvasWidth = heroCanvas.width / dpr;
+            const canvasHeight = heroCanvas.height / dpr;
+            const area = canvasWidth * canvasHeight;
+            let numberOfParticles = Math.floor(area / 15000); // Adjusted density
 
-            // Responsive particle count
             if (window.innerWidth < 768) {
-                numberOfParticles = Math.floor(numberOfParticles * 0.5);
+                numberOfParticles = Math.floor(numberOfParticles * 0.6); // Fewer on mobile
             }
-
-            numberOfParticles = Math.max(20, Math.min(100, numberOfParticles)); // Cap particles
+            numberOfParticles = Math.max(15, Math.min(80, numberOfParticles));
 
             for (let i = 0; i < numberOfParticles; i++) {
-                const size = Math.random() * 2 + 0.5;
-                const x = Math.random() * (heroCanvas.width / dpr - size * 2) + size;
-                const y = Math.random() * (heroCanvas.height / dpr - size * 2) + size;
-                const directionX = (Math.random() * 0.4) - 0.2;
-                const directionY = (Math.random() * 0.4) - 0.2;
-                const color = 'rgba(100, 255, 218, 0.25)';
-
+                const size = Math.random() * 1.5 + 0.5; // Slightly smaller max size
+                const x = Math.random() * (canvasWidth - size * 2) + size;
+                const y = Math.random() * (canvasHeight - size * 2) + size;
+                const directionX = (Math.random() * 0.3) - 0.15; // Slower movement
+                const directionY = (Math.random() * 0.3) - 0.15;
+                const color = 'rgba(100, 255, 218, 0.25)'; // Base color with initial alpha (will be overridden by particle opacity)
                 particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
             }
         };
 
-        // Optimized animation loop
         const animateParticles = () => {
-            if (!isVisible) return;
+            if (!isVisible || !ctx) return; // Added ctx check
 
             animationFrameId = requestAnimationFrame(animateParticles);
-            ctx.clearRect(0, 0, heroCanvas.width, heroCanvas.height); // Clear scaled canvas
+            ctx.clearRect(0, 0, heroCanvas.width, heroCanvas.height);
 
             for (let i = 0; i < particlesArray.length; i++) {
                 particlesArray[i].update();
@@ -315,40 +316,39 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         const setupCanvas = () => {
+            if (!ctx) return; // Ensure context exists
             setCanvasSize();
             initParticles();
             if (animationFrameId) {
                 cancelAnimationFrame(animationFrameId);
+                animationFrameId = null; // Reset ID
             }
-            // Only start animation if canvas is visible
-            if(isVisible) animateParticles();
+            if (isVisible) animateParticles();
         };
-
-        // Intersection Observer to pause animation when not visible
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                isVisible = entry.isIntersecting;
-                if (isVisible) {
-                    if (!animationFrameId) { // Only start if not already running
-                         // Re-initialize particles if canvas size might have changed while hidden
-                        setupCanvas();
+        
+        if ('IntersectionObserver' in window) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    isVisible = entry.isIntersecting;
+                    if (isVisible) {
+                        if (!animationFrameId) { 
+                            setupCanvas(); // Re-init if became visible
+                        }
+                    } else if (animationFrameId) {
+                        cancelAnimationFrame(animationFrameId);
+                        animationFrameId = null;
                     }
-                } else if (animationFrameId) {
-                    cancelAnimationFrame(animationFrameId);
-                    animationFrameId = null;
-                }
-            });
-        }, { threshold: 0.01 }); // Trigger even if 1% is visible
-
-        observer.observe(heroCanvas);
-
-        // Initial setup. The observer will handle starting the animation.
-        setCanvasSize();
-        initParticles();
-        // If initially visible, start animation (observer might take a moment)
-        if (isVisible && !animationFrameId) {
-            animateParticles();
+                });
+            }, { threshold: 0.01 });
+            observer.observe(heroCanvas);
+        } else {
+            // Fallback for no IntersectionObserver: always animate
+            setupCanvas();
         }
+        
+        // Initial setup if visible from the start (observer might be slow)
+        // The observer's initial check should handle this, but a direct call can ensure it starts if needed
+        // setTimeout(setupCanvas, 100); // Small delay to ensure layout is stable
 
         window.addEventListener('resize', debounce(setupCanvas, 250));
     };
@@ -356,26 +356,41 @@ document.addEventListener('DOMContentLoaded', () => {
     // Enhanced FAQ functionality
     const initFAQ = () => {
         const faqItems = document.querySelectorAll('.faq-item');
+        if (faqItems.length === 0) {
+            console.warn('[FAQ] No FAQ items found.');
+            return;
+        }
 
         faqItems.forEach(item => {
             const question = item.querySelector('.faq-question');
             const answer = item.querySelector('.faq-answer');
-            if (!question || !answer) return;
+            if (!question || !answer) {
+                console.warn('[FAQ] FAQ item missing question or answer element.');
+                return;
+            }
+            // Ensure answer has an ID for aria-controls (should be in HTML but as a fallback)
+            if (!answer.id) {
+                answer.id = `faq-answer-${Math.random().toString(36).substr(2, 9)}`;
+                question.setAttribute('aria-controls', answer.id);
+            }
+
 
             question.addEventListener('click', () => {
-                const isActive = item.classList.contains('active');
+                const isCurrentlyActive = item.classList.contains('active');
 
-                // Close other open FAQs
+                // Close all other FAQs
                 faqItems.forEach(otherItem => {
                     if (otherItem !== item && otherItem.classList.contains('active')) {
                         otherItem.classList.remove('active');
-                        otherItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
-                        otherItem.querySelector('.faq-answer').style.maxHeight = null;
+                        const otherQuestion = otherItem.querySelector('.faq-question');
+                        const otherAnswer = otherItem.querySelector('.faq-answer');
+                        if (otherQuestion) otherQuestion.setAttribute('aria-expanded', 'false');
+                        if (otherAnswer) otherAnswer.style.maxHeight = null;
                     }
                 });
 
                 // Toggle current FAQ
-                if (isActive) {
+                if (isCurrentlyActive) {
                     item.classList.remove('active');
                     question.setAttribute('aria-expanded', 'false');
                     answer.style.maxHeight = null;
@@ -384,11 +399,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     question.setAttribute('aria-expanded', 'true');
                     answer.style.maxHeight = answer.scrollHeight + 'px';
 
-                    // Track FAQ interactions
-                    if (typeof gtag !== 'undefined') {
+                    if (typeof gtag === 'function') {
                         gtag('event', 'faq_interaction', {
                             'event_category': 'FAQ',
-                            'event_label': question.textContent.trim()
+                            'event_label': question.textContent?.trim() || 'FAQ Question'
                         });
                     }
                 }
@@ -407,150 +421,133 @@ document.addEventListener('DOMContentLoaded', () => {
             consultation_time: (value) => String(value).trim() !== ''
         };
 
-        function getErrorMessage(field, value = '') {
+        function getErrorMessage(fieldId, value = '') {
             const messages = {
                 name: 'الاسم الكامل مطلوب (حد أدنى حرفان).',
                 email: 'الرجاء إدخال بريد إلكتروني صحيح.',
                 phone: 'الرجاء إدخال رقم هاتف سعودي صحيح (مثال: 05xxxxxxxx أو +9665xxxxxxxx).',
                 message: 'الرسالة مطلوبة (حد أدنى 10 أحرف).',
-                'consultation-time': 'الرجاء اختيار وقت مفضل للاستشارة.',
+                'consultation-time': 'الرجاء اختيار وقت مفضل للاستشارة.', // Uses ID
                 generic: 'هذا الحقل مطلوب.'
             };
-            // Special handling for consultation-time which uses id 'consultation-time'
-            return messages[field] || messages.generic;
+            return messages[fieldId] || messages.generic;
         }
         
         function showError(element, message) {
-            if (!element) return;
+            if (!element || !element.parentNode) return;
             element.classList.add('error');
             element.setAttribute('aria-invalid', 'true');
             
-            // Remove existing error message if any
-            const existingError = element.parentNode.querySelector('.error-message');
-            if (existingError) existingError.remove();
-
-            const errorDiv = document.createElement('div');
-            errorDiv.className = 'error-message';
+            let errorDiv = element.parentNode.querySelector(`.error-message[data-for="${element.id}"]`);
+            if (!errorDiv) {
+                errorDiv = document.createElement('div');
+                errorDiv.className = 'error-message';
+                errorDiv.dataset.for = element.id; // Link error to input
+                errorDiv.setAttribute('role', 'alert');
+                // Insert after the element
+                element.parentNode.insertBefore(errorDiv, element.nextSibling);
+            }
             errorDiv.textContent = message;
-            errorDiv.setAttribute('role', 'alert');
-            element.parentNode.insertBefore(errorDiv, element.nextSibling);
+            element.setAttribute('aria-describedby', errorDiv.id || (errorDiv.id = `err-${element.id}`)); // Link for screen readers
         }
 
         function clearError(element) {
-            if (!element) return;
+            if (!element || !element.parentNode) return;
             element.classList.remove('error');
             element.removeAttribute('aria-invalid');
-            const errorDiv = element.parentNode.querySelector('.error-message');
+            element.removeAttribute('aria-describedby');
+            const errorDiv = element.parentNode.querySelector(`.error-message[data-for="${element.id}"]`);
             if (errorDiv) errorDiv.remove();
         }
 
+        function showFormStatusMessage(formElement, message, type = 'success') {
+            if(!formElement) return;
+            // Remove existing status message
+            const existingStatus = formElement.querySelector('.form-status-message');
+            if (existingStatus) existingStatus.remove();
 
-        function showSuccess(message, formElement) {
-            const successDiv = document.createElement('div');
-            successDiv.className = 'success-message';
-            successDiv.textContent = message;
-            successDiv.setAttribute('role', 'status');
-
-            if (formElement && formElement.parentNode) {
-                 formElement.parentNode.insertBefore(successDiv, formElement);
-            } else {
-                document.body.appendChild(successDiv);
-            }
+            const statusDiv = document.createElement('div');
+            statusDiv.className = `form-status-message ${type}-message`; // e.g., success-message or error-message
+            statusDiv.textContent = message;
+            statusDiv.setAttribute('role', type === 'success' ? 'status' : 'alert');
+            
+            // Insert before the form or as the first child of the form's parent
+            formElement.parentNode.insertBefore(statusDiv, formElement);
             
             setTimeout(() => {
-                if (successDiv && successDiv.parentElement) {
-                    successDiv.remove();
+                if (statusDiv && statusDiv.parentElement) {
+                    statusDiv.remove();
                 }
             }, 5000);
         }
         
-        function showFormError(formElement, message) {
-            // Remove existing general form error
-            const existingError = formElement.querySelector('.form-general-error');
-            if(existingError) existingError.remove();
-
-            const errorDiv = document.createElement('div');
-            errorDiv.className = 'error-message form-general-error'; // Added form-general-error
-            errorDiv.textContent = message;
-            errorDiv.setAttribute('role', 'alert');
-            errorDiv.style.textAlign = 'center'; // Center the general form error
-            errorDiv.style.marginTop = '1rem';
-            formElement.appendChild(errorDiv); // Append to form or insert before submit button
-        }
-
-
         // Consultation form
         const consultationForm = document.getElementById('consultationForm');
         if (consultationForm) {
-            consultationForm.setAttribute('novalidate', true); // Disable browser native validation
+            consultationForm.setAttribute('novalidate', 'true');
 
             consultationForm.addEventListener('submit', async function(event) {
                 event.preventDefault();
                 let isValid = true;
 
                 // Clear previous general form errors
-                const generalError = this.querySelector('.form-general-error');
-                if(generalError) generalError.remove();
+                const existingStatus = this.parentNode.querySelector('.form-status-message');
+                if(existingStatus) existingStatus.remove();
 
-                // Validate fields
+
                 const fieldsToValidate = ['name', 'email', 'phone', 'consultation-time', 'message'];
                 fieldsToValidate.forEach(fieldId => {
                     const input = document.getElementById(fieldId);
                     if (input) {
-                        clearError(input); // Clear previous error for this field
-                        const validatorKey = fieldId.replace(/-/g, '_'); // e.g., consultation-time to consultation_time
-                        if (validators[validatorKey] && !validators[validatorKey](input.value)) {
-                            isValid = false;
-                            showError(input, getErrorMessage(fieldId, input.value));
-                        } else if (!input.value && input.hasAttribute('required')) { // General required check
+                        clearError(input);
+                        const validatorKey = fieldId.replace(/-/g, '_');
+                        const validatorFn = validators[validatorKey] || (() => input.value.trim() !== ''); // Default check for required
+                        
+                        if (!validatorFn(input.value)) {
                             isValid = false;
                             showError(input, getErrorMessage(fieldId, input.value));
                         }
                     }
                 });
 
-
                 if (isValid) {
                     const submitButton = this.querySelector('button[type="submit"]');
+                    if (!submitButton) return;
                     const originalButtonText = submitButton.textContent;
                     submitButton.disabled = true;
                     submitButton.textContent = 'جار الإرسال...';
 
                     const formData = new FormData(this);
-                    const data = Object.fromEntries(formData.entries());
+                    // const data = Object.fromEntries(formData.entries()); // For JSON submission
 
                     try {
-                        // Simulate API call
-                        await new Promise(resolve => setTimeout(resolve, 1500)); // Simulate network delay
+                        // Simulate API call - replace with actual fetch
+                        // For a real endpoint, you might use:
+                        // const response = await fetch(this.action, { method: 'POST', body: formData });
+                        // if (!response.ok) throw new Error(`Server error: ${response.status}`);
+                        await new Promise(resolve => setTimeout(resolve, 1500)); // Simulate success
                         
-                        // Example: Replace with actual fetch call
-                        // const response = await fetch('/api/submit-consultation', {
-                        //     method: 'POST',
-                        //     headers: { 'Content-Type': 'application/json' },
-                        //     body: JSON.stringify(data)
-                        // });
-                        // if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-                        // const result = await response.json();
-                        
-                        showSuccess('شكراً لك! تم إرسال طلب الاستشارة بنجاح. سنتواصل معك قريباً.', this);
+                        showFormStatusMessage(this, 'شكراً لك! تم إرسال طلب الاستشارة بنجاح. سنتواصل معك قريباً.', 'success');
                         this.reset();
-                        fieldsToValidate.forEach(fieldId => clearError(document.getElementById(fieldId))); // Clear all errors on success
+                        fieldsToValidate.forEach(fieldId => {
+                            const el = document.getElementById(fieldId);
+                            if(el) clearError(el);
+                        });
 
-                        if (typeof gtag !== 'undefined') {
+                        if (typeof gtag === 'function') {
                             gtag('event', 'form_submit', {
                                 'event_category': 'Form',
                                 'event_label': 'consultation'
                             });
                         }
                     } catch (error) {
-                        console.error('Form submission error:', error);
-                        showFormError(this, 'حدث خطأ أثناء إرسال النموذج. الرجاء المحاولة مرة أخرى لاحقاً.');
+                        console.error('Consultation form submission error:', error);
+                        showFormStatusMessage(this, 'حدث خطأ أثناء إرسال النموذج. الرجاء المحاولة مرة أخرى لاحقاً.', 'error');
                     } finally {
                         submitButton.disabled = false;
                         submitButton.textContent = originalButtonText;
                     }
                 } else {
-                    // Focus the first invalid field
                     const firstInvalidField = this.querySelector('.form-control.error');
                     if (firstInvalidField) firstInvalidField.focus();
                 }
@@ -560,27 +557,26 @@ document.addEventListener('DOMContentLoaded', () => {
         // Newsletter forms
         const newsletterForms = document.querySelectorAll('.newsletter-form, .newsletter-form-large');
         newsletterForms.forEach(form => {
-            form.setAttribute('novalidate', true);
+            form.setAttribute('novalidate', 'true');
             form.addEventListener('submit', async function(event) {
                 event.preventDefault();
                 const emailInput = this.querySelector('input[type="email"]');
+                if (!emailInput) return;
                 clearError(emailInput);
 
-                if (emailInput && validators.email(emailInput.value.trim())) {
+                if (validators.email(emailInput.value.trim())) {
                     const submitButton = this.querySelector('button[type="submit"]');
-                    const originalButtonText = submitButton.textContent;
-                    const originalButtonHTML = submitButton.innerHTML; // If it contains an icon
+                    if(!submitButton) return;
+                    const originalButtonHTML = submitButton.innerHTML;
                     submitButton.disabled = true;
                     submitButton.innerHTML = 'جار الاشتراك...';
 
-
                     try {
-                        // Simulate API call
-                        await new Promise(resolve => setTimeout(resolve, 1000));
-                        showSuccess('شكراً لاشتراكك في النشرة البريدية!', this);
+                        await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate API
+                        showFormStatusMessage(this, 'شكراً لاشتراكك في النشرة البريدية!', 'success');
                         this.reset();
                         
-                        if (typeof gtag !== 'undefined') {
+                        if (typeof gtag === 'function') {
                             gtag('event', 'newsletter_signup', {
                                 'event_category': 'Newsletter',
                                 'event_label': this.classList.contains('newsletter-form-large') ? 'main_newsletter' : 'footer_newsletter'
@@ -588,13 +584,12 @@ document.addEventListener('DOMContentLoaded', () => {
                         }
                     } catch (error) {
                         console.error('Newsletter submission error:', error);
-                        showError(emailInput, 'حدث خطأ. حاول مرة أخرى.');
+                        showFormStatusMessage(this, 'حدث خطأ. حاول مرة أخرى.', 'error');
                     } finally {
                         submitButton.disabled = false;
-                        submitButton.innerHTML = originalButtonHTML; // Restore original content (e.g. icon)
+                        submitButton.innerHTML = originalButtonHTML;
                     }
-
-                } else if (emailInput) {
+                } else {
                     showError(emailInput, getErrorMessage('email', emailInput.value));
                     emailInput.focus();
                 }
@@ -605,21 +600,22 @@ document.addEventListener('DOMContentLoaded', () => {
     // Enhanced scroll animations
     const initScrollAnimations = () => {
         const animatedElements = document.querySelectorAll(
-            '.service-card, .tourism-feature-card, .case-card, .feature-item, .team-member, .tech-card, .faq-item, .demo-intro-card, .demo-feature' // Added new demo elements
+            '.service-card, .tourism-feature-card, .case-card, .feature-item, .team-member, .tech-card, .faq-item, .demo-intro-card, .demo-feature, .case-study-card, .tech-detail-card'
         );
+        if (animatedElements.length === 0) return;
 
         const observerOptions = {
             root: null,
-            rootMargin: '0px 0px -50px 0px', // Trigger when 50px from bottom of viewport
-            threshold: 0.1 // Trigger when 10% of the element is visible
+            rootMargin: '0px 0px -50px 0px',
+            threshold: 0.1
         };
 
         if ('IntersectionObserver' in window) {
-            const observer = new IntersectionObserver((entries, obs) => { // Renamed observer to obs to avoid conflict
+            const observer = new IntersectionObserver((entries, obs) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible', 'fade-in');
-                        obs.unobserve(entry.target); // Unobserve after animation
+                        obs.unobserve(entry.target);
                     }
                 });
             }, observerOptions);
@@ -635,7 +631,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const backToTopButton = document.querySelector('.back-to-top');
         if (!backToTopButton) return;
 
-        const toggleButton = throttle(() => {
+        const toggleButtonVisibility = throttle(() => {
             if (window.pageYOffset > 300) {
                 backToTopButton.classList.add('visible');
                 backToTopButton.setAttribute('aria-hidden', 'false');
@@ -643,19 +639,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 backToTopButton.classList.remove('visible');
                 backToTopButton.setAttribute('aria-hidden', 'true');
             }
-        }, 100);
+        }, 150); // Adjusted throttle limit
 
-        window.addEventListener('scroll', toggleButton, { passive: true });
-        toggleButton(); // Initial check
+        window.addEventListener('scroll', toggleButtonVisibility, { passive: true });
+        toggleButtonVisibility(); // Initial check
 
         backToTopButton.addEventListener('click', (e) => {
             e.preventDefault();
             window.scrollTo({ top: 0, behavior: 'smooth' });
-
-            if (typeof gtag !== 'undefined') {
-                gtag('event', 'back_to_top', {
-                    'event_category': 'Navigation'
-                });
+            if (typeof gtag === 'function') {
+                gtag('event', 'back_to_top_click', { 'event_category': 'Navigation' });
             }
         });
     };
@@ -665,27 +658,33 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 const href = this.getAttribute('href');
-                if (href.length > 1 && href.startsWith('#')) { // Ensure it's a valid hash link
+                if (href && href.length > 1 && href.startsWith('#')) {
                     try {
                         const targetElement = document.querySelector(href);
                         if (targetElement) {
                             e.preventDefault();
-                            const navbarHeight = document.querySelector('.navbar')?.offsetHeight || 0;
+                            const navbar = document.querySelector('.navbar');
+                            const navbarHeight = navbar ? navbar.offsetHeight : 0;
                             const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
-                            const offsetPosition = elementPosition - navbarHeight - 20; // 20px additional offset
+                            const offsetPosition = elementPosition - navbarHeight - 20;
 
                             window.scrollTo({
                                 top: offsetPosition,
                                 behavior: 'smooth'
                             });
-                            // Optionally, update URL hash without triggering jump
+                            
+                            // Update URL hash carefully
                             if (history.pushState) {
-                                history.pushState(null, null, href);
+                                history.pushState(null, '', href);
                             } else {
-                                window.location.hash = href;
+                                // Fallback for older browsers, might cause a jump
+                                // window.location.hash = href; 
+                                // Or, to avoid jump, update hash after scroll, but this is tricky
+                                // setTimeout(() => { window.location.hash = href; }, 1000); // Example
                             }
                         }
                     } catch (error) {
+                        // Catch invalid selectors, but don't break execution
                         console.warn('Smooth scroll target not found or invalid selector:', href, error);
                     }
                 }
@@ -693,43 +692,48 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-
     // Initialize all components
-    initNavbar();
-    initHeroCanvas();
-    initFAQ();
-    initForms();
-    initScrollAnimations();
-    initBackToTop();
-    initSmoothScroll();
+    try {
+        initNavbar();
+        initHeroCanvas();
+        initFAQ();
+        initForms();
+        initScrollAnimations();
+        initBackToTop();
+        initSmoothScroll();
+    } catch (error) {
+        console.error("Error during component initialization:", error);
+    }
 
-    // Lazy load external scripts
+
+    // Lazy load external scripts (if any, example was LinkedIn)
     const loadExternalScripts = () => {
-        // LinkedIn badge (if needed)
-        if (document.querySelector('.linkedin-badge')) {
-            const linkedInScript = document.createElement('script');
-            linkedInScript.src = 'https://platform.linkedin.com/badges/js/profile.js';
-            linkedInScript.async = true;
-            linkedInScript.defer = true;
-            document.head.appendChild(linkedInScript);
-        }
+        // Example:
+        // if (document.querySelector('.some-widget-requiring-external-js')) {
+        //     const script = document.createElement('script');
+        //     script.src = 'https://example.com/widget.js';
+        //     script.async = true;
+        //     script.defer = true;
+        //     document.head.appendChild(script);
+        // }
     };
 
-    // Load external scripts after page load and some delay
     window.addEventListener('load', () => {
-        setTimeout(loadExternalScripts, 2000); // Delay to prioritize main content
+        setTimeout(loadExternalScripts, 2500); // Delay further if not critical
     });
 
-    console.log('[BrightAI] JavaScript initialized successfully');
+    console.log('[BrightAI] Enhanced JavaScript initialized successfully.');
 });
 
-// Add CSS for notifications and form messages
-const style = document.createElement('style');
-style.textContent = `
+// Add CSS for notifications and form messages dynamically
+// Note: It's generally better to include this in your main CSS file for performance and maintainability.
+// However, keeping it here as per the original structure.
+const dynamicStyles = document.createElement('style');
+dynamicStyles.textContent = `
     .update-notification {
         position: fixed;
         top: 20px;
-        right: 20px; /* Adjusted for RTL */
+        right: 20px;
         left: auto;
         background: var(--primary-color, #64FFDA);
         color: var(--secondary-color, #0A192F);
@@ -740,6 +744,11 @@ style.textContent = `
         font-family: 'Tajawal', Arial, sans-serif;
         direction: rtl;
         max-width: 90%;
+        animation: fadeInNotification 0.5s ease-out;
+    }
+    @keyframes fadeInNotification {
+        from { opacity: 0; transform: translateY(-20px); }
+        to { opacity: 1; transform: translateY(0); }
     }
     .update-content {
         display: flex;
@@ -756,6 +765,10 @@ style.textContent = `
         cursor: pointer;
         font-size: 0.9rem;
         font-family: inherit;
+        transition: background-color 0.2s ease;
+    }
+    .update-btn:hover, .dismiss-btn:hover {
+        background-color: #123458; /* Darker shade of secondary */
     }
     .dismiss-btn {
         background: transparent;
@@ -765,31 +778,39 @@ style.textContent = `
         font-size: 1.2rem;
         line-height: 1;
     }
-    .success-message, .error-message.form-general-error {
-        position: relative; /* Changed from fixed for better form context */
-        background: #4CAF50; /* Green for success */
-        color: white;
+    .dismiss-btn:hover {
+        color: #000;
+        background-color: rgba(0,0,0,0.1);
+    }
+
+    /* Form status messages */
+    .form-status-message {
         padding: 1rem;
         border-radius: var(--border-radius, 8px);
-        z-index: 10000;
-        font-family: 'Tajawal', Arial, sans-serif;
-        margin-top: 1rem;
-        margin-bottom: 1rem;
+        margin-bottom: 1rem; /* Space below message before form */
         text-align: center;
-    }
-    .error-message.form-general-error {
-        background: #f44336; /* Red for general form error */
-    }
-    .error-message { /* Field specific error */
-        color: #f44336;
-        font-size: 0.9rem;
-        margin-top: 0.25rem;
         font-family: 'Tajawal', Arial, sans-serif;
-        display: block; /* Ensure it takes its own line */
+    }
+    .form-status-message.success-message {
+        background-color: #4CAF50; /* Green */
+        color: white;
+    }
+    .form-status-message.error-message { /* For general form errors */
+        background-color: #f44336; /* Red */
+        color: white;
+    }
+
+    /* Field specific error messages */
+    .error-message[data-for] { 
+        color: #f44336;
+        font-size: 0.85rem; /* Slightly smaller */
+        margin-top: 0.3rem;
+        font-family: 'Tajawal', Arial, sans-serif;
+        display: block;
     }
     .form-control.error {
         border-color: #f44336 !important;
-        box-shadow: 0 0 0 2px rgba(244, 67, 54, 0.2) !important;
+        box-shadow: 0 0 0 1px rgba(244, 67, 54, 0.5) !important; /* Thinner shadow */
     }
 `;
-document.head.appendChild(style);
+document.head.appendChild(dynamicStyles);

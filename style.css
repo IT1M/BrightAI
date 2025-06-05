@@ -1,9 +1,28 @@
 /* Reset & General Styles */
-* {
+*,
+*::before,
+*::after { /* Apply box-sizing globally */
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    direction: rtl;
+}
+
+html { /* Smoother scrolling for the whole page */
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Tajawal', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden;
+    font-size: 16px; /* Base font size */
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    will-change: scroll-position; /* Hint for scrolling performance */
+    direction: rtl; /* Ensure RTL direction is set on body */
 }
 
 :root {
@@ -16,27 +35,15 @@
     --white: #FFFFFF;
     --transition: all 0.3s ease;
     --heading-color: #FFFFFF;
-    --card-bg: #1D2B3A;
-    --will-change-transform: transform; /* Added for performance */
-    --will-change-opacity: opacity; /* Added for performance */
-    --will-change-transform-opacity: transform, opacity; /* Added for performance */
+    --card-bg: #1D2B3A; /* Standard card background */
+    --will-change-transform: transform;
+    --will-change-opacity: opacity;
+    --will-change-transform-opacity: transform, opacity;
     --shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
     --container-width: 1200px;
     --border-radius: 8px;
-}
-
-/* Optimize critical CSS */
-body {
-    font-family: 'Tajawal', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    background-color: var(--background-color);
-    color: var(--text-color);
-    line-height: 1.6;
-    overflow-x: hidden;
-    font-size: 16px; /* Base font size */
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    will-change: scroll-position;
+    --focus-outline-color: var(--primary-color); /* Variable for focus outline */
+    --focus-outline-offset: 2px;
 }
 
 /* Typography */
@@ -73,6 +80,23 @@ a:hover {
     color: #42f5c8; /* Slightly lighter primary for hover */
 }
 
+/* Focus visible for accessibility - more targeted focus rings */
+a:focus-visible,
+button:focus-visible,
+input[type="checkbox"]:focus-visible + label,
+input[type="radio"]:focus-visible + label,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid var(--focus-outline-color);
+    outline-offset: var(--focus-outline-offset);
+    box-shadow: 0 0 0 4px rgba(100, 255, 218, 0.2); /* Optional softer glow */
+}
+/* Remove default outline if custom focus-visible is handled */
+a:focus, button:focus, input:focus, select:focus, textarea:focus {
+    outline: none;
+}
+
+
 ul, ol {
     margin-bottom: 1rem;
     padding-right: 1.5rem; /* RTL padding */
@@ -88,7 +112,7 @@ ul, ol {
 }
 
 .section-container {
-    padding: 5rem 1rem;
+    padding: 5rem 1rem; /* Consistent padding for sections */
 }
 
 /* Buttons */
@@ -104,7 +128,7 @@ ul, ol {
     font-weight: 500;
     cursor: pointer;
     text-align: center;
-    background-color: transparent; /* Explicitly set */
+    background-color: transparent;
 }
 
 .cta-button-accent {
@@ -112,19 +136,24 @@ ul, ol {
     color: var(--secondary-color);
 }
 
-.cta-button:hover,
-.cta-button:focus { /* Added focus state */
+.cta-button:hover { /* Combined hover and general focus */
     background-color: rgba(100, 255, 218, 0.1);
-    outline: 2px solid var(--primary-color); /* Focus outline */
-    outline-offset: 2px;
+}
+.cta-button:focus-visible { /* Specific keyboard focus */
+    background-color: rgba(100, 255, 218, 0.1);
+    outline: 2px solid var(--focus-outline-color);
+    outline-offset: var(--focus-outline-offset);
 }
 
-.cta-button-accent:hover,
-.cta-button-accent:focus { /* Added focus state */
+.cta-button-accent:hover {
     background-color: transparent;
     color: var(--primary-color);
-    outline: 2px solid var(--primary-color); /* Focus outline */
-    outline-offset: 2px;
+}
+.cta-button-accent:focus-visible {
+    background-color: transparent;
+    color: var(--primary-color);
+    outline: 2px solid var(--focus-outline-color);
+    outline-offset: var(--focus-outline-offset);
 }
 
 /* Section Headers */
@@ -135,7 +164,7 @@ ul, ol {
 
 .section-mini-title {
     color: var(--primary-color);
-    font-size: 1rem; /* 16px */
+    font-size: 1rem;
     margin-bottom: 0.5rem;
     display: block;
     font-weight: 500;
@@ -143,14 +172,14 @@ ul, ol {
 
 .section-title {
     color: var(--white);
-    font-size: 2rem; /* 32px */
+    font-size: 2rem;
     margin-bottom: 1.5rem;
 }
 
 .section-description {
     max-width: 800px;
     margin: 0 auto;
-    font-size: 1.1rem; /* 17.6px */
+    font-size: 1.1rem;
     color: var(--text-color);
 }
 
@@ -167,19 +196,19 @@ ul, ol {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: rgba(10, 25, 47, 0.95); /* Dark blue with opacity */
+    background-color: rgba(10, 25, 47, 0.95);
     padding: 0.8rem 0;
     z-index: 1000;
     backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px); /* Safari support */
+    -webkit-backdrop-filter: blur(10px);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    transition: padding 0.3s ease, background-color 0.3s ease; /* Optimized transition */
-    will-change: padding, background-color; /* Added for performance */
+    transition: padding 0.3s ease, background-color 0.3s ease, transform 0.3s ease; /* Added transform */
+    will-change: padding, background-color, transform;
 }
 
 .navbar.scrolled {
     padding: 0.5rem 0;
-    background-color: rgba(10, 25, 47, 0.98); /* Slightly more opaque on scroll */
+    background-color: rgba(10, 25, 47, 0.98);
 }
 
 .navbar-container {
@@ -197,13 +226,13 @@ ul, ol {
 }
 
 .logo img {
-    height: 40px;
+    height: 40px; /* Consistent logo height */
     width: auto;
     transition: var(--transition);
 }
-.logo:focus-visible img { /* Enhanced focus for logo */
-    outline: 2px solid var(--primary-color);
-    outline-offset: 2px;
+.logo:focus-visible img {
+    outline: 2px solid var(--focus-outline-color);
+    outline-offset: var(--focus-outline-offset);
     border-radius: 4px;
 }
 
@@ -216,7 +245,7 @@ ul, ol {
 }
 
 .nav-links li {
-    margin-right: 1.5rem; /* RTL margin */
+    margin-right: 1.5rem;
 }
 .nav-links li:last-child {
     margin-right: 0;
@@ -224,24 +253,29 @@ ul, ol {
 
 .nav-links a {
     color: var(--text-color);
-    font-size: 0.95rem; /* 15.2px */
+    font-size: 0.95rem;
     display: block;
     padding: 0.5rem 0;
     transition: var(--transition);
     position: relative;
 }
 
-.nav-links a:hover,
-.nav-links a:focus { /* Added focus state */
+.nav-links a:hover {
     color: var(--primary-color);
-    outline: none; /* Handled by ::after */
 }
+.nav-links a:focus-visible {
+    color: var(--primary-color);
+    outline: 2px solid var(--focus-outline-color); /* Add outline for focused link text */
+    outline-offset: 3px; /* Adjust offset */
+    border-radius: 2px; /* Optional: round corners of outline */
+}
+
 
 .nav-links a::after {
     content: '';
     position: absolute;
     bottom: 0;
-    right: 0; /* RTL */
+    right: 0;
     width: 0;
     height: 2px;
     background-color: var(--primary-color);
@@ -249,7 +283,7 @@ ul, ol {
 }
 
 .nav-links a:hover::after,
-.nav-links a:focus::after { /* Added focus state */
+.nav-links a:focus-visible::after { /* Apply underline on focus as well */
     width: 100%;
 }
 
@@ -258,22 +292,25 @@ ul, ol {
     background: none;
     border: none;
     color: var(--primary-color);
-    font-size: 1.5rem; /* 24px */
+    font-size: 1.5rem;
     cursor: pointer;
     transition: color 0.2s ease, transform 0.2s ease;
     padding: 0.5rem;
     z-index: 1001;
     will-change: transform, color;
-    transform: translateZ(0); /* Hardware acceleration */
-    -webkit-tap-highlight-color: transparent; /* Remove tap highlight on mobile */
+    transform: translateZ(0);
+    -webkit-tap-highlight-color: transparent;
 }
 
-.hamburger:hover,
-.hamburger:focus { /* Added focus state */
+.hamburger:hover {
     color: #42f5c8;
     transform: scale(1.1);
-    outline: 2px solid var(--primary-color);
-    outline-offset: 2px;
+}
+.hamburger:focus-visible {
+    color: #42f5c8;
+    transform: scale(1.1);
+    outline: 2px solid var(--focus-outline-color);
+    outline-offset: var(--focus-outline-offset);
     border-radius: 4px;
 }
 
@@ -282,14 +319,15 @@ ul, ol {
     transition: transform 0.2s ease;
 }
 
-.hamburger.active i {
-    transform: rotate(90deg); /* Example for X icon state if using font icon classes */
+.hamburger.active i { /* Assuming JS adds .active to hamburger */
+    transform: rotate(90deg); /* Or use FontAwesome classes for X */
 }
+
 
 .overlay {
     position: fixed;
     top: 0;
-    left: 0; /* Correct for LTR/RTL based on body direction */
+    left: 0;
     right: 0;
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.7);
@@ -312,8 +350,9 @@ ul, ol {
     display: flex;
     align-items: center;
     position: relative;
-    padding-top: 80px; /* Space for fixed navbar */
+    padding-top: 80px;
     overflow: hidden;
+    background-color: var(--secondary-color); /* Fallback if canvas fails */
 }
 
 .hero-canvas {
@@ -342,7 +381,7 @@ ul, ol {
 
 .hero-mini-title {
     color: var(--primary-color);
-    font-size: 1.1rem; /* 17.6px */
+    font-size: 1.1rem;
     margin-bottom: 1rem;
     display: block;
     font-weight: 500;
@@ -350,21 +389,21 @@ ul, ol {
 
 .hero h1 {
     color: var(--white);
-    font-size: 2.8rem; /* 44.8px */
+    font-size: 2.8rem;
     margin-bottom: 1.5rem;
     line-height: 1.2;
 }
 
 .hero-description {
     margin-bottom: 2rem;
-    font-size: 1.1rem; /* 17.6px */
+    font-size: 1.1rem;
     line-height: 1.8;
 }
 
 /* AI Demos Section (New Section) */
 .ai-demos-section {
-    background-color: var(--accent-color-lighter); /* Distinct background */
-    padding: 5rem 0;
+    background-color: var(--accent-color-lighter);
+    padding: 5rem 1rem; /* Use section-container padding */
 }
 
 .demo-intro-card {
@@ -374,19 +413,19 @@ ul, ol {
     box-shadow: var(--shadow);
     text-align: center;
     max-width: 900px;
-    margin: 0 auto;
+    margin: 0 auto; /* Centering the card */
 }
 
-.demo-intro-card .section-mini-title {
+.demo-intro-card .section-mini-title { /* Already defined globally, but can be specific if needed */
     font-size: 1.1rem;
 }
 
-.demo-intro-card .section-title {
-    font-size: 2.2rem; /* Slightly larger for emphasis */
+.demo-intro-card .section-title { /* Already defined globally */
+    font-size: 2.2rem;
     margin-bottom: 1.5rem;
 }
 
-.demo-intro-card .section-description {
+.demo-intro-card .section-description { /* Already defined globally */
     font-size: 1.15rem;
     line-height: 1.8;
     margin-bottom: 2rem;
@@ -401,17 +440,23 @@ ul, ol {
 }
 
 .demo-feature {
-    background-color: var(--secondary-color); /* Slightly darker than card-bg for contrast */
+    background-color: var(--secondary-color);
     padding: 1.5rem;
     border-radius: var(--border-radius);
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
+    transition: var(--transition); /* Add transition for hover effects */
+    box-shadow: var(--shadow);
+}
+.demo-feature:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
 }
 
 .demo-icon {
-    font-size: 2.8rem; /* Larger icons */
+    font-size: 2.8rem;
     color: var(--primary-color);
     margin-bottom: 1rem;
 }
@@ -425,24 +470,29 @@ ul, ol {
 .demo-feature p {
     font-size: 0.95rem;
     color: var(--text-color);
-    flex-grow: 1;
+    flex-grow: 1; /* Ensure p takes available space pushing CTA down */
+    margin-bottom: 1rem; /* Add margin before potential CTA inside feature */
 }
 
-.demo-cta-container {
+.demo-cta-container { /* For the main CTA button of the section */
     margin-top: 2rem;
+    text-align: center; /* Ensure button is centered */
 }
 
-.cta-button.demo-cta {
-    padding: 1rem 2rem; /* Larger CTA button */
+.cta-button.demo-cta { /* Specific CTA for this section */
+    padding: 1rem 2rem;
     font-size: 1.1rem;
     font-weight: 700;
 }
+.cta-button.demo-cta i {
+    margin-left: 0.5rem; /* RTL: icon before text */
+}
 
 
-/* Tourism & Heritage Section (Actually AI Robots Section) */
-.tourism-heritage { /* This class name is misleading, it's for AI Robots */
+/* Tourism & Heritage Section (AI Robots Section) */
+.tourism-heritage {
     background-color: var(--secondary-color);
-    padding: 5rem 0;
+    padding: 5rem 1rem; /* Use section-container padding */
 }
 
 .tourism-features-grid {
@@ -456,26 +506,28 @@ ul, ol {
     background-color: var(--card-bg);
     padding: 2rem;
     border-radius: var(--border-radius);
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Optimized transition */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     box-shadow: var(--shadow);
-    will-change: var(--will-change-transform); /* Added for performance */
+    will-change: var(--will-change-transform);
+    display: flex; /* For flex properties if needed */
+    flex-direction: column;
 }
 
 .tourism-feature-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); /* Enhanced hover shadow */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
 }
 
 .feature-icon {
     color: var(--primary-color);
-    font-size: 2.5rem; /* 40px */
+    font-size: 2.5rem;
     margin-bottom: 1.5rem;
     text-align: center;
 }
 
 .tourism-feature-card h3 {
     color: var(--white);
-    font-size: 1.3rem; /* 20.8px */
+    font-size: 1.3rem;
     margin-bottom: 1rem;
     text-align: center;
 }
@@ -484,26 +536,28 @@ ul, ol {
     color: var(--text-color);
     margin-bottom: 1.5rem;
     text-align: center;
+    flex-grow: 1; /* Allow p to grow */
 }
 
 .feature-list {
     list-style: none;
     padding: 0;
     margin-bottom: 1.5rem;
+    text-align: right; /* Ensure list items are RTL aligned */
 }
 
 .feature-list li {
     margin-bottom: 0.8rem;
     display: flex;
-    align-items: flex-start; /* Align icon and text properly */
+    align-items: flex-start;
 }
 
-.feature-list li i {
+.feature-list li i.fas.fa-check { /* Specific for FontAwesome check icons */
     color: var(--primary-color);
-    margin-left: 0.8rem; /* RTL margin */
-    font-size: 1rem; /* 16px */
-    flex-shrink: 0; /* Prevent icon from shrinking */
-    padding-top: 0.2em; /* Align with text better */
+    margin-left: 0.8rem; /* Space between icon and text in RTL */
+    font-size: 1rem;
+    flex-shrink: 0;
+    padding-top: 0.2em; /* Align icon better with text */
 }
 
 .feature-link {
@@ -511,44 +565,47 @@ ul, ol {
     color: var(--primary-color);
     font-weight: 500;
     transition: var(--transition);
+    margin-top: auto; /* Push to bottom if card is flex */
+    align-self: flex-start; /* Align to start (right in RTL) if card is text-center */
 }
 
 .feature-link i {
-    margin-right: 0.5rem; /* RTL margin */
+    margin-right: 0.5rem;
     transition: var(--transition);
 }
 
-.feature-link:hover,
-.feature-link:focus { /* Added focus */
+.feature-link:hover {
     color: #42f5c8;
-    outline: none;
 }
-.feature-link:focus-visible { /* Visible focus for keyboard */
-    outline: 2px solid var(--primary-color);
-    outline-offset: 2px;
+.feature-link:focus-visible {
+    color: #42f5c8;
+    outline: 2px solid var(--focus-outline-color);
+    outline-offset: var(--focus-outline-offset);
     border-radius: 4px;
 }
 
-
 .feature-link:hover i {
-    transform: translateX(-5px); /* RTL movement */
+    transform: translateX(-5px);
 }
 
 .tourism-cta {
     text-align: center;
     margin-top: 3rem;
 }
+.tourism-cta .cta-button i {
+    margin-left: 0.5rem; /* RTL */
+}
 
 /* AI Reshape Section */
 .ai-reshape {
     background-color: var(--accent-color);
-    padding: 5rem 0;
+    padding: 5rem 1rem; /* Use section-container padding */
 }
 
 /* Services Section */
 .services {
     background-color: var(--secondary-color);
-    padding: 5rem 0;
+    padding: 5rem 1rem; /* Use section-container padding */
 }
 
 .services-grid {
@@ -562,29 +619,29 @@ ul, ol {
     background-color: var(--card-bg);
     padding: 2rem;
     border-radius: var(--border-radius);
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Optimized transition */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     box-shadow: var(--shadow);
-    height: 100%; /* For equal height cards in a row */
+    height: 100%; /* Ensure cards in a row have same height if content varies */
     display: flex;
     flex-direction: column;
-    will-change: var(--will-change-transform); /* Added for performance */
+    will-change: var(--will-change-transform);
 }
 
 .service-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); /* Enhanced hover shadow */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
 }
 
 .service-icon {
     color: var(--primary-color);
-    font-size: 2.5rem; /* 40px */
+    font-size: 2.5rem;
     margin-bottom: 1.5rem;
     text-align: center;
 }
 
 .service-title {
     color: var(--white);
-    font-size: 1.3rem; /* 20.8px */
+    font-size: 1.3rem;
     margin-bottom: 1rem;
     text-align: center;
 }
@@ -592,13 +649,16 @@ ul, ol {
 .service-description {
     color: var(--text-color);
     margin-bottom: 1.5rem;
-    flex-grow: 1; /* Makes description take available space */
+    flex-grow: 1;
 }
 
-.service-card h4 {
+.service-card h4 { /* Case study titles within service cards */
     color: var(--primary-color);
-    font-size: 1.1rem; /* 17.6px */
+    font-size: 1.1rem;
     margin: 1.5rem 0 0.8rem;
+}
+.service-card h4 + p { /* Paragraph following the H4 (case study description) */
+    font-size: 0.95rem;
 }
 
 .service-card ul {
@@ -610,21 +670,29 @@ ul, ol {
 .service-card ul li {
     margin-bottom: 0.8rem;
     position: relative;
-    padding-right: 1.5rem; /* RTL padding for pseudo-element */
+    padding-right: 1.5rem; /* For pseudo-element or icon */
+    display: flex; /* For icon alignment if using <i> */
+    align-items: flex-start;
 }
 
-.service-card ul li::before {
-    content: '✓'; /* Checkmark */
+/* Consistent check icon styling */
+.service-card ul li::before { /* Default checkmark, if not using FontAwesome */
+    content: '✓';
     color: var(--primary-color);
     position: absolute;
-    right: 0; /* RTL position */
+    right: 0;
+    font-size: 1.1em; /* Adjust size */
+    line-height: inherit; /* Align with text */
 }
-.service-card ul li i.fas.fa-check { /* For consistent check icon styling with feature-list */
+.service-card ul li i.fas.fa-check { /* If using FontAwesome */
     color: var(--primary-color);
-    margin-left: 0.8rem;
+    margin-left: 0.8rem; /* RTL */
     font-size: 1rem;
     flex-shrink: 0;
     padding-top: 0.2em;
+}
+.service-card ul li > *:not(i) { /* Ensure text next to icon flows correctly */
+    flex-grow: 1;
 }
 
 
@@ -633,42 +701,41 @@ ul, ol {
     color: var(--primary-color);
     font-weight: 500;
     transition: var(--transition);
-    margin-top: auto; /* Pushes link to the bottom if card is flex column */
+    margin-top: auto;
+    align-self: flex-start; /* RTL align */
 }
 
 .service-link i {
-    margin-right: 0.5rem; /* RTL margin */
+    margin-right: 0.5rem;
     transition: var(--transition);
 }
 
-.service-link:hover,
-.service-link:focus { /* Added focus */
+.service-link:hover {
     color: #42f5c8;
-    outline: none;
 }
-
-.service-link:focus-visible { /* Visible focus for keyboard */
-    outline: 2px solid var(--primary-color);
-    outline-offset: 2px;
+.service-link:focus-visible {
+    color: #42f5c8;
+    outline: 2px solid var(--focus-outline-color);
+    outline-offset: var(--focus-outline-offset);
     border-radius: 4px;
 }
 
 .service-link:hover i {
-    transform: translateX(-5px); /* RTL movement */
+    transform: translateX(-5px);
 }
 
 /* About Section */
 .about-section {
-    background-color: var(--secondary-color);
-    padding: 5rem 0;
+    background-color: var(--secondary-color); /* Assuming same as .services */
+    padding: 5rem 1rem; /* Use section-container padding */
 }
 
 .about-content {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr; /* Default two columns */
     gap: 3rem;
     margin-top: 2rem;
-    align-items: start; /* Align items to the start of grid cells */
+    align-items: start;
 }
 
 .about-text {
@@ -676,14 +743,18 @@ ul, ol {
 }
 
 .main-description {
-    font-size: 1.1rem; /* 17.6px */
+    font-size: 1.1rem;
     line-height: 1.8;
     margin-bottom: 2rem;
+}
+.main-description strong { /* Emphasize company name */
+    color: var(--white);
+    font-weight: 700;
 }
 
 .vision-mission {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr; /* Default two columns */
     gap: 2rem;
     margin-top: 2rem;
 }
@@ -697,12 +768,12 @@ ul, ol {
 .vision h3, .mission h3 {
     color: var(--primary-color);
     margin-bottom: 1rem;
-    font-size: 1.2rem; /* 19.2px */
+    font-size: 1.2rem;
 }
 
 .about-features {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr; /* Default two columns */
     gap: 1.5rem;
 }
 
@@ -711,8 +782,8 @@ ul, ol {
     padding: 1.5rem;
     border-radius: var(--border-radius);
     text-align: center;
-    transition: transform 0.3s ease; /* Optimized transition */
-    will-change: var(--will-change-transform); /* Added for performance */
+    transition: transform 0.3s ease;
+    will-change: var(--will-change-transform);
 }
 
 .feature-item:hover {
@@ -723,26 +794,27 @@ ul, ol {
     width: 80px;
     height: 80px;
     margin: 0 auto 1rem;
-    background-color: var(--primary-color);
+    background-color: var(--primary-color); /* Fallback */
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     color: var(--secondary-color);
-    font-size: 2rem; /* 32px */
+    font-size: 2rem;
     background-size: cover;
     background-position: center;
+    border: 3px solid var(--accent-color); /* Optional border */
 }
 /* Specific background images for about features for better semantics */
-.expertise-image { background-image: url('https://via.placeholder.com/80/64FFDA/0A192F?text=خبرة'); /* Placeholder */ }
-.innovation-image { background-image: url('https://via.placeholder.com/80/64FFDA/0A192F?text=ابتكار'); /* Placeholder */ }
-.partnership-image { background-image: url('https://via.placeholder.com/80/64FFDA/0A192F?text=شراكة'); /* Placeholder */ }
-.growth-image { background-image: url('https://via.placeholder.com/80/64FFDA/0A192F?text=نمو'); /* Placeholder */ }
+.expertise-image { background-image: url('https://via.placeholder.com/80/64FFDA/0A192F?text=خبرة'); }
+.innovation-image { background-image: url('https://via.placeholder.com/80/64FFDA/0A192F?text=ابتكار'); }
+.partnership-image { background-image: url('https://via.placeholder.com/80/64FFDA/0A192F?text=شراكة'); }
+.growth-image { background-image: url('https://via.placeholder.com/80/64FFDA/0A192F?text=نمو'); }
 
 
 .feature-item h3 {
     color: var(--white);
-    font-size: 1.2rem; /* 19.2px */
+    font-size: 1.2rem;
     margin-bottom: 0.8rem;
 }
 
@@ -752,18 +824,19 @@ ul, ol {
 }
 
 .team-preview h3 {
-    margin-bottom: 2rem;
+    margin-bottom: 2rem; /* Global h3 style applies */
 }
 
 .team-images {
     display: flex;
     justify-content: center;
     gap: 2rem;
-    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    flex-wrap: wrap;
 }
 
 .team-member {
     text-align: center;
+    max-width: 150px; /* Control width of member card */
 }
 
 .member-image {
@@ -771,28 +844,40 @@ ul, ol {
     height: 120px;
     border-radius: 50%;
     margin: 0 auto 1rem;
-    background-color: var(--accent-color); /* Placeholder background */
-    /* background-image: url('path/to/image.jpg'); Example for actual image */
+    background-color: var(--accent-color);
     background-size: cover;
     background-position: center;
+    border: 3px solid var(--primary-color); /* Highlight team images */
 }
-.team-image-1 { background-image: url('https://via.placeholder.com/120/1D2B3A/FFFFFF?text=قيادة'); /* Placeholder */ }
-.team-image-2 { background-image: url('https://via.placeholder.com/120/1D2B3A/FFFFFF?text=خبراء'); /* Placeholder */ }
-.team-image-3 { background-image: url('https://via.placeholder.com/120/1D2B3A/FFFFFF?text=محللون'); /* Placeholder */ }
+.team-image-1 { background-image: url('https://via.placeholder.com/120/1D2B3A/FFFFFF?text=قيادة'); }
+.team-image-2 { background-image: url('https://via.placeholder.com/120/1D2B3A/FFFFFF?text=خبراء'); }
+.team-image-3 { background-image: url('https://via.placeholder.com/120/1D2B3A/FFFFFF?text=محللون'); }
+.team-member figcaption {
+    font-size: 0.9rem;
+    color: var(--text-color);
+}
 
 
-.cta-container {
+.cta-container { /* Container for multiple CTAs */
     display: flex;
     justify-content: center;
     gap: 1rem;
     margin-top: 3rem;
     flex-wrap: wrap;
 }
+.cta-container .cta-button { /* Ensure buttons in this container are styled as expected */
+    /* Specific styles if needed, otherwise inherits from .cta-button */
+}
+.cta-button.cta-contact,
+.cta-button.cta-docs {
+    /* Styles for specific CTA buttons if they differ, e.g., different icons or emphasis */
+}
+
 
 /* Case Studies Section */
-.case-studies {
+.case-studies { /* This is the general case studies section, ID: case-studies */
     background-color: var(--secondary-color);
-    padding: 5rem 0;
+    padding: 5rem 1rem; /* Use section-container padding */
 }
 
 .case-studies-grid {
@@ -802,33 +887,34 @@ ul, ol {
     margin-top: 3rem;
 }
 
-.case-card {
+.case-card { /* General card for case studies (used in #case-studies section) */
     background-color: var(--card-bg);
     border-radius: var(--border-radius);
-    overflow: hidden; /* To contain image zoom */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Optimized transition */
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     box-shadow: var(--shadow);
-    will-change: var(--will-change-transform); /* Added for performance */
+    will-change: var(--will-change-transform);
     display: flex;
     flex-direction: column;
 }
 
 .case-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); /* Enhanced hover shadow */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
 }
 
 .case-image {
     height: 200px;
-    overflow: hidden; /* Crucial for image zoom effect */
+    overflow: hidden;
+    position: relative; /* For potential overlay or absolute positioned elements */
 }
 
 .case-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.3s ease; /* Optimized transition */
-    will-change: var(--will-change-transform); /* Added for performance */
+    transition: transform 0.3s ease;
+    will-change: var(--will-change-transform);
 }
 
 .case-card:hover .case-image img {
@@ -839,7 +925,7 @@ ul, ol {
     padding: 1.5rem;
     display: flex;
     flex-direction: column;
-    flex-grow: 1; /* Allow content to fill card height */
+    flex-grow: 1;
 }
 
 .case-tag {
@@ -847,125 +933,122 @@ ul, ol {
     background-color: rgba(100, 255, 218, 0.1);
     color: var(--primary-color);
     padding: 0.3rem 0.8rem;
-    border-radius: 20px; /* Pill shape */
-    font-size: 0.8rem; /* 12.8px */
+    border-radius: 20px;
+    font-size: 0.8rem;
     margin-bottom: 1rem;
-    align-self: flex-start; /* Align to start for RTL */
+    align-self: flex-start;
 }
 
-.case-title {
+.case-title { /* For .case-card */
     color: var(--white);
-    font-size: 1.3rem; /* 20.8px */
+    font-size: 1.3rem;
     margin-bottom: 1rem;
 }
 
-.case-description {
+.case-description { /* For .case-card */
     color: var(--text-color);
     margin-bottom: 1.5rem;
     flex-grow: 1;
 }
 
-.case-stats {
+.case-stats { /* For .case-card */
     display: flex;
     justify-content: space-between;
     margin-bottom: 1.5rem;
-    flex-wrap: wrap; /* Allow stats to wrap if needed */
+    flex-wrap: wrap;
+    gap: 1rem; /* Add gap for better spacing when wrapping */
 }
 
-.case-stat {
+.case-stat { /* For .case-card */
     text-align: center;
-    flex-basis: 45%; /* Adjust for spacing, allows two per row */
-    margin-bottom: 1rem;
+    flex-basis: calc(50% - 0.5rem); /* Two per row with gap */
+    min-width: 120px; /* Minimum width before wrapping */
 }
 
-.stat-value {
+.stat-value { /* For .case-card */
     display: block;
     color: var(--primary-color);
-    font-size: 1.5rem; /* 24px */
+    font-size: 1.5rem;
     font-weight: 700;
     margin-bottom: 0.3rem;
 }
 
-.stat-label {
+.stat-label { /* For .case-card */
     color: var(--text-color);
-    font-size: 0.9rem; /* 14.4px */
+    font-size: 0.9rem;
+}
+/* Ensure link inside case-card is styled like service-link */
+.case-card .service-link {
+    align-self: flex-start; /* RTL align */
+    margin-top: auto;
 }
 
-/* AI Agent Section */
-.ai-agent {
+
+/* AI Agent Section & other similar sections */
+.ai-agent,
+.automation,
+.analysis,
+.journey,
+.agent-journey,
+.automation-journey,
+.ai-transformation,
+.services-list,
+.technical-details,
+.technologies {
+    padding: 5rem 1rem; /* Consistent padding */
+}
+.ai-agent, .analysis, .agent-journey, .ai-transformation, .services-list, .technologies {
     background-color: var(--accent-color);
-    padding: 5rem 0;
 }
-
-/* Automation Section */
-.automation {
+.automation, .journey, .automation-journey, .technical-details {
     background-color: var(--secondary-color);
-    padding: 5rem 0;
-}
-
-/* Analysis Section */
-.analysis {
-    background-color: var(--accent-color);
-    padding: 5rem 0;
-}
-
-/* Journey Section */
-.journey {
-    background-color: var(--secondary-color);
-    padding: 5rem 0;
-}
-
-/* Agent Journey Section */
-.agent-journey {
-    background-color: var(--accent-color);
-    padding: 5rem 0;
-}
-
-/* Automation Journey Section */
-.automation-journey {
-    background-color: var(--secondary-color);
-    padding: 5rem 0;
-}
-
-/* AI Transformation Section */
-.ai-transformation {
-    background-color: var(--accent-color);
-    padding: 5rem 0;
 }
 
 /* Newsletter Section */
 .newsletter {
     background-color: var(--primary-color);
-    padding: 5rem 0;
+    padding: 5rem 1rem; /* Use section-container padding */
     text-align: center;
 }
 
 .newsletter-container {
     max-width: 800px;
     margin: 0 auto;
-    padding: 0 1rem;
+    /* padding: 0 1rem; */ /* Redundant if section has padding */
 }
 
 .newsletter-title {
     color: var(--secondary-color);
-    font-size: 2rem; /* 32px */
+    font-size: 2rem;
     margin-bottom: 1rem;
 }
 
 .newsletter-description {
-    color: var(--secondary-color);
+    color: var(--secondary-color); /* Using secondary color for text on primary background */
     margin-bottom: 2rem;
-    font-size: 1.1rem; /* 17.6px */
+    font-size: 1.1rem;
 }
 
 .newsletter-form-large {
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* Default stack */
     gap: 1rem;
     max-width: 500px;
     margin: 0 auto;
 }
-.newsletter-form-large .sr-only { /* Visually hide labels but keep for screen readers */
+@media (min-width: 577px) { /* Side-by-side on larger screens */
+    .newsletter-form-large {
+        flex-direction: row;
+    }
+    .newsletter-form-large input[type="email"] {
+        flex-grow: 1;
+    }
+    .newsletter-form-large button[type="submit"] {
+        flex-shrink: 0; /* Prevent button from shrinking */
+    }
+}
+
+.newsletter-form-large .sr-only {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -979,15 +1062,21 @@ ul, ol {
 
 .newsletter-input-large {
     padding: 1rem;
-    border: 1px solid transparent; /* Border for focus state */
+    border: 1px solid transparent;
     border-radius: var(--border-radius);
-    font-size: 1rem; /* 16px */
-    direction: rtl; /* Ensure placeholder and text are RTL */
+    font-size: 1rem;
+    direction: rtl;
+    color: var(--secondary-color); /* Text color inside input */
+    background-color: var(--white); /* Background of input */
 }
-.newsletter-input-large:focus {
-    outline: none;
+.newsletter-input-large::placeholder {
+    color: #555; /* Placeholder color */
+}
+.newsletter-input-large:focus-visible {
     border-color: var(--secondary-color);
-    box-shadow: 0 0 0 2px var(--secondary-color);
+    outline: 2px solid var(--secondary-color);
+    outline-offset: 0; /* Adjust focus outline for inputs */
+    box-shadow: none; /* Remove the softer glow if not desired for inputs */
 }
 
 .newsletter-button-large {
@@ -996,41 +1085,41 @@ ul, ol {
     border: none;
     padding: 1rem;
     border-radius: var(--border-radius);
-    font-size: 1rem; /* 16px */
+    font-size: 1rem;
     cursor: pointer;
     transition: var(--transition);
     font-weight: 500;
 }
 
-.newsletter-button-large:hover,
-.newsletter-button-large:focus { /* Added focus */
-    background-color: #0D2240; /* Darker shade of secondary */
-    outline: 2px solid var(--secondary-color);
-    outline-offset: 2px;
+.newsletter-button-large:hover {
+    background-color: #0D2240;
+}
+.newsletter-button-large:focus-visible {
+    background-color: #0D2240;
+    outline: 2px solid var(--secondary-color); /* More distinct focus for buttons */
+    outline-offset: var(--focus-outline-offset);
 }
 
-/* Transformation Section */
+/* Transformation Section (General content section) */
 .transformation {
     background-color: var(--secondary-color);
-    padding: 5rem 0;
+    padding: 5rem 1rem; /* Use section-container padding */
     text-align: center;
 }
-
-/* Services List Section */
-.services-list {
-    background-color: var(--accent-color);
-    padding: 5rem 0;
+.transformation .cta-button { /* Specific CTA if needed */
+    margin-top: 1rem; /* Add some space if it's below text */
 }
+
 
 /* Consultation Section */
 .consultation {
-    background-color: var(--secondary-color);
-    padding: 5rem 0;
+    background-color: var(--secondary-color); /* Assuming it's a dark section */
+    padding: 5rem 1rem; /* Use section-container padding */
 }
 
 .consultation-container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr; /* Default two columns */
     gap: 3rem;
     margin-top: 3rem;
     align-items: start;
@@ -1042,13 +1131,13 @@ ul, ol {
 
 .consultation-title {
     color: var(--white);
-    font-size: 1.8rem; /* 28.8px */
+    font-size: 1.8rem;
     margin-bottom: 1.5rem;
 }
 
 .consultation-description {
     margin-bottom: 2rem;
-    font-size: 1.1rem; /* 17.6px */
+    font-size: 1.1rem;
     line-height: 1.8;
 }
 
@@ -1061,22 +1150,25 @@ ul, ol {
     align-items: flex-start;
     margin-bottom: 1rem;
 }
-
-.feature-check {
-    color: var(--primary-color);
-    margin-left: 1rem; /* RTL margin */
-    font-size: 1.2rem; /* 19.2px */
-    flex-shrink: 0;
-    padding-top: 0.1em; /* Alignment */
+.consultation-feature p {
+    margin-bottom: 0; /* Remove default p margin if inside flex */
 }
 
-.consultation-form {
+.feature-check { /* Used in consultation features */
+    color: var(--primary-color);
+    margin-left: 1rem;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    padding-top: 0.1em;
+}
+
+.consultation-form { /* The form container itself */
     background-color: var(--card-bg);
     padding: 2rem;
     border-radius: var(--border-radius);
     box-shadow: var(--shadow);
 }
-.consultation-form .sr-only {
+.consultation-form .sr-only { /* From HTML */
     position: absolute;
     width: 1px;
     height: 1px;
@@ -1087,7 +1179,7 @@ ul, ol {
     white-space: nowrap;
     border: 0;
 }
-.required-asterisk {
+.required-asterisk { /* From HTML */
     color: var(--primary-color);
     margin-right: 0.25rem;
 }
@@ -1111,16 +1203,17 @@ ul, ol {
     border-radius: var(--border-radius);
     background-color: rgba(255, 255, 255, 0.05);
     color: var(--white);
-    font-size: 1rem; /* 16px */
+    font-size: 1rem;
     transition: var(--transition);
-    direction: rtl; /* Ensure placeholder and text are RTL */
+    direction: rtl;
 }
 
-.form-control:focus {
-    outline: none;
+.form-control:focus-visible { /* Specific for form controls */
     border-color: var(--primary-color);
     background-color: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 0 0 2px var(--primary-color);
+    outline: 2px solid var(--primary-color);
+    outline-offset: 0; /* Adjust for inputs */
+    box-shadow: none;
 }
 
 textarea.form-control {
@@ -1134,24 +1227,26 @@ textarea.form-control {
     border: none;
     padding: 1rem;
     border-radius: var(--border-radius);
-    font-size: 1rem; /* 16px */
+    font-size: 1rem;
     cursor: pointer;
     transition: var(--transition);
     width: 100%;
     font-weight: 500;
 }
 
-.submit-button:hover,
-.submit-button:focus { /* Added focus */
+.submit-button:hover {
     background-color: #42f5c8;
-    outline: 2px solid var(--primary-color);
-    outline-offset: 2px;
+}
+.submit-button:focus-visible {
+    background-color: #42f5c8;
+    outline: 2px solid var(--secondary-color); /* Contrasting outline for this button */
+    outline-offset: var(--focus-outline-offset);
 }
 
 /* FAQ Section */
 .faq {
     background-color: var(--accent-color);
-    padding: 5rem 0;
+    padding: 5rem 1rem; /* Use section-container padding */
 }
 
 .faq-container {
@@ -1162,72 +1257,70 @@ textarea.form-control {
 .faq-item {
     margin-bottom: 1rem;
     border-radius: var(--border-radius);
-    overflow: hidden; /* For smooth border appearance */
-    border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: border-color 0.3s ease; /* Smooth border color change */
 }
-.faq-item.active { /* Style when active */
+.faq-item.active {
     border-color: var(--primary-color);
 }
 
 
 .faq-question {
     width: 100%;
-    text-align: right; /* RTL */
+    text-align: right;
     padding: 1.2rem;
     background-color: var(--card-bg);
     color: var(--white);
-    border: none; /* Border is on faq-item now */
+    border: none;
     cursor: pointer;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 1.1rem; /* 17.6px */
+    font-size: 1.1rem;
     font-weight: 500;
     transition: background-color 0.3s ease;
 }
 
 .faq-question:hover {
-    background-color: #253b52; /* Slightly lighter card-bg */
-}
-.faq-question:focus {
-    outline: none; /* Handled by focus-visible */
+    background-color: #253b52;
 }
 .faq-question:focus-visible {
-    outline: 2px solid var(--primary-color);
+    background-color: #253b52;
+    outline: 2px solid var(--focus-outline-color);
     outline-offset: -2px; /* Inside button */
-    z-index: 1; /* Ensure outline is visible */
+    z-index: 1;
 }
 
-.faq-question i {
-    transition: transform 0.3s ease-in-out; /* Smoother transition */
+.faq-question i.fas { /* Target FontAwesome icon specifically */
+    transition: transform 0.3s ease-in-out;
     will-change: var(--will-change-transform);
 }
 
-.faq-question[aria-expanded="true"] i {
+.faq-question[aria-expanded="true"] i.fas {
     transform: rotate(180deg);
 }
-/* Redundant .faq-item.active .faq-question i was removed as it's covered by [aria-expanded="true"] */
 
 .faq-answer {
-    background-color: rgba(29, 43, 58, 0.7); /* Slightly more opaque */
+    background-color: rgba(29, 43, 58, 0.85); /* Slightly adjusted opacity */
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.5s cubic-bezier(0, 1, 0, 1); /* Smooth accordion */
+    transition: max-height 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Smoother easing */
     will-change: max-height;
 }
 
-.faq-item.active .faq-answer { /* JS adds .active to .faq-item */
-    max-height: 2000px; /* Large enough for any answer */
-    transition: max-height 0.7s ease-in-out; /* Slightly slower open */
+/* JS will toggle .active on .faq-item */
+.faq-item.active .faq-answer {
+    max-height: 1000px; /* Sufficiently large, adjust if very long content */
 }
 
 .faq-answer-content {
     padding: 1.5rem;
     color: var(--text-color);
-    opacity: 0;
+    opacity: 0; /* Start hidden for fade-in */
     transform: translateY(-10px);
-    transition: opacity 0.4s ease-out 0.2s, transform 0.4s ease-out 0.2s; /* Delayed transition for content */
-    line-height: 1.6;
+    transition: opacity 0.4s ease-out 0.1s, transform 0.4s ease-out 0.1s; /* Adjust delay */
+    line-height: 1.7; /* Slightly more line height for readability */
 }
 
 .faq-item.active .faq-answer-content {
@@ -1236,107 +1329,123 @@ textarea.form-control {
 }
 
 
-/* Technical Details Section */
-.technical-details {
-    background-color: var(--secondary-color);
-    padding: 5rem 0;
-}
-
-.tech-grid {
+/* Technical Details & Technologies Sections use .tech-grid, .tech-card, .tech-detail-card */
+.tech-grid,
+.tech-details-grid { /* Used in #technical-details and #technologies */
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
     margin-top: 3rem;
 }
 
-.tech-card {
+.tech-card, /* Used in #technical-details */
+.tech-detail-card { /* Used in #technologies */
     background-color: var(--card-bg);
     padding: 2rem;
     border-radius: var(--border-radius);
     box-shadow: var(--shadow);
 }
 
-.tech-card h3 {
+.tech-card h3,
+.tech-detail-card h3 {
     color: var(--primary-color);
     margin-bottom: 1.5rem;
-    font-size: 1.3rem; /* 20.8px */
+    font-size: 1.3rem;
+}
+.tech-detail-card p { /* Specific for #technologies if needed */
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
 }
 
-.tech-card ul {
+.tech-card ul,
+.tech-detail-card ul {
     list-style: none;
     padding: 0;
 }
 
-.tech-card ul li {
+.tech-card ul li,
+.tech-detail-card ul li {
     margin-bottom: 0.8rem;
     position: relative;
-    padding-right: 1.5rem; /* RTL padding for pseudo-element */
+    padding-right: 1.5rem;
     color: var(--text-color);
 }
 
-.tech-card ul li::before {
-    content: '•'; /* Bullet point */
+.tech-card ul li::before,
+.tech-detail-card ul li::before {
+    content: '•';
     color: var(--primary-color);
     position: absolute;
-    right: 0; /* RTL position */
-    font-size: 1.2rem; /* 19.2px */
+    right: 0;
+    font-size: 1.2rem;
 }
 
-/* Case Studies Section (Detailed) */
-.case-study-card { /* This class seems to be for a different style of case study card than .case-card */
+/* Case Studies Section (Detailed - ID: case-studies-detailed) */
+/* This section uses .case-study-card which is different from .case-card */
+#case-studies-detailed {
+    background-color: var(--accent-color); /* Or another distinct color */
+    padding: 5rem 1rem;
+}
+#case-studies-detailed .case-studies-grid { /* Ensure grid is applied if this class is used here too */
+    /* Styles already defined */
+}
+
+.case-study-card { /* For detailed case studies in #case-studies-detailed */
     background-color: var(--card-bg);
     padding: 2rem;
     border-radius: var(--border-radius);
-    margin-bottom: 2rem;
+    margin-bottom: 2rem; /* Spacing between detailed cards */
     box-shadow: var(--shadow);
 }
 
-.case-study-card h3 {
+.case-study-card h3 { /* Title for detailed case study */
     color: var(--white);
-    font-size: 1.5rem; /* 24px */
+    font-size: 1.5rem;
     margin-bottom: 1.5rem;
 }
 
-.metrics {
+.metrics { /* For detailed case studies */
     display: flex;
-    justify-content: space-around; /* Better distribution */
+    justify-content: space-around;
     margin-bottom: 2rem;
     flex-wrap: wrap;
-    gap: 1rem; /* Gap between metrics */
+    gap: 1rem;
 }
 
-.metric {
+.metric { /* For detailed case studies */
     text-align: center;
-    flex: 1;
-    min-width: 120px;
-    margin-bottom: 1rem; /* For wrapping */
+    flex: 1; /* Allow flex grow/shrink */
+    min-width: 120px; /* Minimum width for each metric */
 }
 
-.value { /* This class is for detailed case study metrics */
+.metric .value { /* Value in detailed case studies (reusing .value class name from HTML) */
     display: block;
     color: var(--primary-color);
-    font-size: 1.8rem; /* 28.8px */
+    font-size: 1.8rem;
     font-weight: 700;
     margin-bottom: 0.5rem;
 }
 
-.label { /* This class is for detailed case study metrics */
+.metric .label { /* Label in detailed case studies (reusing .label class name from HTML) */
     color: var(--text-color);
-    font-size: 0.9rem; /* 14.4px */
+    font-size: 0.9rem;
 }
 
-.implementation-details {
+.implementation-details { /* For detailed case studies */
     margin-top: 2rem;
+    background-color: var(--secondary-color); /* Slightly different bg for this block */
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
 }
 
 .implementation-details h4 {
     color: var(--primary-color);
     margin-bottom: 1rem;
-    font-size: 1.1rem; /* 17.6px */
+    font-size: 1.1rem;
 }
 .implementation-details ul {
-    list-style: disc;
-    padding-right: 1.5rem; /* RTL padding */
+    list-style: disc; /* Use disc for these lists */
+    padding-right: 1.5rem;
     color: var(--text-color);
 }
 .implementation-details ul li {
@@ -1344,64 +1453,13 @@ textarea.form-control {
 }
 
 
-/* Technologies Section */
-.technologies {
-    background-color: var(--accent-color);
-    padding: 5rem 0;
-}
-
-.tech-details-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-top: 3rem;
-}
-
-.tech-detail-card {
-    background-color: var(--card-bg);
-    padding: 2rem;
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow);
-}
-
-.tech-detail-card h3 {
-    color: var(--primary-color);
-    margin-bottom: 1rem;
-    font-size: 1.3rem; /* 20.8px */
-}
-
-.tech-detail-card p {
-    color: var(--text-color);
-    margin-bottom: 1.5rem;
-}
-
-.tech-detail-card ul {
-    list-style: none;
-    padding: 0;
-}
-
-.tech-detail-card ul li {
-    margin-bottom: 0.8rem;
-    position: relative;
-    padding-right: 1.5rem; /* RTL padding for pseudo-element */
-    color: var(--text-color);
-}
-
-.tech-detail-card ul li::before {
-    content: '•'; /* Bullet point */
-    color: var(--primary-color);
-    position: absolute;
-    right: 0; /* RTL position */
-    font-size: 1.2rem; /* 19.2px */
-}
-
 /* Footer Styles */
 .footer {
-    background-color: var(--accent-color);
-    padding: 5rem 0 2rem;
+    background-color: var(--accent-color); /* Darker than main bg for distinction */
+    padding: 5rem 1rem 2rem; /* Use section-container padding */
     color: var(--text-color);
 }
-.footer .sr-only {
+.footer .sr-only { /* From HTML */
     position: absolute;
     width: 1px;
     height: 1px;
@@ -1420,20 +1478,20 @@ textarea.form-control {
     gap: 3rem;
     max-width: var(--container-width);
     margin: 0 auto;
-    padding: 0 2rem;
+    /* padding: 0 2rem; */ /* Redundant if section has padding */
 }
 
 .footer-logo-container {
-    margin-bottom: 2rem; /* Or remove if gap handles it */
+    margin-bottom: 2rem; /* Or rely on grid gap */
 }
 
 .footer-logo {
-    display: inline-block;
+    display: inline-block; /* Allows margin-bottom */
     margin-bottom: 1.5rem;
 }
-.footer-logo:focus-visible img { /* Enhanced focus for logo */
-    outline: 2px solid var(--primary-color);
-    outline-offset: 2px;
+.footer-logo:focus-visible img {
+    outline: 2px solid var(--focus-outline-color);
+    outline-offset: var(--focus-outline-offset);
     border-radius: 4px;
 }
 
@@ -1450,12 +1508,12 @@ textarea.form-control {
 .social-links {
     display: flex;
     gap: 1rem;
-    flex-wrap: wrap; /* Allow wrapping */
+    flex-wrap: wrap;
 }
 
 .social-link {
     color: var(--text-color);
-    font-size: 1.2rem; /* 19.2px */
+    font-size: 1.2rem;
     transition: var(--transition);
     width: 40px;
     height: 40px;
@@ -1464,25 +1522,26 @@ textarea.form-control {
     justify-content: center;
     background-color: rgba(255, 255, 255, 0.05);
     border-radius: 50%;
-    border: 1px solid transparent; /* For focus state consistency */
+    border: 1px solid transparent;
 }
 
-.social-link:hover,
-.social-link:focus { /* Added focus state */
+.social-link:hover {
     color: var(--primary-color);
     background-color: rgba(100, 255, 218, 0.1);
-    outline: none;
 }
 .social-link:focus-visible {
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 2px var(--primary-color);
+    color: var(--primary-color);
+    background-color: rgba(100, 255, 218, 0.1);
+    border-color: var(--primary-color); /* Use border for focus on circular items */
+    outline: none; /* Override global focus-visible outline if border is preferred */
+    box-shadow: 0 0 0 2px var(--primary-color); /* Alternative: keep outline style */
 }
 
 
 .footer-links-title {
     color: var(--white);
     margin-bottom: 1.5rem;
-    font-size: 1.2rem; /* 19.2px */
+    font-size: 1.2rem;
 }
 
 .footer-links {
@@ -1490,30 +1549,35 @@ textarea.form-control {
     padding: 0;
 }
 
-.footer-link {
+.footer-link { /* List item */
     margin-bottom: 0.8rem;
 }
 
 .footer-link a {
     color: var(--text-color);
     transition: var(--transition);
-    display: flex;
+    display: flex; /* For icon alignment */
     align-items: center;
 }
 
-.footer-link a:hover,
-.footer-link a:focus { /* Added focus state */
+.footer-link a:hover {
     color: var(--primary-color);
-    outline: none;
+    padding-right: 5px; /* Subtle shift on hover */
 }
 .footer-link a:focus-visible {
-    outline: 1px dashed var(--primary-color); /* Subtle focus for links */
+    color: var(--primary-color);
+    outline: 1px dashed var(--primary-color);
     outline-offset: 2px;
+    border-radius: 2px;
 }
 
-.footer-link a i {
-    margin-left: 0.5rem; /* RTL margin */
-    font-size: 0.8rem; /* 12.8px */
+.footer-link a i.fas { /* Target FontAwesome icon */
+    margin-left: 0.5rem;
+    font-size: 0.8rem;
+    transition: transform 0.2s ease;
+}
+.footer-link a:hover i.fas {
+    transform: translateX(-3px); /* Move icon slightly on hover */
 }
 
 .contact-info {
@@ -1523,22 +1587,26 @@ textarea.form-control {
 
 .contact-item {
     display: flex;
-    align-items: flex-start;
+    align-items: flex-start; /* Align icon with first line of text */
     margin-bottom: 1rem;
 }
+.contact-item div:last-child { /* Text part */
+    flex-grow: 1;
+}
+
 
 .contact-icon {
     color: var(--primary-color);
-    margin-left: 1rem; /* RTL margin */
-    font-size: 1.2rem; /* 19.2px */
-    min-width: 20px; /* Ensure consistent spacing */
-    padding-top: 0.1em; /* Alignment */
+    margin-left: 1rem;
+    font-size: 1.2rem;
+    min-width: 20px;
+    padding-top: 0.1em;
 }
-.contact-link-footer { /* Class for tel: and mailto: links in footer */
+.contact-link-footer {
     color: var(--text-color);
 }
 .contact-link-footer:hover,
-.contact-link-footer:focus {
+.contact-link-footer:focus-visible { /* Combine for consistency */
     color: var(--primary-color);
     text-decoration: underline;
 }
@@ -1553,15 +1621,16 @@ textarea.form-control {
     flex-grow: 1;
     padding: 0.8rem;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: var(--border-radius) 0 0 var(--border-radius); /* RTL: right side rounded */
+    border-radius: var(--border-radius) 0 0 var(--border-radius);
     background-color: rgba(255, 255, 255, 0.05);
     color: var(--white);
     direction: rtl;
 }
-.newsletter-input:focus {
-    outline: none;
+.newsletter-input:focus-visible {
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 2px var(--primary-color) inset;
+    outline: 2px solid var(--primary-color);
+    outline-offset: 0;
+    box-shadow: none;
 }
 
 .newsletter-button { /* Footer newsletter button */
@@ -1569,16 +1638,18 @@ textarea.form-control {
     color: var(--secondary-color);
     border: none;
     padding: 0.8rem 1rem;
-    border-radius: 0 var(--border-radius) var(--border-radius) 0; /* RTL: left side rounded */
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
     cursor: pointer;
     transition: var(--transition);
 }
 
-.newsletter-button:hover,
-.newsletter-button:focus { /* Added focus */
+.newsletter-button:hover {
     background-color: #42f5c8;
-    outline: 2px solid var(--primary-color);
-    outline-offset: -2px; /* Inside */
+}
+.newsletter-button:focus-visible {
+    background-color: #42f5c8;
+    outline: 2px solid var(--secondary-color);
+    outline-offset: -1px; /* Adjust for button */
 }
 
 .footer-bottom {
@@ -1593,9 +1664,10 @@ textarea.form-control {
 
 .copyright {
     color: var(--text-color);
-    font-size: 0.9rem; /* 14.4px */
+    font-size: 0.9rem;
     margin-bottom: 1rem;
 }
+.copyright script { display: none; } /* Hide script tag in output */
 
 .footer-bottom-links {
     display: flex;
@@ -1606,22 +1678,26 @@ textarea.form-control {
 
 .footer-bottom-link {
     color: var(--text-color);
-    font-size: 0.9rem; /* 14.4px */
+    font-size: 0.9rem;
     transition: var(--transition);
 }
 
-.footer-bottom-link:hover,
-.footer-bottom-link:focus { /* Added focus */
+.footer-bottom-link:hover {
     color: var(--primary-color);
     text-decoration: underline;
-    outline: none;
+}
+.footer-bottom-link:focus-visible {
+    color: var(--primary-color);
+    text-decoration: underline;
+    outline: 1px dashed var(--primary-color);
+    outline-offset: 2px;
 }
 
 /* Back to Top Button */
 .back-to-top {
     position: fixed;
     bottom: 20px;
-    left: 20px; /* For RTL, this should be right if adhering strictly, but left is common for BTT */
+    left: 20px; /* Consistent LTR/RTL for this element often fine */
     width: 40px;
     height: 40px;
     background-color: var(--primary-color);
@@ -1630,7 +1706,7 @@ textarea.form-control {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.2rem; /* 19.2px */
+    font-size: 1.2rem;
     cursor: pointer;
     z-index: 99;
     opacity: 0;
@@ -1638,7 +1714,7 @@ textarea.form-control {
     transition: opacity 0.3s ease, visibility 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     will-change: var(--will-change-opacity), transform;
-    border: 2px solid transparent; /* For focus state */
+    border: 2px solid transparent;
 }
 
 .back-to-top.visible {
@@ -1646,21 +1722,23 @@ textarea.form-control {
     visibility: visible;
 }
 
-.back-to-top:hover,
-.back-to-top:focus { /* Added focus */
+.back-to-top:hover {
     background-color: #42f5c8;
     transform: scale(1.1);
-    outline: none;
 }
 .back-to-top:focus-visible {
-    border-color: var(--secondary-color);
+    background-color: #42f5c8;
+    transform: scale(1.1);
+    border-color: var(--secondary-color); /* Contrasting border for focus */
+    outline: none; /* Override global */
 }
 
 
 /* Animation Classes for Intersection Observer */
+/* These classes are added by script.js */
 .fade-in {
     opacity: 0;
-    transform: translateY(30px); /* Start slightly lower */
+    transform: translateY(30px);
     transition: opacity 0.6s cubic-bezier(0.645, 0.045, 0.355, 1),
                 transform 0.6s cubic-bezier(0.645, 0.045, 0.355, 1);
     will-change: opacity, transform;
@@ -1673,15 +1751,15 @@ textarea.form-control {
 
 /* Visually hidden class for accessibility */
 .sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
+    position: absolute !important; /* Ensure !important if other styles might override */
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
 }
 
 
@@ -1691,113 +1769,108 @@ textarea.form-control {
     .section-container,
     .navbar-container,
     .footer-container {
-        width: 95%;
+        width: 95%; /* Slightly more room on large-ish screens */
     }
 
     .hero h1 {
-        font-size: 2.5rem; /* 40px */
+        font-size: 2.5rem;
     }
 }
 
 @media (max-width: 992px) {
-    body { /* Adjust base font size for rem calculations */
-        font-size: 15px;
+    body {
+        font-size: 15px; /* Adjust base for rem calculations */
     }
 
     .about-content,
     .consultation-container {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /* Stack columns */
     }
 
     .vision-mission {
-        grid-template-columns: 1fr; /* Stack on smaller screens */
+        grid-template-columns: 1fr;
     }
 
     .about-features {
-        margin-top: 2rem;
+        margin-top: 2rem; /* Adjust spacing when stacked */
     }
 
-    .team-images {
-        flex-wrap: wrap; /* Ensure wrapping if space is tight */
+    .case-stats { /* In .case-card */
+        justify-content: space-around; /* Better distribution when items might wrap */
     }
-    .case-stats {
-        justify-content: space-around;
-    }
-    .demo-intro-card .section-title {
+    .demo-intro-card .section-title { /* For AI Demos */
         font-size: 2rem;
     }
 }
 
 @media (max-width: 768px) {
     body {
-        font-size: 14px;
+        font-size: 14px; /* Further adjust base font size */
     }
 
     .navbar-container {
-        padding: 0 1rem; /* Reduce padding */
+        padding: 0 1rem;
     }
 
     .hamburger {
-        display: block; /* Show hamburger */
+        display: block;
     }
 
     .nav-links {
         position: fixed;
         top: 0;
-        right: -100%; /* Start off-screen for RTL, use left for LTR */
-        width: min(80%, 300px); /* Max width for menu */
+        right: -100%; /* Off-screen for RTL */
+        width: min(80vw, 300px); /* Responsive width, max 300px */
         height: 100vh;
         background-color: var(--accent-color);
         flex-direction: column;
-        align-items: flex-start; /* Align links to start for RTL */
-        padding: 5rem 2rem 2rem; /* More top padding, less bottom */
-        z-index: 1000;
-        transform: translateX(0); /* Reset transform, control with right/left */
-        transition: right 0.3s ease-in-out; /* Transition right property for RTL */
-        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1); /* Shadow on the left for RTL */
-        overflow-y: auto; /* Allow scrolling if menu is long */
+        align-items: flex-start;
+        padding: 6rem 2rem 2rem; /* More top padding for navbar height */
+        z-index: 1000; /* Ensure it's above overlay but controlled by navbar */
+        transform: translateX(0);
+        transition: right 0.35s cubic-bezier(0.23, 1, 0.32, 1); /* Smoother cubic-bezier */
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2); /* Stronger shadow */
+        overflow-y: auto;
     }
 
     .nav-links.active {
-        right: 0; /* Slide in from right for RTL */
+        right: 0;
     }
 
     .nav-links li {
-        margin: 0 0 1.5rem 0; /* Reset RTL margin, use bottom margin */
+        margin: 0 0 1.5rem 0;
         width: 100%;
         opacity: 0;
-        transform: translateX(20px); /* Start slightly to the left for RTL entrance */
-        transition: opacity 0.3s ease, transform 0.3s ease;
+        transform: translateX(30px); /* Start further for more noticeable animation */
+        transition: opacity 0.3s ease-out, transform 0.3s ease-out;
     }
 
     .nav-links.active li {
         opacity: 1;
         transform: translateX(0);
     }
+    /* Staggered animation for nav links - apply with JS or keep simplified CSS */
+    .nav-links.active li:nth-child(1) { transition-delay: 0.10s; }
+    .nav-links.active li:nth-child(2) { transition-delay: 0.15s; }
+    .nav-links.active li:nth-child(3) { transition-delay: 0.20s; }
+    .nav-links.active li:nth-child(4) { transition-delay: 0.25s; }
+    .nav-links.active li:nth-child(5) { transition-delay: 0.30s; }
+    /* Add more if there are more links */
 
-    .nav-links li:nth-child(1) { transition-delay: 0.10s; }
-    .nav-links li:nth-child(2) { transition-delay: 0.15s; }
-    .nav-links li:nth-child(3) { transition-delay: 0.20s; }
-    .nav-links li:nth-child(4) { transition-delay: 0.25s; }
-    .nav-links li:nth-child(5) { transition-delay: 0.30s; }
-    .nav-links li:nth-child(6) { transition-delay: 0.35s; }
-    .nav-links li:nth-child(7) { transition-delay: 0.40s; }
-    .nav-links li:nth-child(8) { transition-delay: 0.45s; }
-    /* Removed data-index based delay as it's JS dependent and direct CSS is simpler if item count is fixed */
 
     .nav-links a {
-        font-size: 1.1rem; /* 15.4px based on 14px body */
+        font-size: 1.1rem;
         width: 100%;
-        padding: 0.5rem 0;
+        padding: 0.75rem 0; /* Slightly more padding */
         display: block;
     }
 
     .hero h1 {
-        font-size: 2.2rem; /* 30.8px */
+        font-size: 2.2rem;
     }
 
     .section-title {
-        font-size: 1.8rem; /* 25.2px */
+        font-size: 1.8rem;
     }
 
     .services-grid,
@@ -1805,108 +1878,109 @@ textarea.form-control {
     .case-studies-grid,
     .tech-grid,
     .tech-details-grid,
-    .demo-features-grid {
-        grid-template-columns: 1fr; /* Single column for cards */
+    .demo-features-grid, /* For AI Demos */
+    .about-features { /* Stack about features items too */
+        grid-template-columns: 1fr;
     }
 
-    .case-stats {
-        flex-direction: column; /* Stack stats vertically */
-        align-items: center;
-    }
-
-    .case-stat {
-        width: auto; /* Allow full width */
-        min-width: 150px; /* Ensure readability */
-        margin-bottom: 1rem;
-    }
-
-    .metrics { /* For detailed case studies */
+    .case-stats { /* In .case-card */
         flex-direction: column;
         align-items: center;
     }
 
-    .metric {
+    .case-stat { /* In .case-card */
+        width: auto;
+        min-width: 180px; /* Ensure enough space for text */
+        margin-bottom: 1rem;
+    }
+
+    .metrics { /* In detailed case studies */
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .metric { /* In detailed case studies */
         margin-bottom: 1.5rem;
     }
     .consultation-form {
-        padding: 1.5rem; /* Reduce padding on mobile */
-    }
-    .demo-intro-card {
         padding: 1.5rem;
     }
-    .demo-intro-card .section-title {
+    .demo-intro-card { /* For AI Demos */
+        padding: 1.5rem;
+    }
+    .demo-intro-card .section-title { /* For AI Demos */
         font-size: 1.8rem;
     }
 }
 
 @media (max-width: 576px) {
     body {
-        font-size: 13px;
+        font-size: 13px; /* Smallest base font size */
+    }
+    .section-container {
+        padding: 3rem 1rem;
     }
 
     .hero h1 {
-        font-size: 1.8rem; /* 23.4px */
+        font-size: 1.8rem;
     }
     .hero-description {
-        font-size: 1rem; /* 13px */
+        font-size: 1rem;
     }
 
     .section-title {
-        font-size: 1.6rem; /* 20.8px */
+        font-size: 1.6rem;
     }
     .section-description {
-        font-size: 1rem; /* 13px */
-    }
-    .section-container {
-        padding: 3rem 1rem; /* Reduce section padding */
+        font-size: 1rem;
     }
 
-    .about-features {
-        grid-template-columns: 1fr; /* Single column */
-    }
 
-    .team-member {
-        width: 100%;
+    .team-member { /* In About section */
+        width: 100%; /* Allow full width if needed */
         margin-bottom: 2rem;
     }
 
     .footer-container {
-        grid-template-columns: 1fr; /* Single column footer */
-        text-align: center; /* Center footer content */
+        grid-template-columns: 1fr;
+        text-align: center;
     }
     .footer-logo-container,
     .footer-links-container {
-        align-items: center; /* Center content within these containers */
+        align-items: center; /* For flex items if any */
+        /* text-align: center; will handle block items */
     }
     .social-links {
         justify-content: center;
     }
     .footer-links, .contact-info {
-        padding-right: 0; /* Remove padding for centered text */
+        padding-right: 0; /* Remove padding for centered items */
+        /* text-align: center; already on parent */
     }
     .contact-item {
-        justify-content: center;
+        justify-content: center; /* Center flex items like icon + text */
+        text-align: right; /* Keep text within item RTL */
     }
     .contact-icon {
-        margin-right: 0;
-        margin-left: 0.5rem; /* Adjust for centered text */
+        margin-right: 0; /* Remove if centered */
+        margin-left: 0.5rem; /* Space if text is next to it */
     }
 
-    .newsletter-form-large, /* For main newsletter */
-    .newsletter-form { /* For footer newsletter */
+    .newsletter-form-large,
+    .newsletter-form { /* Footer and main newsletter forms */
         flex-direction: column;
     }
 
     .newsletter-input-large,
     .newsletter-input {
-        border-radius: var(--border-radius); /* Full radius */
+        border-radius: var(--border-radius);
         margin-bottom: 0.5rem;
-        text-align: right; /* Ensure placeholder is RTL */
+        text-align: right;
     }
 
     .newsletter-button-large,
     .newsletter-button {
-        border-radius: var(--border-radius); /* Full radius */
+        border-radius: var(--border-radius);
         width: 100%;
     }
 
@@ -1921,10 +1995,10 @@ textarea.form-control {
         bottom: 15px;
         left: 15px;
     }
-    .demo-intro-card .section-title {
+    .demo-intro-card .section-title { /* For AI Demos */
         font-size: 1.6rem;
     }
-    .cta-button.demo-cta {
+    .cta-button.demo-cta { /* For AI Demos */
         padding: 0.8rem 1.5rem;
         font-size: 1rem;
     }
@@ -1939,70 +2013,83 @@ textarea.form-control {
     .hamburger,
     .overlay,
     .newsletter,
-    .cta-button,
-    .ai-demos-section .cta-button { /* Hide interactive elements */
+    .cta-button, /* Hide all cta buttons */
+    .support-fab, /* Hide support FAB */
+    .support-popup-overlay /* Hide support popup */ {
         display: none !important;
     }
 
     body {
-        background-color: var(--white) !important;
+        background-color: #ffffff !important;
         color: #000000 !important;
-        font-size: 12pt; /* Standard print size */
-        line-height: 1.4;
+        font-size: 11pt; /* Slightly smaller for print density */
+        line-height: 1.3;
+        font-family: 'Times New Roman', Times, serif; /* Serif for print */
     }
-    :root { /* Override colors for print */
+    :root {
         --primary-color: #000000;
-        --secondary-color: #FFFFFF;
+        --secondary-color: #ffffff;
         --text-color: #000000;
-        --background-color: #FFFFFF;
-        --accent-color: #F0F0F0;
-        --accent-color-lighter: #F5F5F5;
+        --background-color: #ffffff;
+        --accent-color: #eeeeee;
+        --accent-color-lighter: #f5f5f5;
         --heading-color: #000000;
-        --card-bg: #FFFFFF;
+        --card-bg: #ffffff;
     }
 
     .container,
     .section-container {
-        padding: 1rem 0;
+        padding: 1cm 0; /* Use cm for print */
         width: 100%;
         max-width: none;
     }
 
     h1, h2, h3, h4, h5, h6 {
         color: #000000 !important;
+        font-family: 'Arial', Helvetica, sans-serif; /* Sans-serif for headings */
     }
     a {
         color: #000000 !important;
         text-decoration: underline !important;
     }
-    a[href^="http"]::after {
-        content: " (" attr(href) ")"; /* Show full URLs for external links */
-        font-size: 0.8em;
+    a[href^="http://"]::after,
+    a[href^="https://"]::after { /* Show full URLs */
+        content: " (" attr(href) ")";
+        font-size: 0.9em;
         color: #333333;
+        word-break: break-all; /* Prevent long URLs from overflowing */
     }
-    a[href^="#"] { /* Hide internal links unless they are significant */
+    a[href^="#"] {
         text-decoration: none !important;
+    }
+    a[href^="#"]::after {
+        content: ""; /* Don't show hash links */
     }
 
     .service-card,
     .tourism-feature-card,
     .case-card,
     .tech-card,
+    .tech-detail-card,
     .feature-item,
     .consultation-form,
     .faq-item,
-    .demo-intro-card,
-    .demo-feature {
+    .demo-intro-card, /* For AI Demos */
+    .demo-feature { /* For AI Demos */
         break-inside: avoid;
         page-break-inside: avoid;
-        background-color: var(--white) !important;
+        background-color: #ffffff !important;
         box-shadow: none !important;
-        border: 1px solid #dddddd !important;
-        margin-bottom: 1rem;
+        border: 1px solid #cccccc !important;
+        margin-bottom: 0.5cm;
     }
-    .case-image, .feature-image, .member-image, .demo-icon {
-        display: none; /* Hide decorative images/icons unless critical */
+    .case-image, .feature-image, .member-image, .demo-icon, .service-icon, .feature-icon {
+        display: none; /* Hide most decorative images/icons */
     }
+    /* Keep logo visible if it's important brand identity */
+    .logo img { display: block !important; height: 30px !important; }
+
+
     .services-grid,
     .tourism-features-grid,
     .case-studies-grid,
@@ -2010,7 +2097,25 @@ textarea.form-control {
     .consultation-container,
     .tech-grid,
     .tech-details-grid,
-    .demo-features-grid {
-        grid-template-columns: 1fr !important; /* Force single column for print */
+    .demo-features-grid { /* For AI Demos */
+        grid-template-columns: 1fr !important;
+        display: block !important; /* Change from grid to block for simpler print flow */
     }
+    /* Ensure list markers are visible */
+    ul, ol {
+        padding-right: 20px; /* Standard RTL padding */
+    }
+    li {
+        page-break-inside: avoid;
+    }
+    .feature-list li::before, .service-card ul li::before, .tech-card ul li::before, .tech-detail-card ul li::before {
+        /* Ensure pseudo elements are visible */
+        color: #000000 !important;
+    }
+    .feature-list li i.fas.fa-check, .service-card ul li i.fas.fa-check {
+        display: inline-block; /* Make sure font icons render if absolutely needed */
+        color: #000000 !important;
+        margin-left: 5px;
+    }
+
 }
