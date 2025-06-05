@@ -361,7 +361,7 @@
                 <div class="loading" id="loading">
                     <div class="loading-spinner"></div>
                     <h3 id="loadingMessage">جارٍ تحليل البيانات...</h3>
-                    <p>يرجى الانتظار بينما يقوم Gemini AI بتحليل ملفك</p>
+                    <p>يرجى الانتظار بينما يقوم Yazeed AI analysiss بتحليل ملفك</p>
                 </div>
 
                 <div class="results" id="results">
@@ -584,7 +584,7 @@
                 const fileContent = await readFile(currentFile);
                 console.log('تم قراءة الملف بنجاح، الحجم:', fileContent.length);
                 
-                loadingMessageElement.textContent = 'جارٍ إرسال البيانات إلى Gemini...';
+                loadingMessageElement.textContent = 'جارٍ إرسال البيانات إلى Yazeed AI analysiss...';
                 console.log('إرسال البيانات إلى Gemini...');
                 const analysis = await sendToGemini(fileContent, currentFile.type, currentFile.name);
                 console.log('تم استلام النتائج من Gemini');
@@ -786,7 +786,7 @@
                     {title: "اسم الملف", value: fileName.substring(0, 20) + (fileName.length > 20 ? "..." : ""), change: "معالج", icon: "file"},
                 ],
                 insights: [
-                    {text: "تم تحليل الملف بنجاح باستخدام Gemini AI. يرجى مراجعة النص الخام أدناه.", icon: "brain", type: "positive"},
+                    {text: "تم تحليل الملف بنجاح باستخدام Yazeed AI analysiss. يرجى مراجعة النص الخام أدناه.", icon: "brain", type: "positive"},
                     {text: analysisText.substring(0, 150) + (analysisText.length > 150 ? "..." : ""), icon: "lightbulb", type: "neutral"}
                 ],
                 recommendations: [
@@ -862,7 +862,7 @@
             }
             container.innerHTML = `
                 <div class="insights-section" style="border-right-color: #fd7e14;">
-                    <h3><i class="fas fa-file-alt"></i> التحليل النصي من Gemini AI</h3>
+                    <h3><i class="fas fa-file-alt"></i> التحليل النصي من Yazeed AI analysiss</h3>
                     <div class="insight-item" style="white-space: pre-wrap; line-height: 1.6; max-height: 400px; overflow-y: auto; border-right-color: #fd7e14;">
                         ${rawText}
                     </div>
@@ -1010,7 +1010,7 @@
                     error.response.text().then(text => {
                         const geminiErrorDiv = document.createElement('div');
                         geminiErrorDiv.className = 'debug-info';
-                        geminiErrorDiv.innerHTML = `<strong>Gemini API Response Error:</strong><br><pre>${text}</pre>`;
+                        geminiErrorDiv.innerHTML = `<strong>Yazeed AI analysiss API Response Error:</strong><br><pre>${text}</pre>`;
                         document.querySelector('.error-details').insertAdjacentElement('afterend', geminiErrorDiv);
                     });
                 }
