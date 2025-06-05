@@ -333,9 +333,9 @@
                     <p>يدعم: PDF, CSV, Excel, JSON, TXT</p>
                     <!-- تعديل accept للسماح بملفات PDF -->
                     <input type="file" id="fileInput" class="file-input" accept=".csv,.xlsx,.xls,.json,.pdf,.txt">
-                    <button class="upload-btn" onclick="document.getElementById('fileInput').click()">
-                        <i class="fas fa-file-upload"></i> اختر ملف
-                    </button>
+<button class="upload-btn">
+    <i class="fas fa-file-upload"></i> اختر ملف
+</button>
                 </div>
 
                 <div class="file-info" id="fileInfo" style="display: none;">
@@ -1051,10 +1051,12 @@
             .catch(error => console.error('❌ خطأ في الاتصال بـ API:', error));
         });
 
-        // لجعل document.getElementById('fileInput').click() تعمل من داخل upload-btn
-        document.querySelector('.upload-btn[onclick*="fileInput"]').addEventListener('click', () => {
-            document.getElementById('fileInput').click();
-        });
+        const fileSelectBtn = document.querySelector('.upload-area .upload-btn');
+fileSelectBtn.addEventListener('click', () => {
+    const fileInput = document.getElementById('fileInput');
+    fileInput.value = "";
+    fileInput.click();
+});
 
 
     </script>
