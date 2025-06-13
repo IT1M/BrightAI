@@ -865,13 +865,6 @@ ul, ol {
     margin-top: 3rem;
     flex-wrap: wrap;
 }
-.cta-container .cta-button { /* Ensure buttons in this container are styled as expected */
-    /* Specific styles if needed, otherwise inherits from .cta-button */
-}
-.cta-button.cta-contact,
-.cta-button.cta-docs {
-    /* Styles for specific CTA buttons if they differ, e.g., different icons or emphasis */
-}
 
 
 /* Case Studies Section */
@@ -1385,9 +1378,6 @@ textarea.form-control {
 #case-studies-detailed {
     background-color: var(--accent-color); /* Or another distinct color */
     padding: 5rem 1rem;
-}
-#case-studies-detailed .case-studies-grid { /* Ensure grid is applied if this class is used here too */
-    /* Styles already defined */
 }
 
 .case-study-card { /* For detailed case studies in #case-studies-detailed */
