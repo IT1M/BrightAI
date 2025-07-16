@@ -1,7 +1,19 @@
-# BrightAI .htaccess - Last updated: 2025-02-28
+# BrightAI .htaccess - Saudi SEO Optimized - Last updated: 2025-01-16
+# مُحسّن للسوق السعودي ومحركات البحث العربية
 
 # Enable rewrite engine
 RewriteEngine On
+
+# Saudi SEO Headers
+<IfModule mod_headers.c>
+    Header always set X-Saudi-SEO "Optimized"
+    Header always set X-Content-Region "Saudi Arabia"
+    Header always set X-Target-Cities "الرياض, جدة, الدمام, الخبر, مكة, المدينة المنورة"
+    Header always set X-Business-Type "AI Technology Company"
+    Header always set X-Service-Language "Arabic, English"
+    Header always set X-Content-Language "ar-SA"
+    Header always set X-Geographic-Region "SA"
+</IfModule>
 
 # Force HTTPS
 RewriteCond %{HTTPS} off
@@ -96,8 +108,8 @@ AddDefaultCharset UTF-8
   # Referrer policy
   Header set Referrer-Policy "strict-origin-when-cross-origin"
   
-  # Content Security Policy
-  Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.google-analytics.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://www.google-analytics.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://www.google-analytics.com;"
+  # Content Security Policy - Enhanced for Saudi content
+  Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.google-analytics.com https://www.googletagmanager.com https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com; img-src 'self' data: https://www.google-analytics.com https://www2.0zz0.com; font-src 'self' https://fonts.gstatic.com https://fonts.googleapis.com; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com;"
   
   # Permissions Policy
   Header set Permissions-Policy "camera=(), microphone=(), geolocation=(self), interest-cohort=()"

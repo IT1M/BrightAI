@@ -1,7 +1,27 @@
-// BrightAI - Enhanced JavaScript for Performance & User Experience
-// Version: 2.1.0
-// Last updated: (Current Date)
+// BrightAI - Enhanced JavaScript for Performance & User Experience & Saudi SEO
+// Version: 2.2.0 - Optimized for Saudi Search Engines
+// Last updated: January 2025
 'use strict';
+
+// Saudi SEO Enhancements
+const saudiSEOConfig = {
+    keywords: [
+        'شركة مُشرقة AI السعودية',
+        'الذكاء الاصطناعي الرياض',
+        'شركة ذكاء اصطناعي سعودية',
+        'AI السعودية',
+        'رؤية 2030 الذكاء الاصطناعي',
+        'التحول الرقمي السعودي'
+    ],
+    cities: ['الرياض', 'جدة', 'الدمام', 'الخبر', 'مكة', 'المدينة المنورة'],
+    services: [
+        'حلول الذكاء الاصطناعي',
+        'تطوير تطبيقات AI',
+        'شات بوت عربي',
+        'أتمتة العمليات',
+        'تحليل البيانات'
+    ]
+};
 
 /**
  * Debounces a function, delaying its execution until after a specified wait time
@@ -659,6 +679,118 @@ function initSmoothScroll() {
 }
 
 /**
+ * Saudi SEO Enhancement Functions
+ */
+function initSaudiSEO() {
+    // Add structured data for Saudi search engines
+    const saudiStructuredData = {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "شركة مُشرقة AI",
+        "alternateName": "Bright AI Saudi Arabia",
+        "description": "مُشرقة AI الشركة السعودية الرائدة في الذكاء الاصطناعي بالرياض",
+        "url": "https://www.brightaii.com/",
+        "telephone": "+966-53-822-9013",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "الرياض",
+            "addressRegion": "منطقة الرياض",
+            "addressCountry": "SA"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 24.7136,
+            "longitude": 46.6753
+        },
+        "areaServed": ["الرياض", "جدة", "الدمام", "الخبر", "مكة", "المدينة المنورة"],
+        "serviceArea": {
+            "@type": "Country",
+            "name": "المملكة العربية السعودية"
+        }
+    };
+
+    // Inject structured data
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.textContent = JSON.stringify(saudiStructuredData);
+    document.head.appendChild(script);
+
+    // Add Saudi-specific meta tags dynamically
+    const saudiMeta = [
+        { name: 'geo.region', content: 'SA' },
+        { name: 'geo.placename', content: 'الرياض, جدة, الدمام, المملكة العربية السعودية' },
+        { name: 'ICBM', content: '24.7136, 46.6753' },
+        { name: 'DC.title', content: 'شركة مُشرقة AI | الذكاء الاصطناعي السعودية' },
+        { name: 'DC.creator', content: 'مُشرقة AI' },
+        { name: 'DC.subject', content: 'الذكاء الاصطناعي, التعلم الآلي, أتمتة العمليات, السعودية' },
+        { name: 'DC.description', content: 'مُشرقة AI الشركة السعودية الرائدة في الذكاء الاصطناعي' }
+    ];
+
+    saudiMeta.forEach(meta => {
+        if (!document.querySelector(`meta[name="${meta.name}"]`)) {
+            const metaTag = document.createElement('meta');
+            metaTag.name = meta.name;
+            metaTag.content = meta.content;
+            document.head.appendChild(metaTag);
+        }
+    });
+
+    // Track Saudi-specific user interactions
+    if (typeof gtag === 'function') {
+        gtag('config', 'G-SZKTP4496K', {
+            'custom_map': {
+                'saudi_city': 'saudi_user_city',
+                'saudi_service': 'saudi_service_interest'
+            }
+        });
+    }
+}
+
+/**
+ * Track Saudi user behavior for SEO insights
+ */
+function trackSaudiUserBehavior() {
+    // Track scroll depth for Saudi content
+    let maxScroll = 0;
+    const trackScrollDepth = throttle(() => {
+        const scrollPercent = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+        if (scrollPercent > maxScroll && scrollPercent % 25 === 0) {
+            maxScroll = scrollPercent;
+            if (typeof gtag === 'function') {
+                gtag('event', 'scroll_depth', {
+                    'event_category': 'Saudi User Engagement',
+                    'event_label': `${scrollPercent}% Scroll Depth`,
+                    'value': scrollPercent
+                });
+            }
+        }
+    }, 1000);
+
+    window.addEventListener('scroll', trackScrollDepth, { passive: true });
+
+    // Track time spent on Saudi-specific sections
+    const saudiSections = document.querySelectorAll('[id*="saudi"], [class*="saudi"], .services, .ai-demos-section, .tourism-heritage');
+    if ('IntersectionObserver' in window) {
+        const sectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const sectionName = entry.target.id || entry.target.className.split(' ')[0];
+                    if (typeof gtag === 'function') {
+                        gtag('event', 'section_view', {
+                            'event_category': 'Saudi Content Engagement',
+                            'event_label': sectionName,
+                            'value': 1
+                        });
+                    }
+                }
+            });
+        }, { threshold: 0.5 });
+
+        saudiSections.forEach(section => sectionObserver.observe(section));
+    }
+}
+
+/**
  * Main DOMContentLoaded event listener to initialize all components.
  */
 document.addEventListener('DOMContentLoaded', () => {
@@ -671,13 +803,15 @@ document.addEventListener('DOMContentLoaded', () => {
         initScrollAnimations();
         initBackToTop();
         initSmoothScroll();
+        initSaudiSEO(); // Initialize Saudi SEO enhancements
+        trackSaudiUserBehavior(); // Track Saudi user behavior
 
         // Performance monitoring after DOM is ready and scripts potentially run
         if (window.performance && typeof window.performance.now === 'function') {
             console.log(`[Perf] DOMContentLoaded to end of main script: ${Math.round(performance.now())}ms`);
         }
 
-        console.log('[BrightAI] All components initialized successfully.');
+        console.log('[BrightAI] All components initialized successfully with Saudi SEO enhancements.');
 
     } catch (error) {
         console.error("Error during main script initialization:", error);

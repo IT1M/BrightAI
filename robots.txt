@@ -150,8 +150,13 @@ Disallow: /
 # تحديد النطاق المفضل
 Host: brightaii.com
 
-# مواقع ملفات الخريطة
-Sitemap: https://brightaii.com/sitemap.xml
+# مواقع ملفات الخريطة - محدثة للسوق السعودي
+Sitemap: https://www.brightaii.com/sitemap.xml
+Sitemap: https://www.brightaii.com/ar-sitemap.xml
+
+# تحسينات خاصة للسوق السعودي
+# Keywords: شركة مُشرقة AI السعودية, الذكاء الاصطناعي الرياض, AI السعودية
+# Target Cities: الرياض, جدة, الدمام, الخبر, مكة, المدينة المنورة
 
 
 # ملاحظات إضافية للمطورين

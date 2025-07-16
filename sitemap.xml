@@ -1,153 +1,120 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns:html="http://www.w3.org/1999/xhtml" 
-        xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-  <url>
-    <loc>https://brightaii.com/</loc>
-    <lastmod>2025-05-28</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
-  </url>
-  
-  <url>
-    <loc>https://brightaii.com/h/index</loc>
-    <lastmod>2025-05-28</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <url>
-    <loc>https://brightaii.com/ai-agent</loc>
-    <lastmod>2025-05-28</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <url>
-    <loc>https://brightaii.com/tools</loc>
-    <lastmod>2025-05-28</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <url>
-    <loc>https://brightaii.com/data-analysis</loc>
-    <lastmod>2025-05-28</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <url>
-    <loc>https://brightaii.com/smart-automation</loc>
-    <lastmod>2025-05-28</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <url>
-    <loc>https://brightaii.com/consultation</loc>
-    <lastmod>2025-05-28</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <url>
-    <loc>https://brightaii.com/blog</loc>
-    <lastmod>2025-05-28</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Blog Articles (بدون .doc) -->
-  <url>
-    <loc>https://brightaii.com/blogger/xsxd</loc>
-    <lastmod>2025-05-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://brightaii.com/blogger/vvhh</loc>
-    <lastmod>2025-05-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://brightaii.com/blogger/smart-automation-benefits</loc>
-    <lastmod>2025-05-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://brightaii.com/blogger/rcc</loc>
-    <lastmod>2025-05-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://brightaii.com/blogger/rc542</loc>
-    <lastmod>2025-05-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://brightaii.com/blogger/future-of-intelligent-data-analysis-finance-sector</loc>
-    <lastmod>2025-05-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://brightaii.com/blogger/auto</loc>
-    <lastmod>2025-05-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://brightaii.com/blogger/anal</loc>
-    <lastmod>2025-05-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://brightaii.com/blogger/agint-bblog</loc>
-    <lastmod>2025-05-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://brightaii.com/blogger/6v5m</loc>
-    <lastmod>2025-05-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://brightaii.com/blogger/3</loc>
-    <lastmod>2025-05-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://brightaii.com/blogger/مقال-تحليل</loc>
-    <lastmod>2025-05-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://brightaii.com/blogger/الأتمتة-المالية-وأتمتة-الموارد-البشرية</loc>
-    <lastmod>2025-05-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://brightaii.com/blogger/استشارات-الذكاء-الاصطناعي</loc>
-    <lastmod>2025-05-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://brightaii.com/blogger/أتمتة-الذكاء-الاصطناعي</loc>
-    <lastmod>2025-05-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+    
+    <!-- الصفحة الرئيسية -->
+    <url>
+        <loc>https://www.brightaii.com/</loc>
+        <lastmod>2025-01-16</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+        <xhtml:link rel="alternate" hreflang="ar-SA" href="https://www.brightaii.com/" />
+        <xhtml:link rel="alternate" hreflang="ar" href="https://www.brightaii.com/" />
+        <image:image>
+            <image:loc>https://www2.0zz0.com/2025/06/23/22/317775783.png</image:loc>
+            <image:title>شعار شركة مُشرقة AI السعودية الرائدة في الذكاء الاصطناعي</image:title>
+            <image:caption>مُشرقة AI - أول شركة سعودية متخصصة في الذكاء الاصطناعي والروبوتات</image:caption>
+        </image:image>
+    </url>
+    
+    <!-- صفحة الخدمات -->
+    <url>
+        <loc>https://www.brightaii.com/our-products.html</loc>
+        <lastmod>2025-01-16</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+        <xhtml:link rel="alternate" hreflang="ar-SA" href="https://www.brightaii.com/our-products.html" />
+    </url>
+    
+    <!-- صفحة النماذج التجريبية -->
+    <url>
+        <loc>https://www.brightaii.com/h/index.html</loc>
+        <lastmod>2025-01-16</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+        <xhtml:link rel="alternate" hreflang="ar-SA" href="https://www.brightaii.com/h/index.html" />
+    </url>
+    
+    <!-- صفحة روبوتات الذكاء الاصطناعي -->
+    <url>
+        <loc>https://www.brightaii.com/ai-bots.html</loc>
+        <lastmod>2025-01-16</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+        <xhtml:link rel="alternate" hreflang="ar-SA" href="https://www.brightaii.com/ai-bots.html" />
+    </url>
+    
+    <!-- صفحة حلول الأتمتة -->
+    <url>
+        <loc>https://www.brightaii.com/smart-automation.html</loc>
+        <lastmod>2025-01-16</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+        <xhtml:link rel="alternate" hreflang="ar-SA" href="https://www.brightaii.com/smart-automation.html" />
+    </url>
+    
+    <!-- صفحة تحليل البيانات -->
+    <url>
+        <loc>https://www.brightaii.com/data-analysis.html</loc>
+        <lastmod>2025-01-16</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+        <xhtml:link rel="alternate" hreflang="ar-SA" href="https://www.brightaii.com/data-analysis.html" />
+    </url>
+    
+    <!-- صفحة الاستشارات -->
+    <url>
+        <loc>https://www.brightaii.com/consultation.html</loc>
+        <lastmod>2025-01-16</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+        <xhtml:link rel="alternate" hreflang="ar-SA" href="https://www.brightaii.com/consultation.html" />
+    </url>
+    
+    <!-- صفحة المدونة -->
+    <url>
+        <loc>https://www.brightaii.com/blog/</loc>
+        <lastmod>2025-01-16</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="ar-SA" href="https://www.brightaii.com/blog/" />
+    </url>
+    
+    <!-- صفحة عن الشركة -->
+    <url>
+        <loc>https://www.brightaii.com/about-us.html</loc>
+        <lastmod>2025-01-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="ar-SA" href="https://www.brightaii.com/about-us.html" />
+    </url>
+    
+    <!-- صفحة التواصل -->
+    <url>
+        <loc>https://www.brightaii.com/contact.html</loc>
+        <lastmod>2025-01-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+        <xhtml:link rel="alternate" hreflang="ar-SA" href="https://www.brightaii.com/contact.html" />
+    </url>
+    
+    <!-- صفحة الأدوات -->
+    <url>
+        <loc>https://www.brightaii.com/tools.html</loc>
+        <lastmod>2025-01-16</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="ar-SA" href="https://www.brightaii.com/tools.html" />
+    </url>
+    
+    <!-- صفحة وكلاء الذكاء الاصطناعي -->
+    <url>
+        <loc>https://www.brightaii.com/ai-agent.html</loc>
+        <lastmod>2025-01-16</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+        <xhtml:link rel="alternate" hreflang="ar-SA" href="https://www.brightaii.com/ai-agent.html" />
+    </url>
+    
 </urlset>
