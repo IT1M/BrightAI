@@ -715,7 +715,105 @@ function initSaudiSEO() {
     script.textContent = JSON.stringify(saudiStructuredData);
     document.head.appendChild(script);
 
-    // Add Saudi-specific meta tags dynamically
+    // === BEGIN: Additional SEO Injections ===
+    // Additional Meta Tags
+    const additionalMetaTags = [
+        { name: 'keywords', content: 'شركة مُشرقة AI الرياض, الذكاء الاصطناعي السعودية, شات بوت عربي سعودي, أتمتة العمليات RPA الرياض, تحليل البيانات الضخمة جدة, خدمات AI الدمام, رؤية 2030 الذكاء الاصطناعي, تعلم الآلي السعودية, روبوتات ذكية سعودية, استشارات الذكاء الاصطناعي المملكة' },
+        { name: 'news_keywords', content: 'الذكاء الاصطناعي, الرياض, جدة, الدمام, مُشرقة AI' },
+        { name: 'article:tag', content: 'شركة ذكاء اصطناعي سعودية, حلول AI الرياض, أتمتة سعودية, شات بوت سعودي' }
+    ];
+    
+    additionalMetaTags.forEach(meta => {
+        if (!document.querySelector(`meta[name="${meta.name}"]`)) {
+            const metaTag = document.createElement('meta');
+            metaTag.name = meta.name;
+            metaTag.content = meta.content;
+            document.head.appendChild(metaTag);
+        }
+    });
+
+    // Structured Data (ksaSchema)
+    const ksaSchema = {
+        "@context": "https://schema.org",
+        "@type": ["Corporation", "LocalBusiness"],
+        "name": "شركة مُشرقة AI",
+        "alternateName": "Bright AI KSA",
+        "description": "أول شركة سعودية متخصصة في الذكاء الاصطناعي والروبوتات - نخدم الرياض، جدة، الدمام وكل مناطق المملكة.",
+        "url": "https://www.brightaii.com",
+        "logo": "https://www.brightaii.com/mushrqah-ai-logo.png",
+        "image": "https://www.brightaii.com/og-image-ksa.jpg",
+        "telephone": "+966-53-822-9013",
+        "email": "info@brightaii.com",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "طريق الملك فهد",
+            "addressLocality": "الرياض",
+            "addressRegion": "منطقة الرياض",
+            "postalCode": "11564",
+            "addressCountry": "SA"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 24.7136,
+            "longitude": 46.6753
+        },
+        "areaServed": [
+            { "@type": "City", "name": "الرياض" },
+            { "@type": "City", "name": "جدة" },
+            { "@type": "City", "name": "الدمام" },
+            { "@type": "State", "name": "المملكة العربية السعودية" }
+        ],
+        "offers": [{
+            "@type": "Offer",
+            "name": "استشارة الذكاء الاصطناعي المجانية",
+            "price": "0",
+            "priceCurrency": "SAR",
+            "availability": "https://schema.org/InStock",
+            "url": "https://www.brightaii.com/consultation.html"
+        }],
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "خدمات الذكاء الاصطناعي في السعودية",
+            "itemListElement": [
+                {
+                    "@type": "Offer",
+                    "name": "أتمتة العمليات بالذكاء الاصطناعي",
+                    "description": "RPA حديث للشركات في الرياض وجدة والدمام"
+                },
+                {
+                    "@type": "Offer",
+                    "name": "شات بوت عربي ذكي",
+                    "description": "بوت محادثة يفهم اللهجات السعودية"
+                },
+                {
+                    "@type": "Offer",
+                    "name": "تحليل البيانات الضخمة",
+                    "description": "تعلم الآلي لتحليل البيانات في السوق السعودي"
+                }
+            ]
+        },
+        "sameAs": [
+            "https://wa.me/966538229013",
+            "https://www.tiktok.com/@bright1ai",
+            "https://www.instagram.com/iililil44",
+            "https://www.youtube.com/@TeechLab"
+        ]
+    };
+    
+    const ksaScript = document.createElement('script');
+    ksaScript.type = 'application/ld+json';
+    ksaScript.textContent = JSON.stringify(ksaSchema);
+    document.head.appendChild(ksaScript);
+
+    // Geo-Modified H1-H3 Tags
+    document.querySelectorAll('.service-card h3, .tourism-feature-card h3, .case-card h3').forEach(title => {
+        if (!title.textContent.includes('الرياض')) {
+            title.textContent += ' - الرياض جدة الدمام';
+        }
+    });
+    // === END: Additional SEO Injections ===
+
+    // Existing Saudi-specific meta tags
     const saudiMeta = [
         { name: 'geo.region', content: 'SA' },
         { name: 'geo.placename', content: 'الرياض, جدة, الدمام, المملكة العربية السعودية' },
