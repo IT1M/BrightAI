@@ -148,7 +148,7 @@ User-agent: Claude-Web
 Disallow: /
 
 # تحديد النطاق المفضل
-Host: brightaii.com
+Host: https://brightai.site
 
 # مواقع ملفات الخريطة - محدثة للسوق السعودي
 Sitemap: https://brightai.site/sitemap.xml
