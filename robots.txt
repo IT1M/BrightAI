@@ -1,5 +1,5 @@
 # BrightAI - ملف Robots.txt المحسّن لمحركات البحث
-# آخر تحديث: 2025-05-30
+# آخر تحديث: 2025-09-13
 # الموقع: https://brightai.site
 
 # القواعد العامة للزواحف
@@ -10,21 +10,22 @@ Crawl-delay: 1
 # محركات البحث الرئيسية - أولوية عالية
 User-agent: Googlebot
 Allow: /
-Allow: /ar/
-Allow: /en/
-Allow: /blog/
 Allow: /blogger/
+Allow: /botAI/
+Allow: /Customer/
+Allow: /Docfile/
+Allow: /h/
 Allow: /*.html$
-Allow: /*.php$
 Allow: /sitemap.xml
 Crawl-delay: 1
 
 User-agent: Bingbot
 Allow: /
-Allow: /ar/
-Allow: /en/
-Allow: /blog/
 Allow: /blogger/
+Allow: /botAI/
+Allow: /Customer/
+Allow: /Docfile/
+Allow: /h/
 Crawl-delay: 1
 
 User-agent: Slurp
@@ -153,13 +154,12 @@ Host: https://brightai.site
 # مواقع ملفات الخريطة - محدثة للسوق السعودي
 Sitemap: https://brightai.site/sitemap.xml
 
-
 # تحسينات خاصة للسوق السعودي
 # Keywords: شركة مُشرقة AI السعودية, الذكاء الاصطناعي الرياض, AI السعودية
 # Target Cities: الرياض, جدة, الدمام, الخبر, مكة, المدينة المنورة
-
 
 # ملاحظات إضافية للمطورين
 # تأكد من تحديث التواريخ في sitemap.xml بانتظام
 # راقب أداء الزحف في Google Search Console
 # استخدم structured data للصفحات المهمة
+# تم تحديث الملف ليشمل جميع المجلدات والصفحات الجديدة
