@@ -3,49 +3,67 @@
   <url>
     <loc>https://brightai.site/</loc>
     <lastmod>2025-09-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
   </url>
   <url>
     <loc>https://brightai.site/our-products.html</loc>
     <lastmod>2025-09-13</lastmod>
-  </url>
-  <url>
-    <loc>https://brightai.site/h/index.html</loc>
-    <lastmod>2025-09-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://brightai.site/ai-bots.html</loc>
     <lastmod>2025-09-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://brightai.site/smart-automation.html</loc>
     <lastmod>2025-09-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://brightai.site/data-analysis.html</loc>
     <lastmod>2025-09-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://brightai.site/consultation.html</loc>
     <lastmod>2025-09-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://brightai.site/blog/</loc>
     <lastmod>2025-09-13</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://brightai.site/about-us.html</loc>
     <lastmod>2025-09-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://brightai.site/contact.html</loc>
     <lastmod>2025-09-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://brightai.site/privacy-policy.html</loc>
     <lastmod>2025-09-13</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url>
   <url>
     <loc>https://brightai.site/terms.html</loc>
     <lastmod>2025-09-13</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url>
 </urlset>
