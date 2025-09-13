@@ -1,6 +1,6 @@
 # BrightAI - ملف Robots.txt المحسّن لمحركات البحث
 # آخر تحديث: 2025-05-30
-# الموقع: brightaii.com
+# الموقع: https://brightai.site
 
 # القواعد العامة للزواحف
 User-agent: *
@@ -151,8 +151,8 @@ Disallow: /
 Host: brightaii.com
 
 # مواقع ملفات الخريطة - محدثة للسوق السعودي
-Sitemap: https://www.brightaii.com/sitemap.xml
-Sitemap: https://www.brightaii.com/ar-sitemap.xml
+Sitemap: https://brightai.site/sitemap.xml
+
 
 # تحسينات خاصة للسوق السعودي
 # Keywords: شركة مُشرقة AI السعودية, الذكاء الاصطناعي الرياض, AI السعودية

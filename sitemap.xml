@@ -1,120 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
-        xmlns:xhtml="http://www.w3.org/1999/xhtml"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-    
-    <!-- الصفحة الرئيسية -->
-    <url>
-        <loc>https://www.brightai.site.com/</loc>
-        <lastmod>2025-01-16</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>1.0</priority>
-        <xhtml:link rel="alternate" hreflang="ar-SA" href="https://www.brightai.site.com/" />
-        <xhtml:link rel="alternate" hreflang="ar" href="https://www.brightai.site.com/" />
-        <image:image>
-            <image:loc>https://www2.0zz0.com/2025/06/23/22/317775783.png</image:loc>
-            <image:title>شعار شركة مُشرقة AI السعودية الرائدة في الذكاء الاصطناعي</image:title>
-            <image:caption>مُشرقة AI - أول شركة سعودية متخصصة في الذكاء الاصطناعي والروبوتات</image:caption>
-        </image:image>
-    </url>
-    
-    <!-- صفحة الخدمات -->
-    <url>
-        <loc>https://www.brightai.site.com/our-products.html</loc>
-        <lastmod>2025-01-16</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-        <xhtml:link rel="alternate" hreflang="ar-SA" href="https://www.brightai.site.com/our-products.html" />
-    </url>
-    
-    <!-- صفحة النماذج التجريبية -->
-    <url>
-        <loc>https://www.brightai.site.com/h/index.html</loc>
-        <lastmod>2025-01-16</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-        <xhtml:link rel="alternate" hreflang="ar-SA" href="https://www.brightai.site.com/h/index.html" />
-    </url>
-    
-    <!-- صفحة روبوتات الذكاء الاصطناعي -->
-    <url>
-        <loc>https://www.brightai.site.com/ai-bots.html</loc>
-        <lastmod>2025-01-16</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-        <xhtml:link rel="alternate" hreflang="ar-SA" href="https://www.brightai.site.com/ai-bots.html" />
-    </url>
-    
-    <!-- صفحة حلول الأتمتة -->
-    <url>
-        <loc>https://www.brightai.site.com/smart-automation.html</loc>
-        <lastmod>2025-01-16</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-        <xhtml:link rel="alternate" hreflang="ar-SA" href="https://www.brightai.site.com/smart-automation.html" />
-    </url>
-    
-    <!-- صفحة تحليل البيانات -->
-    <url>
-        <loc>https://www.brightai.site.com/data-analysis.html</loc>
-        <lastmod>2025-01-16</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-        <xhtml:link rel="alternate" hreflang="ar-SA" href="https://www.brightai.site.com/data-analysis.html" />
-    </url>
-    
-    <!-- صفحة الاستشارات -->
-    <url>
-        <loc>https://www.brightai.site.com/consultation.html</loc>
-        <lastmod>2025-01-16</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-        <xhtml:link rel="alternate" hreflang="ar-SA" href="https://www.brightai.site.com/consultation.html" />
-    </url>
-    
-    <!-- صفحة المدونة -->
-    <url>
-        <loc>https://www.brightai.site.com/blog/</loc>
-        <lastmod>2025-01-16</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.7</priority>
-        <xhtml:link rel="alternate" hreflang="ar-SA" href="https://www.brightai.site.com/blog/" />
-    </url>
-    
-    <!-- صفحة عن الشركة -->
-    <url>
-        <loc>https://www.brightai.site.com/about-us.html</loc>
-        <lastmod>2025-01-16</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-        <xhtml:link rel="alternate" hreflang="ar-SA" href="https://www.brightai.site.com/about-us.html" />
-    </url>
-    
-    <!-- صفحة التواصل -->
-    <url>
-        <loc>https://www.brightai.site.com/contact.html</loc>
-        <lastmod>2025-01-16</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-        <xhtml:link rel="alternate" hreflang="ar-SA" href="https://www.brightai.site.com/contact.html" />
-    </url>
-    
-    <!-- صفحة الأدوات -->
-    <url>
-        <loc>https://www.brightai.site.com/tools.html</loc>
-        <lastmod>2025-01-16</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.7</priority>
-        <xhtml:link rel="alternate" hreflang="ar-SA" href="https://www.brightai.site.com/tools.html" />
-    </url>
-    
-    <!-- صفحة وكلاء الذكاء الاصطناعي -->
-    <url>
-        <loc>https://www.brightai.site.com/ai-agent.html</loc>
-        <lastmod>2025-01-16</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-        <xhtml:link rel="alternate" hreflang="ar-SA" href="https://www.brightai.site.com/ai-agent.html" />
-    </url>
-    
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://brightai.site/</loc>
+    <lastmod>2025-09-13</lastmod>
+  </url>
+  <url>
+    <loc>https://brightai.site/our-products.html</loc>
+    <lastmod>2025-09-13</lastmod>
+  </url>
+  <url>
+    <loc>https://brightai.site/h/index.html</loc>
+    <lastmod>2025-09-13</lastmod>
+  </url>
+  <url>
+    <loc>https://brightai.site/ai-bots.html</loc>
+    <lastmod>2025-09-13</lastmod>
+  </url>
+  <url>
+    <loc>https://brightai.site/smart-automation.html</loc>
+    <lastmod>2025-09-13</lastmod>
+  </url>
+  <url>
+    <loc>https://brightai.site/data-analysis.html</loc>
+    <lastmod>2025-09-13</lastmod>
+  </url>
+  <url>
+    <loc>https://brightai.site/consultation.html</loc>
+    <lastmod>2025-09-13</lastmod>
+  </url>
+  <url>
+    <loc>https://brightai.site/blog/</loc>
+    <lastmod>2025-09-13</lastmod>
+  </url>
+  <url>
+    <loc>https://brightai.site/about-us.html</loc>
+    <lastmod>2025-09-13</lastmod>
+  </url>
+  <url>
+    <loc>https://brightai.site/contact.html</loc>
+    <lastmod>2025-09-13</lastmod>
+  </url>
+  <url>
+    <loc>https://brightai.site/privacy-policy.html</loc>
+    <lastmod>2025-09-13</lastmod>
+  </url>
+  <url>
+    <loc>https://brightai.site/terms.html</loc>
+    <lastmod>2025-09-13</lastmod>
+  </url>
 </urlset>
