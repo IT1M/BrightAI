@@ -1,334 +1,1457 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-SZKTP4496K"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-SZKTP4496K');
-</script>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6941824700617912"
-crossorigin="anonymous"></script>
-
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="خدمات الاستشارات المتخصصة في الذكاء الاصطناعي - الاستشارات العامة، الاستشارات القانونية، الاستشارات المالية، الاستشارات الإدارية، الاستشارات التكنولوجية، الاستشارات التعليمية، استشارات تطوير الأعمال، الاستشارات التسويقية واستشارات الأعمال">
-    <meta name="keywords" content="استشارات الذكاء الاصطناعي، الاستشارات العامة، الاستشارات القانونية، الاستشارات المالية، الاستشارات الإدارية، الاستشارات التكنولوجية، خدمات الاستشارات، الاستشارات التعليمية، استشارات تطوير الأعمال، الاستشارات التسويقية، استشارات الأعمال">
-    <title>استشارات الذكاء الاصطناعي - خدمات الاستشارات المتكاملة للشركات والمؤسسات</title>
-
-    <link rel="icon" type="image/png" href="Gemini.png">
-    <link rel="apple-touch-icon" sizes="240x240" href="Gemini.png">
-
-    <!-- Add Open Graph meta tags -->
-    <meta property="og:title" content="استشارات الذكاء الاصطناعي - Bright AI">
-    <meta property="og:description" content="استشارات الذكاء الاصطناعي للأعمال - حلول رقمية لتحسين الإنتاجية.">
-    <meta property="og:image" content="https://d.top4top.io/p_33354e90u1.png">
-    <meta property="og:url" content="https://brightaii.com/consultation.html">
-    <meta property="og:type" content="website">
-
-    <!-- Add JSON-LD schema markup -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "Bright AI",
-      "description": "استشارات الذكاء الاصطناعي للأعمال - حلول رقمية لتحسين الإنتاجية.",
-      "logo": "https://d.top4top.io/p_33354e90u1.png",
-      "url": "https://brightaii.com"
-    }
-    </script>
+    <title>Bright AI - استشارات الذكاء الاصطناعي المتقدمة | خدمات تحليل البيانات والأتمتة</title>
+    <meta name="description" content="خدمات استشارات الذكاء الاصطناعي المتقدمة، أتمتة العمليات، تحليل البيانات، التحول الرقمي، حلول الذكاء الاصطناعي للشركات والمؤسسات">
+    <meta name="keywords" content="استشارات الذكاء الاصطناعي, أتمتة العمليات, تحليل البيانات, التحول الرقمي, حلول الذكاء الاصطناعي, خدمات تقنية, الذكاء الاصطناعي للأعمال">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     
-    <!-- استيراد الخطوط والأيقونات -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="consultation.css">
+    <style>
+        :root {
+            --primary-color: #0A192F;
+            --secondary-color: #64FFDA;
+            --accent-color: #FF6B6B;
+            --text-color: #FFFFFF;
+            --subtext-color: #8892B0;
+            --card-background: #1D2B3A;
+            --gradient-bg: linear-gradient(135deg, #0A192F 0%, #1D2B3A 100%);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: var(--gradient-bg);
+            color: var(--text-color);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 25, 47, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: var(--text-color);
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            z-index: 2;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, var(--secondary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            color: var(--subtext-color);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(45deg, var(--secondary-color), var(--accent-color));
+            color: var(--primary-color);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(100, 255, 218, 0.4);
+        }
+
+        /* 3D Background */
+        #chart-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            opacity: 0.3;
+        }
+
+        /* Sections */
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            color: var(--text-color);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--subtext-color);
+            margin-bottom: 4rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .service-card {
+            background: var(--card-background);
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(100, 255, 218, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .service-card:hover::before {
+            left: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+
+        .service-card p {
+            color: var(--subtext-color);
+            line-height: 1.8;
+        }
+
+        /* Statistics */
+        .stats-section {
+            background: var(--card-background);
+            padding: 4rem 2rem;
+            border-radius: 20px;
+            margin: 4rem 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 1.5rem;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--subtext-color);
+            font-weight: 500;
+        }
+
+        /* Process Steps */
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .process-step {
+            background: var(--card-background);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            position: relative;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .process-step:hover {
+            border-color: var(--secondary-color);
+            transform: scale(1.05);
+        }
+
+        .step-number {
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--secondary-color);
+            color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+
+        /* Technologies Section */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .tech-item {
+            background: var(--card-background);
+            padding: 2rem 1rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .tech-item:hover {
+            transform: translateY(-5px);
+            background: linear-gradient(45deg, var(--card-background), rgba(100, 255, 218, 0.1));
+        }
+
+        .tech-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+
+        /* Benefits Grid */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .benefit-card {
+            background: var(--card-background);
+            padding: 2rem;
+            border-radius: 15px;
+            border-right: 4px solid var(--secondary-color);
+            transition: all 0.3s ease;
+        }
+
+        .benefit-card:hover {
+            transform: translateX(-10px);
+            box-shadow: var(--shadow);
+        }
+
+        .benefit-icon {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Case Studies */
+        .case-studies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .case-study-card {
+            background: var(--card-background);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+        }
+
+        .case-study-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .case-study-header {
+            padding: 2rem;
+            background: linear-gradient(45deg, var(--secondary-color), var(--accent-color));
+            color: var(--primary-color);
+        }
+
+        .case-study-content {
+            padding: 2rem;
+        }
+
+        /* FAQ Section */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--card-background);
+            margin-bottom: 1rem;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: rgba(100, 255, 218, 0.1);
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-answer.active {
+            max-height: 200px;
+            padding: 1.5rem;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background: var(--card-background);
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            animation: modalSlideIn 0.3s ease-out;
+        }
+
+        .close {
+            position: absolute;
+            top: 15px;
+            left: 20px;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--subtext-color);
+            transition: color 0.3s ease;
+        }
+
+        .close:hover {
+            color: var(--accent-color);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid rgba(100, 255, 218, 0.2);
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-color);
+            font-family: 'Cairo', sans-serif;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(45deg, var(--secondary-color), var(--accent-color));
+            color: var(--primary-color);
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(100, 255, 218, 0.3);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary-color);
+            padding: 4rem 2rem 2rem;
+            border-top: 1px solid rgba(100, 255, 218, 0.1);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: var(--subtext-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            background: var(--card-background);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            background: var(--secondary-color);
+            color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(100, 255, 218, 0.1);
+            color: var(--subtext-color);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--primary-color);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .services-grid,
+            .process-grid,
+            .benefits-grid,
+            .case-studies-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .tech-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .section {
+                padding: 3rem 1rem;
+            }
+
+            .hero {
+                padding: 0 1rem;
+            }
+
+            .modal-content {
+                margin: 10% auto;
+                width: 95%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tech-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Scroll animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
 <body>
-    <!-- ===================== شريط التنقل ===================== -->
-    <nav>
-        <ul class="navbar">
-            <li><a href="index.html">الرئيسية</a></li>
-            <li><a href="consultation.html">استشارات الذكاء الاصطناعي</a></li>
-            <li><a href="smart-automation.html">أتمتة العمليات بالذكاء الاصطناعي</a></li>
-            <li><a href="data-analysis.html">تحليل البيانات باستخدام الذكاء الاصطناعي</a></li>
-            <li><a href="ai-agent.html">وكيل الذكاء الإصطناعي</a></li>
-            <li><a href="our-products.html">عرض للخدمات</a></li>
-            <li><a href="blog.html">مكتبة رقمية للذكاء الاصطناعي</a></li>
-            <li><a href="tools.html">أدوات الذكاء الاصطناعي</a></li>
-            <li><a href="Docs.html"> Docs</a></li>
-        </ul>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">Bright AI</div>
+            <ul class="nav-links">
+                <li><a href="#home">الرئيسية</a></li>
+                <li><a href="#services">الخدمات</a></li>
+                <li><a href="#process">العملية</a></li>
+                <li><a href="#technologies">التقنيات</a></li>
+                <li><a href="#case-studies">دراسات الحالة</a></li>
+                <li><a href="#contact">اتصل بنا</a></li>
+            </ul>
+            <div class="mobile-menu" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
     </nav>
 
-<!-- ===================== القسم الرئيسي ===================== -->
-<section class="hero" id="home">
-    <h1><i class="fas fa-lightbulb"></i> استشارات الذكاء الاصطناعي للأعمال</h1>
-    <p>نساعد شركتك على التحول الرقمي وتحسين الإنتاجية من خلال حلول الذكاء الاصطناعي المخصصة.</p>
-    <div class="hero-cta">
-        <a href="https://wa.me/966501120781" class="cta-button" target="_blank">
-            <i class="fas fa-calendar-alt"></i> احجز استشارة الآن
-        </a>
-    </div>
-</section>
-  
-  <!-- نموذج حجز الاستشارة (نافذة منبثقة) -->
-  <div id="consultationModal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <h2>احجز استشارة مجانية</h2>
-      <form id="consultationForm" method="post" action="mailto:info@brightaii.com" enctype="text/plain">
-        <div class="form-group">
-          <label for="consultDate">التاريخ:</label>
-          <input type="date" id="consultDate" name="consultDate" required>
-        </div>
-        <div class="form-group">
-          <label for="consultTime">الوقت:</label>
-          <input type="time" id="consultTime" name="consultTime" required>
-        </div>
-        <div class="form-group">
-          <label for="personalName">الاسم الشخصي:</label>
-          <input type="text" id="personalName" name="personalName" placeholder="أدخل اسمك" required>
-        </div>
-        <div class="form-group">
-          <label for="companyName">اسم الشركة:</label>
-          <input type="text" id="companyName" name="companyName" placeholder="أدخل اسم الشركة" required>
-        </div>
-        <div class="form-group">
-          <label for="businessActivity">طبيعة عمل الشركة:</label>
-          <input type="text" id="businessActivity" name="businessActivity" placeholder="أدخل مجال عمل الشركة" required>
-        </div>
-        <div class="form-group">
-          <label for="email">البريد الإلكتروني:</label>
-          <input type="email" id="email" name="email" placeholder="example@domain.com" required>
-        </div>
-        <button type="submit" class="cta-button">إرسال</button>
-      </form>
-    </div>
-  </div>
-    <!-- ===================== خدماتنا ===================== -->
-    <section class="services-section" id="consultations">
-        <h2><i class="fas fa-tools"></i> خدمات الاستشارات المتخصصة</h2>
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="service-icon"><i class="fas fa-balance-scale"></i></div>
-                <h3>الاستشارات القانونية والإدارية</h3>
-                <p>نقدم خدمات الاستشارات القانونية والاستشارات الإدارية المتخصصة في مجال الذكاء الاصطناعي والتحول الرقمي.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon"><i class="fas fa-chart-line"></i></div>
-                <h3>الاستشارات المالية وتطوير الأعمال</h3>
-                <p>خدمات متكاملة في الاستشارات المالية واستشارات تطوير الأعمال مع التركيز على التحول الرقمي.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon"><i class="fas fa-graduation-cap"></i></div>
-                <h3>الاستشارات التعليمية والتسويقية</h3>
-                <p>نوفر الاستشارات التعليمية والاستشارات التسويقية المبتكرة لتعزيز نمو مؤسستك.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon"><i class="fas fa-cogs"></i></div>
-                <h3>الاستشارات التكنولوجية والتقنية</h3>
-                <p>استشارات متخصصة في التحول الرقمي وتطبيقات الذكاء الاصطناعي للمؤسسات.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon"><i class="fas fa-users"></i></div>
-                <h3>الاستشارات العامة للشركات</h3>
-                <p>خدمات استشارات الأعمال الشاملة لتحسين الأداء وزيادة الإنتاجية.</p>
-            </div>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div id="chart-container"></div>
+        <div class="hero-content">
+            <h1>استشارات الذكاء الاصطناعي المتقدمة</h1>
+            <p>نحول رؤيتك إلى واقع رقمي من خلال حلول الذكاء الاصطناعي المبتكرة والمخصصة لاحتياجات عملك الفريدة</p>
+            <a href="#" class="cta-button" id="openConsultationForm">احجز استشارة مجانية</a>
         </div>
     </section>
 
-    <!-- ===================== دراسات الحالة ===================== -->
-    <section class="case-studies-section" id="case-studies">
-        <h2><i class="fas fa-briefcase"></i> قصص نجاح: دراسات حالة في استشارات الذكاء الاصطناعي</h2>
-        <div class="case-studies-grid">
-            <div class="case-study-card">
-                <h3>تحسين تجربة العملاء لشركة تجزئة كبرى</h3>
-                <p>قمنا بتطبيق حلول الذكاء الاصطناعي لتحليل بيانات العملاء، مما أدى إلى فهم أعمق لاحتياجاتهم وتحسين كبير في رضا العملاء وولائهم.</p>
-                <a href="blogger/viewport.HTML">اقرأ المزيد <i class="fas fa-arrow-circle-left"></i></a>
-            </div>
-            <div class="case-study-card">
-                <h3>أتمتة العمليات الداخلية لمؤسسة مالية</h3>
-                <p>ساعدنا المؤسسة على أتمتة العمليات الروتينية باستخدام الروبوتات الذكية، مما قلل من الأخطاء وزاد من إنتاجية الموظفين.</p>
-                <a href="blogger/description.html">اقرأ المزيد <i class="fas fa-arrow-circle-left"></i></a>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===================== من يستفيد من استشاراتنا ===================== -->
-    <section class="target-audience-section" id="target-audience">
-        <h2><i class="fas fa-users"></i> خدمات استشارات متكاملة للمؤسسات</h2>
-        <div class="audience-categories">
-            <div class="category">
-                <h3>الاستشارات العامة</h3>
-                <p>حلول شاملة لمختلف القطاعات والمجالات.</p>
-            </div>
-            <div class="category">
-                <h3>الاستشارات التكنولوجية</h3>
-                <p>حلول تقنية متقدمة لتطوير البنية التحتية.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===================== عملية الاستشارة لدينا ===================== -->
-    <section class="consultation-process-section" id="consultation-process">
-        <h2><i class="fas fa-route"></i> خطوات عملية الاستشارة في Bright AI</h2>
-        <div class="process-steps">
-            <div class="process-step">
-                <div class="step-icon"><i class="fas fa-handshake"></i></div>
-                <h3>الاجتماع الأولي والتعارف</h3>
-                <p>نتعرف على أهداف عملك والتحديات التي تواجهها ونناقش كيف يمكن للذكاء الاصطناعي أن يساعدك.</p>
-            </div>
-            <div class="process-step">
-                <div class="step-icon"><i class="fas fa-search"></i></div>
-                <h3>تحليل وتقييم الوضع الحالي</h3>
-                <p>نقوم بتحليل بياناتك وعملياتك الحالية لتقييم فرص تطبيق حلول الذكاء الاصطناعي.</p>
-            </div>
-            <div class="process-step">
-                <div class="step-icon"><i class="fas fa-pencil-ruler"></i></div>
-                <h3>تطوير الحلول المخصصة</h3>
-                <p>نقوم بتصميم حلول ذكاء اصطناعي مخصصة تلبي احتياجات عملك الفريدة.</p>
-            </div>
-            <div class="process-step">
-                <div class="step-icon"><i class="fas fa-check-circle"></i></div>
-                <h3>التنفيذ والمتابعة</h3>
-                <p>ندعمك في تنفيذ الحلول ونقوم بتقييم الأداء لضمان تحقيق أفضل النتائج.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===================== لماذا تختارنا ===================== -->
-    <section class="benefits-section">
-        <h2><i class="fas fa-star"></i> لماذا تختار Bright AI لاستشارات الذكاء الاصطناعي؟</h2>
-        <div class="benefits-grid">
-            <div class="benefit-card">
-                <div class="benefit-icon"><i class="fas fa-graduation-cap"></i></div>
-                <h3>خبرة متخصصة في الذكاء الاصطناعي</h3>
-                <p>استفد من خبرة متخصصينا في مجال الذكاء الاصطناعي لتطوير حلول مبتكرة لعملك.</p>
-            </div>
-            <div class="benefit-card">
-                <div class="benefit-icon"><i class="fas fa-rocket"></i></div>
-                <h3>تحسين الأداء والإنتاجية</h3>
-                <p>زيادة كفاءة عملياتك التجارية من خلال حلول الذكاء الاصطناعي المتقدمة.</p>
-            </div>
-            <div class="benefit-card">
-                <div class="benefit-icon"><i class="fas fa-lock"></i></div>
-                <h3>حلول آمنة وموثوقة</h3>
-                <p>ضمان أمان وخصوصية بياناتك مع أحدث تقنيات الحماية والأمان.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===================== الأسئلة الشائعة ===================== -->
-    <section class="faq-section" id="faq">
-        <h2><i class="fas fa-question-circle"></i> الأسئلة الشائعة حول استشارات الذكاء الاصطناعي</h2>
-        <div class="faq-grid">
-            <div class="faq-item">
-                <h3>ما هي مدة استشارة الذكاء الاصطناعي النموذجية؟</h3>
-                <p>تختلف المدة بناءً على احتياجات المشروع، ولكننا نسعى دائمًا لتقديم قيمة مضافة في أقصر وقت ممكن.</p>
-            </div>
-            <div class="faq-item">
-                <h3>هل يمكن تطبيق حلول الذكاء الاصطناعي على جميع أنواع الشركات؟</h3>
-                <p>نعم، يمكن تخصيص حلول الذكاء الاصطناعي لتناسب مختلف الصناعات وأحجام الشركات.</p>
-            </div>
-            <div class="faq-item">
-                <h3>ما هي تكلفة استشارات الذكاء الاصطناعي؟</h3>
-                <p>تعتمد التكلفة على نطاق المشروع وتعقيده. نقدم تقديرات شفافة بعد فهم متطلباتك.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===================== آراء العملاء ===================== -->
-    <section class="testimonials">
-        <h2><i class="fas fa-comments"></i> آراء عملائنا</h2>
-        <div class="testimonial-grid">
-            <div class="testimonial-card">
-                <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
-                <p>"كانت تجربة العمل مع Bright AI مذهلة. لقد ساعدونا في فهم بياناتنا بشكل أفضل وتحسين عملياتنا بشكل كبير."</p>
-                <p>- العميل أ</p>
-            </div>
-            <div class="testimonial-card">
-                <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
-                <p>"لقد تجاوزت الحلول التي قدمتها Bright AI توقعاتنا. إنهم فريق محترف ومبتكر."</p>
-                <p>- العميل ب</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===================== تواصل معنا ===================== -->
-    <section class="contact-form" id="contact">
-        <h2><i class="fas fa-envelope"></i> تواصل معنا للحصول على استشارة مجانية</h2>
-        <form action="#" method="post">
-            <div class="form-group">
-                <label for="name">الاسم</label>
-                <input type="text" id="name" name="name" placeholder="أدخل اسمك" required>
-            </div>
-            <div class="form-group">
-                <label for="email">البريد الإلكتروني</label>
-                <input type="email" id="email" name="email" placeholder="أدخل بريدك الإلكتروني" required>
-            </div>
-            <div class="form-group">
-                <label for="phone">رقم الهاتف</label>
-                <input type="tel" id="phone" name="phone" placeholder="أدخل رقم هاتفك">
-            </div>
-            <div class="form-group">
-                <label for="details">تفاصيل الاستشارة</label>
-                <textarea id="details" name="details" rows="5" placeholder="أدخل تفاصيل استشارتك"></textarea>
-            </div>
-            <button type="submit" class="submit-btn"><i class="fas fa-paper-plane"></i> إرسال الطلب</button>
-        </form>
-    </section>
-
-    <!-- ===================== التذييل ===================== -->
-<footer class="footer">
-    <div class="container">
-        <div class="footer-content">
-            <!-- Company Info -->
-            <div class="footer-section">
-                <h3>Bright AI</h3>
-                <p>Advancing technology through artificial intelligence solutions</p>
-            </div>
-
-            <!-- Quick Links -->
-            <div class="footer-section quick-links">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="Docfile/About.Bright.AI.html">About Us</a></li>
-                    <li><a href="our-products.html">Services</a></li>
-                    <li><a href="smart-automation.html">Projects</a></li>
-                </ul>
-            </div>
-
-            <!-- Social Media -->
-            <div class="footer-section">
-                <h3>Connect With Us</h3>
-                <div class="social-links">
-                    <a href="https://www.tiktok.com/@bright1ai" class="social-icon" target="_blank" rel="noopener noreferrer">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
-                            <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 014.07-4.07v-3.45a6.34 6.34 0 00-3.15.82 6.33 6.33 0 104.59 7.75 6.13 6.13 0 00.14-1.4V7.59a8.33 8.33 0 005.04 1.61V6.69z"/>
-                        </svg>
-                    </a>
-                    <a href="https://www.instagram.com/iililil44" class="social-icon" target="_blank" rel="noopener noreferrer">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
-                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                        </svg>
-                    </a>
-                    <a href="https://wa.me/966538229013" class="social-icon" target="_blank" rel="noopener noreferrer">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
-                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-                        </svg>
-                    </a>
+    <!-- Statistics Section -->
+    <section class="section animate-on-scroll">
+        <div class="stats-section">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number" data-target="500">0</div>
+                    <div class="stat-label">مشروع ناجح</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="150">0</div>
+                    <div class="stat-label">عميل راضي</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="95">0</div>
+                    <div class="stat-label">% نسبة النجاح</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="10">0</div>
+                    <div class="stat-label">سنوات خبرة</div>
                 </div>
             </div>
         </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section animate-on-scroll">
+        <h2 class="section-title">خدماتنا المتخصصة</h2>
+        <p class="section-subtitle">نقدم مجموعة شاملة من خدمات الذكاء الاصطناعي المصممة لتلبية احتياجات الأعمال الحديثة</p>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <h3>أتمتة العمليات الذكية</h3>
+                <p>تطوير أنظمة أتمتة متقدمة باستخدام الذكاء الاصطناعي وتعلم الآلة لتحسين كفاءة العمليات التجارية وتقليل التكاليف التشغيلية</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>تحليل البيانات المتقدم</h3>
+                <p>استخراج رؤى قيمة من البيانات الضخمة باستخدام خوارزميات الذكاء الاصطناعي المتطورة لاتخاذ قرارات أعمال مدروسة</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h3>معالجة اللغات الطبيعية</h3>
+                <p>تطوير حلول ذكية لفهم وتحليل النصوص والمحادثات باللغة العربية والإنجليزية لتحسين تجربة العملاء</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-eye"></i>
+                </div>
+                <h3>رؤية الكمبيوتر</h3>
+                <p>تطبيقات متقدمة للتعرف على الصور والفيديو، من كشف الأشياء إلى التحليل الطبي والأمني</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>الأمن السيبراني الذكي</h3>
+                <p>حلول أمنية متطورة تستخدم الذكاء الاصطناعي للكشف المبكر عن التهديدات السيبرانية ومنعها</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-cogs"></i>
+                </div>
+                <h3>التحول الرقمي الشامل</h3>
+                <p>استراتيجيات متكاملة لتحويل المؤسسات إلى منظمات رقمية ذكية باستخدام أحدث تقنيات الذكاء الاصطناعي</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technologies Section -->
+    <section id="technologies" class="section animate-on-scroll">
+        <h2 class="section-title">التقنيات المتقدمة</h2>
+        <p class="section-subtitle">نستخدم أحدث التقنيات والأدوات في مجال الذكاء الاصطناعي</p>
+        
+        <div class="tech-grid">
+            <div class="tech-item">
+                <div class="tech-icon">🐍</div>
+                <h4>Python</h4>
+            </div>
+            <div class="tech-item">
+                <div class="tech-icon">🧠</div>
+                <h4>TensorFlow</h4>
+            </div>
+            <div class="tech-item">
+                <div class="tech-icon">🔥</div>
+                <h4>PyTorch</h4>
+            </div>
+            <div class="tech-item">
+                <div class="tech-icon">☁️</div>
+                <h4>AWS ML</h4>
+            </div>
+            <div class="tech-item">
+                <div class="tech-icon">🔬</div>
+                <h4>Scikit-learn</h4>
+            </div>
+            <div class="tech-item">
+                <div class="tech-icon">📊</div>
+                <h4>Pandas</h4>
+            </div>
+            <div class="tech-item">
+                <div class="tech-icon">🎯</div>
+                <h4>OpenCV</h4>
+            </div>
+            <div class="tech-item">
+                <div class="tech-icon">🗣️</div>
+                <h4>NLTK</h4>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process" class="section animate-on-scroll">
+        <h2 class="section-title">منهجية العمل</h2>
+        <p class="section-subtitle">عملية منظمة ومدروسة لضمان تحقيق أفضل النتائج</p>
+        
+        <div class="process-grid">
+            <div class="process-step">
+                <div class="step-number">1</div>
+                <div class="service-icon">
+                    <i class="fas fa-handshake"></i>
+                </div>
+                <h3>الاستشارة الأولية</h3>
+                <p>تحليل شامل لاحتياجات عملك وتحديد الفرص المناسبة لتطبيق الذكاء الاصطناعي</p>
+            </div>
+
+            <div class="process-step">
+                <div class="step-number">2</div>
+                <div class="service-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+                <h3>تحليل وتقييم البيانات</h3>
+                <p>دراسة البيانات المتاحة وتقييم جودتها وإمكانية استخدامها في نماذج الذكاء الاصطناعي</p>
+            </div>
+
+            <div class="process-step">
+                <div class="step-number">3</div>
+                <div class="service-icon">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
+                <h3>تصميم الحلول</h3>
+                <p>تطوير نماذج أولية وخطة تنفيذية مفصلة مخصصة لأهداف مشروعك</p>
+            </div>
+
+            <div class="process-step">
+                <div class="step-number">4</div>
+                <div class="service-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <h3>التطوير والتنفيذ</h3>
+                <p>بناء وتدريب النماذج باستخدام أحدث التقنيات مع اختبارات شاملة للأداء</p>
+            </div>
+
+            <div class="process-step">
+                <div class="step-number">5</div>
+                <div class="service-icon">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <h3>النشر والتشغيل</h3>
+                <p>نشر الحلول في بيئة الإنتاج مع ضمان الاستقرار والأداء المطلوب</p>
+            </div>
+
+            <div class="process-step">
+                <div class="step-number">6</div>
+                <div class="service-icon">
+                    <i class="fas fa-chart-bar"></i>
+                </div>
+                <h3>المتابعة والتحسين</h3>
+                <p>مراقبة مستمرة للأداء وإجراء تحسينات دورية لضمان تحقيق أفضل النتائج</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="section animate-on-scroll">
+        <h2 class="section-title">فوائد الذكاء الاصطناعي لأعمالك</h2>
+        
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <div class="benefit-icon">
+                    <i class="fas fa-tachometer-alt"></i>
+                </div>
+                <h3>تحسين الكفاءة التشغيلية</h3>
+                <p>زيادة الإنتاجية بنسبة تصل إلى 40% من خلال أتمتة المهام المتكررة والعمليات المعقدة</p>
+            </div>
+
+            <div class="benefit-card">
+                <div class="benefit-icon">
+                    <i class="fas fa-dollar-sign"></i>
+                </div>
+                <h3>تقليل التكاليف</h3>
+                <p>خفض التكاليف التشغيلية بنسبة 25-50% من خلال تحسين العمليات وتقليل الأخطاء البشرية</p>
+            </div>
+
+            <div class="benefit-card">
+                <div class="benefit-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3>تحسين تجربة العملاء</h3>
+                <p>تقديم خدمات مخصصة وسريعة الاستجابة لزيادة رضا العملاء وولائهم</p>
+            </div>
+
+            <div class="benefit-card">
+                <div class="benefit-icon">
+                    <i class="fas fa-bullseye"></i>
+                </div>
+                <h3>دقة في اتخاذ القرارات</h3>
+                <p>اتخاذ قرارات مبنية على البيانات والتحليل المتقدم بدقة تصل إلى 95%</p>
+            </div>
+
+            <div class="benefit-card">
+                <div class="benefit-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <h3>توفير الوقت</h3>
+                <p>تسريع العمليات والمهام لتوفير وقت ثمين يمكن استثماره في التطوير والنمو</p>
+            </div>
+
+            <div class="benefit-card">
+                <div class="benefit-icon">
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <h3>ميزة تنافسية</h3>
+                <p>الحصول على ميزة تنافسية مستدامة في السوق من خلال التقنيات المتطورة</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies Section -->
+    <section id="case-studies" class="section animate-on-scroll">
+        <h2 class="section-title">قصص نجاح ملهمة</h2>
+        <p class="section-subtitle">تعرف على كيف ساعدنا عملاءنا في تحقيق نتائج استثنائية</p>
+        
+        <div class="case-studies-grid">
+            <div class="case-study-card">
+                <div class="case-study-header">
+                    <h3>بنك الرياض - نظام كشف الاحتيال</h3>
+                </div>
+                <div class="case-study-content">
+                    <p>طورنا نظام ذكي لكشف المعاملات المشبوهة باستخدام التعلم العميق، مما أدى إلى:</p>
+                    <ul style="margin: 1rem 0; padding-right: 2rem;">
+                        <li>تحسين دقة الكشف بنسبة 87%</li>
+                        <li>تقليل الإيجابيات الخاطئة بنسبة 60%</li>
+                        <li>توفير 2.5 مليون ريال سنوياً</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="case-study-card">
+                <div class="case-study-header">
+                    <h3>مستشفى الملك فيصل - تشخيص الأشعة</h3>
+                </div>
+                <div class="case-study-content">
+                    <p>نظام ذكي لتحليل الأشعة الطبية باستخدام رؤية الكمبيوتر حقق:</p>
+                    <ul style="margin: 1rem 0; padding-right: 2rem;">
+                        <li>دقة تشخيص 94% للحالات المعقدة</li>
+                        <li>تسريع عملية التشخيص بنسبة 70%</li>
+                        <li>تحسين رضا المرضى بنسبة 85%</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="case-study-card">
+                <div class="case-study-header">
+                    <h3>شركة الاتصالات السعودية - خدمة العملاء</h3>
+                </div>
+                <div class="case-study-content">
+                    <p>مساعد ذكي متعدد اللغات للرد على استفسارات العملاء حقق:</p>
+                    <ul style="margin: 1rem 0; padding-right: 2rem;">
+                        <li>حل 80% من الاستفسارات تلقائياً</li>
+                        <li>تقليل وقت الانتظار بنسبة 65%</li>
+                        <li>زيادة رضا العملاء بنسبة 78%</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="case-study-card">
+                <div class="case-study-header">
+                    <h3>مجموعة صافولا - تحسين سلسلة التوريد</h3>
+                </div>
+                <div class="case-study-content">
+                    <p>نظام تنبؤ ذكي لإدارة المخزون والطلب حقق:</p>
+                    <ul style="margin: 1rem 0; padding-right: 2rem;">
+                        <li>تقليل تكاليف المخزون بنسبة 35%</li>
+                        <li>تحسين دقة التنبؤ إلى 92%</li>
+                        <li>تقليل الفاقد بنسبة 45%</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section animate-on-scroll">
+        <h2 class="section-title">الأسئلة الشائعة</h2>
+        
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>ما هي مدة تنفيذ مشروع الذكاء الاصطناعي؟</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>تتراوح مدة المشاريع من 3-12 شهر حسب تعقيد المشروع وحجم البيانات. نقدم جدولاً زمنياً مفصلاً في الاستشارة الأولية.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>هل يمكن تطبيق الذكاء الاصطناعي في الشركات الصغيرة؟</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>نعم، نقدم حلول مقننة ومناسبة لجميع أحجام الشركات. لدينا حزم خاصة للشركات الصغيرة والمتوسطة.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>ما هي تكلفة الاستشارة؟</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>الاستشارة الأولية مجانية تماماً. تتحدد التكلفة النهائية بناءً على نطاق المشروع ومتطلباته الفنية.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>هل تقدمون دعم ما بعد التنفيذ؟</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>نعم، نقدم دعم فني شامل لمدة عام كامل مع إمكانية التجديد. يشمل الدعم الصيانة والتحديثات والتدريب.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>كيف تضمنون أمان البيانات؟</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>نطبق أعلى معايير الأمان العالمية ونلتزم بقوانين حماية البيانات. جميع البيانات مشفرة ومحمية بأحدث التقنيات.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section animate-on-scroll">
+        <h2 class="section-title">تواصل معنا</h2>
+        <p class="section-subtitle">نحن هنا لمساعدتك في رحلة التحول الرقمي</p>
+        
+        <div style="max-width: 600px; margin: 0 auto; background: var(--card-background); padding: 3rem; border-radius: 20px;">
+            <form>
+                <div class="form-group">
+                    <label>الاسم الكامل</label>
+                    <input type="text" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>البريد الإلكتروني</label>
+                    <input type="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>رقم الهاتف</label>
+                    <input type="tel" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>اسم الشركة</label>
+                    <input type="text">
+                </div>
+                
+                <div class="form-group">
+                    <label>نوع الخدمة المطلوبة</label>
+                    <select required>
+                        <option value="">اختر الخدمة</option>
+                        <option value="automation">أتمتة العمليات</option>
+                        <option value="data-analysis">تحليل البيانات</option>
+                        <option value="nlp">معالجة اللغات الطبيعية</option>
+                        <option value="computer-vision">رؤية الكمبيوتر</option>
+                        <option value="cybersecurity">الأمن السيبراني</option>
+                        <option value="digital-transformation">التحول الرقمي</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>تفاصيل المشروع</label>
+                    <textarea rows="5" placeholder="اكتب تفاصيل مشروعك واحتياجاتك..."></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">إرسال الطلب</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Bright AI</h3>
+                <p>نحن متخصصون في تقديم حلول الذكاء الاصطناعي المتقدمة التي تساعد الشركات على التحول الرقمي وتحقيق النمو المستدام.</p>
+                <div class="social-links">
+                    <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>الخدمات</h3>
+                <ul class="footer-links">
+                    <li><a href="#">أتمتة العمليات</a></li>
+                    <li><a href="#">تحليل البيانات</a></li>
+                    <li><a href="#">معالجة اللغات الطبيعية</a></li>
+                    <li><a href="#">رؤية الكمبيوتر</a></li>
+                    <li><a href="#">الأمن السيبراني</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>روابط سريعة</h3>
+                <ul class="footer-links">
+                    <li><a href="#home">الرئيسية</a></li>
+                    <li><a href="#services">الخدمات</a></li>
+                    <li><a href="#process">العملية</a></li>
+                    <li><a href="#case-studies">دراسات الحالة</a></li>
+                    <li><a href="#contact">اتصل بنا</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>معلومات التواصل</h3>
+                <p><i class="fas fa-map-marker-alt"></i> الرياض، المملكة العربية السعودية</p>
+                <p><i class="fas fa-phone"></i> +966 11 234 5678</p>
+                <p><i class="fas fa-envelope"></i> info@brightai.sa</p>
+                <p><i class="fas fa-clock"></i> الأحد - الخميس: 9:00 - 17:00</p>
+            </div>
+        </div>
+        
         <div class="copyright">
-            <p> 2025 Bright AI. All rights reserved.</p>
+            <p>&copy; 2025 Bright AI. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <!-- Consultation Modal -->
+    <div id="consultationModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 style="text-align: center; margin-bottom: 2rem; color: var(--secondary-color);">احجز استشارة مجانية</h2>
+            
+            <form>
+                <div class="form-group">
+                    <label>التاريخ المفضل</label>
+                    <input type="date" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>الوقت المفضل</label>
+                    <select required>
+                        <option value="">اختر الوقت</option>
+                        <option value="09:00">9:00 صباحاً</option>
+                        <option value="10:00">10:00 صباحاً</option>
+                        <option value="11:00">11:00 صباحاً</option>
+                        <option value="14:00">2:00 مساءً</option>
+                        <option value="15:00">3:00 مساءً</option>
+                        <option value="16:00">4:00 مساءً</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>الاسم الشخصي</label>
+                    <input type="text" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>اسم الشركة</label>
+                    <input type="text" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>طبيعة عمل الشركة</label>
+                    <select required>
+                        <option value="">اختر القطاع</option>
+                        <option value="banking">البنوك والمصارف</option>
+                        <option value="healthcare">الرعاية الصحية</option>
+                        <option value="retail">التجارة والتجزئة</option>
+                        <option value="manufacturing">التصنيع</option>
+                        <option value="education">التعليم</option>
+                        <option value="government">القطاع الحكومي</option>
+                        <option value="telecom">الاتصالات</option>
+                        <option value="energy">الطاقة والنفط</option>
+                        <option value="other">أخرى</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>البريد الإلكتروني</label>
+                    <input type="email" required>
+                </div>
+                
+                <button type="submit" class="submit-btn">تأكيد الحجز</button>
+            </form>
         </div>
     </div>
-</footer>
+
+    <script>
+        // Three.js 3D Background
+        document.addEventListener('DOMContentLoaded', function () {
+            const chartContainer = document.getElementById('chart-container');
+            
+            if (chartContainer) {
+                const scene = new THREE.Scene();
+                const camera = new THREE.PerspectiveCamera(75, chartContainer.offsetWidth / chartContainer.offsetHeight, 0.1, 1000);
+                const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+
+                renderer.setSize(chartContainer.offsetWidth, chartContainer.offsetHeight);
+                chartContainer.appendChild(renderer.domElement);
+
+                // Create multiple geometric shapes
+                const geometries = [
+                    new THREE.TorusKnotGeometry(10, 3, 100, 16),
+                    new THREE.SphereGeometry(8, 32, 32),
+                    new THREE.ConeGeometry(8, 16, 32)
+                ];
+
+                const materials = [
+                    new THREE.MeshBasicMaterial({ color: 0x64FFDA, wireframe: true }),
+                    new THREE.MeshBasicMaterial({ color: 0xFF6B6B, wireframe: true }),
+                    new THREE.MeshBasicMaterial({ color: 0x4ECDC4, wireframe: true })
+                ];
+
+                const meshes = [];
+                for (let i = 0; i < 3; i++) {
+                    const mesh = new THREE.Mesh(geometries[i], materials[i]);
+                    mesh.position.x = (i - 1) * 30;
+                    scene.add(mesh);
+                    meshes.push(mesh);
+                }
+
+                camera.position.z = 50;
+
+                function animate() {
+                    requestAnimationFrame(animate);
+                    
+                    meshes.forEach((mesh, index) => {
+                        mesh.rotation.x += 0.005 + index * 0.002;
+                        mesh.rotation.y += 0.005 + index * 0.002;
+                        mesh.position.y = Math.sin(Date.now() * 0.001 + index) * 5;
+                    });
+                    
+                    renderer.render(scene, camera);
+                }
+
+                animate();
+
+                window.addEventListener('resize', () => {
+                    camera.aspect = chartContainer.offsetWidth / chartContainer.offsetHeight;
+                    camera.updateProjectionMatrix();
+                    renderer.setSize(chartContainer.offsetWidth, chartContainer.offsetHeight);
+                });
+            }
+        });
+
+        // Modal functionality
+        const modal = document.getElementById("consultationModal");
+        const openBtn = document.getElementById("openConsultationForm");
+        const closeBtn = document.querySelector(".close");
+
+        if (openBtn && modal) {
+            openBtn.addEventListener("click", function(e) {
+                e.preventDefault();
+                modal.style.display = "flex";
+            });
+        }
+
+        if (closeBtn && modal) {
+            closeBtn.addEventListener("click", function() {
+                modal.style.display = "none";
+            });
+        }
+
+        window.addEventListener("click", function(event) {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        });
+
+        // Mobile menu toggle
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+
+        // FAQ functionality
+        function toggleFAQ(element) {
+            const answer = element.nextElementSibling;
+            const icon = element.querySelector('i');
+            
+            answer.classList.toggle('active');
+            icon.style.transform = answer.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
+        }
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Counter animation
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stat-number');
+            
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-target'));
+                const duration = 2000;
+                const increment = target / (duration / 16);
+                let current = 0;
+                
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    counter.textContent = Math.floor(current);
+                }, 16);
+            });
+        }
+
+        // Trigger counter animation when stats section is visible
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const statsSection = document.querySelector('.stats-section');
+        if (statsSection) {
+            statsObserver.observe(statsSection);
+        }
+
+        // Form submission handling
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Show success message
+                const button = this.querySelector('button[type="submit"]');
+                const originalText = button.textContent;
+                button.textContent = 'تم الإرسال بنجاح!';
+                button.style.background = '#2ecc71';
+                
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.style.background = '';
+                    this.reset();
+                    if (modal) {
+                        modal.style.display = 'none';
+                    }
+                }, 2000);
+            });
+        });
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.style.background = 'rgba(10, 25, 47, 0.98)';
+            } else {
+                navbar.style.background = 'rgba(10, 25, 47, 0.95)';
+            }
+        });
+    </script>
 </body>
 </html>
