@@ -1,115 +1,109 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <!-- GTM/Analytics Expert Fix: Added Data Layer initialization with Consent Mode defaults -->
+    <!-- GTM/Analytics Expert Fix: Data Layer initialization with Consent Mode defaults -->
     <script>
         window.dataLayer = window.dataLayer || [];
-        // Set default consent to 'denied' before any tags fire.
-        // This is crucial for compliance with privacy regulations like Saudi PDPL.
+        // Set default consent to 'denied' for privacy compliance (e.g., Saudi PDPL).
         function gtag(){dataLayer.push(arguments);}
         gtag('consent', 'default', {
             'ad_storage': 'denied',
             'analytics_storage': 'denied',
             'ad_user_data': 'denied',
             'ad_personalization': 'denied',
-            'wait_for_update': 500 // Wait 500ms for a consent update
+            'wait_for_update': 500 // Wait for a consent update
         });
         // Pushing gtm.start event early.
         dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
     </script>
     <!-- End GTM/Analytics Expert Fix -->
 
-    <script src="https://analytics.ahrefs.com/analytics.js" data-key="Cq+jwsfq74a4uXGJ0gEW5A" async></script>
-    <!-- Performance Optimizations -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, viewport-fit=cover">
-    <meta name="theme-color" content="#0A192F"> <!-- Main brand color -->
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
     <!-- SEO Meta Tags - Optimized for Saudi Search Engines -->
     <title>شركة مُشرقة AI | أول مؤسسة سعودية متخصصة في الذكاء الاصطناعي والروبوتات - الرياض جدة الدمام</title>
     <meta name="description" content="مُشرقة AI الشركة السعودية الرائدة في الذكاء الاصطناعي بالرياض. نقدم حلول التعلم العميق، أتمتة العمليات، روبوتات المحادثة العربية، وتحليل البيانات للشركات السعودية. خدمات AI متكاملة في جدة والدمام لدعم رؤية 2030.">
-
-    <!-- Enhanced Keywords Meta Tag for Saudi Arabia SEO -->
-    <meta name="keywords" content="شركة مُشرقة AI السعودية, الذكاء الاصطناعي الرياض, شركة ذكاء اصطناعي سعودية, AI السعودية, رؤية 2030 الذكاء الاصطناعي, التحول الرقمي السعودي, خدمات الذكاء الاصطناعي الرياض جدة الدمام, حلول تعلم عميق السعودية, أتمتة العمليات السعودية, روبوتات ذكية سعودية, تحليل البيانات الضخمة المملكة, معالجة اللغة العربية الطبيعية, شات بوت عربي سعودي, استشارات AI للشركات السعودية, تطوير تطبيقات الذكاء الاصطناعي السعودية, تعلم الآلة السعودية, الذكاء الاصطناعي التوليدي السعودية, حلول AI القطاع الحكومي السعودي, حلول AI القطاع الخاص السعودي, Bright AI Saudi Arabia, مُشرقة AI الرياض, الذكاء الاصطناعي النفط والغاز السعودي, AI الرعاية الصحية السعودية, الذكاء الاصطناعي التعليم السعودي, مستقبل AI السعودية, شركات الذكاء الاصطناعي في السعودية, أفضل شركة AI السعودية, خدمات الذكاء الاصطناعي المملكة العربية السعودية">
+    
+    <!-- Consolidated & Enhanced Keywords Meta Tag -->
+    <meta name="keywords" content="شركة مُشرقة AI, الذكاء الاصطناعي السعودية, شركة ذكاء اصطناعي سعودية, AI السعودية, رؤية 2030, التحول الرقمي السعودي, خدمات الذكاء الاصطناعي, الرياض, جدة, الدمام, حلول تعلم عميق, أتمتة العمليات, روبوتات ذكية, تحليل البيانات الضخمة, معالجة اللغة العربية, شات بوت عربي سعودي, استشارات AI, تطوير تطبيقات الذكاء الاصطناعي, تعلم الآلة, الذكاء الاصطناعي التوليدي, حلول AI للقطاع الحكومي, حلول AI للقطاع الخاص, Bright AI Saudi Arabia, أتمتة العمليات RPA, أفضل شركة AI السعودية">
+    <meta name="news_keywords" content="الذكاء الاصطناعي, الرياض, جدة, الدمام, مُشرقة AI, رؤية 2030, التحول الرقمي">
+    <meta name="article:tag" content="شركة ذكاء اصطناعي سعودية, حلول AI الرياض, أتمتة سعودية, شات بوت سعودي">
+    
     <meta name="author" content="مُشرقة AI - شركة ذكاء اصطناعي سعودية رائدة في المملكة العربية السعودية">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <meta name="googlebot" content="index, follow">
+    <meta name="google-site-verification" content="yy8eQWsy22VYduXUQS7pN3LJYbk6g7UCBj4iuuo-4xk" />
+    
+    <!-- Geo-Targeting for Saudi Arabia -->
     <meta name="geo.region" content="SA">
     <meta name="geo.placename" content="الرياض, جدة, الدمام, الخبر, مكة, المدينة المنورة, المملكة العربية السعودية">
-    <meta name="geo.position" content="24.7136;46.6753"> <!-- Coordinates for Riyadh, Saudi Arabia -->
+    <meta name="geo.position" content="24.7136;46.6753">
     <meta name="ICBM" content="24.7136, 46.6753">
 
-    <!-- Open Graph Meta Tags - Enhanced for Saudi context -->
+    <!-- Open Graph Meta Tags (Social Media Sharing) -->
     <meta property="og:title" content="شركة مُشرقة AI | أول مؤسسة سعودية متخصصة في الذكاء الاصطناعي والروبوتات - الرياض جدة الدمام">
     <meta property="og:description" content="مُشرقة AI الشركة السعودية الرائدة في الذكاء الاصطناعي بالرياض. نقدم حلول التعلم العميق، أتمتة العمليات، روبوتات المحادثة العربية، وتحليل البيانات للشركات السعودية. خدمات AI متكاملة في جدة والدمام لدعم رؤية 2030.">
     <meta property="og:image" content="https://www2.0zz0.com/2025/06/23/22/317775783.png">
-    <meta property="og:url" content="https://brightai.site/"> <!-- Canonical URL for your site -->
+    <meta property="og:url" content="https://brightai.site/">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="مُشرقة AI - حلول الذكاء الاصطناعي المتكاملة في السعودية">
     <meta property="og:locale" content="ar_SA">
 
-    <!-- Twitter Card Meta Tags - Enhanced for Saudi context -->
+    <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="شركة مُشرقة AI | أول مؤسسة سعودية متخصصة في الذكاء الاصطناعي والروبوتات - الرياض جدة الدمام">
     <meta name="twitter:description" content="مُشرقة AI الشركة السعودية الرائدة في الذكاء الاصطناعي بالرياض. نقدم حلول التعلم العميق، أتمتة العمليات، روبوتات المحادثة العربية، وتحليل البيانات للشركات السعودية. خدمات AI متكاملة في جدة والدمام لدعم رؤية 2030.">
     <meta name="twitter:image" content="https://www2.0zz0.com/2025/06/23/22/317775783.png">
-    <!-- <meta name="twitter:site" content="@YourTwitterHandle"> --> <!-- Uncomment if you have a Twitter handle -->
-    <!-- <meta name="twitter:creator" content="@YourCreatorHandle"> --> <!-- Uncomment if you have a specific creator handle -->
 
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://brightai.site/" />
-    
-    <!-- Additional SEO Meta Tags for Saudi Search Optimization -->
-    <meta name="language" content="ar-SA">
-    <meta name="distribution" content="global">
-    <meta name="rating" content="general">
-    <meta name="revisit-after" content="7 days">
-    <meta name="classification" content="Business, Technology, AI, Saudi Arabia">
-    <meta name="coverage" content="Worldwide">
-    <meta name="target" content="all">
-    <meta name="HandheldFriendly" content="True">
-    <meta name="MobileOptimized" content="320">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    
-    <!-- Hreflang for Arabic Saudi -->
+    <!-- Canonical URL & Hreflang -->
+    <link rel="canonical" href="https://brightai.site/">
     <link rel="alternate" hreflang="ar-SA" href="https://brightai.site/">
     <link rel="alternate" hreflang="ar" href="https://brightai.site/">
     <link rel="alternate" hreflang="x-default" href="https://brightai.site/">
+
+    <!-- Performance & App Meta -->
+    <meta name="theme-color" content="#0A192F">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="classification" content="Business, Technology, AI, Saudi Arabia">
+
+    <!-- Favicon & Manifest -->
+    <link rel="icon" type="image/png" href="https://www2.0zz0.com/2025/06/23/22/317775783.png">
+    <link rel="apple-touch-icon" sizes="240x240" href="https://www2.0zz0.com/2025/06/23/22/317775783.png">
+    <link rel="manifest" href="manifest.json">
 
     <!-- Resource Hints -->
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://analytics.ahrefs.com">
 
     <!-- Preload Critical Resources -->
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="preload" href="style.css" as="style">
     <link rel="preload" href="script.js" as="script">
-    <link rel="preload" href="https://www2.0zz0.com/2025/06/23/22/317775783.png" as="image" type="image/png"> <!-- Absolute URL for logo -->
-    <link rel="preload" as="font" href="https://fonts.gstatic.com/s/tajawal/v9/Iurf6YBj_oCad4k1l4qkLrY.woff2" type="font/woff2" crossorigin> <!-- Tajawal Regular -->
-    <link rel="preload" as="font" href="https://fonts.gstatic.com/s/tajawal/v9/Iurf6YBj_oCad4k1l5qjLrY.woff2" type="font/woff2" crossorigin> <!-- Tajawal Bold -->
+    <link rel="preload" href="https://www2.0zz0.com/2025/06/23/22/317775783.png" as="image" type="image/png">
+    <link rel="preload" as="font" href="https://fonts.gstatic.com/s/tajawal/v9/Iurf6YBj_oCad4k1l4qkLrY.woff2" type="font/woff2" crossorigin>
+    <link rel="preload" as="font" href="https://fonts.gstatic.com/s/tajawal/v9/Iurf6YBj_oCad4k1l5qjLrY.woff2" type="font/woff2" crossorigin>
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="https://www2.0zz0.com/2025/06/23/22/317775783.png"> <!-- Absolute URL -->
-    <link rel="apple-touch-icon" sizes="240x240" href="https://www2.0zz0.com/2025/06/23/22/317775783.png"> <!-- Absolute URL -->
-    <link rel="manifest" href="manifest.json">
-
-    <!-- Font Loading Optimization (Google Fonts using display=swap) -->
+    <!-- Fallback Font Loading -->
     <noscript>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap">
     </noscript>
 
-    <!-- Critical CSS (Already inlined in provided HTML) -->
+    <!-- Critical CSS Inlined -->
     <style>
         :root{--primary-color:#64FFDA;--secondary-color:#0A192F;--text-color:#8892B0;--white:#FFFFFF;--background-color:#0A192F;--accent-color-lighter:#24364A;--border-radius:8px;}
         body{margin:0;font-family:'Tajawal',system-ui,-apple-system,sans-serif;background-color:var(--background-color);color:var(--text-color);direction:rtl;line-height:1.6;overflow-x:hidden;scroll-behavior:smooth}
         .navbar{position:fixed;top:0;left:0;width:100%;background-color:rgba(10,25,47,0.95);padding:0.8rem 0;z-index:1000;backdrop-filter:blur(10px);box-shadow:0 2px 10px rgba(0,0,0,0.1);transition:padding 0.3s ease,background-color 0.3s ease, transform 0.3s ease;will-change:padding,background-color,transform}
         .navbar-container{display:flex;justify-content:space-between;align-items:center;max-width:1200px;margin:0 auto;padding:0 2rem}
         .logo img{height:55px;width:auto}
-        .hero{min-height:100vh;display:flex;align-items:center;position:relative;padding-top:80px;overflow:hidden;background-color:var(--secondary-color)} /* Added background for no-JS/canvas fail */
+        .hero{min-height:100vh;display:flex;align-items:center;position:relative;padding-top:80px;overflow:hidden;background-color:var(--secondary-color)}
         .hero-container{position:relative;z-index:2;text-align:center;width:90%;max-width:1200px;margin:0 auto;padding:2rem 1rem}
         .hero-mini-title{color:var(--primary-color);font-size:1.1rem;margin-bottom:1rem;display:block;font-weight:500}
         .hero h1{color:var(--white);font-size:2.8rem;margin-bottom:1.5rem;line-height:1.2}
@@ -122,7 +116,7 @@
     <link rel="stylesheet" href="style.css" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="style.css"></noscript>
 
-    <!-- Structured Data - Enhanced for Saudi SEO -->
+    <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -168,8 +162,6 @@
         "https://www.tiktok.com/@bright1ai",
         "https://www.instagram.com/iililil44",
         "https://www.youtube.com/@TeechLab"
-        /* "https://twitter.com/YourTwitterHandle", */ /* Uncomment if available */
-        /* "https://www.linkedin.com/company/your-linkedin-page" */ /* Uncomment if available */
       ],
       "foundingDate": "2023",
       "founder": {
@@ -181,7 +173,7 @@
         "@type": "ReserveAction",
         "target": {
           "@type": "EntryPoint",
-          "urlTemplate": "https://www.brightaii.com/consultation.html",
+          "urlTemplate": "https://brightai.site/consultation.html",
           "inLanguage": "ar-SA",
           "actionPlatform": [
             "http://schema.org/DesktopWebPlatform",
@@ -205,7 +197,7 @@
         "name": "مُشرقة AI",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://www.brightaii.com/mushrqah-ai-logo.png",
+          "url": "https://www2.0zz0.com/2025/06/23/22/317775783.png",
           "width": 200,
           "height": 55
         }
@@ -215,7 +207,7 @@
         "@type": "SearchAction",
         "target": {
           "@type": "EntryPoint",
-          "urlTemplate": "https://www.brightaii.com/search?q={search_term_string}"
+          "urlTemplate": "https://brightai.site/search?q={search_term_string}"
         },
         "query-input": "required name=search_term_string"
       }
@@ -229,47 +221,24 @@
         "@type": "ListItem",
         "position": 1,
         "name": "الرئيسية - مُشرقة AI: ريادة الذكاء الاصطناعي في المملكة العربية السعودية",
-        "item": "https://brightai.site/index.html"
+        "item": "https://brightai.site/"
       }]
     }
     </script>
-
-    <!-- GTM/Analytics Expert Fix: Google Tag Manager script moved after dataLayer initialization -->
+    
+    <!-- GTM/Analytics Expert Fix: Scripts loading -->
+    <script async src="https://analytics.ahrefs.com/analytics.js" data-key="Cq+jwsfq74a4uXGJ0gEW5A"></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-SZKTP4496K"></script>
     <!-- End GTM/Analytics Expert Fix -->
-
-    <!-- Inject SEO Meta Tags via JS -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Create and append keywords meta tag
-            const keywordsMeta = document.createElement('meta');
-            keywordsMeta.name = 'keywords';
-            keywordsMeta.content = 'شركة مُشرقة AI الرياض, الذكاء الاصطناعي السعودية, شات بوت عربي سعودي, أتمتة العمليات RPA الرياض, تحليل البيانات الضخمة جدة, خدمات AI الدمام, رؤية 2030 الذكاء الاصطناعي, تعلم الآلي السعودية, روبوتات ذكية سعودية, استشارات الذكاء الاصطناعي المملكة';
-            document.head.appendChild(keywordsMeta);
-
-            // Create and append news_keywords meta tag
-            const newsKeywordsMeta = document.createElement('meta');
-            newsKeywordsMeta.name = 'news_keywords';
-            newsKeywordsMeta.content = 'الذكاء الاصطناعي, الرياض, جدة, الدمام, مُشرقة AI';
-            document.head.appendChild(newsKeywordsMeta);
-
-            // Create and append article:tag meta tag
-            const articleTagMeta = document.createElement('meta');
-            articleTagMeta.name = 'article:tag';
-            articleTagMeta.content = 'شركة ذكاء اصطناعي سعودية, حلول AI الرياض, أتمتة سعودية, شات بوت سعودي';
-            document.head.appendChild(articleTagMeta);
-        });
-    </script>
-<meta name="google-site-verification" content="yy8eQWsy22VYduXUQS7pN3LJYbk6g7UCBj4iuuo-4xk" />
 </head>
 <body>
     <!-- القائمة العلوية -->
     <nav class="navbar" aria-label="القائمة الرئيسية لموقع مُشرقة AI لخدمات الذكاء الاصطناعي والروبوتات في السعودية">
         <div class="navbar-container">
             <a href="#home" class="logo" aria-label="الصفحة الرئيسية لشركة مُشرقة AI - رائدة الذكاء الاصطناعي في السعودية">
-                <img src="https://www2.0zz0.com/2025/06/23/22/317775783.png" alt="شعار شركة مُشرقة AI السعودية الرائدة في حلول الذكاء الاصطناعي" style="height: 55px; width: auto;">
+                <img src="https://www2.0zz0.com/2025/06/23/22/317775783.png" alt="شعار شركة مُشرقة AI السعودية الرائدة في حلول الذكاء الاصطناعي" width="200" height="55" style="height: 55px; width: auto;">
             </a>
-            <button class="hamburger" aria-label="فتح قائمة التنقل لاستعراض خدمات الذكاء الاصطناعي من مُشرقة AI في السعودية" aria-expanded="false" aria-controls="nav-links-list" type="button">
+            <button class="hamburger" aria-label="فتح قائمة التنقل" aria-expanded="false" aria-controls="nav-links-list" type="button">
                 <i class="fas fa-bars" aria-hidden="true"></i>
                 <span class="sr-only">فتح القائمة</span>
             </button>
@@ -294,7 +263,10 @@
             <canvas id="heroCanvas" class="hero-canvas" aria-hidden="true" role="presentation"></canvas>
             <div class="hero-container">
                 <div class="hero-content">
-                    <span class="hero-mini-title">مُشرقة AI: الشركة السعودية الرائدة في الذكاء الاصطناعي بالرياض، متخصصة في التعلم العميق، حلول الأتمتة الذكية، وتطوير روبوتات المحادثة العربية لدعم التحول الرقمي في المملكة العربية السعودية وتحقيق رؤية 2030.</span>
+                    <span class="hero-mini-title">
+                        مُشرقة AI: الشركة السعودية الرائدة في الذكاء الاصطناعي بالرياض، متخصصة في التعلم العميق، حلول الأتمتة الذكية، وتطوير روبوتات.
+
+                    </span>
                     <h1 id="hero-main-title">شركة مُشرقة AI | شريكك الاستراتيجي في رحلة التحول الرقمي والابتكار بالذكاء الاصطناعي في السعودية - الرياض جدة الدمام</h1>
                     <p class="hero-description">
                         نحن في مُشرقة AI، شركة سعودية متخصصة ورائدة في مجال الذكاء الاصطناعي (AI) وتطبيقاته المبتكرة في المملكة العربية السعودية، نقدم حلول التعلم العميق المتقدمة، ونطور روبوتات المحادثة العربية الذكية (شات بوت عربي) المصممة خصيصاً للسوق السعودي وتحدياته، بالإضافة إلى خدمات الأتمتة الذكية. نوفر خدمات الذكاء الاصطناعي المتكاملة في جميع أنحاء المملكة، بما في ذلك الرياض، جدة، والدمام. تشمل خبراتنا العميقة: تحليل البيانات الضخمة في السعودية، أتمتة العمليات بالذكاء الاصطناعي (RPA)، معالجة اللغة العربية الطبيعية (NLP) واللهجات المحلية، والذكاء الاصطناعي التوليدي. اكتشف كيف يمكن لشركتك السعودية الاستفادة من قوة التعلم الآلي، الذكاء الاصطناعي، وحلولنا المبتكرة لتحسين الكفاءة التشغيلية، تعزيز مسيرة التحول الرقمي، وتحقيق أهداف رؤية المملكة 2030 بفعالية وتميز.
@@ -326,7 +298,7 @@
                     <article class="demo-feature" itemscope itemtype="https://schema.org/SoftwareApplication">
                         <meta itemprop="applicationCategory" content="BusinessApplication, HRSoftware">
                         <meta itemprop="operatingSystem" content="Web-based">
-                        <link itemprop="screenshot" href="https://www.brightaii.com/h/screenshot-hr.png">
+                        <link itemprop="screenshot" href="https://brightai.site/h/screenshot-hr.png">
                         <div class="demo-icon" aria-hidden="true"><i class="fas fa-users-cog"></i></div>
                         <h3 itemprop="name">نظام موارد بشرية ذكي (تجريبي) لدعم الشركات السعودية في إدارة الكفاءات</h3>
                         <p itemprop="description">جرّب نموذجاً أولياً لنظام موارد بشرية متطور مدعوم بالذكاء الاصطناعي، مصمم خصيصاً لتبسيط عمليات التوظيف في السعودية، إدارة أداء الموظفين، وتحليل كفاءات الكوادر السعودية باستخدام تقنيات التعلم الآلي المتقدمة.</p>
@@ -335,7 +307,7 @@
                     <article class="demo-feature" itemscope itemtype="https://schema.org/SoftwareApplication">
                          <meta itemprop="applicationCategory" content="BusinessApplication, CustomerServiceSoftware">
                         <meta itemprop="operatingSystem" content="Web-based">
-                        <link itemprop="screenshot" href="https://www.brightaii.com/h/screenshot-cs.png">
+                        <link itemprop="screenshot" href="https://brightai.site/h/screenshot-cs.png">
                         <div class="demo-icon" aria-hidden="true"><i class="fas fa-headset"></i></div>
                         <h3 itemprop="name">نظام خدمة عملاء كتابي وصوتي (تجريبي) متوافق مع السوق السعودي واللهجات المحلية</h3>
                         <p itemprop="description">استكشف نموذجاً لنظام خدمة عملاء مبتكر يعمل بالذكاء الاصطناعي، يدعم التفاعل الكتابي والصوتي باللغة العربية الفصحى واللهجات السعودية المتداولة، لتقديم دعم فوري وفعال لعملاء الشركات والمؤسسات في جميع أنحاء المملكة.</p>
@@ -732,7 +704,7 @@
 
                 <div class="cta-container">
                     <a href="about-us.html" class="cta-button" aria-label="تعرف على المزيد عن شركة مُشرقة AI السعودية الرائدة في مجال الذكاء الاصطناعي وتطبيقاته">تعرف على شركة مُشرقة AI السعودية أكثر</a>
-                    <a href="https://brightai.site.com/contact.html" class="cta-button cta-contact" aria-label="تواصل الآن مع فريق مُشرقة AI المتخصص في تقديم حلول الذكاء الاصطناعي المبتكرة في السعودية">تواصل مع فريق مُشرقة AI في السعودية</a>
+                    <a href="https://brightai.site/contact.html" class="cta-button cta-contact" aria-label="تواصل الآن مع فريق مُشرقة AI المتخصص في تقديم حلول الذكاء الاصطناعي المبتكرة في السعودية">تواصل مع فريق مُشرقة AI في السعودية</a>
                     <a href="https://brightai.site/Docfile/About.Bright.AI.html" class="cta-button cta-docs" aria-label="اكتشف المزيد عن خدمات الذكاء الاصطناعي وحلول الأتمتة المتقدمة التي تقدمها مُشرقة AI للشركات السعودية الطموحة">اعرف المزيد عن خدماتنا للشركات السعودية</a>
                 </div>
             </div>
@@ -754,7 +726,7 @@
                         <meta itemprop="author" content="مُشرقة AI">
                         <meta itemprop="keywords" content="الذكاء الاصطناعي في القطاع المالي السعودي, تحليل البيانات المالية السعودية, أتمتة مالية بالذكاء الاصطناعي, تعلم الآلة في المالية السعودية, Fintech السعودية">
                         <div class="case-image">
-                            <img src="https://b.top4top.io/p_3346f6d7f1.png" alt="تحليل القطاع المالي السعودي باستخدام الذكاء الاصطناعي وحلول التعلم الآلي من شركة مُشرقة AI في الرياض" loading="lazy" width="400" height="250" itemprop="image">
+                            <img src="https://b.top4top.io/p_3346f6d7f1.png" alt="رسم بياني يوضح تحليل القطاع المالي السعودي باستخدام الذكاء الاصطناعي وحلول التعلم الآلي من شركة مُشرقة AI في الرياض" loading="lazy" width="400" height="250" itemprop="image">
                         </div>
                         <div class="case-content">
                             <span class="case-tag" itemprop="keywords">القطاع المالي السعودي و AI</span>
@@ -782,7 +754,7 @@
                         <meta itemprop="author" content="مُشرقة AI">
                         <meta itemprop="keywords" content="خدمة العملاء بالذكاء الاصطناعي في السعودية, شات بوت عربي للشركات السعودية, وكيل الذكاء الاصطناعي العربي, روبوتات المحادثة العربية, دعم فني ذكي السعودية, تجربة عملاء AI في المملكة">
                         <div class="case-image">
-                            <img src="https://f.top4top.io/p_33465vrmz1.png" alt="وكلاء الذكاء الاصطناعي والشات البوت العربي في خدمة عملاء قطاع الاتصالات السعودي - دراسة حالة من مُشرقة AI" loading="lazy" width="400" height="250" itemprop="image">
+                            <img src="https://f.top4top.io/p_33465vrmz1.png" alt="شاشة توضح تفاعل وكلاء الذكاء الاصطناعي والشات البوت العربي في خدمة عملاء قطاع الاتصالات السعودي" loading="lazy" width="400" height="250" itemprop="image">
                         </div>
                         <div class="case-content">
                             <span class="case-tag" itemprop="keywords">خدمة العملاء بالـ AI في السعودية</span>
@@ -810,7 +782,7 @@
                         <meta itemprop="author" content="مُشرقة AI">
                         <meta itemprop="keywords" content="الذكاء الاصطناعي التوليدي السعودية, إنشاء محتوى بالذكاء الاصطناعي في السعودية, Generative AI Saudi Arabia, المحتوى الرقمي العربي AI, أدوات AI للمحتوى السعودي">
                         <div class="case-image">
-                            <img src="https://a.top4top.io/p_3346glqnh1.png" alt="الذكاء الاصطناعي التوليدي لإنشاء المحتوى العربي الإبداعي في السعودية - تطبيقات Generative AI من شركة مُشرقة AI" loading="lazy" width="400" height="250" itemprop="image">
+                            <img src="https://a.top4top.io/p_3346glqnh1.png" alt="صورة تجريدية ترمز إلى الذكاء الاصطناعي التوليدي لإنشاء المحتوى العربي الإبداعي في السعودية وتطبيقات Generative AI" loading="lazy" width="400" height="250" itemprop="image">
                         </div>
                         <div class="case-content">
                             <span class="case-tag" itemprop="keywords">المحتوى التوليدي بالـ AI في السعودية</span>
@@ -1386,19 +1358,19 @@
                         <p class="service-description" itemprop="description">نطور نماذج تعلم آلي متخصصة ومتقدمة باستخدام أحدث الخوارزميات لتحليل البيانات الضخمة، التنبؤ بالاتجاهات المستقبلية، وتقديم تنبؤات دقيقة وموثوقة تعزز قراراتك الاستراتيجية وتدعم نمو أعمالك في السوق السعودي. نقدم خدمات تعلم الآلة المتكاملة في الدمام، الرياض، وجدة، وكافة مدن المملكة.</p>
                     </article>
 
-<article class="service-card" itemscope itemtype="https://schema.org/Service">
-    <meta itemprop="serviceType" content="الرؤية الحاسوبية (Computer Vision) السعودية, تحليل الصور والفيديو بالذكاء الاصطناعي, تطبيقات Computer Vision للمملكة">
-    <div class="service-icon" aria-hidden="true"><i class="fas fa-eye"></i></div>
-    <h3 class="service-title" itemprop="name">الرؤية الحاسوبية (Computer Vision) لتطبيقات سعودية مبتكرة وفعالة في مختلف القطاعات الحيوية</h3>
-    <p class="service-description" itemprop="description">تقدم مُشرقة AI حلول رؤية حاسوبية متطورة مصممة للقطاعات الحيوية في المملكة العربية السعودية. نطور أنظمة ذكية لتحليل الصور والفيديو بدقة عالية، سواءً لمراقبة الجودة في المصانع بمدن مثل الرياض والدمام، أو لتعزيز الأمن في المنشآت الحيوية بجدة. تستخدم تقنياتنا أحدث نماذج التعلم العميق للتعرف على الأشياء وتحليل المشاهد المعقدة في الوقت الفعلي. تشمل تطبيقاتنا مراقبة خطوط الإنتاج في المصانع السعودية، تحسين عمليات التفتيش في قطاع النفط والغاز، ومساعدة الأطباء في تحليل الصور الطبية بدقة عالية. تم تطوير هذه الأنظمة لتعمل في البيئات السعودية الصعبة وتتوافق مع المعايير المحلية. تواصل مع فريقنا في الرياض، جدة أو الدمام لاكتشاف كيف يمكن للرؤية الحاسوبية تحويل عمليات مؤسستك في المملكة.</p>
-</article>
+                    <article class="service-card" itemscope itemtype="https://schema.org/Service">
+                        <meta itemprop="serviceType" content="الرؤية الحاسوبية (Computer Vision) السعودية, تحليل الصور والفيديو بالذكاء الاصطناعي, تطبيقات Computer Vision للمملكة">
+                        <div class="service-icon" aria-hidden="true"><i class="fas fa-eye"></i></div>
+                        <h3 class="service-title" itemprop="name">الرؤية الحاسوبية (Computer Vision) لتطبيقات سعودية مبتكرة وفعالة في مختلف القطاعات الحيوية</h3>
+                        <p class="service-description" itemprop="description">تقدم مُشرقة AI حلول رؤية حاسوبية متطورة مصممة للقطاعات الحيوية في المملكة العربية السعودية. نطور أنظمة ذكية لتحليل الصور والفيديو بدقة عالية، سواءً لمراقبة الجودة في المصانع بمدن مثل الرياض والدمام، أو لتعزيز الأمن في المنشآت الحيوية بجدة. تستخدم تقنياتنا أحدث نماذج التعلم العميق للتعرف على الأشياء وتحليل المشاهد المعقدة في الوقت الفعلي. تشمل تطبيقاتنا مراقبة خطوط الإنتاج في المصانع السعودية، تحسين عمليات التفتيش في قطاع النفط والغاز، ومساعدة الأطباء في تحليل الصور الطبية بدقة عالية. تم تطوير هذه الأنظمة لتعمل في البيئات السعودية الصعبة وتتوافق مع المعايير المحلية. تواصل مع فريقنا في الرياض، جدة أو الدمام لاكتشاف كيف يمكن للرؤية الحاسوبية تحويل عمليات مؤسستك في المملكة.</p>
+                    </article>
 
-<article class="service-card" itemscope itemtype="https://schema.org/Service">
-    <meta itemprop="serviceType" content="الروبوتات الذكية والمركبات ذاتية القيادة, تطبيقات الروبوتات في السعودية, أتمتة العمليات الصناعية بالروبوتات">
-    <div class="service-icon" aria-hidden="true"><i class="fas fa-robot"></i></div>
-    <h3 class="service-title" itemprop="name">الروبوتات الذكية والمركبات ذاتية القيادة لدعم الصناعة والخدمات اللوجستية في المملكة العربية السعودية</h3>
-    <p class="service-description" itemprop="description">تقدم مُشرقة AI حلول روبوتات ذكية ومركبات ذاتية القيادة مصممة لتحويل القطاع الصناعي واللوجستي في المملكة العربية السعودية. نطور أنظمة متكاملة للروبوتات الصناعية التي تعمل في مصانع الرياض والدمام لتحسين الإنتاجية وجودة التصنيع. كما نقدم حلول مركبات ذاتية القيادة لإدارة المستودعات في جدة وتوصيل البضائع في المناطق الحضرية السعودية. تعمل روبوتاتنا باستخدام خوارزميات الذكاء الاصطناعي المتقدمة للتنقل في البيئات المعقدة وتنفيذ المهام بدقة عالية. تشمل تطبيقاتنا أتمتة خطوط التجميع، إدارة المخازن الذكية، والتوصيل الآمن للبضائع. تم تصميم جميع الحلول لتحمل الظروف البيئية السعودية وتتوافق مع معايير السلامة المحلية. تواصل معنا في الرياض، جدة أو الدمام لاستكشاف كيف يمكن للروبوتات الذكية تحويل عمليات مؤسستك في المملكة.</p>
-</article>
+                    <article class="service-card" itemscope itemtype="https://schema.org/Service">
+                        <meta itemprop="serviceType" content="الروبوتات الذكية والمركبات ذاتية القيادة, تطبيقات الروبوتات في السعودية, أتمتة العمليات الصناعية بالروبوتات">
+                        <div class="service-icon" aria-hidden="true"><i class="fas fa-robot"></i></div>
+                        <h3 class="service-title" itemprop="name">الروبوتات الذكية والمركبات ذاتية القيادة لدعم الصناعة والخدمات اللوجستية في المملكة العربية السعودية</h3>
+                        <p class="service-description" itemprop="description">تقدم مُشرقة AI حلول روبوتات ذكية ومركبات ذاتية القيادة مصممة لتحويل القطاع الصناعي واللوجستي في المملكة العربية السعودية. نطور أنظمة متكاملة للروبوتات الصناعية التي تعمل في مصانع الرياض والدمام لتحسين الإنتاجية وجودة التصنيع. كما نقدم حلول مركبات ذاتية القيادة لإدارة المستودعات في جدة وتوصيل البضائع في المناطق الحضرية السعودية. تعمل روبوتاتنا باستخدام خوارزميات الذكاء الاصطناعي المتقدمة للتنقل في البيئات المعقدة وتنفيذ المهام بدقة عالية. تشمل تطبيقاتنا أتمتة خطوط التجميع، إدارة المخازن الذكية، والتوصيل الآمن للبضائع. تم تصميم جميع الحلول لتحمل الظروف البيئية السعودية وتتوافق مع معايير السلامة المحلية. تواصل معنا في الرياض، جدة أو الدمام لاستكشاف كيف يمكن للروبوتات الذكية تحويل عمليات مؤسستك في المملكة.</p>
+                    </article>
 
                     <article class="service-card" itemscope itemtype="https://schema.org/Service">
                         <meta itemprop="serviceType" content="تحليل البيانات بالذكاء الاصطناعي (AI Analytics) السعودية, تحليل بيانات الأعمال للشركات في الرياض, ذكاء الأعمال السعودية">
@@ -1421,12 +1393,12 @@
                         <p class="service-description" itemprop="description">نصمم تجارب تفاعلية غامرة وفريدة باستخدام أحدث تقنيات الواقع المعزز (AR) والواقع الافتراضي (VR) المدعومة بالذكاء الاصطناعي. نقدم تطبيقات مبتكرة وحلولاً متطورة في قطاعات حيوية مثل التعليم السعودي، التدريب المهني، التسويق التفاعلي، والسياحة والترفيه في السعودية، مما يعزز التفاعل بشكل كبير ويحسن تجربة المستخدم إلى آفاق جديدة.</p>
                     </article>
 
-<article class="service-card" itemscope itemtype="https://schema.org/Service">
-    <meta itemprop="serviceType" content="مكتبة رقمية للذكاء الاصطناعي السعودية, مصادر تعلم AI بالعربية, تدريب على الذكاء الاصطناعي السعودية, تطوير كفاءات AI سعودية">
-    <div class="service-icon" aria-hidden="true"><i class="fas fa-book"></i></div>
-    <h3 class="service-title" itemprop="name">مكتبة رقمية للذكاء الاصطناعي ومصادر تعلم متكاملة لدعم المحتوى العربي السعودي وتنمية الكفاءات الوطنية الشابة</h3>
-    <p class="service-description" itemprop="description">تقدم مُشرقة AI المكتبة الرقمية الأكثر شمولاً للذكاء الاصطناعي في المملكة العربية السعودية، مصممة خصيصاً لدعم تنمية الكفاءات الوطنية. تحتوي المكتبة على آلاف المصادر باللغة العربية تشمل دورات تدريبية متخصصة في الذكاء الاصطناعي، دراسات حالة لشركات سعودية، وأدوات عملية لتنفيذ مشاريع AI. تم تطوير المحتوى بالتعاون مع خبراء من الرياض، جدة والدمام لضمان ملاءمته لاحتياجات السوق السعودي. نقدم ورش عمل افتراضية وحضورية في مختلف مدن المملكة لتطوير مهارات الشباب السعودي في مجال الذكاء الاصطناعي. تشمل المكتبة أيضاً منتديات للنقاش وتبادل الخبرات بين المتخصصين في السعودية. تواصل معنا في الرياض، جدة أو الدمام للوصول إلى هذه المصادر القيمة والمساهمة في بناء مستقبل الذكاء الاصطناعي في المملكة.</p>
-</article>
+                    <article class="service-card" itemscope itemtype="https://schema.org/Service">
+                        <meta itemprop="serviceType" content="مكتبة رقمية للذكاء الاصطناعي السعودية, مصادر تعلم AI بالعربية, تدريب على الذكاء الاصطناعي السعودية, تطوير كفاءات AI سعودية">
+                        <div class="service-icon" aria-hidden="true"><i class="fas fa-book"></i></div>
+                        <h3 class="service-title" itemprop="name">مكتبة رقمية للذكاء الاصطناعي ومصادر تعلم متكاملة لدعم المحتوى العربي السعودي وتنمية الكفاءات الوطنية الشابة</h3>
+                        <p class="service-description" itemprop="description">تقدم مُشرقة AI المكتبة الرقمية الأكثر شمولاً للذكاء الاصطناعي في المملكة العربية السعودية، مصممة خصيصاً لدعم تنمية الكفاءات الوطنية. تحتوي المكتبة على آلاف المصادر باللغة العربية تشمل دورات تدريبية متخصصة في الذكاء الاصطناعي، دراسات حالة لشركات سعودية، وأدوات عملية لتنفيذ مشاريع AI. تم تطوير المحتوى بالتعاون مع خبراء من الرياض، جدة والدمام لضمان ملاءمته لاحتياجات السوق السعودي. نقدم ورش عمل افتراضية وحضورية في مختلف مدن المملكة لتطوير مهارات الشباب السعودي في مجال الذكاء الاصطناعي. تشمل المكتبة أيضاً منتديات للنقاش وتبادل الخبرات بين المتخصصين في السعودية. تواصل معنا في الرياض، جدة أو الدمام للوصول إلى هذه المصادر القيمة والمساهمة في بناء مستقبل الذكاء الاصطناعي في المملكة.</p>
+                    </article>
                 </div>
             </div>
         </section>
@@ -1700,66 +1672,66 @@
                 </div>
 
                 <div class="case-studies-grid">
-<article class="case-study-card" itemscope itemtype="https://schema.org/CaseStudy">
-    <meta itemprop="about" content="التحول الرقمي في القطاع الحكومي السعودي باستخدام الذكاء الاصطناعي">
-    <h3 itemprop="name">تحول رقمي شامل لمؤسسة حكومية سعودية كبرى باستخدام حلول الذكاء الاصطناعي والأتمتة المتقدمة من مُشرقة AI</h3>
-    <div class="metrics">
-        <div class="metric" itemprop="result" itemscope itemtype="https://schema.org/QuantitativeValue">
-            <meta itemprop="unitText" content="%">
-            <span class="value" itemprop="value">85</span>
-            <span class="label" itemprop="description">تحسن كبير في كفاءة تقديم الخدمات الحكومية السعودية وتجربة المواطنين والمقيمين</span>
-        </div>
-        <div class="metric" itemprop="result" itemscope itemtype="https://schema.org/QuantitativeValue">
-            <meta itemprop="unitText" content="معاملة">
-            <span class="value" itemprop="value">2,500,000+</span>
-            <span class="label" itemprop="description">معاملة حكومية تمت معالجتها آلياً بكفاءة عالية في السعودية باستخدام تقنيات RPA و AI</span>
-        </div>
-        <div class="metric" itemprop="result" itemscope itemtype="https://schema.org/QuantitativeValue">
-            <meta itemprop="unitText" content="%">
-            <span class="value" itemprop="value">60</span>
-            <span class="label" itemprop="description">تقليل ملموس في وقت معالجة المعاملات الحكومية السعودية ودعم فعال لمبادرات التحول الرقمي</span>
-        </div>
-    </div>
-    <div class="implementation-details">
-        <h4>التقنيات المستخدمة في المشروع الحكومي السعودي الرائد:</h4>
-        <ul>
-            <li>نموذج BERT-Arabic المخصص والمطور من مُشرقة AI: تحقيق دقة تصل إلى 96% في فهم وتحليل الوثائق والمستندات الحكومية السعودية الرسمية.</li>
-            <li>نظام أتمتة عمليات روبوتية (RPA) متقدم ومتكامل: معالجة آلية وفعالة لأكثر من 50,000 معاملة يومياً داخل مختلف إدارات المؤسسة في المملكة.</li>
-            <li>خوارزميات تحليل البيانات الذكية وتقنيات التعلم الآلي: تحسين جودة وسرعة اتخاذ القرارات الحكومية السعودية بنسبة 40% ودعم تحقيق مستهدفات رؤية 2030.</li>
-        </ul>
-        <p>قامت شركة مُشرقة AI بتنفيذ مشروع تحول رقمي شامل لمؤسسة حكومية كبرى في المملكة العربية السعودية تشمل فروعها في الرياض، جدة والدمام. تم تطوير نظام متكامل يعمل على أتمتة معالجة أكثر من 2.5 مليون معاملة حكومية سنوياً باستخدام تقنيات الذكاء الاصطناعي المتقدمة. تم تدريب النماذج على فهم الوثائق الرسمية السعودية بدقة عالية تصل إلى 96%، مما ساهم في تقليل وقت المعالجة بنسبة 60%. تم تنفيذ المشروع على مراحل، بدءاً من فرع الرياض ثم التوسع إلى فروع جدة والدمام، مع مراعاة الخصوصية الإدارية لكل منطقة. ساهمت هذه الحلول في تحسين تجربة المواطنين وزيادة كفاءة الخدمات الحكومية في جميع أنحاء المملكة، مع الحفاظ على أعلى معايير الأمن السيبراني السعودي.</p>
-    </div>
-</article>
+                    <article class="case-study-card" itemscope itemtype="https://schema.org/CaseStudy">
+                        <meta itemprop="about" content="التحول الرقمي في القطاع الحكومي السعودي باستخدام الذكاء الاصطناعي">
+                        <h3 itemprop="name">تحول رقمي شامل لمؤسسة حكومية سعودية كبرى باستخدام حلول الذكاء الاصطناعي والأتمتة المتقدمة من مُشرقة AI</h3>
+                        <div class="metrics">
+                            <div class="metric" itemprop="result" itemscope itemtype="https://schema.org/QuantitativeValue">
+                                <meta itemprop="unitText" content="%">
+                                <span class="value" itemprop="value">85</span>
+                                <span class="label" itemprop="description">تحسن كبير في كفاءة تقديم الخدمات الحكومية السعودية وتجربة المواطنين والمقيمين</span>
+                            </div>
+                            <div class="metric" itemprop="result" itemscope itemtype="https://schema.org/QuantitativeValue">
+                                <meta itemprop="unitText" content="معاملة">
+                                <span class="value" itemprop="value">2,500,000+</span>
+                                <span class="label" itemprop="description">معاملة حكومية تمت معالجتها آلياً بكفاءة عالية في السعودية باستخدام تقنيات RPA و AI</span>
+                            </div>
+                            <div class="metric" itemprop="result" itemscope itemtype="https://schema.org/QuantitativeValue">
+                                <meta itemprop="unitText" content="%">
+                                <span class="value" itemprop="value">60</span>
+                                <span class="label" itemprop="description">تقليل ملموس في وقت معالجة المعاملات الحكومية السعودية ودعم فعال لمبادرات التحول الرقمي</span>
+                            </div>
+                        </div>
+                        <div class="implementation-details">
+                            <h4>التقنيات المستخدمة في المشروع الحكومي السعودي الرائد:</h4>
+                            <ul>
+                                <li>نموذج BERT-Arabic المخصص والمطور من مُشرقة AI: تحقيق دقة تصل إلى 96% في فهم وتحليل الوثائق والمستندات الحكومية السعودية الرسمية.</li>
+                                <li>نظام أتمتة عمليات روبوتية (RPA) متقدم ومتكامل: معالجة آلية وفعالة لأكثر من 50,000 معاملة يومياً داخل مختلف إدارات المؤسسة في المملكة.</li>
+                                <li>خوارزميات تحليل البيانات الذكية وتقنيات التعلم الآلي: تحسين جودة وسرعة اتخاذ القرارات الحكومية السعودية بنسبة 40% ودعم تحقيق مستهدفات رؤية 2030.</li>
+                            </ul>
+                            <p>قامت شركة مُشرقة AI بتنفيذ مشروع تحول رقمي شامل لمؤسسة حكومية كبرى في المملكة العربية السعودية تشمل فروعها في الرياض، جدة والدمام. تم تطوير نظام متكامل يعمل على أتمتة معالجة أكثر من 2.5 مليون معاملة حكومية سنوياً باستخدام تقنيات الذكاء الاصطناعي المتقدمة. تم تدريب النماذج على فهم الوثائق الرسمية السعودية بدقة عالية تصل إلى 96%، مما ساهم في تقليل وقت المعالجة بنسبة 60%. تم تنفيذ المشروع على مراحل، بدءاً من فرع الرياض ثم التوسع إلى فروع جدة والدمام، مع مراعاة الخصوصية الإدارية لكل منطقة. ساهمت هذه الحلول في تحسين تجربة المواطنين وزيادة كفاءة الخدمات الحكومية في جميع أنحاء المملكة، مع الحفاظ على أعلى معايير الأمن السيبراني السعودي.</p>
+                        </div>
+                    </article>
 
-<article class="case-study-card" itemscope itemtype="https://schema.org/CaseStudy">
-    <meta itemprop="about" content="أتمتة خدمة العملاء لشركات الاتصالات السعودية باستخدام شات بوت ذكي">
-    <h3 itemprop="name">أتمتة خدمة العملاء لشركة اتصالات كبرى ورائدة في السعودية باستخدام شات بوت ذكي يدعم اللغة العربية واللهجات المحلية بامتياز</h3>
-    <div class="metrics">
-        <div class="metric" itemprop="result" itemscope itemtype="https://schema.org/QuantitativeValue">
-            <meta itemprop="unitText" content="%">
-            <span class="value" itemprop="value">92</span>
-            <span class="label" itemprop="description">مستوى رضا العملاء المرتفع عن جودة وفعالية خدمة الشات البوت في الشركة السعودية</span>
-        </div>
-        <div class="metric"> <!-- Qualitative result -->
-            <span class="value">24/7</span>
-            <span class="label" itemprop="result">خدمة عملاء آلية متواصلة ومتاحة بدون انقطاع لجميع عملاء الشركة في المملكة عبر الشات البوت الذكي</span>
-        </div>
-        <div class="metric" itemprop="result" itemscope itemtype="https://schema.org/QuantitativeValue">
-            <meta itemprop="unitText" content="%">
-            <span class="value" itemprop="value">75</span>
-            <span class="label" itemprop="description">تقليل كبير في التكاليف التشغيلية لمركز الاتصال السعودي بفضل الاعتماد على الشات البوت الذكي والفعال</span>
-        </div>
-    </div>
-    <div class="implementation-details">
-        <h4>التفاصيل التقنية لحل الشات البوت السعودي المتطور:</h4>
-        <ul>
-            <li>وكيل محادثة ذكي (Chatbot) متقدم يدعم اللغة العربية واللهجات السعودية المتنوعة: قدرة على معالجة 10,000 محادثة يومياً بكفاءة ودقة عالية.</li>
-            <li>دعم شامل لأكثر من 5 لهجات عربية رئيسية مستخدمة في السعودية بدقة فهم تتجاوز 94% بفضل تقنيات معالجة اللغة الطبيعية (NLP) المتقدمة.</li>
-            <li>نظام تحليل المشاعر في الوقت الفعلي مدمج: تحقيق دقة تصل إلى 89% في تحديد مستوى رضا العميل السعودي وتوجيه المحادثات بذكاء لتحقيق أفضل النتائج.</li>
-        </ul>
-        <p>قامت شركة مُشرقة AI بتنفيذ حل شات بوت متطور لشركة اتصالات رائدة في المملكة العربية السعودية، مع تركيز خاص على فروع الرياض، جدة والدمام. تم تدريب النظام على فهم اللهجات السعودية المختلفة بدقة تصل إلى 94%، مما ساهم في رفع رضا العملاء إلى 92%. يعالج الشات بوت أكثر من 10,000 استفسار يومياً من عملاء في جميع أنحاء المملكة، مع قدرة على تحليل مشاعر العملاء في الوقت الفعلي. تم تنفيذ المشروع على مراحل، بدءاً بفرع الرياض ثم التوسع إلى جدة والدمام، مع تكييف النظام للتعامل مع الخصوصية اللغوية لكل منطقة. ساهم الحل في خفض تكاليف مراكز الاتصال بنسبة 75% مع تحسين جودة الخدمة المقدمة لعملاء الاتصالات في المملكة.</p>
-    </div>
-</article>
+                    <article class="case-study-card" itemscope itemtype="https://schema.org/CaseStudy">
+                        <meta itemprop="about" content="أتمتة خدمة العملاء لشركات الاتصالات السعودية باستخدام شات بوت ذكي">
+                        <h3 itemprop="name">أتمتة خدمة العملاء لشركة اتصالات كبرى ورائدة في السعودية باستخدام شات بوت ذكي يدعم اللغة العربية واللهجات المحلية بامتياز</h3>
+                        <div class="metrics">
+                            <div class="metric" itemprop="result" itemscope itemtype="https://schema.org/QuantitativeValue">
+                                <meta itemprop="unitText" content="%">
+                                <span class="value" itemprop="value">92</span>
+                                <span class="label" itemprop="description">مستوى رضا العملاء المرتفع عن جودة وفعالية خدمة الشات البوت في الشركة السعودية</span>
+                            </div>
+                            <div class="metric"> <!-- Qualitative result -->
+                                <span class="value">24/7</span>
+                                <span class="label" itemprop="result">خدمة عملاء آلية متواصلة ومتاحة بدون انقطاع لجميع عملاء الشركة في المملكة عبر الشات البوت الذكي</span>
+                            </div>
+                            <div class="metric" itemprop="result" itemscope itemtype="https://schema.org/QuantitativeValue">
+                                <meta itemprop="unitText" content="%">
+                                <span class="value" itemprop="value">75</span>
+                                <span class="label" itemprop="description">تقليل كبير في التكاليف التشغيلية لمركز الاتصال السعودي بفضل الاعتماد على الشات البوت الذكي والفعال</span>
+                            </div>
+                        </div>
+                        <div class="implementation-details">
+                            <h4>التفاصيل التقنية لحل الشات البوت السعودي المتطور:</h4>
+                            <ul>
+                                <li>وكيل محادثة ذكي (Chatbot) متقدم يدعم اللغة العربية واللهجات السعودية المتنوعة: قدرة على معالجة 10,000 محادثة يومياً بكفاءة ودقة عالية.</li>
+                                <li>دعم شامل لأكثر من 5 لهجات عربية رئيسية مستخدمة في السعودية بدقة فهم تتجاوز 94% بفضل تقنيات معالجة اللغة الطبيعية (NLP) المتقدمة.</li>
+                                <li>نظام تحليل المشاعر في الوقت الفعلي مدمج: تحقيق دقة تصل إلى 89% في تحديد مستوى رضا العميل السعودي وتوجيه المحادثات بذكاء لتحقيق أفضل النتائج.</li>
+                            </ul>
+                            <p>قامت شركة مُشرقة AI بتنفيذ حل شات بوت متطور لشركة اتصالات رائدة في المملكة العربية السعودية، مع تركيز خاص على فروع الرياض، جدة والدمام. تم تدريب النظام على فهم اللهجات السعودية المختلفة بدقة تصل إلى 94%، مما ساهم في رفع رضا العملاء إلى 92%. يعالج الشات بوت أكثر من 10,000 استفسار يومياً من عملاء في جميع أنحاء المملكة، مع قدرة على تحليل مشاعر العملاء في الوقت الفعلي. تم تنفيذ المشروع على مراحل، بدءاً بفرع الرياض ثم التوسع إلى جدة والدمام، مع تكييف النظام للتعامل مع الخصوصية اللغوية لكل منطقة. ساهم الحل في خفض تكاليف مراكز الاتصال بنسبة 75% مع تحسين جودة الخدمة المقدمة لعملاء الاتصالات في المملكة.</p>
+                        </div>
+                    </article>
                 </div>
             </div>
         </section>
@@ -1802,7 +1774,7 @@
         <div class="footer-container">
             <div class="footer-logo-container">
                 <a href="#home" class="footer-logo" aria-label="الصفحة الرئيسية لشركة مُشرقة AI السعودية - رائدة الذكاء الاصطناعي وحلول الأتمتة المبتكرة في المملكة العربية السعودية">
-                    <img src="https://www.brightaii.com/mushrqah-ai-logo.png" alt="شعار شركة مُشرقة AI السعودية - رائدة حلول الذكاء الاصطناعي المتقدمة في المملكة" style="height: 50px; width: auto;">
+                    <img src="https://www2.0zz0.com/2025/06/23/22/317775783.png" alt="شعار شركة مُشرقة AI السعودية - رائدة حلول الذكاء الاصطناعي المتقدمة في المملكة" width="200" height="55" style="height: 50px; width: auto;">
                 </a>
                 <p class="footer-description">
                     مُشرقة AI (Bright AI): شركة سعودية رائدة ومبتكرة، مقرها الرئيسي في مدينة الرياض، متخصصة في مجال الذكاء الاصطناعي، حلول التعلم العميق، تطوير تطبيقات الذكاء الاصطناعي المخصصة، والأتمتة الذكية في المملكة العربية السعودية. نقدم خدمات الذكاء الاصطناعي المتكاملة والاستشارات التقنية لدعم مسيرة التحول الرقمي الشامل للمؤسسات والشركات في مختلف القطاعات بالرياض، جدة، الدمام، وكافة مدن المملكة، مساهمين بفعالية في تحقيق أهداف رؤية 2030 وتطوير مستقبل الذكاء الاصطناعي الواعد في السعودية.
@@ -1813,14 +1785,13 @@
                     <a href="https://www.tiktok.com/@bright1ai" class="social-link" aria-label="حساب مُشرقة AI السعودية على منصة تيك توك لمشاهدة تطبيقات الذكاء الاصطناعي المبتكرة والممتعة" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok" aria-hidden="true"></i> <span class="sr-only">تيك توك شركة مُشرقة AI</span></a>
                     <a href="https://www.instagram.com/iililil44" class="social-link" aria-label="حساب مُشرقة AI السعودية على انستغرام لاستعراض أحدث مشاريع وحلول الذكاء الاصطناعي في المملكة" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram" aria-hidden="true"></i> <span class="sr-only">انستغرام شركة مُشرقة AI</span></a>
                     <a href="https://www.youtube.com/@TeechLab" class="social-link" aria-label="قناة مُشرقة AI السعودية على يوتيوب لتعلم المزيد عن الذكاء الاصطناعي وتطبيقاته العملية" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube" aria-hidden="true"></i> <span class="sr-only">يوتيوب شركة مُشرقة AI</span></a>
-                    <!-- <a href="YOUR_LINKEDIN_URL" class="social-link" aria-label="حساب مُشرقة AI السعودية على لينكد إن للتواصل المهني والاطلاع على فرص العمل في مجال الذكاء الاصطناعي" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in" aria-hidden="true"></i> <span class="sr-only">لينكدإن شركة مُشرقة AI</span></a> -->
                 </div>
             </div>
 
             <div class="footer-links-container">
                 <h3 class="footer-links-title">روابط سريعة لخدمات وحلول الذكاء الاصطناعي في السعودية من شركة مُشرقة AI</h3>
                 <ul class="footer-links" role="list">
-                    <li class="footer-link" role="listitem"><a href="index.html#home" aria-label="الانتقال إلى الصفحة الرئيسية لشركة مُشرقة AI للذكاء الاصطناعي في السعودية"><i class="fas fa-chevron-left" aria-hidden="true"></i> الرئيسية لشركة مُشرقة AI للذكاء الاصطناعي</a></li>
+                    <li class="footer-link" role="listitem"><a href="#home" aria-label="الانتقال إلى الصفحة الرئيسية لشركة مُشرقة AI للذكاء الاصطناعي في السعودية"><i class="fas fa-chevron-left" aria-hidden="true"></i> الرئيسية لشركة مُشرقة AI للذكاء الاصطناعي</a></li>
                     <li class="footer-link" role="listitem"><a href="our-products.html" aria-label="استعراض خدمات الذكاء الاصطناعي المتكاملة التي تقدمها مُشرقة AI في السعودية"><i class="fas fa-chevron-left" aria-hidden="true"></i> خدمات الذكاء الاصطناعي المتكاملة في السعودية</a></li>
                     <li class="footer-link" role="listitem"><a href="ai-agent.html" aria-label="معرفة المزيد عن وكيل الذكاء الاصطناعي العربي وحلول الشات البوت للسوق السعودي من مُشرقة AI"><i class="fas fa-chevron-left" aria-hidden="true"></i> وكيل الذكاء الاصطناعي العربي والشات البوت للسوق السعودي</a></li>
                     <li class="footer-link" role="listitem"><a href="smart-automation.html" aria-label="اكتشاف حلول الأتمتة الذكية وتقنيات RPA للشركات السعودية من مُشرقة AI"><i class="fas fa-chevron-left" aria-hidden="true"></i> الأتمتة الذكية و RPA للشركات السعودية</a></li>
@@ -1886,7 +1857,7 @@
     </footer>
 
     <!-- زر العودة لأعلى الصفحة -->
-    <a href="#home" class="back-to-top" aria-label="العودة إلى أعلى الصفحة لاستكشاف المزيد عن خدمات وحلول الذكاء الاصطناعي من مُشرقة AI في السعودية" aria-hidden="true">
+    <a href="#home" class="back-to-top" aria-label="العودة إلى أعلى الصفحة" aria-hidden="true">
         <i class="fas fa-arrow-up" aria-hidden="true"></i>
     </a>
 
@@ -1897,80 +1868,7 @@
     <script src="script.js" defer></script>
 
     <!-- دعم فني عائم -->
-    <style>
-      .support-fab {
-        position: fixed;
-        bottom: 32px;
-        left: 32px; /* Adjusted from right for RTL consistency, or use logical properties if browser support is adequate */
-        z-index: 2000;
-        width: 60px;
-        height: 60px;
-        background: linear-gradient(135deg, #4a90e2, #357abd);
-        color: #fff;
-        border-radius: 50%;
-        box-shadow: 0 4px 24px rgba(0,0,0,0.18);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 2rem;
-        cursor: pointer;
-        transition: background 0.2s, box-shadow 0.2s;
-      }
-      .support-fab:hover {
-        background: linear-gradient(135deg, #357abd, #4a90e2);
-        box-shadow: 0 8px 32px rgba(0,0,0,0.22);
-      }
-      @media (max-width: 600px) {
-        .support-fab { left: 16px; bottom: 16px; width: 50px; height: 50px; font-size: 1.5rem; }
-      }
-      .support-popup-overlay {
-        display: none;
-        position: fixed;
-        z-index: 3000;
-        top: 0; left: 0; width: 100vw; height: 100vh;
-        background: rgba(10,25,47,0.45);
-        align-items: center;
-        justify-content: center;
-      }
-      .support-popup-overlay.active { display: flex; }
-      .support-popup-modal {
-        background: #fff;
-        border-radius: 18px;
-        box-shadow: 0 8px 40px rgba(0,0,0,0.18);
-        overflow: hidden;
-        width: 95vw;
-        max-width: 900px;
-        height: 90vh;
-        max-height: 700px;
-        display: flex;
-        flex-direction: column;
-        position: relative;
-        animation: popupIn 0.25s;
-      }
-      @keyframes popupIn { from { transform: scale(0.92); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-      .support-popup-close {
-        position: absolute;
-        top: 10px; left: 10px; /* Adjusted for RTL popup */
-        background: #f0f2f5;
-        border: none;
-        border-radius: 50%;
-        width: 36px; height: 36px;
-        font-size: 1.2rem;
-        color: #357abd;
-        cursor: pointer;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-        transition: background 0.2s;
-        z-index: 2;
-      }
-      .support-popup-close:hover { background: #e3e9f7; }
-      .support-popup-iframe {
-        border: none;
-        width: 100%;
-        height: 100%;
-        flex: 1;
-      }
-    </style>
-    <div class="support-fab" title="الدعم الفني لخدمات الذكاء الاصطناعي في السعودية" aria-label="فتح نافذة الدعم الفني لخدمات الذكاء الاصطناعي في السعودية" onclick="openSupportPopup()">
+    <div class="support-fab" title="الدعم الفني لخدمات الذكاء الاصطناعي في السعودية" aria-label="فتح نافذة الدعم الفني" onclick="openSupportPopup()">
       <i class="fas fa-headset" aria-hidden="true"></i>
     </div>
     <div class="support-popup-overlay" id="supportPopupOverlay" tabindex="-1" aria-modal="true" role="dialog" aria-labelledby="supportPopupTitle">
@@ -1978,35 +1876,8 @@
         <button class="support-popup-close" onclick="closeSupportPopup()" aria-label="إغلاق نافذة الدعم الفني">
           <i class="fas fa-times" aria-hidden="true"></i>
         </button>
-        <iframe class="support-popup-iframe" src="Customer/index.html" title="نافذة الدعم الفني لشركة مُشرقة AI السعودية لخدمات الذكاء الاصطناعي" id="supportPopupTitle"></iframe>
+        <iframe class="support-popup-iframe" src="Customer/index.html" title="نافذة الدعم الفني لشركة مُشرقة AI السعودية" id="supportPopupTitle"></iframe>
       </div>
     </div>
-    <script>
-      function openSupportPopup() {
-        var overlay = document.getElementById('supportPopupOverlay');
-        if(overlay) {
-            overlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-      }
-      function closeSupportPopup() {
-        var overlay = document.getElementById('supportPopupOverlay');
-        if(overlay) {
-            overlay.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-      }
-      var supportOverlay = document.getElementById('supportPopupOverlay');
-      if(supportOverlay) {
-        supportOverlay.addEventListener('click', function(e) {
-            if (e.target === this) closeSupportPopup();
-        });
-      }
-      document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && document.getElementById('supportPopupOverlay')?.classList.contains('active')) {
-            closeSupportPopup();
-        }
-      });
-    </script>
 </body>
 </html>

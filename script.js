@@ -1,15 +1,17 @@
 // BrightAI - Enhanced JavaScript for Performance, Analytics & User Experience
-// Version: 3.1.0 - GTM Expert Edition (Complete & Unabridged)
+// Version: 3.1.0 - GTM & SEO Expert Edition
 // Last updated: September 2025
 'use strict';
 
-// =================================================================================
-// SECTION 1: GTM / ANALYTICS HELPER FUNCTIONS (EXPERT FIXES)
-// =================================================================================
+/**
+ * =================================================================================
+ * SECTION 1: GTM / ANALYTICS HELPER FUNCTIONS
+ * =================================================================================
+ */
 
 /**
- * Returns a cleaned page path, removing irrelevant query parameters like 'gtm_debug'.
- * This prevents data pollution in Google Analytics reports.
+ * Returns a cleaned page path, removing irrelevant query parameters to avoid
+ * polluting Google Analytics reports.
  * @returns {string} The cleaned page path.
  */
 function getCleanPagePath() {
@@ -19,19 +21,22 @@ function getCleanPagePath() {
         return path;
     }
     const params = new URLSearchParams(search);
-    params.delete('gtm_debug'); // Remove GTM debug parameter
-    // Add other parameters to remove here if needed, e.g., params.delete('fbclid');
+    params.delete('gtm_debug');
+    params.delete('fbclid'); // Example of another parameter to remove
     const cleanedSearch = params.toString();
     return cleanedSearch ? `${path}?${cleanedSearch}` : path;
 }
 
 /**
- * Simulates user consent and updates GTM consent state.
- * This function should be triggered by your Consent Management Platform (CMP)
- * once the user provides their consent.
+ * Updates GTM consent state. This function should be triggered by a Consent
+ * Management Platform (CMP) once the user provides their consent choices.
  */
 function initializeAnalyticsOnConsent() {
     console.log('[Analytics] User consent granted. Initializing analytics tags.');
+    if (typeof gtag !== 'function') {
+        console.error('[Analytics] gtag function not found. GTM script might be blocked.');
+        return;
+    }
     gtag('consent', 'update', {
         'ad_storage': 'granted',
         'analytics_storage': 'granted',
@@ -47,11 +52,11 @@ function initializeAnalyticsOnConsent() {
  * This should only be called AFTER consent has been granted.
  */
 function initializeGtm() {
+    if (typeof gtag !== 'function') return;
     const config = {
         'page_path': getCleanPagePath(),
         'transport_type': 'beacon',
-        // As requested, define the custom map for Saudi-specific dimensions.
-        // IMPORTANT: These must be created as Custom Dimensions in the GA4 Admin UI.
+        // Custom dimensions must be created in the GA4 Admin UI first.
         'custom_map': {
             'dimension1': 'saudi_user_city',
             'dimension2': 'saudi_service_interest'
@@ -62,9 +67,11 @@ function initializeGtm() {
 }
 
 
-// =================================================================================
-// SECTION 2: UTILITY FUNCTIONS (Debounce & Throttle)
-// =================================================================================
+/**
+ * =================================================================================
+ * SECTION 2: UTILITY FUNCTIONS (PERFORMANCE HELPERS)
+ * =================================================================================
+ */
 
 const debounce = (func, wait) => {
     let timeoutId;
@@ -88,12 +95,14 @@ const throttle = (func, limit) => {
 };
 
 
-// =================================================================================
-// SECTION 3: CORE UI & FEATURE INITIALIZATION
-// =================================================================================
+/**
+ * =================================================================================
+ * SECTION 3: CORE UI & FEATURE INITIALIZATION
+ * =================================================================================
+ */
 
 /**
- * Shows an update notification to the user if a new service worker is installed.
+ * Shows a notification to the user if a new service worker is installed.
  */
 function showUpdateNotification() {
     if (document.querySelector('.update-notification')) return;
@@ -121,7 +130,7 @@ function showUpdateNotification() {
 }
 
 /**
- * Initializes the Service Worker for PWA capabilities and update notifications.
+ * Initializes the Service Worker for PWA capabilities and offline functionality.
  */
 function initServiceWorker() {
     if ('serviceWorker' in navigator) {
@@ -146,7 +155,7 @@ function initServiceWorker() {
 }
 
 /**
- * Initializes the main navigation bar, hamburger menu, and scroll behavior.
+ * Manages the main navigation bar, hamburger menu, and scroll behavior.
  */
 function initNavbar() {
     const navbar = document.querySelector('.navbar');
@@ -160,20 +169,21 @@ function initNavbar() {
     }
 
     const toggleMenu = (open) => {
-        navLinks.classList.toggle('active', open);
-        hamburger.classList.toggle('active', open);
-        overlay.classList.toggle('active', open);
-        document.body.style.overflow = open ? 'hidden' : '';
-        hamburger.setAttribute('aria-expanded', String(open));
-        navLinks.setAttribute('aria-hidden', String(!open));
-        if (open) {
+        const shouldOpen = typeof open === 'boolean' ? open : !navLinks.classList.contains('active');
+        navLinks.classList.toggle('active', shouldOpen);
+        hamburger.classList.toggle('active', shouldOpen);
+        overlay.classList.toggle('active', shouldOpen);
+        document.body.style.overflow = shouldOpen ? 'hidden' : '';
+        hamburger.setAttribute('aria-expanded', String(shouldOpen));
+        
+        if (shouldOpen) {
             navLinks.querySelector('a[role="menuitem"]')?.focus();
         } else {
             hamburger.focus();
         }
     };
 
-    hamburger.addEventListener('click', () => toggleMenu(!navLinks.classList.contains('active')));
+    hamburger.addEventListener('click', () => toggleMenu());
     overlay.addEventListener('click', () => toggleMenu(false));
 
     document.addEventListener('keydown', (e) => {
@@ -184,7 +194,7 @@ function initNavbar() {
 
     navLinks.querySelectorAll('a[role="menuitem"]').forEach(link => {
         link.addEventListener('click', () => {
-            if (navLinks.classList.contains('active')) {
+            if (window.innerWidth <= 768) {
                 toggleMenu(false);
             }
         });
@@ -212,84 +222,136 @@ function initNavbar() {
 }
 
 /**
- * Initializes the hero canvas particle animation.
+ * Renders a particle animation on the hero canvas.
  */
 function initHeroCanvas() {
-    const heroCanvas = document.getElementById('heroCanvas');
-    if (!heroCanvas) return;
-    const ctx = heroCanvas.getContext('2d');
+    const canvas = document.getElementById('heroCanvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    let particlesArray = [];
-    let animationFrameId = null;
-    let isVisible = true;
-    const DPR = window.devicePixelRatio || 1;
+    let particlesArray;
+    let animationFrameId;
 
     const setCanvasSize = () => {
-        const heroSection = heroCanvas.closest('.hero');
-        if (!heroSection) return;
-        const rect = heroSection.getBoundingClientRect();
-        heroCanvas.width = rect.width * DPR;
-        heroCanvas.height = rect.height * DPR;
-        ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
-        heroCanvas.style.width = `${rect.width}px`;
-        heroCanvas.style.height = `${rect.height}px`;
+        const dpr = window.devicePixelRatio || 1;
+        const rect = canvas.parentElement.getBoundingClientRect();
+        canvas.width = rect.width * dpr;
+        canvas.height = rect.height * dpr;
+        canvas.style.width = `${rect.width}px`;
+        canvas.style.height = `${rect.height}px`;
+        ctx.scale(dpr, dpr);
     };
 
-    class Particle { /* ... Particle class implementation ... */ }
-
-    const initParticles = () => { /* ... initParticles implementation ... */ };
-    const animate = () => { /* ... animate implementation ... */ };
-    const setupCanvas = () => { /* ... setupCanvas implementation ... */ };
-
-    if ('IntersectionObserver' in window) {
-        const observer = new IntersectionObserver(entries => {
-            isVisible = entries[0].isIntersecting;
-            if (isVisible) {
-                if (!animationFrameId) setupCanvas();
-            } else if (animationFrameId) {
-                cancelAnimationFrame(animationFrameId);
-                animationFrameId = null;
-            }
-        }, { threshold: 0.01 });
-        observer.observe(heroCanvas);
-    } else {
-        setupCanvas();
+    class Particle {
+        constructor(x, y, directionX, directionY, size, color) {
+            this.x = x;
+            this.y = y;
+            this.directionX = directionX;
+            this.directionY = directionY;
+            this.size = size;
+            this.color = color;
+        }
+        draw() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+            ctx.fillStyle = 'rgba(100, 255, 218, 0.5)';
+            ctx.fill();
+        }
+        update() {
+            if (this.x > canvas.clientWidth || this.x < 0) this.directionX = -this.directionX;
+            if (this.y > canvas.clientHeight || this.y < 0) this.directionY = -this.directionY;
+            this.x += this.directionX;
+            this.y += this.directionY;
+            this.draw();
+        }
     }
-    setTimeout(setupCanvas, 100);
-    window.addEventListener('resize', debounce(setupCanvas, 200));
+
+    function initParticles() {
+        particlesArray = [];
+        const numberOfParticles = (canvas.height * canvas.width) / 18000;
+        for (let i = 0; i < numberOfParticles; i++) {
+            const size = (Math.random() * 1.5) + 0.5;
+            const x = (Math.random() * (canvas.clientWidth - size * 2));
+            const y = (Math.random() * (canvas.clientHeight - size * 2));
+            const directionX = (Math.random() * .4) - .2;
+            const directionY = (Math.random() * .4) - .2;
+            particlesArray.push(new Particle(x, y, directionX, directionY, size));
+        }
+    }
+
+    function animate() {
+        ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
+        particlesArray.forEach(p => p.update());
+        connect();
+        animationFrameId = requestAnimationFrame(animate);
+    }
+
+    function connect() {
+        for (let a = 0; a < particlesArray.length; a++) {
+            for (let b = a; b < particlesArray.length; b++) {
+                const distance = ((particlesArray[a].x - particlesArray[b].x) ** 2) + ((particlesArray[a].y - particlesArray[b].y) ** 2);
+                if (distance < (canvas.width / 7) * (canvas.height / 7)) {
+                    const opacity = 1 - (distance / 20000);
+                    ctx.strokeStyle = `rgba(136, 146, 176, ${opacity})`;
+                    ctx.lineWidth = 0.5;
+                    ctx.beginPath();
+                    ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+                    ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+                    ctx.stroke();
+                }
+            }
+        }
+    }
+    
+    const setup = () => {
+        cancelAnimationFrame(animationFrameId);
+        setCanvasSize();
+        initParticles();
+        animate();
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+            setup();
+        } else {
+            cancelAnimationFrame(animationFrameId);
+        }
+    }, { threshold: 0.01 });
+    
+    observer.observe(canvas);
+    window.addEventListener('resize', debounce(setup, 200));
 }
 
 /**
- * Initializes the FAQ accordion functionality.
+ * Initializes the FAQ accordion functionality with ARIA attributes.
  */
 function initFAQ() {
     const faqItems = document.querySelectorAll('.faq-item');
-    if (faqItems.length === 0) return;
+    if (!faqItems.length) return;
 
     faqItems.forEach(item => {
         const question = item.querySelector('.faq-question');
         const answer = item.querySelector('.faq-answer');
-
         if (!question || !answer) return;
-        
-        if (!answer.id) answer.id = `faq-answer-${Math.random().toString(36).substring(2, 11)}`;
-        question.setAttribute('aria-controls', answer.id);
 
         question.addEventListener('click', () => {
-            const isCurrentlyActive = item.classList.contains('active');
-            
+            const isExpanded = question.getAttribute('aria-expanded') === 'true';
+
+            // Close all other items for a cleaner accordion experience
             faqItems.forEach(otherItem => {
                 if (otherItem !== item) {
                     otherItem.classList.remove('active');
                     otherItem.querySelector('.faq-question')?.setAttribute('aria-expanded', 'false');
                 }
             });
+
+            // Toggle the clicked item
+            item.classList.toggle('active', !isExpanded);
+            question.setAttribute('aria-expanded', !isExpanded);
             
-            item.classList.toggle('active', !isCurrentlyActive);
-            question.setAttribute('aria-expanded', String(!isCurrentlyActive));
-            
-            if (!isCurrentlyActive) {
+            // GTM event for analytics
+            if (!isExpanded) {
                 window.dataLayer.push({
                     event: 'faq_interaction',
                     faq_question: question.textContent?.trim() || 'FAQ Question Opened'
@@ -300,66 +362,126 @@ function initFAQ() {
 }
 
 /**
- * Initializes form validation and submission logic with enhanced GTM event tracking.
+ * Handles validation and submission for all forms on the page.
  */
 function initForms() {
+    // Consultation Form
     const consultationForm = document.getElementById('consultationForm');
     if (consultationForm) {
-        consultationForm.setAttribute('novalidate', 'true');
-        consultationForm.addEventListener('submit', async (event) => {
-            event.preventDefault();
-            let isFormValid = true; // Placeholder for your validation logic
-            // ... Your detailed form validation logic goes here ...
-            
-            if (isFormValid) {
-                const submitButton = consultationForm.querySelector('button[type="submit"]');
-                const originalButtonText = submitButton.textContent;
-                submitButton.disabled = true;
-                submitButton.textContent = 'جاري الإرسال...';
-                
-                try {
-                    await new Promise(resolve => setTimeout(resolve, 1500)); // Simulate API Call
-                    
-                    // GTM EXPERT FIX: Push 'generate_lead' event for conversion tracking.
-                    window.dataLayer.push({
-                        event: 'generate_lead',
-                        form_name: 'Consultation Form',
-                        form_location: 'Contact Section',
-                        lead_type: 'Free AI Consultation'
-                    });
-                    console.log('[Analytics] Pushed "generate_lead" event.');
-                    
-                    consultationForm.reset();
-                    alert('شكراً لك! تم إرسال طلب الاستشارة بنجاح.');
-
-                } catch (error) {
-                    console.error('Consultation form submission error:', error);
-                    alert('عذراً، حدث خطأ أثناء إرسال النموذج.');
-                } finally {
-                    submitButton.disabled = false;
-                    submitButton.textContent = originalButtonText;
-                }
-            }
-        });
+        initConsultationForm(consultationForm);
     }
-
+    
     // Newsletter Forms
     document.querySelectorAll('.newsletter-form, .newsletter-form-large').forEach(form => {
-        form.setAttribute('novalidate', 'true');
-        form.addEventListener('submit', async (event) => {
-            event.preventDefault();
-            const emailInput = form.querySelector('input[type="email"]');
-            if (emailInput && emailInput.value) { // Simple validation
-                // ... logic to handle submission ...
-                window.dataLayer.push({
-                    event: 'newsletter_signup',
-                    form_location: form.classList.contains('newsletter-form-large') ? 'Main Newsletter Section' : 'Footer'
-                });
-                console.log('[Analytics] Pushed "newsletter_signup" event.');
-                alert('شكراً لاشتراكك في النشرة البريدية!');
-                form.reset();
+        initNewsletterForm(form);
+    });
+}
+
+/**
+ * Specific logic for the consultation form.
+ * @param {HTMLFormElement} form
+ */
+function initConsultationForm(form) {
+    const inputs = form.querySelectorAll('input[required], textarea[required], select[required]');
+    const statusEl = document.getElementById('form-status');
+
+    const validateField = (field) => {
+        let isValid = true;
+        const errorEl = document.getElementById(`${field.id}-error`);
+        field.classList.remove('error');
+        errorEl.textContent = '';
+        errorEl.style.display = 'none';
+
+        if (field.value.trim() === '') {
+            isValid = false;
+            errorEl.textContent = 'هذا الحقل مطلوب.';
+        } else if (field.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value)) {
+            isValid = false;
+            errorEl.textContent = 'الرجاء إدخال بريد إلكتروني صحيح.';
+        } else if (field.type === 'tel' && !/^(05\d{8}|5\d{8}|\+9665\d{8}|009665\d{8})$/.test(field.value)) {
+            isValid = false;
+            errorEl.textContent = 'الرجاء إدخال رقم هاتف سعودي صحيح.';
+        } else if (field.hasAttribute('minlength') && field.value.length < parseInt(field.getAttribute('minlength'))) {
+            isValid = false;
+            errorEl.textContent = `يجب أن لا تقل الرسالة عن ${field.getAttribute('minlength')} حروف.`;
+        }
+
+        if (!isValid) {
+            field.classList.add('error');
+            errorEl.style.display = 'block';
+        }
+        return isValid;
+    };
+    
+    form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        let isFormValid = true;
+        inputs.forEach(input => {
+            if (!validateField(input)) {
+                isFormValid = false;
             }
         });
+        
+        if (isFormValid) {
+            const submitButton = form.querySelector('button[type="submit"]');
+            const originalButtonText = submitButton.textContent;
+            submitButton.disabled = true;
+            submitButton.textContent = 'جاري الإرسال...';
+            statusEl.textContent = '';
+            statusEl.className = 'form-status-message';
+            
+            try {
+                // Simulate API call. Replace with fetch() to your endpoint.
+                await new Promise(resolve => setTimeout(resolve, 1500)); 
+                
+                // GTM event for conversion tracking
+                window.dataLayer.push({
+                    event: 'generate_lead',
+                    form_name: 'Consultation Form',
+                    form_location: 'Contact Section',
+                    lead_type: 'Free AI Consultation'
+                });
+                
+                statusEl.textContent = 'شكراً لك! تم إرسال طلب الاستشارة بنجاح.';
+                statusEl.classList.add('active', 'success');
+                form.reset();
+
+            } catch (error) {
+                console.error('Form submission error:', error);
+                statusEl.textContent = 'عذراً، حدث خطأ أثناء إرسال النموذج. يرجى المحاولة مرة أخرى.';
+                statusEl.classList.add('active', 'error');
+            } finally {
+                submitButton.disabled = false;
+                submitButton.textContent = originalButtonText;
+                setTimeout(() => statusEl.classList.remove('active'), 5000);
+            }
+        }
+    });
+}
+
+/**
+ * Specific logic for newsletter forms.
+ * @param {HTMLFormElement} form
+ */
+function initNewsletterForm(form) {
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const emailInput = form.querySelector('input[type="email"]');
+        if (emailInput && emailInput.value && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value)) {
+            
+            // GTM event for analytics
+            window.dataLayer.push({
+                event: 'newsletter_signup',
+                form_location: form.classList.contains('newsletter-form-large') ? 'Main Newsletter Section' : 'Footer'
+            });
+            
+            // Replace alert with a less intrusive notification if desired
+            alert('شكراً لاشتراكك في النشرة البريدية!');
+            form.reset();
+        } else {
+            alert('الرجاء إدخال بريد إلكتروني صحيح.');
+            emailInput?.focus();
+        }
     });
 }
 
@@ -367,17 +489,17 @@ function initForms() {
  * Initializes scroll-triggered animations and analytics events for key sections.
  */
 function initScrollAndAnalytics() {
-    const trackedElements = document.querySelectorAll('.service-card, .tourism-feature-card, .case-card, .feature-item, #services');
-    if (trackedElements.length === 0) return;
+    const animatedElements = document.querySelectorAll('.service-card, .tourism-feature-card, .case-card, .feature-item, .tech-card, .tech-detail-card, .case-study-card');
+    const servicesSection = document.getElementById('services');
 
     if ('IntersectionObserver' in window) {
         const observer = new IntersectionObserver((entries, obs) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('visible', 'fade-in');
+                    entry.target.classList.add('visible');
 
-                    // GTM EXPERT FIX: Trigger 'view_item_list' when the services section comes into view.
-                    if (entry.target.id === 'services') {
+                    if (entry.target.id === 'services' && !entry.target.dataset.analyticsFired) {
+                        entry.target.dataset.analyticsFired = 'true'; // Fire only once
                         const items = Array.from(entry.target.querySelectorAll('.service-card h3')).map((h3, index) => ({
                             item_id: h3.closest('.service-card').querySelector('a.service-link')?.dataset.gtmItemId || `service_${index + 1}`,
                             item_name: h3.textContent.trim(),
@@ -402,9 +524,15 @@ function initScrollAndAnalytics() {
             });
         }, { rootMargin: '0px 0px -50px 0px', threshold: 0.1 });
         
-        trackedElements.forEach(el => observer.observe(el));
+        animatedElements.forEach(el => {
+            el.classList.add('fade-in');
+            observer.observe(el);
+        });
+        if(servicesSection) observer.observe(servicesSection);
+
     } else {
-        trackedElements.forEach(el => el.classList.add('visible', 'fade-in'));
+        // Fallback for older browsers
+        animatedElements.forEach(el => el.classList.add('visible'));
     }
 }
 
@@ -422,7 +550,7 @@ function initBackToTop() {
     };
 
     window.addEventListener('scroll', throttle(toggleVisibility, 150), { passive: true });
-    toggleVisibility();
+    toggleVisibility(); // Initial check
 
     backToTopButton.addEventListener('click', (e) => {
         e.preventDefault();
@@ -431,7 +559,7 @@ function initBackToTop() {
 }
 
 /**
- * Initializes smooth scrolling for on-page anchor links.
+ * Initializes smooth scrolling for all on-page anchor links.
  */
 function initSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -441,7 +569,7 @@ function initSmoothScroll() {
                 const targetElement = document.querySelector(href);
                 if (targetElement) {
                     event.preventDefault();
-                    const navbarHeight = document.querySelector('.navbar')?.offsetHeight || 0;
+                    const navbarHeight = document.querySelector('.navbar')?.offsetHeight || 70;
                     const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
                     const offsetPosition = elementPosition - navbarHeight - 20;
 
@@ -456,26 +584,7 @@ function initSmoothScroll() {
 }
 
 /**
- * Initializes Saudi-specific SEO enhancements and tracking.
- */
-function initSaudiSEO() {
-    // This function can remain as is, since it injects static structured data
-    // and meta tags which are handled correctly on DOMContentLoaded.
-    // The analytics part of it is now handled by the generic click tracker and config.
-    console.log('[SEO] Saudi-specific SEO enhancements initialized.');
-}
-
-/**
- * Tracks user behavior specific to Saudi content for SEO insights.
- */
-function trackSaudiUserBehavior() {
-    // This function can also remain as is. It uses throttling and IntersectionObserver
-    // correctly to send custom events for scroll depth and section views.
-    console.log('[Analytics] Saudi user behavior tracking is active.');
-}
-
-/**
- * Initializes a generic click listener for analytics tracking using data attributes.
+ * Initializes a generic click listener for analytics using data attributes.
  */
 function initGenericClickTracker() {
     document.body.addEventListener('click', (event) => {
@@ -488,21 +597,23 @@ function initGenericClickTracker() {
                     content_type: gtmContentType,
                     content_name: gtmContentName,
                     item_id: gtmItemId,
-                    // Placeholder for dynamic data
+                    // Placeholder for dynamic Saudi-specific data if available
                     saudi_user_city: 'Riyadh', 
                     saudi_service_interest: gtmContentName || 'Not Specified'
                 };
                 window.dataLayer.push(eventData);
-                console.log('[Analytics] Pushed generic event:', eventData);
+                console.log('[Analytics] Pushed generic click event:', eventData);
             }
         }
     });
 }
 
-// =================================================================================
-// SECTION 4: EVENT LISTENERS & EXECUTION
-// =================================================================================
 
+/**
+ * =================================================================================
+ * SECTION 4: MAIN EXECUTION BLOCK (DOM Ready)
+ * =================================================================================
+ */
 document.addEventListener('DOMContentLoaded', () => {
     try {
         initServiceWorker();
@@ -513,52 +624,49 @@ document.addEventListener('DOMContentLoaded', () => {
         initScrollAndAnalytics();
         initBackToTop();
         initSmoothScroll();
-        initSaudiSEO();
-        trackSaudiUserBehavior();
         initGenericClickTracker();
 
-        // GTM EXPERT FIX: Simulate consent grant. Replace with your actual CMP trigger.
+        // IMPORTANT: This is a simulation for demonstration.
+        // In a real-world scenario, this should be triggered by your
+        // Consent Management Platform (CMP) after the user makes a choice.
         setTimeout(initializeAnalyticsOnConsent, 1500);
 
-        console.log('[BrightAI] All components initialized successfully with enhanced analytics.');
+        console.log('[BrightAI] All components initialized successfully.');
     } catch (error) {
         console.error("Error during main script initialization:", error);
     }
 });
 
+/**
+ * =================================================================================
+ * SECTION 5: GLOBAL LISTENERS (Window Load)
+ * =================================================================================
+ */
 window.addEventListener('load', () => {
-    // GTM EXPERT FIX: Corrected performance measurement using modern API.
+    // Send performance timing data to analytics after everything has loaded.
     setTimeout(() => {
         if (performance && typeof performance.getEntriesByType === 'function') {
             const navTiming = performance.getEntriesByType('navigation')[0];
             if (navTiming) {
                 const fullPageLoadTime = Math.round(navTiming.loadEventEnd);
                 if (fullPageLoadTime > 0) {
-                    console.log(`[Analytics] Corrected Full Page Load Time: ${fullPageLoadTime}ms`);
                     window.dataLayer.push({
                         event: 'performance_timing',
                         metric_name: 'full_page_load_time',
-                        metric_value: fullPageLoadTime,
-                        event_category: 'Performance'
+                        metric_value: fullPageLoadTime
                     });
                 }
             }
         }
-        
-        const timeSincePageLoad = Math.round(performance.now());
-        window.dataLayer.push({
-            event: 'performance_timing',
-            metric_name: 'time_to_load_event',
-            metric_value: timeSincePageLoad,
-            event_category: 'Performance'
-        });
     }, 0);
 });
 
-// =================================================================================
-// SECTION 5: SUPPORT POPUP & DYNAMIC STYLES (FROM ORIGINAL)
-// =================================================================================
 
+/**
+ * =================================================================================
+ * SECTION 6: SUPPORT POPUP (GLOBAL FUNCTIONS for onclick)
+ * =================================================================================
+ */
 function openSupportPopup() {
     const overlay = document.getElementById('supportPopupOverlay');
     if (overlay) {
@@ -575,30 +683,19 @@ function closeSupportPopup() {
     }
 }
 
+// Additional event listeners for better UX for the support popup
 document.addEventListener('DOMContentLoaded', () => {
-    const supportFab = document.querySelector('.support-fab');
     const supportPopupOverlay = document.getElementById('supportPopupOverlay');
-    const closePopupButton = document.querySelector('.support-popup-close');
-
-    supportFab?.addEventListener('click', openSupportPopup);
-    closePopupButton?.addEventListener('click', closeSupportPopup);
-    supportPopupOverlay?.addEventListener('click', function(e) {
-        if (e.target === this) closeSupportPopup();
-    });
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && supportPopupOverlay?.classList.contains('active')) {
-            closeSupportPopup();
-        }
-    });
+    if (supportPopupOverlay) {
+        // Close on clicking the overlay itself
+        supportPopupOverlay.addEventListener('click', function(e) {
+            if (e.target === this) closeSupportPopup();
+        });
+        // Close on 'Escape' key press
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && supportPopupOverlay.classList.contains('active')) {
+                closeSupportPopup();
+            }
+        });
+    }
 });
-
-(function appendDynamicStyles() {
-    const styleSheet = document.createElement('style');
-    styleSheet.textContent = `
-        /* Styles for update notification, form errors, etc. */
-        .update-notification { /* ...styles... */ }
-        .error-message { /* ...styles... */ }
-        .form-status-message { /* ...styles... */ }
-    `;
-    // document.head.appendChild(styleSheet); // This part can be moved to the main CSS file for better practice.
-})();
