@@ -559,7 +559,25 @@ function initBackToTop() {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 }
+// قسم استشارات الذكاء الاصطناعي - أنيميشن الظهور
+document.addEventListener("DOMContentLoaded", () => {
+  const aiCards = document.querySelectorAll(".ai-card");
 
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+        }
+      });
+    },
+    { threshold: 0.2 }
+  );
+
+  aiCards.forEach(card => {
+    observer.observe(card);
+  });
+});
 /**
  * Initializes smooth scrolling for all on-page anchor links.
  */
