@@ -900,6 +900,89 @@ img, svg, video, canvas {
     margin-block-end: 0.75rem;
 }
 
+
+/* قسم استشارات الذكاء الاصطناعي */
+.ai-section {
+  background: linear-gradient(to right, #f9fafb, #eef2f7);
+  padding: 80px 20px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.ai-section .container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.ai-title {
+  font-size: 2.2rem;
+  margin-bottom: 15px;
+  color: #1a202c;
+  font-weight: 700;
+}
+
+.ai-description {
+  font-size: 1.1rem;
+  margin-bottom: 50px;
+  color: #4a5568;
+  line-height: 1.8;
+}
+
+.ai-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+}
+
+.ai-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0; /* للأنيميشن */
+  transform: translateY(40px);
+}
+
+.ai-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 12px;
+  color: #2d3748;
+}
+
+.ai-card p {
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+  color: #555;
+  line-height: 1.6;
+}
+
+.ai-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.ai-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 25px;
+  background: #2563eb;
+  color: #fff;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.ai-btn:hover {
+  background: #1d4ed8;
+}
+
+/* أنيميشن الظهور */
+.ai-card.show {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.8s ease;
+}
 /* --------------------------------------------------------------------------
    5.8. Newsletter
    -------------------------------------------------------------------------- */
