@@ -389,26 +389,28 @@ function initConsultationForm(form) {
         let isValid = true;
         const errorEl = document.getElementById(`${field.id}-error`);
         field.classList.remove('error');
-        errorEl.textContent = '';
-        errorEl.style.display = 'none';
+        if (errorEl) {
+            errorEl.textContent = '';
+            errorEl.style.display = 'none';
+        }
 
         if (field.value.trim() === '') {
             isValid = false;
-            errorEl.textContent = 'هذا الحقل مطلوب.';
+            if (errorEl) errorEl.textContent = 'هذا الحقل مطلوب.';
         } else if (field.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value)) {
             isValid = false;
-            errorEl.textContent = 'الرجاء إدخال بريد إلكتروني صحيح.';
+            if (errorEl) errorEl.textContent = 'الرجاء إدخال بريد إلكتروني صحيح.';
         } else if (field.type === 'tel' && !/^(05\d{8}|5\d{8}|\+9665\d{8}|009665\d{8})$/.test(field.value)) {
             isValid = false;
-            errorEl.textContent = 'الرجاء إدخال رقم هاتف سعودي صحيح.';
+            if (errorEl) errorEl.textContent = 'الرجاء إدخال رقم هاتف سعودي صحيح.';
         } else if (field.hasAttribute('minlength') && field.value.length < parseInt(field.getAttribute('minlength'))) {
             isValid = false;
-            errorEl.textContent = `يجب أن لا تقل الرسالة عن ${field.getAttribute('minlength')} حروف.`;
+            if (errorEl) errorEl.textContent = `يجب أن لا تقل الرسالة عن ${field.getAttribute('minlength')} حروف.`;
         }
 
         if (!isValid) {
             field.classList.add('error');
-            errorEl.style.display = 'block';
+            if (errorEl) errorEl.style.display = 'block';
         }
         return isValid;
     };
@@ -667,11 +669,17 @@ window.addEventListener('load', () => {
  * SECTION 6: SUPPORT POPUP (GLOBAL FUNCTIONS for onclick)
  * =================================================================================
  */
+// UX Enhancement: Store the element that triggered the popup to return focus later.
+let triggerElement = null; 
+
 function openSupportPopup() {
     const overlay = document.getElementById('supportPopupOverlay');
     if (overlay) {
+        triggerElement = document.activeElement; // Store the currently focused element
         overlay.classList.add('active');
         document.body.style.overflow = 'hidden';
+        // UX Enhancement: Move focus to the close button for accessibility.
+        overlay.querySelector('.support-popup-close')?.focus();
     }
 }
 
@@ -680,21 +688,53 @@ function closeSupportPopup() {
     if (overlay) {
         overlay.classList.remove('active');
         document.body.style.overflow = '';
+        // UX Enhancement: Return focus to the element that opened the popup.
+        triggerElement?.focus();
     }
 }
 
 // Additional event listeners for better UX for the support popup
 document.addEventListener('DOMContentLoaded', () => {
     const supportPopupOverlay = document.getElementById('supportPopupOverlay');
-    if (supportPopupOverlay) {
+    const supportPopupModal = document.querySelector('.support-popup-modal');
+
+    if (supportPopupOverlay && supportPopupModal) {
         // Close on clicking the overlay itself
         supportPopupOverlay.addEventListener('click', function(e) {
             if (e.target === this) closeSupportPopup();
         });
-        // Close on 'Escape' key press
+
+        // UX/Accessibility Enhancement: Trap focus within the modal.
+        const focusableElementsString = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+        let focusableElements;
+        let firstFocusableElement;
+        let lastFocusableElement;
+
+        // Keydown event listener for Escape key and focus trapping
         document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && supportPopupOverlay.classList.contains('active')) {
-                closeSupportPopup();
+            if (supportPopupOverlay.classList.contains('active')) {
+                if (e.key === 'Escape') {
+                    closeSupportPopup();
+                }
+
+                if (e.key === 'Tab') {
+                    // Update focusable elements each time, in case content changes
+                    focusableElements = [...supportPopupModal.querySelectorAll(focusableElementsString)];
+                    firstFocusableElement = focusableElements[0];
+                    lastFocusableElement = focusableElements[focusableElements.length - 1];
+
+                    if (e.shiftKey) { // if shift + tab
+                        if (document.activeElement === firstFocusableElement) {
+                            lastFocusableElement.focus();
+                            e.preventDefault();
+                        }
+                    } else { // if tab
+                        if (document.activeElement === lastFocusableElement) {
+                            firstFocusableElement.focus();
+                            e.preventDefault();
+                        }
+                    }
+                }
             }
         });
     }
