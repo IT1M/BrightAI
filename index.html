@@ -1,8 +1,24 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
+    <!-- GTM/Analytics Expert Fix: Added Data Layer initialization with Consent Mode defaults -->
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        // Set default consent to 'denied' before any tags fire.
+        // This is crucial for compliance with privacy regulations like Saudi PDPL.
+        function gtag(){dataLayer.push(arguments);}
+        gtag('consent', 'default', {
+            'ad_storage': 'denied',
+            'analytics_storage': 'denied',
+            'ad_user_data': 'denied',
+            'ad_personalization': 'denied',
+            'wait_for_update': 500 // Wait 500ms for a consent update
+        });
+        // Pushing gtm.start event early.
+        dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+    </script>
+    <!-- End GTM/Analytics Expert Fix -->
 
-    
     <script src="https://analytics.ahrefs.com/analytics.js" data-key="Cq+jwsfq74a4uXGJ0gEW5A" async></script>
     <!-- Performance Optimizations -->
     <meta charset="UTF-8">
@@ -43,7 +59,7 @@
     <!-- <meta name="twitter:creator" content="@YourCreatorHandle"> --> <!-- Uncomment if you have a specific creator handle -->
 
     <!-- Canonical URL -->
-<link rel="canonical" href="https://brightai.site/" />
+    <link rel="canonical" href="https://brightai.site/" />
     
     <!-- Additional SEO Meta Tags for Saudi Search Optimization -->
     <meta name="language" content="ar-SA">
@@ -218,28 +234,9 @@
     }
     </script>
 
-    <!-- Deferred Analytics -->
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-SZKTP4496K', {
-            'page_path': window.location.pathname + window.location.search, // More accurate page path
-            'transport_type': 'beacon'
-        });
-        window.addEventListener('load', function() {
-            if (performance && performance.timing) {
-                var timeSincePageLoad = Math.round(performance.now());
-                gtag('event', 'timing_complete', {
-                  'name': 'load',
-                  'value': timeSincePageLoad,
-                  'event_category': 'Performance Metrics',
-                  'event_label': 'Page Load Time (ms)'
-                });
-            }
-        });
-    </script>
+    <!-- GTM/Analytics Expert Fix: Google Tag Manager script moved after dataLayer initialization -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-SZKTP4496K"></script>
+    <!-- End GTM/Analytics Expert Fix -->
 
     <!-- Inject SEO Meta Tags via JS -->
     <script>
@@ -266,10 +263,6 @@
 <meta name="google-site-verification" content="yy8eQWsy22VYduXUQS7pN3LJYbk6g7UCBj4iuuo-4xk" />
 </head>
 <body>
-    <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P8M8LK7P"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
     <!-- القائمة العلوية -->
     <nav class="navbar" aria-label="القائمة الرئيسية لموقع مُشرقة AI لخدمات الذكاء الاصطناعي والروبوتات في السعودية">
         <div class="navbar-container">
@@ -307,8 +300,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         نحن في مُشرقة AI، شركة سعودية متخصصة ورائدة في مجال الذكاء الاصطناعي (AI) وتطبيقاته المبتكرة في المملكة العربية السعودية، نقدم حلول التعلم العميق المتقدمة، ونطور روبوتات المحادثة العربية الذكية (شات بوت عربي) المصممة خصيصاً للسوق السعودي وتحدياته، بالإضافة إلى خدمات الأتمتة الذكية. نوفر خدمات الذكاء الاصطناعي المتكاملة في جميع أنحاء المملكة، بما في ذلك الرياض، جدة، والدمام. تشمل خبراتنا العميقة: تحليل البيانات الضخمة في السعودية، أتمتة العمليات بالذكاء الاصطناعي (RPA)، معالجة اللغة العربية الطبيعية (NLP) واللهجات المحلية، والذكاء الاصطناعي التوليدي. اكتشف كيف يمكن لشركتك السعودية الاستفادة من قوة التعلم الآلي، الذكاء الاصطناعي، وحلولنا المبتكرة لتحسين الكفاءة التشغيلية، تعزيز مسيرة التحول الرقمي، وتحقيق أهداف رؤية المملكة 2030 بفعالية وتميز.
                     </p>
                     <div>
-                        <a href="https://wa.me/966538229013" class="cta-button cta-button-accent" aria-label="اطلب الآن استشارة مجانية في الذكاء الاصطناعي لشركتك في السعودية من خبراء مُشرقة AI">اطلب استشارة AI مجانية في السعودية من خبراء مُشرقة AI</a>
-                        <a href="our-products.html" class="cta-button" aria-label="اكتشف حلول مُشرقة AI المبتكرة المصممة للشركات والمؤسسات السعودية الطموحة">اكتشف حلول الذكاء الاصطناعي للشركات السعودية</a>
+                        <!-- GTM/Analytics Expert Fix: Added data attributes for event tracking -->
+                        <a href="https://wa.me/966538229013" class="cta-button cta-button-accent" aria-label="اطلب الآن استشارة مجانية في الذكاء الاصطناعي لشركتك في السعودية من خبراء مُشرقة AI"
+                           data-gtm-event="select_content" data-gtm-content-type="CTA" data-gtm-content-name="Request Free AI Consultation - WhatsApp" data-gtm-item-id="CTA_WHATSAPP_HERO">اطلب استشارة AI مجانية في السعودية من خبراء مُشرقة AI</a>
+                        <a href="our-products.html" class="cta-button" aria-label="اكتشف حلول مُشرقة AI المبتكرة المصممة للشركات والمؤسسات السعودية الطموحة"
+                           data-gtm-event="select_content" data-gtm-content-type="CTA" data-gtm-content-name="Discover AI Solutions" data-gtm-item-id="CTA_SOLUTIONS_HERO">اكتشف حلول الذكاء الاصطناعي للشركات السعودية</a>
+                        <!-- End GTM/Analytics Expert Fix -->
                     </div>
                 </div>
             </div>
@@ -347,9 +344,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </div>
 
                 <div class="demo-cta-container">
-                    <a href="h/index.html" class="cta-button cta-button-accent demo-cta" target="_blank" rel="noopener noreferrer" aria-label="استكشف النماذج الأولية لأنظمة الموارد البشرية وخدمة العملاء بالذكاء الاصطناعي من شركة مُشرقة AI الرائدة في السعودية">
+                    <!-- GTM/Analytics Expert Fix: Added data attributes for event tracking -->
+                    <a href="h/index.html" class="cta-button cta-button-accent demo-cta" target="_blank" rel="noopener noreferrer" aria-label="استكشف النماذج الأولية لأنظمة الموارد البشرية وخدمة العملاء بالذكاء الاصطناعي من شركة مُشرقة AI الرائدة في السعودية"
+                       data-gtm-event="select_content" data-gtm-content-type="CTA" data-gtm-content-name="Explore AI Demos" data-gtm-item-id="CTA_DEMOS">
                         <i class="fas fa-flask" aria-hidden="true"></i> استكشف النماذج الأولية لأنظمة AI السعودية الآن
                     </a>
+                    <!-- End GTM/Analytics Expert Fix -->
                 </div>
             </div>
         </section>
@@ -422,10 +422,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     </article>
 
                 <div class="tourism-cta">
-                    <a href="ai-bots.html" class="cta-button cta-button-accent" aria-label="استكشف مجموعة روبوتات الذكاء الاصطناعي السعودية وحلول الشات بوت المتطورة التي تقدمها شركة مُشرقة AI">
+                    <!-- GTM/Analytics Expert Fix: Added data attributes for event tracking -->
+                    <a href="ai-bots.html" class="cta-button cta-button-accent" aria-label="استكشف مجموعة روبوتات الذكاء الاصطناعي السعودية وحلول الشات بوت المتطورة التي تقدمها شركة مُشرقة AI"
+                       data-gtm-event="select_content" data-gtm-content-type="CTA" data-gtm-content-name="Explore AI Bots & Chatbots" data-gtm-item-id="CTA_EXPLORE_BOTS">
                         <i class="fas fa-robot" aria-hidden="true"></i>
                         استكشف روبوتات AI والشات بوت السعودي من مُشرقة AI
                     </a>
+                    <!-- End GTM/Analytics Expert Fix -->
                 </div>
             </div>
         </section>
@@ -511,7 +514,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <li><i class="fas fa-check" aria-hidden="true"></i> تحديد الأنماط والعلاقات الخفية بين البيانات باستخدام خوارزميات متقدمة مصممة خصيصاً للبيانات السعودية والخليجية.</li>
                             <li><i class="fas fa-check" aria-hidden="true"></i> توفير تقارير تفاعلية سهلة الفهم ولوحات تحكم متقدمة لذكاء الأعمال (BI) تمكن قادة الشركات السعودية من اتخاذ قرارات سريعة ومبنية على الأدلة.</li>
                         </ul>
-                        <a href="data-analysis.html" class="service-link" aria-label="اكتشف المزيد عن خدمات تحليل البيانات الضخمة وحلول الذكاء الاصطناعي في السعودية التي تقدمها شركة مُشرقة AI">اكتشف المزيد عن تحليل البيانات الضخمة في السعودية <i class="fas fa-arrow-left" aria-hidden="true"></i></a>
+                        <!-- GTM/Analytics Expert Fix: Added data attributes for event tracking -->
+                        <a href="data-analysis.html" class="service-link" aria-label="اكتشف المزيد عن خدمات تحليل البيانات الضخمة وحلول الذكاء الاصطناعي في السعودية التي تقدمها شركة مُشرقة AI"
+                           data-gtm-event="select_content" data-gtm-content-type="Service Link" data-gtm-content-name="Data Analysis" data-gtm-item-id="service_data_analysis">اكتشف المزيد عن تحليل البيانات الضخمة في السعودية <i class="fas fa-arrow-left" aria-hidden="true"></i></a>
+                        <!-- End GTM/Analytics Expert Fix -->
                     </article>
 
                     <article class="service-card" itemscope itemtype="https://schema.org/Service">
@@ -535,7 +541,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <li><i class="fas fa-check" aria-hidden="true"></i> نظام متكامل لتقليل الأخطاء البشرية إلى الحد الأدنى وضمان الدقة والموثوقية في العمليات التشغيلية الحساسة في الشركات والمصانع السعودية.</li>
                             <li><i class="fas fa-check" aria-hidden="true"></i> زيادة ملحوظة في الإنتاجية وتحسين ملموس في تجربة العملاء والموظفين في السوق السعودي عبر خدمات الأتمتة المتقدمة والمخصصة.</li>
                         </ul>
-                        <a href="smart-automation.html" class="service-link" aria-label="اكتشف المزيد عن حلول أتمتة العمليات الذكية و RPA المتطورة في السعودية من شركة مُشرقة AI">اكتشف المزيد عن أتمتة العمليات الذكية في السعودية <i class="fas fa-arrow-left" aria-hidden="true"></i></a>
+                         <!-- GTM/Analytics Expert Fix: Added data attributes for event tracking -->
+                        <a href="smart-automation.html" class="service-link" aria-label="اكتشف المزيد عن حلول أتمتة العمليات الذكية و RPA المتطورة في السعودية من شركة مُشرقة AI"
+                           data-gtm-event="select_content" data-gtm-content-type="Service Link" data-gtm-content-name="Smart Automation" data-gtm-item-id="service_smart_automation">اكتشف المزيد عن أتمتة العمليات الذكية في السعودية <i class="fas fa-arrow-left" aria-hidden="true"></i></a>
+                         <!-- End GTM/Analytics Expert Fix -->
                     </article>
 
                     <article class="service-card" itemscope itemtype="https://schema.org/Service">
@@ -559,7 +568,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <li><i class="fas fa-check" aria-hidden="true"></i> تحسين العمليات التجارية الحالية عبر حلول AI مبتكرة وتطوير تطبيقات الذكاء الاصطناعي المخصصة التي تلبي احتياجات السوق السعودي الفريدة.</li>
                             <li><i class="fas fa-check" aria-hidden="true"></i> برامج تدريبية متخصصة وعالية الجودة لتأهيل الكوادر السعودية الشابة على أحدث تقنيات الذكاء الاصطناعي والتعلم الآلي وتحليل البيانات.</li>
                         </ul>
-                        <a href="consultation.html" class="service-link" aria-label="اكتشف المزيد عن خدمات استشارات الذكاء الاصطناعي والتحول الرقمي في السعودية من شركة مُشرقة AI الخبيرة">اكتشف المزيد عن استشارات الذكاء الاصطناعي في السعودية <i class="fas fa-arrow-left" aria-hidden="true"></i></a>
+                         <!-- GTM/Analytics Expert Fix: Added data attributes for event tracking -->
+                        <a href="consultation.html" class="service-link" aria-label="اكتشف المزيد عن خدمات استشارات الذكاء الاصطناعي والتحول الرقمي في السعودية من شركة مُشرقة AI الخبيرة"
+                           data-gtm-event="select_content" data-gtm-content-type="Service Link" data-gtm-content-name="AI Consultation" data-gtm-item-id="service_consultation">اكتشف المزيد عن استشارات الذكاء الاصطناعي في السعودية <i class="fas fa-arrow-left" aria-hidden="true"></i></a>
+                         <!-- End GTM/Analytics Expert Fix -->
                     </article>
 
                     <article class="service-card" itemscope itemtype="https://schema.org/Service">
@@ -583,7 +595,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <li><i class="fas fa-check" aria-hidden="true"></i> تحليل تنبؤي متقدم لسلوك العملاء في السوق السعودي لتعزيز المبيعات وزيادة الولاء للعلامة التجارية باستخدام بيانات الشات بوت القيمة.</li>
                             <li><i class="fas fa-check" aria-hidden="true"></i> أتمتة المهام المعقدة والمتكررة باستخدام وكلاء الذكاء الاصطناعي المصممة خصيصاً لتلبية متطلبات الشركات السعودية الفريدة ودعم نموها.</li>
                         </ul>
-                        <a href="ai-agent.html" class="service-link" aria-label="اكتشف المزيد عن حلول وكلاء الذكاء الاصطناعي وتطوير الشات البوت للشركات السعودية من شركة مُشرقة AI">اكتشف المزيد عن وكلاء الذكاء الاصطناعي في السعودية <i class="fas fa-arrow-left" aria-hidden="true"></i></a>
+                         <!-- GTM/Analytics Expert Fix: Added data attributes for event tracking -->
+                        <a href="ai-agent.html" class="service-link" aria-label="اكتشف المزيد عن حلول وكلاء الذكاء الاصطناعي وتطوير الشات البوت للشركات السعودية من شركة مُشرقة AI"
+                           data-gtm-event="select_content" data-gtm-content-type="Service Link" data-gtm-content-name="AI Agents" data-gtm-item-id="service_ai_agents">اكتشف المزيد عن وكلاء الذكاء الاصطناعي في السعودية <i class="fas fa-arrow-left" aria-hidden="true"></i></a>
+                         <!-- End GTM/Analytics Expert Fix -->
                     </article>
 
                     <article class="service-card" itemscope itemtype="https://schema.org/Service">
@@ -607,7 +622,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <li><i class="fas fa-check" aria-hidden="true"></i> منصات تعلم آلي (Machine Learning) قوية وقابلة للتخصيص بشكل كامل حسب احتياجات الشركات والمؤسسات السعودية المختلفة.</li>
                             <li><i class="fas fa-check" aria-hidden="true"></i> أدوات تحليل البيانات في الوقت الفعلي لاتخاذ قرارات سريعة ومبنية على معلومات دقيقة وموثوقة في السوق السعودي المتغير باستمرار.</li>
                         </ul>
-                        <a href="tools.html" class="service-link" aria-label="اكتشف المزيد عن أدوات وتطبيقات الذكاء الاصطناعي المبتكرة للشركات السعودية من شركة مُشرقة AI الرائدة">اكتشف المزيد عن أدوات الذكاء الاصطناعي في السعودية <i class="fas fa-arrow-left" aria-hidden="true"></i></a>
+                         <!-- GTM/Analytics Expert Fix: Added data attributes for event tracking -->
+                        <a href="tools.html" class="service-link" aria-label="اكتشف المزيد عن أدوات وتطبيقات الذكاء الاصطناعي المبتكرة للشركات السعودية من شركة مُشرقة AI الرائدة"
+                           data-gtm-event="select_content" data-gtm-content-type="Service Link" data-gtm-content-name="AI Tools" data-gtm-item-id="service_ai_tools">اكتشف المزيد عن أدوات الذكاء الاصطناعي في السعودية <i class="fas fa-arrow-left" aria-hidden="true"></i></a>
+                         <!-- End GTM/Analytics Expert Fix -->
                     </article>
 
                     <article class="service-card" itemscope itemtype="https://schema.org/Service">
@@ -631,7 +649,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <li><i class="fas fa-check" aria-hidden="true"></i> مكتبة شاملة تضم أحدث المقالات والأبحاث العلمية المحكمة في تطبيقات الذكاء الاصطناعي ذات الصلة المباشرة بالسوق السعودي وأولويات رؤية 2030.</li>
                             <li><i class="fas fa-check" aria-hidden="true"></i> تحديثات أسبوعية وشهرية لمواكبة أحدث التطورات العالمية في مجال الذكاء الاصطناعي وتأثيرها المحتمل على القطاعات المختلفة في المملكة العربية السعودية.</li>
                         </ul>
-                        <a href="blog" class="service-link" aria-label="اكتشف المزيد في المكتبة الرقمية للذكاء الاصطناعي والدورات التدريبية المتخصصة في السعودية من شركة مُشرقة AI">اكتشف المزيد في مكتبتنا الرقمية للذكاء الاصطناعي في السعودية <i class="fas fa-arrow-left" aria-hidden="true"></i></a>
+                         <!-- GTM/Analytics Expert Fix: Added data attributes for event tracking -->
+                        <a href="blog" class="service-link" aria-label="اكتشف المزيد في المكتبة الرقمية للذكاء الاصطناعي والدورات التدريبية المتخصصة في السعودية من شركة مُشرقة AI"
+                           data-gtm-event="select_content" data-gtm-content-type="Service Link" data-gtm-content-name="Digital Library" data-gtm-item-id="service_blog">اكتشف المزيد في مكتبتنا الرقمية للذكاء الاصطناعي في السعودية <i class="fas fa-arrow-left" aria-hidden="true"></i></a>
+                         <!-- End GTM/Analytics Expert Fix -->
                     </article>
                 </div>
             </div>
@@ -1328,7 +1349,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     </p>
                 </div>
                 <div style="text-align: center; margin-top: 2rem;">
-                    <a href="#contact" class="cta-button cta-button-accent" aria-label="ابدأ رحلة التحول الرقمي الآن في السعودية مع شركة مُشرقة AI واستفد من حلول الذكاء الاصطناعي المتطورة والمخصصة">الحق بركب التحول الرقمي في السعودية الآن وابدأ مع مُشرقة AI!</a>
+                    <!-- GTM/Analytics Expert Fix: Added data attributes for event tracking -->
+                    <a href="#contact" class="cta-button cta-button-accent" aria-label="ابدأ رحلة التحول الرقمي الآن في السعودية مع شركة مُشرقة AI واستفد من حلول الذكاء الاصطناعي المتطورة والمخصصة"
+                       data-gtm-event="select_content" data-gtm-content-type="CTA" data-gtm-content-name="Start Digital Transformation" data-gtm-item-id="CTA_TRANSFORMATION_CONTACT">الحق بركب التحول الرقمي في السعودية الآن وابدأ مع مُشرقة AI!</a>
+                    <!-- End GTM/Analytics Expert Fix -->
                 </div>
             </div>
         </section>
