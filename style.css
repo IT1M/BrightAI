@@ -57,7 +57,7 @@
 
 html {
     scroll-behavior: smooth;
-    font-size: 100%;
+    font-size: 100%; /* Base font size for accessibility */
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
 }
@@ -443,6 +443,7 @@ img, svg, video, canvas {
     text-align: center;
     line-height: 1.2;
     text-decoration: none;
+    font-size: 1rem; /* Base size for mobile */
 }
 .cta-button:hover {
     text-decoration: none;
@@ -1492,7 +1493,7 @@ textarea.form-control {
 
 /* --- MODIFICATION AS PER REQUEST: MOBILE MENU --- */
 @media (max-width: 768px) {
-    body { font-size: 0.9rem; }
+    body { font-size: 1rem; /* Increase base font size on mobile for readability */ }
 
     .navbar-container {
         padding-inline: 1rem;
@@ -1512,7 +1513,7 @@ textarea.form-control {
         padding: 2rem;
         z-index: 1000;
         transition: right 0.35s cubic-bezier(0.23, 1, 0.32, 1);
-        box-shadow: none;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.2);
     }
     
     .nav-links.active { right: 0; }
@@ -1545,6 +1546,15 @@ textarea.form-control {
         background-color: rgba(100, 255, 218, 0.05); /* Subtle background glow */
         border-color: var(--primary-color); /* Highlight border */
     }
+    
+    .cta-container {
+        flex-direction: column;
+    }
+    
+    .cta-button {
+        width: 100%;
+        margin-inline: 0;
+    }
 
     .services-grid, .tourism-features-grid, .case-studies-grid,
     .tech-grid, .tech-details-grid, .demo-features-grid,
@@ -1561,7 +1571,6 @@ textarea.form-control {
 /* --- END OF MOBILE MENU MODIFICATION --- */
 
 @media (max-width: 576px) {
-    body { font-size: 0.85rem; }
     .section-container { padding-block: 3rem; }
     .hero-description, .section-description { font-size: 1rem; }
     
@@ -1574,7 +1583,7 @@ textarea.form-control {
     .newsletter-form-large, .newsletter-form { flex-direction: column; }
     
     .support-fab { left: 16px; bottom: 16px; width: 50px; height: 50px; font-size: 1.5rem; }
-    .back-to-top { width: 40px; height: 40px; font-size: 1.1rem; bottom: 15px; left: 15px; }
+    .back-to-top { width: 40px; height: 40px; font-size: 1.1rem; bottom: 15px; right: 15px; left: auto; }
 }
 
 
