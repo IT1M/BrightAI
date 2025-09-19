@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bright AI - حلول الذكاء الاصطناعي الطبية المتقدمة في السعودية | تحليل طبي ذكي</title>
+    <meta name="description" content="Bright AI - الرائدة في تقديم حلول الذكاء الاصطناعي الطبية في المملكة العربية السعودية. تحليل الصور الطبية، المراقبة الصحية عن بعد، وإدارة المستشفيات الذكية باستخدام تقنيات Med-Gemini.">
+    <meta name="keywords" content="الذكاء الاصطناعي الطبي السعودية, تحليل الأشعة بالذكاء الاصطناعي, التشخيص الطبي الذكي, المراقبة الصحية عن بعد, إدارة المستشفيات الذكية, Bright AI, الرعاية الصحية الرقمية, Med-Gemini, السعودية">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Bright AI - حلول الذكاء الاصطناعي الطبية المتقدمة في السعودية">
+    <meta property="og:description" content="منصة متكاملة للخدمات الطبية الذكية، نقدم تحليلاً دقيقاً للصور الطبية، مراقبة صحية عن بعد، وإدارة متكاملة للمستشفيات في المملكة العربية السعودية.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ar_SA">
+    <link rel="canonical" href="https://bright-ai.sa">
+    
+    <style>
+        /* --- General Styles --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #00BCD4; /* Cyan */
+            --secondary: #0097A7; /* Darker Cyan */
+            --accent: #00E5FF; /* Bright Cyan */
+            --dark: #006064; /* Deepest Cyan */
+            --light: #E0F7FA; /* Lightest Cyan */
+            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --medical-blue: #0288D1;
+            --success: #4CAF50;
+            --font-family: 'Tajawal', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background: #f0f4f8;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* --- Animated Background & Particles --- */
+        .animated-bg {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -2;
+            background: linear-gradient(270deg, #667eea, #764ba2, #00BCD4, #0097A7);
+            background-size: 800% 800%;
+            animation: gradientShift 20s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .particle {
+            position: fixed;
+            pointer-events: none;
+            opacity: 0.3;
+            background: white;
+            border-radius: 50%;
+            animation: float 20s infinite;
+            z-index: -1;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) translateX(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.3; }
+            90% { opacity: 0.3; }
+            100% { transform: translateY(-100vh) translateX(100px) rotate(720deg); opacity: 0; }
+        }
+
+        /* --- Header --- */
+        header {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 3px solid var(--primary);
+            animation: slideDown 0.5s ease-out;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .brand-name {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+            padding: 0.5rem 1rem;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+
+        nav a:hover, nav a:focus {
+            color: var(--primary);
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+            right: auto;
+            left: 0;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            padding: 5rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: white;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            color: rgba(255,255,255,0.95);
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: linear-gradient(45deg, var(--success), #66BB6A);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            box-shadow: 0 10px 30px rgba(76,175,80,0.4);
+            transition: all 0.3s;
+            animation: fadeInUp 1s ease-out 0.6s both, pulse 2s infinite 1.6s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(76,175,80,0.5);
+        }
+
+        /* --- Sections General --- */
+        .section {
+            padding: 4rem 2rem;
+            background: rgba(255,255,255,0.95);
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 3rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+        
+        /* --- Services Grid --- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+
+        .service-description {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .try-button {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        .try-button:hover {
+            background: linear-gradient(45deg, var(--secondary), var(--primary));
+            transform: scale(1.05);
+        }
+
+        /* --- Interactive Demo Sections --- */
+        .demo-section {
+            display: none;
+            padding: 2rem;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 15px;
+            margin-top: 2rem;
+            animation: slideIn 0.5s ease-out;
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: max-height 0.5s ease-out, opacity 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .demo-section.active {
+            display: block;
+            max-height: 1000px; /* Adjust as needed */
+            opacity: 1;
+        }
+        
+        .upload-area {
+            border: 3px dashed var(--primary);
+            border-radius: 15px;
+            padding: 3rem;
+            text-align: center;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .upload-area:hover {
+            background: var(--light);
+            border-color: var(--secondary);
+        }
+
+        .upload-area input { display: none; }
+        .upload-icon { font-size: 4rem; color: var(--primary); margin-bottom: 1rem; }
+        
+        .demo-input {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--primary);
+            border-radius: 10px;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s;
+            font-family: var(--font-family);
+        }
+
+        .demo-input:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 10px rgba(0,188,212,0.3);
+        }
+
+        .analyze-button {
+            background: linear-gradient(45deg, var(--medical-blue), #039BE5);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        .result-area {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            display: none;
+            animation: fadeIn 0.5s;
+            text-align: right;
+            line-height: 1.7;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .result-area.active { display: block; }
+        .loading { display: none; text-align: center; padding: 2rem; }
+        .loading.active { display: block; }
+        
+        .spinner {
+            border: 4px solid rgba(0,0,0,0.1);
+            border-radius: 50%;
+            border-top: 4px solid var(--primary);
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* --- Features Section --- */
+        .features {
+             background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(224,247,250,0.9));
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .feature-item h3 {
+            font-size: 1.3rem;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: linear-gradient(135deg, var(--dark), #004D40);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        .footer-content { max-width: 1200px; margin: 0 auto; }
+        .footer-content p { margin-top: 1rem; color: rgba(255,255,255,0.8); }
+        
+        .social-links {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .hero p { font-size: 1.2rem; }
+            .nav-container { flex-direction: column; gap: 1rem; }
+            nav ul { flex-direction: column; gap: 1rem; text-align: center; }
+            .services-grid { grid-template-columns: 1fr; }
+            .features-grid { grid-template-columns: 1fr; }
+        }
+
+        /* --- Accessibility & Print --- */
+        *:focus {
+            outline: 3px solid var(--accent);
+            outline-offset: 2px;
+        }
+        @media print {
+            .animated-bg, .particle, header, .hero, .try-button, .demo-section, footer { display: none; }
+            body { background: white; color: black; }
+            .section { padding: 2rem 0; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background & Particles -->
+    <div class="animated-bg"></div>
+    <script>
+        // Create floating particles
+        const particleContainer = document.createElement('div');
+        document.body.appendChild(particleContainer);
+        for(let i = 0; i < 15; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.width = Math.random() * 10 + 5 + 'px';
+            particle.style.height = particle.style.width;
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 20 + 's';
+            particle.style.animationDuration = Math.random() * 20 + 20 + 's';
+            particleContainer.appendChild(particle);
+        }
+    </script>
+
+    <!-- Header -->
+    <header>
+        <div class="nav-container">
+            <div class="logo-section">
+                <img src="https://www2.0zz0.com/2025/06/23/22/317775783.png" alt="شعار Bright AI" class="logo">
+                <span class="brand-name">Bright AI</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">الرئيسية</a></li>
+                    <li><a href="#services">خدماتنا</a></li>
+                    <li><a href="#features">المميزات</a></li>
+                    <li><a href="#contact">تواصل معنا</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <h1>ثورة الذكاء الاصطناعي في الرعاية الصحية السعودية</h1>
+                <p>حلول طبية متقدمة تعتمد على أحدث تقنيات الذكاء الاصطناعي لتحسين جودة التشخيص والعناية بالمرضى في المملكة.</p>
+                <a href="https://wa.me/966538229013?text=مرحباً، أرغب في الاستفسار عن خدمات Bright AI الطبية وحجز استشارة مجانية." class="cta-button" target="_blank">
+                    احجز استشارتك المجانية الآن 
+                </a>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="section" id="services">
+            <div class="section-container">
+                <h2 class="section-title">خدماتنا المتميزة</h2>
+                <div class="services-grid">
+                    
+                    <!-- 1. Medical Image Analysis -->
+                    <div class="service-card">
+                        <div class="service-icon">🏥</div>
+                        <h3 class="service-title">تحليل الصور الطبية بالذكاء الاصطناعي</h3>
+                        <p class="service-description">
+                            نظام متطور لتحليل الأشعة السينية (X-ray)، الرنين المغناطيسي (MRI)، والأشعة المقطعية (CT) بدقة فائقة. يساعد في الكشف المبكر عن الأورام، تشخيص أمراض القلب، وتحليل أمراض العيون والجلد.
+                        </p>
+                        <button class="try-button" onclick="toggleDemo('medical-demo')">جرب النظام الآن</button>
+                        <div id="medical-demo" class="demo-section">
+                            <h4>تحليل الصور الطبية التجريبي</h4>
+                            <div class="upload-area" onclick="document.getElementById('medical-upload').click()">
+                                <div class="upload-icon">📤</div>
+                                <p>اسحب الصورة الطبية هنا أو انقر للرفع</p>
+                                <p style="font-size: 0.9rem; color: #666;">يدعم: JPG, PNG (محاكاة للأشعة)</p>
+                                <input type="file" id="medical-upload" accept="image/*">
+                            </div>
+                            <button class="analyze-button" style="margin-top: 1rem;" onclick="analyzeMedicalImage()">🔬 تحليل الصورة الطبية</button>
+                            <div class="loading" id="medical-loading"><div class="spinner"></div><p>جاري تحليل الصورة بالذكاء الاصطناعي...</p></div>
+                            <div class="result-area" id="medical-result"></div>
+                        </div>
+                    </div>
+
+                    <!-- 2. Remote Health Monitoring -->
+                    <div class="service-card">
+                        <div class="service-icon">📱</div>
+                        <h3 class="service-title">المراقبة الصحية عن بُعد</h3>
+                        <p class="service-description">
+                            نظام ذكي لمراقبة العلامات الحيوية عبر الأجهزة القابلة للارتداء. يتيح تتبع مستوى السكر، ضغط الدم، ومعدل نبضات القلب مع إرسال تنبيهات فورية للطاقم الطبي عند وجود قراءات غير طبيعية.
+                        </p>
+                        <button class="try-button" onclick="toggleDemo('monitoring-demo')">جرب النظام الآن</button>
+                        <div id="monitoring-demo" class="demo-section">
+                            <h4>محاكي المراقبة الصحية</h4>
+                            <input type="number" class="demo-input" id="heart-rate" placeholder="معدل القلب (مثال: 75)">
+                            <input type="text" class="demo-input" id="blood-pressure" placeholder="ضغط الدم (مثال: 120/80)">
+                            <input type="number" class="demo-input" id="glucose" placeholder="مستوى السكر (مثال: 90)">
+                            <button class="analyze-button" onclick="analyzeVitalSigns()">❤️ تحليل البيانات الحيوية</button>
+                            <div class="loading" id="monitoring-loading"><div class="spinner"></div><p>جاري تحليل البيانات الصحية...</p></div>
+                            <div class="result-area" id="monitoring-result"></div>
+                        </div>
+                    </div>
+
+                    <!-- 3. Smart Hospital Management -->
+                    <div class="service-card">
+                        <div class="service-icon">🏨</div>
+                        <h3 class="service-title">إدارة المستشفيات الذكية</h3>
+                        <p class="service-description">
+                            نظام متكامل لأتمتة العمليات داخل المستشفيات، يشمل جدولة المواعيد الذكية، إدارة المخزون الطبي والأدوية، وتحليل بيانات المرضى لتوفير أنظمة إنذار مبكر فعالة وتحسين جودة الخدمة.
+                        </p>
+                        <button class="try-button" onclick="toggleDemo('hospital-demo')">جرب النظام الآن</button>
+                        <div id="hospital-demo" class="demo-section">
+                            <h4>نظام إدارة المستشفى التجريبي</h4>
+                            <select class="demo-input" id="department">
+                                <option value="">اختر القسم الطبي</option>
+                                <option value="emergency">الطوارئ</option>
+                                <option value="cardiology">القلب</option>
+                            </select>
+                            <textarea class="demo-input" id="case-description" placeholder="وصف حالة المريض والأعراض..."></textarea>
+                            <button class="analyze-button" onclick="analyzeHospitalData()">🔄 معالجة البيانات</button>
+                            <div class="loading" id="hospital-loading"><div class="spinner"></div><p>جاري معالجة البيانات...</p></div>
+                            <div class="result-area" id="hospital-result"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- 4. Med-Gemini Applications -->
+                    <div class="service-card">
+                        <div class="service-icon">🤖</div>
+                        <h3 class="service-title">تطبيقات Med-Gemini الطبية</h3>
+                        <p class="service-description">
+                           استخدام قدرات نموذج Gemini المتقدم لتحليل التقارير الطبية المعقدة، تلخيصها، والإجابة على الاستفسارات الطبية بدقة عالية. يدعم التشخيص متعدد الوسائط (نصوص، صور، وغيرها).
+                        </p>
+                        <button class="try-button" onclick="toggleDemo('gemini-demo')">جرب النظام الآن</button>
+                        <div id="gemini-demo" class="demo-section">
+                            <h4>تجربة Med-Gemini</h4>
+                            <textarea class="demo-input" id="medical-query" placeholder="أدخل استفسارك الطبي أو الصق جزءاً من تقرير طبي هنا..."></textarea>
+                            <button class="analyze-button" onclick="analyzeMedGeminiQuery()">💡 الحصول على تحليل</button>
+                            <div class="loading" id="gemini-loading"><div class="spinner"></div><p>جاري التحليل باستخدام Med-Gemini...</p></div>
+                            <div class="result-area" id="gemini-result"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="section features" id="features">
+            <div class="section-container">
+                <h2 class="section-title">لماذا تختار Bright AI؟</h2>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon">🎯</div>
+                        <h3>دقة عالية</h3>
+                        <p>تستخدم نماذج الذكاء الاصطناعي لدينا أحدث التقنيات لضمان أعلى مستويات الدقة في التشخيص والتحليل.</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">⚡️</div>
+                        <h3>سرعة فائقة</h3>
+                        <p>الحصول على نتائج التحليلات والتقارير في دقائق معدودة، مما يسرّع من اتخاذ القرارات الطبية الهامة.</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🔒</div>
+                        <h3>أمان البيانات</h3>
+                        <p>نلتزم بأعلى معايير الأمان والخصوصية لبيانات المرضى، مع التوافق الكامل مع الأنظمة الصحية في المملكة.</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🤝</div>
+                        <h3>دعم متكامل</h3>
+                        <p>نوفر دعماً فنياً وتدريباً مستمراً للكوادر الطبية لضمان الاستفادة القصوى من أنظمتنا المتطورة.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="logo-section" style="justify-content: center;">
+                <img src="https://www2.0zz0.com/2025/06/23/22/317775783.png" alt="شعار Bright AI" class="logo">
+                <span class="brand-name" style="color: white; -webkit-text-fill-color: white;">Bright AI</span>
+            </div>
+            <p>رواد الحلول الطبية الذكية في المملكة العربية السعودية.</p>
+            <p>تواصل معنا لبدء رحلة التحول الرقمي في منشأتك الصحية.</p>
+            <div class="social-links">
+                <!-- Add actual social media links here -->
+                <a href="#" aria-label="Twitter"><svg><!-- icon --></svg></a>
+                <a href="#" aria-label="LinkedIn"><svg><!-- icon --></svg></a>
+            </div>
+            <p>&copy; 2025 Bright AI. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <script>
+        // --- Demo Section Logic ---
+        function toggleDemo(demoId) {
+            const allDemos = document.querySelectorAll('.demo-section');
+            const targetDemo = document.getElementById(demoId);
+
+            allDemos.forEach(demo => {
+                if (demo.id !== demoId && demo.classList.contains('active')) {
+                    demo.classList.remove('active');
+                }
+            });
+
+            targetDemo.classList.toggle('active');
+        }
+
+        // --- Simulated API Call Logic ---
+        // IMPORTANT: The following functions simulate API calls. 
+        // In a real-world application, you MUST NOT expose your API key on the client-side (HTML/JavaScript).
+        // These calls should be made from a secure server-side backend (e.g., using Node.js, Python/Flask, etc.)
+        // which then communicates with the Gemini API.
+
+        function showLoading(service, show) {
+            document.getElementById(`${service}-loading`).classList.toggle('active', show);
+            document.getElementById(`${service}-result`).classList.remove('active');
+        }
+
+        function showResult(service, content) {
+            const resultArea = document.getElementById(`${service}-result`);
+            resultArea.innerHTML = content;
+            resultArea.classList.add('active');
+        }
+
+        function analyzeMedicalImage() {
+            const fileInput = document.getElementById('medical-upload');
+            if (fileInput.files.length === 0) {
+                alert('يرجى رفع صورة أولاً.');
+                return;
+            }
+            showLoading('medical', true);
+            setTimeout(() => {
+                showLoading('medical', false);
+                const mockResult = `
+                    <h4>تقرير التحليل الأولي (محاكاة):</h4>
+                    <p><strong>نوع الصورة:</strong> أشعة سينية للصدر (محاكاة).</p>
+                    <p><strong>النتائج المحتملة:</strong></p>
+                    <ul>
+                        <li>لا توجد علامات واضحة لوجود كتل أو أورام.</li>
+                        <li>حجم القلب والرئتين ضمن المعدل الطبيعي.</li>
+                        <li>يُحتمل وجود التهاب طفيف في الشعب الهوائية اليمنى.</li>
+                    </ul>
+                    <p><strong>توصية:</strong> هذه نتيجة أولية من نظام الذكاء الاصطناعي ولا تغني عن استشارة طبيب الأشعة المختص لتأكيد التشخيص.</p>
+                `;
+                showResult('medical', mockResult);
+            }, 2500);
+        }
+
+        function analyzeVitalSigns() {
+            showLoading('monitoring', true);
+            setTimeout(() => {
+                showLoading('monitoring', false);
+                const heartRate = document.getElementById('heart-rate').value || '75';
+                const bp = document.getElementById('blood-pressure').value || '120/80';
+                const glucose = document.getElementById('glucose').value || '90';
+                const mockResult = `
+                    <h4>تحليل العلامات الحيوية (محاكاة):</h4>
+                    <p><strong>البيانات المدخلة:</strong></p>
+                    <ul>
+                        <li>معدل القلب: ${heartRate} نبضة/دقيقة</li>
+                        <li>ضغط الدم: ${bp} مم زئبق</li>
+                        <li>مستوى السكر: ${glucose} ملغ/ديسيلتر</li>
+                    </ul>
+                    <p><strong>التحليل:</strong> جميع المؤشرات ضمن النطاق الطبيعي للبالغين الأصحاء.</p>
+                    <p><strong>توصية:</strong> الاستمرار في المراقبة الدورية. في حال ظهور أعراض مثل الدوار أو ألم الصدر، يجب التواصل مع الطبيب فوراً.</p>
+                `;
+                showResult('monitoring', mockResult);
+            }, 2000);
+        }
+
+        function analyzeHospitalData() {
+            const department = document.getElementById('department').value;
+            const caseDesc = document.getElementById('case-description').value;
+            if (!department || !caseDesc) {
+                alert('يرجى اختيار القسم ووصف الحالة.');
+                return;
+            }
+            showLoading('hospital', true);
+            setTimeout(() => {
+                showLoading('hospital', false);
+                const mockResult = `
+                    <h4>توصيات النظام الذكي (محاكاة):</h4>
+                    <p><strong>القسم:</strong> ${department === 'cardiology' ? 'القلب' : 'الطوارئ'}</p>
+                    <p><strong>تحليل الحالة:</strong> بناءً على وصف الأعراض، تم تحديد درجة الخطورة على أنها "متوسطة".</p>
+                    <p><strong>الإجراء المقترح:</strong></p>
+                    <ul>
+                        <li><strong>جدولة موعد:</strong> تم اقتراح موعد عاجل مع الطبيب المناوب خلال 30 دقيقة.</li>
+                        <li><strong>المخزون:</strong> تم التحقق من توفر الأدوية والمعدات اللازمة للحالة.</li>
+                        <li><strong>إنذار مبكر:</strong> تم إرسال تنبيه لفريق ${department === 'cardiology' ? 'القلب' : 'الطوارئ'} للاستعداد لاستقبال الحالة.</li>
+                    </ul>
+                `;
+                showResult('hospital', mockResult);
+            }, 2000);
+        }
+
+        function analyzeMedGeminiQuery() {
+            const query = document.getElementById('medical-query').value;
+            if (!query) {
+                alert('يرجى إدخال استفسار أو تقرير طبي.');
+                return;
+            }
+            showLoading('gemini', true);
+            setTimeout(() => {
+                showLoading('gemini', false);
+                const mockResult = `
+                    <h4>تحليل Med-Gemini (محاكاة):</h4>
+                    <p><strong>الاستفسار/التقرير:</strong> "${query.substring(0, 100)}..."</p>
+                    <p><strong>الملخص الذكي:</strong></p>
+                    <p>النظام يقترح أن الأعراض الموصوفة قد تكون مرتبطة بالجهاز التنفسي. تم تحديد الكلمات الرئيسية: "سعال"، "ضيق تنفس"، "حرارة".</p>
+                    <p><strong>الإجابة المقترحة على الاستفسار:</strong></p>
+                    <p>بناءً على البيانات المقدمة، يُنصح بإجراء فحص سريري وأشعة سينية على الصدر للوصول إلى تشخيص دقيق. هذه المعلومات لا تعتبر استشارة طبية.</p>
+                `;
+                showResult('gemini', mockResult);
+            }, 3000);
+        }
+
+    </script>
+</body>
+</html>
