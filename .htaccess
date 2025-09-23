@@ -23,9 +23,11 @@ RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)/$ /$1 [L,R=301]
 
-# Canonicalize domain (www to non-www)
+# Canonicalize domain (www to non-www and correct domain)
+RewriteCond %{HTTP_HOST} ^www\.brightai\.site [NC,OR]
+RewriteCond %{HTTP_HOST} ^brightaii\.com [NC,OR]
 RewriteCond %{HTTP_HOST} ^www\.brightaii\.com [NC]
-RewriteRule ^(.*)$ https://brightaii.com/$1 [L,R=301]
+RewriteRule ^(.*)$ https://brightai.site/$1 [L,R=301]
 
 # Remove .html extension
 RewriteCond %{REQUEST_FILENAME} !-d
@@ -64,26 +66,37 @@ AddDefaultCharset UTF-8
   AddOutputFilterByType DEFLATE text/xml
 </IfModule>
 
-# Browser caching
+# Brotli Compression (if available)
+<IfModule mod_brotli.c>
+    AddOutputFilterByType BROTLI_COMPRESS text/html text/plain text/xml text/css text/javascript application/javascript application/x-javascript application/json application/xml application/xml+rss
+</IfModule>
+
+# Enhanced Browser Caching with optimized settings
 <IfModule mod_expires.c>
   ExpiresActive On
   
-  # Images
+  # Default cache for 1 hour
+  ExpiresDefault "access plus 1 hour"
+  
+  # Images - longer cache
   ExpiresByType image/jpeg "access plus 1 year"
   ExpiresByType image/gif "access plus 1 year"
   ExpiresByType image/png "access plus 1 year"
   ExpiresByType image/webp "access plus 1 year"
   ExpiresByType image/svg+xml "access plus 1 year"
   ExpiresByType image/x-icon "access plus 1 year"
+  ExpiresByType image/avif "access plus 1 year"
   
   # Video
   ExpiresByType video/mp4 "access plus 1 year"
+  ExpiresByType video/webm "access plus 1 year"
   ExpiresByType video/mpeg "access plus 1 year"
   
-  # CSS, JavaScript
+  # CSS, JavaScript - shorter cache for updates
   ExpiresByType text/css "access plus 1 month"
   ExpiresByType text/javascript "access plus 1 month"
   ExpiresByType application/javascript "access plus 1 month"
+  ExpiresByType application/x-javascript "access plus 1 month"
   
   # Fonts
   ExpiresByType application/vnd.ms-fontobject "access plus 1 year"
@@ -91,11 +104,46 @@ AddDefaultCharset UTF-8
   ExpiresByType application/x-font-opentype "access plus 1 year"
   ExpiresByType application/x-font-woff "access plus 1 year"
   ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType font/ttf "access plus 1 year"
+  ExpiresByType font/otf "access plus 1 year"
   
   # Others
   ExpiresByType application/pdf "access plus 1 month"
   ExpiresByType application/x-shockwave-flash "access plus 1 month"
+  ExpiresByType application/xhtml+xml "access plus 1 hour"
 </IfModule>
+
+# Cache-Control headers for additional control
+<IfModule mod_headers.c>
+    # Cache static assets for 1 year
+    <FilesMatch "\.(jpg|jpeg|png|gif|ico|svg|webp|avif|woff2|woff|ttf|otf)$">
+        Header set Cache-Control "max-age=31536000, public, immutable"
+    </FilesMatch>
+    
+    # Cache CSS & JS for 1 month
+    <FilesMatch "\.(css|js)$">
+        Header set Cache-Control "max-age=2592000, public"
+    </FilesMatch>
+    
+    # Cache HTML for 1 hour
+    <FilesMatch "\.(html|htm)$">
+        Header set Cache-Control "max-age=3600, public, must-revalidate"
+    </FilesMatch>
+    
+    # Remove ETag for better cache performance
+    Header unset ETag
+    FileETag None
+</IfModule>
+
+# KeepAlive optimization for faster connections
+<IfModule mod_headers.c>
+    Header set Connection keep-alive
+</IfModule>
+
+# Enable KeepAlive
+KeepAlive On
+KeepAliveTimeout 5
+MaxKeepAliveRequests 100
 
 # Security headers
 <IfModule mod_headers.c>
@@ -136,6 +184,40 @@ RewriteCond %{HTTP:Accept-Language} ^ar [NC]
 RewriteCond %{REQUEST_URI} !^/ar/ [NC]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^(.*)$ /ar/$1 [L,R=302]
+
+# Redirects for common 404 sources
+Redirect 301 /terms.html /terms-and-conditions.html
+Redirect 301 /Company performance monitoring tool.html /Company%20performance%20monitoring%20tool.html
+Redirect 301 /Saudi tourism and heritage services/index.html /Saudi%20tourism%20and%20heritage%20services/index.html
+
+# Redirect old blog URLs to new structure
+RedirectMatch 301 ^/blogger/(.*)\.doc\.html$ /blogger/$1.html
+RedirectMatch 301 ^/blogger/(.*)\.pdf$ /blogger/$1.html
+
+# Redirect missing pages to homepage
+Redirect 301 /missing-page.html /
+Redirect 301 /old-version.html /
+
+# Performance: Serve precompressed files if available
+<IfModule mod_rewrite.c>
+    RewriteCond %{HTTP:Accept-Encoding} gzip
+    RewriteCond %{REQUEST_FILENAME}.gz -f
+    RewriteRule ^(.*)$ $1.gz [L]
+    
+    RewriteCond %{HTTP:Accept-Encoding} br
+    RewriteCond %{REQUEST_FILENAME}.br -f
+    RewriteRule ^(.*)$ $1.br [L]
+</IfModule>
+
+<FilesMatch "\.(css|js|html|htm|xml|svg|txt)\.gz$">
+    Header set Content-Encoding gzip
+    Header set Vary Accept-Encoding
+</FilesMatch>
+
+<FilesMatch "\.(css|js|html|htm|xml|svg|txt)\.br$">
+    Header set Content-Encoding br
+    Header set Vary Accept-Encoding
+</FilesMatch>
 
 # Handle Service Worker
 <Files "sw.js">

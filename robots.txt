@@ -1,67 +1,10 @@
-# BrightAI - ملف Robots.txt المحسّن لمحركات البحث
-# آخر تحديث: 2025-09-13
-# الموقع: https://brightai.site
-
-# القواعد العامة للزواحف
+# Optimized robots.txt for brightai.site
+# Last updated: 2025-09-23
 User-agent: *
 Allow: /
-Crawl-delay: 1
-
-# محركات البحث الرئيسية - أولوية عالية
-User-agent: Googlebot
-Allow: /
-Allow: /blogger/
-Allow: /botAI/
-Allow: /Customer/
-Allow: /Docfile/
-Allow: /h/
-Allow: /*.html$
-Allow: /sitemap.xml
-Crawl-delay: 1
-
-User-agent: Bingbot
-Allow: /
-Allow: /blogger/
-Allow: /botAI/
-Allow: /Customer/
-Allow: /Docfile/
-Allow: /h/
-Crawl-delay: 1
-
-User-agent: Slurp
-Allow: /
-Crawl-delay: 2
-
-User-agent: DuckDuckBot
-Allow: /
-Crawl-delay: 1
-
-# زواحف الصور والوسائط
-User-agent: Googlebot-Image
-Allow: /images/
-Allow: /assets/images/
-Allow: /uploads/
-Allow: /*.jpg$
-Allow: /*.jpeg$
-Allow: /*.png$
-Allow: /*.webp$
-Allow: /*.svg$
-Allow: /*.gif$
-Crawl-delay: 1
-
-User-agent: Googlebot-Video
-Allow: /videos/
-Allow: /assets/videos/
-Allow: /*.mp4$
-Allow: /*.webm$
-Crawl-delay: 2
-
-# حماية الملفات والمجلدات الحساسة
 Disallow: /admin/
 Disallow: /wp-admin/
 Disallow: /wp-includes/
-Disallow: /wp-content/plugins/
-Disallow: /wp-content/themes/
 Disallow: /private/
 Disallow: /config/
 Disallow: /includes/
@@ -71,6 +14,8 @@ Disallow: /cache/
 Disallow: /backup/
 Disallow: /logs/
 Disallow: /cgi-bin/
+
+# Block sensitive file types
 Disallow: /*.sql$
 Disallow: /*.log$
 Disallow: /*.conf$
@@ -82,84 +27,5 @@ Disallow: /*.tar$
 Disallow: /*.zip$
 Disallow: /*.rar$
 
-# منع الوصول للملفات التقنية
-Disallow: /404.html
-Disallow: /500.html
-Disallow: /error/
-Disallow: /?s=
-Disallow: /search?
-Disallow: /*?print=
-Disallow: /*?download=
-Disallow: /*?preview=
-
-# السماح بالمعاملات المهمة لمحركات البحث
-Allow: /*?page=
-Allow: /*?lang=
-Allow: /*?category=
-Allow: /*?tag=
-Allow: /*?id=
-
-# منع المعاملات غير المرغوب فيها
-Disallow: /*?*session=
-Disallow: /*?*utm_
-Disallow: /*?*fbclid
-Disallow: /*?*gclid
-Disallow: /*?*ref=
-Disallow: /*?*campaign=
-Disallow: /*?*source=
-Disallow: /*?*medium=
-
-# التحكم في الزواحف التجارية
-User-agent: SemrushBot
-Crawl-delay: 10
-Allow: /
-
-User-agent: AhrefsBot
-Crawl-delay: 10
-Allow: /
-
-User-agent: MJ12bot
-Crawl-delay: 15
-Allow: /
-
-User-agent: DotBot
-Crawl-delay: 10
-Allow: /
-
-# منع الزواحف الضارة أو غير المرغوب فيها
-User-agent: SiteBot
-Disallow: /
-
-User-agent: spbot
-Disallow: /
-
-User-agent: PetalBot
-Disallow: /
-
-User-agent: CCBot
-Disallow: /
-
-User-agent: ChatGPT-User
-Disallow: /
-
-User-agent: GPTBot
-Disallow: /
-
-User-agent: Claude-Web
-Disallow: /
-
-# تحديد النطاق المفضل
-Host: https://brightai.site
-
-# مواقع ملفات الخريطة - محدثة للسوق السعودي
+# Sitemap location
 Sitemap: https://brightai.site/sitemap.xml
-
-# تحسينات خاصة للسوق السعودي
-# Keywords: شركة مُشرقة AI السعودية, الذكاء الاصطناعي الرياض, AI السعودية
-# Target Cities: الرياض, جدة, الدمام, الخبر, مكة, المدينة المنورة
-
-# ملاحظات إضافية للمطورين
-# تأكد من تحديث التواريخ في sitemap.xml بانتظام
-# راقب أداء الزحف في Google Search Console
-# استخدم structured data للصفحات المهمة
-# تم تحديث الملف ليشمل جميع المجلدات والصفحات الجديدة
