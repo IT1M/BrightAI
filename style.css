@@ -289,24 +289,26 @@ img, svg, video, canvas {
     gap: 1rem;
     margin: 0;
     padding: 0;
-    min-height: 48px; /* تثبيت ارتفاع القائمة لمنع التحول */
+    /* CLS FIX (A2): رفع min-height لضمان حجز الارتفاع الكافي قبل تحميل الخطوط */
+    min-height: 55px; 
     min-width: 260px; /* تثبيت عرض القائمة لمنع التحول */
     box-sizing: border-box;
     transition: min-height 0.3s, min-width 0.3s;
-/* CLS FIX: Stabilize nav-links-list position and top offset */
-#nav-links-list {
-    position: fixed;
-    top: 26px;
-    left: 0;
-    width: 100%;
-    z-index: 1001;
-}
+/* CLS FIX (C3 - CLEANUP): إزالة أي محاولة لتثبيت الموضع الثابت هنا، حيث أنه يتعارض مع وضع سطح المكتب */
+    /* #nav-links-list {
+        position: fixed;
+        top: 26px;
+        left: 0;
+        width: 100%;
+        z-index: 1001;
+    } */
     /* CLS improvement: reserve space for menu even before JS runs */
     will-change: min-height, min-width;
 }
 
 .nav-links li {
     margin-inline-start: 1.5rem;
+    flex-shrink: 0; /* CLS FIX (A1): منع انكماش العناصر عند تحميل الخط */
 }
 
 .nav-links li:first-child {
@@ -316,11 +318,19 @@ img, svg, video, canvas {
 .nav-links a {
     color: var(--text-color);
     font-size: 0.95rem;
-    display: block;
-    padding: 0.5rem 0;
+    display: inline-block; /* CLS FIX: استخدم inline-block للتحكم في الأبعاد */
+    
+    /* CLS FIX (A1): إضافة حشو أفقي لتثبيت مساحة الرابط وحجزها قبل تحميل الخط */
+    padding: 0.5rem 0.8rem; 
+    
     transition: var(--transition-short);
     position: relative;
     text-decoration: none;
+    
+    /* CLS FIX (A1): حجز عرض أدنى لكل رابط. */
+    min-width: 80px; 
+    white-space: nowrap; /* CLS FIX (A1): منع التفاف النص لضمان ثبات الارتفاع */
+    text-align: center;
 }
 .nav-links a:hover {
     text-decoration: none;
@@ -394,6 +404,7 @@ img, svg, video, canvas {
     visibility: visible;
     transition: opacity 0.25s ease, visibility 0s linear;
 }
+
 
 /* --------------------------------------------------------------------------
    5.2. Hero Section
