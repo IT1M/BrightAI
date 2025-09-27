@@ -293,6 +293,8 @@ img, svg, video, canvas {
     min-width: 260px; /* تثبيت عرض القائمة لمنع التحول */
     box-sizing: border-box;
     transition: min-height 0.3s, min-width 0.3s;
+    /* CLS improvement: reserve space for menu even before JS runs */
+    will-change: min-height, min-width;
 }
 
 .nav-links li {
@@ -1609,6 +1611,10 @@ textarea.form-control {
         z-index: 1000;
         transition: right 0.35s cubic-bezier(0.23, 1, 0.32, 1);
         box-shadow: -5px 0 15px rgba(0,0,0,0.2);
+        min-width: 260px; /* Reserve width for CLS */
+        min-height: 480px; /* Reserve height for CLS, enough for all links */
+        box-sizing: border-box;
+        will-change: min-width, min-height, right;
     }
     
     .nav-links.active { right: 0; }
@@ -1617,6 +1623,7 @@ textarea.form-control {
         margin: 0 0 1.2rem 0;
         width: 100%;
         text-align: center; /* Center text inside li */
+        min-height: 40px; /* Reserve space for each link */
     }
     
     .nav-links a {
@@ -1629,6 +1636,7 @@ textarea.form-control {
         border-radius: var(--border-radius-md);
         border: 2px solid transparent; /* Prepare for highlight effect */
         transition: var(--transition-medium);
+        min-height: 40px; /* Prevent shift if font loads late */
     }
 
     .nav-links a::after {
