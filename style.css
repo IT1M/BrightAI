@@ -293,6 +293,14 @@ img, svg, video, canvas {
     min-width: 260px; /* تثبيت عرض القائمة لمنع التحول */
     box-sizing: border-box;
     transition: min-height 0.3s, min-width 0.3s;
+/* CLS FIX: Stabilize nav-links-list position and top offset */
+#nav-links-list {
+    position: fixed;
+    top: 26px;
+    left: 0;
+    width: 100%;
+    z-index: 1001;
+}
     /* CLS improvement: reserve space for menu even before JS runs */
     will-change: min-height, min-width;
 }
