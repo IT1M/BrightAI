@@ -222,4 +222,10 @@
     <changefreq>yearly</changefreq>
     <priority>0.1</priority>
   </url>
+  <url>
+    <loc>https://brightai.site/404.html</loc>
+    <lastmod>2025-09-23</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.1</priority>
+  </url>
 </urlset>
