@@ -27,6 +27,31 @@ function getCleanPagePath() {
     return cleanedSearch ? `${path}?${cleanedSearch}` : path;
 }
 
+
+// إضافة إلى script.js - تحسين Core Web Vitals
+const optimizeLCP = () => {
+    // Preload LCP image
+    const lcpImage = document.querySelector('.hero-image');
+    if (lcpImage) {
+        const link = document.createElement('link');
+        link.rel = 'preload';
+        link.as = 'image';
+        link.href = lcpImage.src;
+        document.head.appendChild(link);
+    }
+};
+
+const optimizeCLS = () => {
+    // Reserve space for dynamic content
+    const reserveSpace = (selector, ratio = 56.25) => {
+        const elements = document.querySelectorAll(selector);
+        elements.forEach(el => {
+            const width = el.offsetWidth;
+            el.style.height = `${width * (ratio/100)}px`;
+        });
+    };
+    reserveSpace('.service-card-image');
+};
 /**
  * Updates GTM consent state. This function should be triggered by a Consent
  * Management Platform (CMP) once the user provides their consent choices.
