@@ -1,1276 +1,759 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WW6PN3C2M0"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-WW6PN3C2M0');
-    </script>
-    <script async src="https://analytics.ahrefs.com/analytics.js" data-key="Cq+jwsfq74a4uXGJ0gEW5A"></script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SZKTP4496K"></script>
-    <!-- End GTM/Analytics Expert Fix -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bright AI - حلول الذكاء الاصطناعي الطبية المتقدمة في السعودية | تحليل طبي ذكي</title>
-    <meta name="description" content="Bright AI - الرائدة في تقديم حلول الذكاء الاصطناعي الطبية في المملكة العربية السعودية. تحليل الصور الطبية، المراقبة الصحية عن بعد، وإدارة المستشفيات الذكية باستخدام تقنيات Med-Gemini.">
-    <meta name="keywords" content="الذكاء الاصطناعي الطبي السعودية, تحليل الأشعة بالذكاء الاصطناعي, التشخيص الطبي الذكي, المراقبة الصحية عن بعد, إدارة المستشفيات الذكية, Bright AI, الرعاية الصحية الرقمية, Med-Gemini, السعودية">
-    <meta name="robots" content="index, follow">
-    <meta property="og:title" content="Bright AI - حلول الذكاء الاصطناعي الطبية المتقدمة في السعودية">
-    <meta property="og:description" content="منصة متكاملة للخدمات الطبية الذكية، نقدم تحليلاً دقيقاً للصور الطبية، مراقبة صحية عن بعد، وإدارة متكاملة للمستشفيات في المملكة العربية السعودية.">
-    <meta property="og:type" content="website">
-    <meta property="og:locale" content="ar_SA">
-    <link rel="canonical" href="https://bright-ai.sa">
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-        /* --- General Styles --- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary: #00BCD4; /* Cyan */
-            --secondary: #0097A7; /* Darker Cyan */
-            --accent: #00E5FF; /* Bright Cyan */
-            --dark: #006064; /* Deepest Cyan */
-            --light: #E0F7FA; /* Lightest Cyan */
-            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --medical-blue: #0288D1;
-            --success: #4CAF50;
-            --warning: #FF9800;
-            --danger: #F44336;
-            --font-family: 'Tajawal', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: var(--font-family);
-            background: #f0f4f8;
-            color: #333;
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
-
-        /* --- Animated Background & Particles --- */
-        .animated-bg {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: -2;
-            background: linear-gradient(270deg, #667eea, #764ba2, #00BCD4, #0097A7);
-            background-size: 800% 800%;
-            animation: gradientShift 20s ease infinite;
-        }
-
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .particle {
-            position: fixed;
-            pointer-events: none;
-            opacity: 0.3;
-            background: white;
-            border-radius: 50%;
-            animation: float 20s infinite;
-            z-index: -1;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(100vh) translateX(0) rotate(0deg); opacity: 0; }
-            10% { opacity: 0.3; }
-            90% { opacity: 0.3; }
-            100% { transform: translateY(-100vh) translateX(100px) rotate(720deg); opacity: 0; }
-        }
-
-        /* --- Header --- */
-        header {
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(20px);
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 3px solid var(--primary);
-            animation: slideDown 0.5s ease-out;
-        }
-
-        @keyframes slideDown {
-            from { transform: translateY(-100%); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo-section {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .logo {
-            width: 60px;
-            height: 60px;
-            object-fit: contain;
-            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        .brand-name {
-            font-size: 2rem;
-            font-weight: bold;
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 2rem;
-        }
-
-        nav a {
-            color: var(--dark);
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s;
-            position: relative;
-            padding: 0.5rem 1rem;
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary);
-            transition: width 0.3s;
-        }
-
-        nav a:hover, nav a:focus {
-            color: var(--primary);
-        }
-        
-        nav a:hover::after {
-            width: 100%;
-            right: auto;
-            left: 0;
-        }
-
-        /* --- Hero Section --- */
-        .hero {
-            padding: 5rem 2rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            min-height: 80vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .hero-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            color: white;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
-            animation: fadeInUp 1s ease-out;
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .hero p {
-            font-size: 1.5rem;
-            color: rgba(255,255,255,0.95);
-            margin-bottom: 2rem;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            animation: fadeInUp 1s ease-out 0.3s both;
-        }
-
-        .cta-button {
-            display: inline-block;
-            padding: 1.2rem 3rem;
-            background: linear-gradient(45deg, var(--success), #66BB6A);
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            box-shadow: 0 10px 30px rgba(76,175,80,0.4);
-            transition: all 0.3s;
-            animation: fadeInUp 1s ease-out 0.6s both, pulse 2s infinite 1.6s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 15px 40px rgba(76,175,80,0.5);
-        }
-
-        /* --- Sections General --- */
-        .section {
-            padding: 4rem 2rem;
-            background: rgba(255,255,255,0.95);
-        }
-
-        .section-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            color: var(--dark);
-            margin-bottom: 3rem;
-            position: relative;
-            padding-bottom: 1rem;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 4px;
-            background: var(--primary);
-            border-radius: 2px;
-        }
-        
-        /* --- Services Grid --- */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        .service-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: all 0.4s;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
-        }
-
-        .service-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            display: inline-block;
-            animation: bounce 2s infinite;
-            color: var(--primary);
-        }
-        
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .service-title {
-            font-size: 1.5rem;
-            color: var(--dark);
-            margin-bottom: 1rem;
-        }
-
-        .service-description {
-            color: #666;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-            flex-grow: 1;
-        }
-
-        .try-button {
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
-            color: white;
-            border: none;
-            padding: 0.8rem 2rem;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: 500;
-            transition: all 0.3s;
-            width: 100%;
-        }
-
-        .try-button:hover {
-            background: linear-gradient(45deg, var(--secondary), var(--primary));
-            transform: scale(1.05);
-        }
-
-        /* --- Demo Sections --- */
-        .demo-container {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 2000;
-            overflow-y: auto;
-            padding: 2rem;
-        }
-
-        .demo-container.active {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            animation: fadeIn 0.3s;
-        }
-
-        .demo-content {
-            background: white;
-            border-radius: 20px;
-            padding: 2rem;
-            width: 90%;
-            max-width: 800px;
-            max-height: 90vh;
-            overflow-y: auto;
-            position: relative;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-        }
-
-        .close-demo {
-            position: absolute;
-            top: 1rem;
-            left: 1rem;
-            background: var(--danger);
-            color: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            font-size: 1.2rem;
-            transition: all 0.3s;
-        }
-
-        .close-demo:hover {
-            transform: rotate(90deg);
-            background: #d32f2f;
-        }
-
-        .demo-title {
-            text-align: center;
-            color: var(--dark);
-            margin-bottom: 2rem;
-            padding-bottom: 1rem;
-            border-bottom: 2px solid var(--light);
-        }
-
-        .upload-area {
-            border: 3px dashed var(--primary);
-            border-radius: 15px;
-            padding: 3rem;
-            text-align: center;
-            background: white;
-            cursor: pointer;
-            transition: all 0.3s;
-            margin-bottom: 1.5rem;
-        }
-
-        .upload-area:hover {
-            background: var(--light);
-            border-color: var(--secondary);
-        }
-
-        .upload-area input { display: none; }
-        .upload-icon { font-size: 4rem; color: var(--primary); margin-bottom: 1rem; }
-        
-        .demo-input {
-            width: 100%;
-            padding: 1rem;
-            border: 2px solid var(--primary);
-            border-radius: 10px;
-            font-size: 1rem;
-            margin-bottom: 1rem;
-            transition: all 0.3s;
-            font-family: var(--font-family);
-        }
-
-        .demo-input:focus {
-            outline: none;
-            border-color: var(--secondary);
-            box-shadow: 0 0 10px rgba(0,188,212,0.3);
-        }
-
-        textarea.demo-input {
-            min-height: 150px;
-            resize: vertical;
-        }
-
-        .analyze-button {
-            background: linear-gradient(45deg, var(--medical-blue), #039BE5);
-            color: white;
-            border: none;
-            padding: 1rem 2rem;
-            border-radius: 10px;
-            cursor: pointer;
-            font-size: 1.1rem;
-            transition: all 0.3s;
-            width: 100%;
-            margin-top: 1rem;
-        }
-        
-        .analyze-button:disabled {
-            cursor: not-allowed;
-            background: #90A4AE;
-        }
-
-        .analyze-button:hover:not(:disabled) {
-            background: linear-gradient(45deg, #039BE5, var(--medical-blue));
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(3,155,229,0.4);
-        }
-
-        .result-area {
-            margin-top: 2rem;
-            padding: 1.5rem;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            display: none;
-            animation: fadeIn 0.5s;
-            text-align: right;
-            line-height: 1.7;
-            border-left: 4px solid var(--primary);
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        .result-area.active { display: block; }
-        .loading { display: none; text-align: center; padding: 2rem; }
-        .loading.active { display: block; }
-        
-        .spinner {
-            border: 4px solid rgba(0,0,0,0.1);
-            border-radius: 50%;
-            border-top: 4px solid var(--primary);
-            width: 50px;
-            height: 50px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .result-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid #eee;
-        }
-
-        .result-title {
-            color: var(--dark);
-            font-size: 1.3rem;
-        }
-
-        .confidence-badge {
-            background: var(--success);
-            color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-        }
-
-        .result-content {
-            margin-bottom: 1.5rem;
-        }
-
-        .recommendations {
-            background: var(--light);
-            padding: 1rem;
-            border-radius: 10px;
-            margin-top: 1rem;
-        }
-
-        .recommendations h4 {
-            color: var(--dark);
-            margin-bottom: 0.5rem;
-        }
-
-        /* --- Features Section --- */
-        .features {
-             background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(224,247,250,0.9));
-        }
-        
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        .feature-item {
-            text-align: center;
-            padding: 2rem;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-            transition: all 0.3s;
-        }
-
-        .feature-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-        }
-
-        .feature-icon {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-        
-        .feature-item h3 {
-            font-size: 1.3rem;
-            color: var(--dark);
-            margin-bottom: 0.5rem;
-        }
-
-        /* --- Footer --- */
-        footer {
-            background: linear-gradient(135deg, var(--dark), #004D40);
-            color: white;
-            padding: 3rem 2rem;
-            text-align: center;
-            position: relative;
-        }
-        
-        .footer-content { max-width: 1200px; margin: 0 auto; }
-        .footer-content p { margin-top: 1rem; color: rgba(255,255,255,0.8); }
-        
-        .social-links {
-            margin-top: 2rem;
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-        }
-
-        .social-links a {
-            color: white;
-            font-size: 1.5rem;
-            transition: all 0.3s;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.1);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .social-links a:hover {
-            color: var(--accent);
-            transform: translateY(-5px);
-            background: rgba(255,255,255,0.2);
-        }
-
-        /* --- Responsive Design --- */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .hero p { font-size: 1.2rem; }
-            .nav-container { flex-direction: column; gap: 1rem; }
-            nav ul { flex-direction: column; gap: 1rem; text-align: center; }
-            .services-grid { grid-template-columns: 1fr; }
-            .features-grid { grid-template-columns: 1fr; }
-            .demo-content { width: 95%; padding: 1.5rem; }
-            .upload-area { padding: 1.5rem; }
-        }
-
-        /* --- Accessibility & Print --- */
-        *:focus {
-            outline: 3px solid var(--accent);
-            outline-offset: 2px;
-        }
-        @media print {
-            .animated-bg, .particle, header, .hero, .try-button, .demo-container, footer { display: none; }
-            body { background: white; color: black; }
-            .section { padding: 2rem 0; }
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bright AI - حلول الذكاء الاصطناعي الطبية المتقدمة في السعودية</title>
+  <meta name="description" content="حلول طبية متقدمة بالذكاء الاصطناعي لتحليل الصور الطبية، المراقبة الصحية عن بعد، إدارة المستشفيات، وتطبيقات Med-Gemini." />
+  <style>
+    :root{
+      --bg:#0b1220;
+      --card:#111a2e;
+      --muted:#94a3b8;
+      --text:#e6edf6;
+      --accent:#6ee7b7;
+      --accent-2:#38bdf8;
+      --danger:#ef4444;
+      --warn:#f59e0b;
+      --ok:#22c55e;
+      --border:#1f2a44;
+      --shadow: 0 8px 30px rgba(0,0,0,0.25);
+      --radius:14px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:linear-gradient(180deg,#0b1220 0%, #0c1426 100%);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Noto Sans",Tahoma,Arial,sans-serif}
+    a{color:var(--accent-2);text-decoration:none}
+    header{
+      position:sticky;top:0;z-index:50;background:rgba(11,18,32,0.7);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)
+    }
+    .container{max-width:1080px;margin:0 auto;padding:0 16px}
+    .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+    .brand{display:flex;gap:10px;align-items:center}
+    .logo{width:36px;height:36px;border-radius:9px;background:linear-gradient(135deg,var(--accent) 0%, var(--accent-2) 100%);box-shadow:var(--shadow)}
+    .brand h1{font-size:18px;margin:0}
+    .nav ul{display:flex;gap:16px;list-style:none;margin:0;padding:0}
+    .nav a{padding:8px 12px;border-radius:10px}
+    .nav a:hover{background:rgba(255,255,255,0.06)}
+    main{padding:24px 0 80px}
+    .hero{
+      display:grid;grid-template-columns:1.1fr 0.9fr;gap:22px;align-items:center;margin:22px 0 28px
+    }
+    .hero .card{padding:24px;border-radius:var(--radius);background:linear-gradient(180deg,#101a30 0%, #0f1a34 100%);border:1px solid var(--border);box-shadow:var(--shadow)}
+    .title{font-size:28px;margin:0 0 8px}
+    .subtitle{color:var(--muted);margin:0 0 16px}
+    .btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--accent) 0%, var(--accent-2) 100%);color:#062b35;border:none;padding:12px 16px;border-radius:12px;font-weight:700;cursor:pointer;box-shadow:var(--shadow)}
+    .btn:disabled{opacity:.7;cursor:not-allowed}
+    .btn.secondary{background:#1b2a4d;color:var(--text);border:1px solid var(--border)}
+    .grid{display:grid;gap:16px}
+    .cards-3{grid-template-columns:repeat(3,1fr)}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px}
+    h3{margin:0 0 10px}
+    .muted{color:var(--muted)}
+    .badge{display:inline-flex;align-items:center;gap:6px;background:#0d213e;border:1px solid var(--border);padding:6px 10px;border-radius:999px;color:#cfe5ff;font-size:12px}
+    .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:#0e233f;border:1px solid var(--border);color:#cfe5ff;font-size:12px}
+    .section{margin:28px 0}
+    .field{margin-bottom:12px}
+    label{display:block;margin-bottom:6px;font-weight:600}
+    input,select,textarea{
+      width:100%;padding:10px 12px;border-radius:10px;border:1px solid var(--border);background:#0b1730;color:var(--text);outline:none
+    }
+    textarea{min-height:110px;resize:vertical}
+    .inline{display:flex;gap:10px;align-items:center}
+    .inline > *{flex:1}
+    .uploader{border:1.5px dashed #2a3a60;border-radius:12px;padding:14px;text-align:center;background:#0b1730;color:var(--muted)}
+    .uploader.drag{border-color:var(--accent-2);background:#0c1d3c}
+    .status{padding:10px 12px;border-radius:10px;background:#0e1f3e;border:1px solid var(--border);color:#cfe5ff}
+    .status.ok{border-color:#1d864d;background:#0f2c22}
+    .status.warn{border-color:#a76a12;background:#2a210a}
+    .status.err{border-color:#a21b1b;background:#2a0f0f}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .actions{display:flex;gap:10px;flex-wrap:wrap}
+    .output{white-space:pre-wrap;background:#0b1730;border:1px solid var(--border);border-radius:12px;padding:12px;color:#dbeafe}
+    .tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+    .tabs button{padding:8px 12px;border:1px solid var(--border);background:#0c1d3c;color:var(--text);border-radius:10px;cursor:pointer}
+    .tabs button.active{background:linear-gradient(135deg,#1b365a,#0e2444);border-color:#3563a3}
+    .footer{margin-top:28px;padding:18px;border-top:1px solid var(--border);color:var(--muted);text-align:center}
+    /* Responsive */
+    @media (max-width: 860px){
+      .hero{grid-template-columns:1fr}
+      .cards-3{grid-template-columns:1fr}
+      .row{grid-template-columns:1fr}
+    }
+  </style>
 </head>
 <body>
-    <!-- Animated Background & Particles -->
-    <div class="animated-bg"></div>
-    <script>
-        // Create floating particles
-        const particleContainer = document.createElement('div');
-        document.body.appendChild(particleContainer);
-        for(let i = 0; i < 15; i++) {
-            const particle = document.createElement('div');
-            particle.className = 'particle';
-            particle.style.width = Math.random() * 10 + 5 + 'px';
-            particle.style.height = particle.style.width;
-            particle.style.left = Math.random() * 100 + '%';
-            particle.style.animationDelay = Math.random() * 20 + 's';
-            particle.style.animationDuration = Math.random() * 20 + 20 + 's';
-            particleContainer.appendChild(particle);
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <h1>Bright AI</h1>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#home">الرئيسية</a></li>
+          <li><a href="#services">خدماتنا</a></li>
+          <li><a href="#why">المميزات</a></li>
+          <li><a href="#contact">تواصل معنا</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="home" class="container">
+    <section class="hero">
+      <div class="card">
+        <div class="badge">ثورة الذكاء الاصطناعي في الرعاية الصحية السعودية</div>
+        <h2 class="title">حلول طبية متقدمة لتحسين التشخيص والعناية بالمرضى</h2>
+        <p class="subtitle">تحليل صور طبية، مراقبة عن بُعد، إدارة مستشفيات، وتطبيقات Med-Gemini متعددة الوسائط.</p>
+        <div class="actions">
+          <a class="btn" href="#try">احجز استشارتك المجانية الآن</a>
+          <a class="btn secondary" href="#services">استعراض الخدمات</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="grid cards-3">
+          <div class="pill">دقة عالية</div>
+          <div class="pill">سرعة فائقة</div>
+          <div class="pill">أمان البيانات</div>
+        </div>
+        <div style="height:12px"></div>
+        <div class="status ok">متوافق مع أنظمة المملكة | خصوصية وضوابط وصول دقيقة</div>
+        <div style="height:8px"></div>
+        <div class="status">يدعم X-Ray, MRI, CT, Ultrasound + بيانات حيوية متعددة</div>
+      </div>
+    </section>
+
+    <section id="services" class="section">
+      <h2>خدماتنا المتميزة</h2>
+      <div class="grid cards-3">
+        <div class="card">
+          <h3>تحليل الصور الطبية بالذكاء الاصطناعي</h3>
+          <p class="muted">يدعم الأشعة السينية، الرنين المغناطيسي، الأشعة المقطعية، والموجات فوق الصوتية.</p>
+          <a class="btn secondary" href="#image-ai">جرب النظام الآن</a>
+        </div>
+        <div class="card">
+          <h3>المراقبة الصحية عن بُعد</h3>
+          <p class="muted">قراءات أجهزة قابلة للارتداء وتنبيهات ذكية للطاقم الطبي.</p>
+          <a class="btn secondary" href="#remote">جرب النظام الآن</a>
+        </div>
+        <div class="card">
+          <h3>إدارة المستشفيات الذكية</h3>
+          <p class="muted">جداول ذكية، إدارة مخزون، وتحليلات إنذار مبكر.</p>
+          <a class="btn secondary" href="#hms">جرب النظام الآن</a>
+        </div>
+        <div class="card">
+          <h3>تطبيقات Med-Gemini الطبية</h3>
+          <p class="muted">تحليل تقارير معقدة، تلخيص، وإجابة استفسارات متعددة الوسائط.</p>
+          <a class="btn secondary" href="#med-gemini">جرب النظام الآن</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="try" class="section">
+      <h2>تجربة فعلية مبنية على المدخلات</h2>
+      <p class="muted">أدخل البيانات أو ارفع الصور ليتم توليد نتائج حقيقية من نموذج Gemini استناداً إلى المدخلات.</p>
+
+      <!-- تبويب الخدمات -->
+      <div class="tabs" role="tablist" aria-label="أقسام التجربة">
+        <button class="active" data-tab="image-ai" role="tab">تحليل الصور الطبية</button>
+        <button data-tab="remote" role="tab">المراقبة عن بُعد</button>
+        <button data-tab="hms" role="tab">إدارة المستشفيات</button>
+        <button data-tab="med-gemini" role="tab">تطبيقات Med‑Gemini</button>
+      </div>
+
+      <!-- تحليل الصور الطبية -->
+      <section id="image-ai" class="card" aria-live="polite">
+        <h3>تحليل الصور الطبية بالذكاء الاصطناعي</h3>
+        <div class="row">
+          <div>
+            <div class="field">
+              <label>اختر نوع الصورة</label>
+              <select id="imgType">
+                <option value="X-Ray">أشعة سينية (X-Ray)</option>
+                <option value="MRI">رنين مغناطيسي (MRI)</option>
+                <option value="CT">أشعة مقطعية (CT Scan)</option>
+                <option value="Ultrasound">موجات فوق صوتية (Ultrasound)</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>اسحب الصورة الطبية هنا أو انقر للرفع (JPG/PNG/DICOM)</label>
+              <div id="imgDrop" class="uploader" tabindex="0">اسحب الملف هنا أو انقر للاختيار
+                <input id="imgFile" type="file" accept=".jpg,.jpeg,.png,.dcm,.dicom" style="display:none">
+              </div>
+            </div>
+            <div class="field">
+              <label>ملاحظات سريرية اختيارية</label>
+              <textarea id="imgNotes" placeholder="العمر، الأعراض، التاريخ المرضي، الموقع التشريحي..."></textarea>
+            </div>
+            <div class="actions">
+              <button class="btn" id="analyzeImageBtn">تحليل الصورة الطبية</button>
+              <button class="btn secondary" id="clearImageBtn">إعادة الضبط</button>
+            </div>
+          </div>
+          <div>
+            <div class="field">
+              <label>الحالة</label>
+              <div id="imgStatus" class="status">في انتظار المدخلات...</div>
+            </div>
+            <div class="field">
+              <label>المخرجات</label>
+              <div id="imgOutput" class="output"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- المراقبة الصحية عن بُعد -->
+      <section id="remote" class="card" hidden aria-live="polite">
+        <h3>المراقبة الصحية عن بُعد</h3>
+        <div class="row">
+          <div>
+            <div class="inline">
+              <div class="field">
+                <label>معدل ضربات القلب (نبضة/د)</label>
+                <input id="hr" type="number" min="20" max="240" placeholder="مثال: 82">
+              </div>
+              <div class="field">
+                <label>ضغط الدم (انقباضي/انبساطي)</label>
+                <input id="bp" type="text" placeholder="مثال: 120/80">
+              </div>
+            </div>
+            <div class="inline">
+              <div class="field">
+                <label>تشبع الأكسجين SpO₂ (%)</label>
+                <input id="spo2" type="number" min="50" max="100" placeholder="مثال: 97">
+              </div>
+              <div class="field">
+                <label>مستوى السكر (mg/dL)</label>
+                <input id="glucose" type="number" min="30" max="600" placeholder="مثال: 110">
+              </div>
+            </div>
+            <div class="field">
+              <label>الأعراض الملاحظة</label>
+              <textarea id="symptoms" placeholder="دوخة، ألم صدر، ضيق تنفس..."></textarea>
+            </div>
+            <div class="actions">
+              <button class="btn" id="analyzeVitalsBtn">تحليل البيانات الحيوية</button>
+              <button class="btn secondary" id="clearVitalsBtn">إعادة الضبط</button>
+            </div>
+          </div>
+          <div>
+            <div class="field">
+              <label>الحالة</label>
+              <div id="vitalsStatus" class="status">في انتظار المدخلات...</div>
+            </div>
+            <div class="field">
+              <label>المخرجات</label>
+              <div id="vitalsOutput" class="output"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- إدارة المستشفيات -->
+      <section id="hms" class="card" hidden aria-live="polite">
+        <h3>نظام إدارة المستشفيات الذكية</h3>
+        <div class="row">
+          <div>
+            <div class="field">
+              <label>اختر القسم الطبي</label>
+              <select id="dept">
+                <option>الطوارئ</option>
+                <option>أمراض القلب</option>
+                <option>العظام</option>
+                <option>طب الأطفال</option>
+                <option>الجراحة</option>
+              </select>
+            </div>
+            <div class="inline">
+              <div class="field">
+                <label>عمر المريض</label>
+                <input id="age" type="number" min="0" max="120" placeholder="مثال: 54">
+              </div>
+              <div class="field">
+                <label>جنس المريض</label>
+                <select id="gender">
+                  <option value="">اختر الجنس</option>
+                  <option>ذكر</option>
+                  <option>أنثى</option>
+                </select>
+              </div>
+            </div>
+            <div class="field">
+              <label>وصف حالة المريض والأعراض</label>
+              <textarea id="caseDesc" placeholder="وصف الحالة، التاريخ المرضي، علامات حرجة..."></textarea>
+            </div>
+            <div class="actions">
+              <button class="btn" id="hmsAnalyzeBtn">معالجة البيانات وتقديم التوصيات</button>
+              <button class="btn secondary" id="hmsClearBtn">إعادة الضبط</button>
+            </div>
+          </div>
+          <div>
+            <div class="field">
+              <label>الحالة</label>
+              <div id="hmsStatus" class="status">في انتظار المدخلات...</div>
+            </div>
+            <div class="field">
+              <label>المخرجات</label>
+              <div id="hmsOutput" class="output"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Med-Gemini -->
+      <section id="med-gemini" class="card" hidden aria-live="polite">
+        <h3>تطبيقات Med‑Gemini الطبية</h3>
+        <div class="row">
+          <div>
+            <div class="field">
+              <label>اختر نوع الاستفسار</label>
+              <select id="mgType">
+                <option>استفسار تشخيصي</option>
+                <option>تحليل تقرير طبي</option>
+                <option>معلومات طبية عامة</option>
+                <option>خيارات العلاج</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>وصف الاستفسار</label>
+              <textarea id="mgQuery" placeholder="اكتب سؤالك أو الصق نص التقرير الطبي..."></textarea>
+            </div>
+            <div class="field">
+              <label>رفع ملف طبي (اختياري) - PDF, DOC, TXT, JPG, PNG</label>
+              <div id="mgDrop" class="uploader" tabindex="0">اسحب الملف هنا أو انقر للاختيار
+                <input id="mgFile" type="file" accept=".pdf,.doc,.docx,.txt,.jpg,.jpeg,.png" style="display:none">
+              </div>
+            </div>
+            <div class="actions">
+              <button class="btn" id="mgAnalyzeBtn">الحصول على تحليل Med‑Gemini</button>
+              <button class="btn secondary" id="mgClearBtn">إعادة الضبط</button>
+            </div>
+          </div>
+          <div>
+            <div class="field">
+              <label>الحالة</label>
+              <div id="mgStatus" class="status">في انتظار المدخلات...</div>
+            </div>
+            <div class="field">
+              <label>المخرجات</label>
+              <div id="mgOutput" class="output"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <section id="why" class="section">
+      <h2>لماذا تختار Bright AI؟</h2>
+      <div class="grid cards-3">
+        <div class="card">
+          <div class="badge">🎯 دقة عالية</div>
+          <p class="muted">نماذج حديثة لضمان أعلى مستويات الدقة في التشخيص والتحليل.</p>
+        </div>
+        <div class="card">
+          <div class="badge">⚡️ سرعة فائقة</div>
+          <p class="muted">نتائج وتقارير في دقائق لتسريع القرارات الطبية.</p>
+        </div>
+        <div class="card">
+          <div class="badge">🔒 أمان البيانات</div>
+          <p class="muted">توافق مع أنظمة المملكة وضوابط خصوصية صارمة.</p>
+        </div>
+        <div class="card">
+          <div class="badge">🤝 دعم متكامل</div>
+          <p class="muted">دعم فني وتدريب مستمر للكوادر الطبية.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section card">
+      <h3>تواصل معنا</h3>
+      <p class="muted">تواصل لبدء رحلة التحول الرقمي في منشأتك الصحية.</p>
+      <div class="inline">
+        <input id="contactName" placeholder="الاسم">
+        <input id="contactPhone" placeholder="رقم الجوال">
+      </div>
+      <div class="field">
+        <textarea id="contactMsg" placeholder="رسالتك"></textarea>
+      </div>
+      <button class="btn" id="contactBtn">إرسال</button>
+      <div id="contactStatus" class="status" style="margin-top:10px">—</div>
+    </section>
+
+    <div class="footer">© 2025 Bright AI. جميع الحقوق محفوظة.</div>
+  </main>
+
+  <script>
+    // ============ إعدادات عامة ============
+    const UI = {
+      tabs: document.querySelectorAll('.tabs button'),
+      sections: {
+        'image-ai': document.getElementById('image-ai'),
+        'remote': document.getElementById('remote'),
+        'hms': document.getElementById('hms'),
+        'med-gemini': document.getElementById('med-gemini'),
+      }
+    };
+    UI.tabs.forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        UI.tabs.forEach(b=>b.classList.remove('active'));
+        btn.classList.add('active');
+        const tab = btn.dataset.tab;
+        for (const [key,sec] of Object.entries(UI.sections)){
+          sec.hidden = key !== tab;
         }
-    </script>
+        location.hash = tab;
+      });
+    });
+    // استعادة تبويب من العنوان
+    (()=>{
+      const hash = location.hash.replace('#','');
+      if (hash && UI.sections[hash]){
+        document.querySelector(`.tabs button[data-tab="${hash}"]`)?.click();
+      }
+    })();
 
-    <!-- Header -->
-    <header>
-        <div class="nav-container">
-            <div class="logo-section">
-                <img src="https://www2.0zz0.com/2025/06/23/22/317775783.png" alt="شعار Bright AI" class="logo">
-                <span class="brand-name">Bright AI</span>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="#home">الرئيسية</a></li>
-                    <li><a href="#services">خدماتنا</a></li>
-                    <li><a href="#features">المميزات</a></li>
-                    <li><a href="#contact">تواصل معنا</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    // ============ أدوات مساعدة ============
+    const sleep = ms => new Promise(r=>setTimeout(r, ms));
 
-    <main>
-        <!-- Hero Section -->
-        <section class="hero" id="home">
-            <div class="hero-content">
-                <h1>ثورة الذكاء الاصطناعي في الرعاية الصحية السعودية</h1>
-                <p>حلول طبية متقدمة تعتمد على أحدث تقنيات الذكاء الاصطناعي لتحسين جودة التشخيص والعناية بالمرضى في المملكة.</p>
-                <a href="https://wa.me/966538229013?text=مرحباً، أرغب في الاستفسار عن خدمات Bright AI الطبية وحجز استشارة مجانية." class="cta-button" target="_blank">
-                    احجز استشارتك المجانية الآن 
-                </a>
-            </div>
-        </section>
+    function setStatus(el, msg, type=''){
+      el.textContent = msg;
+      el.classList.remove('ok','warn','err');
+      if (type) el.classList.add(type);
+    }
 
-        <!-- Services Section -->
-        <section class="section" id="services">
-            <div class="section-container">
-                <h2 class="section-title">خدماتنا المتميزة</h2>
-                <div class="services-grid">
-                    
-                    <!-- 1. Medical Image Analysis -->
-                    <div class="service-card">
-                        <div class="service-icon"><i class="fas fa-x-ray"></i></div>
-                        <h3 class="service-title">تحليل الصور الطبية بالذكاء الاصطناعي</h3>
-                        <p class="service-description">
-                            نظام متطور لتحليل الأشعة السينية (X-ray)، الرنين المغناطيسي (MRI)، والأشعة المقطعية (CT) بدقة فائقة. يساعد في الكشف المبكر عن الأورام، تشخيص أمراض القلب، وتحليل أمراض العيون والجلد.
-                        </p>
-                        <button class="try-button" onclick="openDemo('medical-demo')">جرب النظام الآن</button>
-                    </div>
+    async function readFileAsDataURL(file){
+      return new Promise((res,rej)=>{
+        const reader = new FileReader();
+        reader.onload = ()=>res(reader.result);
+        reader.onerror = rej;
+        reader.readAsDataURL(file);
+      });
+    }
 
-                    <!-- 2. Remote Health Monitoring -->
-                    <div class="service-card">
-                        <div class="service-icon"><i class="fas fa-heartbeat"></i></div>
-                        <h3 class="service-title">المراقبة الصحية عن بُعد</h3>
-                        <p class="service-description">
-                            نظام ذكي لمراقبة العلامات الحيوية عبر الأجهزة القابلة للارتداء. يتيح تتبع مستوى السكر، ضغط الدم، ومعدل نبضات القلب مع إرسال تنبيهات فورية للطاقم الطبي عند وجود قراءات غير طبيعية.
-                        </p>
-                        <button class="try-button" onclick="openDemo('monitoring-demo')">جرب النظام الآن</button>
-                    </div>
+    async function readFileAsText(file){
+      return new Promise((res,rej)=>{
+        const reader = new FileReader();
+        reader.onload = ()=>res(reader.result);
+        reader.onerror = rej;
+        reader.readAsText(file);
+      });
+    }
 
-                    <!-- 3. Smart Hospital Management -->
-                    <div class="service-card">
-                        <div class="service-icon"><i class="fas fa-hospital"></i></div>
-                        <h3 class="service-title">إدارة المستشفيات الذكية</h3>
-                        <p class="service-description">
-                            نظام متكامل لأتمتة العمليات داخل المستشفيات، يشمل جدولة المواعيد الذكية، إدارة المخزون الطبي والأدوية، وتحليل بيانات المرضى لتوفير أنظمة إنذار مبكر فعالة وتحسين جودة الخدمة.
-                        </p>
-                        <button class="try-button" onclick="openDemo('hospital-demo')">جرب النظام الآن</button>
-                    </div>
-                    
-                    <!-- 4. Med-Gemini Applications -->
-                    <div class="service-card">
-                        <div class="service-icon"><i class="fas fa-robot"></i></div>
-                        <h3 class="service-title">تطبيقات Med-Gemini الطبية</h3>
-                        <p class="service-description">
-                           استخدام قدرات نموذج Gemini المتقدم لتحليل التقارير الطبية المعقدة، تلخيصها، والإجابة على الاستفسارات الطبية بدقة عالية. يدعم التشخيص متعدد الوسائط (نصوص، صور، وغيرها).
-                        </p>
-                        <button class="try-button" onclick="openDemo('gemini-demo')">جرب النظام الآن</button>
-                    </div>
+    function safeJson(obj){
+      try { return JSON.stringify(obj, null, 2) } catch { return String(obj) }
+    }
 
-                </div>
-            </div>
-        </section>
+    // ============ تكامل Gemini ============
+    // ملاحظة أمنية: يجب في الإنتاج تمرير الطلبات إلى خادم وسيط لحماية المفتاح.
+    const GEMINI_API_KEY = "AIzaSyA4a4E59Ky528cxXbu7GWIS-huupuej8Gs";
+    const GEMINI_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent";
 
-        <!-- Features Section -->
-        <section class="section features" id="features">
-            <div class="section-container">
-                <h2 class="section-title">لماذا تختار Bright AI؟</h2>
-                <div class="features-grid">
-                    <div class="feature-item">
-                        <div class="feature-icon">🎯</div>
-                        <h3>دقة عالية</h3>
-                        <p>تستخدم نماذج الذكاء الاصطناعي لدينا أحدث التقنيات لضمان أعلى مستويات الدقة في التشخيص والتحليل.</p>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">⚡️</div>
-                        <h3>سرعة فائقة</h3>
-                        <p>الحصول على نتائج التحليلات والتقارير في دقائق معدودة، مما يسرّع من اتخاذ القرارات الطبية الهامة.</p>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">🔒</div>
-                        <h3>أمان البيانات</h3>
-                        <p>نلتزم بأعلى معايير الأمان والخصوصية لبيانات المرضى، مع التوافق الكامل مع الأنظمة الصحية في المملكة.</p>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">🤝</div>
-                        <h3>دعم متكامل</h3>
-                        <p>نوفر دعماً فنياً وتدريباً مستمراً للكوادر الطبية لضمان الاستفادة القصوى من أنظمتنا المتطورة.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
+    async function callGemini({textParts=[], inlineDataParts=[]}){
+      // textParts: مصفوفة نصوص
+      // inlineDataParts: [{mimeType, data}] حيث data هي base64 بدون prefix
+      const contents = [{
+        role: "user",
+        parts: [
+          ...textParts.map(t=>({text: t})),
+          ...inlineDataParts.map(d=>({inlineData: d}))
+        ]
+      }];
 
-    <!-- Footer -->
-    <footer id="contact">
-        <div class="footer-content">
-            <div class="logo-section" style="justify-content: center;">
-                <img src="https://www2.0zz0.com/2025/06/23/22/317775783.png" alt="شعار Bright AI" class="logo">
-                <span class="brand-name" style="color: white; -webkit-text-fill-color: white;">Bright AI</span>
-            </div>
-            <p>رواد الحلول الطبية الذكية في المملكة العربية السعودية.</p>
-            <p>تواصل معنا لبدء رحلة التحول الرقمي في منشأتك الصحية.</p>
-            <div class="social-links">
-                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-            </div>
-            <p>&copy; 2025 Bright AI. جميع الحقوق محفوظة.</p>
-        </div>
-    </footer>
+      const body = { contents, generationConfig: { temperature: 0.2, top_p: 0.9, top_k: 40, max_output_tokens: 2048 } };
 
-    <!-- Demo Modals -->
-    <!-- Medical Image Analysis Demo -->
-    <div id="medical-demo" class="demo-container">
-        <div class="demo-content">
-            <div class="close-demo" onclick="closeDemo('medical-demo')"><i class="fas fa-times"></i></div>
-            <h2 class="demo-title">تحليل الصور الطبية بالذكاء الاصطناعي</h2>
-            <div class="upload-area" onclick="document.getElementById('medical-upload').click()">
-                <div class="upload-icon"><i class="fas fa-cloud-upload-alt"></i></div>
-                <p id="medical-upload-text">اسحب الصورة الطبية هنا أو انقر للرفع</p>
-                <p style="font-size: 0.9rem; color: #666;">يدعم: JPG, PNG, DICOM (محاكاة للأشعة)</p>
-                <input type="file" id="medical-upload" accept="image/*">
-            </div>
-            <div id="image-preview" style="display: none; text-align: center; margin-bottom: 1rem;">
-                <img id="preview-img" src="#" alt="معاينة الصورة" style="max-width: 100%; max-height: 300px; border-radius: 10px;">
-            </div>
-            <select class="demo-input" id="image-type">
-                <option value="">اختر نوع الصورة</option>
-                <option value="xray">أشعة سينية (X-Ray)</option>
-                <option value="mri">رنين مغناطيسي (MRI)</option>
-                <option value="ct">أشعة مقطعية (CT Scan)</option>
-                <option value="ultrasound">موجات فوق صوتية (Ultrasound)</option>
-            </select>
-            <textarea class="demo-input" id="medical-notes" placeholder="ملاحظات إضافية حول الحالة (اختياري)"></textarea>
-            <button class="analyze-button" onclick="analyzeMedicalImage(event)"><i class="fas fa-microscope"></i> تحليل الصورة الطبية</button>
-            <div class="loading" id="medical-loading">
-                <div class="spinner"></div>
-                <p>جاري تحليل الصورة بالذكاء الاصطناعي...</p>
-            </div>
-            <div class="result-area" id="medical-result"></div>
-        </div>
-    </div>
+      const res = await fetch(`${GEMINI_URL}?key=${encodeURIComponent(GEMINI_API_KEY)}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body)
+      });
 
-    <!-- Remote Monitoring Demo -->
-    <div id="monitoring-demo" class="demo-container">
-        <div class="demo-content">
-            <div class="close-demo" onclick="closeDemo('monitoring-demo')"><i class="fas fa-times"></i></div>
-            <h2 class="demo-title">المراقبة الصحية عن بُعد</h2>
-            <div class="input-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-                <div>
-                    <label for="heart-rate">معدل ضربات القلب</label>
-                    <input type="number" class="demo-input" id="heart-rate" placeholder="نبضة في الدقيقة (مثال: 75)">
-                </div>
-                <div>
-                    <label for="blood-pressure">ضغط الدم</label>
-                    <input type="text" class="demo-input" id="blood-pressure" placeholder="مثال: 120/80">
-                </div>
-                <div>
-                    <label for="oxygen">تشبع الأكسجين</label>
-                    <input type="number" class="demo-input" id="oxygen" placeholder="النسبة المئوية (مثال: 98)">
-                </div>
-                <div>
-                    <label for="glucose">مستوى السكر</label>
-                    <input type="number" class="demo-input" id="glucose" placeholder="ملغ/ديسيلتر (مثال: 90)">
-                </div>
-            </div>
-            <div style="margin-top: 1rem;">
-                <label for="symptoms">الأعراض الملاحظة (إن وجدت)</label>
-                <textarea class="demo-input" id="symptoms" placeholder="وصف الأعراض التي يعاني منها المريض..."></textarea>
-            </div>
-            <button class="analyze-button" onclick="analyzeVitalSigns(event)"><i class="fas fa-heartbeat"></i> تحليل البيانات الحيوية</button>
-            <div class="loading" id="monitoring-loading">
-                <div class="spinner"></div>
-                <p>جاري تحليل البيانات الصحية...</p>
-            </div>
-            <div class="result-area" id="monitoring-result"></div>
-        </div>
-    </div>
+      if (!res.ok){
+        const errText = await res.text().catch(()=>res.statusText);
+        throw new Error(`Gemini API فشل: ${res.status} - ${errText}`);
+      }
 
-    <!-- Hospital Management Demo -->
-    <div id="hospital-demo" class="demo-container">
-        <div class="demo-content">
-            <div class="close-demo" onclick="closeDemo('hospital-demo')"><i class="fas fa-times"></i></div>
-            <h2 class="demo-title">نظام إدارة المستشفيات الذكية</h2>
-            <select class="demo-input" id="department">
-                <option value="">اختر القسم الطبي</option>
-                <option value="emergency">الطوارئ</option>
-                <option value="cardiology">أمراض القلب</option>
-                <option value="orthopedics">العظام</option>
-                <option value="pediatrics">طب الأطفال</option>
-                <option value="surgery">الجراحة</option>
-            </select>
-            <div class="input-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-                <div>
-                    <label for="patient-age">عمر المريض</label>
-                    <input type="number" class="demo-input" id="patient-age" placeholder="العمر بالسنوات">
-                </div>
-                <div>
-                    <label for="patient-gender">جنس المريض</label>
-                    <select class="demo-input" id="patient-gender">
-                        <option value="">اختر الجنس</option>
-                        <option value="male">ذكر</option>
-                        <option value="female">أنثى</option>
-                    </select>
-                </div>
-            </div>
-            <label for="case-description">وصف حالة المريض والأعراض</label>
-            <textarea class="demo-input" id="case-description" placeholder="وصف مفصل للحالة والأعراض والعلامات الحيوية..."></textarea>
-            <button class="analyze-button" onclick="analyzeHospitalData(event)"><i class="fas fa-procedures"></i> معالجة البيانات وتقديم التوصيات</button>
-            <div class="loading" id="hospital-loading">
-                <div class="spinner"></div>
-                <p>جاري معالجة البيانات وتحليلها...</p>
-            </div>
-            <div class="result-area" id="hospital-result"></div>
-        </div>
-    </div>
+      const data = await res.json();
+      const text = data?.candidates?.[0]?.content?.parts?.map(p=>p.text).join("\n") || "";
+      return text.trim();
+    }
 
-    <!-- Med-Gemini Demo -->
-    <div id="gemini-demo" class="demo-container">
-        <div class="demo-content">
-            <div class="close-demo" onclick="closeDemo('gemini-demo')"><i class="fas fa-times"></i></div>
-            <h2 class="demo-title">تطبيقات Med-Gemini الطبية</h2>
-            <select class="demo-input" id="query-type">
-                <option value="">اختر نوع الاستفسار</option>
-                <option value="diagnosis">استفسار تشخيصي</option>
-                <option value="report">تحليل تقرير طبي</option>
-                <option value="info">معلومات طبية عامة</option>
-                <option value="treatment">خيارات العلاج</option>
-            </select>
-            <textarea class="demo-input" id="medical-query" placeholder="أدخل استفسارك الطبي أو الصق جزءاً من تقرير طبي هنا..."></textarea>
-            <div class="upload-area" onclick="document.getElementById('gemini-file-upload').click()" style="margin-top: 1rem;">
-                <div class="upload-icon"><i class="fas fa-file-medical"></i></div>
-                <p id="gemini-upload-text">رفع ملف طبي (اختياري)</p>
-                <p style="font-size: 0.9rem; color: #666;">يدعم: PDF, DOC, TXT, JPG, PNG</p>
-                <input type="file" id="gemini-file-upload" accept=".pdf,.doc,.docx,.txt,.jpg,.jpeg,.png">
-            </div>
-            <button class="analyze-button" onclick="analyzeMedGeminiQuery(event)"><i class="fas fa-robot"></i> الحصول على تحليل Med-Gemini</button>
-            <div class="loading" id="gemini-loading">
-                <div class="spinner"></div>
-                <p>جاري التحليل باستخدام Med-Gemini...</p>
-            </div>
-            <div class="result-area" id="gemini-result"></div>
-        </div>
-    </div>
+    function extractBase64(dataURL){
+      // remove "data:<mime>;base64,"
+      return dataURL.split(',')[1];
+    }
 
-    <script>
-        /*******************************************************
-         *  Bright AI - Demo Logic (Fixed and Enhanced)
-         *******************************************************/
+    // ============ تحليل الصور الطبية ============
+    const imgType = document.getElementById('imgType');
+    const imgDrop = document.getElementById('imgDrop');
+    const imgFile = document.getElementById('imgFile');
+    const imgNotes = document.getElementById('imgNotes');
+    const imgStatus = document.getElementById('imgStatus');
+    const imgOutput = document.getElementById('imgOutput');
+    const analyzeImageBtn = document.getElementById('analyzeImageBtn');
+    const clearImageBtn = document.getElementById('clearImageBtn');
 
-        // --- API Configuration ---
-        // تحذير: في بيئة الإنتاج، لا يجب عرض مفتاح الواجهة البرمجية (API Key) في كود الواجهة الأمامية.
-        // يجب التعامل معه من خلال خادم خلفي آمن. هذا المفتاح هنا لأغراض العرض التوضيحي فقط.
-        const GEMINI_API_KEY = 'AIzaSyA4a4E59Ky528cxXbu7GWIS-huupuej8Gs';
-        const GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent';
+    let imgSelectedFile = null;
+    // سحب وافلات
+    function wireDropZone(zone, input, onFile){
+      zone.addEventListener('click', ()=> input.click());
+      zone.addEventListener('dragover', e=>{ e.preventDefault(); zone.classList.add('drag'); });
+      zone.addEventListener('dragleave', ()=> zone.classList.remove('drag'));
+      zone.addEventListener('drop', e=>{
+        e.preventDefault(); zone.classList.remove('drag');
+        const file = e.dataTransfer.files?.[0];
+        if (file) onFile(file);
+      });
+      input.addEventListener('change', ()=>{
+        const file = input.files?.[0];
+        if (file) onFile(file);
+      });
+    }
 
-        // --- Demo Modal Logic ---
-        function openDemo(demoId) {
-            document.getElementById(demoId).classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
+    wireDropZone(imgDrop, imgFile, (file)=>{
+      const ok = /\.(jpg|jpeg|png|dcm|dicom)$/i.test(file.name);
+      if (!ok){ setStatus(imgStatus, 'صيغة غير مدعومة. استخدم JPG/PNG/DICOM.', 'err'); return; }
+      imgSelectedFile = file;
+      setStatus(imgStatus, `تم اختيار الملف: ${file.name} (${Math.round(file.size/1024)} كيلوبايت).`, 'ok');
+    });
 
-        function closeDemo(demoId) {
-            const container = document.getElementById(demoId);
-            container.classList.remove('active');
-            document.body.style.overflow = 'auto';
-            
-            // Reset loading and result states inside the specific modal
-            const loading = container.querySelector('.loading');
-            const result = container.querySelector('.result-area');
-            
-            if (loading) loading.classList.remove('active');
-            if (result) {
-                result.classList.remove('active');
-                result.innerHTML = '';
-            }
-        }
+    analyzeImageBtn.addEventListener('click', async ()=>{
+      if (!imgSelectedFile){
+        setStatus(imgStatus, 'الرجاء رفع صورة طبية.', 'warn'); return;
+      }
+      setStatus(imgStatus, 'جاري تحليل الصورة بالذكاء الاصطناعي...', '');
+      imgOutput.textContent = '';
 
-        // Close modal when clicking outside the content area
-        document.querySelectorAll('.demo-container').forEach(container => {
-            container.addEventListener('click', (e) => {
-                if (e.target === container) {
-                    closeDemo(container.id);
-                }
-            });
+      try{
+        const dataUrl = await readFileAsDataURL(imgSelectedFile);
+        const base = extractBase64(dataUrl);
+        const mime = dataUrl.substring(dataUrl.indexOf(":")+1, dataUrl.indexOf(";"));
+
+        // مطالبة دقيقة لضمان مخرجات مبنية على الصورة والمدخلات
+        const prompt = [
+`أنت نظام دعم قرار سريري. حلّل صورة ${imgType.value} المرفقة مع الأخذ بالاعتبار الملاحظات السريرية التالية (إن وجدت).`,
+`أعد النتائج بصيغة منظمة:`,
+`- ملخص الصورة`,
+`- نتائج/علامات رئيسية`,
+`- احتمالات تشخيص تفاضلي مع نسب تقريبية`,
+`- توصيات متابعة/فحوصات إضافية`,
+`- مستوى الخطورة (منخفض/متوسط/مرتفع)`,
+`- ملاحظات تتعلق بجودة الصورة إن كان هناك قصور`,
+`ملاحظات سريرية: ${imgNotes.value || 'لا يوجد'}`,
+`التزم بعدم اختراع تفاصيل خارج ما يستدل من الصورة أو الملاحظات. إذا كانت جودة الصورة ضعيفة أو لا تكفي للاستدلال، صرّح بذلك بوضوح.`
+        ].join('\n');
+
+        const resultText = await callGemini({
+          textParts: [prompt],
+          inlineDataParts: [{ mimeType: mime, data: base }]
         });
 
-        // --- File Upload UX Enhancement ---
-        document.getElementById('medical-upload').addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if (file) {
-                // Show image preview
-                const reader = new FileReader();
-                reader.onload = function(event) {
-                    document.getElementById('preview-img').src = event.target.result;
-                    document.getElementById('image-preview').style.display = 'block';
-                };
-                reader.readAsDataURL(file);
-                // Show filename
-                document.getElementById('medical-upload-text').textContent = `الملف المحدد: ${file.name}`;
-            }
-        });
-        
-        document.getElementById('gemini-file-upload').addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if (file) {
-                document.getElementById('gemini-upload-text').textContent = `الملف المحدد: ${file.name}`;
-            }
-        });
+        setStatus(imgStatus, 'تم التحليل.', 'ok');
+        imgOutput.textContent = resultText;
+      }catch(err){
+        console.error(err);
+        setStatus(imgStatus, 'حدث خطأ أثناء التحليل. تحقق من الاتصال أو المفتاح.', 'err');
+        imgOutput.textContent = String(err);
+      }
+    });
 
+    clearImageBtn.addEventListener('click', ()=>{
+      imgSelectedFile = null;
+      imgFile.value = '';
+      imgNotes.value = '';
+      imgOutput.textContent = '';
+      setStatus(imgStatus, 'تمت إعادة الضبط. ارفع صورة جديدة.', '');
+    });
 
-        // --- Core Analysis Functions ---
+    // ============ المراقبة الصحية عن بُعد ============
+    const hr = document.getElementById('hr');
+    const bp = document.getElementById('bp');
+    const spo2 = document.getElementById('spo2');
+    const glucose = document.getElementById('glucose');
+    const symptoms = document.getElementById('symptoms');
+    const analyzeVitalsBtn = document.getElementById('analyzeVitalsBtn');
+    const clearVitalsBtn = document.getElementById('clearVitalsBtn');
+    const vitalsStatus = document.getElementById('vitalsStatus');
+    const vitalsOutput = document.getElementById('vitalsOutput');
 
-        /**
-         * @FIX: The original function was hiding the result area.
-         * This corrected version only manages the loading spinner's visibility.
-         */
-        function showLoading(service, show) {
-            document.getElementById(`${service}-loading`).classList.toggle('active', show);
+    analyzeVitalsBtn.addEventListener('click', async ()=>{
+      // تحقق أساسي
+      if (!hr.value && !bp.value && !spo2.value && !glucose.value && !symptoms.value){
+        setStatus(vitalsStatus, 'الرجاء إدخال بيانات حيوية أو أعراض.', 'warn'); return;
+      }
+      setStatus(vitalsStatus, 'جاري تحليل البيانات الصحية...', '');
+      vitalsOutput.textContent = '';
+      try{
+        const payload = {
+          heartRate: hr.value ? Number(hr.value) : null,
+          bloodPressure: bp.value || null,
+          spo2: spo2.value ? Number(spo2.value) : null,
+          glucose: glucose.value ? Number(glucose.value) : null,
+          symptoms: symptoms.value || ''
+        };
+
+        const prompt = [
+`أنت مساعد مراقبة صحية. قيّم البيانات التالية واصنع إخراجاً مبنياً على القيم المدخلة فقط:`,
+safeJson(payload),
+`أعد المخرجات بصيغة:`,
+`- تقييم سريع للوضع`,
+`- إنذارات محتملة حسب العتبات (مثال: HR>120, SpO2<92%, BP عالي أو منخفض، سكر مرتفع/منخفض) مع ذكر السبب`,
+`- توصيات فورية (منزلية/اتصال بطبيب/طوارئ)`,
+`- عوامل قد تؤثر على القراءة أو تتطلب إعادة القياس`,
+`- اقتراح خطة متابعة ليومين`,
+`لا تختلق قيماً غير موجودة. إذا كانت صيغة الضغط غير صحيحة، اطلب تصحيحها (انقباضي/انبساطي).`
+        ].join('\n');
+
+        const resultText = await callGemini({ textParts: [prompt] });
+        setStatus(vitalsStatus, 'تم التحليل.', 'ok');
+        vitalsOutput.textContent = resultText;
+      }catch(err){
+        console.error(err);
+        setStatus(vitalsStatus, 'فشل التحليل.', 'err');
+        vitalsOutput.textContent = String(err);
+      }
+    });
+
+    clearVitalsBtn.addEventListener('click', ()=>{
+      hr.value = ''; bp.value = ''; spo2.value = ''; glucose.value = ''; symptoms.value = '';
+      vitalsOutput.textContent = '';
+      setStatus(vitalsStatus, 'تمت إعادة الضبط.', '');
+    });
+
+    // ============ إدارة المستشفيات ============
+    const dept = document.getElementById('dept');
+    const age = document.getElementById('age');
+    const gender = document.getElementById('gender');
+    const caseDesc = document.getElementById('caseDesc');
+    const hmsAnalyzeBtn = document.getElementById('hmsAnalyzeBtn');
+    const hmsClearBtn = document.getElementById('hmsClearBtn');
+    const hmsStatus = document.getElementById('hmsStatus');
+    const hmsOutput = document.getElementById('hmsOutput');
+
+    hmsAnalyzeBtn.addEventListener('click', async ()=>{
+      if (!caseDesc.value || !dept.value){
+        setStatus(hmsStatus, 'الرجاء إدخال وصف الحالة واختيار القسم.', 'warn'); return;
+      }
+      setStatus(hmsStatus, 'جاري معالجة البيانات...', '');
+      hmsOutput.textContent = '';
+      try{
+        const payload = {
+          department: dept.value,
+          age: age.value ? Number(age.value) : null,
+          gender: gender.value || null,
+          description: caseDesc.value
+        };
+
+        const prompt = [
+`أنت نظام triage وإدارة تشغيل سريري للمستشفى. حلّل الحالة التالية وقدم مخرجات عملية قابلة للتنفيذ:`,
+safeJson(payload),
+`أخرج بصيغة:`,
+`- مستوى أولوية الفرز (ESI تقريباً أو منخفض/متوسط/عاجل) مع سبب واضح`,
+`- قائمة فحوصات أولية موصى بها`,
+`- اقتراح مسار رعاية (تهيئة سرير، استشارة تخصصية، زمن إعادة التقييم)`,
+`- تنبيهات إنذار مبكر (EWS) إن أمكن`,
+`- ملاحظات لوجستية (جدولة، مخزون أدوية/أجهزة إن لزم)`,
+`تمسّك بالبيانات المدخلة فقط. إذا كانت المعطيات ناقصة، اطلب الإكمال بنقاط محددة.`
+        ].join('\n');
+
+        const resultText = await callGemini({ textParts: [prompt] });
+        setStatus(hmsStatus, 'تم التحليل.', 'ok');
+        hmsOutput.textContent = resultText;
+      }catch(err){
+        console.error(err);
+        setStatus(hmsStatus, 'حدث خطأ أثناء التحليل.', 'err');
+        hmsOutput.textContent = String(err);
+      }
+    });
+
+    hmsClearBtn.addEventListener('click', ()=>{
+      age.value=''; gender.value=''; caseDesc.value='';
+      hmsOutput.textContent='';
+      setStatus(hmsStatus, 'تمت إعادة الضبط.', '');
+    });
+
+    // ============ Med-Gemini ============
+    const mgType = document.getElementById('mgType');
+    const mgQuery = document.getElementById('mgQuery');
+    const mgDrop = document.getElementById('mgDrop');
+    const mgFile = document.getElementById('mgFile');
+    const mgAnalyzeBtn = document.getElementById('mgAnalyzeBtn');
+    const mgClearBtn = document.getElementById('mgClearBtn');
+    const mgStatus = document.getElementById('mgStatus');
+    const mgOutput = document.getElementById('mgOutput');
+
+    let mgSelectedFile = null;
+    wireDropZone(mgDrop, mgFile, (file)=>{
+      mgSelectedFile = file;
+      setStatus(mgStatus, `تم رفع الملف: ${file.name}`, 'ok');
+    });
+
+    mgAnalyzeBtn.addEventListener('click', async ()=>{
+      if (!mgQuery.value && !mgSelectedFile){
+        setStatus(mgStatus, 'أدخل استفساراً أو ارفع ملفاً.', 'warn'); return;
+      }
+      setStatus(mgStatus, 'جاري التحليل باستخدام Med‑Gemini...', '');
+      mgOutput.textContent = '';
+      try{
+        const textParts = [];
+        const inlineParts = [];
+        const type = mgType.value;
+
+        const systemPrompt = [
+`أنت مساعد طبي يستخدم نموذج Gemini متعدد الوسائط.`,
+`نوع الطلب: ${type}.`,
+`التزم بالدقة وعدم اختراع معلومات غير موجودة. إذا كان الطلب يتضمن قراراً علاجياً، أضف تحذيراً بطلب مراجعة طبيب مختص.`,
+`إن كان الملف المرفوع صورة، حلّلها بما يتوافق مع النص. إن كان نصاً/تقريراً، لخّص واستخرج مؤشرات السريريّة.`
+        ].join('\n');
+
+        textParts.push(systemPrompt);
+
+        if (mgQuery.value) textParts.push("الاستفسار/النص:\n" + mgQuery.value);
+
+        if (mgSelectedFile){
+          const dataUrl = await readFileAsDataURL(mgSelectedFile);
+          const mime = dataUrl.substring(dataUrl.indexOf(":")+1, dataUrl.indexOf(";"));
+          const base = extractBase64(dataUrl);
+          inlineParts.push({ mimeType: mime, data: base });
         }
 
-        function showResult(service, content) {
-            const resultArea = document.getElementById(`${service}-result`);
-            resultArea.innerHTML = content;
-            resultArea.classList.add('active');
-        }
+        const resultText = await callGemini({ textParts, inlineDataParts: inlineParts });
+        setStatus(mgStatus, 'تم التحليل.', 'ok');
+        mgOutput.textContent = resultText;
+      }catch(err){
+        console.error(err);
+        setStatus(mgStatus, 'فشل التحليل.', 'err');
+        mgOutput.textContent = String(err);
+      }
+    });
 
-        // 1. Medical Image Analysis
-        async function analyzeMedicalImage(event) {
-            const button = event.currentTarget;
-            const fileInput = document.getElementById('medical-upload');
-            const imageType = document.getElementById('image-type').value;
-            const medicalNotes = document.getElementById('medical-notes').value;
-            
-            if (fileInput.files.length === 0) {
-                alert('يرجى رفع صورة طبية أولاً.');
-                return;
-            }
-            if (!imageType) {
-                alert('يرجى اختيار نوع الصورة.');
-                return;
-            }
-            
-            // UX: Disable button and show loading state
-            button.disabled = true;
-            button.innerHTML = `<i class="fas fa-spinner fa-spin"></i> جاري التحليل...`;
-            document.getElementById('medical-result').classList.remove('active');
-            showLoading('medical', true);
-            
-            try {
-                const prompt = `حلل هذه الصورة الطبية من نوع (${imageType}) مع الملاحظات التالية: "${medicalNotes || 'لا يوجد'}".`;
-                const response = await simulateGeminiCall(prompt);
-                
-                const imageTypeNames = {
-                    'xray': 'أشعة سينية', 'mri': 'رنين مغناطيسي', 'ct': 'أشعة مقطعية', 'ultrasound': 'موجات فوق صوتية'
-                };
-                
-                const resultContent = `
-                    <div class="result-header">
-                        <h3 class="result-title">تقرير تحليل الصورة الطبية</h3>
-                        <span class="confidence-badge">دقة التحليل (محاكاة): 92%</span>
-                    </div>
-                    <div class="result-content">
-                        <p><strong>نوع الصورة:</strong> ${imageTypeNames[imageType] || imageType}</p>
-                        <p><strong>النتائج الأولية:</strong></p>
-                        <p>${response}</p>
-                    </div>
-                    <div class="recommendations">
-                        <h4>التوصيات:</h4>
-                        <ul>
-                            <li>هذه النتائج أولية ويجب مراجعتها من قبل طبيب أشعة مختص.</li>
-                            <li>يوصى بمقارنة النتائج مع الفحوصات السابقة إن وجدت.</li>
-                        </ul>
-                    </div>`;
-                showResult('medical', resultContent);
-            } catch (error) {
-                showResult('medical', `<div class="result-content"><p style="color: var(--danger);">حدث خطأ أثناء تحليل الصورة. يرجى المحاولة مرة أخرى.</p></div>`);
-            } finally {
-                showLoading('medical', false);
-                button.disabled = false;
-                button.innerHTML = `<i class="fas fa-microscope"></i> تحليل الصورة الطبية`;
-            }
-        }
+    mgClearBtn.addEventListener('click', ()=>{
+      mgQuery.value=''; mgFile.value=''; mgSelectedFile=null;
+      mgOutput.textContent=''; setStatus(mgStatus, 'تمت إعادة الضبط.', '');
+    });
 
-        // 2. Vital Signs Analysis
-        async function analyzeVitalSigns(event) {
-            const button = event.currentTarget;
-            const heartRate = document.getElementById('heart-rate').value;
-            const bloodPressure = document.getElementById('blood-pressure').value;
-            const oxygen = document.getElementById('oxygen').value;
-            const glucose = document.getElementById('glucose').value;
-            const symptoms = document.getElementById('symptoms').value;
-            
-            if (!heartRate && !bloodPressure && !oxygen && !glucose) {
-                alert('يرجى إدخال واحدة على الأقل من القيم الحيوية.');
-                return;
-            }
-            
-            button.disabled = true;
-            button.innerHTML = `<i class="fas fa-spinner fa-spin"></i> جاري التحليل...`;
-            document.getElementById('monitoring-result').classList.remove('active');
-            showLoading('monitoring', true);
-            
-            try {
-                const query = `
-                    حلل هذه العلامات الحيوية باللغة العربية:
-                    ${heartRate ? `معدل نبضات القلب: ${heartRate} bpm` : ''}
-                    ${bloodPressure ? `ضغط الدم: ${bloodPressure}` : ''}
-                    ${oxygen ? `تشبع الأكسجين: ${oxygen}%` : ''}
-                    ${glucose ? `مستوى السكر: ${glucose} mg/dL` : ''}
-                    ${symptoms ? `الأعراض: ${symptoms}` : ''}`;
-                
-                const response = await simulateGeminiCall(query, {heartRate, oxygen, glucose});
+    // ============ تواصل معنا (محاكاة) ============
+    document.getElementById('contactBtn').addEventListener('click', async ()=>{
+      const name = document.getElementById('contactName').value.trim();
+      const phone = document.getElementById('contactPhone').value.trim();
+      const msg = document.getElementById('contactMsg').value.trim();
+      const statusEl = document.getElementById('contactStatus');
 
-                let statusText = 'طبيعي';
-                let statusColor = 'var(--success)';
-                if (response.includes("تستدعي الانتباه")) {
-                    statusText = 'يحتاج مراجعة';
-                    statusColor = 'var(--warning)';
-                }
-                
-                const resultContent = `
-                    <div class="result-header">
-                        <h3 class="result-title">تحليل العلامات الحيوية</h3>
-                        <span class="confidence-badge" style="background: ${statusColor};">الحالة: ${statusText}</span>
-                    </div>
-                    <div class="result-content">
-                        <p><strong>التقييم الأولي للبيانات:</strong></p>
-                        <p>${response}</p>
-                    </div>
-                    <div class="recommendations">
-                        <h4>التوصيات:</h4>
-                        <ul>
-                            <li>الاستمرار في مراقبة العلامات الحيوية بانتظام.</li>
-                            <li>${statusText === 'طبيعي' ? 'الحفاظ على نمط حياة صحي.' : 'يوصى بالتواصل مع الطبيب المعالج لمراجعة هذه القراءات.'}</li>
-                        </ul>
-                    </div>`;
-                showResult('monitoring', resultContent);
-            } catch (error) {
-                showResult('monitoring', `<div class="result-content"><p style="color: var(--danger);">حدث خطأ أثناء تحليل البيانات. يرجى المحاولة مرة أخرى.</p></div>`);
-            } finally {
-                showLoading('monitoring', false);
-                button.disabled = false;
-                button.innerHTML = `<i class="fas fa-heartbeat"></i> تحليل البيانات الحيوية`;
-            }
-        }
+      if (!name || !phone){
+        setStatus(statusEl, 'الرجاء إدخال الاسم ورقم الجوال.', 'warn'); return;
+      }
+      setStatus(statusEl, 'جارٍ الإرسال...', '');
+      await sleep(600);
+      setStatus(statusEl, 'تم الاستلام، سنعاود الاتصال بك قريباً.', 'ok');
+    });
 
-        // 3. Hospital Data Analysis
-        async function analyzeHospitalData(event) {
-            const button = event.currentTarget;
-            const department = document.getElementById('department').value;
-            const patientAge = document.getElementById('patient-age').value;
-            const caseDescription = document.getElementById('case-description').value;
-            
-            if (!department || !caseDescription) {
-                alert('يرجى اختيار القسم وإدخال وصف الحالة.');
-                return;
-            }
-            
-            button.disabled = true;
-            button.innerHTML = `<i class="fas fa-spinner fa-spin"></i> جاري المعالجة...`;
-            document.getElementById('hospital-result').classList.remove('active');
-            showLoading('hospital', true);
-            
-            try {
-                const query = `
-                    كـ نظام ذكاء اصطناعي لإدارة المستشفيات، حلل الحالة التالية وقدم توصيات باللغة العربية حول:
-                    1. أولوية الفرز (Triage). 2. الموارد المطلوبة. 3. التخصصات الطبية المقترحة.
-                    القسم: ${department}, عمر المريض: ${patientAge || 'غير محدد'}, وصف الحالة: ${caseDescription}`;
-                
-                const response = await simulateGeminiCall(query);
-                
-                const resultContent = `
-                    <div class="result-header">
-                        <h3 class="result-title">توصيات إدارة الحالة</h3>
-                        <span class="confidence-badge" style="background-color: var(--warning)">الأولوية المقترحة: عاجلة</span>
-                    </div>
-                    <div class="result-content">
-                        <p><strong>ملخص التوصيات الآلية:</strong></p>
-                        <p>${response}</p>
-                    </div>`;
-                showResult('hospital', resultContent);
-            } catch (error) {
-                showResult('hospital', `<div class="result-content"><p style="color: var(--danger);">حدث خطأ أثناء معالجة البيانات. يرجى المحاولة مرة أخرى.</p></div>`);
-            } finally {
-                showLoading('hospital', false);
-                button.disabled = false;
-                button.innerHTML = `<i class="fas fa-procedures"></i> معالجة البيانات وتقديم التوصيات`;
-            }
-        }
-
-        // 4. Med-Gemini Query Analysis
-        async function analyzeMedGeminiQuery(event) {
-            const button = event.currentTarget;
-            const queryType = document.getElementById('query-type').value;
-            const medicalQuery = document.getElementById('medical-query').value;
-            
-            if (!queryType || !medicalQuery) {
-                alert('يرجى اختيار نوع الاستفسار وإدخال النص الطبي.');
-                return;
-            }
-            
-            button.disabled = true;
-            button.innerHTML = `<i class="fas fa-spinner fa-spin"></i> جاري التحليل...`;
-            document.getElementById('gemini-result').classList.remove('active');
-            showLoading('gemini', true);
-            
-            try {
-                const query = `
-                    بصفتك نموذج Med-Gemini، أجب على هذا الاستفسار من نوع (${queryType}) باللغة العربية:
-                    "${medicalQuery}"
-                    قدم إجابة شاملة ودقيقة مع التأكيد على أنها ليست بديلاً عن الاستشارة الطبية.`;
-                
-                const response = await simulateGeminiCall(query);
-                
-                const queryTypeNames = {
-                    'diagnosis': 'استفسار تشخيصي', 'report': 'تحليل تقرير طبي', 'info': 'معلومات طبية', 'treatment': 'خيارات العلاج'
-                };
-                
-                const resultContent = `
-                    <div class="result-header">
-                        <h3 class="result-title">تحليل Med-Gemini</h3>
-                        <span class="confidence-badge">${queryTypeNames[queryType] || queryType}</span>
-                    </div>
-                    <div class="result-content">
-                        <p><strong>إجابة Med-Gemini:</strong></p>
-                        <p>${response}</p>
-                    </div>
-                    <div class="recommendations">
-                        <h4>ملاحظة هامة:</h4>
-                        <p>هذه المعلومات مقدمة لأغراض إعلامية فقط ولا تُعد تشخيصاً طبياً. يرجى دائماً استشارة طبيب مختص.</p>
-                    </div>`;
-                showResult('gemini', resultContent);
-            } catch (error) {
-                showResult('gemini', `<div class="result-content"><p style="color: var(--danger);">حدث خطأ أثناء التحليل. يرجى المحاولة مرة أخرى.</p></div>`);
-            } finally {
-                showLoading('gemini', false);
-                button.disabled = false;
-                button.innerHTML = `<i class="fas fa-robot"></i> الحصول على تحليل Med-Gemini`;
-            }
-        }
-
-        /**
-         * Simulates a call to the Gemini API.
-         * In a real application, this would be a fetch() call to a secure backend.
-         * @param {string} prompt - The prompt to send.
-         * @param {object} data - Optional data for more dynamic responses.
-         * @returns {Promise<string>} - A simulated response.
-         */
-        async function simulateGeminiCall(prompt, data = {}) {
-            // Simulate network delay
-            await new Promise(resolve => setTimeout(resolve, 1500 + Math.random() * 1500));
-            
-            // Generate more dynamic and relevant simulated responses
-            if (prompt.includes('صورة طبية')) {
-                return "بعد تحليل الصورة، لم يتم العثور على أي تشوهات واضحة. الهياكل التشريحية تبدو ضمن الحدود الطبيعية بالنسبة للعمر والجنس. لا توجد علامات كسور أو أورام أو التهابات نشطة. يوصى بمقارنة هذه النتائج مع السجلات الطبية للمريض.";
-            } 
-            if (prompt.includes('علامات حيوية')) {
-                let response = "العلامات الحيوية المدخلة تشير إلى حالة مستقرة بشكل عام. ";
-                if (data.heartRate && (data.heartRate < 60 || data.heartRate > 100)) {
-                    response += `معدل ضربات القلب (${data.heartRate}) خارج النطاق الطبيعي (60-100)، وهذا قد يستدعي الانتباه. `;
-                }
-                if (data.oxygen && data.oxygen < 95) {
-                    response += `مستوى تشبع الأكسجين (${data.oxygen}%) منخفض قليلاً ويستدعي الانتباه. `;
-                }
-                 if (data.glucose && (data.glucose < 70 || data.glucose > 140)) {
-                    response += `مستوى السكر في الدم (${data.glucose}) خارج النطاق الطبيعي، وهذا يستدعي الانتباه. `;
-                }
-                if (response.includes("تستدعي الانتباه")) {
-                    return response + "باقي المؤشرات ضمن المعدل الطبيعي. يوصى بمراقبة المريض وإبلاغ الطبيب المختص.";
-                }
-                return response + "جميع المؤشرات ضمن المعدل الطبيعي ولا توجد علامات خطر فورية بناءً على هذه البيانات.";
-            } 
-            if (prompt.includes('إدارة المستشفيات')) {
-                return `بناءً على وصف الحالة، تم تقييمها على النحو التالي:
-                        <br><b>1. أولوية الفرز:</b> عاجلة (المستوى 2)، تتطلب تقييمًا طبيًا خلال 15 دقيقة.
-                        <br><b>2. الموارد المطلوبة:</b> غرفة فحص مجهزة، جهاز مراقبة علامات حيوية، وإمكانية الوصول السريع إلى مختبر الدم والأشعة.
-                        <br><b>3. التخصصات المقترحة:</b> يجب إخطار طبيب الطوارئ المناوب، مع احتمالية الحاجة لاستشارة من قسم ${prompt.split('القسم: ')[1].split(',')[0]} لاحقًا.`;
-            } 
-            
-            return "بناءً على المعلومات المقدمة، يمكن استنتاج أن الحالة تتطلب اهتمامًا متخصصًا. من المهم جدًا مراجعة طبيب مؤهل لتقييم جميع جوانب الحالة بشكل دقيق وشامل. المعلومات المقدمة هنا هي لأغراض توضيحية فقط ولا يمكن اعتبارها تشخيصًا نهائيًا أو خطة علاجية.";
-        }
-    </script>
+    // ============ تحسينات إمكانية الوصول ============
+    // التركيز على مناطق المخرجات بعد اكتمال التحليل
+    function focusOutput(el){ el.setAttribute('tabindex','-1'); el.focus({preventScroll:false}); setTimeout(()=>el.removeAttribute('tabindex'),200); }
+    [imgOutput, vitalsOutput, hmsOutput, mgOutput].forEach(el=>{
+      const obs = new MutationObserver(()=>{ focusOutput(el); });
+      obs.observe(el, {childList:true});
+    });
+  </script>
 </body>
 </html>
