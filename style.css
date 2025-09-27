@@ -60,6 +60,10 @@ html {
     font-size: 100%; /* Base font size for accessibility */
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
+    min-height: 100vh;
+    width: 100vw;
+    box-sizing: border-box;
+    overflow-x: hidden;
 }
 
 body {
@@ -67,6 +71,8 @@ body {
     background-color: var(--background-color);
     color: var(--text-color);
     line-height: 1.6;
+    min-height: 100vh;
+    width: 100vw;
     overflow-x: hidden;
     font-size: 1rem; /* Base: 16px */
     text-rendering: optimizeLegibility;
@@ -279,8 +285,14 @@ img, svg, video, canvas {
     display: flex;
     list-style: none;
     align-items: center;
+    justify-content: space-evenly;
+    gap: 1rem;
     margin: 0;
     padding: 0;
+    min-height: 48px; /* تثبيت ارتفاع القائمة لمنع التحول */
+    min-width: 260px; /* تثبيت عرض القائمة لمنع التحول */
+    box-sizing: border-box;
+    transition: min-height 0.3s, min-width 0.3s;
 }
 
 .nav-links li {
