@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
+      <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WW6PN3C2M0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-WW6PN3C2M0');
+</script>
+
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Bright AI - حلول الذكاء الاصطناعي الطبية المتقدمة في السعودية</title>
@@ -73,11 +83,27 @@
     .tabs button{padding:8px 12px;border:1px solid var(--border);background:#0c1d3c;color:var(--text);border-radius:10px;cursor:pointer}
     .tabs button.active{background:linear-gradient(135deg,#1b365a,#0e2444);border-color:#3563a3}
     .footer{margin-top:28px;padding:18px;border-top:1px solid var(--border);color:var(--muted);text-align:center}
+    /* Header / navigation responsive & accessibility enhancements */
+.navbar-container{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.navbar-container .logo{display:flex;align-items:center;gap:12px}
+.nav-links{display:flex;gap:12px;list-style:none;margin:0;padding:0}
+.nav-links a{padding:10px 12px;border-radius:8px}
+.nav-links a.active-link{background:rgba(255,255,255,0.04);border-radius:8px}
+.hamburger{display:none;background:transparent;border:1px solid var(--border);padding:8px;border-radius:10px;color:var(--text);cursor:pointer}
+.hamburger:focus{outline:2px solid var(--accent-2)}
+/* smooth scrolling */
+html{scroll-behavior:smooth}
     /* Responsive */
     @media (max-width: 860px){
       .hero{grid-template-columns:1fr}
       .cards-3{grid-template-columns:1fr}
       .row{grid-template-columns:1fr}
+.nav-links{position:fixed;top:64px;right:16px;left:16px;background:linear-gradient(180deg,#061022,#071428);flex-direction:column;gap:0;padding:8px;border-radius:10px;transform:translateY(-140%);transition:transform 260ms ease-in-out;z-index:60;border:1px solid var(--border)}
+.nav-links.open{transform:translateY(0)}
+.nav-links li{border-bottom:1px solid rgba(255,255,255,0.03)}
+.nav-links li:last-child{border-bottom:none}
+.nav-links a{display:block;padding:12px}
+.hamburger{display:inline-flex;align-items:center;gap:8px}
     }
   </style>
 </head>
@@ -88,14 +114,29 @@
         <div class="logo" aria-hidden="true"></div>
         <h1>Bright AI</h1>
       </div>
-      <nav>
-        <ul>
-          <li><a href="#home">الرئيسية</a></li>
-          <li><a href="#services">خدماتنا</a></li>
-          <li><a href="#why">المميزات</a></li>
-          <li><a href="#contact">تواصل معنا</a></li>
-        </ul>
-      </nav>
+        <nav class="navbar" aria-label="القائمة الرئيسية لموقع مُشرقة AI لخدمات الذكاء الاصطناعي والروبوتات في السعودية">
+            <div class="navbar-container">
+                <a href="#home" class="logo" aria-label="الصفحة الرئيسية لشركة مُشرقة AI - رائدة الذكاء الاصطناعي في السعودية">
+                    <img src="https://www2.0zz0.com/2025/06/23/22/317775783.png" alt="شعار شركة مُشرقة AI السعودية الرائدة في حلول الذكاء الاصطناعي" width="200" height="55" style="height: 55px; width: auto;" loading="eager">
+                </a>
+                <button class="hamburger" aria-label="فتح قائمة التنقل" aria-expanded="false" aria-controls="nav-links-list" type="button">
+                    <i class="fas fa-bars" aria-hidden="true"></i>
+                    <span class="sr-only">فتح القائمة</span>
+                </button>
+                <ul class="nav-links" id="nav-links-list" role="menubar" aria-label="روابط التنقل الرئيسية">
+                    <li role="none"><a role="menuitem" href="#home">الرئيسية</a></li>
+                    <li role="none"><a role="menuitem" href="our-products.html">خدمات الذكاء الاصطناعي</a></li>
+                    <li role="none"><a role="menuitem" href="data-analysis.html">تحليل البيانات  </a></li>
+                    <li role="none"><a role="menuitem" href="consultation.html">استشارات الذكاء الاصطناعي</a></li>
+                    <li role="none"><a role="menuitem" href="health-bright.html"> المجال الطبي  </a></li>
+                    <li role="none"><a role="menuitem" href="smart-automation.html"> الأتمتة الذكية</a></li>
+                    <li role="none"><a role="menuitem" href="blog">المكتبة الذكية</a></li>
+                    <li role="none"><a role="menuitem" href="Docfile/About.Bright.AI.html">عن شركة مُشرقة AI  </a></li>
+                    <li role="none"><a role="menuitem" href="h/index.html">نماذج AI تجريبية  </a></li>
+                    <li role="none"><a role="menuitem" href="ai-bots.html">شات بوت </a></li>
+                </ul>
+            </div>
+        </nav>
     </div>
   </header>
 
@@ -151,7 +192,7 @@
 
     <section id="try" class="section">
       <h2>تجربة فعلية مبنية على المدخلات</h2>
-      <p class="muted">أدخل البيانات أو ارفع الصور ليتم توليد نتائج حقيقية من نموذج Gemini استناداً إلى المدخلات.</p>
+      <p class="muted">أدخل البيانات أو ارفع الصور ليتم توليد نتائج حقيقية من نموذج BRI MED استناداً إلى المدخلات.</p>
 
       <!-- تبويب الخدمات -->
       <div class="tabs" role="tablist" aria-label="أقسام التجربة">
@@ -754,6 +795,59 @@ safeJson(payload),
       const obs = new MutationObserver(()=>{ focusOutput(el); });
       obs.observe(el, {childList:true});
     });
+
+    // ============ تحسينات قائمة التنقل (همبرغر) ============
+(function(){
+  const hamburger = document.querySelector('.hamburger');
+  const navLinks = document.getElementById('nav-links-list');
+  if (!hamburger || !navLinks) return;
+
+  function setNavOpen(open){
+    navLinks.classList.toggle('open', open);
+    hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    // مدیریت تَبَديد التركيز عند الفتح لإمكانية الوصول
+    if (open) {
+      navLinks.querySelector('a')?.focus();
+    }
+  }
+
+  hamburger.addEventListener('click', (e)=>{
+    e.stopPropagation();
+    setNavOpen(!navLinks.classList.contains('open'));
+  });
+
+  // إغلاق عند النقر خارج القائمة
+  document.addEventListener('click', (e)=>{
+    if (navLinks.classList.contains('open')){
+      if (!navLinks.contains(e.target) && !hamburger.contains(e.target)){
+        setNavOpen(false);
+      }
+    }
+  });
+
+  // إغلاق عند الضغط على Escape
+  document.addEventListener('keydown', (e)=>{
+    if (e.key === 'Escape') setNavOpen(false);
+  });
+
+  // تمييز الرابط النشط وإغلاق القائمة بعد النقر على روابط الهاتف المحمول
+  const anchors = Array.from(navLinks.querySelectorAll('a[role="menuitem"]'));
+  anchors.forEach(a=>{
+    a.addEventListener('click', ()=>{
+      anchors.forEach(x=>x.classList.remove('active-link'));
+      a.classList.add('active-link');
+      // اغلاق القائمه على الشاشات الصغيرة
+      setNavOpen(false);
+    });
+  });
+
+  // تعيين الرابط النشط بناءً على الهاش عند التحميل
+  (function initActive(){
+    const hash = location.hash || '#home';
+    const match = anchors.find(a => a.getAttribute('href') === hash);
+    if (match) match.classList.add('active-link');
+  })();
+})();
   </script>
 </body>
 </html>
