@@ -1,85 +1,104 @@
-# BrightAI .htaccess - Saudi SEO Optimized - Last updated: 2025-01-16
-# مُحسّن للسوق السعودي ومحركات البحث العربية
+# BrightAI .htaccess - Optimized for Google Indexing
+# Last updated: 2025-10-01
+# Fixed: Redirect issues causing indexing problems
+
+# ============================================
+# CORE SETTINGS
+# ============================================
 
 # Enable rewrite engine
 RewriteEngine On
+RewriteBase /
 
-# Saudi SEO Headers
-<IfModule mod_headers.c>
-    Header always set X-Saudi-SEO "Optimized"
-    Header always set X-Content-Region "Saudi Arabia"
-    Header always set X-Target-Cities "الرياض, جدة, الدمام, الخبر, مكة, المدينة المنورة"
-    Header always set X-Business-Type "AI Technology Company"
-    Header always set X-Service-Language "Arabic, English"
-    Header always set X-Content-Language "ar-SA"
-    Header always set X-Geographic-Region "SA"
-</IfModule>
+# Set default character set for Arabic content
+AddDefaultCharset UTF-8
 
-# Force HTTPS
+# Prevent directory browsing
+Options -Indexes -MultiViews
+
+# ============================================
+# HTTPS & DOMAIN CANONICALIZATION
+# ============================================
+
+# Force HTTPS (permanent redirect)
 RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-# Remove trailing slash
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)/$ /$1 [L,R=301]
-
-# Canonicalize domain (www to non-www and correct domain)
-RewriteCond %{HTTP_HOST} ^www\.brightai\.site [NC,OR]
-RewriteCond %{HTTP_HOST} ^brightaii\.com [NC,OR]
-RewriteCond %{HTTP_HOST} ^www\.brightaii\.com [NC]
+# Canonicalize domain: www to non-www (permanent redirect)
+RewriteCond %{HTTP_HOST} ^www\.brightai\.site [NC]
 RewriteRule ^(.*)$ https://brightai.site/$1 [L,R=301]
 
-# Remove .html extension
+# Handle alternative domain spellings
+RewriteCond %{HTTP_HOST} ^(www\.)?brightaii\.com [NC]
+RewriteRule ^(.*)$ https://brightai.site/$1 [L,R=301]
+
+# ============================================
+# URL STRUCTURE - PREVENT DUPLICATE CONTENT
+# ============================================
+
+# Redirect .html URLs to clean URLs (prevents duplicate content)
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /([^.]+)\.html\ HTTP
+RewriteCond %{REQUEST_URI} !^/404\.html$
+RewriteRule ^([^.]+)\.html$ /$1 [R=301,L]
+
+# Internally serve .html files for clean URLs
 RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME}\.html -f
-RewriteRule ^(.*)$ $1.html [NC,L]
+RewriteRule ^(.*)$ $1.html [L]
 
-# Prevent directory browsing
-Options -Indexes
+# Remove trailing slash from URLs (except directories)
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !^/$
+RewriteRule ^(.*)/$ /$1 [L,R=301]
 
-# Set default character set
-AddDefaultCharset UTF-8
+# ============================================
+# COMPRESSION - IMPROVE LOADING SPEED
+# ============================================
 
-# Enable compression
 <IfModule mod_deflate.c>
-  # Compress HTML, CSS, JavaScript, Text, XML and fonts
-  AddOutputFilterByType DEFLATE application/javascript
-  AddOutputFilterByType DEFLATE application/rss+xml
-  AddOutputFilterByType DEFLATE application/vnd.ms-fontobject
-  AddOutputFilterByType DEFLATE application/x-font
-  AddOutputFilterByType DEFLATE application/x-font-opentype
-  AddOutputFilterByType DEFLATE application/x-font-otf
-  AddOutputFilterByType DEFLATE application/x-font-truetype
-  AddOutputFilterByType DEFLATE application/x-font-ttf
-  AddOutputFilterByType DEFLATE application/x-javascript
-  AddOutputFilterByType DEFLATE application/xhtml+xml
-  AddOutputFilterByType DEFLATE application/xml
-  AddOutputFilterByType DEFLATE font/opentype
-  AddOutputFilterByType DEFLATE font/otf
-  AddOutputFilterByType DEFLATE font/ttf
-  AddOutputFilterByType DEFLATE image/svg+xml
-  AddOutputFilterByType DEFLATE image/x-icon
-  AddOutputFilterByType DEFLATE text/css
+  # Compress HTML, CSS, JavaScript, Text, XML
   AddOutputFilterByType DEFLATE text/html
-  AddOutputFilterByType DEFLATE text/javascript
   AddOutputFilterByType DEFLATE text/plain
   AddOutputFilterByType DEFLATE text/xml
+  AddOutputFilterByType DEFLATE text/css
+  AddOutputFilterByType DEFLATE text/javascript
+  AddOutputFilterByType DEFLATE application/javascript
+  AddOutputFilterByType DEFLATE application/x-javascript
+  AddOutputFilterByType DEFLATE application/xml
+  AddOutputFilterByType DEFLATE application/xhtml+xml
+  AddOutputFilterByType DEFLATE application/rss+xml
+  AddOutputFilterByType DEFLATE application/json
+  AddOutputFilterByType DEFLATE image/svg+xml
+  AddOutputFilterByType DEFLATE font/ttf
+  AddOutputFilterByType DEFLATE font/otf
+  AddOutputFilterByType DEFLATE font/woff
+  AddOutputFilterByType DEFLATE font/woff2
 </IfModule>
 
-# Brotli Compression (if available)
+# Brotli Compression (if module available)
 <IfModule mod_brotli.c>
-    AddOutputFilterByType BROTLI_COMPRESS text/html text/plain text/xml text/css text/javascript application/javascript application/x-javascript application/json application/xml application/xml+rss
+    AddOutputFilterByType BROTLI_COMPRESS text/html text/plain text/xml text/css
+    AddOutputFilterByType BROTLI_COMPRESS text/javascript application/javascript
+    AddOutputFilterByType BROTLI_COMPRESS application/json application/xml
 </IfModule>
 
-# Enhanced Browser Caching with optimized settings
+# ============================================
+# BROWSER CACHING - IMPROVE PERFORMANCE
+# ============================================
+
 <IfModule mod_expires.c>
   ExpiresActive On
   
-  # Default cache for 1 hour
+  # Default expiration: 1 hour
   ExpiresDefault "access plus 1 hour"
   
-  # Images - longer cache
+  # HTML: 1 hour (allows quick updates)
+  ExpiresByType text/html "access plus 1 hour"
+  
+  # Images: 1 year
   ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/jpg "access plus 1 year"
   ExpiresByType image/gif "access plus 1 year"
   ExpiresByType image/png "access plus 1 year"
   ExpiresByType image/webp "access plus 1 year"
@@ -87,140 +106,213 @@ AddDefaultCharset UTF-8
   ExpiresByType image/x-icon "access plus 1 year"
   ExpiresByType image/avif "access plus 1 year"
   
-  # Video
+  # Video: 1 year
   ExpiresByType video/mp4 "access plus 1 year"
   ExpiresByType video/webm "access plus 1 year"
-  ExpiresByType video/mpeg "access plus 1 year"
   
-  # CSS, JavaScript - shorter cache for updates
+  # CSS and JavaScript: 1 month (balance between caching and updates)
   ExpiresByType text/css "access plus 1 month"
   ExpiresByType text/javascript "access plus 1 month"
   ExpiresByType application/javascript "access plus 1 month"
   ExpiresByType application/x-javascript "access plus 1 month"
   
-  # Fonts
-  ExpiresByType application/vnd.ms-fontobject "access plus 1 year"
-  ExpiresByType application/x-font-ttf "access plus 1 year"
-  ExpiresByType application/x-font-opentype "access plus 1 year"
-  ExpiresByType application/x-font-woff "access plus 1 year"
+  # Fonts: 1 year
+  ExpiresByType font/woff "access plus 1 year"
   ExpiresByType font/woff2 "access plus 1 year"
   ExpiresByType font/ttf "access plus 1 year"
   ExpiresByType font/otf "access plus 1 year"
+  ExpiresByType application/font-woff "access plus 1 year"
+  ExpiresByType application/font-woff2 "access plus 1 year"
+  ExpiresByType application/x-font-woff "access plus 1 year"
+  ExpiresByType application/x-font-ttf "access plus 1 year"
+  ExpiresByType application/x-font-opentype "access plus 1 year"
   
-  # Others
+  # Other files
   ExpiresByType application/pdf "access plus 1 month"
-  ExpiresByType application/x-shockwave-flash "access plus 1 month"
-  ExpiresByType application/xhtml+xml "access plus 1 hour"
+  ExpiresByType application/json "access plus 1 day"
+  ExpiresByType application/xml "access plus 1 day"
 </IfModule>
 
-# Cache-Control headers for additional control
+# ============================================
+# CACHE-CONTROL HEADERS
+# ============================================
+
 <IfModule mod_headers.c>
-    # Cache static assets for 1 year
-    <FilesMatch "\.(jpg|jpeg|png|gif|ico|svg|webp|avif|woff2|woff|ttf|otf)$">
+    # Static assets: long cache
+    <FilesMatch "\.(jpg|jpeg|png|gif|ico|svg|webp|avif)$">
         Header set Cache-Control "max-age=31536000, public, immutable"
     </FilesMatch>
     
-    # Cache CSS & JS for 1 month
+    # Fonts: long cache
+    <FilesMatch "\.(woff|woff2|ttf|otf|eot)$">
+        Header set Cache-Control "max-age=31536000, public, immutable"
+    </FilesMatch>
+    
+    # CSS & JavaScript: medium cache
     <FilesMatch "\.(css|js)$">
         Header set Cache-Control "max-age=2592000, public"
     </FilesMatch>
     
-    # Cache HTML for 1 hour
+    # HTML: short cache with revalidation
     <FilesMatch "\.(html|htm)$">
         Header set Cache-Control "max-age=3600, public, must-revalidate"
     </FilesMatch>
     
-    # Remove ETag for better cache performance
+    # Remove ETag (better cache performance)
     Header unset ETag
     FileETag None
+    
+    # Vary header for proper caching
+    Header append Vary "Accept-Encoding"
 </IfModule>
 
-# KeepAlive optimization for faster connections
+# ============================================
+# KEEPALIVE - FASTER CONNECTIONS
+# ============================================
+
 <IfModule mod_headers.c>
     Header set Connection keep-alive
 </IfModule>
 
-# Enable KeepAlive
 KeepAlive On
 KeepAliveTimeout 5
 MaxKeepAliveRequests 100
 
-# Security headers
+# ============================================
+# SECURITY HEADERS
+# ============================================
+
 <IfModule mod_headers.c>
-  # XSS Protection
-  Header set X-XSS-Protection "1; mode=block"
+  # Prevent XSS attacks
+  Header always set X-XSS-Protection "1; mode=block"
   
   # Prevent MIME type sniffing
-  Header set X-Content-Type-Options "nosniff"
+  Header always set X-Content-Type-Options "nosniff"
   
   # Referrer policy
-  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
   
-  # Content Security Policy - Enhanced for Saudi content
-  Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.google-analytics.com https://www.googletagmanager.com https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com; img-src 'self' data: https://www.google-analytics.com https://www2.0zz0.com; font-src 'self' https://fonts.gstatic.com https://fonts.googleapis.com; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com;"
+  # Content Security Policy (adjusted for common needs)
+  Header always set Content-Security-Policy "default-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com https://fonts.googleapis.com;"
   
   # Permissions Policy
-  Header set Permissions-Policy "camera=(), microphone=(), geolocation=(self), interest-cohort=()"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(self)"
+  
+  # CORS - Allow fonts from Google
+  <FilesMatch "\.(ttf|otf|eot|woff|woff2)$">
+    Header set Access-Control-Allow-Origin "*"
+  </FilesMatch>
 </IfModule>
 
-# Custom error pages
+# ============================================
+# ERROR PAGES
+# ============================================
+
 ErrorDocument 404 /404.html
 ErrorDocument 500 /500.html
 
-# Prevent access to hidden files
+# ============================================
+# SECURITY - PREVENT ACCESS TO SENSITIVE FILES
+# ============================================
+
+# Prevent access to hidden files and directories
 <FilesMatch "^\.">
-  Order allow,deny
-  Deny from all
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+  </IfModule>
 </FilesMatch>
 
 # Prevent access to specific file types
-<FilesMatch "\.(sql|log|ini|htaccess)$">
-  Order allow,deny
-  Deny from all
+<FilesMatch "\.(sql|log|ini|conf|bak|backup|swp|tmp)$">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+  </IfModule>
 </FilesMatch>
 
-# Language negotiation for Arabic version
-RewriteCond %{HTTP:Accept-Language} ^ar [NC]
-RewriteCond %{REQUEST_URI} !^/ar/ [NC]
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^(.*)$ /ar/$1 [L,R=302]
+# Protect .htaccess and .htpasswd
+<Files ~ "^\.ht">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+  </IfModule>
+</Files>
 
-# Redirects for common 404 sources
+# ============================================
+# SPECIFIC REDIRECTS - ONLY NECESSARY ONES
+# ============================================
+
+# Fix common URL variations
 Redirect 301 /terms.html /terms-and-conditions.html
-Redirect 301 /Company performance monitoring tool.html /Company%20performance%20monitoring%20tool.html
-Redirect 301 /Saudi tourism and heritage services/index.html /Saudi%20tourism%20and%20heritage%20services/index.html
 
-# Redirect old blog URLs to new structure
-RedirectMatch 301 ^/blogger/(.*)\.doc\.html$ /blogger/$1.html
-RedirectMatch 301 ^/blogger/(.*)\.pdf$ /blogger/$1.html
+# Fix URL encoding issues (if needed)
+# Redirect 301 /Company performance monitoring tool.html /Company%20performance%20monitoring%20tool.html
 
-# Redirect missing pages to homepage
-Redirect 301 /missing-page.html /
-Redirect 301 /old-version.html /
+# ============================================
+# HANDLE SERVICE WORKER (if you use PWA)
+# ============================================
 
-# Performance: Serve precompressed files if available
-<IfModule mod_rewrite.c>
-    RewriteCond %{HTTP:Accept-Encoding} gzip
-    RewriteCond %{REQUEST_FILENAME}.gz -f
-    RewriteRule ^(.*)$ $1.gz [L]
-    
-    RewriteCond %{HTTP:Accept-Encoding} br
-    RewriteCond %{REQUEST_FILENAME}.br -f
-    RewriteRule ^(.*)$ $1.br [L]
-</IfModule>
-
-<FilesMatch "\.(css|js|html|htm|xml|svg|txt)\.gz$">
-    Header set Content-Encoding gzip
-    Header set Vary Accept-Encoding
-</FilesMatch>
-
-<FilesMatch "\.(css|js|html|htm|xml|svg|txt)\.br$">
-    Header set Content-Encoding br
-    Header set Vary Accept-Encoding
-</FilesMatch>
-
-# Handle Service Worker
 <Files "sw.js">
   Header set Service-Worker-Allowed "/"
-  Header set Cache-Control "max-age=0"
+  Header set Cache-Control "max-age=0, no-cache, no-store, must-revalidate"
 </Files>
+
+# ============================================
+# PRE-COMPRESSED FILES (OPTIONAL)
+# ============================================
+
+# Serve pre-compressed .gz files if available
+<IfModule mod_rewrite.c>
+    RewriteCond %{HTTP:Accept-Encoding} gzip
+    RewriteCond %{REQUEST_FILENAME}\.gz -f
+    RewriteRule ^(.+)$ $1.gz [L]
+</IfModule>
+
+<FilesMatch "\.(css|js|html|htm|xml|txt|svg)\.gz$">
+    <IfModule mod_headers.c>
+        Header set Content-Encoding gzip
+        Header append Vary Accept-Encoding
+    </IfModule>
+</FilesMatch>
+
+# Serve pre-compressed .br (brotli) files if available
+<IfModule mod_rewrite.c>
+    RewriteCond %{HTTP:Accept-Encoding} br
+    RewriteCond %{REQUEST_FILENAME}\.br -f
+    RewriteRule ^(.+)$ $1.br [L]
+</IfModule>
+
+<FilesMatch "\.(css|js|html|htm|xml|txt|svg)\.br$">
+    <IfModule mod_headers.c>
+        Header set Content-Encoding br
+        Header append Vary Accept-Encoding
+    </IfModule>
+</FilesMatch>
+
+# ============================================
+# NOTES & REMOVED SECTIONS
+# ============================================
+
+# REMOVED: Language Negotiation (was causing 36+ redirects)
+# This was redirecting all Arabic-language browsers to /ar/
+# which doesn't exist, causing massive indexing problems
+
+# REMOVED: Excessive custom headers (X-Saudi-SEO, etc.)
+# These are non-standard and don't affect SEO
+
+# REMOVED: Overly complex redirect chains
+# Simplified to prevent redirect loops
+
+# ============================================
+# END OF FILE
+# ============================================
