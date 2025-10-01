@@ -1016,6 +1016,114 @@ img, svg, video, canvas {
   transform: translateY(0);
   transition: all 0.8s ease;
 }
+
+/* Consistent card hover for all sections */
+.service-card:hover,
+.tourism-feature-card:hover,
+.tech-card:hover,
+.tech-detail-card:hover,
+.feature-item:hover,
+.demo-feature:hover,
+.ai-card:hover,
+.health-feature:hover,
+.case-card:hover,
+.case-study-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+}
+
+/* Unified button enhancements */
+.cta-button,
+.ai-btn,
+.health-cta,
+.feature-link,
+.service-link {
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-button::before,
+.ai-btn::before,
+.health-cta::before,
+.feature-link::before,
+.service-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+}
+
+.cta-button:hover::before,
+.ai-btn:hover::before,
+.health-cta:hover::before,
+.feature-link:hover::before,
+.service-link:hover::before {
+    left: 100%;
+}
+
+/* Improve hero description contrast */
+.hero-description {
+    color: var(--white);
+    opacity: 0.95;
+    font-weight: 400;
+    background: rgba(10,25,47,0.6);
+    padding: 1rem 1.5rem;
+    border-radius: var(--border-radius-md);
+    margin: 0 auto 2rem;
+    max-width: 800px;
+    display: inline-block;
+    text-align: right;
+}
+
+/* Ensure consistent section padding */
+.ai-section,
+.health-section,
+.tourism-heritage,
+.ai-reshape,
+.services,
+.about-section,
+.case-studies,
+.ai-agent,
+.faq,
+.newsletter,
+.consultation,
+.journey,
+.agent-journey,
+.automation-journey,
+.ai-transformation,
+.services-list,
+.faq,
+.technical-details,
+.case-studies-detailed {
+    padding-block: 5rem;
+}
+
+/* Responsive improvements for grids */
+@media (max-width: 768px) {
+    .services-grid,
+    .tourism-features-grid,
+    .ai-grid,
+    .health-features-grid,
+    .tech-grid,
+    .tech-details-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .health-section,
+    .ai-section {
+        padding-block: 3rem;
+    }
+
+    .ai-title,
+    .health-title {
+        font-size: 1.8rem;
+    }
+}
 /* --------------------------------------------------------------------------
    5.8. Newsletter
    -------------------------------------------------------------------------- */
@@ -1077,6 +1185,174 @@ img, svg, video, canvas {
 .newsletter-button-large:hover,
 .newsletter-button-large:focus-visible {
     background-color: #0D2240;
+}
+
+/* New consistent section styles for health and similar inline sections */
+.health-section {
+    padding: 4rem 2rem;
+    background-color: #f0f4f8;
+    direction: rtl;
+}
+
+.health-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.health-title {
+    font-size: 2.5rem;
+    color: #006064;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.health-description {
+    font-size: 1.2rem;
+    color: #555;
+    max-width: 800px;
+    margin: 0 auto 2.5rem auto;
+    line-height: 1.6;
+}
+
+.health-features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.health-feature {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: var(--transition-medium);
+}
+
+.health-feature:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.health-feature h3 {
+    color: #0097A7;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.health-feature p {
+    color: #666;
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+.health-cta {
+    display: inline-block;
+    padding: 1.2rem 3rem;
+    background: linear-gradient(45deg, #00BCD4, #0097A7);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    box-shadow: 0 10px 30px rgba(0, 188, 212, 0.4);
+    transition: var(--transition-medium);
+}
+
+.health-cta:hover,
+.health-cta:focus-visible {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 15px 40px rgba(0, 188, 212, 0.5);
+    text-decoration: none;
+    color: white;
+}
+
+/* Enhance AI Consulting section consistency */
+.ai-section {
+    background: linear-gradient(to right, #f9fafb, #eef2f7);
+    padding: 80px 20px;
+    text-align: center;
+    overflow: hidden;
+}
+
+.ai-section .container {
+    max-width: var(--container-width);
+    margin: inline auto;
+}
+
+.ai-title {
+    font-size: clamp(1.8rem, 4vw, 2.2rem);
+    margin-bottom: 15px;
+    color: #1a202c;
+    font-weight: 700;
+}
+
+.ai-description {
+    font-size: 1.1rem;
+    margin-bottom: 50px;
+    color: #4a5568;
+    line-height: 1.8;
+    max-width: 800px;
+    margin-inline: auto;
+}
+
+.ai-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+}
+
+.ai-card {
+    background: #ffffff;
+    border-radius: var(--border-radius-lg);
+    padding: 25px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    transition: transform var(--transition-medium), box-shadow var(--transition-medium);
+    opacity: 0;
+    transform: translateY(40px);
+    border: 1px solid var(--border-color);
+}
+
+.ai-card.show {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 0.8s ease;
+}
+
+.ai-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+    color: var(--heading-color);
+}
+
+.ai-card p {
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.ai-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.ai-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 25px;
+    background: var(--primary-color);
+    color: var(--secondary-color);
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: var(--transition-short);
+    font-weight: 500;
+}
+
+.ai-btn:hover {
+    background: #5de6c8;
+    transform: scale(1.02);
 }
 
 
