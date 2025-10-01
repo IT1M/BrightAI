@@ -1,7 +1,7 @@
 # Simplified robots.txt for brightai.site
 User-agent: *
 Allow: /
-Disallow: /admin/
+Disallow: /admin/ 
 Disallow: /wp-admin/
 Disallow: /wp-includes/
 Disallow: /private/
