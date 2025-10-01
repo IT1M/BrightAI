@@ -191,7 +191,7 @@ document.addEventListener('DOMContentLoaded', function () {
             "@type": "LocalBusiness",
             "name": "Bright AI - خدمات تحليل البيانات",
             "image": "https://d.top4top.io/p_33354e90u1.png",
-            "url": "https://brightaii.com/data-analysis.html",
+            "url": "https://brightai.site/data-analysis.html",
             "telephone": "+966538229013",
             "address": {
                 "@type": "PostalAddress",

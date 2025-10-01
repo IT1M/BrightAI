@@ -3,7 +3,7 @@
     "@graph": [
         {
             "@type": "Organization",
-            "@id": "https://www.brightaii.com/#organization",
+            "@id": "https://brightai.site/#organization",
             "name": "مُشرقة AI",
             "alternateName": [
                 "Bright AI",
@@ -11,7 +11,7 @@
                 "مُشرقة الذكاء الاصطناعي",
                 "شركة مُشرقة AI السعودية"
             ],
-            "url": "https://www.brightaii.com/",
+            "url": "https://brightai.site/",
             "logo": {
                 "@type": "ImageObject",
                 "url": "https://www2.0zz0.com/2025/06/23/22/317775783.png",
@@ -145,26 +145,26 @@
         },
         {
             "@type": "WebSite",
-            "@id": "https://www.brightaii.com/#website",
-            "url": "https://www.brightaii.com/",
+            "@id": "https://brightai.site/#website",
+            "url": "https://brightai.site/",
             "name": "مُشرقة AI - حلول الذكاء الاصطناعي المتكاملة لدعم رؤية السعودية 2030",
             "description": "مُشرقة AI تقدم حلولاً رائدة في الذكاء الاصطناعي، التعلم العميق، تطوير تطبيقات الذكاء الاصطناعي المخصصة، وخدمات الأتمتة لدعم مسيرة التحول الرقمي للشركات والمؤسسات في جميع أنحاء المملكة العربية السعودية.",
             "publisher": {
-                "@id": "https://www.brightaii.com/#organization"
+                "@id": "https://brightai.site/#organization"
             },
             "inLanguage": "ar-SA",
             "potentialAction": {
                 "@type": "SearchAction",
                 "target": {
                     "@type": "EntryPoint",
-                    "urlTemplate": "https://www.brightaii.com/search?q={search_term_string}"
+                    "urlTemplate": "https://brightai.site/search?q={search_term_string}"
                 },
                 "query-input": "required name=search_term_string"
             }
         },
         {
             "@type": "LocalBusiness",
-            "@id": "https://www.brightaii.com/#localbusiness",
+            "@id": "https://brightai.site/#localbusiness",
             "name": "مُشرقة AI",
             "image": "https://www2.0zz0.com/2025/06/23/22/317775783.png",
             "address": {
@@ -182,7 +182,7 @@
             },
             "telephone": "+966-53-822-9013",
             "email": "info@brightaii.com",
-            "url": "https://www.brightaii.com/",
+            "url": "https://brightai.site/",
             "openingHours": "Mo-Th 08:00-17:00, Su 08:00-17:00",
             "priceRange": "$$",
             "paymentAccepted": "Cash, Credit Card, Bank Transfer",
@@ -194,19 +194,19 @@
         },
         {
             "@type": "TechArticle",
-            "@id": "https://www.brightaii.com/#article",
+            "@id": "https://brightai.site/#article",
             "headline": "شركة مُشرقة AI | أول مؤسسة سعودية متخصصة في الذكاء الاصطناعي والروبوتات",
             "description": "مُشرقة AI الشركة السعودية الرائدة في الذكاء الاصطناعي بالرياض. نقدم حلول التعلم العميق، أتمتة العمليات، روبوتات المحادثة العربية، وتحليل البيانات للشركات السعودية.",
             "author": {
-                "@id": "https://www.brightaii.com/#organization"
+                "@id": "https://brightai.site/#organization"
             },
             "publisher": {
-                "@id": "https://www.brightaii.com/#organization"
+                "@id": "https://brightai.site/#organization"
             },
             "datePublished": "2023-01-01",
             "dateModified": "2025-01-16",
             "mainEntityOfPage": {
-                "@id": "https://www.brightaii.com/"
+                "@id": "https://brightai.site/"
             },
             "image": {
                 "@type": "ImageObject",
