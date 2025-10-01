@@ -33,36 +33,59 @@
             box-sizing: border-box;
         }
 
+        /* Add dark palette and helpers */
+        :root {
+            /* Color Palette */
+            --primary-color: #64FFDA;
+            --secondary-color: #0A192F;
+            --background-color: #0A192F;
+            --text-color: #8892B0;
+            --heading-color: #CCD6F6;
+            --white: #FFFFFF;
+            --card-bg: #112240;
+            --accent-color: #1D2B3A;
+            --accent-color-lighter: #24364A;
+            --border-color: rgba(100, 255, 218, 0.08);
+
+            /* Transitions */
+            --transition-short: all 0.25s ease-in-out;
+            --transition-medium: all 0.3s ease-in-out;
+            --transition-long: all 0.5s ease-in-out;
+
+            /* Shadows */
+            --shadow-sm: 0 2px 6px rgba(2,6,23,0.6);
+            --shadow-md: 0 8px 30px rgba(2,6,23,0.6);
+            --shadow-lg: 0 20px 60px rgba(2,6,23,0.7);
+
+            /* Layout & Sizing */
+            --container-width: 1200px;
+            --border-radius-sm: 8px;
+            --border-radius-md: 15px;
+
+            /* Accessibility */
+            --focus-outline-color: var(--primary-color);
+            --muted: rgba(204,214,246,0.06);
+        }
+
+        /* Replace body/background/text colors */
         body {
             font-family: 'Tajawal', Arial, sans-serif;
             line-height: 1.8;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--text-color);
+            background: radial-gradient(circle at 10% 10%, rgba(100,255,218,0.03), transparent 20%), var(--background-color);
             min-height: 100vh;
         }
 
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border: 0;
-        }
-
-        /* Header Styles */
+        /* Header */
         .header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(10,25,47,0.6);
+            backdrop-filter: blur(6px);
+            border-bottom: 1px solid var(--border-color);
             position: fixed;
             top: 0;
             width: 100%;
             z-index: 1000;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--shadow-sm);
         }
 
         .header-container {
@@ -104,18 +127,17 @@
 
         .nav-links a {
             text-decoration: none;
-            color: #333;
+            color: var(--heading-color);
             font-weight: 500;
             font-size: 16px;
-            transition: all 0.3s ease;
+            transition: var(--transition-medium);
             padding: 10px 15px;
             border-radius: 8px;
-            position: relative;
         }
 
         .nav-links a:hover {
-            color: #667eea;
-            background: rgba(102, 126, 234, 0.1);
+            color: var(--primary-color);
+            background: rgba(100,255,218,0.04);
             transform: translateY(-2px);
         }
 
@@ -127,8 +149,8 @@
         }
 
         .hero-section {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            background: linear-gradient(135deg, rgba(100,255,218,0.07) 0%, rgba(17,34,64,0.2) 100%), linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color-lighter) 100%);
+            color: var(--heading-color);
             padding: 100px 20px 80px;
             text-align: center;
             position: relative;
@@ -157,17 +179,14 @@
             font-size: 3.5rem;
             font-weight: 900;
             margin-bottom: 30px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-            line-height: 1.2;
+            color: var(--heading-color);
         }
 
         .hero-subtitle {
             font-size: 1.4rem;
             margin-bottom: 40px;
-            opacity: 0.9;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
+            color: var(--text-color);
+            opacity: 0.95;
         }
 
         .content-container {
@@ -177,27 +196,26 @@
         }
 
         .section {
-            background: white;
+            background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
             margin-bottom: 40px;
             padding: 60px;
             border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition-medium);
         }
 
         .section:hover {
             transform: translateY(-5px);
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.15);
+            box-shadow: var(--shadow-lg);
         }
 
         .section-title {
             font-size: 2.5rem;
             font-weight: 700;
-            color: #2c3e50;
+            color: var(--heading-color);
             margin-bottom: 30px;
-            position: relative;
-            padding-bottom: 15px;
         }
 
         .section-title::after {
@@ -242,13 +260,13 @@
         }
 
         .application-card {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            background: linear-gradient(135deg, rgba(100,255,218,0.08), rgba(29,43,58,0.32));
+            color: var(--heading-color);
             padding: 40px;
             border-radius: 20px;
             text-align: center;
             transition: transform 0.3s ease;
-            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.3);
+            box-shadow: var(--shadow-md);
         }
 
         .application-card:hover {
@@ -258,13 +276,11 @@
         .application-card i {
             font-size: 3rem;
             margin-bottom: 20px;
-            opacity: 0.9;
+            color: var(--primary-color);
         }
 
         .application-card h3 {
-            font-size: 1.6rem;
-            font-weight: 700;
-            margin-bottom: 15px;
+            color: var(--heading-color);
         }
 
         .vision-2030-section {
@@ -302,7 +318,7 @@
         .stat-number {
             font-size: 3rem;
             font-weight: 900;
-            color: #667eea;
+            color: var(--primary-color);
             display: block;
             margin-bottom: 10px;
         }
@@ -343,8 +359,8 @@
 
         /* Footer Styles */
         .footer {
-            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-            color: white;
+            background: linear-gradient(135deg, #071026 0%, var(--secondary-color) 100%);
+            color: var(--text-color);
             padding: 80px 0 20px;
         }
 
@@ -368,35 +384,22 @@
             filter: brightness(0) invert(1);
         }
 
-        .footer-description {
-            font-size: 0.95rem;
-            line-height: 1.8;
-            margin-bottom: 30px;
+        .footer-description,
+        .footer-link a,
+        .contact-item,
+        .copyright {
+            color: var(--text-color);
             opacity: 0.9;
         }
 
-        .social-links {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
         .social-link {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 45px;
-            height: 45px;
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            text-decoration: none;
-            border-radius: 50%;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
+            background: rgba(255,255,255,0.02);
+            color: var(--heading-color);
         }
 
         .social-link:hover {
-            background: #667eea;
+            background: rgba(100,255,218,0.08);
+            color: var(--primary-color);
             transform: translateY(-3px);
         }
 
@@ -477,16 +480,16 @@
         }
 
         .newsletter-button {
-            background: #667eea;
-            color: white;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color-lighter));
+            color: var(--secondary-color);
             border: none;
             padding: 15px 25px;
             cursor: pointer;
-            transition: background 0.3s ease;
+            transition: var(--transition-short);
         }
 
         .newsletter-button:hover {
-            background: #5a67d8;
+            filter: brightness(1.05);
         }
 
         .footer-bottom {
