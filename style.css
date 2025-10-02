@@ -9,6 +9,23 @@
 /* ==========================================================================
    1. CSS Variables (:root) & Global Reset
    ========================================================================== */
+/*
+ * BrightAI - Enhanced Stylesheet for Performance, SEO & User Experience in Saudi Arabia
+ * Version: 2.1.0 (Mobile Menu & Hero Text Update)
+ * Last updated: September 2025
+ * Description: This stylesheet has been optimized for faster rendering, better accessibility (WCAG-AA),
+ * and a superior user experience, with specific considerations for the Saudi market.
+ */
+
+/* ==== CLS FIX: Font Matching Fallback - أضف هذا الجزء ==== */
+@font-face {
+  font-family: 'Tajawal Fallback';
+  src: local('Arial'); /* استخدام خط نظام شائع كقاعدة */
+  ascent-override: 95%;
+  descent-override: 25%;
+  line-gap-override: 10%;
+  size-adjust: 102%;
+}
 
 :root {
     /* Color Palette */
