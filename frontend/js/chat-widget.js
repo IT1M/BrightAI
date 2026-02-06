@@ -1,306 +1,14 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // === DOM Elements ===
-    const chatToggle = document.getElementById('chatToggle');
-    const chatWidget = document.getElementById('chatWidget');
-    const chatOverlay = document.getElementById('chatOverlay');
-    const chatMessages = document.getElementById('chatMessages');
-    const userInput = document.getElementById('userInput');
-    const sendButton = document.getElementById('sendButton');
-    const micButton = document.getElementById('micButton');
-    const minimizeChat = document.getElementById('minimizeChat');
-    const soundToggle = document.getElementById('soundToggle');
-    const quickActions = document.getElementById('quickActions');
-
-    // === State ===
-    let isOpen = false;
-    let isSoundEnabled = true;
-    let isFirstOpen = true;
-
-    // === API Configuration ===
-    const API_KEY = 'AIzaSyDO81uH5hysYX4daaK2bmcRxbz8IPFgwfg';
-    const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${API_KEY}`;
-
-    // === Chat Toggle Functions ===
-    function toggleChat() {
-        isOpen = !isOpen;
-        chatWidget.classList.toggle('open', isOpen);
-        chatToggle.classList.toggle('active', isOpen);
-        chatOverlay.classList.toggle('show', isOpen && window.innerWidth <= 480);
-
-        if (isOpen) {
-            // Remove notification badge
-            const badge = chatToggle.querySelector('.badge');
-            if (badge) badge.style.display = 'none';
-
-            // Focus input
-            setTimeout(() => userInput.focus(), 300);
-
-            // Add welcome AI message on first open
-            if (isFirstOpen) {
-                isFirstOpen = false;
-            }
-        }
-
-        // Prevent body scroll on mobile when chat is open
-        if (window.innerWidth <= 480) {
-            document.body.style.overflow = isOpen ? 'hidden' : '';
-        }
-    }
-
-    function closeChat() {
-        isOpen = false;
-        chatWidget.classList.remove('open');
-        chatToggle.classList.remove('active');
-        chatOverlay.classList.remove('show');
-        document.body.style.overflow = '';
-    }
-
-    // === Event Listeners ===
-    if (chatToggle) chatToggle.addEventListener('click', toggleChat);
-    if (chatOverlay) chatOverlay.addEventListener('click', closeChat);
-    if (minimizeChat) minimizeChat.addEventListener('click', closeChat);
-
-    // Close with Escape key
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && isOpen) {
-            closeChat();
-        }
-    });
-
-    // Sound toggle
-    if (soundToggle) {
-        soundToggle.addEventListener('click', () => {
-            isSoundEnabled = !isSoundEnabled;
-
-            // Stop current speech instantly if muted
-            if (!isSoundEnabled) {
-                window.speechSynthesis.cancel();
-            }
-
-            soundToggle.querySelector('svg').innerHTML = isSoundEnabled
-                ? '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />'
-                : '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />';
-        });
-    }
-
-    // Enable/disable send button based on input
-    if (userInput) {
-        userInput.addEventListener('input', () => {
-            sendButton.disabled = userInput.value.trim() === '';
-        });
-
-        userInput.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' && !e.shiftKey) {
-                e.preventDefault();
-                sendMessage();
-            }
-        });
-    }
-
-    // Send message events
-    if (sendButton) sendButton.addEventListener('click', sendMessage);
-
-    // Quick action buttons
-    if (quickActions) {
-        quickActions.addEventListener('click', (e) => {
-            if (e.target.classList.contains('quick-action-btn')) {
-                const message = e.target.dataset.message;
-                userInput.value = message;
-                sendButton.disabled = false;
-                sendMessage();
-            }
-        });
-    }
-
-    // === Speech Recognition ===
-    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-    let recognition;
-
-    if (SpeechRecognition && micButton) {
-        recognition = new SpeechRecognition();
-        recognition.lang = 'ar-SA';
-        recognition.interimResults = false;
-        recognition.maxAlternatives = 1;
-
-        recognition.onstart = () => {
-            micButton.classList.add('recording');
-            userInput.placeholder = 'جاري الاستماع...';
-        };
-
-        recognition.onend = () => {
-            micButton.classList.remove('recording');
-            userInput.placeholder = 'اكتب رسالتك هنا...';
-        };
-
-        recognition.onerror = (event) => {
-            console.error('Speech recognition error:', event.error);
-            micButton.classList.remove('recording');
-            userInput.placeholder = 'حدث خطأ، حاول مجدداً';
-            setTimeout(() => {
-                userInput.placeholder = 'اكتب رسالتك هنا...';
-            }, 2000);
-        };
-
-        recognition.onresult = (event) => {
-            const speechResult = event.results[0][0].transcript;
-            if (speechResult) {
-                userInput.value = speechResult;
-                sendButton.disabled = false;
-                sendMessage();
-            }
-        };
-
-        micButton.addEventListener('click', () => {
-            try {
-                if (micButton.classList.contains('recording')) {
-                    recognition.stop();
-                } else {
-                    recognition.start();
-                }
-            } catch (e) {
-                console.error("Recognition error:", e);
-            }
-        });
-    } else if (micButton) {
-        micButton.style.display = 'none';
-    }
-
-    // === Message Functions ===
-    function getCurrentTime() {
-        return new Date().toLocaleTimeString('ar-SA', {
-            hour: '2-digit',
-            minute: '2-digit',
-            hour12: true
-        });
-    }
-
-    function parseMarkdown(text) {
-        if (!text) return '';
-
-        // 1. Basic HTML Escape (safety)
-        let tempDiv = document.createElement("div");
-        tempDiv.innerText = text;
-        let cleanText = tempDiv.innerHTML;
-
-        // 2. Formatting
-        // Headers (## Header)
-        cleanText = cleanText.replace(/^## (.*$)/gim, '<h3>$1</h3>');
-
-        // Bold (**text**)
-        cleanText = cleanText.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-
-        // Italic (*text*)
-        cleanText = cleanText.replace(/\*(.*?)\*/g, '<em>$1</em>');
-
-        // Links [text](url)
-        cleanText = cleanText.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" class="chat-link">$1</a>');
-
-        // Bullet points
-        cleanText = cleanText.replace(/^\- (.*$)/gim, '• $1');
-
-        // Newlines to break
-        cleanText = cleanText.replace(/\n/g, '<br>');
-
-        return cleanText;
-    }
-
-    // === Typing Effect ===
-    async function typeMessage(element, htmlContent) {
-        // Match HTML tags or single characters
-        const regex = /(<[^>]+>|[^<])/g;
-        const matches = htmlContent.match(regex) || [];
-
-        element.innerHTML = '';
-
-        for (const match of matches) {
-            element.innerHTML += match;
-            // Scroll to bottom continuously
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-
-            // Delay only for text characters, not HTML tags
-            if (!match.startsWith('<')) {
-                await new Promise(resolve => setTimeout(resolve, 15));
-            }
-        }
-    }
-
-    function appendMessage(text, sender, isStreaming = false) {
-        // Hide welcome message and quick actions after first user message
-        const welcomeMsg = chatMessages.querySelector('.welcome-message');
-        if (welcomeMsg && sender === 'user') {
-            welcomeMsg.style.display = 'none';
-        }
-        if (sender === 'user') {
-            quickActions.style.display = 'none';
-        }
-
-        const wrapper = document.createElement('div');
-        wrapper.classList.add('message-wrapper', sender);
-
-        const avatarIcon = sender === 'ai'
-            ? '<img src="frontend/assets/images/Gemini.webp.png" alt="AI" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">'
-            : '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />';
-
-        // Parse the message text
-        const formattedText = parseMarkdown(text);
-
-        wrapper.innerHTML = `
+document.addEventListener("DOMContentLoaded",()=>{const chatToggle=document.getElementById("chatToggle"),chatWidget=document.getElementById("chatWidget"),chatOverlay=document.getElementById("chatOverlay"),chatMessages=document.getElementById("chatMessages"),userInput=document.getElementById("userInput"),sendButton=document.getElementById("sendButton"),micButton=document.getElementById("micButton"),minimizeChat=document.getElementById("minimizeChat"),soundToggle=document.getElementById("soundToggle"),quickActions=document.getElementById("quickActions");let isOpen=!1,isSoundEnabled=!0,isFirstOpen=!0;const API_URL="https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=AIzaSyDO81uH5hysYX4daaK2bmcRxbz8IPFgwfg";function toggleChat(){if(isOpen=!isOpen,chatWidget.classList.toggle("open",isOpen),chatToggle.classList.toggle("active",isOpen),chatOverlay.classList.toggle("show",isOpen&&window.innerWidth<=480),isOpen){const badge=chatToggle.querySelector(".badge");badge&&(badge.style.display="none"),setTimeout(()=>userInput.focus(),300),isFirstOpen&&(isFirstOpen=!1)}window.innerWidth<=480&&(document.body.style.overflow=isOpen?"hidden":"")}function closeChat(){isOpen=!1,chatWidget.classList.remove("open"),chatToggle.classList.remove("active"),chatOverlay.classList.remove("show"),document.body.style.overflow=""}chatToggle&&chatToggle.addEventListener("click",toggleChat),chatOverlay&&chatOverlay.addEventListener("click",closeChat),minimizeChat&&minimizeChat.addEventListener("click",closeChat),document.addEventListener("keydown",e=>{e.key==="Escape"&&isOpen&&closeChat()}),soundToggle&&soundToggle.addEventListener("click",()=>{isSoundEnabled=!isSoundEnabled,isSoundEnabled||window.speechSynthesis.cancel(),soundToggle.querySelector("svg").innerHTML=isSoundEnabled?'<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />':'<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />'}),userInput&&(userInput.addEventListener("input",()=>{sendButton.disabled=userInput.value.trim()===""}),userInput.addEventListener("keydown",e=>{e.key==="Enter"&&!e.shiftKey&&(e.preventDefault(),sendMessage())})),sendButton&&sendButton.addEventListener("click",sendMessage),quickActions&&quickActions.addEventListener("click",e=>{if(e.target.classList.contains("quick-action-btn")){const message=e.target.dataset.message;userInput.value=message,sendButton.disabled=!1,sendMessage()}});const SpeechRecognition=window.SpeechRecognition||window.webkitSpeechRecognition;let recognition;SpeechRecognition&&micButton?(recognition=new SpeechRecognition,recognition.lang="ar-SA",recognition.interimResults=!1,recognition.maxAlternatives=1,recognition.onstart=()=>{micButton.classList.add("recording"),userInput.placeholder="\u062C\u0627\u0631\u064A \u0627\u0644\u0627\u0633\u062A\u0645\u0627\u0639..."},recognition.onend=()=>{micButton.classList.remove("recording"),userInput.placeholder="\u0627\u0643\u062A\u0628 \u0631\u0633\u0627\u0644\u062A\u0643 \u0647\u0646\u0627..."},recognition.onerror=event=>{console.error("Speech recognition error:",event.error),micButton.classList.remove("recording"),userInput.placeholder="\u062D\u062F\u062B \u062E\u0637\u0623\u060C \u062D\u0627\u0648\u0644 \u0645\u062C\u062F\u062F\u0627\u064B",setTimeout(()=>{userInput.placeholder="\u0627\u0643\u062A\u0628 \u0631\u0633\u0627\u0644\u062A\u0643 \u0647\u0646\u0627..."},2e3)},recognition.onresult=event=>{const speechResult=event.results[0][0].transcript;speechResult&&(userInput.value=speechResult,sendButton.disabled=!1,sendMessage())},micButton.addEventListener("click",()=>{try{micButton.classList.contains("recording")?recognition.stop():recognition.start()}catch(e){console.error("Recognition error:",e)}})):micButton&&(micButton.style.display="none");function getCurrentTime(){return new Date().toLocaleTimeString("ar-SA",{hour:"2-digit",minute:"2-digit",hour12:!0})}function parseMarkdown(text){if(!text)return"";let tempDiv=document.createElement("div");tempDiv.innerText=text;let cleanText=tempDiv.innerHTML;return cleanText=cleanText.replace(/^## (.*$)/gim,"<h3>$1</h3>"),cleanText=cleanText.replace(/\*\*(.*?)\*\*/g,"<strong>$1</strong>"),cleanText=cleanText.replace(/\*(.*?)\*/g,"<em>$1</em>"),cleanText=cleanText.replace(/\[([^\]]+)\]\(([^)]+)\)/g,'<a href="$2" target="_blank" class="chat-link">$1</a>'),cleanText=cleanText.replace(/^\- (.*$)/gim,"\u2022 $1"),cleanText=cleanText.replace(/\n/g,"<br>"),cleanText}async function typeMessage(element,htmlContent){const regex=/(<[^>]+>|[^<])/g,matches=htmlContent.match(regex)||[];element.innerHTML="";for(const match of matches)element.innerHTML+=match,chatMessages.scrollTop=chatMessages.scrollHeight,match.startsWith("<")||await new Promise(resolve=>setTimeout(resolve,15))}function appendMessage(text,sender,isStreaming=!1){const welcomeMsg=chatMessages.querySelector(".welcome-message");welcomeMsg&&sender==="user"&&(welcomeMsg.style.display="none"),sender==="user"&&(quickActions.style.display="none");const wrapper=document.createElement("div");wrapper.classList.add("message-wrapper",sender);const avatarIcon=sender==="ai"?'<img src="frontend/assets/images/Gemini.webp.png" alt="AI" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">':'<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />',formattedText=parseMarkdown(text);if(wrapper.innerHTML=`
             <div class="message-avatar">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     ${avatarIcon}
                 </svg>
             </div>
             <div class="message-content">
-                <div class="message-bubble">${isStreaming ? '' : formattedText}</div>
+                <div class="message-bubble">${isStreaming?"":formattedText}</div>
                 <span class="message-time">${getCurrentTime()}</span>
             </div>
-        `;
-
-        chatMessages.appendChild(wrapper);
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-
-        // Return the bubble element if we want to stream into it
-        if (isStreaming) {
-            return { wrapper, bubble: wrapper.querySelector('.message-bubble'), formattedText };
-        }
-    }
-
-    function updateQuickActions(suggestions) {
-        if (!quickActions) return;
-
-        quickActions.innerHTML = '';
-        quickActions.style.display = 'flex'; // Show if it was hidden
-
-        suggestions.forEach(suggestion => {
-            if (!suggestion.trim()) return;
-            const btn = document.createElement('button');
-            btn.className = 'quick-action-btn';
-            btn.dataset.message = suggestion.trim();
-            btn.textContent = suggestion.trim();
-
-            // Add subtle animation
-            btn.style.opacity = '0';
-            btn.style.transform = 'translateY(10px)';
-            quickActions.appendChild(btn);
-
-            // Trigger animation
-            requestAnimationFrame(() => {
-                btn.style.transition = 'all 0.3s ease';
-                btn.style.opacity = '1';
-                btn.style.transform = 'translateY(0)';
-            });
-        });
-
-        // Scroll to bottom to show suggestions
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-    }
-
-    function showTypingIndicator() {
-        const wrapper = document.createElement('div');
-        wrapper.classList.add('message-wrapper', 'ai');
-        wrapper.id = 'typingIndicator';
-
-        wrapper.innerHTML = `
+        `,chatMessages.appendChild(wrapper),chatMessages.scrollTop=chatMessages.scrollHeight,isStreaming)return{wrapper,bubble:wrapper.querySelector(".message-bubble"),formattedText}}function updateQuickActions(suggestions){quickActions&&(quickActions.innerHTML="",quickActions.style.display="flex",suggestions.forEach(suggestion=>{if(!suggestion.trim())return;const btn=document.createElement("button");btn.className="quick-action-btn",btn.dataset.message=suggestion.trim(),btn.textContent=suggestion.trim(),btn.style.opacity="0",btn.style.transform="translateY(10px)",quickActions.appendChild(btn),requestAnimationFrame(()=>{btn.style.transition="all 0.3s ease",btn.style.opacity="1",btn.style.transform="translateY(0)"})}),chatMessages.scrollTop=chatMessages.scrollHeight)}function showTypingIndicator(){const wrapper=document.createElement("div");wrapper.classList.add("message-wrapper","ai"),wrapper.id="typingIndicator",wrapper.innerHTML=`
             <div class="message-avatar">
                 <img src="frontend/assets/images/Gemini.webp.png" alt="AI" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
             </div>
@@ -313,226 +21,103 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </div>
             </div>
-        `;
+        `,chatMessages.appendChild(wrapper),chatMessages.scrollTop=chatMessages.scrollHeight}function removeTypingIndicator(){const indicator=document.getElementById("typingIndicator");indicator&&indicator.remove()}async function sendMessage(){if(!userInput)return;const text=userInput.value.trim();if(text){appendMessage(text,"user"),userInput.value="",sendButton.disabled=!0,showTypingIndicator();try{const fullResponse=await callGeminiAPI(text);removeTypingIndicator();const parts=fullResponse.split("---SUGGESTIONS---"),mainAnswer=parts[0].trim(),suggestionsRaw=parts[1]?parts[1].trim():"",{bubble,formattedText}=appendMessage(mainAnswer,"ai",!0);if(await typeMessage(bubble,formattedText),isSoundEnabled&&speakText(mainAnswer),suggestionsRaw){const suggestions=suggestionsRaw.split(`
+`).filter(s=>s.trim().length>0).slice(0,3);updateQuickActions(suggestions)}}catch(error){removeTypingIndicator(),appendMessage("\u0639\u0630\u0631\u0627\u064B\u060C \u062D\u062F\u062B \u062E\u0637\u0623 \u0641\u064A \u0627\u0644\u0627\u062A\u0635\u0627\u0644. \u064A\u0631\u062C\u0649 \u0627\u0644\u0645\u062D\u0627\u0648\u0644\u0629 \u0645\u0631\u0629 \u0623\u062E\u0631\u0649.","ai"),console.error("API Error:",error)}}}async function callGeminiAPI(text){const response=await fetch(API_URL,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({contents:[{parts:[{text:`\u0623\u0646\u062A Yazeed AI\u060C \u0627\u0644\u0645\u0633\u0627\u0639\u062F \u0627\u0644\u0630\u0643\u064A \u0627\u0644\u0631\u0633\u0645\u064A \u0644\u0644\u062F\u0639\u0645 \u0627\u0644\u0641\u0646\u064A \u0645\u0646 \u0634\u0631\u0643\u0629 Bright AI \u0627\u0644\u0633\u0639\u0648\u062F\u064A\u0629 - \u0627\u0644\u0634\u0631\u0643\u0629 \u0627\u0644\u0631\u0627\u0626\u062F\u0629 \u0641\u064A \u062D\u0644\u0648\u0644 \u0627\u0644\u0630\u0643\u0627\u0621 \u0627\u0644\u0627\u0635\u0637\u0646\u0627\u0639\u064A \u0628\u0627\u0644\u0645\u0645\u0644\u0643\u0629 \u0627\u0644\u0639\u0631\u0628\u064A\u0629 \u0627\u0644\u0633\u0639\u0648\u062F\u064A\u0629.
 
-        chatMessages.appendChild(wrapper);
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-    }
+## \u0645\u0646 \u0646\u062D\u0646 - Bright AI
+\u0645\u0646\u0635\u0629 \u0633\u0639\u0648\u062F\u064A\u0629 \u0631\u0627\u0626\u062F\u0629 \u0645\u062A\u062E\u0635\u0635\u0629 \u0641\u064A \u062A\u0642\u062F\u064A\u0645 \u062D\u0644\u0648\u0644 \u0627\u0644\u0630\u0643\u0627\u0621 \u0627\u0644\u0627\u0635\u0637\u0646\u0627\u0639\u064A \u0627\u0644\u0645\u0628\u062A\u0643\u0631\u0629 \u0644\u062F\u0639\u0645 \u0627\u0644\u062A\u062D\u0648\u0644 \u0627\u0644\u0631\u0642\u0645\u064A \u0641\u064A \u0627\u0644\u0645\u0624\u0633\u0633\u0627\u062A \u0648\u0627\u0644\u0645\u0646\u0634\u0622\u062A. \u0646\u0647\u062F\u0641 \u0625\u0644\u0649 \u062A\u0645\u0643\u064A\u0646 \u0627\u0644\u0634\u0631\u0643\u0627\u062A \u0627\u0644\u0633\u0639\u0648\u062F\u064A\u0629 \u0645\u0646 \u062A\u0628\u0646\u064A \u0623\u062D\u062F\u062B \u062A\u0642\u0646\u064A\u0627\u062A AI \u0644\u062A\u062D\u0633\u064A\u0646 \u0627\u0644\u0643\u0641\u0627\u0621\u0629 \u0648\u0632\u064A\u0627\u062F\u0629 \u0627\u0644\u0625\u0646\u062A\u0627\u062C\u064A\u0629 \u0648\u062A\u0639\u0632\u064A\u0632 \u0627\u0644\u0642\u062F\u0631\u0629 \u0627\u0644\u062A\u0646\u0627\u0641\u0633\u064A\u0629.
 
-    function removeTypingIndicator() {
-        const indicator = document.getElementById('typingIndicator');
-        if (indicator) indicator.remove();
-    }
+## \u062E\u062F\u0645\u0627\u062A\u0646\u0627 \u0627\u0644\u0631\u0626\u064A\u0633\u064A\u0629:
 
-    // === Send Message ===
-    async function sendMessage() {
-        if (!userInput) return;
-        const text = userInput.value.trim();
-        if (!text) return;
+### 1. \u0627\u0644\u0630\u0643\u0627\u0621 \u0627\u0644\u0627\u0635\u0637\u0646\u0627\u0639\u064A \u0643\u062E\u062F\u0645\u0629 (AIaaS) \u0644\u0644\u0645\u0646\u0634\u0622\u062A
+- \u062D\u0644\u0648\u0644 "\u0627\u0644\u0645\u0635\u0646\u0639 \u0627\u0644\u0630\u0643\u064A" \u0648"\u0627\u0644\u0645\u062A\u062C\u0631 \u0627\u0644\u0645\u062A\u0635\u0644" \u0644\u0644\u0645\u0646\u0634\u0622\u062A \u0627\u0644\u0635\u063A\u064A\u0631\u0629 \u0648\u0627\u0644\u0645\u062A\u0648\u0633\u0637\u0629
+- \u062A\u062D\u062F\u064A\u062B\u0627\u062A \u0645\u0633\u062A\u0645\u0631\u0629 \u0644\u0644\u062E\u0648\u0627\u0631\u0632\u0645\u064A\u0627\u062A \u0628\u0646\u0627\u0621\u064B \u0639\u0644\u0649 \u0627\u0644\u0628\u064A\u0627\u0646\u0627\u062A \u0627\u0644\u0645\u062D\u0644\u064A\u0629
+- \u0627\u0644\u062A\u0639\u0644\u0645 \u0627\u0644\u0645\u0633\u062A\u0645\u0631 \u0644\u062A\u062D\u0633\u064A\u0646 \u0627\u0644\u0623\u062F\u0627\u0621
+\u{1F517} [\u0627\u0644\u062A\u0641\u0627\u0635\u064A\u0644 \u0627\u0644\u0643\u0627\u0645\u0644\u0629](https://brightai.site/frontend/pages/ai-agent)
 
-        appendMessage(text, 'user');
-        userInput.value = '';
-        sendButton.disabled = true;
-        showTypingIndicator();
+### 2. \u0633\u064A\u0631 \u0639\u0645\u0644 \u0627\u0644\u0630\u0643\u0627\u0621 \u0627\u0644\u0627\u0635\u0637\u0646\u0627\u0639\u064A (AI Workflows)
+- \u062A\u0646\u0638\u064A\u0645 \u0630\u0643\u064A \u0644\u0644\u0645\u0647\u0627\u0645 \u0648\u062A\u0646\u0641\u064A\u0630 \u062A\u0644\u0642\u0627\u0626\u064A
+- \u062A\u062D\u0642\u064A\u0642 \u0646\u062A\u0627\u0626\u062C \u0623\u0633\u0631\u0639 \u0628\u062A\u0643\u0644\u0641\u0629 \u0623\u0642\u0644
 
-        try {
-            const fullResponse = await callGeminiAPI(text);
-            removeTypingIndicator();
+### 3. \u0627\u0644\u0623\u062A\u0645\u062A\u0629 \u0627\u0644\u0630\u0643\u064A\u0629 (RPA)
+- \u062A\u062D\u0648\u064A\u0644 \u0627\u0644\u0645\u0647\u0627\u0645 \u0627\u0644\u064A\u062F\u0648\u064A\u0629 \u0627\u0644\u0645\u062A\u0643\u0631\u0631\u0629 \u0625\u0644\u0649 \u0639\u0645\u0644\u064A\u0627\u062A \u0622\u0644\u064A\u0629 \u062F\u0642\u064A\u0642\u0629
+\u{1F517} [\u062A\u0641\u0627\u0635\u064A\u0644 \u0627\u0644\u0623\u062A\u0645\u062A\u0629](https://brightai.site/frontend/pages/smart-automation)
 
-            // Split response and suggestions
-            const parts = fullResponse.split('---SUGGESTIONS---');
-            const mainAnswer = parts[0].trim();
-            const suggestionsRaw = parts[1] ? parts[1].trim() : '';
+### 4. \u062A\u062D\u0644\u064A\u0644 \u0627\u0644\u0628\u064A\u0627\u0646\u0627\u062A \u0627\u0644\u0636\u062E\u0645\u0629 (Big Data)
+- \u0627\u0633\u062A\u062E\u0631\u0627\u062C \u0631\u0624\u0649 \u0627\u0633\u062A\u0631\u0627\u062A\u064A\u062C\u064A\u0629 \u0645\u0646 \u0627\u0644\u0628\u064A\u0627\u0646\u0627\u062A
+- \u062F\u0639\u0645 \u0627\u062A\u062E\u0627\u0630 \u0627\u0644\u0642\u0631\u0627\u0631 \u0628\u0646\u0627\u0621\u064B \u0639\u0644\u0649 \u0627\u0644\u0628\u064A\u0627\u0646\u0627\u062A
+\u{1F517} [\u062E\u062F\u0645\u0627\u062A \u0627\u0644\u062A\u062D\u0644\u064A\u0644](https://brightai.site/frontend/pages/data-analysis)
 
-            // Stream the main answer
-            const { bubble, formattedText } = appendMessage(mainAnswer, 'ai', true);
-            await typeMessage(bubble, formattedText);
+### 5. \u0627\u0644\u0630\u0643\u0627\u0621 \u0627\u0644\u0627\u0635\u0637\u0646\u0627\u0639\u064A \u0627\u0644\u062A\u0648\u0644\u064A\u062F\u064A (Generative AI)
+- \u0625\u0646\u0634\u0627\u0621 \u0645\u062D\u062A\u0648\u0649 \u0630\u0643\u064A \u0648\u062D\u0644\u0648\u0644 \u0645\u0628\u062A\u0643\u0631\u0629
+- \u0646\u0645\u0627\u0630\u062C \u0630\u0643\u064A\u0629 \u0645\u062E\u0635\u0635\u0629
 
-            if (isSoundEnabled) {
-                speakText(mainAnswer);
-            }
+### 6. \u0645\u0639\u0627\u0644\u062C\u0629 \u0627\u0644\u0644\u063A\u0629 \u0627\u0644\u0637\u0628\u064A\u0639\u064A\u0629 (NLP)
+- \u0641\u0647\u0645 \u0627\u0644\u0644\u0647\u062C\u0627\u062A \u0627\u0644\u0645\u062D\u0644\u064A\u0629 \u0627\u0644\u0633\u0639\u0648\u062F\u064A\u0629
+- \u062A\u0641\u0627\u0639\u0644 \u0646\u0635\u064A \u062F\u0642\u064A\u0642 \u0628\u0627\u0644\u0644\u063A\u0629 \u0627\u0644\u0639\u0631\u0628\u064A\u0629
 
-            // Process and show suggestions
-            if (suggestionsRaw) {
-                const suggestions = suggestionsRaw.split('\n').filter(s => s.trim().length > 0).slice(0, 3);
-                updateQuickActions(suggestions);
-            }
+### 7. \u0634\u0627\u062A \u0628\u0648\u062A \u0639\u0631\u0628\u064A \u0630\u0643\u064A
+- \u062F\u0639\u0645 \u0627\u0644\u0644\u063A\u0629 \u0627\u0644\u0639\u0631\u0628\u064A\u0629 \u0648\u0627\u0644\u0644\u0647\u062C\u0627\u062A \u0627\u0644\u0633\u0639\u0648\u062F\u064A\u0629
+- \u062A\u0641\u0627\u0639\u0644 \u062A\u0644\u0642\u0627\u0626\u064A \u0645\u0639 \u0627\u0644\u0639\u0645\u0644\u0627\u0621 \u0639\u0644\u0649 \u0645\u062F\u0627\u0631 \u0627\u0644\u0633\u0627\u0639\u0629
 
-        } catch (error) {
-            removeTypingIndicator();
-            appendMessage('عذراً، حدث خطأ في الاتصال. يرجى المحاولة مرة أخرى.', 'ai');
-            console.error('API Error:', error);
-        }
-    }
+### 8. \u0627\u0644\u0627\u0633\u062A\u0634\u0627\u0631\u0627\u062A \u0627\u0644\u062A\u0642\u0646\u064A\u0629
+- \u0627\u0633\u062A\u0631\u0627\u062A\u064A\u062C\u064A\u0627\u062A \u0645\u062E\u0635\u0635\u0629 \u0644\u0644\u062A\u062D\u0648\u0644 \u0627\u0644\u0631\u0642\u0645\u064A
+- \u062E\u0628\u0631\u0627\u0621 \u0645\u062A\u062E\u0635\u0635\u0648\u0646 \u0641\u064A AI
+\u{1F517} [\u0627\u062D\u062C\u0632 \u0627\u0633\u062A\u0634\u0627\u0631\u0629](https://brightai.site/frontend/pages/consultation)
 
-    // === Gemini API Call ===
-    async function callGeminiAPI(text) {
-        const systemPrompt = `أنت Yazeed AI، المساعد الذكي الرسمي للدعم الفني من شركة Bright AI السعودية - الشركة الرائدة في حلول الذكاء الاصطناعي بالمملكة العربية السعودية.
+### 9. \u0627\u0644\u062D\u0644\u0648\u0644 \u0627\u0644\u0637\u0628\u064A\u0629
+- \u062A\u062D\u0644\u064A\u0644 \u0627\u0644\u0635\u0648\u0631 \u0627\u0644\u0637\u0628\u064A\u0629
+- \u0627\u0644\u0645\u0631\u0627\u0642\u0628\u0629 \u0627\u0644\u0635\u062D\u064A\u0629 \u0639\u0646 \u0628\u064F\u0639\u062F
+- \u062F\u0639\u0645 \u0627\u0644\u0645\u0633\u062A\u0634\u0641\u064A\u0627\u062A \u0627\u0644\u0630\u0643\u064A\u0629 
 
-## من نحن - Bright AI
-منصة سعودية رائدة متخصصة في تقديم حلول الذكاء الاصطناعي المبتكرة لدعم التحول الرقمي في المؤسسات والمنشآت. نهدف إلى تمكين الشركات السعودية من تبني أحدث تقنيات AI لتحسين الكفاءة وزيادة الإنتاجية وتعزيز القدرة التنافسية.
+### 10. \u0627\u0644\u062A\u0643\u0627\u0645\u0644 \u0645\u0639 \u0627\u0644\u0623\u0646\u0638\u0645\u0629 \u0627\u0644\u0645\u0624\u0633\u0633\u064A\u0629
+- \u0627\u0644\u062A\u0643\u0627\u0645\u0644 \u0645\u0639 ERP \u0648 CRM
+- \u062A\u0633\u0647\u064A\u0644 \u062A\u0637\u0628\u064A\u0642 \u0627\u0644\u062D\u0644\u0648\u0644 \u0636\u0645\u0646 \u0627\u0644\u0628\u0646\u0649 \u0627\u0644\u062A\u062D\u062A\u064A\u0629 \u0627\u0644\u0642\u0627\u0626\u0645\u0629
 
-## خدماتنا الرئيسية:
+### 11. \u0645\u0643\u062A\u0628\u0629 \u0630\u0643\u064A\u0629 \u0648\u0645\u062D\u062A\u0648\u0649 \u062A\u062F\u0631\u064A\u0628\u064A
+- \u0645\u0648\u0627\u0631\u062F \u062A\u0639\u0644\u064A\u0645\u064A\u0629 \u0628\u0627\u0644\u0639\u0631\u0628\u064A\u0629
+- \u0628\u0646\u0627\u0621 \u0627\u0644\u0643\u0641\u0627\u0621\u0627\u062A \u0627\u0644\u0645\u062D\u0644\u064A\u0629 \u0641\u064A AI
 
-### 1. الذكاء الاصطناعي كخدمة (AIaaS) للمنشآت
-- حلول "المصنع الذكي" و"المتجر المتصل" للمنشآت الصغيرة والمتوسطة
-- تحديثات مستمرة للخوارزميات بناءً على البيانات المحلية
-- التعلم المستمر لتحسين الأداء
-🔗 [التفاصيل الكاملة](https://brightai.site/frontend/pages/ai-agent)
+## \u0645\u0647\u0627\u0645\u0643 \u0643\u0640 Yazeed AI:
+\u2705 \u0627\u0644\u0625\u062C\u0627\u0628\u0629 \u0639\u0644\u0649 \u0627\u0644\u0627\u0633\u062A\u0641\u0633\u0627\u0631\u0627\u062A \u0627\u0644\u062A\u0642\u0646\u064A\u0629 \u0648\u0627\u0644\u062F\u0639\u0645 \u0627\u0644\u0641\u0646\u064A
+\u2705 \u062A\u0642\u062F\u064A\u0645 \u0645\u0639\u0644\u0648\u0645\u0627\u062A \u0645\u0641\u0635\u0644\u0629 \u0639\u0646 \u062E\u062F\u0645\u0627\u062A Bright AI
+\u2705 \u0627\u0644\u0645\u0633\u0627\u0639\u062F\u0629 \u0641\u064A \u0627\u062E\u062A\u064A\u0627\u0631 \u0627\u0644\u062D\u0644 \u0627\u0644\u0645\u0646\u0627\u0633\u0628 \u0644\u0644\u0639\u0645\u064A\u0644
+\u2705 \u062D\u0644 \u0627\u0644\u0645\u0634\u0643\u0644\u0627\u062A \u0627\u0644\u062A\u0642\u0646\u064A\u0629 \u0648\u062A\u0642\u062F\u064A\u0645 \u0627\u0644\u062F\u0639\u0645
+\u2705 \u062A\u0648\u062C\u064A\u0647 \u0627\u0644\u0639\u0645\u0644\u0627\u0621 \u0644\u0644\u0635\u0641\u062D\u0627\u062A \u0648\u0627\u0644\u0645\u0648\u0627\u0631\u062F \u0627\u0644\u0645\u0646\u0627\u0633\u0628\u0629
 
-### 2. سير عمل الذكاء الاصطناعي (AI Workflows)
-- تنظيم ذكي للمهام وتنفيذ تلقائي
-- تحقيق نتائج أسرع بتكلفة أقل
+## \u0623\u0633\u0644\u0648\u0628 \u0627\u0644\u062A\u0648\u0627\u0635\u0644:
+- \u0627\u062D\u062A\u0631\u0627\u0641\u064A \u0648\u0648\u062F\u0648\u062F \u0648\u0645\u0631\u062D\u0628
+- \u0625\u062C\u0627\u0628\u0627\u062A \u0648\u0627\u0636\u062D\u0629 \u0648\u0645\u062E\u062A\u0635\u0631\u0629 \u0648\u0645\u0641\u064A\u062F\u0629
+- \u0627\u0633\u062A\u062E\u062F\u0627\u0645 \u0627\u0644\u0639\u0631\u0628\u064A\u0629 \u0627\u0644\u0641\u0635\u062D\u0649 \u0645\u0639 \u0645\u0631\u0627\u0639\u0627\u0629 \u0627\u0644\u0628\u0633\u0627\u0637\u0629
+- \u062A\u0642\u062F\u064A\u0645 \u0631\u0648\u0627\u0628\u0637 \u0645\u0628\u0627\u0634\u0631\u0629 \u0644\u0644\u0635\u0641\u062D\u0627\u062A \u0630\u0627\u062A \u0627\u0644\u0635\u0644\u0629
+- \u0639\u062F\u0645 \u0627\u0644\u062E\u0631\u0648\u062C \u0639\u0646 \u062F\u0648\u0631\u0643 \u0643\u0645\u0633\u0627\u0639\u062F \u062A\u0642\u0646\u064A
 
-### 3. الأتمتة الذكية (RPA)
-- تحويل المهام اليدوية المتكررة إلى عمليات آلية دقيقة
-🔗 [تفاصيل الأتمتة](https://brightai.site/frontend/pages/smart-automation)
+## \u0631\u0648\u0627\u0628\u0637 \u0647\u0627\u0645\u0629:
+\u{1F4CD} \u0627\u0644\u0635\u0641\u062D\u0629 \u0627\u0644\u0631\u0626\u064A\u0633\u064A\u0629: https://brightai.site/
+\u{1F4E7} \u0627\u0644\u062A\u0648\u0627\u0635\u0644: yazeed1job@gmail.com
+\u{1F4F1} \u0648\u0627\u062A\u0633\u0627\u0628: https://wa.me/966538229013
+\u{1F4DE} \u0647\u0627\u062A\u0641: +966 53 822 9013
+\u{1F4CD} \u0627\u0644\u0645\u0648\u0642\u0639: \u0627\u0644\u0631\u064A\u0627\u0636\u060C \u0627\u0644\u0645\u0645\u0644\u0643\u0629 \u0627\u0644\u0639\u0631\u0628\u064A\u0629 \u0627\u0644\u0633\u0639\u0648\u062F\u064A\u0629
 
-### 4. تحليل البيانات الضخمة (Big Data)
-- استخراج رؤى استراتيجية من البيانات
-- دعم اتخاذ القرار بناءً على البيانات
-🔗 [خدمات التحليل](https://brightai.site/frontend/pages/data-analysis)
+## \u0635\u0641\u062D\u0627\u062A \u0627\u0644\u062E\u062F\u0645\u0627\u062A:
+- \u0627\u0644\u0623\u062A\u0645\u062A\u0629 \u0627\u0644\u0630\u0643\u064A\u0629: /frontend/pages/smart-automation.html
+- AIaaS \u0644\u0644\u0645\u0646\u0634\u0622\u062A: /frontend/pages/ai-agent.html
+- \u062A\u062D\u0644\u064A\u0644 \u0627\u0644\u0628\u064A\u0627\u0646\u0627\u062A: /frontend/pages/data-analysis.html
+- \u0627\u0644\u0627\u0633\u062A\u0634\u0627\u0631\u0627\u062A: /frontend/pages/consultation.html
+- \u0627\u0644\u0645\u062F\u0648\u0646\u0629: /blog
+- \u0627\u0644\u0648\u062B\u0627\u0626\u0642: /Docs
+- \u0645\u0646 \u0646\u062D\u0646: /about-us
+- \u062A\u0648\u0627\u0635\u0644 \u0645\u0639\u0646\u0627: /contact
 
-### 5. الذكاء الاصطناعي التوليدي (Generative AI)
-- إنشاء محتوى ذكي وحلول مبتكرة
-- نماذج ذكية مخصصة
+## \u0645\u0644\u0627\u062D\u0638\u0627\u062A \u0645\u0647\u0645\u0629:
+\u26A1 \u0639\u0646\u062F \u0627\u0644\u0625\u062C\u0627\u0628\u0629\u060C \u0642\u062F\u0651\u0645 \u0631\u0627\u0628\u0637 \u0627\u0644\u0635\u0641\u062D\u0629 \u0627\u0644\u0645\u0646\u0627\u0633\u0628\u0629 \u0644\u0644\u062D\u0635\u0648\u0644 \u0639\u0644\u0649 \u062A\u0641\u0627\u0635\u064A\u0644 \u0623\u0643\u062B\u0631
+\u26A1 \u0634\u062C\u0651\u0639 \u0627\u0644\u0639\u0645\u0644\u0627\u0621 \u0639\u0644\u0649 \u062D\u062C\u0632 \u0627\u0633\u062A\u0634\u0627\u0631\u0629 \u0645\u062C\u0627\u0646\u064A\u0629 \u0644\u0644\u062D\u0635\u0648\u0644 \u0639\u0644\u0649 \u062D\u0644 \u0645\u062E\u0635\u0635
+\u26A1 \u0623\u0643\u0651\u062F \u0639\u0644\u0649 \u0627\u0644\u062A\u0632\u0627\u0645\u0646\u0627 \u0628\u0627\u0644\u0623\u0645\u0627\u0646 \u0648\u0627\u0644\u062E\u0635\u0648\u0635\u064A\u0629 \u0648\u0627\u0644\u0627\u0645\u062A\u062B\u0627\u0644 \u0644\u0644\u0645\u0639\u0627\u064A\u064A\u0631 \u0627\u0644\u0633\u0639\u0648\u062F\u064A\u0629
+\u26A1 \u0631\u0643\u0651\u0632 \u0639\u0644\u0649 \u0642\u064A\u0645\u0629 \u0627\u0644\u062A\u062D\u0648\u0644 \u0627\u0644\u0631\u0642\u0645\u064A \u0648\u062F\u0648\u0631\u0647 \u0641\u064A \u062A\u062D\u0642\u064A\u0642 \u0631\u0624\u064A\u0629 2030
 
-### 6. معالجة اللغة الطبيعية (NLP)
-- فهم اللهجات المحلية السعودية
-- تفاعل نصي دقيق باللغة العربية
-
-### 7. شات بوت عربي ذكي
-- دعم اللغة العربية واللهجات السعودية
-- تفاعل تلقائي مع العملاء على مدار الساعة
-
-### 8. الاستشارات التقنية
-- استراتيجيات مخصصة للتحول الرقمي
-- خبراء متخصصون في AI
-🔗 [احجز استشارة](https://brightai.site/frontend/pages/consultation)
-
-### 9. الحلول الطبية
-- تحليل الصور الطبية
-- المراقبة الصحية عن بُعد
-- دعم المستشفيات الذكية 
-
-### 10. التكامل مع الأنظمة المؤسسية
-- التكامل مع ERP و CRM
-- تسهيل تطبيق الحلول ضمن البنى التحتية القائمة
-
-### 11. مكتبة ذكية ومحتوى تدريبي
-- موارد تعليمية بالعربية
-- بناء الكفاءات المحلية في AI
-
-## مهامك كـ Yazeed AI:
-✅ الإجابة على الاستفسارات التقنية والدعم الفني
-✅ تقديم معلومات مفصلة عن خدمات Bright AI
-✅ المساعدة في اختيار الحل المناسب للعميل
-✅ حل المشكلات التقنية وتقديم الدعم
-✅ توجيه العملاء للصفحات والموارد المناسبة
-
-## أسلوب التواصل:
-- احترافي وودود ومرحب
-- إجابات واضحة ومختصرة ومفيدة
-- استخدام العربية الفصحى مع مراعاة البساطة
-- تقديم روابط مباشرة للصفحات ذات الصلة
-- عدم الخروج عن دورك كمساعد تقني
-
-## روابط هامة:
-📍 الصفحة الرئيسية: https://brightai.site/
-📧 التواصل: yazeed1job@gmail.com
-📱 واتساب: https://wa.me/966538229013
-📞 هاتف: +966 53 822 9013
-📍 الموقع: الرياض، المملكة العربية السعودية
-
-## صفحات الخدمات:
-- الأتمتة الذكية: /frontend/pages/smart-automation.html
-- AIaaS للمنشآت: /frontend/pages/ai-agent.html
-- تحليل البيانات: /frontend/pages/data-analysis.html
-- الاستشارات: /frontend/pages/consultation.html
-- المدونة: /blog
-- الوثائق: /Docs
-- من نحن: /about-us
-- تواصل معنا: /contact
-
-## ملاحظات مهمة:
-⚡ عند الإجابة، قدّم رابط الصفحة المناسبة للحصول على تفاصيل أكثر
-⚡ شجّع العملاء على حجز استشارة مجانية للحصول على حل مخصص
-⚡ أكّد على التزامنا بالأمان والخصوصية والامتثال للمعايير السعودية
-⚡ ركّز على قيمة التحول الرقمي ودوره في تحقيق رؤية 2030
-
-في نهاية إجابتك، اقترح دائماً 3 أسئلة قصيرة يمكن للمستخدم طرحها تالياً لمتابعة المحادثة.
-افصل بين الإجابة والاقتراحات بهذا الفاصل بالضبط:
+\u0641\u064A \u0646\u0647\u0627\u064A\u0629 \u0625\u062C\u0627\u0628\u062A\u0643\u060C \u0627\u0642\u062A\u0631\u062D \u062F\u0627\u0626\u0645\u0627\u064B 3 \u0623\u0633\u0626\u0644\u0629 \u0642\u0635\u064A\u0631\u0629 \u064A\u0645\u0643\u0646 \u0644\u0644\u0645\u0633\u062A\u062E\u062F\u0645 \u0637\u0631\u062D\u0647\u0627 \u062A\u0627\u0644\u064A\u0627\u064B \u0644\u0645\u062A\u0627\u0628\u0639\u0629 \u0627\u0644\u0645\u062D\u0627\u062F\u062B\u0629.
+\u0627\u0641\u0635\u0644 \u0628\u064A\u0646 \u0627\u0644\u0625\u062C\u0627\u0628\u0629 \u0648\u0627\u0644\u0627\u0642\u062A\u0631\u0627\u062D\u0627\u062A \u0628\u0647\u0630\u0627 \u0627\u0644\u0641\u0627\u0635\u0644 \u0628\u0627\u0644\u0636\u0628\u0637:
 ---SUGGESTIONS---
-ثم ضع كل اقتراح في سطر جديد. لا تضع أي ترقيم أو رموز إضافية أمام الاقتراحات، فقط نص السؤال.
+\u062B\u0645 \u0636\u0639 \u0643\u0644 \u0627\u0642\u062A\u0631\u0627\u062D \u0641\u064A \u0633\u0637\u0631 \u062C\u062F\u064A\u062F. \u0644\u0627 \u062A\u0636\u0639 \u0623\u064A \u062A\u0631\u0642\u064A\u0645 \u0623\u0648 \u0631\u0645\u0648\u0632 \u0625\u0636\u0627\u0641\u064A\u0629 \u0623\u0645\u0627\u0645 \u0627\u0644\u0627\u0642\u062A\u0631\u0627\u062D\u0627\u062A\u060C \u0641\u0642\u0637 \u0646\u0635 \u0627\u0644\u0633\u0624\u0627\u0644.
 
-تذكر: أنت ممثل Bright AI الرقمي، كن مفيداً ومحترفاً دائماً! 🚀`;
-
-
-
-        const response = await fetch(API_URL, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                contents: [{
-                    parts: [
-                        { text: systemPrompt },
-                        { text: text }
-                    ]
-                }]
-            })
-        });
-
-        if (!response.ok) {
-            throw new Error(`Request failed: ${response.status} `);
-        }
-
-        const data = await response.json();
-
-        if (data.candidates?.[0]?.content?.parts?.[0]?.text) {
-            return data.candidates[0].content.parts[0].text;
-        }
-
-        return "لم أتمكن من معالجة طلبك. هل يمكنك إعادة صياغة السؤال؟";
-    }
-
-    // === Speech Synthesis ===
-    function speakText(text) {
-        if (!('speechSynthesis' in window) || !isSoundEnabled) return;
-
-        // Cancel any ongoing speech
-        window.speechSynthesis.cancel();
-
-        const utterance = new SpeechSynthesisUtterance(text);
-
-        // Find Arabic voice
-        const voices = window.speechSynthesis.getVoices();
-        const arabicVoice = voices.find(v => v.lang.startsWith('ar'));
-
-        if (arabicVoice) {
-            utterance.voice = arabicVoice;
-        }
-        utterance.lang = 'ar-SA';
-        utterance.rate = 1;
-        utterance.pitch = 1;
-
-        window.speechSynthesis.speak(utterance);
-    }
-
-    // Load voices
-    if ('speechSynthesis' in window) {
-        window.speechSynthesis.onvoiceschanged = () => {
-            window.speechSynthesis.getVoices();
-        };
-    }
-
-    // === Handle window resize ===
-    window.addEventListener('resize', () => {
-        if (window.innerWidth > 480) {
-            chatOverlay.classList.remove('show');
-            document.body.style.overflow = '';
-        } else if (isOpen) {
-            chatOverlay.classList.add('show');
-            document.body.style.overflow = 'hidden';
-        }
-    });
-});
+\u062A\u0630\u0643\u0631: \u0623\u0646\u062A \u0645\u0645\u062B\u0644 Bright AI \u0627\u0644\u0631\u0642\u0645\u064A\u060C \u0643\u0646 \u0645\u0641\u064A\u062F\u0627\u064B \u0648\u0645\u062D\u062A\u0631\u0641\u0627\u064B \u062F\u0627\u0626\u0645\u0627\u064B! \u{1F680}`},{text}]}]})});if(!response.ok)throw new Error(`Request failed: ${response.status} `);const data=await response.json();return data.candidates?.[0]?.content?.parts?.[0]?.text?data.candidates[0].content.parts[0].text:"\u0644\u0645 \u0623\u062A\u0645\u0643\u0646 \u0645\u0646 \u0645\u0639\u0627\u0644\u062C\u0629 \u0637\u0644\u0628\u0643. \u0647\u0644 \u064A\u0645\u0643\u0646\u0643 \u0625\u0639\u0627\u062F\u0629 \u0635\u064A\u0627\u063A\u0629 \u0627\u0644\u0633\u0624\u0627\u0644\u061F"}function speakText(text){if(!("speechSynthesis"in window)||!isSoundEnabled)return;window.speechSynthesis.cancel();const utterance=new SpeechSynthesisUtterance(text),arabicVoice=window.speechSynthesis.getVoices().find(v=>v.lang.startsWith("ar"));arabicVoice&&(utterance.voice=arabicVoice),utterance.lang="ar-SA",utterance.rate=1,utterance.pitch=1,window.speechSynthesis.speak(utterance)}"speechSynthesis"in window&&(window.speechSynthesis.onvoiceschanged=()=>{window.speechSynthesis.getVoices()}),window.addEventListener("resize",()=>{window.innerWidth>480?(chatOverlay.classList.remove("show"),document.body.style.overflow=""):isOpen&&(chatOverlay.classList.add("show"),document.body.style.overflow="hidden")})});
