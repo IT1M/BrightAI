@@ -13,7 +13,7 @@ function getGroqConfig() {
     const DEFAULT_MODEL = "llama3-70b-8192";
 
     // استدعاء المتغيرات من ملف env.js
-    const HARDCODED_KEY = "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";
+    const HARDCODED_KEY = "";
     const envModel = (window.BRIGHTAI_ENV && window.BRIGHTAI_ENV.GROQ_MODEL) ? window.BRIGHTAI_ENV.GROQ_MODEL : DEFAULT_MODEL;
 
     let key = HARDCODED_KEY;
